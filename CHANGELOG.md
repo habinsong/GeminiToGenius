@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.16.0 — 2026-08-02
+
+- keeps the always-on entrypoint under 6,000 characters; detailed guidance now loads through focused skills and hooks
+- adds an automatic workspace-intake skill for complete, path-ordered reading before changes
+- adds PreInvocation anchors for scope intake, UI context, and product copy
+- adds a write gate for native edits and common shell write paths until safe workspace text files have been read in full
+- splits UI implementation from UI evidence review and extends human-copy checks for labels, links, and recovery text
+
 ## v1.15.0 — 2026-08-02
 
 - 9th lifecycle hook: one-time UI evidence anchor after relevant invocations

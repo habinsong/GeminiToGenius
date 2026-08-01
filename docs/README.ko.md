@@ -9,15 +9,15 @@ Gemini 3.6 Flash (High)를 Antigravity와 Antigravity IDE에서 쓰기 위한 �
 ## 구성
 
 - 항상 주입되는 지침 12개
-- 수명 주기 훅 9개
-- 집중 유지 스킬 6개
-- `v1.0.0`부터 `v1.15.0`까지의 버전 기록
+- 수명 주기 훅 13개
+- 집중 유지 스킬 8개
+- `v1.0.0`부터 `v1.16.0`까지의 버전 기록
 - 외부 플러그인 없음
 - MCP는 연결이 필요한 작업에서만 사용
 
 ## 만든 이유
 
-항상 주입되는 지침이 길면 잘리거나 영향이 약해집니다. 규칙을 짧은 파일로 나누고, 하나의 진입점으로 생성하며, 모든 변경을 버전으로 남깁니다.
+항상 주입되는 지침이 길면 잘리거나 영향이 약해집니다. 기본 계약은 짧게 두고, 상세 절차는 자동 스킬과 훅으로 옮기며, 모든 변경을 버전으로 남깁니다.
 
 ## 설치
 
@@ -50,14 +50,15 @@ printf '%s\n' "$BACKUP_DIR"
 
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-ln -sfn versions/v1.15.0 "$HOME/.gemini/config/agy-focus/current"
+ln -sfn versions/v1.16.0 "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
 ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
 ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
+python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 ```
 
-정상 기준은 `"ok": true`, `"rules": 12`, `"hooks": 9`, 스킬 6개, `"target": "Gemini 3.6 Flash (High)"`입니다. 설치 후 Antigravity 또는 Antigravity IDE를 다시 실행합니다.
+정상 기준은 `"ok": true`, `"rules": 12`, `"hooks": 13`, 스킬 8개, `"target": "Gemini 3.6 Flash (High)"`, `hook runner tests passed`입니다. 설치 후 Antigravity 또는 Antigravity IDE를 다시 실행합니다.
 
 ## 업데이트
 
@@ -111,6 +112,10 @@ mv "$BACKUP_DIR/skills" "$HOME/.gemini/config/skills"
 - `Inter`·`Roboto` 습관적 사용 금지
 - 보라색-파란색 네온 그라데이션 남용 금지
 - 내재적 크기, 유체 타이포그래피, 비대칭 배치, 모바일 우선 반응형 우선 검토
+
+## 수정 전 전체 읽기
+
+변경 요청이면 활성 workspace의 안전한 텍스트 파일을 경로순으로 하나씩 읽습니다. 네이티브 쓰기와 흔한 셸 쓰기 경로는 이 읽기가 끝나기 전 거부됩니다. 바이너리·캐시·의존성·빌드 산출물·비밀 파일은 제외합니다. `rg` 결과나 일부 줄 읽기는 전체 파일 읽기로 보지 않습니다.
 
 ## 라이선스
 

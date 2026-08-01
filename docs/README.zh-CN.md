@@ -9,9 +9,9 @@
 ## 内容
 
 - 12 个常驻指令文件
-- 9 个生命周期钩子
-- 6 个专用技能
-- 从 `v1.0.0` 到 `v1.15.0` 的版本记录
+- 13 个生命周期钩子
+- 8 个专用技能
+- 从 `v1.0.0` 到 `v1.16.0` 的版本记录
 - 不使用外部插件
 - 只有在任务需要连接 MCP 时才使用 MCP
 
@@ -58,14 +58,15 @@ printf '%s\n' "$BACKUP_DIR"
 
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-ln -sfn versions/v1.15.0 "$HOME/.gemini/config/agy-focus/current"
+ln -sfn versions/v1.16.0 "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
 ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
 ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
+python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 ```
 
-正常结果应包含 `"ok": true`、`"rules": 12`、`"hooks": 9`、6 个技能和 `"target": "Gemini 3.6 Flash (High)"`。安装后重启 Antigravity 或 Antigravity IDE。
+正常结果应包含 `"ok": true`、`"rules": 12`、`"hooks": 13`、8 个技能、`"target": "Gemini 3.6 Flash (High)"` 和 `hook runner tests passed`。安装后重启 Antigravity 或 Antigravity IDE。
 
 ## 更新
 

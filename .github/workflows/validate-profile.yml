@@ -19,7 +19,7 @@ jobs:
         run: |
           mkdir -p "$HOME/.gemini/config"
           cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-          ln -sfn versions/v1.15.0 "$HOME/.gemini/config/agy-focus/current"
+          ln -sfn versions/v1.16.0 "$HOME/.gemini/config/agy-focus/current"
           ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
           ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
           ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"

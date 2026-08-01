@@ -13,15 +13,15 @@ GeminiToGenius keeps the model on the current instruction, active window, releva
 It is a prompt-first operating harness:
 
 - 12 always-on instruction files
-- 9 lifecycle hooks
-- 6 focused skills
-- versioned profiles from `v1.0.0` to `v1.15.0`
+- 13 lifecycle hooks
+- 8 focused skills
+- versioned profiles from `v1.0.0` to `v1.16.0`
 - no external plugins
 - MCP only when the task requires an MCP connection
 
 ## Why this exists
 
-Long always-on instructions get clipped or diluted. This project splits the rules into short files, generates one entrypoint, and keeps every change versioned.
+Long always-on instructions get clipped or diluted. This project keeps the base contract short, moves detailed work into automatic skills and hooks, and versions every change.
 
 The goal is simple: less drift, fewer side quests, and a smaller instruction surface for Gemini to follow.
 
@@ -89,7 +89,7 @@ Keep the printed path. It is the restore point.
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
 
-ln -sfn versions/v1.15.0 \
+ln -sfn versions/v1.16.0 \
   "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md \
   "$HOME/.gemini/GEMINI.md"
@@ -103,6 +103,7 @@ ln -sfn agy-focus/current/skills \
 
 ```bash
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
+python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 ```
 
 Expected values:
@@ -110,9 +111,10 @@ Expected values:
 ```text
 "ok": true
 "rules": 12
-"hooks": 9
-"skills": ["agy-one-tap", "focus-session", "gemini-36-flash-high", "human-copy", "official-research", "ui-evidence-review"]
+"hooks": 13
+"skills": ["agy-one-tap", "focus-session", "gemini-36-flash-high", "human-copy", "interface-implementation", "official-research", "ui-evidence-review", "workspace-intake"]
 "target": "Gemini 3.6 Flash (High)"
+hook runner tests passed
 ```
 
 Restart Antigravity or Antigravity IDE after installation.
@@ -206,6 +208,10 @@ The active profile also carries anti-slop rules for interface work:
 - no default `Inter`/`Roboto` treatment by habit
 - no purple-to-blue neon gradients as a default solution
 - review intrinsic sizing, fluid type, asymmetric layout, and mobile-first behavior
+
+## Read before write
+
+For a change request, the harness builds a workspace scope, asks Gemini to read safe text files one by one, and denies native edits and common shell write paths until that read pass is complete. Binary files, caches, dependencies, build output, and secret files stay outside that pass. A search result or a few lines of a file does not count as reading it.
 
 ## Contributing
 
