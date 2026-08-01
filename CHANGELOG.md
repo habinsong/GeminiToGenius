@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.14.1 — 2026-08-01
+
+- 공식 Antigravity 문서에 없는 앱 버전 숫자 표기를 제거하고 전역 customization 경로 기준으로 정리
+- Antigravity와 Antigravity IDE 모두 `~/.gemini/GEMINI.md`, `~/.gemini/config/` 기준으로 설명
+
 ## v1.14.0 — 2026-08-01
 
 - Gemini 3.6 Flash 공식 모델 ID와 최신 Thinking 안내 반영

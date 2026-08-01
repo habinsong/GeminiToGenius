@@ -15,7 +15,7 @@ It is a prompt-first operating harness:
 - 12 always-on instruction files
 - 8 lifecycle hooks
 - 4 focused skills
-- versioned profiles from `v1.0.0` to `v1.14.0`
+- versioned profiles from `v1.0.0` to `v1.14.1`
 - no external plugins
 - MCP only when the task requires an MCP connection
 
@@ -29,8 +29,8 @@ The goal is simple: less drift, fewer side quests, and a smaller instruction sur
 
 | Target | Supported profile |
 | --- | --- |
-| Antigravity | `2.4.x` |
-| Antigravity IDE | `2.1.x` |
+| Antigravity | global `~/.gemini/GEMINI.md` and `~/.gemini/config/` |
+| Antigravity IDE | global `~/.gemini/GEMINI.md` and `~/.gemini/config/` |
 | Model target | `Gemini 3.6 Flash (High)` |
 
 ## Install
@@ -89,7 +89,7 @@ Keep the printed path. It is the restore point.
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
 
-ln -sfn versions/v1.14.0 \
+ln -sfn versions/v1.14.1 \
   "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md \
   "$HOME/.gemini/GEMINI.md"

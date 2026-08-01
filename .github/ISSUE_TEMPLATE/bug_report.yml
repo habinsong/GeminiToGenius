@@ -12,14 +12,14 @@ body:
     id: version
     attributes:
       label: Profile version
-      placeholder: v1.13.0
+      placeholder: v1.14.1
     validations:
       required: true
   - type: input
     id: target
     attributes:
       label: Model and app
-      placeholder: Gemini 3.6 Flash (High) / Antigravity 2.4.x
+      placeholder: Gemini 3.6 Flash (High) / Antigravity or Antigravity IDE
     validations:
       required: true
   - type: textarea

@@ -11,7 +11,7 @@ Antigravity と Antigravity IDE で Gemini 3.6 Flash (High) を使うための�
 - 常時注入する指示ファイル 12 個
 - ライフサイクルフック 8 個
 - 集中維持スキル 4 個
-- `v1.0.0` から `v1.14.0` までのバージョン履歴
+- `v1.0.0` から `v1.14.1` までのバージョン履歴
 - 外部プラグインなし
 - MCP は接続が必要なタスクでのみ使用
 
@@ -23,8 +23,8 @@ Antigravity と Antigravity IDE で Gemini 3.6 Flash (High) を使うための�
 
 | 対象 | 対応プロファイル |
 | --- | --- |
-| Antigravity | `2.4.x` |
-| Antigravity IDE | `2.1.x` |
+| Antigravity | グローバル `~/.gemini/GEMINI.md` と `~/.gemini/config/` |
+| Antigravity IDE | グローバル `~/.gemini/GEMINI.md` と `~/.gemini/config/` |
 | モデル | `Gemini 3.6 Flash (High)` |
 
 ## インストール
@@ -58,7 +58,7 @@ printf '%s\n' "$BACKUP_DIR"
 
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-ln -sfn versions/v1.14.0 "$HOME/.gemini/config/agy-focus/current"
+ln -sfn versions/v1.14.1 "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
 ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
 ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"
