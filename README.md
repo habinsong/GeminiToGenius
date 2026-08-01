@@ -12,9 +12,9 @@ Antigravity와 Antigravity IDE의 전역 설정을 버전별로 관리합니다.
 - 외부 플러그인 없음
 - MCP는 필요한 작업에서만 연결
 
-## 설치
+## 설치 및 업데이트
 
-macOS 기준입니다. 기존 Gemini 설정을 먼저 백업합니다.
+macOS 기준입니다.
 
 ### 1. 저장소 받기
 
@@ -23,7 +23,18 @@ git clone https://github.com/habinsong/GeminiToGenius.git
 cd GeminiToGenius
 ```
 
-### 2. 기존 설정 백업
+### 2. 저장소 업데이트
+
+처음 `clone`한 직후에는 최신 상태입니다. 이미 받은 저장소를 다시 사용할 때 실행합니다.
+
+```bash
+cd GeminiToGenius
+git pull --ff-only
+```
+
+### 3. 기존 설정 백업
+
+프로필을 덮어쓰기 직전에 실행합니다.
 
 ```bash
 BACKUP_DIR="$HOME/.gemini-backup-$(date +%Y%m%d-%H%M%S)"
@@ -50,7 +61,7 @@ printf '%s\n' "$BACKUP_DIR"
 
 마지막에 출력된 경로가 백업 위치입니다.
 
-### 3. 프로필 설치
+### 4. 프로필 설치
 
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
@@ -65,7 +76,7 @@ ln -sfn agy-focus/current/skills \
   "$HOME/.gemini/config/skills"
 ```
 
-### 4. 설치 확인
+### 5. 설치 확인
 
 ```bash
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
@@ -81,17 +92,6 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 ```
 
 Antigravity 또는 Antigravity IDE를 다시 열어 적용 여부를 확인합니다.
-
-## 업데이트
-
-저장소에서 최신 파일을 받습니다.
-
-```bash
-cd GeminiToGenius
-git pull --ff-only
-```
-
-프로필을 다시 설치하려면 `설치`의 2~4단계를 실행합니다.
 
 ## 버전 변경
 
