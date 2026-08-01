@@ -1,6 +1,6 @@
 # GeminiToGenius
 
-> Gemini가 실제 작업에서 점점 멍청해져서 만들었습니다. 레일을 깔아두는 하네스입니다.
+> Gemini가 실제 작업에서 점점 멍청해져서 만들었습니다. Gemini를 덜 멍청하게 만드는 하네스입니다.
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 
