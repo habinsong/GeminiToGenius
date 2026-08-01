@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Usage question or idea
+    url: https://github.com/habinsong/GeminiToGenius/discussions
+    about: Ask for help or propose an idea in Discussions.
+  - name: Security report
+    url: https://github.com/habinsong/GeminiToGenius/security/advisories/new
+    about: Report a vulnerability privately. Do not open a public issue.

@@ -1,40 +1,61 @@
 # GeminiToGenius
 
-Gemini 3.6 Flash (High)용 집중 유지 하네스입니다.
-Antigravity와 Antigravity IDE의 전역 설정을 버전별로 관리합니다.
+[![License: MIT](https://img.shields.io/github/license/habinsong/GeminiToGenius?style=flat-square)](LICENSE)
+[![Latest release](https://img.shields.io/github/v/release/habinsong/GeminiToGenius?display_name=tag&sort=semver&style=flat-square)](https://github.com/habinsong/GeminiToGenius/releases)
+[![GitHub stars](https://img.shields.io/github/stars/habinsong/GeminiToGenius?style=flat-square)](https://github.com/habinsong/GeminiToGenius/stargazers)
 
-## 구성
+> A versioned focus harness for Gemini 3.6 Flash (High) in Antigravity and Antigravity IDE.
 
-- 전역 지침 12개
-- 훅 8개
-- 스킬 4개
-- `v1.0.0`부터 `v1.13.0`까지의 버전 기록
-- 외부 플러그인 없음
-- MCP는 필요한 작업에서만 연결
+[English](README.md) · [한국어](docs/README.ko.md) · [日本語](docs/README.ja.md) · [简体中文](docs/README.zh-CN.md)
 
-## 설치 및 업데이트
+GeminiToGenius keeps the model on the current instruction, active window, relevant files, and verifiable result.
 
-macOS 기준입니다.
+It is a prompt-first operating harness:
 
-### 1. 저장소 받기
+- 12 always-on instruction files
+- 8 lifecycle hooks
+- 4 focused skills
+- versioned profiles from `v1.0.0` to `v1.13.0`
+- no external plugins
+- MCP only when the task requires an MCP connection
+
+## Why this exists
+
+Long always-on instructions get clipped or diluted. This project splits the rules into short files, generates one entrypoint, and keeps every change versioned.
+
+The goal is simple: less drift, fewer side quests, and a smaller instruction surface for Gemini to follow.
+
+## Compatibility
+
+| Target | Supported profile |
+| --- | --- |
+| Antigravity | `2.4.x` |
+| Antigravity IDE | `2.1.x` |
+| Model target | `Gemini 3.6 Flash (High)` |
+
+## Install
+
+macOS instructions. The commands preserve the existing Gemini setup before replacing it.
+
+### 1. Clone
 
 ```bash
 git clone https://github.com/habinsong/GeminiToGenius.git
 cd GeminiToGenius
 ```
 
-### 2. 저장소 업데이트
+### 2. Update the clone
 
-처음 `clone`한 직후에는 최신 상태입니다. 이미 받은 저장소를 다시 사용할 때 실행합니다.
+After a fresh clone, the checkout is already current. Run this when reusing an existing clone.
 
 ```bash
 cd GeminiToGenius
 git pull --ff-only
 ```
 
-### 3. 기존 설정 백업
+### 3. Back up the current profile
 
-프로필을 덮어쓰기 직전에 실행합니다.
+Run this immediately before installing the profile.
 
 ```bash
 BACKUP_DIR="$HOME/.gemini-backup-$(date +%Y%m%d-%H%M%S)"
@@ -59,9 +80,9 @@ fi
 printf '%s\n' "$BACKUP_DIR"
 ```
 
-마지막에 출력된 경로가 백업 위치입니다.
+Keep the printed path. It is the restore point.
 
-### 4. 프로필 설치
+### 4. Install the profile
 
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
@@ -76,13 +97,13 @@ ln -sfn agy-focus/current/skills \
   "$HOME/.gemini/config/skills"
 ```
 
-### 5. 설치 확인
+### 5. Verify
 
 ```bash
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 ```
 
-정상 결과의 기준:
+Expected values:
 
 ```text
 "ok": true
@@ -91,18 +112,27 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 "target": "Gemini 3.6 Flash (High)"
 ```
 
-Antigravity 또는 Antigravity IDE를 다시 열어 적용 여부를 확인합니다.
+Restart Antigravity or Antigravity IDE after installation.
 
-## 버전 변경
+## Update
 
-설치된 버전 목록:
+```bash
+cd GeminiToGenius
+git pull --ff-only
+```
+
+Then run steps 3–5 again. The backup must happen before the profile is replaced.
+
+## Switch versions
+
+List the versions installed by the profile:
 
 ```bash
 find "$HOME/.gemini/config/agy-focus/versions" \
   -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort -V
 ```
 
-예를 들어 `v1.12.0`으로 바꾸려면:
+Switch to a version, then verify it:
 
 ```bash
 ln -sfn versions/v1.12.0 \
@@ -110,31 +140,9 @@ ln -sfn versions/v1.12.0 \
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 ```
 
-## 디렉터리
+## Remove and restore
 
-- `agy-focus/versions/` — 버전별 지침·훅·스킬 원본
-- `agy-focus/current` — 현재 선택된 버전을 가리키는 심볼릭 링크
-- `agy-focus/state/` — 공개용 런타임 스냅샷
-- `installed/` — 현재 전역 설치 파일 복사본
-- `legacy/` — 이전 전역 지침 보관본
-
-실행 중 생성되는 `__pycache__`, `*.pyc`, `.DS_Store`는 저장하지 않습니다.
-
-## UI 작업 규칙
-
-- AI Slop 금지
-- 모호한 헤드라인과 추상 아이콘 금지
-- 목적 없는 호버·애니메이션 금지
-- 카드 중첩과 기계적인 대칭 레이아웃 금지
-- `Inter`·`Roboto` 기본 사용 금지
-- 보라색·파란색 네온 그라데이션 남용 금지
-- `width: 100%`·`flex-grow: 1` 남용 금지
-- `fit-content`·`min-content`·`clamp()` 우선 검토
-- 모바일 우선 반응형 구성
-
-## 삭제
-
-설치된 프로필과 링크를 비활성화합니다. 삭제 전용 폴더로 옮기므로 복구할 수 있습니다.
+The removal block moves the installed profile to a dated folder first.
 
 ```bash
 REMOVED_DIR="$HOME/.gemini-removed-$(date +%Y%m%d-%H%M%S)"
@@ -143,28 +151,26 @@ mkdir -p "$REMOVED_DIR"
 if [ -L "$HOME/.gemini/GEMINI.md" ]; then
   unlink "$HOME/.gemini/GEMINI.md"
 fi
-
 if [ -L "$HOME/.gemini/config/hooks.json" ]; then
   unlink "$HOME/.gemini/config/hooks.json"
 fi
-
 if [ -L "$HOME/.gemini/config/skills" ]; then
   unlink "$HOME/.gemini/config/skills"
 fi
-
 if [ -d "$HOME/.gemini/config/agy-focus" ]; then
   mv "$HOME/.gemini/config/agy-focus" "$REMOVED_DIR/agy-focus"
 fi
+
+printf '%s\n' "$REMOVED_DIR"
 ```
 
-삭제 전용 폴더까지 지우려면 경로를 확인한 뒤 실행합니다.
+Delete that dated folder only after checking the printed path:
 
 ```bash
-printf '%s\n' "$REMOVED_DIR"
 rm -rf "$REMOVED_DIR"
 ```
 
-설치 전 백업을 복원하려면 백업 폴더를 지정하고 실행합니다.
+To restore the pre-install setup:
 
 ```bash
 BACKUP_DIR="$HOME/.gemini-backup-YYYYMMDD-HHMMSS"
@@ -174,6 +180,32 @@ mv "$BACKUP_DIR/hooks.json" "$HOME/.gemini/config/hooks.json"
 mv "$BACKUP_DIR/skills" "$HOME/.gemini/config/skills"
 ```
 
-## 라이선스
+## Repository layout
 
-현재 별도 라이선스를 선언하지 않았습니다.
+- `agy-focus/versions/` — versioned rules, hooks, skills, manifests, and changelogs
+- `agy-focus/current` — symlink to the active profile version
+- `agy-focus/state/` — public runtime snapshot with the local workspace path removed
+- `installed/` — copy of the current global installation
+- `legacy/` — preserved legacy entrypoint
+- `.github/` — issue forms, pull request template, security, support, and CI files
+
+Generated runtime files such as `__pycache__`, `*.pyc`, and `.DS_Store` are excluded.
+
+## UI guardrails
+
+The active profile also carries anti-slop rules for interface work:
+
+- no vague AI copy, abstract wand icons, or decorative 3D art
+- no purposeless hover effects or empty micro-interactions
+- no repeated rounded-card grids or mechanical symmetry
+- no default `Inter`/`Roboto` treatment by habit
+- no purple-to-blue neon gradients as a default solution
+- review intrinsic sizing, fluid type, asymmetric layout, and mobile-first behavior
+
+## Contributing
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request. Use Discussions for ideas and usage questions. Do not paste tokens, private paths, or private prompts into public issues.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

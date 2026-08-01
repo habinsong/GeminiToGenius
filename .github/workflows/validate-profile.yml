@@ -1,0 +1,28 @@
+name: Validate profile
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  profile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Link active profile
+        run: |
+          mkdir -p "$HOME/.gemini/config"
+          cp -a agy-focus "$HOME/.gemini/config/agy-focus"
+          ln -sfn versions/v1.13.0 "$HOME/.gemini/config/agy-focus/current"
+          ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
+          ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
+          ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"
+
+      - name: Verify active profile
+        run: python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"

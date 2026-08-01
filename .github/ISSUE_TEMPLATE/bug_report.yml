@@ -1,0 +1,43 @@
+name: Bug report
+description: Report a reproducible problem with the profile, hook, or skill.
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not paste tokens, private prompts, private paths, or personal data.
+  - type: input
+    id: version
+    attributes:
+      label: Profile version
+      placeholder: v1.13.0
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: Model and app
+      placeholder: Gemini 3.6 Flash (High) / Antigravity 2.4.x
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: List the shortest sequence that reproduces the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
