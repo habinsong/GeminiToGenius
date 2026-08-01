@@ -2,8 +2,17 @@
 
 ## Unreleased
 
+## v1.17.0 — 2026-08-02
+
 - adds `scripts/install.sh`: update a clean checkout, back up the installed profile, install the current profile, and verify it in one run
-- rewrites first-install, update, version-switch, removal, restore, UI, and support documentation around the script
+- adds `--version vX.Y.Z`, `--skip-update`, `--help`, isolated install testing, and strict version validation
+- replaces path-ordered whole-workspace reading with repository mapping plus full reads of affected source, call/data/state paths, and tests
+- prevents README, plans, comments, search snippets, and summaries from counting as implementation evidence
+- splits the former hook-runner God Object into focused state, payload, anchor, gate, and configuration modules
+- adds an architecture-boundaries skill to separate UI state, domain decisions, I/O, persistence, network, and external-process responsibilities without file-count refactors
+- strengthens UI implementation and review with product evidence, non-generic hierarchy, mobile-first reflow, accessibility states, reduced motion, and measured performance gates
+- extends AI Slop checks for fake dashboards, glass/glow, nested cards, repeated radius/spacing, decorative 3D, vague copy, and purposeless interaction
+- updates first-install, update, version-switch, removal, restore, UI, support, citation, issue, and social-preview surfaces
 
 ## v1.16.0 — 2026-08-02
 

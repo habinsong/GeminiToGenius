@@ -24,12 +24,20 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 | --- | --- |
 | 目标模型 | Gemini 3.6 Flash (High) |
 | 常驻规则 | 12 |
-| 生命周期钩子 | 13 |
-| 自动技能 | 8 |
+| 生命周期钩子 | 14 |
+| 自动技能 | 9 |
 | 外部插件 | 无 |
 | MCP | 仅当连接本身就是任务目标 |
 
 普通自然语言会自动路由，不需要 `/` 或 `@`。
+
+## 为什么始终保留 `GEMINI.md`
+
+- Antigravity 把 `~/.gemini/GEMINI.md` 作为[全局规则](https://antigravity.google/docs/ide-rules)加载。
+- v1.17 入口只有 3,024 个字符，仅保留路由、安全、证据和完成门槛。
+- 代码、架构、UI、文案和检索流程只在相关任务中作为[聚焦技能](https://antigravity.google/docs/skills?app=antigravity-ide)加载。
+- [钩子](https://www.antigravity.google/docs/hooks)检查高风险边界，不必把全部流程塞进每次提示。
+- 默认不注入无关的仓库历史和任务文档。
 
 ## 已安装用户更新
 
@@ -55,18 +63,15 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 ```
 
-看到 `"ok": true`、`"rules": 12`、`"hooks": 13` 和 `hook runner tests passed` 即可。
+看到 `"ok": true`、`"rules": 12`、`"hooks": 14` 和 `hook runner tests passed` 即可。
 
 ## 切换版本
 
-安装脚本始终回到当前版本。仅在复现旧行为时手动切换。
+当前版本和历史版本都通过安装脚本切换。更新 → 备份 → 安装 → 验证的顺序不变。
 
 ```bash
-find "$HOME/.gemini/config/agy-focus/versions" \
-  -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort -V
-
-ln -sfn versions/v1.12.0 "$HOME/.gemini/config/agy-focus/current"
-python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
+bash scripts/install.sh --version v1.12.0
+bash scripts/install.sh --help
 ```
 
 以后运行 `bash scripts/install.sh` 会回到最新版。
@@ -107,12 +112,14 @@ mv "$BACKUP_DIR/config/hooks.json" "$HOME/.gemini/config/hooks.json"
 mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 ```
 
-## UI 规则
+## UI 与实现规则
 
-- 不写模糊的 AI 文案、空泛的未来口号、魔法棒图标、假指标或装饰性 3D 图。
-- 不把紫蓝渐变、重复圆角卡片和无意义动画当成默认方案。
-- 从真实任务、现有系统、信息层级和可访问性出发做界面。
-- 改代码前读完安全的文本文件；搜索结果或几行内容不算完整阅读。
+- 不写模糊的 AI 文案、空泛的未来口号、魔法棒图标、假指标与假仪表盘，也不用装饰性 3D 图。
+- 不把紫蓝渐变、玻璃与辉光、嵌套圆角卡片、相同间距与圆角的重复、无意义动画当成默认方案。
+- 以真实产品、用户任务、数据、状态、信息层级、现有设计系统和可访问性为依据。
+- 检查移动优先、320 CSS px 回流、可见焦点、减少动态效果设置和经过测量的性能依据。
+- 先掌握整个仓库结构，再完整阅读影响范围内的实现、调用路径、状态与数据路径、测试。README 和搜索片段不算实现证据。
+- 不把 UI 状态、领域决策、I/O、持久化和外部进程塞进一个 God Object。
 
 ## 目录
 

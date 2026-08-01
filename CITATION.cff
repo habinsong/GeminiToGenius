@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: "GeminiToGenius"
-version: "1.16.0"
+version: "1.17.0"
 date-released: "2026-08-02"
 abstract: "A versioned focus harness for Gemini 3.6 Flash (High) in Antigravity and Antigravity IDE."
 authors:

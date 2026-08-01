@@ -17,11 +17,11 @@ Keep changes small and keep the install path honest.
 
 ```bash
 bash -n scripts/install.sh
-python3 agy-focus/current/scripts/verify_profile.py
 python3 agy-focus/current/scripts/test_hook_runner.py
+AGY_INSTALL_HOME="$(mktemp -d)" bash scripts/install.sh --skip-update
 ```
 
-Use a disposable `HOME` with `bash scripts/install.sh --skip-update` when testing the installer without changing your real Gemini profile.
+Use `AGY_INSTALL_HOME`, not `HOME`, when testing the installer without changing your real Gemini profile.
 
 ## Pull request checklist
 

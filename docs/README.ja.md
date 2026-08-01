@@ -24,12 +24,20 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 | --- | --- |
 | 対象モデル | Gemini 3.6 Flash (High) |
 | 常時ルール | 12 |
-| ライフサイクルフック | 13 |
-| 自動スキル | 8 |
+| ライフサイクルフック | 14 |
+| 自動スキル | 9 |
 | 外部プラグイン | なし |
 | MCP | 接続自体がタスクの目的である場合のみ |
 
 通常の自然言語で自動動作します。`/` や `@` は不要です。
+
+## `GEMINI.md` を常時使う理由
+
+- Antigravity は `~/.gemini/GEMINI.md` を[グローバルルール](https://antigravity.google/docs/ide-rules)として読み込みます。
+- v1.17 のエントリポイントは 3,024 文字です。ルーティング、安全、根拠、完了ゲートだけを置きます。
+- コード、アーキテクチャ、UI、コピー、調査の手順は必要な作業でのみ[集中スキル](https://antigravity.google/docs/skills?app=antigravity-ide)として読み込みます。
+- [フック](https://www.antigravity.google/docs/hooks)が高リスク境界を検査するため、全手順を毎回のプロンプトへ入れません。
+- 無関係なリポジトリ履歴やタスク固有文書は既定で注入しません。
 
 ## 既存ユーザーの更新
 
@@ -55,18 +63,15 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 ```
 
-`"ok": true`、`"rules": 12`、`"hooks": 13`、`hook runner tests passed` が出れば完了です。
+`"ok": true`、`"rules": 12`、`"hooks": 14`、`hook runner tests passed` が出れば完了です。
 
 ## バージョン変更
 
-インストーラは常に現在バージョンに戻します。古い動作を再現する場合だけ手動で切り替えます。
+現在版も過去版もインストーラで切り替えます。更新 → バックアップ → インストール → 検証の順序は同じです。
 
 ```bash
-find "$HOME/.gemini/config/agy-focus/versions" \
-  -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort -V
-
-ln -sfn versions/v1.12.0 "$HOME/.gemini/config/agy-focus/current"
-python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
+bash scripts/install.sh --version v1.12.0
+bash scripts/install.sh --help
 ```
 
 後で `bash scripts/install.sh` を実行すれば最新に戻ります。
@@ -107,12 +112,14 @@ mv "$BACKUP_DIR/config/hooks.json" "$HOME/.gemini/config/hooks.json"
 mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 ```
 
-## UI ルール
+## UI・実装ルール
 
-- 曖昧な AI コピー、未来を語るだけの文、魔法の杖アイコン、偽の指標、装飾用 3D を入れません。
-- 紫青の既定グラデーション、丸いカードの反復、理由のないアニメーションを入れません。
-- 実際の作業、既存システム、情報の優先順位、アクセシビリティから画面を作ります。
-- コード変更前に安全なテキストファイルをすべて読みます。検索結果や数行だけでは不十分です。
+- 曖昧な AI コピー、未来を語るだけの文、魔法の杖アイコン、偽の指標・ダッシュボード、装飾用 3D を入れません。
+- 紫青の既定グラデーション、ガラス・グロー、入れ子の丸カード、同じ余白・角丸の反復、理由のないアニメーションを入れません。
+- 実際の製品、ユーザーの作業、データ、状態、情報階層、既存デザインシステム、アクセシビリティを根拠にします。
+- モバイルファースト、320 CSS px のリフロー、見えるフォーカス、動きの軽減設定、測定済みの性能根拠を確認します。
+- リポジトリ全体の構造を把握してから、影響範囲の実装、呼び出し経路、状態・データ経路、テストを最後まで読みます。README と検索断片は実装根拠にしません。
+- UI 状態、ドメイン判断、I/O、永続化、外部プロセスを一つの God Object に集めません。
 
 ## 構成
 

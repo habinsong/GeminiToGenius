@@ -1,0 +1,171 @@
+#!/usr/bin/env python3
+"""Antigravity lifecycle entrypoint for the agy-focus profile."""
+
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+
+HOOKS_ROOT = Path(__file__).resolve().parent
+if str(HOOKS_ROOT) not in sys.path:
+    sys.path.insert(0, str(HOOKS_ROOT))
+
+from hooklib.anchors import (  # noqa: E402
+    architecture_context_response,
+    copy_context_response,
+    design_context_response,
+    scope_intake_response,
+    visual_evidence_response,
+)
+from hooklib.config import (  # noqa: E402
+    ARCHITECTURE_TRIGGER_RE,
+    CHANGE_TRIGGER_RE,
+    COPY_TRIGGER_RE,
+    DESIGN_TRIGGER_RE,
+    MAX_RESEARCH_GATE_RETRIES,
+    MAX_SCOPE_GATE_RETRIES,
+)
+from hooklib.gates import (  # noqa: E402
+    decision_for,
+    research_evidence_present,
+    research_gate_required,
+    scope_read_complete,
+    scope_read_reason,
+)
+from hooklib.payloads import prompt_matches, read_payload  # noqa: E402
+from hooklib.payloads import scope_text_paths  # noqa: E402
+from hooklib.state import is_target_model, profile_version, read_state, save_state  # noqa: E402
+
+
+def emit(value: dict) -> None:
+    json.dump(value, sys.stdout, ensure_ascii=False, separators=(",", ":"))
+    sys.stdout.write("\n")
+
+
+def previous_failed() -> bool:
+    return bool(read_state().get("failed"))
+
+
+def gate_attempts(previous: dict, conversation_id: str, prefix: str) -> int:
+    if previous.get(f"{prefix}ConversationId") != conversation_id:
+        return 0
+    try:
+        return int(previous.get(f"{prefix}Attempts", 0))
+    except (TypeError, ValueError):
+        return 0
+
+
+def main() -> None:
+    event = sys.argv[1] if len(sys.argv) > 1 else "unknown"
+    payload = read_payload()
+
+    if event in {
+        "mcp-purpose-gate",
+        "destructive-command-gate",
+        "external-input-gate",
+        "scope-read-gate",
+    }:
+        emit(decision_for(event, payload))
+        save_state(event, payload)
+        return
+
+    if event == "focus-anchor":
+        failed = previous_failed()
+        save_state(event, payload)
+        model_name = str(payload.get("modelName", "")).strip()
+        model_note = f" 현재 모델: {model_name}." if model_name else ""
+        steps = [
+            {
+                "ephemeralMessage": f"집중 앵커({profile_version()}): @멘션·/액션 선택을 기다리지 말고 현재 자연어 지시를 자동 라우팅하세요. 빨리 끝내기 위해 완료 조건을 줄이거나 README·계획서·검색 조각으로 실제 코드를 대체하지 마세요. 변경이면 전체 파일 지도를 만든 뒤 영향 범위의 실제 소스·호출 경계·테스트를 파일별로 끝까지 읽고 문서는 마지막에 대조하세요. 관련 없는 저장소 전체를 무조건 주입하지 마세요. 최신·공식 요청이면 실제 search_web와 read_url_content 결과 및 공식 URL을 확보하세요. 변경 후 직접 검증을 끝낸 뒤에만 완료로 판단하세요.{model_note}"
+            }
+        ]
+        if model_name and not is_target_model(model_name):
+            steps.append(
+                {
+                    "ephemeralMessage": f"현재 모델({model_name})은 Gemini 3.6 Flash (High)와 일치하지 않습니다. High 전용 동작이라고 가정하지 말고 모델 불일치를 짧게 보고하세요."
+                }
+            )
+        if failed:
+            steps.append(
+                {
+                    "ephemeralMessage": "직전 도구 호출이 실패했습니다. 같은 호출을 반복하지 말고 오류의 핵심을 확인한 뒤 원인 가설 하나와 최소 재검증을 선택하세요."
+                }
+            )
+        emit({"injectSteps": steps})
+        return
+
+    anchor_handlers = {
+        "scope-intake-anchor": scope_intake_response,
+        "architecture-boundary-anchor": architecture_context_response,
+        "design-context-anchor": design_context_response,
+        "copy-context-anchor": copy_context_response,
+        "visual-evidence-anchor": visual_evidence_response,
+    }
+    if event in anchor_handlers:
+        response, extra = anchor_handlers[event](payload)
+        save_state(event, payload, failed=bool(payload.get("error")), extra=extra)
+        emit(response)
+        return
+
+    if event == "stop-snapshot":
+        if payload.get("fullyIdle") is False:
+            save_state(event, payload, failed=bool(payload.get("error")))
+            emit({"decision": "continue", "reason": "백그라운드 작업이 아직 실행 중입니다. 작업 상태를 확인한 뒤 종료하세요."})
+            return
+
+        conversation_id = str(payload.get("conversationId", ""))
+        previous = read_state()
+        scope_attempts = gate_attempts(previous, conversation_id, "scopeGate")
+        if (
+            conversation_id
+            and prompt_matches(payload, CHANGE_TRIGGER_RE)
+            and not scope_read_complete(payload)
+            and scope_attempts < MAX_SCOPE_GATE_RETRIES
+        ):
+            save_state(
+                event,
+                payload,
+                failed=bool(payload.get("error")),
+                extra={
+                    "scopeGateConversationId": conversation_id,
+                    "scopeGateAttempts": scope_attempts + 1,
+                },
+            )
+            emit({"decision": "continue", "reason": scope_read_reason(payload)})
+            return
+
+        research_attempts = gate_attempts(previous, conversation_id, "researchGate")
+        if (
+            conversation_id
+            and research_gate_required(payload)
+            and not research_evidence_present(payload)
+            and research_attempts < MAX_RESEARCH_GATE_RETRIES
+        ):
+            save_state(
+                event,
+                payload,
+                failed=bool(payload.get("error")),
+                extra={
+                    "researchGateConversationId": conversation_id,
+                    "researchGateAttempts": research_attempts + 1,
+                },
+            )
+            emit(
+                {
+                    "decision": "continue",
+                    "reason": "최신·공식 요청은 실제 search_web 호출, 공식 페이지 read_url_content 확인, URL 출처 보고가 있어야 완료됩니다. canonical Hooks 페이지에 직접 없는 Inspect/Decide/Transform 분류, Python SDK, ask_user, before_tool_call, after_model_call, continue_on_error, event: 필드를 보고하지 마세요.",
+                }
+            )
+            return
+        save_state(event, payload, failed=bool(payload.get("error")))
+        emit({"decision": "allow"})
+        return
+
+    save_state(event, payload, failed=bool(payload.get("error")))
+    emit({})
+
+
+if __name__ == "__main__":
+    main()

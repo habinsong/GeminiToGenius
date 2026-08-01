@@ -1,6 +1,8 @@
 # Support
 
 - First install or update: run `bash scripts/install.sh` from a clean clone.
+- Historical profile: run `bash scripts/install.sh --version vX.Y.Z`.
+- Installer options: run `bash scripts/install.sh --help`.
 - Usage question: [Discussions](https://github.com/habinsong/GeminiToGenius/discussions)
 - Reproducible bug: [Bug report](https://github.com/habinsong/GeminiToGenius/issues/new?template=bug_report.yml)
 - Scoped improvement: [Feature request](https://github.com/habinsong/GeminiToGenius/issues/new?template=feature_request.yml)

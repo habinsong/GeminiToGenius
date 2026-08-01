@@ -18,9 +18,9 @@ jobs:
       - name: Install profile with the supported installer
         run: |
           bash -n scripts/install.sh
-          HOME="$RUNNER_TEMP/gemini-home" bash scripts/install.sh --skip-update
+          AGY_INSTALL_HOME="$RUNNER_TEMP/gemini-home" bash scripts/install.sh --skip-update
 
       - name: Verify installed profile and hook behavior
         run: |
-          HOME="$RUNNER_TEMP/gemini-home" python3 "$RUNNER_TEMP/gemini-home/.gemini/config/agy-focus/current/scripts/verify_profile.py"
-          HOME="$RUNNER_TEMP/gemini-home" python3 "$RUNNER_TEMP/gemini-home/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
+          AGY_INSTALL_HOME="$RUNNER_TEMP/gemini-home" python3 "$RUNNER_TEMP/gemini-home/.gemini/config/agy-focus/current/scripts/verify_profile.py"
+          python3 "$RUNNER_TEMP/gemini-home/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"

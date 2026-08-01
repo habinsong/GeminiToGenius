@@ -36,12 +36,20 @@ After `Installed agy-focus v...` appears, restart Antigravity or Antigravity IDE
 | --- | --- |
 | Model target | Gemini 3.6 Flash (High) |
 | Always-on rules | 12 |
-| Lifecycle hooks | 13 |
-| Automatic skills | 8 |
+| Lifecycle hooks | 14 |
+| Automatic skills | 9 |
 | Plugins | none |
 | MCP | only for an explicit connection task |
 
 The profile routes ordinary language. No slash command or @mention is required.
+
+## Why `GEMINI.md` stays global
+
+- Antigravity loads `~/.gemini/GEMINI.md` as a [global rule](https://antigravity.google/docs/ide-rules).
+- The v1.17 entrypoint is 3,024 characters: routing, safety, evidence, and completion gates only.
+- Detailed code, architecture, UI, copy, and research procedures load as [focused skills](https://antigravity.google/docs/skills?app=antigravity-ide).
+- [Hooks](https://www.antigravity.google/docs/hooks) enforce high-risk boundaries without adding the whole procedure to every prompt.
+- Unrelated repository history and task-specific documents are not injected by default.
 
 ## Existing users
 
@@ -72,23 +80,20 @@ Expected markers:
 ```text
 "ok": true
 "rules": 12
-"hooks": 13
+"hooks": 14
 hook runner tests passed
 ```
 
 ## Change versions
 
-The installer always returns to the current profile. Switch only when you need to reproduce an older behavior.
+Use the installer for both current and historical profiles. It keeps the same update → backup → install → verify order.
 
 ```bash
-find "$HOME/.gemini/config/agy-focus/versions" \
-  -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort -V
-
-ln -sfn versions/v1.12.0 "$HOME/.gemini/config/agy-focus/current"
-python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
+bash scripts/install.sh --version v1.12.0
+bash scripts/install.sh --help
 ```
 
-Run `bash scripts/install.sh` later to return to the latest profile.
+Run `bash scripts/install.sh` to return to the latest profile.
 
 ## Remove
 
@@ -126,12 +131,14 @@ mv "$BACKUP_DIR/config/hooks.json" "$HOME/.gemini/config/hooks.json"
 mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 ```
 
-## UI rules
+## UI and implementation rules
 
-- no vague AI copy, empty future-talk, wand icons, fake metrics, or decorative 3D art
-- no purple-blue default gradients, repeated round-card grids, or animation without a job
-- build from the real task, existing system, hierarchy, and accessibility
-- read safe workspace text files before changing code; a search result or a few lines is not a full read
+- no vague AI copy, empty future-talk, wand icons, fake metrics, fake dashboards, or decorative 3D art
+- no purple-blue default gradients, glass glow, nested round-card grids, identical spacing/radii, or animation without a job
+- use the real product, user task, data, states, hierarchy, existing design system, and accessibility as evidence
+- start mobile-first, preserve 320 CSS px reflow, visible focus, reduced motion, and measured performance claims
+- map the repository, then read the affected source, call path, state/data path, and tests in full; README and search snippets are not implementation evidence
+- keep UI state, domain decisions, I/O, persistence, and external processes out of one God Object
 
 ## Layout
 
