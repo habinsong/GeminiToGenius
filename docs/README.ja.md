@@ -1,6 +1,6 @@
 # GeminiToGenius
 
-> Gemini が実作業でだんだん頼りなくなったので作りました。レールを敷くハーネスです。
+> Gemini が実作業でだんだん頼りなくなったので作りました。Gemini を少しでもマシにするためのハーネスです。
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 

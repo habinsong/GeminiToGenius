@@ -1,6 +1,6 @@
 # GeminiToGenius
 
-> Gemini 在实际工作里越来越不靠谱，所以做了这个。它就是一套护栏。
+> Gemini 在实际工作里越来越不靠谱，所以做了这个。一套让 Gemini 没那么笨的约束。
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 

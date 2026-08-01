@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/github/license/habinsong/GeminiToGenius?style=flat-square)](LICENSE)
 [![Latest release](https://img.shields.io/github/v/release/habinsong/GeminiToGenius?display_name=tag&sort=semver&style=flat-square)](https://github.com/habinsong/GeminiToGenius/releases)
 
-> Gemini kept getting dumber in real work. This puts it on rails.
+> Gemini kept getting dumber in real work. A harness to make Gemini less dumb.
 
 [English](README.md) · [한국어](docs/README.ko.md) · [日本語](docs/README.ja.md) · [简体中文](docs/README.zh-CN.md)
 
