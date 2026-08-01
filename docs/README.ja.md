@@ -9,9 +9,9 @@ Antigravity と Antigravity IDE で Gemini 3.6 Flash (High) を使うための�
 ## 構成
 
 - 常時注入する指示ファイル 12 個
-- ライフサイクルフック 8 個
-- 集中維持スキル 4 個
-- `v1.0.0` から `v1.14.2` までのバージョン履歴
+- ライフサイクルフック 9 個
+- 集中維持スキル 6 個
+- `v1.0.0` から `v1.15.0` までのバージョン履歴
 - 外部プラグインなし
 - MCP は接続が必要なタスクでのみ使用
 
@@ -58,14 +58,14 @@ printf '%s\n' "$BACKUP_DIR"
 
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-ln -sfn versions/v1.14.2 "$HOME/.gemini/config/agy-focus/current"
+ln -sfn versions/v1.15.0 "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
 ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
 ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 ```
 
-確認値は `"ok": true`、`"rules": 12`、`"hooks": 8`、`"target": "Gemini 3.6 Flash (High)"` です。インストール後に Antigravity または Antigravity IDE を再起動します。
+確認値は `"ok": true`、`"rules": 12`、`"hooks": 9`、スキル 6 個、`"target": "Gemini 3.6 Flash (High)"` です。インストール後に Antigravity または Antigravity IDE を再起動します。
 
 ## 更新
 

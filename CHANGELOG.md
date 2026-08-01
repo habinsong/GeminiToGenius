@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.15.0 — 2026-08-02
+
+- 9th lifecycle hook: one-time UI evidence anchor after relevant invocations
+- 2 focused skills: UI evidence review and human product copy
+- focused automatic skill descriptions; no `@` mention or slash command required
+- deterministic hook test added to local and CI validation
+
 ## v1.14.2 — 2026-08-02
 
 - 모델이 생성한 UI를 정답으로 승인하지 않고 실제 렌더링·제품 문맥·접근성·사용 흐름을 검증하도록 가드레일 강화

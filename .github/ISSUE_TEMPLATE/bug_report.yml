@@ -12,7 +12,7 @@ body:
     id: version
     attributes:
       label: Profile version
-      placeholder: v1.14.2
+      placeholder: v1.15.0
     validations:
       required: true
   - type: input

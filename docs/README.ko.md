@@ -9,9 +9,9 @@ Gemini 3.6 Flash (High)를 Antigravity와 Antigravity IDE에서 쓰기 위한 �
 ## 구성
 
 - 항상 주입되는 지침 12개
-- 수명 주기 훅 8개
-- 집중 유지 스킬 4개
-- `v1.0.0`부터 `v1.14.2`까지의 버전 기록
+- 수명 주기 훅 9개
+- 집중 유지 스킬 6개
+- `v1.0.0`부터 `v1.15.0`까지의 버전 기록
 - 외부 플러그인 없음
 - MCP는 연결이 필요한 작업에서만 사용
 
@@ -50,14 +50,14 @@ printf '%s\n' "$BACKUP_DIR"
 
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-ln -sfn versions/v1.14.2 "$HOME/.gemini/config/agy-focus/current"
+ln -sfn versions/v1.15.0 "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
 ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
 ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 ```
 
-정상 기준은 `"ok": true`, `"rules": 12`, `"hooks": 8`, `"target": "Gemini 3.6 Flash (High)"`입니다. 설치 후 Antigravity 또는 Antigravity IDE를 다시 실행합니다.
+정상 기준은 `"ok": true`, `"rules": 12`, `"hooks": 9`, 스킬 6개, `"target": "Gemini 3.6 Flash (High)"`입니다. 설치 후 Antigravity 또는 Antigravity IDE를 다시 실행합니다.
 
 ## 업데이트
 
