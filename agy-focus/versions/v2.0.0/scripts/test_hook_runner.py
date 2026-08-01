@@ -465,7 +465,7 @@ def test_code_first_document_gate(runner) -> None:
         payload["toolCall"] = {"name": "view_file", "args": {"AbsolutePath": str(skill)}}
         assert runner.decision_for("scope-read-gate", payload)["decision"] == "allow"
 
-        reference = Path.home() / ".gemini" / "config" / "skills" / "gtg" / "references" / "ui-quality.md"
+        reference = ROOT / "skills" / "gtg" / "references" / "ui-quality.md"
         payload["toolCall"] = {"name": "view_file", "args": {"AbsolutePath": str(reference)}}
         assert runner.decision_for("scope-read-gate", payload)["decision"] == "allow"
 
