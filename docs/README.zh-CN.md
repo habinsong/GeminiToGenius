@@ -11,7 +11,7 @@
 - 12 个常驻指令文件
 - 8 个生命周期钩子
 - 4 个专用技能
-- 从 `v1.0.0` 到 `v1.13.0` 的版本记录
+- 从 `v1.0.0` 到 `v1.14.0` 的版本记录
 - 不使用外部插件
 - 只有在任务需要连接 MCP 时才使用 MCP
 
@@ -29,7 +29,7 @@
 
 ## 安装
 
-以下命令适用于 macOS。顺序是 `clone → update → backup → install → verify`。
+以下命令适用于 macOS。顺序是 `clone → update → backup → install → verify`。先完成仓库更新，再备份现有配置。
 
 ```bash
 git clone https://github.com/habinsong/GeminiToGenius.git
@@ -58,7 +58,7 @@ printf '%s\n' "$BACKUP_DIR"
 
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-ln -sfn versions/v1.13.0 "$HOME/.gemini/config/agy-focus/current"
+ln -sfn versions/v1.14.0 "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
 ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
 ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"

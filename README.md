@@ -15,7 +15,7 @@ It is a prompt-first operating harness:
 - 12 always-on instruction files
 - 8 lifecycle hooks
 - 4 focused skills
-- versioned profiles from `v1.0.0` to `v1.13.0`
+- versioned profiles from `v1.0.0` to `v1.14.0`
 - no external plugins
 - MCP only when the task requires an MCP connection
 
@@ -44,7 +44,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git
 cd GeminiToGenius
 ```
 
-### 2. Update the clone
+### 2. Update the clone before the backup
 
 After a fresh clone, the checkout is already current. Run this when reusing an existing clone.
 
@@ -52,6 +52,8 @@ After a fresh clone, the checkout is already current. Run this when reusing an e
 cd GeminiToGenius
 git pull --ff-only
 ```
+
+Finish this repository update first. Only then back up the currently installed profile.
 
 ### 3. Back up the current profile
 
@@ -87,7 +89,7 @@ Keep the printed path. It is the restore point.
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
 
-ln -sfn versions/v1.13.0 \
+ln -sfn versions/v1.14.0 \
   "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md \
   "$HOME/.gemini/GEMINI.md"
@@ -121,7 +123,8 @@ cd GeminiToGenius
 git pull --ff-only
 ```
 
-Then run steps 3–5 again. The backup must happen before the profile is replaced.
+Run `git pull --ff-only` first. Then run steps 3–5 in order: backup, install, verify.
+The backup must happen after the repository update and before the profile is replaced.
 
 ## Switch versions
 

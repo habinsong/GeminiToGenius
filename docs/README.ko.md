@@ -11,7 +11,7 @@ Gemini 3.6 Flash (High)를 Antigravity와 Antigravity IDE에서 쓰기 위한 �
 - 항상 주입되는 지침 12개
 - 수명 주기 훅 8개
 - 집중 유지 스킬 4개
-- `v1.0.0`부터 `v1.13.0`까지의 버전 기록
+- `v1.0.0`부터 `v1.14.0`까지의 버전 기록
 - 외부 플러그인 없음
 - MCP는 연결이 필요한 작업에서만 사용
 
@@ -21,14 +21,14 @@ Gemini 3.6 Flash (High)를 Antigravity와 Antigravity IDE에서 쓰기 위한 �
 
 ## 설치
 
-macOS 기준입니다. 순서는 `clone → update → backup → install → verify`입니다.
+macOS 기준입니다. 순서는 `clone → update → backup → install → verify`입니다. 저장소 업데이트가 백업보다 먼저입니다.
 
 ```bash
 git clone https://github.com/habinsong/GeminiToGenius.git
 cd GeminiToGenius
 ```
 
-새로 받은 저장소는 최신 상태입니다. 기존 저장소를 다시 사용할 때만 업데이트합니다.
+새로 받은 저장소는 최신 상태입니다. 기존 저장소를 다시 사용할 때만 업데이트합니다. 이 단계를 끝낸 뒤 현재 프로필을 백업합니다.
 
 ```bash
 cd GeminiToGenius && git pull --ff-only
@@ -50,7 +50,7 @@ printf '%s\n' "$BACKUP_DIR"
 
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-ln -sfn versions/v1.13.0 "$HOME/.gemini/config/agy-focus/current"
+ln -sfn versions/v1.14.0 "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
 ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
 ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"
@@ -65,7 +65,7 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 cd GeminiToGenius && git pull --ff-only
 ```
 
-그 다음 백업부터 설치 확인까지 다시 실행합니다. 프로필 교체 전 백업이 먼저입니다.
+`git pull --ff-only`를 먼저 끝내고, 그 다음 백업→설치→검증 순서로 다시 실행합니다.
 
 ## 버전 변경
 

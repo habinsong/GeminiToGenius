@@ -11,7 +11,7 @@ Antigravity と Antigravity IDE で Gemini 3.6 Flash (High) を使うための�
 - 常時注入する指示ファイル 12 個
 - ライフサイクルフック 8 個
 - 集中維持スキル 4 個
-- `v1.0.0` から `v1.13.0` までのバージョン履歴
+- `v1.0.0` から `v1.14.0` までのバージョン履歴
 - 外部プラグインなし
 - MCP は接続が必要なタスクでのみ使用
 
@@ -29,7 +29,7 @@ Antigravity と Antigravity IDE で Gemini 3.6 Flash (High) を使うための�
 
 ## インストール
 
-macOS 向けです。順番は `clone → update → backup → install → verify` です。
+macOS 向けです。順番は `clone → update → backup → install → verify` です。リポジトリの更新をバックアップより先に完了してください。
 
 ```bash
 git clone https://github.com/habinsong/GeminiToGenius.git
@@ -58,7 +58,7 @@ printf '%s\n' "$BACKUP_DIR"
 
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-ln -sfn versions/v1.13.0 "$HOME/.gemini/config/agy-focus/current"
+ln -sfn versions/v1.14.0 "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
 ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
 ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"
