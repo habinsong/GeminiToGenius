@@ -44,9 +44,11 @@ fi
 if [ -e "$HOME/.gemini/config/skills" ] || [ -L "$HOME/.gemini/config/skills" ]; then
   mv "$HOME/.gemini/config/skills" "$BACKUP_DIR/skills"
 fi
+
+printf '%s\n' "$BACKUP_DIR"
 ```
 
-백업 위치는 명령 실행 결과의 `BACKUP_DIR` 경로입니다.
+마지막에 출력된 경로가 백업 위치입니다.
 
 ### 3. 프로필 설치
 
@@ -159,7 +161,7 @@ fi
 
 ```bash
 printf '%s\n' "$REMOVED_DIR"
-rm -rf -- "$REMOVED_DIR"
+rm -rf "$REMOVED_DIR"
 ```
 
 설치 전 백업을 복원하려면 백업 폴더를 지정하고 실행합니다.
