@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+## v2.0.0 — 2026-08-02
+
+- adds explicit `/GTG` strict mode for repository and UI work while keeping ordinary-request routing
+- blocks writes until affected source files and a related test have been read from first line to last; README, docs, plans, comments, search summaries, and partial reads do not count
+- requires separate first-party repository overview and implementation evidence when a page describes an external `owner/repository`
+- blocks generic dark developer templates, Tailwind Slate inversions, centered documentation shells, repeated boxed sections, fake dashboards, repeated cards, vague copy, and decorative interaction
+- requires post-write full-file rereads, project verification, dependency-free Chrome renders at 320px and 1280px, horizontal-overflow metrics, and direct screenshot inspection
+- splits repository evidence and UI quality checks from the hook runner; every hook module stays at or below 260 lines
+- adds direct God Object responsibility checks and the `architecture-boundaries` skill
+- updates the 12 rules, 14 hooks, 10 skills, installer examples, checked installation snapshots, and four-language documentation
+
 ## v1.17.0 — 2026-08-02
 
 - adds `scripts/install.sh`: update a clean checkout, back up the installed profile, install the current profile, and verify it in one run

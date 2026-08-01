@@ -1,6 +1,6 @@
 # GeminiToGenius
 
-> Gemini 在实际工作里越来越不靠谱，所以做了这个。一套让 Gemini 没那么笨的约束。
+> 一套让 Gemini 没那么笨的约束。
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 
@@ -16,7 +16,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 
 脚本按顺序执行：`git pull --ff-only`、把现有配置移到带时间戳的备份目录、安装当前配置、运行验证。
 
-不使用 `curl | sh`。先 clone，再运行本地脚本。需要 `git`、`python3` 和 `rsync`。出现 `Installed agy-focus v...` 后重启 Antigravity 或 Antigravity IDE。
+不使用 `curl | sh`。先 clone，再运行本地脚本。需要 `git`、`python3` 和 `rsync`。`/GTG` UI 验证还需要已安装的 Google Chrome 或 Chromium。出现 `Installed agy-focus v...` 后重启 Antigravity 或 Antigravity IDE。
 
 ## 内容
 
@@ -25,18 +25,24 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 | 目标模型 | Gemini 3.6 Flash (High) |
 | 常驻规则 | 12 |
 | 生命周期钩子 | 14 |
-| 自动技能 | 9 |
+| 聚焦技能 | 10 |
 | 外部插件 | 无 |
 | MCP | 仅当连接本身就是任务目标 |
 
-普通自然语言会自动路由，不需要 `/` 或 `@`。
+普通请求会自动路由。仓库或 UI 工作需要严格模式时，以 `/GTG` 开头。
+
+```text
+/GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
+```
+
+`/GTG` 会在整个请求中保持源码优先、完整文件读取、第一方仓库证据、UI 写入前拦截、320px 与桌面浏览器渲染、写入后验证。
 
 ## 为什么始终保留 `GEMINI.md`
 
-- Antigravity 把 `~/.gemini/GEMINI.md` 作为[全局规则](https://antigravity.google/docs/ide-rules)加载。
-- v1.17 入口只有 3,024 个字符，仅保留路由、安全、证据和完成门槛。
+- Antigravity 把 `~/.gemini/GEMINI.md` 作为[全局规则](https://antigravity.google/docs/ide/rules)加载。
+- v2.0.0 入口为 4,127 个字符，仅保留路由、安全、证据和完成门槛。
 - 代码、架构、UI、文案和检索流程只在相关任务中作为[聚焦技能](https://antigravity.google/docs/skills?app=antigravity-ide)加载。
-- [钩子](https://www.antigravity.google/docs/hooks)检查高风险边界，不必把全部流程塞进每次提示。
+- [钩子](https://antigravity.google/docs/hooks)检查高风险边界，不必把全部流程塞进每次提示。
 - 默认不注入无关的仓库历史和任务文档。
 
 ## 已安装用户更新
@@ -70,7 +76,7 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 当前版本和历史版本都通过安装脚本切换。更新 → 备份 → 安装 → 验证的顺序不变。
 
 ```bash
-bash scripts/install.sh --version v1.12.0
+bash scripts/install.sh --version v2.0.0
 bash scripts/install.sh --help
 ```
 
@@ -118,7 +124,9 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 - 不把紫蓝渐变、玻璃与辉光、嵌套圆角卡片、相同间距与圆角的重复、无意义动画当成默认方案。
 - 以真实产品、用户任务、数据、状态、信息层级、现有设计系统和可访问性为依据。
 - 检查移动优先、320 CSS px 回流、可见焦点、减少动态效果设置和经过测量的性能依据。
+- 内置 `verify_ui_render.py` 使用已安装的 Chrome 测量 320px 横向裁切并生成移动端与桌面截图，不安装 Playwright。
 - 先掌握整个仓库结构，再完整阅读影响范围内的实现、调用路径、状态与数据路径、测试。README 和搜索片段不算实现证据。
+- 说明其他 GitHub 仓库时，除 README 或仓库概览外，还要直接读取安装脚本、manifest 或实际源码之一。搜索摘要不算证据。
 - 不把 UI 状态、领域决策、I/O、持久化和外部进程塞进一个 God Object。
 
 ## 目录

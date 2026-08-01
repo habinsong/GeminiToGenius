@@ -33,7 +33,7 @@ while [ "$#" -gt 0 ]; do
       shift
       ;;
     --version)
-      [ "$#" -ge 2 ] || fail "--version requires a value such as v1.17.0"
+      [ "$#" -ge 2 ] || fail "--version requires a value such as v2.0.0"
       requested_version="$2"
       shift 2
       ;;
@@ -71,7 +71,7 @@ case "$selected_link" in
   *) fail "agy-focus/current must point inside versions/" ;;
 esac
 if [ -n "$requested_version" ]; then
-  [[ "$requested_version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || fail "version must look like v1.17.0"
+  [[ "$requested_version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || fail "version must look like v2.0.0"
   selected_link="versions/$requested_version"
   [ -d "$repo_root/agy-focus/$selected_link" ] || fail "profile version not found: $requested_version"
 fi

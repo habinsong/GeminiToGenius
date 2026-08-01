@@ -1,6 +1,6 @@
 # GeminiToGenius
 
-> Gemini が実作業でだんだん頼りなくなったので作りました。Gemini を少しでもマシにするためのハーネスです。
+> Gemini を少しでもマシにするためのハーネスです。
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 
@@ -16,7 +16,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 
 スクリプトは `git pull --ff-only`、既存プロファイルの日時付きバックアップ、現在プロファイルのインストール、検証の順に実行します。
 
-`curl | sh` は使いません。clone 後にローカルのスクリプトを実行します。必要なコマンドは `git`、`python3`、`rsync` です。`Installed agy-focus v...` が出たら Antigravity または Antigravity IDE を再起動します。
+`curl | sh` は使いません。clone 後にローカルのスクリプトを実行します。必要なコマンドは `git`、`python3`、`rsync` です。`/GTG` の UI 検証にはインストール済みの Google Chrome または Chromium も必要です。`Installed agy-focus v...` が出たら Antigravity または Antigravity IDE を再起動します。
 
 ## 内容
 
@@ -25,18 +25,24 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 | 対象モデル | Gemini 3.6 Flash (High) |
 | 常時ルール | 12 |
 | ライフサイクルフック | 14 |
-| 自動スキル | 9 |
+| 集中スキル | 10 |
 | 外部プラグイン | なし |
 | MCP | 接続自体がタスクの目的である場合のみ |
 
-通常の自然言語で自動動作します。`/` や `@` は不要です。
+通常の依頼は自動で振り分けます。リポジトリや UI を厳格モードで扱う場合は `/GTG` で始めます。
+
+```text
+/GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
+```
+
+`/GTG` は、ソース優先の調査、ファイル全体の読取、一次資料、UI 書込前ゲート、320px とデスクトップのブラウザ描画、書込後検証を依頼の終了まで維持します。
 
 ## `GEMINI.md` を常時使う理由
 
-- Antigravity は `~/.gemini/GEMINI.md` を[グローバルルール](https://antigravity.google/docs/ide-rules)として読み込みます。
-- v1.17 のエントリポイントは 3,024 文字です。ルーティング、安全、根拠、完了ゲートだけを置きます。
+- Antigravity は `~/.gemini/GEMINI.md` を[グローバルルール](https://antigravity.google/docs/ide/rules)として読み込みます。
+- v2.0.0 のエントリポイントは 4,127 文字です。ルーティング、安全、根拠、完了ゲートだけを置きます。
 - コード、アーキテクチャ、UI、コピー、調査の手順は必要な作業でのみ[集中スキル](https://antigravity.google/docs/skills?app=antigravity-ide)として読み込みます。
-- [フック](https://www.antigravity.google/docs/hooks)が高リスク境界を検査するため、全手順を毎回のプロンプトへ入れません。
+- [フック](https://antigravity.google/docs/hooks)が高リスク境界を検査するため、全手順を毎回のプロンプトへ入れません。
 - 無関係なリポジトリ履歴やタスク固有文書は既定で注入しません。
 
 ## 既存ユーザーの更新
@@ -70,7 +76,7 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 現在版も過去版もインストーラで切り替えます。更新 → バックアップ → インストール → 検証の順序は同じです。
 
 ```bash
-bash scripts/install.sh --version v1.12.0
+bash scripts/install.sh --version v2.0.0
 bash scripts/install.sh --help
 ```
 
@@ -118,7 +124,9 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 - 紫青の既定グラデーション、ガラス・グロー、入れ子の丸カード、同じ余白・角丸の反復、理由のないアニメーションを入れません。
 - 実際の製品、ユーザーの作業、データ、状態、情報階層、既存デザインシステム、アクセシビリティを根拠にします。
 - モバイルファースト、320 CSS px のリフロー、見えるフォーカス、動きの軽減設定、測定済みの性能根拠を確認します。
+- 同梱の `verify_ui_render.py` は、インストール済み Chrome で 320px の横方向の切れを計測し、モバイルとデスクトップの画像を作ります。Playwright は追加しません。
 - リポジトリ全体の構造を把握してから、影響範囲の実装、呼び出し経路、状態・データ経路、テストを最後まで読みます。README と検索断片は実装根拠にしません。
+- 別の GitHub リポジトリを説明する場合は、README・概要に加えて、インストールスクリプト、manifest、実ソースのいずれかを直接読みます。検索要約は根拠にしません。
 - UI 状態、ドメイン判断、I/O、永続化、外部プロセスを一つの God Object に集めません。
 
 ## 構成

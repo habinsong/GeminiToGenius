@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 title: "GeminiToGenius"
-version: "1.17.0"
+version: "2.0.0"
 date-released: "2026-08-02"
-abstract: "A versioned focus harness for Gemini 3.6 Flash (High) in Antigravity and Antigravity IDE."
+abstract: "A harness to make Gemini less dumb in Antigravity and Antigravity IDE."
 authors:
   - name: "habinsong"
 repository-code: "https://github.com/habinsong/GeminiToGenius"
