@@ -187,6 +187,7 @@ mv "$BACKUP_DIR/skills" "$HOME/.gemini/config/skills"
 - `agy-focus/state/` — public runtime snapshot with the local workspace path removed
 - `installed/` — copy of the current global installation
 - `legacy/` — preserved legacy entrypoint
+- `assets/social-preview.*` — flat social preview card for repository links
 - `.github/` — issue forms, pull request template, security, support, and CI files
 
 Generated runtime files such as `__pycache__`, `*.pyc`, and `.DS_Store` are excluded.
