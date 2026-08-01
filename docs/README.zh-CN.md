@@ -11,7 +11,7 @@
 - 12 个常驻指令文件
 - 8 个生命周期钩子
 - 4 个专用技能
-- 从 `v1.0.0` 到 `v1.14.1` 的版本记录
+- 从 `v1.0.0` 到 `v1.14.2` 的版本记录
 - 不使用外部插件
 - 只有在任务需要连接 MCP 时才使用 MCP
 
@@ -58,7 +58,7 @@ printf '%s\n' "$BACKUP_DIR"
 
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-ln -sfn versions/v1.14.1 "$HOME/.gemini/config/agy-focus/current"
+ln -sfn versions/v1.14.2 "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
 ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
 ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"

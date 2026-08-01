@@ -14,7 +14,7 @@ Thanks for taking the project seriously.
 - Keep the change inside the requested scope.
 - Preserve the versioned profile structure.
 - Regenerate `GEMINI.md` when rule files change.
-- Run `python3 agy-focus/versions/v1.14.1/scripts/verify_profile.py` with the profile linked under `~/.gemini`.
+- Run `python3 agy-focus/versions/v1.14.2/scripts/verify_profile.py` with the profile linked under `~/.gemini`.
 - Keep README translations in sync when user-facing behavior changes.
 
 ## Pull request checklist

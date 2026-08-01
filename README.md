@@ -15,7 +15,7 @@ It is a prompt-first operating harness:
 - 12 always-on instruction files
 - 8 lifecycle hooks
 - 4 focused skills
-- versioned profiles from `v1.0.0` to `v1.14.1`
+- versioned profiles from `v1.0.0` to `v1.14.2`
 - no external plugins
 - MCP only when the task requires an MCP connection
 
@@ -89,7 +89,7 @@ Keep the printed path. It is the restore point.
 ```bash
 cp -a agy-focus "$HOME/.gemini/config/agy-focus"
 
-ln -sfn versions/v1.14.1 \
+ln -sfn versions/v1.14.2 \
   "$HOME/.gemini/config/agy-focus/current"
 ln -sfn config/agy-focus/current/GEMINI.md \
   "$HOME/.gemini/GEMINI.md"

@@ -1,0 +1,19 @@
+{
+  "name": "agy-focus",
+  "version": "1.14.2",
+  "based_on": "1.14.1",
+  "target": "Gemini 3.6 Flash (High)",
+  "model_id": "gemini-3.6-flash",
+  "compatibility": ["Antigravity global customization paths", "Antigravity IDE global customization paths"],
+  "rules": 12,
+  "hooks": 8,
+  "custom_skills": 4,
+  "workflows": 0,
+  "plugins": false,
+  "mcp_default": "ask",
+  "self_check": "scripts/verify_profile.py",
+  "design": "short always-on anchors, prompt-only auto-routing, focused official research skill, generated rule entrypoint, progressive skills, lifecycle gates, anti-AI-Slop UI guardrails, evidence-based UI decisions, domain-specific visual language, mobile-first responsive discipline",
+  "rule_source": "rules/*.md",
+  "generated_entrypoint": "GEMINI.md",
+  "created": "2026-08-01"
+}
