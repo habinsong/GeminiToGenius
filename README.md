@@ -2,221 +2,149 @@
 
 [![License: MIT](https://img.shields.io/github/license/habinsong/GeminiToGenius?style=flat-square)](LICENSE)
 [![Latest release](https://img.shields.io/github/v/release/habinsong/GeminiToGenius?display_name=tag&sort=semver&style=flat-square)](https://github.com/habinsong/GeminiToGenius/releases)
-[![GitHub stars](https://img.shields.io/github/stars/habinsong/GeminiToGenius?style=flat-square)](https://github.com/habinsong/GeminiToGenius/stargazers)
 
-> A versioned focus harness for Gemini 3.6 Flash (High) in Antigravity and Antigravity IDE.
+> Gemini kept getting dumber in real work. This puts it on rails.
 
 [English](README.md) · [한국어](docs/README.ko.md) · [日本語](docs/README.ja.md) · [简体中文](docs/README.zh-CN.md)
 
-GeminiToGenius keeps the model on the current instruction, active window, relevant files, and verifiable result.
+Versioned global rules, hooks, and skills for Gemini 3.6 Flash (High) in Antigravity and Antigravity IDE.
 
-It is a prompt-first operating harness:
+## First install
 
-- 12 always-on instruction files
-- 13 lifecycle hooks
-- 8 focused skills
-- versioned profiles from `v1.0.0` to `v1.16.0`
-- no external plugins
-- MCP only when the task requires an MCP connection
+macOS. Run one command:
 
-## Why this exists
+```bash
+git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius/scripts/install.sh
+```
 
-Long always-on instructions get clipped or diluted. This project keeps the base contract short, moves detailed work into automatic skills and hooks, and versions every change.
+The script does this in order:
 
-The goal is simple: less drift, fewer side quests, and a smaller instruction surface for Gemini to follow.
+1. updates the clone with `git pull --ff-only`
+2. moves the installed Gemini profile into a dated backup folder
+3. installs the current profile
+4. runs the profile and hook checks
 
-## Compatibility
+It does not use `curl | sh`. The checkout is on disk before anything runs.
 
-| Target | Supported profile |
+Requirements: macOS, `git`, `python3`, and `rsync`.
+
+After `Installed agy-focus v...` appears, restart Antigravity or Antigravity IDE.
+
+## What gets installed
+
+| Item | Current |
 | --- | --- |
-| Antigravity | global `~/.gemini/GEMINI.md` and `~/.gemini/config/` |
-| Antigravity IDE | global `~/.gemini/GEMINI.md` and `~/.gemini/config/` |
-| Model target | `Gemini 3.6 Flash (High)` |
+| Model target | Gemini 3.6 Flash (High) |
+| Always-on rules | 12 |
+| Lifecycle hooks | 13 |
+| Automatic skills | 8 |
+| Plugins | none |
+| MCP | only for an explicit connection task |
 
-## Install
+The profile routes ordinary language. No slash command or @mention is required.
 
-macOS instructions. The commands preserve the existing Gemini setup before replacing it.
+## Existing users
 
-### 1. Clone
-
-```bash
-git clone https://github.com/habinsong/GeminiToGenius.git
-cd GeminiToGenius
-```
-
-### 2. Update the clone before the backup
-
-After a fresh clone, the checkout is already current. Run this when reusing an existing clone.
+From an older clone, run the same script:
 
 ```bash
-cd GeminiToGenius
-git pull --ff-only
+cd /path/to/GeminiToGenius
+bash scripts/install.sh
 ```
 
-Finish this repository update first. Only then back up the currently installed profile.
+It updates the checkout first, so an old installed profile moves to the current profile automatically. If the clone has tracked edits, the script stops before `git pull`; commit, stash, or discard those edits first.
 
-### 3. Back up the current profile
+Each run prints a restore point such as:
 
-Run this immediately before installing the profile.
-
-```bash
-BACKUP_DIR="$HOME/.gemini-backup-$(date +%Y%m%d-%H%M%S)"
-mkdir -p "$BACKUP_DIR" "$HOME/.gemini/config"
-
-if [ -e "$HOME/.gemini/config/agy-focus" ] || [ -L "$HOME/.gemini/config/agy-focus" ]; then
-  mv "$HOME/.gemini/config/agy-focus" "$BACKUP_DIR/agy-focus"
-fi
-
-if [ -e "$HOME/.gemini/GEMINI.md" ] || [ -L "$HOME/.gemini/GEMINI.md" ]; then
-  mv "$HOME/.gemini/GEMINI.md" "$BACKUP_DIR/GEMINI.md"
-fi
-
-if [ -e "$HOME/.gemini/config/hooks.json" ] || [ -L "$HOME/.gemini/config/hooks.json" ]; then
-  mv "$HOME/.gemini/config/hooks.json" "$BACKUP_DIR/hooks.json"
-fi
-
-if [ -e "$HOME/.gemini/config/skills" ] || [ -L "$HOME/.gemini/config/skills" ]; then
-  mv "$HOME/.gemini/config/skills" "$BACKUP_DIR/skills"
-fi
-
-printf '%s\n' "$BACKUP_DIR"
+```text
+/Users/you/.gemini-backup-YYYYMMDD-HHMMSS
 ```
 
-Keep the printed path. It is the restore point.
-
-### 4. Install the profile
-
-```bash
-cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-
-ln -sfn versions/v1.16.0 \
-  "$HOME/.gemini/config/agy-focus/current"
-ln -sfn config/agy-focus/current/GEMINI.md \
-  "$HOME/.gemini/GEMINI.md"
-ln -sfn agy-focus/current/hooks/hooks.json \
-  "$HOME/.gemini/config/hooks.json"
-ln -sfn agy-focus/current/skills \
-  "$HOME/.gemini/config/skills"
-```
-
-### 5. Verify
+## Verify an installation
 
 ```bash
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 ```
 
-Expected values:
+Expected markers:
 
 ```text
 "ok": true
 "rules": 12
 "hooks": 13
-"skills": ["agy-one-tap", "focus-session", "gemini-36-flash-high", "human-copy", "interface-implementation", "official-research", "ui-evidence-review", "workspace-intake"]
-"target": "Gemini 3.6 Flash (High)"
 hook runner tests passed
 ```
 
-Restart Antigravity or Antigravity IDE after installation.
+## Change versions
 
-## Update
-
-```bash
-cd GeminiToGenius
-git pull --ff-only
-```
-
-Run `git pull --ff-only` first. Then run steps 3–5 in order: backup, install, verify.
-The backup must happen after the repository update and before the profile is replaced.
-
-## Switch versions
-
-List the versions installed by the profile:
+The installer always returns to the current profile. Switch only when you need to reproduce an older behavior.
 
 ```bash
 find "$HOME/.gemini/config/agy-focus/versions" \
   -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort -V
-```
 
-Switch to a version, then verify it:
-
-```bash
-ln -sfn versions/v1.12.0 \
-  "$HOME/.gemini/config/agy-focus/current"
+ln -sfn versions/v1.12.0 "$HOME/.gemini/config/agy-focus/current"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 ```
 
-## Remove and restore
+Run `bash scripts/install.sh` later to return to the latest profile.
 
-The removal block moves the installed profile to a dated folder first.
+## Remove
+
+This removes the links and moves the profile into a dated folder. It does not delete the folder.
 
 ```bash
 REMOVED_DIR="$HOME/.gemini-removed-$(date +%Y%m%d-%H%M%S)"
-mkdir -p "$REMOVED_DIR"
+mkdir -p "$REMOVED_DIR/config"
 
-if [ -L "$HOME/.gemini/GEMINI.md" ]; then
-  unlink "$HOME/.gemini/GEMINI.md"
-fi
-if [ -L "$HOME/.gemini/config/hooks.json" ]; then
-  unlink "$HOME/.gemini/config/hooks.json"
-fi
-if [ -L "$HOME/.gemini/config/skills" ]; then
-  unlink "$HOME/.gemini/config/skills"
-fi
-if [ -d "$HOME/.gemini/config/agy-focus" ]; then
-  mv "$HOME/.gemini/config/agy-focus" "$REMOVED_DIR/agy-focus"
+if [ -L "$HOME/.gemini/GEMINI.md" ]; then unlink "$HOME/.gemini/GEMINI.md"; fi
+if [ -L "$HOME/.gemini/config/hooks.json" ]; then unlink "$HOME/.gemini/config/hooks.json"; fi
+if [ -L "$HOME/.gemini/config/skills" ]; then unlink "$HOME/.gemini/config/skills"; fi
+if [ -e "$HOME/.gemini/config/agy-focus" ] || [ -L "$HOME/.gemini/config/agy-focus" ]; then
+  mv "$HOME/.gemini/config/agy-focus" "$REMOVED_DIR/config/agy-focus"
 fi
 
 printf '%s\n' "$REMOVED_DIR"
 ```
 
-Delete that dated folder only after checking the printed path:
+Delete that printed folder only after checking it:
 
 ```bash
 rm -rf "$REMOVED_DIR"
 ```
 
-To restore the pre-install setup:
+## Restore a backup
+
+Replace the placeholder with the path printed by the installer.
 
 ```bash
 BACKUP_DIR="$HOME/.gemini-backup-YYYYMMDD-HHMMSS"
-mv "$BACKUP_DIR/agy-focus" "$HOME/.gemini/config/agy-focus"
+mv "$BACKUP_DIR/config/agy-focus" "$HOME/.gemini/config/agy-focus"
 mv "$BACKUP_DIR/GEMINI.md" "$HOME/.gemini/GEMINI.md"
-mv "$BACKUP_DIR/hooks.json" "$HOME/.gemini/config/hooks.json"
-mv "$BACKUP_DIR/skills" "$HOME/.gemini/config/skills"
+mv "$BACKUP_DIR/config/hooks.json" "$HOME/.gemini/config/hooks.json"
+mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 ```
 
-## Repository layout
+## UI rules
 
-- `agy-focus/versions/` — versioned rules, hooks, skills, manifests, and changelogs
-- `agy-focus/current` — symlink to the active profile version
-- `agy-focus/state/` — public runtime snapshot with the local workspace path removed
-- `installed/` — copy of the current global installation
-- `legacy/` — preserved legacy entrypoint
-- `assets/social-preview.*` — flat social preview card for repository links
-- `.github/` — issue forms, pull request template, security, support, and CI files
+- no vague AI copy, empty future-talk, wand icons, fake metrics, or decorative 3D art
+- no purple-blue default gradients, repeated round-card grids, or animation without a job
+- build from the real task, existing system, hierarchy, and accessibility
+- read safe workspace text files before changing code; a search result or a few lines is not a full read
 
-Generated runtime files such as `__pycache__`, `*.pyc`, and `.DS_Store` are excluded.
+## Layout
 
-## UI guardrails
+- `agy-focus/versions/` — versioned profiles
+- `agy-focus/current` — current profile link
+- `scripts/install.sh` — update, backup, install, verify
+- `installed/` — checked copy of the current installed surfaces
 
-The active profile also carries anti-slop rules for interface work:
+## Help and contribution
 
-- no vague AI copy, abstract wand icons, or decorative 3D art
-- no purposeless hover effects or empty micro-interactions
-- no repeated rounded-card grids or mechanical symmetry
-- no default `Inter`/`Roboto` treatment by habit
-- no purple-to-blue neon gradients as a default solution
-- review intrinsic sizing, fluid type, asymmetric layout, and mobile-first behavior
-
-## Read before write
-
-For a change request, the harness builds a workspace scope, asks Gemini to read safe text files one by one, and denies native edits and common shell write paths until that read pass is complete. Binary files, caches, dependencies, build output, and secret files stay outside that pass. A search result or a few lines of a file does not count as reading it.
-
-## Contributing
-
-Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request. Use Discussions for ideas and usage questions. Do not paste tokens, private paths, or private prompts into public issues.
-
-## License
+- [Support](SUPPORT.md)
+- [Security](SECURITY.md)
+- [Contributing](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
 
 MIT. See [LICENSE](LICENSE).

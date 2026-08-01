@@ -15,16 +15,12 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
-      - name: Link active profile
+      - name: Install profile with the supported installer
         run: |
-          mkdir -p "$HOME/.gemini/config"
-          cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-          ln -sfn versions/v1.16.0 "$HOME/.gemini/config/agy-focus/current"
-          ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
-          ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
-          ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"
+          bash -n scripts/install.sh
+          HOME="$RUNNER_TEMP/gemini-home" bash scripts/install.sh --skip-update
 
-      - name: Verify active profile and hook behavior
+      - name: Verify installed profile and hook behavior
         run: |
-          python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
-          python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
+          HOME="$RUNNER_TEMP/gemini-home" python3 "$RUNNER_TEMP/gemini-home/.gemini/config/agy-focus/current/scripts/verify_profile.py"
+          HOME="$RUNNER_TEMP/gemini-home" python3 "$RUNNER_TEMP/gemini-home/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"

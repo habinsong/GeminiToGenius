@@ -1,26 +1,31 @@
 # Contributing
 
-Thanks for taking the project seriously.
+Keep changes small and keep the install path honest.
 
 ## Before opening an issue
 
-- Read the relevant section of the README.
-- Include the profile version, model target, app name, and exact reproduction steps.
-- Remove tokens, private paths, private prompts, and screenshots with personal data.
-- Use Discussions for ideas and usage questions.
+- Run `bash scripts/install.sh` in a clean checkout, or include why that was not possible.
+- Include the profile version, model, app, command output, and shortest reproduction.
+- Remove tokens, private prompts, private paths, and screenshots with personal data.
 
 ## Before opening a pull request
 
-- Keep the change inside the requested scope.
-- Preserve the versioned profile structure.
-- Regenerate `GEMINI.md` when rule files change.
-- Run `python3 agy-focus/versions/v1.16.0/scripts/verify_profile.py` with the profile linked under `~/.gemini`.
-- Run `python3 agy-focus/versions/v1.16.0/scripts/test_hook_runner.py`.
-- Keep README translations in sync when user-facing behavior changes.
+- Preserve old profiles. Add a version only when profile behavior changes.
+- Regenerate `GEMINI.md` when current rule files change.
+- Keep the first-install command, installer behavior, backup paths, and translations in sync.
+- Run these checks:
+
+```bash
+bash -n scripts/install.sh
+python3 agy-focus/current/scripts/verify_profile.py
+python3 agy-focus/current/scripts/test_hook_runner.py
+```
+
+Use a disposable `HOME` with `bash scripts/install.sh --skip-update` when testing the installer without changing your real Gemini profile.
 
 ## Pull request checklist
 
-- [ ] The change is explained in the PR body.
-- [ ] No secrets or private local paths are included.
-- [ ] The relevant profile verification passed.
-- [ ] Documentation matches the installed behavior.
+- [ ] The change has a concrete user-facing reason.
+- [ ] No secrets, private paths, or private prompts are included.
+- [ ] Profile and hook checks passed.
+- [ ] Installation and restore instructions match the script.

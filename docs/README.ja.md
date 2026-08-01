@@ -1,126 +1,131 @@
 # GeminiToGenius
 
-Antigravity と Antigravity IDE で Gemini 3.6 Flash (High) を使うための、バージョン管理された集中維持ハーネスです。
+> Gemini が実作業でだんだん頼りなくなったので作りました。レールを敷くハーネスです。
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 
-現在の指示、アクティブな作業ウィンドウ、関連ファイル、検証可能な結果にだけ集中するためのルールと実行境界を管理します。
+Antigravity と Antigravity IDE の Gemini 3.6 Flash (High) 向けグローバルルール・フック・スキルです。
 
-## 構成
+## 初回インストール
 
-- 常時注入する指示ファイル 12 個
-- ライフサイクルフック 13 個
-- 集中維持スキル 8 個
-- `v1.0.0` から `v1.16.0` までのバージョン履歴
-- 外部プラグインなし
-- MCP は接続が必要なタスクでのみ使用
+macOS では次の 1 行を実行します。
 
-## 目的
+```bash
+git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius/scripts/install.sh
+```
 
-常時注入する指示が長いと、途中で切れたり効きが弱くなります。ルールを短いファイルに分け、1 つのエントリポイントを生成し、変更をすべてバージョン管理します。
+スクリプトは `git pull --ff-only`、既存プロファイルの日時付きバックアップ、現在プロファイルのインストール、検証の順に実行します。
 
-## 対応環境
+`curl | sh` は使いません。clone 後にローカルのスクリプトを実行します。必要なコマンドは `git`、`python3`、`rsync` です。`Installed agy-focus v...` が出たら Antigravity または Antigravity IDE を再起動します。
 
-| 対象 | 対応プロファイル |
+## 内容
+
+| 項目 | 現在値 |
 | --- | --- |
-| Antigravity | グローバル `~/.gemini/GEMINI.md` と `~/.gemini/config/` |
-| Antigravity IDE | グローバル `~/.gemini/GEMINI.md` と `~/.gemini/config/` |
-| モデル | `Gemini 3.6 Flash (High)` |
+| 対象モデル | Gemini 3.6 Flash (High) |
+| 常時ルール | 12 |
+| ライフサイクルフック | 13 |
+| 自動スキル | 8 |
+| 外部プラグイン | なし |
+| MCP | 接続自体がタスクの目的である場合のみ |
 
-## インストール
+通常の自然言語で自動動作します。`/` や `@` は不要です。
 
-macOS 向けです。順番は `clone → update → backup → install → verify` です。リポジトリの更新をバックアップより先に完了してください。
+## 既存ユーザーの更新
+
+古い clone では同じスクリプトを実行します。
 
 ```bash
-git clone https://github.com/habinsong/GeminiToGenius.git
-cd GeminiToGenius
+cd /path/to/GeminiToGenius
+bash scripts/install.sh
 ```
 
-新しく clone した直後は最新状態です。既存の clone を使う場合だけ更新します。
+先に checkout を更新するため、古いインストールも現在プロファイルに切り替わります。tracked 変更がある場合は `git pull` 前に停止します。commit、stash、または整理を先に行ってください。
 
-```bash
-cd GeminiToGenius && git pull --ff-only
+実行ごとに次のようなバックアップパスが表示されます。
+
+```text
+/Users/you/.gemini-backup-YYYYMMDD-HHMMSS
 ```
 
-プロファイルを上書きする前にバックアップします。
+## 検証
 
 ```bash
-BACKUP_DIR="$HOME/.gemini-backup-$(date +%Y%m%d-%H%M%S)"
-mkdir -p "$BACKUP_DIR" "$HOME/.gemini/config"
-if [ -e "$HOME/.gemini/config/agy-focus" ] || [ -L "$HOME/.gemini/config/agy-focus" ]; then mv "$HOME/.gemini/config/agy-focus" "$BACKUP_DIR/agy-focus"; fi
-if [ -e "$HOME/.gemini/GEMINI.md" ] || [ -L "$HOME/.gemini/GEMINI.md" ]; then mv "$HOME/.gemini/GEMINI.md" "$BACKUP_DIR/GEMINI.md"; fi
-if [ -e "$HOME/.gemini/config/hooks.json" ] || [ -L "$HOME/.gemini/config/hooks.json" ]; then mv "$HOME/.gemini/config/hooks.json" "$BACKUP_DIR/hooks.json"; fi
-if [ -e "$HOME/.gemini/config/skills" ] || [ -L "$HOME/.gemini/config/skills" ]; then mv "$HOME/.gemini/config/skills" "$BACKUP_DIR/skills"; fi
-printf '%s\n' "$BACKUP_DIR"
-```
-
-最後に表示されたパスが復元ポイントです。バックアップ後にプロファイルを入れます。
-
-```bash
-cp -a agy-focus "$HOME/.gemini/config/agy-focus"
-ln -sfn versions/v1.16.0 "$HOME/.gemini/config/agy-focus/current"
-ln -sfn config/agy-focus/current/GEMINI.md "$HOME/.gemini/GEMINI.md"
-ln -sfn agy-focus/current/hooks/hooks.json "$HOME/.gemini/config/hooks.json"
-ln -sfn agy-focus/current/skills "$HOME/.gemini/config/skills"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 ```
 
-確認値は `"ok": true`、`"rules": 12`、`"hooks": 13`、スキル 8 個、`"target": "Gemini 3.6 Flash (High)"`、`hook runner tests passed` です。インストール後に Antigravity または Antigravity IDE を再起動します。
-
-## 更新
-
-```bash
-cd GeminiToGenius && git pull --ff-only
-```
-
-その後、バックアップから検証までをもう一度実行します。プロファイルを置き換える前にバックアップを取ります。
+`"ok": true`、`"rules": 12`、`"hooks": 13`、`hook runner tests passed` が出れば完了です。
 
 ## バージョン変更
 
+インストーラは常に現在バージョンに戻します。古い動作を再現する場合だけ手動で切り替えます。
+
 ```bash
-find "$HOME/.gemini/config/agy-focus/versions" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort -V
+find "$HOME/.gemini/config/agy-focus/versions" \
+  -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort -V
+
 ln -sfn versions/v1.12.0 "$HOME/.gemini/config/agy-focus/current"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 ```
 
-## 削除と復元
+後で `bash scripts/install.sh` を実行すれば最新に戻ります。
+
+## 削除
+
+リンクを外し、プロファイルを日時付きフォルダへ移動します。フォルダ自体は消しません。
 
 ```bash
 REMOVED_DIR="$HOME/.gemini-removed-$(date +%Y%m%d-%H%M%S)"
-mkdir -p "$REMOVED_DIR"
+mkdir -p "$REMOVED_DIR/config"
+
 if [ -L "$HOME/.gemini/GEMINI.md" ]; then unlink "$HOME/.gemini/GEMINI.md"; fi
 if [ -L "$HOME/.gemini/config/hooks.json" ]; then unlink "$HOME/.gemini/config/hooks.json"; fi
 if [ -L "$HOME/.gemini/config/skills" ]; then unlink "$HOME/.gemini/config/skills"; fi
-if [ -d "$HOME/.gemini/config/agy-focus" ]; then mv "$HOME/.gemini/config/agy-focus" "$REMOVED_DIR/agy-focus"; fi
+if [ -e "$HOME/.gemini/config/agy-focus" ] || [ -L "$HOME/.gemini/config/agy-focus" ]; then
+  mv "$HOME/.gemini/config/agy-focus" "$REMOVED_DIR/config/agy-focus"
+fi
+
 printf '%s\n' "$REMOVED_DIR"
 ```
 
-表示されたパスを確認してから完全に削除します。
+表示されたパスを確認してから削除します。
 
 ```bash
 rm -rf "$REMOVED_DIR"
 ```
 
-バックアップの復元:
+## バックアップの復元
+
+インストーラが出力した実際のパスを指定します。
 
 ```bash
 BACKUP_DIR="$HOME/.gemini-backup-YYYYMMDD-HHMMSS"
-mv "$BACKUP_DIR/agy-focus" "$HOME/.gemini/config/agy-focus"
+mv "$BACKUP_DIR/config/agy-focus" "$HOME/.gemini/config/agy-focus"
 mv "$BACKUP_DIR/GEMINI.md" "$HOME/.gemini/GEMINI.md"
-mv "$BACKUP_DIR/hooks.json" "$HOME/.gemini/config/hooks.json"
-mv "$BACKUP_DIR/skills" "$HOME/.gemini/config/skills"
+mv "$BACKUP_DIR/config/hooks.json" "$HOME/.gemini/config/hooks.json"
+mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 ```
 
 ## UI ルール
 
-- AI Slop の文言、曖昧な見出し、抽象的な魔法の杖アイコンを使わない
-- 目的のないホバー効果とマイクロインタラクションを使わない
-- 丸いカードの反復と機械的な対称レイアウトを使わない
-- `Inter` と `Roboto` を習慣で使わない
-- 紫から青へのネオングラデーションを既定解にしない
-- intrinsic sizing、fluid typography、非対称配置、モバイル優先を先に検討する
+- 曖昧な AI コピー、未来を語るだけの文、魔法の杖アイコン、偽の指標、装飾用 3D を入れません。
+- 紫青の既定グラデーション、丸いカードの反復、理由のないアニメーションを入れません。
+- 実際の作業、既存システム、情報の優先順位、アクセシビリティから画面を作ります。
+- コード変更前に安全なテキストファイルをすべて読みます。検索結果や数行だけでは不十分です。
 
-## ライセンス
+## 構成
+
+- `agy-focus/versions/` — バージョン別プロファイル
+- `agy-focus/current` — 現在プロファイルへのリンク
+- `scripts/install.sh` — 更新・バックアップ・インストール・検証
+- `installed/` — 現在のインストール表面のコピー
+
+## ヘルプと貢献
+
+- [Support](../SUPPORT.md)
+- [Security](../SECURITY.md)
+- [Contributing](../CONTRIBUTING.md)
+- [Changelog](../CHANGELOG.md)
 
 MIT ライセンスです。[LICENSE](../LICENSE) を確認してください。

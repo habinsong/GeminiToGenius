@@ -8,8 +8,10 @@
 
 ## Verification
 
-- [ ] Relevant profile verification passed
-- [ ] README translations updated when needed
+- [ ] `python3 agy-focus/current/scripts/verify_profile.py` passed
+- [ ] `python3 agy-focus/current/scripts/test_hook_runner.py` passed
+- [ ] `bash scripts/install.sh --skip-update` passed in a disposable `HOME` when the installer changed
+- [ ] First-install and translated README files match the installer when installation changed
 - [ ] No secrets, private paths, or private prompts included
 
 ## Notes

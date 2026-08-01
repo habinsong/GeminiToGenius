@@ -1,8 +1,9 @@
 # Support
 
-- Usage questions: [Discussions](https://github.com/habinsong/GeminiToGenius/discussions)
-- Reproducible bugs: [Bug report](https://github.com/habinsong/GeminiToGenius/issues/new?template=bug_report.yml)
-- Feature proposals: [Feature request](https://github.com/habinsong/GeminiToGenius/issues/new?template=feature_request.yml)
-- Security reports: follow [SECURITY.md](SECURITY.md)
+- First install or update: run `bash scripts/install.sh` from a clean clone.
+- Usage question: [Discussions](https://github.com/habinsong/GeminiToGenius/discussions)
+- Reproducible bug: [Bug report](https://github.com/habinsong/GeminiToGenius/issues/new?template=bug_report.yml)
+- Scoped improvement: [Feature request](https://github.com/habinsong/GeminiToGenius/issues/new?template=feature_request.yml)
+- Security: [SECURITY.md](SECURITY.md)
 
-When asking for help, include the profile version, model target, app name, command output, and the smallest reproducible example. Remove private paths and credentials first.
+For help, include the profile version, model, app, installer or verifier output, and the smallest reproducible example. Remove credentials and private paths first.

@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- adds `scripts/install.sh`: update a clean checkout, back up the installed profile, install the current profile, and verify it in one run
+- rewrites first-install, update, version-switch, removal, restore, UI, and support documentation around the script
+
 ## v1.16.0 — 2026-08-02
 
 - keeps the always-on entrypoint under 6,000 characters; detailed guidance now loads through focused skills and hooks

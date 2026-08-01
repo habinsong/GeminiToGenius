@@ -1,14 +1,7 @@
 # Security
 
-This repository contains prompts, hooks, skills, and configuration. It is not a secret store.
+This repository contains rules, hooks, skills, and an installer. It is not a secret store.
 
-Do not publish:
+Never publish API keys, tokens, cookies, account data, private prompts, screenshots with personal data, or private workspace paths. The installer moves the existing Gemini profile to a local dated backup; do not attach that backup to an issue.
 
-- API keys, access tokens, cookies, or private credentials
-- private workspace paths
-- private prompts or screenshots
-- model provider account data
-
-For a suspected vulnerability, use the repository's **Security** tab and choose **Report a vulnerability**. Do not put the details in a public issue or discussion.
-
-If the report is about accidental sensitive data in the repository, include the affected path and commit, but redact the sensitive value.
+For a vulnerability, use GitHub **Security** → **Report a vulnerability**. Do not open a public issue. Include the affected path and commit, but redact the sensitive value.
