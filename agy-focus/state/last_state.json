@@ -1,0 +1,10 @@
+{
+  "event": "stop-snapshot",
+  "updatedAt": "2026-08-01T12:43:58.102855+00:00",
+  "profileVersion": "1.13.0",
+  "modelName": "gemini-3.6-flash-high",
+  "workspacePaths": [],
+  "stepIdx": null,
+  "invocationNum": null,
+  "failed": false
+}
