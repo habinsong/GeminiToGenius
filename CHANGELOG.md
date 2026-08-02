@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v2.7.0 — 2026-08-03
+
+- removes the Stop-gate retry-limit escape hatch: incomplete source intake or required research keeps the execution loop running
+- counts only successful transcript tool records as `view_file`/write evidence, so failed or errored calls cannot satisfy full-read gates
+- aligns PreToolUse confirmation responses with the canonical Antigravity `ask` decision value
+
 ## v2.6.0 — 2026-08-03
 
 - requires contiguous `view_file` reads of affected source, configuration, and tests before README/docs/search results, writes, or exploration can guide a change; the official `list_dir` summary is not a source read

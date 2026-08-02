@@ -47,7 +47,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 ## `GEMINI.md`를 항상 두는 이유
 
 - Antigravity는 `~/.gemini/GEMINI.md`를 [전역 규칙](https://antigravity.google/docs/ide/rules)으로 읽습니다.
-- v2.6.0 진입점은 5,992자입니다. 소스 우선 라우팅·안전·근거·계획·완료·UI 감사 게이트만 둡니다.
+- v2.7.0 진입점은 5,988자입니다. 소스 우선 라우팅·안전·근거·계획·완료·UI 감사 게이트만 둡니다.
 - 코드·아키텍처·UI·카피·조사 절차는 관련 작업에서만 [집중 스킬](https://antigravity.google/docs/skills?app=antigravity-ide)로 불러옵니다.
 - [훅](https://antigravity.google/docs/hooks)이 고위험 경계를 검사하므로 모든 프롬프트에 전체 절차를 넣지 않습니다.
 - 무관한 저장소 이력과 작업별 문서는 기본 주입하지 않습니다.
@@ -91,7 +91,7 @@ hook runner tests passed
 현재 버전과 과거 버전 모두 설치 스크립트로 바꿉니다. 최신화 → 백업 → 설치 → 검증 순서는 같습니다.
 
 ```bash
-bash scripts/install.sh --version v2.6.0
+bash scripts/install.sh --version v2.7.0
 bash scripts/install.sh --help
 ```
 
