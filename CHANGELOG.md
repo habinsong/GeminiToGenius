@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## v2.9.0 — 2026-08-03
+
+- adds a machine-checked design decision ledger linking user outcome, rationale, implementation location, and verification method
+- requires explicit recovery, retry, or undo paths in strict UI plans
+- tightens `/GTG` intake wording so file lists and document summaries cannot substitute for contiguous, file-by-file source, configuration, and related-test reads
+- replaces the blanket blur ban with a context gate: decorative content-surface blur and repeated material effects are blocked; functional navigation/control material remains possible when fallback is verified
+- refreshes the adaptive-window, Apple materials, Design Theater, FlowEval, semantic-guidance, and GUIDE evidence set
+
 ## v2.8.0 — 2026-08-03
 
 - Require every official UI source in a plan to carry a local finding, implementation impact or decision, and verification gate in the same evidence-matrix row or block.

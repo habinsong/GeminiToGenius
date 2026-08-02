@@ -40,7 +40,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 ## 为什么始终保留 `GEMINI.md`
 
 - Antigravity 把 `~/.gemini/GEMINI.md` 作为[全局规则](https://antigravity.google/docs/ide/rules)加载。
-- v2.8.0 入口为 5,988 个字符，仅保留源码优先路由、安全、证据矩阵、计划、完成和 UI 审计门槛。
+- v2.9.0 入口为 5,944 个字符，仅保留源码优先路由、连续文件摄取、决策台账计划、恢复路径检查和 UI 审计门槛。
 - 代码、架构、UI、文案和检索流程只在相关任务中作为[聚焦技能](https://antigravity.google/docs/skills?app=antigravity-ide)加载。
 - [钩子](https://antigravity.google/docs/hooks)检查高风险边界，不必把全部流程塞进每次提示。
 - 默认不注入无关的仓库历史和任务文档。
@@ -76,7 +76,7 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 当前版本和历史版本都通过安装脚本切换。更新 → 备份 → 安装 → 验证的顺序不变。
 
 ```bash
-bash scripts/install.sh --version v2.8.0
+bash scripts/install.sh --version v2.9.0
 bash scripts/install.sh --help
 ```
 
