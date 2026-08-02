@@ -25,7 +25,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 | 目标模型 | Gemini 3.6 Flash (High) |
 | 常驻规则 | 12 |
 | 生命周期钩子 | 14 |
-| 聚焦技能 | 10 |
+| 聚焦技能 | 11 |
 | 外部插件 | 无 |
 | MCP | 仅当连接本身就是任务目标 |
 
@@ -35,12 +35,12 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 /GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
 ```
 
-`/GTG` 会在整个请求中保持源码优先、完整文件读取、第一方仓库证据、UI 写入前拦截、320px 与桌面浏览器渲染、写入后验证。
+`/GTG` 会在整个请求中保持源码优先、完整文件读取、第一方仓库证据、UI 源码写入前的计划、必要时的多页面路由、320px 与桌面浏览器渲染、写入后验证。
 
 ## 为什么始终保留 `GEMINI.md`
 
 - Antigravity 把 `~/.gemini/GEMINI.md` 作为[全局规则](https://antigravity.google/docs/ide/rules)加载。
-- v2.0.0 入口为 4,127 个字符，仅保留路由、安全、证据和完成门槛。
+- v2.1.0 入口为 4,658 个字符，仅保留路由、安全、证据、计划和完成门槛。
 - 代码、架构、UI、文案和检索流程只在相关任务中作为[聚焦技能](https://antigravity.google/docs/skills?app=antigravity-ide)加载。
 - [钩子](https://antigravity.google/docs/hooks)检查高风险边界，不必把全部流程塞进每次提示。
 - 默认不注入无关的仓库历史和任务文档。
@@ -69,14 +69,14 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 ```
 
-看到 `"ok": true`、`"rules": 12`、`"hooks": 14` 和 `hook runner tests passed` 即可。
+看到 `"ok": true`、`"rules": 12`、`"hooks": 14`、`"skills": 11` 和 `hook runner tests passed` 即可。
 
 ## 切换版本
 
 当前版本和历史版本都通过安装脚本切换。更新 → 备份 → 安装 → 验证的顺序不变。
 
 ```bash
-bash scripts/install.sh --version v2.0.0
+bash scripts/install.sh --version v2.1.0
 bash scripts/install.sh --help
 ```
 
@@ -125,6 +125,7 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 - 以真实产品、用户任务、数据、状态、信息层级、现有设计系统和可访问性为依据。
 - 检查移动优先、320 CSS px 回流、可见焦点、减少动态效果设置和经过测量的性能依据。
 - 内置 `verify_ui_render.py` 使用已安装的 Chrome 测量 320px 横向裁切并生成移动端与桌面截图，不安装 Playwright。
+- `/GTG` UI 源码变更前先写 `docs/plans/` 的设计、实现和验证计划并运行 `verify_plan.py`。存在多个页面时，用 `verify_multi_page.py` 渲染并检查所有路径。
 - 先掌握整个仓库结构，再完整阅读影响范围内的实现、调用路径、状态与数据路径、测试。README 和搜索片段不算实现证据。
 - 说明其他 GitHub 仓库时，除 README 或仓库概览外，还要直接读取安装脚本、manifest 或实际源码之一。搜索摘要不算证据。
 - 不把 UI 状态、领域决策、I/O、持久化和外部进程塞进一个 God Object。

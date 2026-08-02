@@ -37,7 +37,7 @@ After `Installed agy-focus v...` appears, restart Antigravity or Antigravity IDE
 | Model target | Gemini 3.6 Flash (High) |
 | Always-on rules | 12 |
 | Lifecycle hooks | 14 |
-| Focused skills | 10 |
+| Focused skills | 11 |
 | Plugins | none |
 | MCP | only for an explicit connection task |
 
@@ -47,12 +47,12 @@ Ordinary requests route automatically. Start strict repository or UI work with `
 /GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
 ```
 
-`/GTG` keeps the strict contract active for the whole request: source before docs, complete file reads, first-party repository evidence, pre-write UI gates, browser renders at 320 px and desktop width, and post-write verification.
+`/GTG` keeps the strict contract active for the whole request: source before docs, complete file reads, first-party repository evidence, plans before UI source writes, route-aware multi-page checks when the task needs them, browser renders at 320 px and desktop width, and post-write verification.
 
 ## Why `GEMINI.md` stays global
 
 - Antigravity loads `~/.gemini/GEMINI.md` as a [global rule](https://antigravity.google/docs/ide/rules).
-- The v2.0.0 entrypoint is 4,127 characters: routing, safety, evidence, and completion gates only.
+- The v2.1.0 entrypoint is 4,658 characters: routing, safety, evidence, planning, and completion gates only.
 - Detailed code, architecture, UI, copy, and research procedures load as [focused skills](https://antigravity.google/docs/skills?app=antigravity-ide).
 - [Hooks](https://antigravity.google/docs/hooks) enforce high-risk boundaries without adding the whole procedure to every prompt.
 - Unrelated repository history and task-specific documents are not injected by default.
@@ -87,6 +87,7 @@ Expected markers:
 "ok": true
 "rules": 12
 "hooks": 14
+"skills": 11
 hook runner tests passed
 ```
 
@@ -95,7 +96,7 @@ hook runner tests passed
 Use the installer for both current and historical profiles. It keeps the same update → backup → install → verify order.
 
 ```bash
-bash scripts/install.sh --version v2.0.0
+bash scripts/install.sh --version v2.1.0
 bash scripts/install.sh --help
 ```
 
@@ -144,6 +145,7 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 - use the real product, user task, data, states, hierarchy, existing design system, and accessibility as evidence
 - start mobile-first, preserve 320 CSS px reflow, visible focus, reduced motion, and measured performance claims
 - run the bundled `verify_ui_render.py`; it uses installed Chrome to fail on 320px horizontal clipping and writes mobile and desktop screenshots without installing Playwright
+- write `docs/plans/design-plan.md`, `implementation-plan.md`, and `verification-plan.md` before `/GTG` UI source changes; use `verify_plan.py` and `verify_multi_page.py` when there is more than one page
 - map the repository, then read the affected source, call path, state/data path, and tests in full; README and search snippets are not implementation evidence
 - when describing another GitHub repository, read its README/overview and a separate install script, manifest, or source file directly; search summaries do not count
 - keep UI state, domain decisions, I/O, persistence, and external processes out of one God Object

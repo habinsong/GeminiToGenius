@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## v2.1.0 — 2026-08-02
+
+- adds design, implementation, and verification plan gates before `/GTG` UI source writes
+- requires route-aware multi-page plans and all-route Chrome renders when a website has multiple user flows
+- adds deterministic plan and multi-page verifiers for route links, semantic structure, 320px/1280px render, overflow, reduced motion, and visible focus
+- adds 2026 Apple, Chrome, web.dev, W3C, and Google Research references for interface planning
+- updates the profile to 11 focused skills while keeping the hook responsibilities split
+
 ## v2.0.0 — 2026-08-02
 
 - adds explicit `/GTG` strict mode for repository and UI work while keeping ordinary-request routing

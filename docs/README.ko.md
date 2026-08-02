@@ -32,7 +32,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 | 대상 모델 | Gemini 3.6 Flash (High) |
 | 항상 주입되는 규칙 | 12개 |
 | 수명 주기 훅 | 14개 |
-| 집중 스킬 | 10개 |
+| 집중 스킬 | 11개 |
 | 외부 플러그인 | 없음 |
 | MCP | 접속 자체가 작업 목적일 때만 |
 
@@ -42,12 +42,12 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 /GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
 ```
 
-`/GTG`는 요청이 끝날 때까지 코드 우선 탐색, 파일 전체 읽기, 원격 저장소 1차 근거, UI 쓰기 전 차단, 320px·데스크톱 브라우저 렌더, 쓰기 후 검증을 유지합니다.
+`/GTG`는 요청이 끝날 때까지 코드 우선 탐색, 파일 전체 읽기, 원격 저장소 1차 근거, UI 소스 쓰기 전 계획, 필요할 때 다중 페이지 경로, 320px·데스크톱 브라우저 렌더, 쓰기 후 검증을 유지합니다.
 
 ## `GEMINI.md`를 항상 두는 이유
 
 - Antigravity는 `~/.gemini/GEMINI.md`를 [전역 규칙](https://antigravity.google/docs/ide/rules)으로 읽습니다.
-- v2.0.0 진입점은 4,127자입니다. 라우팅·안전·근거·완료 게이트만 둡니다.
+- v2.1.0 진입점은 4,658자입니다. 라우팅·안전·근거·계획·완료 게이트만 둡니다.
 - 코드·아키텍처·UI·카피·조사 절차는 관련 작업에서만 [집중 스킬](https://antigravity.google/docs/skills?app=antigravity-ide)로 불러옵니다.
 - [훅](https://antigravity.google/docs/hooks)이 고위험 경계를 검사하므로 모든 프롬프트에 전체 절차를 넣지 않습니다.
 - 무관한 저장소 이력과 작업별 문서는 기본 주입하지 않습니다.
@@ -82,6 +82,7 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 "ok": true
 "rules": 12
 "hooks": 14
+"skills": 11
 hook runner tests passed
 ```
 
@@ -90,7 +91,7 @@ hook runner tests passed
 현재 버전과 과거 버전 모두 설치 스크립트로 바꿉니다. 최신화 → 백업 → 설치 → 검증 순서는 같습니다.
 
 ```bash
-bash scripts/install.sh --version v2.0.0
+bash scripts/install.sh --version v2.1.0
 bash scripts/install.sh --help
 ```
 
@@ -139,6 +140,7 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 - 실제 제품·사용자 작업·데이터·상태·정보 위계·기존 디자인 시스템·접근성을 근거로 화면을 만듭니다.
 - 모바일 우선, 320 CSS px 리플로우, 보이는 포커스, 움직임 감소 설정, 측정된 성능 근거를 확인합니다.
 - 기본 제공 `verify_ui_render.py`로 설치된 Chrome의 320px 수평 잘림을 계측하고 모바일·데스크톱 스크린샷을 만듭니다. Playwright를 설치하지 않습니다.
+- `/GTG` UI 소스 변경 전 `docs/plans/design-plan.md`, `implementation-plan.md`, `verification-plan.md`를 작성하고 `verify_plan.py`를 실행합니다. 화면 경로가 둘 이상이면 `verify_multi_page.py`로 모든 경로를 확인합니다.
 - 저장소 구조를 먼저 잡고 영향 범위의 실제 코드·호출 경로·상태·데이터·테스트를 끝까지 읽습니다. README와 검색 조각은 구현 근거가 아닙니다.
 - 다른 GitHub 저장소를 설명할 때는 README·저장소 개요와 별도의 설치 스크립트·manifest·실제 소스 중 하나를 직접 읽습니다. 검색 요약은 근거로 세지 않습니다.
 - UI 상태·도메인 판단·입출력·영속화·외부 프로세스를 한 God Object에 몰아넣지 않습니다.
