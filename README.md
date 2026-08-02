@@ -52,7 +52,7 @@ Ordinary requests route automatically. Start strict repository or UI work with `
 ## Why `GEMINI.md` stays global
 
 - Antigravity loads `~/.gemini/GEMINI.md` as a [global rule](https://antigravity.google/docs/ide/rules).
-- The v2.7.0 entrypoint is 5,988 characters: source-first routing, safety, evidence, planning, completion, and UI audit gates only.
+- The v2.8.0 entrypoint is 5,988 characters: source-first routing, safety, evidence matrices, planning, completion, and UI audit gates only.
 - Detailed code, architecture, UI, copy, and research procedures load as [focused skills](https://antigravity.google/docs/skills?app=antigravity-ide).
 - [Hooks](https://antigravity.google/docs/hooks) enforce high-risk boundaries without adding the whole procedure to every prompt.
 - Unrelated repository history and task-specific documents are not injected by default.
@@ -96,7 +96,7 @@ hook runner tests passed
 Use the installer for both current and historical profiles. It keeps the same update → backup → install → verify order.
 
 ```bash
-bash scripts/install.sh --version v2.7.0
+bash scripts/install.sh --version v2.8.0
 bash scripts/install.sh --help
 ```
 

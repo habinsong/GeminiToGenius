@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v2.8.0 — 2026-08-03
+
+- Require every official UI source in a plan to carry a local finding, implementation impact or decision, and verification gate in the same evidence-matrix row or block.
+- Extend Chrome rendering checks with actual CSS/DOM motion detection and `prefers-reduced-motion` emulation at every viewport.
+- Connect the 2026 Antigravity Hooks, Chrome, WCAG 2.2, and Google HCI references to planning decisions and runtime verification.
+
 ## v2.7.0 — 2026-08-03
 
 - removes the Stop-gate retry-limit escape hatch: incomplete source intake or required research keeps the execution loop running
