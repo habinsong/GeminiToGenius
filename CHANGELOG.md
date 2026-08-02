@@ -2,10 +2,20 @@
 
 ## Unreleased
 
+## v2.5.0 — 2026-08-02
+
+- defaults website, webpage, landing-page, and static-page work to two or more route contracts instead of letting a single-page plan pass
+- requires `/GTG` UI plans to compare at least two official sources and record the decision, implementation impact, motion budget, and verification gate
+- blocks completion when restrained/expressive motion choice, trigger, timing, budget, or reduced-motion fallback is missing
+- blocks shell workspace inventory (`find`, `ls`, `tree`, `fd`, `rg --files`, `git ls-files`) before source intake, in addition to IDE-native exploration
+- keeps research and planning responsibilities split in a dedicated module; hook modules remain at or below 260 lines
+
 ## v2.4.0 — 2026-08-02
 
 - blocks shell-based README·docs·Markdown reads before source intake, including `cat`, `sed`, `rg`, `git show`, and common script readers
 - blocks IDE-native `analyze`, `inspect`, and `explore` reads of README/docs before source intake
+- blocks workspace/folder/file-tree exploration before source intake; directory summaries never count as a complete source read
+- denies unknown analysis/exploration tools before source intake when Antigravity exposes them through the hook payload
 - requires a successful post-write verification result instead of accepting a verification-shaped command alone
 - keeps the source-order guard in its own module so the hook runner does not become a God Object
 - refreshes the official Antigravity hook contract and 2026 UI evidence references used by the profile

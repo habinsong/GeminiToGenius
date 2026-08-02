@@ -1,0 +1,23 @@
+{
+  "name": "agy-focus",
+  "version": "2.5.0",
+  "based_on": "2.4.0",
+  "target": "Gemini 3.6 Flash (High)",
+  "model_id": "gemini-3.6-flash",
+  "compatibility": ["Antigravity global customization paths", "Antigravity IDE global customization paths"],
+  "rules": 12,
+  "hooks": 14,
+  "custom_skills": 11,
+  "workflows": 0,
+  "plugins": false,
+  "mcp_default": "ask",
+  "self_check": "scripts/verify_profile.py",
+  "hook_test": "scripts/test_hook_runner.py",
+  "ui_render_check": "scripts/verify_ui_render.py",
+  "plan_check": "scripts/verify_plan.py",
+  "multi_page_check": "scripts/verify_multi_page.py",
+  "design": "short always-on anchors, explicit /GTG skill activation, contiguous chunk-aware code intake before docs and writes, shell-read and IDE-native documentation bypass gates, direct first-party repository evidence, focused official research, two-source UI evidence, architecture responsibility boundaries, pre-write and stop-time anti-AI-Slop gates including dark and generic slate documentation templates, human product copy, generated rule entrypoint, progressive skills, source-backed interface planning before UI writes, default multi-page route contracts, restrained-or-expressive motion decisions with budget and reduced-motion fallback, accessible responsive states at 320/768/1280 CSS px, reduced-motion and visible-focus contracts, document metadata and control-name audits, 24 CSS px target checks, CLS and Long Animation Frames diagnostics, dependency-free Chrome render and horizontal-overflow verification, successful post-write command result required",
+  "rule_source": "rules/*.md",
+  "generated_entrypoint": "GEMINI.md",
+  "created": "2026-08-02"
+}

@@ -35,12 +35,12 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 /GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
 ```
 
-`/GTG` 会在整个请求中保持源码优先、完整文件读取、第一方仓库证据、UI 源码写入前的计划、必要时的多页面路由、320px、768px 与桌面浏览器渲染、写入后验证。
+`/GTG` 会在整个请求中保持源码优先、完整文件读取、第一方仓库证据、UI 源码写入前的计划、网站/网页/落地页/静态页至少两个路由、320px、768px 与桌面浏览器渲染、写入后验证。
 
 ## 为什么始终保留 `GEMINI.md`
 
 - Antigravity 把 `~/.gemini/GEMINI.md` 作为[全局规则](https://antigravity.google/docs/ide/rules)加载。
-- v2.4.0 入口为 5,316 个字符，仅保留路由、安全、证据、计划、完成和 UI 审计门槛。
+- v2.5.0 入口为 5,605 个字符，仅保留路由、安全、证据、计划、完成和 UI 审计门槛。
 - 代码、架构、UI、文案和检索流程只在相关任务中作为[聚焦技能](https://antigravity.google/docs/skills?app=antigravity-ide)加载。
 - [钩子](https://antigravity.google/docs/hooks)检查高风险边界，不必把全部流程塞进每次提示。
 - 默认不注入无关的仓库历史和任务文档。
@@ -76,7 +76,7 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 当前版本和历史版本都通过安装脚本切换。更新 → 备份 → 安装 → 验证的顺序不变。
 
 ```bash
-bash scripts/install.sh --version v2.4.0
+bash scripts/install.sh --version v2.5.0
 bash scripts/install.sh --help
 ```
 
@@ -120,15 +120,17 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 
 ## UI 与实现规则
 
-- 使用 IDE 原生 `analyze`、`inspect`、`explore` 先分析 README/docs 的路径也会被同一个源代码优先门禁拦截。
+- 使用 IDE 原生 `analyze`、`inspect`、`explore` 先分析 README/docs、workspace 文件夹或文件树的路径也会被同一个源代码优先门禁拦截；目录摘要不算源码读取。
+- 进入钩子 payload 的未注册分析或探索工具也会在源码读取前被拒绝；明确允许的路径是 `view_file` 和已登记的验证命令。
 
 - 不写模糊的 AI 文案、空泛的未来口号、魔法棒图标、假指标与假仪表盘，也不用装饰性 3D 图。
 - 不把紫蓝渐变、玻璃与辉光、嵌套圆角卡片、相同间距与圆角的重复、无意义动画当成默认方案。
 - 以真实产品、用户任务、数据、状态、信息层级、现有设计系统和可访问性为依据。
 - 检查移动优先、320 CSS px 回流、可见焦点、减少动态效果设置和经过测量的性能依据。
 - 内置 `verify_ui_render.py` 使用已安装的 Chrome 测量 320px、768px、1280px 横向裁切并生成各视口截图，不安装 Playwright。
-- `/GTG` UI 源码变更前先写 `docs/plans/` 的设计、实现和验证计划并运行 `verify_plan.py`。存在多个页面时，用 `verify_multi_page.py` 渲染并检查所有路径。
-- 先掌握整个仓库结构，再完整阅读影响范围内的实现、调用路径、状态与数据路径、测试。README 和搜索片段不算实现证据。源代码检查完成前，`cat`、`sed`、`rg`、`git show` 等 shell Markdown 读取会被拦截；最后的验证还必须有真实的成功结果。
+- `/GTG` UI 源码变更前先写 `docs/plans/` 的设计、实现和验证计划并运行 `verify_plan.py --require-multi-page --require-ui-evidence`。网站、网页、落地页和静态页默认使用至少两个路由，再用 `verify_multi_page.py` 渲染并检查所有路径。
+- UI 方向先对照至少两个不同的官方来源，并在 evidence matrix 中记录决定、实现影响和验证门槛。
+- 先掌握整个仓库结构，再完整阅读影响范围内的实现、调用路径、状态与数据路径、测试。README 和搜索片段不算实现证据。源代码检查完成前，`cat`、`sed`、`rg`、`find`、`ls`、`tree`、`fd`、`git show`、`git ls-files` 等 shell 读取和文件列表命令会被拦截；最后的验证还必须有真实的成功结果。
 - 说明其他 GitHub 仓库时，除 README 或仓库概览外，还要直接读取安装脚本、manifest 或实际源码之一。搜索摘要不算证据。
 - 不把 UI 状态、领域决策、I/O、持久化和外部进程塞进一个 God Object。
 
