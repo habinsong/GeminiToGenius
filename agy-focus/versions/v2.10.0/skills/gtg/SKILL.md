@@ -18,7 +18,7 @@ description: Activates the GeminiToGenius strict execution harness for complete 
 7. 가장 작은 일관된 변경만 합니다. 기능을 기존 대형 객체에 누적하지 않고 UI 상태·도메인 정책·IO·영속성·외부 프로세스·표현의 변경 이유가 갈리면 가장 작은 응집 단위로 분리합니다. wrapper와 빈 계층으로 줄 수만 옮기지 않습니다.
 8. UI·웹 구현이면 실제 소스·테스트를 읽은 뒤 `docs/plans/design-plan.md`, `implementation-plan.md`, `verification-plan.md`를 먼저 작성하고 `verify_plan.py --require-multi-page --require-ui-evidence`를 통과시킵니다. 계획에는 adaptive reflow/reveal/presentation, compact 전환 조건, 키보드 패턴, evidence matrix의 결정·근거 발견·구현 영향·검증 게이트·버린 대안을 넣습니다. website·webpage·landing page·repository site·static page는 흐름 수와 상관없이 `Route:`를 둘 이상 계획하고 다중 페이지로 만듭니다. 진짜 단일 화면 앱만 예외이며, 그 이유와 상태 계약을 적습니다.
 9. 실패를 재현하고 한 가설씩 수정·검증합니다. 쓴 파일은 마지막 쓰기 뒤 현재 내용을 다시 끝까지 읽고, 그 뒤 실제 성공 결과가 있는 테스트·빌드·lint·typecheck·실행·화면 검증을 수행합니다. 확인하지 않았으면 성공으로 쓰지 않습니다. 빨리 끝내기 위해 완료 조건을 줄이지 않습니다.
-10. 최신·공식 사실은 현재 날짜로 검색하고 1차 출처 본문을 읽습니다. UI 작업은 공식 URL 4개 이상·서로 다른 호스트 3개 이상·플랫폼/접근성/성능/HCI 분야 3개 이상을 대조하고 계획의 evidence matrix에 결정·근거 발견·구현 영향·검증 방법을 남깁니다. MCP·플러그인은 연결 자체가 작업 목적일 때만 사용합니다.
+10. 최신·공식 사실은 현재 날짜로 검색하고 1차 출처 본문을 읽습니다. UI 작업은 공식 URL 4개 이상·서로 다른 호스트 3개 이상·플랫폼/접근성/성능/HCI/디자인 시스템 분야 4개 이상을 대조하고 계획의 evidence matrix에 결정·근거 발견·구현 영향·검증 방법을 남깁니다. MCP·플러그인은 연결 자체가 작업 목적일 때만 사용합니다.
 11. 최종 답변은 핵심 원인, 변경 내용, 실제 검증, 남은 리스크만 한국어 존댓말로 짧게 씁니다. 내부 추론·AI 자기소개·분위기 문단은 쓰지 않습니다.
 
 ## UI·UX 작업

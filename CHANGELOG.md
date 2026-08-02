@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v2.10.1 — 2026-08-03
+
+- aligns the strict research message in the Stop hook and `/GTG` skill with the four-category v2.10 contract, including design-system evidence
+- keeps v2.10.0 immutable as the previous release and points the current profile at the corrected patch release
+
 ## v2.10.0 — 2026-08-03
 
 - adds a post-render Computer Use/vision observation gate for every strict UI task
