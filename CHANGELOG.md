@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## v2.10.0 — 2026-08-03
+
+- adds a post-render Computer Use/vision observation gate for every strict UI task
+- requires `search_web` followed by an official UI `read_url_content` after the visual observation
+- adds Microsoft Fluent 2, Atlassian Design, Adobe Spectrum 2, IBM Carbon, and Shopify Polaris to the design-system evidence category
+- raises the strict UI research contract from three to four evidence categories while keeping the always-on entrypoint below 6,000 characters
+
 ## v2.9.0 — 2026-08-03
 
 - adds a machine-checked design decision ledger linking user outcome, rationale, implementation location, and verification method
