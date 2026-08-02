@@ -35,12 +35,12 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 /GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
 ```
 
-`/GTG` は、ソース優先の調査、ファイル全体の読取、一次資料、UI ソース書込前の計画、必要な場合の複数ページ経路、320px とデスクトップのブラウザ描画、書込後検証を依頼の終了まで維持します。
+`/GTG` は、ソース優先の調査、ファイル全体の読取、一次資料、UI ソース書込前の計画、必要な場合の複数ページ経路、320px・768px・デスクトップのブラウザ描画、書込後検証を依頼の終了まで維持します。
 
 ## `GEMINI.md` を常時使う理由
 
 - Antigravity は `~/.gemini/GEMINI.md` を[グローバルルール](https://antigravity.google/docs/ide/rules)として読み込みます。
-- v2.1.0 のエントリポイントは 4,658 文字です。ルーティング、安全、根拠、計画、完了ゲートだけを置きます。
+- v2.3.0 のエントリポイントは 4,965 文字です。ルーティング、安全、根拠、計画、完了、UI 監査ゲートだけを置きます。
 - コード、アーキテクチャ、UI、コピー、調査の手順は必要な作業でのみ[集中スキル](https://antigravity.google/docs/skills?app=antigravity-ide)として読み込みます。
 - [フック](https://antigravity.google/docs/hooks)が高リスク境界を検査するため、全手順を毎回のプロンプトへ入れません。
 - 無関係なリポジトリ履歴やタスク固有文書は既定で注入しません。
@@ -76,7 +76,7 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 現在版も過去版もインストーラで切り替えます。更新 → バックアップ → インストール → 検証の順序は同じです。
 
 ```bash
-bash scripts/install.sh --version v2.1.0
+bash scripts/install.sh --version v2.3.0
 bash scripts/install.sh --help
 ```
 
@@ -124,7 +124,7 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 - 紫青の既定グラデーション、ガラス・グロー、入れ子の丸カード、同じ余白・角丸の反復、理由のないアニメーションを入れません。
 - 実際の製品、ユーザーの作業、データ、状態、情報階層、既存デザインシステム、アクセシビリティを根拠にします。
 - モバイルファースト、320 CSS px のリフロー、見えるフォーカス、動きの軽減設定、測定済みの性能根拠を確認します。
-- 同梱の `verify_ui_render.py` は、インストール済み Chrome で 320px の横方向の切れを計測し、モバイルとデスクトップの画像を作ります。Playwright は追加しません。
+- 同梱の `verify_ui_render.py` は、インストール済み Chrome で 320px・768px・1280px の横方向の切れを計測し、各幅の画像を作ります。Playwright は追加しません。
 - `/GTG` の UI ソース書込前に `docs/plans/` の設計・実装・検証計画を作り、`verify_plan.py` を実行します。経路が複数なら `verify_multi_page.py` ですべてのページを確認します。
 - リポジトリ全体の構造を把握してから、影響範囲の実装、呼び出し経路、状態・データ経路、テストを最後まで読みます。README と検索断片は実装根拠にしません。
 - 別の GitHub リポジトリを説明する場合は、README・概要に加えて、インストールスクリプト、manifest、実ソースのいずれかを直接読みます。検索要約は根拠にしません。

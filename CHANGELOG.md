@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+## v2.3.0 — 2026-08-02
+
+- extends Chrome UI rendering to 320px, 768px, and 1280px so the intermediate responsive state is measured instead of inferred
+- requires UI plans to record visual direction, product rationale, rejected alternatives, and trade-offs without forcing one visual style
+- requires verification plans to cover the medium viewport and real state transitions
+- adds source-first call/state/data-path wording to the Gemini 3.6 Flash (High) skill so filenames, README, and docs cannot substitute for complete implementation reads
+- aligns the UI planning, implementation, and review evidence with Apple 2026 HIG, Material 3 Expressive, Chrome Long Animation Frames/View Transitions, and WCAG 2.2
+
+## v2.2.0 — 2026-08-02
+
+- extends Chrome UI rendering with document metadata, semantic landmarks, image alt, accessible names, 24 CSS px control targets, keyboard focus, CLS, and Long Animation Frames diagnostics
+- rejects duplicate route titles/headings and reduced-motion declarations that do not actually override animation or transition properties
+- requires plan substance for motion purpose/timing, measurement, accessibility, and target-size checks
+- refreshes 2026 Apple, Android Material 3, Chrome, W3C, and Google Research interface evidence
+
 ## v2.1.0 — 2026-08-02
 
 - adds design, implementation, and verification plan gates before `/GTG` UI source writes
