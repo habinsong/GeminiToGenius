@@ -47,7 +47,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 ## `GEMINI.md`를 항상 두는 이유
 
 - Antigravity는 `~/.gemini/GEMINI.md`를 [전역 규칙](https://antigravity.google/docs/ide/rules)으로 읽습니다.
-- v2.3.0 진입점은 4,965자입니다. 라우팅·안전·근거·계획·완료·UI 감사 게이트만 둡니다.
+- v2.4.0 진입점은 5,316자입니다. 라우팅·안전·근거·계획·완료·UI 감사 게이트만 둡니다.
 - 코드·아키텍처·UI·카피·조사 절차는 관련 작업에서만 [집중 스킬](https://antigravity.google/docs/skills?app=antigravity-ide)로 불러옵니다.
 - [훅](https://antigravity.google/docs/hooks)이 고위험 경계를 검사하므로 모든 프롬프트에 전체 절차를 넣지 않습니다.
 - 무관한 저장소 이력과 작업별 문서는 기본 주입하지 않습니다.
@@ -91,7 +91,7 @@ hook runner tests passed
 현재 버전과 과거 버전 모두 설치 스크립트로 바꿉니다. 최신화 → 백업 → 설치 → 검증 순서는 같습니다.
 
 ```bash
-bash scripts/install.sh --version v2.3.0
+bash scripts/install.sh --version v2.4.0
 bash scripts/install.sh --help
 ```
 
@@ -135,13 +135,15 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 
 ## UI·구현 규칙
 
+- IDE-native `analyze`·`inspect`·`explore`로 README·docs를 먼저 분석하는 경로도 같은 소스 인테이크 게이트에서 차단합니다.
+
 - 모호한 AI 카피, 미래 타령, 요술봉 아이콘, 가짜 지표·대시보드, 장식용 3D 이미지를 넣지 않습니다.
 - 보라·파랑 기본 그라데이션, 유리·글로우, 중첩 둥근 카드, 동일 여백·반경 반복, 이유 없는 애니메이션을 쓰지 않습니다.
 - 실제 제품·사용자 작업·데이터·상태·정보 위계·기존 디자인 시스템·접근성을 근거로 화면을 만듭니다.
 - 모바일 우선, 320 CSS px 리플로우, 768px 중간 폭 전환, 보이는 포커스, 움직임 감소 설정, 측정된 성능 근거를 확인합니다.
 - 기본 제공 `verify_ui_render.py`로 설치된 Chrome의 320px·768px·1280px 수평 잘림과 문서·접근성 계약을 계측하고 모든 폭의 스크린샷을 만듭니다. Playwright를 설치하지 않습니다.
 - `/GTG` UI 소스 변경 전 `docs/plans/design-plan.md`, `implementation-plan.md`, `verification-plan.md`를 작성하고 `verify_plan.py`를 실행합니다. 화면 경로가 둘 이상이면 `verify_multi_page.py`로 모든 경로를 확인합니다.
-- 저장소 구조를 먼저 잡고 영향 범위의 실제 코드·호출 경로·상태·데이터·테스트를 끝까지 읽습니다. README와 검색 조각은 구현 근거가 아닙니다.
+- 저장소 구조를 먼저 잡고 영향 범위의 실제 코드·호출 경로·상태·데이터·테스트를 끝까지 읽습니다. README와 검색 조각은 구현 근거가 아닙니다. `cat`, `sed`, `rg`, `git show` 같은 shell 기반 Markdown 읽기는 소스 인테이크가 끝날 때까지 차단하며, 마지막 검증은 실제 성공 결과가 있어야 인정합니다.
 - 다른 GitHub 저장소를 설명할 때는 README·저장소 개요와 별도의 설치 스크립트·manifest·실제 소스 중 하나를 직접 읽습니다. 검색 요약은 근거로 세지 않습니다.
 - UI 상태·도메인 판단·입출력·영속화·외부 프로세스를 한 God Object에 몰아넣지 않습니다.
 

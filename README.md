@@ -52,7 +52,7 @@ Ordinary requests route automatically. Start strict repository or UI work with `
 ## Why `GEMINI.md` stays global
 
 - Antigravity loads `~/.gemini/GEMINI.md` as a [global rule](https://antigravity.google/docs/ide/rules).
-- The v2.3.0 entrypoint is 4,965 characters: routing, safety, evidence, planning, completion, and UI audit gates only.
+- The v2.4.0 entrypoint is 5,316 characters: routing, safety, evidence, planning, completion, and UI audit gates only.
 - Detailed code, architecture, UI, copy, and research procedures load as [focused skills](https://antigravity.google/docs/skills?app=antigravity-ide).
 - [Hooks](https://antigravity.google/docs/hooks) enforce high-risk boundaries without adding the whole procedure to every prompt.
 - Unrelated repository history and task-specific documents are not injected by default.
@@ -96,7 +96,7 @@ hook runner tests passed
 Use the installer for both current and historical profiles. It keeps the same update → backup → install → verify order.
 
 ```bash
-bash scripts/install.sh --version v2.3.0
+bash scripts/install.sh --version v2.4.0
 bash scripts/install.sh --help
 ```
 
@@ -140,6 +140,8 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 
 ## UI and implementation rules
 
+- IDE-native `analyze`, `inspect`, and `explore` calls targeting README/docs are blocked by the same source-intake gate.
+
 - no vague AI copy, empty future-talk, wand icons, fake metrics, fake dashboards, or decorative 3D art
 - no purple-blue default gradients, glass glow, nested round-card grids, identical spacing/radii, or animation without a job
 - use the real product, user task, data, states, hierarchy, existing design system, and accessibility as evidence
@@ -147,6 +149,7 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 - run the bundled `verify_ui_render.py`; it uses installed Chrome to fail on 320px/768px/1280px clipping and audit document/accessibility contracts, then writes all viewport screenshots without installing Playwright
 - write `docs/plans/design-plan.md`, `implementation-plan.md`, and `verification-plan.md` before `/GTG` UI source changes; use `verify_plan.py` and `verify_multi_page.py` when there is more than one page
 - map the repository, then read the affected source, call path, state/data path, and tests in full; README and search snippets are not implementation evidence
+- shell reads such as `cat`, `sed`, `rg`, `git show`, and script-based Markdown reads are blocked until source intake is complete; a post-write verification command must also return a successful result
 - when describing another GitHub repository, read its README/overview and a separate install script, manifest, or source file directly; search summaries do not count
 - keep UI state, domain decisions, I/O, persistence, and external processes out of one God Object
 

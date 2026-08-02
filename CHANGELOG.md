@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## v2.4.0 — 2026-08-02
+
+- blocks shell-based README·docs·Markdown reads before source intake, including `cat`, `sed`, `rg`, `git show`, and common script readers
+- blocks IDE-native `analyze`, `inspect`, and `explore` reads of README/docs before source intake
+- requires a successful post-write verification result instead of accepting a verification-shaped command alone
+- keeps the source-order guard in its own module so the hook runner does not become a God Object
+- refreshes the official Antigravity hook contract and 2026 UI evidence references used by the profile
+
 ## v2.3.0 — 2026-08-02
 
 - extends Chrome UI rendering to 320px, 768px, and 1280px so the intermediate responsive state is measured instead of inferred
