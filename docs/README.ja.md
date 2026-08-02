@@ -35,12 +35,12 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 /GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
 ```
 
-`/GTG` は、ソース優先の調査、ファイル全体の読取、一次資料、UI ソース書込前の計画、Webページ・ランディング・静的ページの2経路以上、320px・768px・デスクトップのブラウザ描画、書込後検証を依頼の終了まで維持します。
+`/GTG` は、ソース優先の調査、ファイル全体の読取、一次資料、UI ソース書込前の計画、公式 UI 資料4件・3ホスト・3分野、Webページ・ランディング・静的ページの2経路以上、320px・768px・デスクトップのブラウザ描画、計画と実装の照合、書込後検証を依頼の終了まで維持します。
 
 ## `GEMINI.md` を常時使う理由
 
 - Antigravity は `~/.gemini/GEMINI.md` を[グローバルルール](https://antigravity.google/docs/ide/rules)として読み込みます。
-- v2.5.0 のエントリポイントは 5,605 文字です。ルーティング、安全、根拠、計画、完了、UI 監査ゲートだけを置きます。
+- v2.6.0 のエントリポイントは 5,992 文字です。ソース優先のルーティング、安全、根拠、計画、完了、UI 監査ゲートだけを置きます。
 - コード、アーキテクチャ、UI、コピー、調査の手順は必要な作業でのみ[集中スキル](https://antigravity.google/docs/skills?app=antigravity-ide)として読み込みます。
 - [フック](https://antigravity.google/docs/hooks)が高リスク境界を検査するため、全手順を毎回のプロンプトへ入れません。
 - 無関係なリポジトリ履歴やタスク固有文書は既定で注入しません。
@@ -76,7 +76,7 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 現在版も過去版もインストーラで切り替えます。更新 → バックアップ → インストール → 検証の順序は同じです。
 
 ```bash
-bash scripts/install.sh --version v2.5.0
+bash scripts/install.sh --version v2.6.0
 bash scripts/install.sh --help
 ```
 
@@ -129,8 +129,9 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 - モバイルファースト、320 CSS px のリフロー、見えるフォーカス、動きの軽減設定、測定済みの性能根拠を確認します。
 - 同梱の `verify_ui_render.py` は、インストール済み Chrome で 320px・768px・1280px の横方向の切れを計測し、各幅の画像を作ります。Playwright は追加しません。
 - `/GTG` の UI ソース書込前に `docs/plans/` の設計・実装・検証計画を作り、`verify_plan.py --require-multi-page --require-ui-evidence` を実行します。Webページ・ランディング・静的ページは既定で2経路以上に分け、`verify_multi_page.py` ですべてのページを確認します。
-- UI 方向は異なる公式資料を2つ以上照合し、evidence matrix に選択・実装への影響・検証条件を残します。
+- UI 方向は公式資料4つ以上を3ホスト・3分野で照合し、evidence matrix に発見・決定・実装への影響・検証条件を残します。
 - リポジトリ全体の構造を把握してから、影響範囲の実装、呼び出し経路、状態・データ経路、テストを最後まで読みます。README と検索断片は実装根拠にしません。`cat`、`sed`、`rg`、`find`、`ls`、`tree`、`fd`、`git show`、`git ls-files` などの shell による読み取り・一覧化はソース確認が終わるまでブロックし、最後の検証は実際の成功結果がある場合だけ認めます。
+- `/GTG` の読取・レビュー・診断でも `Stop` 時に実装ソースと関連テスト全体の読了を確認します。変更しないことを理由に README・docs だけを読んで完了する経路は許可しません。
 - 別の GitHub リポジトリを説明する場合は、README・概要に加えて、インストールスクリプト、manifest、実ソースのいずれかを直接読みます。検索要約は根拠にしません。
 - UI 状態、ドメイン判断、I/O、永続化、外部プロセスを一つの God Object に集めません。
 

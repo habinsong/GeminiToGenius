@@ -35,12 +35,12 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 /GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
 ```
 
-`/GTG` 会在整个请求中保持源码优先、完整文件读取、第一方仓库证据、UI 源码写入前的计划、网站/网页/落地页/静态页至少两个路由、320px、768px 与桌面浏览器渲染、写入后验证。
+`/GTG` 会在整个请求中保持源码优先、完整文件读取、第一方仓库证据、UI 源码写入前的计划、至少4个官方 UI 来源、3个主机和3个证据类别、网站/网页/落地页/静态页至少两个路由、320px、768px 与桌面浏览器渲染、计划与实现对照、写入后验证。
 
 ## 为什么始终保留 `GEMINI.md`
 
 - Antigravity 把 `~/.gemini/GEMINI.md` 作为[全局规则](https://antigravity.google/docs/ide/rules)加载。
-- v2.5.0 入口为 5,605 个字符，仅保留路由、安全、证据、计划、完成和 UI 审计门槛。
+- v2.6.0 入口为 5,992 个字符，仅保留源码优先路由、安全、证据、计划、完成和 UI 审计门槛。
 - 代码、架构、UI、文案和检索流程只在相关任务中作为[聚焦技能](https://antigravity.google/docs/skills?app=antigravity-ide)加载。
 - [钩子](https://antigravity.google/docs/hooks)检查高风险边界，不必把全部流程塞进每次提示。
 - 默认不注入无关的仓库历史和任务文档。
@@ -76,7 +76,7 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 当前版本和历史版本都通过安装脚本切换。更新 → 备份 → 安装 → 验证的顺序不变。
 
 ```bash
-bash scripts/install.sh --version v2.5.0
+bash scripts/install.sh --version v2.6.0
 bash scripts/install.sh --help
 ```
 
@@ -129,8 +129,9 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 - 检查移动优先、320 CSS px 回流、可见焦点、减少动态效果设置和经过测量的性能依据。
 - 内置 `verify_ui_render.py` 使用已安装的 Chrome 测量 320px、768px、1280px 横向裁切并生成各视口截图，不安装 Playwright。
 - `/GTG` UI 源码变更前先写 `docs/plans/` 的设计、实现和验证计划并运行 `verify_plan.py --require-multi-page --require-ui-evidence`。网站、网页、落地页和静态页默认使用至少两个路由，再用 `verify_multi_page.py` 渲染并检查所有路径。
-- UI 方向先对照至少两个不同的官方来源，并在 evidence matrix 中记录决定、实现影响和验证门槛。
+- UI 方向先对照至少4个官方来源、3个主机和3个证据类别，并在 evidence matrix 中记录发现、决定、实现影响和验证门槛。
 - 先掌握整个仓库结构，再完整阅读影响范围内的实现、调用路径、状态与数据路径、测试。README 和搜索片段不算实现证据。源代码检查完成前，`cat`、`sed`、`rg`、`find`、`ls`、`tree`、`fd`、`git show`、`git ls-files` 等 shell 读取和文件列表命令会被拦截；最后的验证还必须有真实的成功结果。
+- `/GTG` 的只读审查、检查和诊断也会在 `Stop` 时确认实现源码与相关测试已完整读取。不能因为没有写入就只读 README·docs 后直接完成。
 - 说明其他 GitHub 仓库时，除 README 或仓库概览外，还要直接读取安装脚本、manifest 或实际源码之一。搜索摘要不算证据。
 - 不把 UI 状态、领域决策、I/O、持久化和外部进程塞进一个 God Object。
 

@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## v2.6.0 — 2026-08-03
+
+- requires contiguous `view_file` reads of affected source, configuration, and tests before README/docs/search results, writes, or exploration can guide a change; the official `list_dir` summary is not a source read
+- requires `/GTG` UI research to read at least four official URLs across three hosts and three evidence categories, then cite every URL in the report
+- adds adaptive `reflow`/`reveal`/`presentation`, compact-transition, WAI-ARIA keyboard-pattern, and evidence-matrix contracts to UI plans
+- compares planned files, routes, and flow traces with the actual implementation and browser evidence before completion
+- refreshes the working evidence set against Apple HIG, Android adaptive guidance, Chrome I/O 2026, WCAG/APG, and Google GUIDE/HCI research
+
 ## v2.5.0 — 2026-08-02
 
 - defaults website, webpage, landing-page, and static-page work to two or more route contracts instead of letting a single-page plan pass
@@ -14,6 +22,7 @@
 
 - blocks shell-based README·docs·Markdown reads before source intake, including `cat`, `sed`, `rg`, `git show`, and common script readers
 - blocks IDE-native `analyze`, `inspect`, and `explore` reads of README/docs before source intake
+- keeps strict `/GTG` review and diagnosis tasks running at `Stop` until the discovered implementation sources and related tests have full-read evidence
 - blocks workspace/folder/file-tree exploration before source intake; directory summaries never count as a complete source read
 - denies unknown analysis/exploration tools before source intake when Antigravity exposes them through the hook payload
 - requires a successful post-write verification result instead of accepting a verification-shaped command alone

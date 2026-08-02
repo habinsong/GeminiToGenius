@@ -47,12 +47,12 @@ Ordinary requests route automatically. Start strict repository or UI work with `
 /GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
 ```
 
-`/GTG` keeps the strict contract active for the whole request: source before docs, complete file reads, first-party repository evidence, plans before UI source writes, two or more routes for website/webpage/landing/static-page work, browser renders at 320 px, 768 px, and desktop width, and post-write verification.
+`/GTG` keeps the strict contract active for the whole request: source before docs, complete file reads, first-party repository evidence, plans before UI source writes, four official UI sources across three hosts and three evidence categories, two or more routes for website/webpage/landing/static-page work, browser renders at 320 px, 768 px, and desktop width, plan-versus-implementation checks, and post-write verification.
 
 ## Why `GEMINI.md` stays global
 
 - Antigravity loads `~/.gemini/GEMINI.md` as a [global rule](https://antigravity.google/docs/ide/rules).
-- The v2.5.0 entrypoint is 5,605 characters: routing, safety, evidence, planning, completion, and UI audit gates only.
+- The v2.6.0 entrypoint is 5,992 characters: source-first routing, safety, evidence, planning, completion, and UI audit gates only.
 - Detailed code, architecture, UI, copy, and research procedures load as [focused skills](https://antigravity.google/docs/skills?app=antigravity-ide).
 - [Hooks](https://antigravity.google/docs/hooks) enforce high-risk boundaries without adding the whole procedure to every prompt.
 - Unrelated repository history and task-specific documents are not injected by default.
@@ -96,7 +96,7 @@ hook runner tests passed
 Use the installer for both current and historical profiles. It keeps the same update → backup → install → verify order.
 
 ```bash
-bash scripts/install.sh --version v2.5.0
+bash scripts/install.sh --version v2.6.0
 bash scripts/install.sh --help
 ```
 
@@ -149,9 +149,10 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 - start mobile-first, preserve 320 CSS px reflow, check 768 px transition behavior, visible focus, reduced motion, and measured performance claims
 - run the bundled `verify_ui_render.py`; it uses installed Chrome to fail on 320px/768px/1280px clipping and audit document/accessibility contracts, then writes all viewport screenshots without installing Playwright
 - write `docs/plans/design-plan.md`, `implementation-plan.md`, and `verification-plan.md` before `/GTG` UI source changes; use `verify_plan.py --require-multi-page --require-ui-evidence`; website/webpage/landing/static-page work starts with two or more routes
-- read at least two different official UI sources and record the decision, implementation impact, and gate in an evidence matrix
+- read at least four official UI sources across three hosts and three evidence categories, then record the finding, decision, implementation impact, and verification gate in an evidence matrix
 - map the repository, then read the affected source, call path, state/data path, and tests in full; README and search snippets are not implementation evidence
 - shell reads and inventory commands such as `cat`, `sed`, `rg`, `find`, `ls`, `tree`, `fd`, `git show`, `git ls-files`, and script-based Markdown reads are blocked until source intake is complete; a post-write verification command must also return a successful result
+- strict `/GTG` review and diagnosis tasks also stay in `continue` at `Stop` until discovered implementation sources and related tests have full-read evidence, even when the task is read-only
 - when describing another GitHub repository, read its README/overview and a separate install script, manifest, or source file directly; search summaries do not count
 - keep UI state, domain decisions, I/O, persistence, and external processes out of one God Object
 
