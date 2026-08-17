@@ -27,9 +27,9 @@ WRITE_INTENT_RE = re.compile(
     re.IGNORECASE,
 )
 READ_ONLY_TRIGGER_RE = re.compile(
-    r"(?:\b(?:read[- ]?only|review[- ]?only|audit[- ]?only|diagnos(?:e|is)|inspect|review)\b|"
+    r"(?:\b(?:read[- ]?only|review[- ]?only|audit[- ]?only|diagnos(?:e|is)|inspect|review|explain|why|how|what|question|help)\b|"
     r"읽기\s*전용|검토|진단|감사|분석|확인만|수정하지\s*(?:마|말고)|변경하지\s*(?:마|말고)|"
-    r"절대\s+수정하지)",
+    r"절대\s+수정하지|설명해|이유|왜|어떻게|질문|알려줘|문의|알아봐|뭐야|무슨)",
     re.IGNORECASE,
 )
 ARCHITECTURE_TRIGGER_RE = re.compile(

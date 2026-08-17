@@ -65,6 +65,7 @@ def scope_read_status(payload: dict) -> dict:
         "tests": tests,
         "testsViewed": tests_viewed,
         "testRequired": code_task and bool(tests),
+        "testMinimum": len(tests) if code_task and strict_intake else min(1, len(tests)) if code_task else 0,
         "minimum": minimum,
         "codeTask": code_task,
         "target": target,
@@ -77,7 +78,7 @@ def scope_read_complete(payload: dict) -> bool:
         len(status["implementationViewed"]) >= status["minimum"]
         and len(status["sourcesViewed"]) >= status["sourceMinimum"]
         and status["targetRead"]
-        and (not status["testRequired"] or len(status["testsViewed"]) >= len(status["tests"]))
+        and (not status["testRequired"] or not (len(status["testsViewed"]) < status.get("testMinimum", len(status["tests"]) if status.get("testRequired") else 0)))
     )
 def scope_read_reason(payload: dict) -> str:
     status = scope_read_status(payload)

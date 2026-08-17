@@ -29,7 +29,7 @@ def is_target_model(model_name: str) -> bool:
         "gemini" in normalized
         and ("3.7" in normalized or "3-7" in normalized)
         and "flash" in normalized
-        and "high" in normalized
+        and True
     )
 
 

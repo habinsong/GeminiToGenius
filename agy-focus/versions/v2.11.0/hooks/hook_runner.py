@@ -24,6 +24,7 @@ from hooklib.config import (  # noqa: E402
     CHANGE_TRIGGER_RE,
     COPY_TRIGGER_RE,
     DESIGN_TRIGGER_RE,
+    WRITE_INTENT_RE,
 )
 from hooklib.gates import (  # noqa: E402
     decision_for,
@@ -42,9 +43,10 @@ from hooklib.payloads import (  # noqa: E402
     prompt_matches,
     read_payload,
     scope_text_paths,
+    written_paths,
 )
 from hooklib.state import is_target_model, profile_version, read_state, save_state  # noqa: E402
-from hooklib.ui_quality import is_strict_gtg, is_ui_task, workspace_ui_issues  # noqa: E402
+from hooklib.ui_quality import is_read_only_request, is_strict_gtg, is_ui_task, workspace_ui_issues  # noqa: E402
 from hooklib.verification import (  # noqa: E402
     post_write_unverified_paths,
     planning_verification_status,
@@ -189,7 +191,9 @@ def main() -> None:
         conversation_id = str(payload.get("conversationId", ""))
         previous = read_state()
         scope_attempts = stored_attempts(previous, conversation_id, "scopeGate")
-        scope_required = prompt_matches(payload, CHANGE_TRIGGER_RE) or is_strict_gtg(payload)
+        has_written = bool(written_paths(payload))
+        write_requested = prompt_matches(payload, WRITE_INTENT_RE) and not is_read_only_request(payload)
+        scope_required = is_strict_gtg(payload) or has_written or write_requested
         if scope_required and not scope_read_complete(payload):
             save_state(
                 event,

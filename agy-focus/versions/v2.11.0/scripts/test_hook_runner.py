@@ -1100,6 +1100,32 @@ def test_hook_cli(scope_directory: Path, payload: dict) -> None:
     assert response["decision"] == "deny"
 
 
+
+def test_stop_snapshot_allows_ordinary_inquiries() -> None:
+    with tempfile.TemporaryDirectory() as temp:
+        directory = Path(temp)
+        workspace = directory / "workspace"
+        source = workspace / "main.py"
+        workspace.mkdir()
+        source.write_text("print('code')\n", encoding="utf-8")
+        for prompt in (
+            "이거 왜 그런지 이유를 설명해줘",
+            "stop hook blocked termination due to reason: 변경 전 코드 우선 인테이크가 부족합니다.",
+            "어떻게 구현되어 있어? 질문이 있어",
+        ):
+            payload = write_transcript(
+                directory,
+                [{"type": "USER_INPUT", "content": prompt}],
+                "inquiry-conversation",
+            )
+            payload["workspacePaths"] = [str(workspace)]
+            payload["fullyIdle"] = True
+            environment = os.environ.copy()
+            environment["HOME"] = str(directory / "home")
+            response = invoke_hook_cli("stop-snapshot", payload, environment)
+            assert response.get("decision") == "allow", f"{prompt} failed: {response}"
+
+
 def main() -> None:
     runner = load_runner()
     test_tool_decisions(runner)
@@ -1131,6 +1157,7 @@ def main() -> None:
         temporary.cleanup()
     test_stop_snapshot_requires_code_first_intake()
     test_stop_snapshot_does_not_expire_scope_gate()
+    test_stop_snapshot_allows_ordinary_inquiries()
     print("hook runner tests passed")
 
 
