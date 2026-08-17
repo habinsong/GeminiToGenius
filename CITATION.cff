@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 title: "GeminiToGenius"
-version: "2.3.0"
-date-released: "2026-08-02"
+version: "2.11.1"
+date-released: "2026-08-17"
 abstract: "A harness to make Gemini less dumb in Antigravity and Antigravity IDE."
 authors:
   - name: "habinsong"

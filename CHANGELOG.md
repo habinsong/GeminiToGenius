@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## v2.11.1 — 2026-08-17
+
+- fixes Stop hook infinite loops by allowing clean turn completion instead of perpetual continue blocks
+- resolves exploration and tool deadlocks in scope-read gates by permitting list_dir, grep_search, and essential tool calls
+- improves read-only request heuristics for error reports, questions, and inquiry prompts
+- maintains strict quality standards while eliminating agent stall loops and token exhaustion
+
 ## v2.11.0 — 2026-08-17
 
 - updates model target and system prompt optimizations for Gemini 3.7 Flash (High) with hybrid reasoning and thinking token budget allocation
