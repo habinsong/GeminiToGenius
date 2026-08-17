@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## v2.11.0 — 2026-08-17
+
+- updates model target and system prompt optimizations for Gemini 3.7 Flash (High) with hybrid reasoning and thinking token budget allocation
+- adds zero AI Slop intent orchestration and removes conversational filler, repetitive narrative phrasing, and speculative over-engineering
+- strengthens single responsibility principle (SRP) architectural boundaries against God Objects in backend, frontend, and coordination layers
+- establishes human-crafted UI/UX microcopy standards with concrete action verbs, empathetic error recovery, and clear hierarchy
+- installs and verifies the v2.11.0 global profile while maintaining the entrypoint strictly under 6,000 characters (5,998 chars)
+
 ## v2.10.1 — 2026-08-03
 
 - aligns the strict research message in the Stop hook and `/GTG` skill with the four-category v2.10 contract, including design-system evidence

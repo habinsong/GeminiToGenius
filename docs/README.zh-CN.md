@@ -4,7 +4,7 @@
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 
-面向 Antigravity 和 Antigravity IDE 中 Gemini 3.6 Flash (High) 的全局规则、钩子和技能。
+面向 Antigravity 和 Antigravity IDE 中 Gemini 3.7 Flash (High) 的全局规则、钩子和技能。
 
 ## 首次安装
 
@@ -22,7 +22,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 
 | 项目 | 当前值 |
 | --- | --- |
-| 目标模型 | Gemini 3.6 Flash (High) |
+| 目标模型 | Gemini 3.7 Flash (High) |
 | 常驻规则 | 12 |
 | 生命周期钩子 | 14 |
 | 聚焦技能 | 11 |
@@ -40,7 +40,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 ## 为什么始终保留 `GEMINI.md`
 
 - Antigravity 把 `~/.gemini/GEMINI.md` 作为[全局规则](https://antigravity.google/docs/ide/rules)加载。
-- v2.10.1 入口为 5,990 个字符，仅保留源码优先路由、连续文件摄取、决策台账计划、恢复路径检查和渲染→视觉→网页对照 UI 审计门槛。
+- v2.11.0 入口为 5,998 个字符，仅保留源码优先路由、连续文件摄取、决策台账计划、恢复路径检查和渲染→视觉→网页对照 UI 审计门槛。
 - 代码、架构、UI、文案和检索流程只在相关任务中作为[聚焦技能](https://antigravity.google/docs/skills?app=antigravity-ide)加载。
 - [钩子](https://antigravity.google/docs/hooks)检查高风险边界，不必把全部流程塞进每次提示。
 - 默认不注入无关的仓库历史和任务文档。
@@ -76,7 +76,7 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 当前版本和历史版本都通过安装脚本切换。更新 → 备份 → 安装 → 验证的顺序不变。
 
 ```bash
-bash scripts/install.sh --version v2.10.1
+bash scripts/install.sh --version v2.11.0
 bash scripts/install.sh --help
 ```
 

@@ -7,7 +7,7 @@
 
 [English](README.md) · [한국어](docs/README.ko.md) · [日本語](docs/README.ja.md) · [简体中文](docs/README.zh-CN.md)
 
-Versioned global rules, hooks, and skills for Gemini 3.6 Flash (High) in Antigravity and Antigravity IDE.
+Versioned global rules, hooks, and skills for Gemini 3.7 Flash (High) in Antigravity and Antigravity IDE.
 
 ## First install
 
@@ -34,7 +34,7 @@ After `Installed agy-focus v...` appears, restart Antigravity or Antigravity IDE
 
 | Item | Current |
 | --- | --- |
-| Model target | Gemini 3.6 Flash (High) |
+| Model target | Gemini 3.7 Flash (High) |
 | Always-on rules | 12 |
 | Lifecycle hooks | 14 |
 | Focused skills | 11 |
@@ -52,7 +52,7 @@ Ordinary requests route automatically. Start strict repository or UI work with `
 ## Why `GEMINI.md` stays global
 
 - Antigravity loads `~/.gemini/GEMINI.md` as a [global rule](https://antigravity.google/docs/ide/rules).
-- The v2.10.1 entrypoint is 5,990 characters: source-first routing, contiguous file intake, decision-ledger planning, recovery-path checks, and render-to-vision-to-web UI audit gates only.
+- The v2.11.0 entrypoint is 5,998 characters: source-first routing, contiguous file intake, decision-ledger planning, recovery-path checks, and render-to-vision-to-web UI audit gates only.
 - Detailed code, architecture, UI, copy, and research procedures load as [focused skills](https://antigravity.google/docs/skills?app=antigravity-ide).
 - [Hooks](https://antigravity.google/docs/hooks) enforce high-risk boundaries without adding the whole procedure to every prompt.
 - Unrelated repository history and task-specific documents are not injected by default.
@@ -96,7 +96,7 @@ hook runner tests passed
 Use the installer for both current and historical profiles. It keeps the same update → backup → install → verify order.
 
 ```bash
-bash scripts/install.sh --version v2.10.1
+bash scripts/install.sh --version v2.11.0
 bash scripts/install.sh --help
 ```
 

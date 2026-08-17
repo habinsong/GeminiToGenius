@@ -4,7 +4,7 @@
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 
-Antigravity と Antigravity IDE の Gemini 3.6 Flash (High) 向けグローバルルール・フック・スキルです。
+Antigravity と Antigravity IDE の Gemini 3.7 Flash (High) 向けグローバルルール・フック・スキルです。
 
 ## 初回インストール
 
@@ -22,7 +22,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 
 | 項目 | 現在値 |
 | --- | --- |
-| 対象モデル | Gemini 3.6 Flash (High) |
+| 対象モデル | Gemini 3.7 Flash (High) |
 | 常時ルール | 12 |
 | ライフサイクルフック | 14 |
 | 集中スキル | 11 |
@@ -40,7 +40,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 ## `GEMINI.md` を常時使う理由
 
 - Antigravity は `~/.gemini/GEMINI.md` を[グローバルルール](https://antigravity.google/docs/ide/rules)として読み込みます。
-- v2.10.1 のエントリポイントは 5,990 文字です。ソース優先ルーティング、連続ファイルインテーク、判断台帳の計画、復旧経路の確認、描画→vision→Web 比較の UI 監査ゲートだけを置きます。
+- v2.11.0 のエントリポイントは 5,998 文字です。ソース優先ルーティング、連続ファイルインテーク、判断台帳の計画、復旧経路の確認、描画→vision→Web 比較の UI 監査ゲートだけを置きます。
 - コード、アーキテクチャ、UI、コピー、調査の手順は必要な作業でのみ[集中スキル](https://antigravity.google/docs/skills?app=antigravity-ide)として読み込みます。
 - [フック](https://antigravity.google/docs/hooks)が高リスク境界を検査するため、全手順を毎回のプロンプトへ入れません。
 - 無関係なリポジトリ履歴やタスク固有文書は既定で注入しません。
@@ -76,7 +76,7 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 現在版も過去版もインストーラで切り替えます。更新 → バックアップ → インストール → 検証の順序は同じです。
 
 ```bash
-bash scripts/install.sh --version v2.10.1
+bash scripts/install.sh --version v2.11.0
 bash scripts/install.sh --help
 ```
 
