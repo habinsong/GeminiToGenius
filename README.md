@@ -21,21 +21,24 @@ The script does this in order:
 
 1. updates the clone with `git pull --ff-only`
 2. moves the installed Gemini profile into a dated backup folder
-3. installs the current profile
+3. installs the current profile (v2.12.0)
 4. runs the profile and hook checks
 
 It does not use `curl | sh`. The checkout is on disk before anything runs.
 
 Requirements: macOS, `git`, `python3`, and `rsync`. `/GTG` UI checks also need Google Chrome or Chromium already installed.
 
-After `Installed agy-focus v...` appears, restart Antigravity or Antigravity IDE.
+After `Installed agy-focus v2.12.0` appears, restart Antigravity or Antigravity IDE.
 
 ## What gets installed
 
-| Item | Current |
+| Item | Current (v2.12.0) |
 | --- | --- |
-| Model target | Gemini 3.7 Flash (High) |
-| Always-on rules | 12 |
+| Model target | Gemini 3.7 Flash (High) Hybrid Reasoning |
+| Global Engineering Rules | 22 complete rules (GEMINI.md 100% mapped) |
+| Architecture Guardrail | 500-Line Limit Rule (500 LOC max per file) |
+| Debugging Pipeline | 7-step debugging & 4-field blocker reporting |
+| UI/UX Design System | Windows 11 & WinUI 3 Fluent Design System 2.0 |
 | Lifecycle hooks | 14 |
 | Focused skills | 11 |
 | Plugins | none |
@@ -44,15 +47,15 @@ After `Installed agy-focus v...` appears, restart Antigravity or Antigravity IDE
 Ordinary requests route automatically. Start strict repository or UI work with `/GTG`.
 
 ```text
-/GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
+/GTG Build a webpage explaining "habinsong/GeminiToGenius"
 ```
 
-`/GTG` keeps the strict contract active for the whole request: source before docs, complete file reads, first-party repository evidence, plans before UI source writes, four official UI sources across three hosts and four evidence categories, two or more routes for website/webpage/landing/static-page work, browser renders at 320 px, 768 px, and desktop width, Computer Use/vision observation after rendering, post-observation official web comparison, plan-versus-implementation checks, and post-write verification.
+`/GTG` keeps the strict contract active for the whole request: prompt repeat-back, source before docs, complete file reads, 500-line architecture limits, surgical minimum changes, browser renders at 320 px, 768 px, and desktop width, and post-write verification.
 
 ## Why `GEMINI.md` stays global
 
 - Antigravity loads `~/.gemini/GEMINI.md` as a [global rule](https://antigravity.google/docs/ide/rules).
-- The v2.11.1 entrypoint is 5,998 characters: source-first routing, contiguous file intake, decision-ledger planning, recovery-path checks, and render-to-vision-to-web UI audit gates only.
+- The v2.12.0 entrypoint establishes 22 comprehensive engineering standards: prompt repeat-back, single-responsibility boundaries, 500-line limits, 7-step debugging, and strict verification gates.
 - Detailed code, architecture, UI, copy, and research procedures load as [focused skills](https://antigravity.google/docs/skills?app=antigravity-ide).
 - [Hooks](https://antigravity.google/docs/hooks) enforce high-risk boundaries without adding the whole procedure to every prompt.
 - Unrelated repository history and task-specific documents are not injected by default.
@@ -96,7 +99,7 @@ hook runner tests passed
 Use the installer for both current and historical profiles. It keeps the same update → backup → install → verify order.
 
 ```bash
-bash scripts/install.sh --version v2.11.0
+bash scripts/install.sh --version v2.12.0
 bash scripts/install.sh --help
 ```
 
@@ -140,22 +143,12 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 
 ## UI and implementation rules
 
-- IDE-native `analyze`, `inspect`, and `explore` calls targeting README/docs, workspace folders, or file trees are blocked by the same source-intake gate; directory summaries never count as source reads.
-- Unknown IDE analysis/exploration tools are denied before source intake when they reach the hook payload; `view_file` and registered verification commands remain the explicit path.
-
-- no vague AI copy, empty future-talk, wand icons, fake metrics, fake dashboards, or decorative 3D art
-- no purple-blue default gradients, glass glow, nested round-card grids, identical spacing/radii, or animation without a job
-- use the real product, user task, data, states, hierarchy, existing design system, and accessibility as evidence
-- start mobile-first, preserve 320 CSS px reflow, check 768 px transition behavior, visible focus, reduced motion, and measured performance claims
-- run the bundled `verify_ui_render.py`; it uses installed Chrome to fail on 320px/768px/1280px clipping and audit document/accessibility contracts, then writes all viewport screenshots without installing Playwright
-- write `docs/plans/design-plan.md`, `implementation-plan.md`, and `verification-plan.md` before `/GTG` UI source changes; use `verify_plan.py --require-multi-page --require-ui-evidence`; website/webpage/landing/static-page work starts with two or more routes
-- read at least four official UI sources across three hosts and four evidence categories, then record the finding, decision, implementation impact, and verification gate in an evidence matrix
-- after rendering, inspect each route/state with Computer Use or vision; then run `search_web` and read an official UI page with `read_url_content` before recording the comparison
-- map the repository, then read the affected source, call path, state/data path, and tests in full; README and search snippets are not implementation evidence
-- shell reads and inventory commands such as `cat`, `sed`, `rg`, `find`, `ls`, `tree`, `fd`, `git show`, `git ls-files`, and script-based Markdown reads are blocked until source intake is complete; a post-write verification command must also return a successful result
-- strict `/GTG` review and diagnosis tasks also stay in `continue` at `Stop` until discovered implementation sources and related tests have full-read evidence, even when the task is read-only
-- when describing another GitHub repository, read its README/overview and a separate install script, manifest, or source file directly; search summaries do not count
-- keep UI state, domain decisions, I/O, persistence, and external processes out of one God Object
+- **Zero AI Slop**: no vague AI marketing copy, wand icons, fake metrics, or decorative 3D art.
+- **Windows 11 & WinUI 3 Fluent System**: authentic Mica/Acrylic surfaces, Settings Cards, ToggleSwitches, and Windows Terminal.
+- **500-Line Limit Rule**: no single source file may exceed 500 lines without modular SRP decomposition.
+- **Full View Reads**: complete 1-to-N file reads required; partial snippets and hallucination are strictly forbidden.
+- **Chrome Visual Measurements**: bundled `verify_ui_render.py` validates 320px, 768px, and 1280px viewports with zero horizontal overflow.
+- **5-Field Standard Reports**: final turn reports structured as Summary, Changed Files, Commands Executed, Verification Results, and Remaining Risks.
 
 ## Layout
 

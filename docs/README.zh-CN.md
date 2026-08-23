@@ -1,147 +1,52 @@
 # GeminiToGenius
 
-> 一套让 Gemini 没那么笨的约束。
+> 让 Gemini 更聪明好用的工程控制线束。
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 
-面向 Antigravity 和 Antigravity IDE 中 Gemini 3.7 Flash (High) 的全局规则、钩子和技能。
+适用于 Antigravity 和 Antigravity IDE 中 Gemini 3.7 Flash (High) 的全局规则、钩子和技能集合。
 
 ## 首次安装
 
-macOS 上执行这一行：
+macOS 系统中只需运行一行命令：
 
 ```bash
 git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius/scripts/install.sh
 ```
 
-脚本按顺序执行：`git pull --ff-only`、把现有配置移到带时间戳的备份目录、安装当前配置、运行验证。
+脚本会按以下顺序执行：
 
-不使用 `curl | sh`。先 clone，再运行本地脚本。需要 `git`、`python3` 和 `rsync`。`/GTG` UI 验证还需要已安装的 Google Chrome 或 Chromium。出现 `Installed agy-focus v...` 后重启 Antigravity 或 Antigravity IDE。
+1. 使用 `git pull --ff-only` 更新本地仓库
+2. 将现有配置备份到带时间戳的文件夹
+3. 安装当前配置文件 (v2.12.0)
+4. 运行配置文件和钩子测试
 
-## 内容
+不使用 `curl | sh`。依赖命令：`git`、`python3`、`rsync`。`/GTG` UI 验证需要已安装的 Google Chrome 或 Chromium。看到 `Installed agy-focus v2.12.0` 后重启 Antigravity 或 Antigravity IDE。
 
-| 项目 | 当前值 |
+## 安装内容
+
+| 项目 | 当前值 (v2.12.0) |
 | --- | --- |
-| 目标模型 | Gemini 3.7 Flash (High) |
-| 常驻规则 | 12 |
+| 目标模型 | Gemini 3.7 Flash (High) 混合推理 |
+| 全局工程规则 | 22 条完整规则 (GEMINI.md 100% 映射) |
+| 架构防线 | 500 行限制规则 (500-Line Limit Rule) |
+| 调试管线 | 7 步调试法 & 4 字段报告格式 |
+| UI/UX 设计系统 | Windows 11 & WinUI 3 Fluent Design System 2.0 |
 | 生命周期钩子 | 14 |
-| 聚焦技能 | 11 |
+| 专项技能 | 11 |
 | 外部插件 | 无 |
-| MCP | 仅当连接本身就是任务目标 |
+| MCP | 仅在连接本身为任务目标时使用 |
 
-普通请求会自动路由。仓库或 UI 工作需要严格模式时，以 `/GTG` 开头。
-
-```text
-/GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
-```
-
-`/GTG` 会在整个请求中保持源码优先、完整文件读取、第一方仓库证据、UI 源码写入前的计划、至少4个官方 UI 来源、3个主机和4个证据类别、网站/网页/落地页/静态页至少两个路由、320px、768px 与桌面浏览器渲染、渲染后的 Computer Use/vision 观察、观察后的官方网页对照、计划与实现对照、写入后验证。
-
-## 为什么始终保留 `GEMINI.md`
-
-- Antigravity 把 `~/.gemini/GEMINI.md` 作为[全局规则](https://antigravity.google/docs/ide/rules)加载。
-- v2.11.1 入口为 5,998 个字符，仅保留源码优先路由、连续文件摄取、决策台账计划、恢复路径检查和渲染→视觉→网页对照 UI 审计门槛。
-- 代码、架构、UI、文案和检索流程只在相关任务中作为[聚焦技能](https://antigravity.google/docs/skills?app=antigravity-ide)加载。
-- [钩子](https://antigravity.google/docs/hooks)检查高风险边界，不必把全部流程塞进每次提示。
-- 默认不注入无关的仓库历史和任务文档。
-
-## 已安装用户更新
-
-在旧 clone 中运行同一脚本：
-
-```bash
-cd /path/to/GeminiToGenius
-bash scripts/install.sh
-```
-
-脚本先更新 checkout，所以旧安装会切换到当前配置。如果有 tracked 改动，脚本会在 `git pull` 前停止；请先 commit、stash 或整理改动。
-
-每次运行都会输出类似的备份路径：
-
-```text
-/Users/you/.gemini-backup-YYYYMMDD-HHMMSS
-```
-
-## 验证安装
-
-```bash
-python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
-python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
-```
-
-看到 `"ok": true`、`"rules": 12`、`"hooks": 14`、`"skills": 11` 和 `hook runner tests passed` 即可。
-
-## 切换版本
-
-当前版本和历史版本都通过安装脚本切换。更新 → 备份 → 安装 → 验证的顺序不变。
-
-```bash
-bash scripts/install.sh --version v2.11.1
-bash scripts/install.sh --help
-```
-
-以后运行 `bash scripts/install.sh` 会回到最新版。
-
-## 删除
-
-这会移除链接并把配置移到带时间戳的目录，不会立即删除该目录。
-
-```bash
-REMOVED_DIR="$HOME/.gemini-removed-$(date +%Y%m%d-%H%M%S)"
-mkdir -p "$REMOVED_DIR/config"
-
-if [ -L "$HOME/.gemini/GEMINI.md" ]; then unlink "$HOME/.gemini/GEMINI.md"; fi
-if [ -L "$HOME/.gemini/config/hooks.json" ]; then unlink "$HOME/.gemini/config/hooks.json"; fi
-if [ -L "$HOME/.gemini/config/skills" ]; then unlink "$HOME/.gemini/config/skills"; fi
-if [ -e "$HOME/.gemini/config/agy-focus" ] || [ -L "$HOME/.gemini/config/agy-focus" ]; then
-  mv "$HOME/.gemini/config/agy-focus" "$REMOVED_DIR/config/agy-focus"
-fi
-
-printf '%s\n' "$REMOVED_DIR"
-```
-
-确认输出路径后再删除：
-
-```bash
-rm -rf "$REMOVED_DIR"
-```
-
-## 恢复备份
-
-填入安装脚本输出的实际路径。
-
-```bash
-BACKUP_DIR="$HOME/.gemini-backup-YYYYMMDD-HHMMSS"
-mv "$BACKUP_DIR/config/agy-focus" "$HOME/.gemini/config/agy-focus"
-mv "$BACKUP_DIR/GEMINI.md" "$HOME/.gemini/GEMINI.md"
-mv "$BACKUP_DIR/config/hooks.json" "$HOME/.gemini/config/hooks.json"
-mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
-```
+普通请求会自动路由。严格模式请以 `/GTG` 开头。
 
 ## UI 与实现规则
 
-- 使用 IDE 原生 `analyze`、`inspect`、`explore` 先分析 README/docs、workspace 文件夹或文件树的路径也会被同一个源代码优先门禁拦截；目录摘要不算源码读取。
-- 进入钩子 payload 的未注册分析或探索工具也会在源码读取前被拒绝；明确允许的路径是 `view_file` 和已登记的验证命令。
-
-- 不写模糊的 AI 文案、空泛的未来口号、魔法棒图标、假指标与假仪表盘，也不用装饰性 3D 图。
-- 不把紫蓝渐变、玻璃与辉光、嵌套圆角卡片、相同间距与圆角的重复、无意义动画当成默认方案。
-- 以真实产品、用户任务、数据、状态、信息层级、现有设计系统和可访问性为依据。
-- 检查移动优先、320 CSS px 回流、可见焦点、减少动态效果设置和经过测量的性能依据。
-- 内置 `verify_ui_render.py` 使用已安装的 Chrome 测量 320px、768px、1280px 横向裁切并生成各视口截图，不安装 Playwright。
-- `/GTG` UI 源码变更前先写 `docs/plans/` 的设计、实现和验证计划并运行 `verify_plan.py --require-multi-page --require-ui-evidence`。网站、网页、落地页和静态页默认使用至少两个路由，再用 `verify_multi_page.py` 渲染并检查所有路径。
-- UI 方向先对照至少4个官方来源、3个主机和4个证据类别，并在 evidence matrix 中记录发现、决定、实现影响和验证门槛。
-- 渲染后用 Computer Use/vision 检查每条路径和状态，再用 `search_web` 与官方 `read_url_content` 对照画面判断。
-- 先掌握整个仓库结构，再完整阅读影响范围内的实现、调用路径、状态与数据路径、测试。README 和搜索片段不算实现证据。源代码检查完成前，`cat`、`sed`、`rg`、`find`、`ls`、`tree`、`fd`、`git show`、`git ls-files` 等 shell 读取和文件列表命令会被拦截；最后的验证还必须有真实的成功结果。
-- `/GTG` 的只读审查、检查和诊断也会在 `Stop` 时确认实现源码与相关测试已完整读取。不能因为没有写入就只读 README·docs 后直接完成。
-- 说明其他 GitHub 仓库时，除 README 或仓库概览外，还要直接读取安装脚本、manifest 或实际源码之一。搜索摘要不算证据。
-- 不把 UI 状态、领域决策、I/O、持久化和外部进程塞进一个 God Object。
-
-## 目录
-
-- `agy-focus/versions/` — 版本化配置
-- `agy-focus/current` — 当前配置链接
-- `scripts/install.sh` — 更新、备份、安装、验证
-- `installed/` — 当前安装表面的副本
+- **Zero AI Slop**: 杜绝空洞 AI 文案、魔法棒图标、虚假指标和装饰性 3D 图形。
+- **Windows 11 & WinUI 3**: Mica/Acrylic 材质、Settings Cards、ToggleSwitch 开关与 Windows Terminal。
+- **500 行限制规则 (500-Line Limit Rule)**: 单文件不超过 500 行，基于单一职责原则 (SRP) 拆分子模块。
+- **全景代码阅读**: 必须从第 1 行完整阅读至末尾，严禁局部片段猜测或幻觉。
+- **Chrome 三档视口测量**: `verify_ui_render.py` 验证 320px、768px、1280px 零水平溢出。
+- **5 大标准响应格式**: 变更摘要、修改文件、执行命令、验证结果、剩余风险。
 
 ## 帮助与贡献
 
@@ -150,4 +55,4 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 - [Contributing](../CONTRIBUTING.md)
 - [Changelog](../CHANGELOG.md)
 
-MIT 许可证。请查看 [LICENSE](../LICENSE)。
+MIT 协议，请参阅 [LICENSE](../LICENSE)。

@@ -1,6 +1,6 @@
 {
   "name": "agy-focus",
-  "version": "2.11.3",
+  "version": "2.12.0",
   "based_on": "2.11.2",
   "target": "Gemini 3.7 Flash (High)",
   "model_id": "gemini-3.7-flash",

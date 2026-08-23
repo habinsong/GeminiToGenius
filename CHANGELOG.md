@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+## v2.12.0 — 2026-08-23
+
+- completely ports all 22 global engineering rules (0. Communication to 21. Hard Prohibitions) from `GEMINI.md` without omission, truncation, or invention
+- introduces the **500-Line Limit Rule (500 LOC)** preventing single-file bloat and enforcing single-responsibility component decomposition
+- embeds the 7-step debugging pipeline and 4-field blocker reporting format (`Tested`, `Failed`, `Ruled out`, `Next cause`)
+- integrates strict security gates covering 9 sensitive files and dangerous command execution bans
+- completely redesigns the presentation site with **Microsoft Windows 11 & WinUI 3 Fluent Design System 2.0** (Mica surfaces, Settings Cards, Windows Terminal, TitleBar)
+- synchronizes versioning across all components to v2.12.0
+
 ## v2.11.3 — 2026-08-23
 
 - establishes repository root `VERSION` as the single source of truth for version management
