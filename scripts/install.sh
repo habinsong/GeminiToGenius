@@ -94,6 +94,9 @@ backup_item "$config_root/skills" "$backup_dir/config/skills"
 printf 'Installing agy-focus v%s...\n' "$profile_version"
 mkdir -p "$profile_root"
 rsync -a --exclude '__pycache__/' --exclude '*.pyc' "$repo_root/agy-focus/" "$profile_root/"
+if [ -d "$profile_root/versions" ]; then
+  find "$profile_root/versions" -mindepth 1 -maxdepth 1 ! -name "v$profile_version" -exec rm -rf {} +
+fi
 ln -sfn "$selected_link" "$profile_root/current"
 ln -sfn config/agy-focus/current/GEMINI.md "$gemini_home/GEMINI.md"
 ln -sfn agy-focus/current/hooks/hooks.json "$config_root/hooks.json"

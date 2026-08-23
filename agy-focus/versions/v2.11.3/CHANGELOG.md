@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## v2.11.3 — 2026-08-23
+
+- establishes repository root `VERSION` as the single source of truth for version management
+- adds `scripts/sync_version.py` to synchronize profile versions, manifests, entrypoint assembly, and cleanup in one step
+- adds automated dynamic pruning in `scripts/install.sh` to remove non-active version directories without hardcoding
+- resolves scattered version strings and prevents legacy version accumulation across updates
+
 ## v2.11.2 — 2026-08-23
 
 - fixes step type recognition (`GENERIC`, `SYSTEM_MESSAGE`) in `verification_after_last_write` and helper verifiers
