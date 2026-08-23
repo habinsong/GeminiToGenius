@@ -21,24 +21,24 @@ The script does this in order:
 
 1. updates the clone with `git pull --ff-only`
 2. moves the installed Gemini profile into a dated backup folder
-3. installs the current profile (v2.12.0)
+3. installs the current profile (v2.13.0)
 4. runs the profile and hook checks
 
 It does not use `curl | sh`. The checkout is on disk before anything runs.
 
 Requirements: macOS, `git`, `python3`, and `rsync`. `/GTG` UI checks also need Google Chrome or Chromium already installed.
 
-After `Installed agy-focus v2.12.0` appears, restart Antigravity or Antigravity IDE.
+After `Installed agy-focus v2.13.0` appears, restart Antigravity or Antigravity IDE.
 
 ## What gets installed
 
-| Item | Current (v2.12.0) |
+| Item | Current (v2.13.0) |
 | --- | --- |
 | Model target | Gemini 3.7 Flash (High) Hybrid Reasoning |
 | Global Engineering Rules | 22 complete rules (GEMINI.md 100% mapped) |
 | Architecture Guardrail | 500-Line Limit Rule (500 LOC max per file) |
 | Debugging Pipeline | 7-step debugging & 4-field blocker reporting |
-| UI/UX Design System | Windows 11 & WinUI 3 Fluent Design System 2.0 |
+| UI/UX Design System | Apple Liquid Glass UI (visionOS/macOS materials) |
 | Lifecycle hooks | 14 |
 | Focused skills | 11 |
 | Plugins | none |
@@ -55,7 +55,7 @@ Ordinary requests route automatically. Start strict repository or UI work with `
 ## Why `GEMINI.md` stays global
 
 - Antigravity loads `~/.gemini/GEMINI.md` as a [global rule](https://antigravity.google/docs/ide/rules).
-- The v2.12.0 entrypoint establishes 22 comprehensive engineering standards: prompt repeat-back, single-responsibility boundaries, 500-line limits, 7-step debugging, and strict verification gates.
+- The v2.13.0 entrypoint establishes 22 comprehensive engineering standards: prompt repeat-back, single-responsibility boundaries, 500-line limits, 7-step debugging, and strict verification gates.
 - Detailed code, architecture, UI, copy, and research procedures load as [focused skills](https://antigravity.google/docs/skills?app=antigravity-ide).
 - [Hooks](https://antigravity.google/docs/hooks) enforce high-risk boundaries without adding the whole procedure to every prompt.
 - Unrelated repository history and task-specific documents are not injected by default.
@@ -144,7 +144,8 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 ## UI and implementation rules
 
 - **Zero AI Slop**: no vague AI marketing copy, wand icons, fake metrics, or decorative 3D art.
-- **Windows 11 & WinUI 3 Fluent System**: authentic Mica/Acrylic surfaces, Settings Cards, ToggleSwitches, and Windows Terminal.
+- **Apple Liquid Glass UI**: authentic translucent glass surfaces, specular rim lights, SF Pro typography, and Apple.com minimalist aesthetics.
+- **Human-Crafted Copy**: friendly, accessible natural language with complete sentence endings and no technical jargon for non-developers.
 - **500-Line Limit Rule**: no single source file may exceed 500 lines without modular SRP decomposition.
 - **Full View Reads**: complete 1-to-N file reads required; partial snippets and hallucination are strictly forbidden.
 - **Chrome Visual Measurements**: bundled `verify_ui_render.py` validates 320px, 768px, and 1280px viewports with zero horizontal overflow.

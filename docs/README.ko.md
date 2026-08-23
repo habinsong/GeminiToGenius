@@ -1,85 +1,84 @@
 # GeminiToGenius
 
-> Gemini 를 덜 멍청하게 만드는 하네스입니다.
+> Gemini를 더욱 똑똑하고 안전하게 만드는 AI 코딩 보조 하네스입니다.
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 
-Gemini 3.7 Flash (High)를 Antigravity와 Antigravity IDE에서 쓰기 위한 전역 규칙·훅·스킬 묶음입니다.
+Gemini 3.7 Flash (High)를 Antigravity 및 Antigravity IDE에서 사용하기 위한 전역 규칙·훅·스킬 묶음입니다.
 
-## 처음 설치
+## 처음 설치하기
 
-macOS에서 아래 한 줄만 실행합니다.
+macOS 터미널에서 아래 한 줄의 명령어를 실행해 주세요.
 
 ```bash
 git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius/scripts/install.sh
 ```
 
-스크립트가 순서대로 처리합니다.
+설치 스크립트가 다음 순서대로 안전하게 처리합니다.
 
-1. `git pull --ff-only`로 저장소를 최신화합니다.
-2. 기존 Gemini 프로필을 날짜가 붙은 폴더로 옮깁니다.
-3. 현재 프로필(v2.12.0)을 설치합니다.
-4. 프로필과 훅을 검증합니다.
+1. `git pull --ff-only`로 최신 변경사항을 가져옵니다.
+2. 기존에 설치되어 있던 Gemini 프로필을 날짜가 적힌 백업 폴더로 안전하게 옮깁니다.
+3. 최신 프로필(v2.13.0)을 새롭게 설치합니다.
+4. 설치된 프로필과 검증 훅이 정상적으로 동작하는지 확인합니다.
 
-`curl | sh`는 쓰지 않습니다. 먼저 저장소를 받은 뒤 그 안의 스크립트를 실행합니다.
+`curl | sh` 방식은 사용하지 않으며, 먼저 저장소를 내려받은 뒤 스크립트를 직접 실행합니다.
 
-필수 명령은 `git`, `python3`, `rsync`입니다. `/GTG` UI 검증에는 이미 설치된 Google Chrome 또는 Chromium도 필요합니다. `Installed agy-focus v2.12.0`가 보이면 Antigravity 또는 Antigravity IDE를 다시 실행합니다.
+필요한 프로그램은 `git`, `python3`, `rsync`입니다. 화면 디자인 검증을 진행할 때는 이미 설치된 Google Chrome 또는 Chromium이 함께 사용됩니다. 설치가 끝나고 `Installed agy-focus v2.13.0` 메시지가 보이면 Antigravity 또는 Antigravity IDE를 다시 시작해 주세요.
 
-## 설치되는 것
+## 설치되는 항목 안내
 
-| 항목 | 현재값 (v2.12.0) |
+| 항목 | 현재 설정값 (v2.13.0) |
 | --- | --- |
-| 대상 모델 | Gemini 3.7 Flash (High) 하이브리드 추론 |
-| 전역 엔지니어링 규칙 | 22개 완전 규칙 (GEMINI.md 100% 매핑) |
-| 아키텍처 가드레일 | 500줄 제한 규칙 (500-Line Limit Rule) |
-| 디버깅 파이프라인 | 7단계 디버깅 및 4대 필수 보고 포맷 |
-| UI/UX 디자인 시스템 | Windows 11 & WinUI 3 Fluent Design System 2.0 |
-| 수명 주기 훅 | 14개 |
-| 집중 스킬 | 11개 |
-| 외부 플러그인 | 없음 |
-| MCP | 접속 자체가 작업 목적일 때만 |
+| 대상 AI 모델 | Gemini 3.7 Flash (High) 하이브리드 추론 |
+| 전역 엔지니어링 규칙 | 22가지 핵심 원칙 (GEMINI.md 원문 100% 반영) |
+| 파일 크기 제한 규칙 | 500줄 제한 규율 (파일 하나당 최대 500줄로 나누기) |
+| 오류 해결 과정 | 7단계 디버깅 및 막힌 부분 솔직 보고 양식 |
+| 화면 디자인 시스템 | Apple Liquid Glass UI (visionOS / macOS 글래스 스타일) |
+| 자동 보호 훅 | 14개 |
+| 역할별 전담 스킬 | 11개 |
+| 불필요한 플러그인 | 없음 |
+| 외부 서버 연결 | 사용자가 명시적으로 요청했을 때만 연결 |
 
-일반 요청은 자동으로 분류합니다. 저장소·UI 작업을 엄격 모드로 진행할 때는 `/GTG`로 시작합니다.
+일반적인 요청은 자동으로 알맞게 처리됩니다. 코드를 깊이 있게 수정하거나 웹 화면을 꼼꼼하게 만들고 싶으실 때는 `/GTG`를 입력하여 시작해 주세요.
 
 ```text
 /GTG "habinsong/GeminiToGenius" 를 설명하는 웹페이지 만들어줘
 ```
 
-`/GTG`는 요청이 끝날 때까지 복명복창, 코드 우선 탐색, 파일 전체 읽기, 500줄 제한 준수, 외과수술식 최소 변경, 320px·768px·데스크톱 브라우저 렌더, 쓰기 후 직접 검증을 유지합니다.
+`/GTG` 모드가 켜지면 작업이 완전히 끝날 때까지 사용자의 지시를 다시 확인하고, 파일을 처음부터 끝까지 빠짐없이 읽으며, 문제가 있는 부분만 조심스럽게 고친 뒤 브라우저 화면 검증까지 꼼꼼하게 진행합니다.
 
-## `GEMINI.md`를 항상 두는 이유
+## `GEMINI.md`를 전역 규칙으로 두는 이유
 
-- Antigravity는 `~/.gemini/GEMINI.md`를 [전역 규칙](https://antigravity.google/docs/ide/rules)으로 읽습니다.
-- v2.12.0 진입점은 복명복창, 단일 책임 원칙, 500줄 제한, 7단계 디버깅 및 엄격 검증 게이트를 포함한 22개 전역 엔지니어링 표준을 확립합니다.
-- 코드·아키텍처·UI·카피·조사 절차는 관련 작업에서만 [집중 스킬](https://antigravity.google/docs/skills?app=antigravity-ide)로 불러옵니다.
-- [훅](https://antigravity.google/docs/hooks)이 고위험 경계를 검사하므로 모든 프롬프트에 전체 절차를 넣지 않습니다.
-- 무관한 저장소 이력과 작업별 문서는 기본 주입하지 않습니다.
+- Antigravity는 `~/.gemini/GEMINI.md` 파일을 [전역 규칙](https://antigravity.google/docs/ide/rules)으로 읽어 들입니다.
+- v2.13.0 진입점은 지시 사항 확인, 파일 분리, 500줄 제한, 7단계 디버깅 등 22가지 핵심 엔지니어링 표준을 항상 기억하도록 돕습니다.
+- 복잡한 세부 절차는 필요할 때만 [전담 스킬](https://antigravity.google/docs/skills?app=antigravity-ide)을 통해 알맞게 불러옵니다.
+- [보호 훅](https://antigravity.google/docs/hooks)이 위험한 행동을 미리 막아주므로, 매번 긴 프롬프트를 일일이 적지 않아도 안전하게 작업할 수 있습니다.
 
-## 기존 사용자 업데이트
+## 기존 사용자 업데이트 방법
 
-예전 clone에서 아래만 실행합니다.
+이전에 내려받았던 폴더에서 아래 명령어를 실행해 주세요.
 
 ```bash
 cd /path/to/GeminiToGenius
 bash scripts/install.sh
 ```
 
-스크립트가 먼저 저장소를 최신화하므로 예전 프로필도 현재 버전으로 바뀝니다. tracked 변경이 있으면 `git pull` 전에 멈춥니다. 그때는 커밋·stash·정리 중 하나를 먼저 하시면 됩니다.
+설치 스크립트가 저장소를 먼저 최신으로 업데이트하므로, 이전 버전이 자동으로 최신 버전으로 갱신됩니다. 만약 작업 중이던 변경사항이 있다면 먼저 커밋하거나 정리한 뒤에 실행해 주세요.
 
-실행할 때마다 다음과 같은 백업 경로가 출력됩니다.
+실행할 때마다 아래와 같은 복구용 백업 경로가 안내됩니다.
 
 ```text
 /Users/you/.gemini-backup-YYYYMMDD-HHMMSS
 ```
 
-## 설치 확인
+## 정상 설치 여부 확인하기
 
 ```bash
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/verify_profile.py"
 python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 ```
 
-아래가 보이면 됩니다.
+아래와 같은 결과가 나오면 정상적으로 설치된 것입니다.
 
 ```text
 "ok": true
@@ -89,20 +88,18 @@ python3 "$HOME/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"
 hook runner tests passed
 ```
 
-## 버전 변경
+## 버전 변경하기
 
-현재 버전과 과거 버전 모두 설치 스크립트로 바꿉니다. 최신화 → 백업 → 설치 → 검증 순서는 같습니다.
+원하는 버전으로 언제든지 쉽게 전환하실 수 있습니다.
 
 ```bash
-bash scripts/install.sh --version v2.12.0
+bash scripts/install.sh --version v2.13.0
 bash scripts/install.sh --help
 ```
 
-`bash scripts/install.sh`를 실행하면 다시 최신 버전으로 돌아옵니다.
+## 삭제하는 방법
 
-## 삭제
-
-아래 명령은 링크를 끊고 프로필을 날짜 폴더로 옮깁니다. 그 폴더는 지우지 않습니다.
+연결된 링크를 해제하고 프로필을 날짜가 적힌 폴더로 안전하게 옮깁니다. 폴더는 임의로 삭제되지 않습니다.
 
 ```bash
 REMOVED_DIR="$HOME/.gemini-removed-$(date +%Y%m%d-%H%M%S)"
@@ -118,15 +115,9 @@ fi
 printf '%s\n' "$REMOVED_DIR"
 ```
 
-출력된 경로를 확인한 뒤에만 완전히 지웁니다.
+## 이전 백업으로 되돌리기
 
-```bash
-rm -rf "$REMOVED_DIR"
-```
-
-## 백업 복원
-
-설치 스크립트가 출력한 실제 경로를 넣습니다.
+설치 스크립트가 화면에 보여주었던 실제 백업 경로를 입력해 주세요.
 
 ```bash
 BACKUP_DIR="$HOME/.gemini-backup-YYYYMMDD-HHMMSS"
@@ -136,27 +127,15 @@ mv "$BACKUP_DIR/config/hooks.json" "$HOME/.gemini/config/hooks.json"
 mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 ```
 
-## UI·구현 규칙
+## 주요 핵심 규칙 안내
 
-- **Zero AI Slop**: 모호한 AI 마케팅 카피, 요술봉 아이콘, 가짜 지표, 장식용 3D 요소를 철저히 배제합니다.
-- **Windows 11 & WinUI 3 디자인 시스템**: 정통 Mica/Acrylic 서피스, Settings Cards, ToggleSwitch, Windows Terminal을 적용합니다.
-- **500줄 제한 규칙 (500-Line Limit Rule)**: 단일 파일 500줄을 초과하지 않으며 SRP 기반 하위 모듈 분해를 원칙으로 합니다.
-- **풀뷰 소스 탐색**: 1줄부터 끝까지 연속 탐색하며 부분 snippet 및 임의 환각을 금지합니다.
-- **Chrome 3단 시각 계측**: `verify_ui_render.py`를 통해 320px·768px·1280px 수평 잘림 제로를 검증합니다.
-- **5대 표준 응답 포맷**: 변경 요약, 수정 파일, 실행 명령, 검증 결과, 남은 리스크 5대 필드로 완결 보고합니다.
+- **AI 특유의 서술 텍스트 배제**: 모호한 과장 광고 문구, 가짜 지표, 불필요한 AI 해설조 말투를 일절 사용하지 않습니다.
+- **Apple Liquid Glass 디자인 시스템**: 깔끔한 반투명 유리 느낌의 화면과 단정한 글꼴을 적용하여 눈이 편안한 환경을 만듭니다.
+- **사람이 작성한 친절한 설명**: 비전공자도 쉽게 이해할 수 있는 일상적인 표현과 온전한 문장형 종결어미(~합니다, ~해요)로 서술합니다.
+- **파일 500줄 제한 규칙**: 파일 하나가 너무 커지지 않도록 역할을 깔끔하게 나누어 유지보수를 쉽게 합니다.
+- **전체 파일 꼼꼼히 읽기**: 1번째 줄부터 마지막 줄까지 틈 없이 읽은 뒤 수정하며, 대충 넘겨짚지 않습니다.
+- **브라우저 화면 정밀 측정**: 모바일(320px), 태블릿(768px), PC(1280px) 전 화면에서 글자가 잘리지 않는지 측정합니다.
 
-## 구성
+## 라이선스
 
-- `agy-focus/versions/` — 버전별 프로필
-- `agy-focus/current` — 현재 프로필 링크
-- `scripts/install.sh` — 최신화·백업·설치·검증
-- `installed/` — 현재 설치 표면 복사본
-
-## 도움말과 기여
-
-- [도움말](../SUPPORT.md)
-- [보안](../SECURITY.md)
-- [기여](../CONTRIBUTING.md)
-- [변경 기록](../CHANGELOG.md)
-
-MIT 라이선스입니다. [LICENSE](../LICENSE)를 확인하세요.
+MIT 라이선스에 따라 자유롭게 사용하고 수정하실 수 있습니다. 상세한 내용은 [LICENSE](../LICENSE) 파일을 참고해 주세요.

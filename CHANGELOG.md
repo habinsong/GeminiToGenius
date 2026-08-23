@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## v2.13.0 — 2026-08-23
+
+- adds explicit prohibition against "AI-style narrative text" and "AI technical exposition text" across harness rules and human-copy skills
+- strictly bans short-answers (unless essential for compact UI labels) and enforces natural, complete sentence endings (~합니다, ~해요)
+- enforces friendly, non-technical explanations accessible to non-developers without technical jargon
+- upgrades website presentation to **Apple Liquid Glass UI** with visionOS/macOS materials, SF Pro typography, and Apple.com minimalist layout
+- synchronizes versioning and entrypoint assembly to v2.13.0
+
 ## v2.12.0 — 2026-08-23
 
 - completely ports all 22 global engineering rules (0. Communication to 21. Hard Prohibitions) from `GEMINI.md` without omission, truncation, or invention

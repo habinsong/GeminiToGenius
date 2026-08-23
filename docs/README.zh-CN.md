@@ -18,20 +18,20 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 
 1. 使用 `git pull --ff-only` 更新本地仓库
 2. 将现有配置备份到带时间戳的文件夹
-3. 安装当前配置文件 (v2.12.0)
+3. 安装当前配置文件 (v2.13.0)
 4. 运行配置文件和钩子测试
 
-不使用 `curl | sh`。依赖命令：`git`、`python3`、`rsync`。`/GTG` UI 验证需要已安装的 Google Chrome 或 Chromium。看到 `Installed agy-focus v2.12.0` 后重启 Antigravity 或 Antigravity IDE。
+不使用 `curl | sh`。依赖命令：`git`、`python3`、`rsync`。`/GTG` UI 验证需要已安装的 Google Chrome 或 Chromium。看到 `Installed agy-focus v2.13.0` 后重启 Antigravity 或 Antigravity IDE。
 
 ## 安装内容
 
-| 项目 | 当前值 (v2.12.0) |
+| 项目 | 当前值 (v2.13.0) |
 | --- | --- |
 | 目标模型 | Gemini 3.7 Flash (High) 混合推理 |
 | 全局工程规则 | 22 条完整规则 (GEMINI.md 100% 映射) |
 | 架构防线 | 500 行限制规则 (500-Line Limit Rule) |
 | 调试管线 | 7 步调试法 & 4 字段报告格式 |
-| UI/UX 设计系统 | Windows 11 & WinUI 3 Fluent Design System 2.0 |
+| UI/UX 设计系统 | Apple Liquid Glass UI (visionOS / macOS 材质) |
 | 生命周期钩子 | 14 |
 | 专项技能 | 11 |
 | 外部插件 | 无 |
@@ -42,7 +42,8 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 ## UI 与实现规则
 
 - **Zero AI Slop**: 杜绝空洞 AI 文案、魔法棒图标、虚假指标和装饰性 3D 图形。
-- **Windows 11 & WinUI 3**: Mica/Acrylic 材质、Settings Cards、ToggleSwitch 开关与 Windows Terminal。
+- **Apple Liquid Glass UI**: 半透明玻璃质感材质、镜面边缘高光与 SF Pro 字体。
+- **通俗易懂的人工文案**: 严禁生硬短语，使用自然完整的句子陈述，非技术人员也能轻松理解。
 - **500 行限制规则 (500-Line Limit Rule)**: 单文件不超过 500 行，基于单一职责原则 (SRP) 拆分子模块。
 - **全景代码阅读**: 必须从第 1 行完整阅读至末尾，严禁局部片段猜测或幻觉。
 - **Chrome 三档视口测量**: `verify_ui_render.py` 验证 320px、768px、1280px 零水平溢出。
