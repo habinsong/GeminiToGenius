@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeminiToGenius — 규칙 상세 설명서</title>
+  <meta name="description" content="AI가 코드를 다룰 때 지키는 22가지 핵심 규칙과 백업 복구 방법을 상세히 설명합니다.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 01. Apple.com Global Frosted Navigation Bar -->
+  <header class="apple-global-nav">
+    <div class="apple-nav-inner">
+      <a href="index.html" class="apple-nav-brand">
+        <span>GeminiToGenius</span>
+      </a>
+      <nav aria-label="메인 메뉴">
+        <ul class="apple-nav-links">
+          <li><a href="index.html" class="apple-nav-link">개요</a></li>
+          <li><a href="index.html#principles" class="apple-nav-link">핵심 약속</a></li>
+          <li><a href="index.html#process" class="apple-nav-link">일하는 과정</a></li>
+          <li><a href="docs.html" class="apple-nav-link active">설명서</a></li>
+          <li><a href="changelog.html" class="apple-nav-link">기록</a></li>
+          <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer" class="apple-nav-link">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 02. Main Content Canvas -->
+  <main class="apple-main">
+
+    <!-- Header -->
+    <section class="apple-hero" style="text-align: left; align-items: flex-start;">
+      <span class="apple-tag">규칙 상세 안내</span>
+      <h1 class="apple-hero-headline" style="font-size: clamp(2rem, 4vw, 3rem);">AI가 지키는 22가지 약속의 상세 해설서입니다.</h1>
+      <p class="apple-hero-subhead" style="max-width: 760px;">
+        안티그래비티 환경에서 AI가 안전하고 정직하게 코드를 작성하도록 돕는 핵심 엔지니어링 기준들을 알기 쉽게 풀어 설명해 드립니다.
+      </p>
+    </section>
+
+    <!-- Specs Section -->
+    <section>
+      <div class="apple-section-header" style="text-align: left; margin-bottom: 1.5rem;">
+        <h2 class="apple-section-title" style="font-size: 1.5rem;">01. 주요 규칙별 세부 내용입니다</h2>
+      </div>
+
+      <div class="apple-spec-group">
+        <div class="apple-spec-row">
+          <div class="apple-spec-label">약속 00. 복명복창</div>
+          <div class="apple-spec-content">
+            사용자가 내린 명령을 첫마디로 명확하게 요약하여 확인합니다.
+            불필요한 과장 광고 문구나 쓸데없는 추임새 없이, 핵심 내용만을 정중하고 친절한 한국어 문장으로 말씀드립니다.
+          </div>
+        </div>
+
+        <div class="apple-spec-row">
+          <div class="apple-spec-label">약속 01 &amp; 02. 사전 조사</div>
+          <div class="apple-spec-content">
+            코드를 함부로 고치기 전에 기존 코드가 어떻게 동작하고 있었는지 먼저 깊이 생각합니다.
+            필요한 정보는 공식 웹 문서를 직접 검색하여 확인하며, 없는 파일이나 기능을 거짓으로 지어내지 않습니다.
+          </div>
+        </div>
+
+        <div class="apple-spec-row">
+          <div class="apple-spec-label">약속 04 &amp; 05. 최소한의 수정</div>
+          <div class="apple-spec-content">
+            문제가 발생한 위치만 꼭 집어서 조심스럽게 고치며, 이미 잘 작동하고 있던 주변 코드는 함부로 건드리지 않습니다.
+            수정하기 전과 후에 어떤 부분이 바뀌었는지 꼼꼼하게 대조합니다.
+          </div>
+        </div>
+
+        <div class="apple-spec-row">
+          <div class="apple-spec-label">약속 12. 7단계 원인 분석</div>
+          <div class="apple-spec-content">
+            에러가 발생하면 아무 코드나 무작정 수정하지 않고, 문제를 재현한 뒤 로그를 분석하여 진짜 원인을 찾아냅니다.
+            해결이 어려운 상황이 생기면 시도해 본 내용과 막힌 이유를 있는 그대로 투명하게 보고합니다.
+          </div>
+        </div>
+
+        <div class="apple-spec-row">
+          <div class="apple-spec-label">약속 15. 500줄 크기 제한</div>
+          <div class="apple-spec-content">
+            파일 하나가 너무 커지면 나중에 오류를 찾고 고치기가 매우 어려워집니다.
+            따라서 하나의 파일이 500줄을 넘지 않도록 화면 디자인, 계산 로직, 저장 기능 등으로 깔끔하게 나누어 작성합니다.
+          </div>
+        </div>
+
+        <div class="apple-spec-row">
+          <div class="apple-spec-label">약속 20 &amp; 21. 정직한 보고와 금지 규율</div>
+          <div class="apple-spec-content">
+            수정한 파일과 실행한 테스트 결과, 남은 위험 요소를 정해진 표준 양식에 맞추어 보고합니다.
+            직접 확인해보지도 않고 성공했다고 거짓말하거나, 중요한 비밀번호 파일에 접근하는 행위는 엄격하게 금지됩니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Backup Recovery Section -->
+    <section>
+      <div class="apple-section-header" style="text-align: left; margin-bottom: 1.5rem;">
+        <h2 class="apple-section-title" style="font-size: 1.5rem;">02. 이전 상태로 되돌리는 복구 방법입니다</h2>
+        <p class="apple-section-desc" style="margin-left: 0;">설치 시 생성된 날짜별 백업 폴더를 이용하여 언제든지 원래대로 되돌릴 수 있습니다.</p>
+      </div>
+
+      <div class="apple-terminal-box">
+        <div class="apple-terminal-bar">
+          <span>터미널 복구 명령어</span>
+          <span>zsh / bash</span>
+        </div>
+        <div class="apple-terminal-content" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+          <div class="apple-terminal-code" style="line-height: 1.8;">
+            <span class="apple-terminal-prompt">%</span>BACKUP_DIR="$HOME/.gemini-backup-YYYYMMDD-HHMMSS"<br>
+            <span class="apple-terminal-prompt">%</span>mv "$BACKUP_DIR/config/agy-focus" "$HOME/.gemini/config/agy-focus"<br>
+            <span class="apple-terminal-prompt">%</span>mv "$BACKUP_DIR/GEMINI.md" "$HOME/.gemini/GEMINI.md"<br>
+            <span class="apple-terminal-prompt">%</span>mv "$BACKUP_DIR/config/hooks.json" "$HOME/.gemini/config/hooks.json"<br>
+            <span class="apple-terminal-prompt">%</span>mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 03. Minimal Apple Footer -->
+  <footer class="apple-footer">
+    <div class="apple-footer-inner">
+      <div>
+        <strong>GeminiToGenius</strong> — MIT 라이선스로 누구나 자유롭게 사용하실 수 있습니다. (2026 habinsong)
+      </div>
+      <ul class="apple-footer-links">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="docs.html">상세 설명서</a></li>
+        <li><a href="changelog.html">업데이트 기록</a></li>
+        <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
