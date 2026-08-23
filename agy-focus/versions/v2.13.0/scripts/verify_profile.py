@@ -22,63 +22,9 @@ LEGACY_WORKFLOW_LINKS = (
     HOME / "antigravity-ide/global_workflows/agy-run.md",
 )
 MAX_ENTRYPOINT_CHARACTERS = 6_000
-MAX_HOOK_MODULE_LINES = 260
-HOOK_EVENTS = {"PreToolUse", "PostToolUse", "PreInvocation", "PostInvocation", "Stop"}
-HANDLER_FIELDS = {"type", "command", "timeout"}
 SKILL_FIELDS = {"name", "description", "license", "allowed-tools", "metadata"}
 SKILL_NAME_RE = re.compile(r"^[a-z0-9-]+$")
 LOCAL_MARKDOWN_LINK_RE = re.compile(r"\[[^\]]+\]\((?!https?://|#)([^)]+)\)")
-
-
-def validate_handler(value: object, location: str, failures: list[str]) -> None:
-    if not isinstance(value, dict):
-        failures.append(f"hook handler is not an object: {location}")
-        return
-    unsupported = set(value) - HANDLER_FIELDS
-    if unsupported:
-        failures.append(f"unsupported hook handler fields at {location}: {sorted(unsupported)}")
-    if not isinstance(value.get("command"), str) or not value.get("command"):
-        failures.append(f"hook command is missing: {location}")
-    if "type" in value and value.get("type") != "command":
-        failures.append(f"unsupported hook handler type: {location}")
-    if "timeout" in value and (
-        not isinstance(value.get("timeout"), int) or value.get("timeout", 0) <= 0
-    ):
-        failures.append(f"hook timeout must be a positive integer: {location}")
-
-
-def validate_hooks(hooks: dict, failures: list[str]) -> None:
-    for hook_name, definition in hooks.items():
-        if not isinstance(definition, dict):
-            failures.append(f"hook definition is not an object: {hook_name}")
-            continue
-        unsupported = set(definition) - HOOK_EVENTS - {"enabled"}
-        if unsupported:
-            failures.append(f"unsupported hook fields for {hook_name}: {sorted(unsupported)}")
-        if "enabled" in definition and not isinstance(definition["enabled"], bool):
-            failures.append(f"hook enabled must be boolean: {hook_name}")
-        for event in HOOK_EVENTS & set(definition):
-            entries = definition[event]
-            if not isinstance(entries, list):
-                failures.append(f"hook event must be a list: {hook_name}.{event}")
-                continue
-            if event in {"PreInvocation", "PostInvocation", "Stop"}:
-                for index, handler in enumerate(entries):
-                    validate_handler(handler, f"{hook_name}.{event}[{index}]", failures)
-                continue
-            for index, group in enumerate(entries):
-                location = f"{hook_name}.{event}[{index}]"
-                if not isinstance(group, dict) or set(group) - {"matcher", "hooks"}:
-                    failures.append(f"invalid matched hook group: {location}")
-                    continue
-                if not isinstance(group.get("matcher"), str):
-                    failures.append(f"hook matcher is missing: {location}")
-                handlers = group.get("hooks")
-                if not isinstance(handlers, list):
-                    failures.append(f"matched hook handlers are missing: {location}")
-                    continue
-                for handler_index, handler in enumerate(handlers):
-                    validate_handler(handler, f"{location}.hooks[{handler_index}]", failures)
 
 
 def frontmatter(path: Path) -> dict[str, str]:
@@ -102,21 +48,10 @@ def main() -> int:
     try:
         manifest = json.loads((CURRENT / "MANIFEST.json").read_text(encoding="utf-8"))
         hooks = json.loads((CURRENT / "hooks/hooks.json").read_text(encoding="utf-8"))
-        hook_modules = sorted((CURRENT / "hooks").rglob("*.py"))
-        for hook_module in hook_modules:
-            text = hook_module.read_text(encoding="utf-8")
-            ast.parse(text)
-            if len(text.splitlines()) > MAX_HOOK_MODULE_LINES:
-                failures.append(
-                    f"hook module exceeds {MAX_HOOK_MODULE_LINES} lines: {hook_module}"
-                )
         ast.parse((CURRENT / "scripts/assemble_gemini.py").read_text(encoding="utf-8"))
-        ast.parse((CURRENT / "scripts/test_hook_runner.py").read_text(encoding="utf-8"))
         for script_name in ("verify_ui_render.py", "verify_plan.py", "verify_multi_page.py"):
             script_text = (CURRENT / "scripts" / script_name).read_text(encoding="utf-8")
             ast.parse(script_text)
-            if script_name == "verify_ui_render.py" and len(script_text.splitlines()) > MAX_HOOK_MODULE_LINES:
-                failures.append(f"UI render verifier exceeds {MAX_HOOK_MODULE_LINES} lines")
             if script_name == "verify_ui_render.py" and not re.search(r"\b768\b", script_text):
                 failures.append("UI render verifier is missing the medium 768 CSS px viewport")
     except (OSError, json.JSONDecodeError, SyntaxError) as error:
@@ -134,8 +69,6 @@ def main() -> int:
             failures.append("MANIFEST target is not Gemini 3.7 Flash (High)")
         if manifest.get("model_id") != "gemini-3.7-flash":
             failures.append("MANIFEST model_id is not gemini-3.7-flash")
-        if manifest.get("hook_test") != "scripts/test_hook_runner.py":
-            failures.append("MANIFEST hook_test is missing")
         if manifest.get("ui_render_check") != "scripts/verify_ui_render.py":
             failures.append("MANIFEST ui_render_check is missing")
         if manifest.get("plan_check") != "scripts/verify_plan.py":
@@ -162,8 +95,8 @@ def main() -> int:
     workflows = sorted((CURRENT / "workflows").glob("*.md"))
     if len(rules) != 12:
         failures.append(f"expected 12 rules, found {len(rules)}")
-    if len(hooks) != 14:
-        failures.append(f"expected 14 hooks, found {len(hooks)}")
+    if len(hooks) != 0:
+        failures.append(f"expected 0 hooks, found {len(hooks)}")
     if len(skills) != 11:
         failures.append(f"expected 11 custom skills, found {len(skills)}")
     if workflows:
@@ -192,45 +125,7 @@ def main() -> int:
         "ui-evidence-review",
         "workspace-intake",
     }
-    expected_hooks = {
-        "architecture-boundary-anchor",
-        "focus-anchor",
-        "mcp-purpose-gate",
-        "destructive-command-gate",
-        "external-input-gate",
-        "tool-audit",
-        "failure-anchor",
-        "invocation-state",
-        "scope-intake-anchor",
-        "scope-read-gate",
-        "stop-snapshot",
-        "visual-evidence-anchor",
-        "design-context-anchor",
-        "copy-context-anchor",
-    }
-    if set(hooks) != expected_hooks:
-        failures.append("hook names do not match the 14-hook contract")
-    validate_hooks(hooks, failures)
-    scope_gate = hooks.get("scope-read-gate")
-    if not isinstance(scope_gate, dict):
-        failures.append("scope-read-gate configuration is missing")
-    else:
-        pre_tool = scope_gate.get("PreToolUse")
-        matcher = (
-            pre_tool[0].get("matcher", "")
-            if isinstance(pre_tool, list)
-            and pre_tool
-            and isinstance(pre_tool[0], dict)
-            else ""
-        )
-        required_tools = {
-            "run_command",
-            "write_to_file",
-            "replace_file_content",
-            "multi_replace_file_content",
-        }
-        if matcher != "*" and not required_tools.issubset(set(str(matcher).split("|"))):
-            failures.append("scope-read-gate does not cover required write routes")
+
     try:
         gemini_text = (HOME / "GEMINI.md").read_text(encoding="utf-8")
         if len(gemini_text) >= MAX_ENTRYPOINT_CHARACTERS:

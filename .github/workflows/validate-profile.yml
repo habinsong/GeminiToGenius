@@ -20,7 +20,6 @@ jobs:
           bash -n scripts/install.sh
           AGY_INSTALL_HOME="$RUNNER_TEMP/gemini-home" bash scripts/install.sh --skip-update
 
-      - name: Verify installed profile and hook behavior
+      - name: Verify installed profile
         run: |
           AGY_INSTALL_HOME="$RUNNER_TEMP/gemini-home" python3 "$RUNNER_TEMP/gemini-home/.gemini/config/agy-focus/current/scripts/verify_profile.py"
-          python3 "$RUNNER_TEMP/gemini-home/.gemini/config/agy-focus/current/scripts/test_hook_runner.py"

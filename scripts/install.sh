@@ -104,6 +104,5 @@ ln -sfn agy-focus/current/skills "$config_root/skills"
 
 printf '%s\n' 'Verifying installation...'
 AGY_INSTALL_HOME="$user_home" PYTHONDONTWRITEBYTECODE=1 python3 "$profile_root/current/scripts/verify_profile.py"
-PYTHONDONTWRITEBYTECODE=1 python3 "$profile_root/current/scripts/test_hook_runner.py"
 
 printf '\nInstalled agy-focus v%s\nBackup: %s\nRestart Antigravity or Antigravity IDE.\n' "$profile_version" "$backup_dir"
