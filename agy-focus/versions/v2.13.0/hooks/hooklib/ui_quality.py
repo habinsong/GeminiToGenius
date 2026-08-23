@@ -29,6 +29,8 @@ DEFINITE_PATTERNS = (
     ("soft-radius", re.compile(r"border-radius\s*:\s*(?:1[2-9]|[2-9][0-9])(?:px|rem)", re.IGNORECASE), "반복 카드의 12px 이상 둥근 모서리를 제거하고 경계 의미를 다시 정하세요."),
     ("hover-motion", re.compile(r":hover[^{}]*\{[^{}]*(?:transform|animation)\s*:", re.IGNORECASE | re.DOTALL), "목적 없는 hover 이동·확대·회전 애니메이션을 제거하세요."),
     ("glow", re.compile(r"(?:glow|neon|shadow-(?:cyan|blue|purple)|0\s+0\s+(?:[1-9][0-9]|[1-9]\d{2,})px)", re.IGNORECASE), "글로우·네온 효과를 제거하세요."),
+    ("neon-color", re.compile(r"(?:#30d158|#00ff[0-9a-f]{2}|#00ffff|#ff00ff|rgba?\s*\(\s*48\s*,\s*209\s*,\s*88)", re.IGNORECASE), "형광 초록·네온사인 발광 색상을 제거하고 최고 수준의 명도 대비를 갖는 정제된 색상을 사용하세요."),
+    ("fake-window-chrome", re.compile(r"(?:traffic-light|apple-traffic-lights|traffic_lights|window-chrome|window_chrome|fake-window|fake_window)", re.IGNORECASE), "웹페이지에 억지스러운 트래픽 라이트 점이나 가짜 윈도우 창틀을 만들지 말고 웹 본연의 전폭 캔버스를 사용하세요."),
     ("abstract-icon", re.compile(r"(?:magic[-_ ]?wand|wand[-_ ]?magic|sparkles?|heroicons?/sparkles?|lucide-wand|fa-wand)", re.IGNORECASE), "요술봉·반짝이 같은 추상 아이콘을 실제 대상·동작 아이콘이나 텍스트로 바꾸세요."),
     ("generic-copy", re.compile(r"(?:build the future|unlock (?:the )?(?:power|future|potential)|revolutioni[sz]e|supercharge|next[- ]generation|cutting[- ]edge|seamless(?:ly)?|ai[- ]powered|intelligent platform|미래를 (?:구축|만드)|가능성을 열|혁신적인|차세대|완벽한 경험|AI 기반의? 혁신)", re.IGNORECASE), "기능을 설명하지 않는 마케팅 문구를 실제 동작·대상·결과로 바꾸세요."),
     ("fake-proof", re.compile(r"(?:trusted by|loved by|10x|99(?:\.\d+)?%|testimonial|customer stor(?:y|ies)|사용자 후기|고객 사례)", re.IGNORECASE), "출처 없는 지표·후기·사회적 증거를 제거하세요."),

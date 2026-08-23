@@ -26,7 +26,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 | グローバルエンジニアリングルール | 22 完全ルール (GEMINI.md 100% 移植) |
 | アーキテクチャ制限 | 500行制限ルール (500-Line Limit Rule) |
 | デバッグパイプライン | 7段階デバッグ & 4大必須報告フォーマット |
-| UI/UX デザインシステム | Apple Liquid Glass UI (visionOS / macOS マテリアル) |
+| UI/UX 品質基準 | ユーザー課題主導 & Zero AI Slop UI 検証 |
 | ライフサイクルフック | 14 |
 | 集中スキル | 11 |
 | 外部プラグイン | なし |
@@ -41,7 +41,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 ## UI・実装ルール
 
 - **Zero AI Slop**: 曖昧な AI コピー、魔法の杖アイコン、偽の指標、装飾用 3D を徹底排除。
-- **Apple Liquid Glass UI**: 半透明ガラスサーフェス、スペキュラリムライト、SF Pro タイポグラフィ。
+- **プロダクト根拠に基づくUI**: 実際の製品要件とユーザー課題に根ざした画面設計を適用。
 - **人間味のある丁寧な文章**: 非専門家でも直感的に理解できる自然な終止形（〜します、〜です）で記述。
 - **500行制限ルール (500-Line Limit Rule)**: 単一ファイル 500 行を超えず、SRP に基づくモジュール分割を義務化。
 - **フルビューコード読取**: 1行目から最後まで連続読取。断片 snippet や幻覚を禁止。

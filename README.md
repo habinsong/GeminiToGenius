@@ -38,7 +38,7 @@ After `Installed agy-focus v2.13.0` appears, restart Antigravity or Antigravity 
 | Global Engineering Rules | 22 complete rules (GEMINI.md 100% mapped) |
 | Architecture Guardrail | 500-Line Limit Rule (500 LOC max per file) |
 | Debugging Pipeline | 7-step debugging & 4-field blocker reporting |
-| UI/UX Design System | Apple Liquid Glass UI (visionOS/macOS materials) |
+| UI/UX Quality Standards | Zero AI Slop & Task-Driven Evidence |
 | Lifecycle hooks | 14 |
 | Focused skills | 11 |
 | Plugins | none |
@@ -144,7 +144,7 @@ mv "$BACKUP_DIR/config/skills" "$HOME/.gemini/config/skills"
 ## UI and implementation rules
 
 - **Zero AI Slop**: no vague AI marketing copy, wand icons, fake metrics, or decorative 3D art.
-- **Apple Liquid Glass UI**: authentic translucent glass surfaces, specular rim lights, SF Pro typography, and Apple.com minimalist aesthetics.
+- **Product Context & Evidence-Based UI**: interfaces derived strictly from actual product requirements and user tasks.
 - **Human-Crafted Copy**: friendly, accessible natural language with complete sentence endings and no technical jargon for non-developers.
 - **500-Line Limit Rule**: no single source file may exceed 500 lines without modular SRP decomposition.
 - **Full View Reads**: complete 1-to-N file reads required; partial snippets and hallucination are strictly forbidden.
