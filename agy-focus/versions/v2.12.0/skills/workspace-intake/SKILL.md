@@ -18,4 +18,4 @@ description: Performs a complete, ordered workspace intake before changing code,
    - 가장 작은 관련 검증을 먼저 실행하고 최종 보고 전 전체 검증을 수행합니다.
    - 확인하지 않은 동작이나 미검증 항목은 성공으로 보고하지 않습니다.
 
-상세 원문: [코딩 표준 및 워크플로](references/coding-standards.md)
+상세 원문: [코딩 표준 및 워크플로](../gtg/references/coding-standards.md)

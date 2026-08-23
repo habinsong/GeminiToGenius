@@ -14,4 +14,4 @@ description: Prevents God Objects and responsibility pileups while adding featur
 7. **포워딩 래퍼 금지**: 줄 수만 줄이는 forwarding wrapper, 한 번만 쓰는 추상화, 빈 레이어는 만들지 않습니다.
 8. **단계별 검증 및 완료 보고**: 한 책임씩 이동하며 각 단계마다 최소 컴파일/테스트를 실행합니다. 완료 보고에는 주요 변경 파일의 LOC와 책임 확인 결과 및 실제 실행한 검증만 남깁니다.
 
-상세 원문: [아키텍처 및 단순성 원칙](references/architecture-rules.md)
+상세 원문: [아키텍처 및 단순성 원칙](../gtg/references/architecture-rules.md)
