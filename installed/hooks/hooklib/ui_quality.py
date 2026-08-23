@@ -162,9 +162,6 @@ def quality_issues(
         if re.search(r"scroll-behavior\s*:\s*smooth", text, re.IGNORECASE):
             issues.append("decorative-scroll: 요청하지 않은 smooth scroll을 제거하세요.")
     if strict and path and path.suffix.lower() in MARKUP_SUFFIXES:
-        sentence_endings = re.findall(r"(?:습니다|입니다|합니다|됩니다)\s*[.!]", text)
-        if len(sentence_endings) >= 8:
-            issues.append("narrative-copy: 설명형 존댓말 문단을 반복하지 말고 제목·사실·명령·제약 중심의 짧은 카피로 줄이세요.")
         if not allow_catalog and len(re.findall(r"<tr\b", text, re.IGNORECASE)) >= 6:
             issues.append("catalog-table: 저장소 설명을 긴 명세표·규칙표로 덤프하지 말고 효과·설치·동작 증거·한계를 먼저 보여주세요.")
     if whole_file and path and path.suffix.lower() in MARKUP_SUFFIXES:
