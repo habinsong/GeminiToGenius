@@ -4,7 +4,7 @@
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 
-Antigravity と Antigravity IDE の Gemini 3.7 Flash (High) 向けグローバルルール・フック・スキルです。
+Antigravity と Antigravity IDE の Gemini 3.8 Flash (High) 向けグローバルルール・フック・スキルです。
 
 ## 初回インストール
 
@@ -14,15 +14,15 @@ macOS では次の 1 行を実行します。
 git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius/scripts/install.sh
 ```
 
-スクリプトは `git pull --ff-only`、既存プロファイルの日時付きバックアップ、現在プロファイル(v2.13.0)のインストール、検証の順に実行します。
+スクリプトは `git pull --ff-only`、既存プロファイルの日時付きバックアップ、現在プロファイル(v2.15.0)のインストール、検証の順に実行します。
 
-`curl | sh` は使いません。clone 後にローカルのスクリプトを実行します。必要なコマンドは `git`、`python3`、`rsync` です。`/GTG` の UI 検証にはインストール済みの Google Chrome または Chromium も必要です。`Installed agy-focus v2.13.0` が出たら Antigravity または Antigravity IDE を再起動します。
+`curl | sh` は使いません。clone 後にローカルのスクリプトを実行します。必要なコマンドは `git`、`python3`、`rsync` です。`/GTG` の UI 検証にはインストール済みの Google Chrome または Chromium も必要です。`Installed agy-focus v2.15.0` が出たら Antigravity または Antigravity IDE を再起動します。
 
 ## 内容
 
-| 項目 | 現在値 (v2.13.0) |
+| 項目 | 現在値 (v2.15.0) |
 | --- | --- |
-| 対象モデル | Gemini 3.7 Flash (High) ハイブリッド推論 |
+| 対象モデル | Gemini 3.8 Flash (High) ハイブリッド推論 |
 | グローバルエンジニアリングルール | 22 完全ルール (GEMINI.md 100% 移植) |
 | アーキテクチャ制限 | 500行制限ルール (500-Line Limit Rule) |
 | デバッグパイプライン | 7段階デバッグ & 4大必須報告フォーマット |

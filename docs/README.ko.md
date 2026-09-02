@@ -4,7 +4,7 @@
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 
-Gemini 3.7 Flash (High)를 Antigravity 및 Antigravity IDE에서 사용하기 위한 전역 규칙·훅·스킬 묶음입니다.
+Gemini 3.8 Flash (High)를 Antigravity 및 Antigravity IDE에서 사용하기 위한 전역 규칙·훅·스킬 묶음입니다.
 
 ## 처음 설치하기
 
@@ -18,18 +18,18 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 
 1. `git pull --ff-only`로 최신 변경사항을 가져옵니다.
 2. 기존에 설치되어 있던 Gemini 프로필을 날짜가 적힌 백업 폴더로 안전하게 옮깁니다.
-3. 최신 프로필(v2.13.0)을 새롭게 설치합니다.
+3. 최신 프로필(v2.15.0)을 새롭게 설치합니다.
 4. 설치된 프로필과 검증 훅이 정상적으로 동작하는지 확인합니다.
 
 `curl | sh` 방식은 사용하지 않으며, 먼저 저장소를 내려받은 뒤 스크립트를 직접 실행합니다.
 
-필요한 프로그램은 `git`, `python3`, `rsync`입니다. 화면 디자인 검증을 진행할 때는 이미 설치된 Google Chrome 또는 Chromium이 함께 사용됩니다. 설치가 끝나고 `Installed agy-focus v2.13.0` 메시지가 보이면 Antigravity 또는 Antigravity IDE를 다시 시작해 주세요.
+필요한 프로그램은 `git`, `python3`, `rsync`입니다. 화면 디자인 검증을 진행할 때는 이미 설치된 Google Chrome 또는 Chromium이 함께 사용됩니다. 설치가 끝나고 `Installed agy-focus v2.15.0` 메시지가 보이면 Antigravity 또는 Antigravity IDE를 다시 시작해 주세요.
 
 ## 설치되는 항목 안내
 
-| 항목 | 현재 설정값 (v2.13.0) |
+| 항목 | 현재 설정값 (v2.15.0) |
 | --- | --- |
-| 대상 AI 모델 | Gemini 3.7 Flash (High) 하이브리드 추론 |
+| 대상 AI 모델 | Gemini 3.8 Flash (High) 하이브리드 추론 |
 | 전역 엔지니어링 규칙 | 22가지 핵심 원칙 (GEMINI.md 원문 100% 반영) |
 | 파일 크기 제한 규칙 | 500줄 제한 규율 (파일 하나당 최대 500줄로 나누기) |
 | 오류 해결 과정 | 7단계 디버깅 및 막힌 부분 솔직 보고 양식 |
@@ -50,7 +50,7 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 ## `GEMINI.md`를 전역 규칙으로 두는 이유
 
 - Antigravity는 `~/.gemini/GEMINI.md` 파일을 [전역 규칙](https://antigravity.google/docs/ide/rules)으로 읽어 들입니다.
-- v2.13.0 진입점은 지시 사항 확인, 파일 분리, 500줄 제한, 7단계 디버깅 등 22가지 핵심 엔지니어링 표준을 항상 기억하도록 돕습니다.
+- v2.15.0 진입점은 지시 사항 확인, 파일 분리, 500줄 제한, 7단계 디버깅 등 22가지 핵심 엔지니어링 표준을 항상 기억하도록 돕습니다.
 - 복잡한 세부 절차는 필요할 때만 [전담 스킬](https://antigravity.google/docs/skills?app=antigravity-ide)을 통해 알맞게 불러옵니다.
 - [보호 훅](https://antigravity.google/docs/hooks)이 위험한 행동을 미리 막아주므로, 매번 긴 프롬프트를 일일이 적지 않아도 안전하게 작업할 수 있습니다.
 
@@ -93,7 +93,7 @@ hook runner tests passed
 원하는 버전으로 언제든지 쉽게 전환하실 수 있습니다.
 
 ```bash
-bash scripts/install.sh --version v2.13.0
+bash scripts/install.sh --version v2.15.0
 bash scripts/install.sh --help
 ```
 

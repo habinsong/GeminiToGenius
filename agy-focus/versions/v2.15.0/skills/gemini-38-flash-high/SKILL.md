@@ -1,9 +1,9 @@
 ---
-name: gemini-37-flash-high
-description: Guides Gemini 3.7 Flash (High) in Antigravity through concise multi-step work, staged context, proportionate tool use, and evidence-first verification. Use automatically when Gemini 3.7 Flash, High thinking, model migration, API configuration, or multi-step implementation is relevant without requiring @mentions or slash commands.
+name: gemini-38-flash-high
+description: Guides Gemini 3.8 Flash (High) in Antigravity through concise multi-step work, staged context, proportionate tool use, and evidence-first verification. Use automatically when Gemini 3.8 Flash, High thinking, model migration, API configuration, or multi-step implementation is relevant without requiring @mentions or slash commands.
 ---
 
-# Gemini 3.7 Flash (High) 실행 및 커뮤니케이션 규율
+# Gemini 3.8 Flash (High) 실행 및 커뮤니케이션 규율
 
 1. **복명복창 (0. Communication: Prompt repeat-back)**:
    - 사용자가 프롬프트를 입력하자마자 생성하는 첫 응답 출력 텍스트에서 사용자가 입력한 프롬프트와 원하는 핵심 요구사항을 반드시 한국어로 명확하게 복명복창(요약 및 확인)한 뒤 작업을 진행합니다.

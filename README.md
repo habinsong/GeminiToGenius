@@ -7,7 +7,7 @@
 
 [English](README.md) · [한국어](docs/README.ko.md) · [日本語](docs/README.ja.md) · [简体中文](docs/README.zh-CN.md)
 
-Versioned global rules, hooks, and skills for Gemini 3.7 Flash (High) in Antigravity and Antigravity IDE.
+Versioned global rules, hooks, and skills for Gemini 3.8 Flash (High) in Antigravity and Antigravity IDE.
 
 ## First install
 
@@ -21,20 +21,20 @@ The script does this in order:
 
 1. updates the clone with `git pull --ff-only`
 2. moves the installed Gemini profile into a dated backup folder
-3. installs the current profile (v2.13.0)
+3. installs the current profile (v2.15.0)
 4. runs the profile and hook checks
 
 It does not use `curl | sh`. The checkout is on disk before anything runs.
 
 Requirements: macOS, `git`, `python3`, and `rsync`. `/GTG` UI checks also need Google Chrome or Chromium already installed.
 
-After `Installed agy-focus v2.13.0` appears, restart Antigravity or Antigravity IDE.
+After `Installed agy-focus v2.15.0` appears, restart Antigravity or Antigravity IDE.
 
 ## What gets installed
 
-| Item | Current (v2.13.0) |
+| Item | Current (v2.15.0) |
 | --- | --- |
-| Model target | Gemini 3.7 Flash (High) Hybrid Reasoning |
+| Model target | Gemini 3.8 Flash (High) Hybrid Reasoning |
 | Global Engineering Rules | 22 complete rules (GEMINI.md 100% mapped) |
 | Architecture Guardrail | 500-Line Limit Rule (500 LOC max per file) |
 | Debugging Pipeline | 7-step debugging & 4-field blocker reporting |
@@ -55,7 +55,7 @@ Ordinary requests route automatically. Start strict repository or UI work with `
 ## Why `GEMINI.md` stays global
 
 - Antigravity loads `~/.gemini/GEMINI.md` as a [global rule](https://antigravity.google/docs/ide/rules).
-- The v2.13.0 entrypoint establishes 22 comprehensive engineering standards: prompt repeat-back, single-responsibility boundaries, 500-line limits, 7-step debugging, and strict verification gates.
+- The v2.15.0 entrypoint establishes 22 comprehensive engineering standards: prompt repeat-back, single-responsibility boundaries, 500-line limits, 7-step debugging, and strict verification gates.
 - Detailed code, architecture, UI, copy, and research procedures load as [focused skills](https://antigravity.google/docs/skills?app=antigravity-ide).
 - [Hooks](https://antigravity.google/docs/hooks) enforce high-risk boundaries without adding the whole procedure to every prompt.
 - Unrelated repository history and task-specific documents are not injected by default.

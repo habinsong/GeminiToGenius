@@ -2,6 +2,34 @@
 
 ## Unreleased
 
+## v2.15.0 — 2026-09-03
+
+- updates harness target model from Gemini 3.7 Flash (High) to **Gemini 3.8 Flash (High)** (`gemini-3.8-flash`)
+- renames focused skill and directory from `gemini-37-flash-high` to `gemini-38-flash-high`
+- updates profile integrity checks, verification contracts, and manifests for Gemini 3.8 Flash
+- updates all multi-language documentation and landing pages
+
+## v2.14.0 — 2026-08-24
+
+- completely removed all hooks, hook runner code, tests, and CI hook steps
+- added documentation website to docs/ for GitHub Pages deployment
+- enforced complete sentence endings and banned AI Slop UI patterns
+
+- adds explicit prohibition against "AI-style narrative text" and "AI technical exposition text" across harness rules and human-copy skills
+- strictly bans short-answers (unless essential for compact UI labels) and enforces natural, complete sentence endings (~합니다, ~해요)
+- enforces friendly, non-technical explanations accessible to non-developers without technical jargon
+- upgrades website presentation to **Apple Liquid Glass UI** with visionOS/macOS materials, SF Pro typography, and Apple.com minimalist layout
+- synchronizes versioning and entrypoint assembly to v2.13.0
+
+## v2.12.0 — 2026-08-23
+
+- completely ports all 22 global engineering rules (0. Communication to 21. Hard Prohibitions) from `GEMINI.md` without omission, truncation, or invention
+- introduces the **500-Line Limit Rule (500 LOC)** preventing single-file bloat and enforcing single-responsibility component decomposition
+- embeds the 7-step debugging pipeline and 4-field blocker reporting format (`Tested`, `Failed`, `Ruled out`, `Next cause`)
+- integrates strict security gates covering 9 sensitive files and dangerous command execution bans
+- completely redesigns the presentation site with **Microsoft Windows 11 & WinUI 3 Fluent Design System 2.0** (Mica surfaces, Settings Cards, Windows Terminal, TitleBar)
+- synchronizes versioning across all components to v2.12.0
+
 ## v2.11.3 — 2026-08-23
 
 - establishes repository root `VERSION` as the single source of truth for version management
@@ -24,7 +52,7 @@
 
 ## v2.11.0 — 2026-08-17
 
-- updates model target and system prompt optimizations for Gemini 3.7 Flash (High) with hybrid reasoning and thinking token budget allocation
+- updates model target and system prompt optimizations for Gemini 3.8 Flash (High) with hybrid reasoning and thinking token budget allocation
 - adds zero AI Slop intent orchestration and removes conversational filler, repetitive narrative phrasing, and speculative over-engineering
 - strengthens single responsibility principle (SRP) architectural boundaries against God Objects in backend, frontend, and coordination layers
 - establishes human-crafted UI/UX microcopy standards with concrete action verbs, empathetic error recovery, and clear hierarchy

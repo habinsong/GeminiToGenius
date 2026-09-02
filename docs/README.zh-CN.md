@@ -4,7 +4,7 @@
 
 [English](../README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
 
-适用于 Antigravity 和 Antigravity IDE 中 Gemini 3.7 Flash (High) 的全局规则、钩子和技能集合。
+适用于 Antigravity 和 Antigravity IDE 中 Gemini 3.8 Flash (High) 的全局规则、钩子和技能集合。
 
 ## 首次安装
 
@@ -18,16 +18,16 @@ git clone https://github.com/habinsong/GeminiToGenius.git && bash GeminiToGenius
 
 1. 使用 `git pull --ff-only` 更新本地仓库
 2. 将现有配置备份到带时间戳的文件夹
-3. 安装当前配置文件 (v2.13.0)
+3. 安装当前配置文件 (v2.15.0)
 4. 运行配置文件和钩子测试
 
-不使用 `curl | sh`。依赖命令：`git`、`python3`、`rsync`。`/GTG` UI 验证需要已安装的 Google Chrome 或 Chromium。看到 `Installed agy-focus v2.13.0` 后重启 Antigravity 或 Antigravity IDE。
+不使用 `curl | sh`。依赖命令：`git`、`python3`、`rsync`。`/GTG` UI 验证需要已安装的 Google Chrome 或 Chromium。看到 `Installed agy-focus v2.15.0` 后重启 Antigravity 或 Antigravity IDE。
 
 ## 安装内容
 
-| 项目 | 当前值 (v2.13.0) |
+| 项目 | 当前值 (v2.15.0) |
 | --- | --- |
-| 目标模型 | Gemini 3.7 Flash (High) 混合推理 |
+| 目标模型 | Gemini 3.8 Flash (High) 混合推理 |
 | 全局工程规则 | 22 条完整规则 (GEMINI.md 100% 映射) |
 | 架构防线 | 500 行限制规则 (500-Line Limit Rule) |
 | 调试管线 | 7 步调试法 & 4 字段报告格式 |

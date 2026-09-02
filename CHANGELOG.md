@@ -2,7 +2,18 @@
 
 ## Unreleased
 
-## v2.13.0 — 2026-08-23
+## v2.15.0 — 2026-09-03
+
+- updates harness target model from Gemini 3.7 Flash (High) to **Gemini 3.8 Flash (High)** (`gemini-3.8-flash`)
+- renames focused skill and directory from `gemini-37-flash-high` to `gemini-38-flash-high`
+- updates profile integrity checks, verification contracts, and manifests for Gemini 3.8 Flash
+- updates all multi-language documentation and landing pages
+
+## v2.14.0 — 2026-08-24
+
+- completely removed all hooks, hook runner code, tests, and CI hook steps
+- added documentation website to docs/ for GitHub Pages deployment
+- enforced complete sentence endings and banned AI Slop UI patterns
 
 - adds explicit prohibition against "AI-style narrative text" and "AI technical exposition text" across harness rules and human-copy skills
 - strictly bans short-answers (unless essential for compact UI labels) and enforces natural, complete sentence endings (~합니다, ~해요)
@@ -41,7 +52,7 @@
 
 ## v2.11.0 — 2026-08-17
 
-- updates model target and system prompt optimizations for Gemini 3.7 Flash (High) with hybrid reasoning and thinking token budget allocation
+- updates model target and system prompt optimizations for Gemini 3.8 Flash (High) with hybrid reasoning and thinking token budget allocation
 - adds zero AI Slop intent orchestration and removes conversational filler, repetitive narrative phrasing, and speculative over-engineering
 - strengthens single responsibility principle (SRP) architectural boundaries against God Objects in backend, frontend, and coordination layers
 - establishes human-crafted UI/UX microcopy standards with concrete action verbs, empathetic error recovery, and clear hierarchy

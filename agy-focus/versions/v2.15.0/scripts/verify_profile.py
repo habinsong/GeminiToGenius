@@ -65,10 +65,10 @@ def main() -> int:
             failures.append("VERSION does not match MANIFEST")
         if not CURRENT.is_symlink():
             failures.append("current profile is not a symlink")
-        if manifest.get("target") != "Gemini 3.7 Flash (High)":
-            failures.append("MANIFEST target is not Gemini 3.7 Flash (High)")
-        if manifest.get("model_id") != "gemini-3.7-flash":
-            failures.append("MANIFEST model_id is not gemini-3.7-flash")
+        if manifest.get("target") != "Gemini 3.8 Flash (High)":
+            failures.append("MANIFEST target is not Gemini 3.8 Flash (High)")
+        if manifest.get("model_id") != "gemini-3.8-flash":
+            failures.append("MANIFEST model_id is not gemini-3.8-flash")
         if manifest.get("ui_render_check") != "scripts/verify_ui_render.py":
             failures.append("MANIFEST ui_render_check is missing")
         if manifest.get("plan_check") != "scripts/verify_plan.py":
@@ -116,7 +116,7 @@ def main() -> int:
         "agy-one-tap",
         "architecture-boundaries",
         "focus-session",
-        "gemini-37-flash-high",
+        "gemini-38-flash-high",
         "gtg",
         "human-copy",
         "interface-implementation",
