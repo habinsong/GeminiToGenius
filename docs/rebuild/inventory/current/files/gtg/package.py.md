@@ -1,8 +1,8 @@
 # `gtg/package.py`
 
 - 형식: `100644`
-- 바이트: 11764
-- SHA-256: `57f066cffe43102a9dac05390b5b8d240345935721178062641e4d9d45bcfc25`
+- 바이트: 11992
+- SHA-256: `2f74b15be27b90c280032bcb318b5c33daae2c23bbfb7a972ed40475aa5402da`
 - 인코딩: `utf-8`
 
 ```
@@ -84,6 +84,8 @@ def build(source: Path, target: Path, installed: Path, platform: str) -> dict:
     copy_source(source, "gtg", target / "gtg")
     copy_source(source, "profile/skills", target / "skills")
     copy_file(source, Path("scripts/gtg_runner.py"), target / "run.py")
+    # 설치물은 사용자 저장소의 변경 목록에 나타나지 않습니다. 훅 명령에 설치 위치가 들어가므로 공유 대상도 아닙니다.
+    (target / ".gitignore").write_text("*\n", encoding="utf-8")
     rules = read_source(source, "profile/rules/gtg.md")
     check_rule_size(rules)
     version = read_source(source, "VERSION").decode("utf-8").strip()

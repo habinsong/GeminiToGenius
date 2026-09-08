@@ -1,8 +1,8 @@
 # `gtg/install.py`
 
 - 형식: `100644`
-- 바이트: 11009
-- SHA-256: `15e3b62a90a818fb0dd2338dac07786e436a3ba0800d13aa55a4b2ed6b936c54`
+- 바이트: 11431
+- SHA-256: `9d349350a5376ace98eea0dbaeed86f7034a45bbfa260adf94b724563714b5e7`
 - 인코딩: `utf-8`
 
 ```
@@ -35,6 +35,13 @@ def destination(root: Path, platform: str, scope: str) -> Path:
     return root / parent / NAME
 
 
+def ignore_state(folder: Path):
+    """`.gtg` 작업 폴더가 사용자 저장소에 나타나지 않게 합니다. 기존 파일은 덮어쓰지 않습니다."""
+    ignore = folder / ".gitignore"
+    if folder.name == ".gtg" and folder.is_dir() and not ignore.exists() and not ignore.is_symlink():
+        ignore.write_text("*\n", encoding="utf-8")
+
+
 def safe_path(path: Path):
     if any(parent.is_symlink() for parent in [path, *path.parents]):
         raise ValueError("설치 경로에 심볼릭 링크가 있습니다. 원본을 보존하고 설치를 중단합니다.")
@@ -48,6 +55,7 @@ def lock(root: Path):
     path = root / "install.lock"
     safe_path(path)
     root.mkdir(parents=True, exist_ok=True)
+    ignore_state(root.parent if root.name == "installer" else root)
     with path.open("a") as stream:
         try:
             fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)

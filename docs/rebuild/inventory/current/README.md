@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 231개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 238개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -151,6 +151,12 @@
 | `docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json` | 270 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/tests.log` | 21385 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/tests.log.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/verification.json` | 5995 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/verification.json.md) |
+| `docs/rebuild/validation/2026-09-09-native-certificate/README.md` | 4633 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/README.md.md) |
+| `docs/rebuild/validation/2026-09-09-native-certificate/certificate.json` | 1465 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/certificate.json.md) |
+| `docs/rebuild/validation/2026-09-09-native-certificate/model-report.py` | 994 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/model-report.py.md) |
+| `docs/rebuild/validation/2026-09-09-native-certificate/replay-clean.json` | 1051 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/replay-clean.json.md) |
+| `docs/rebuild/validation/2026-09-09-native-certificate/state-snapshot.json` | 2284 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/state-snapshot.json.md) |
+| `docs/rebuild/validation/2026-09-09-native-certificate/task.json` | 772 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/task.json.md) |
 | `docs/styles.css` | 12916 | [원문](files/docs/styles.css.md) |
 | `evals/README.md` | 12377 | [원문](files/evals/README.md.md) |
 | `evals/__init__.py` | 74 | [원문](files/evals/__init__.py.md) |
@@ -192,10 +198,10 @@
 | `gtg/discovery.py` | 4610 | [원문](files/gtg/discovery.py.md) |
 | `gtg/hooks.py` | 9749 | [원문](files/gtg/hooks.py.md) |
 | `gtg/inspection.py` | 7450 | [원문](files/gtg/inspection.py.md) |
-| `gtg/install.py` | 11009 | [원문](files/gtg/install.py.md) |
+| `gtg/install.py` | 11431 | [원문](files/gtg/install.py.md) |
 | `gtg/install_journal.py` | 7124 | [원문](files/gtg/install_journal.py.md) |
 | `gtg/legacy.py` | 2362 | [원문](files/gtg/legacy.py.md) |
-| `gtg/package.py` | 11764 | [원문](files/gtg/package.py.md) |
+| `gtg/package.py` | 11992 | [원문](files/gtg/package.py.md) |
 | `gtg/platforms.py` | 1801 | [원문](files/gtg/platforms.py.md) |
 | `gtg/runner.py` | 4726 | [원문](files/gtg/runner.py.md) |
 | `gtg/sessions.py` | 8952 | [원문](files/gtg/sessions.py.md) |
@@ -230,6 +236,7 @@
 | `tests/test_package_limits.py` | 2962 | [원문](files/tests/test_package_limits.py.md) |
 | `tests/test_package_sources.py` | 2736 | [원문](files/tests/test_package_sources.py.md) |
 | `tests/test_process_lifecycle.py` | 4346 | [원문](files/tests/test_process_lifecycle.py.md) |
+| `tests/test_repository_noise.py` | 3033 | [원문](files/tests/test_repository_noise.py.md) |
 | `tests/test_resume_budget.py` | 6141 | [원문](files/tests/test_resume_budget.py.md) |
 | `tests/test_runtime.py` | 11787 | [원문](files/tests/test_runtime.py.md) |
 | `tests/test_scenario.py` | 3646 | [원문](files/tests/test_scenario.py.md) |
