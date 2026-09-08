@@ -148,10 +148,10 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "bytes": 9264,
-      "sha256": "6dcf5bd5b85fa1de1fe50e48b4a0640ff44e6c484f5d9e706c358167807c1daa",
+      "bytes": 9733,
+      "sha256": "fc506e811bb211a33aa9b1ba76c6cc251b9c5099cf13069cd6df1dac8c4d88b8",
       "encoding": "utf-8",
-      "lines": 110,
+      "lines": 112,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/README.md.md"
@@ -301,10 +301,10 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 10946,
-      "sha256": "ff327b9bc6716b68cd682eb2aa3267912a02942af6370a4dc1f97f358c61be4c",
+      "bytes": 11354,
+      "sha256": "237d7065c9d44809a3c7a0d85ec81c961d6119abc59bac63d0abed3bf14d99a9",
       "encoding": "utf-8",
-      "lines": 86,
+      "lines": 90,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/current-work.md.md"
@@ -334,10 +334,10 @@
     {
       "path": "docs/rebuild/plan/completion-audit.md",
       "mode": "100644",
-      "bytes": 4864,
-      "sha256": "7f3b153f0295e80c8612d73928c55d8ed92fe2570ba40efe2936f6566c3d70ce",
+      "bytes": 5066,
+      "sha256": "a37cfbb576fde4ccbecbf34510890a35afcb065b92f0537a224854dcfaf413f2",
       "encoding": "utf-8",
-      "lines": 27,
+      "lines": 28,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/plan/completion-audit.md.md"
@@ -400,10 +400,10 @@
     {
       "path": "docs/rebuild/research/sources.json",
       "mode": "100644",
-      "bytes": 35589,
-      "sha256": "95aafa9086b9d73d6f4aefbf54a984eb5cb8e52f5467887bcead7eb2c50180b2",
+      "bytes": 39753,
+      "sha256": "e210479a0df768599ae44665ea9e13e071fe873e05b3a90c50f46c7ed6c68d04",
       "encoding": "utf-8",
-      "lines": 685,
+      "lines": 739,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/research/sources.json.md"
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 39417,
-      "sha256": "1b0d564eadd3a0b4edc53991db39417b176e329b14f1fb754a04ab7f7f917cb6",
+      "bytes": 41265,
+      "sha256": "b5bc48bfc134b6ed856a78a45f3f712220c9c6ca2a1810760f3aecc435955847",
       "encoding": "utf-8",
-      "lines": 263,
+      "lines": 275,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -1886,6 +1886,50 @@
       "document": "files/docs/rebuild/validation/2026-09-08-task-handoff/verification.json.md"
     },
     {
+      "path": "docs/rebuild/validation/2026-09-09-evidence-coverage/README.md",
+      "mode": "100644",
+      "bytes": 4674,
+      "sha256": "b51097040bbcaedc7d6f9136b2176db425d72f45afe547dcb308c9786c82d911",
+      "encoding": "utf-8",
+      "lines": 60,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json",
+      "mode": "100644",
+      "bytes": 844,
+      "sha256": "b841fe2798e19d2b3b5e003329800a44e77ea1027e025405a91a761a7251d704",
+      "encoding": "utf-8",
+      "lines": 35,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log",
+      "mode": "100644",
+      "bytes": 21295,
+      "sha256": "9501e4d5f70ad4da4742aacb6580241d51845b45f7ba4f9b86f1e7902926f7e7",
+      "encoding": "utf-8",
+      "lines": 233,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json",
+      "mode": "100644",
+      "bytes": 1859,
+      "sha256": "4b08c6acdd57933436ba0149d6fa5ef87cc60d9b5e86f5853b3f6638138de7df",
+      "encoding": "utf-8",
+      "lines": 27,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json.md"
+    },
+    {
       "path": "docs/rebuild/validation/2026-09-09-native-certificate/README.md",
       "mode": "100644",
       "bytes": 4633,
@@ -2759,10 +2803,10 @@
     {
       "path": "gtg/certificate.py",
       "mode": "100644",
-      "bytes": 5590,
-      "sha256": "59bfdd370a53ad791b6e81d5de06ada4fbf057e942dc06a49b6bec5cb3413d63",
+      "bytes": 6437,
+      "sha256": "3f3e52d01d209a4e7e429a6ee762b440d737c784f4f8228c9c65396707e369a1",
       "encoding": "utf-8",
-      "lines": 119,
+      "lines": 131,
       "symbols": [
         {
           "name": "canonical",
@@ -2780,25 +2824,25 @@
           "name": "build",
           "kind": "FunctionDef",
           "line": 35,
-          "end_line": 53
+          "end_line": 63
         },
         {
           "name": "validated",
           "kind": "FunctionDef",
-          "line": 56,
-          "end_line": 72
+          "line": 66,
+          "end_line": 82
         },
         {
           "name": "run",
           "kind": "FunctionDef",
-          "line": 75,
-          "end_line": 103
+          "line": 85,
+          "end_line": 113
         },
         {
           "name": "replay",
           "kind": "FunctionDef",
-          "line": 106,
-          "end_line": 119
+          "line": 116,
+          "end_line": 131
         }
       ],
       "trailing_newline": true,
@@ -2857,6 +2901,66 @@
       ],
       "trailing_newline": true,
       "document": "files/gtg/context_message.py.md"
+    },
+    {
+      "path": "gtg/coverage.py",
+      "mode": "100644",
+      "bytes": 6157,
+      "sha256": "0882550afe4ba7dc94f985b952a859ec67e70a0db05d305bd5fe3802e36d14c0",
+      "encoding": "utf-8",
+      "lines": 172,
+      "symbols": [
+        {
+          "name": "Session",
+          "kind": "ClassDef",
+          "line": 96,
+          "end_line": 131
+        },
+        {
+          "name": "collector",
+          "kind": "FunctionDef",
+          "line": 135,
+          "end_line": 144
+        },
+        {
+          "name": "watched_python_files",
+          "kind": "FunctionDef",
+          "line": 147,
+          "end_line": 161
+        },
+        {
+          "name": "executed_watch",
+          "kind": "FunctionDef",
+          "line": 164,
+          "end_line": 172
+        },
+        {
+          "name": "__init__",
+          "kind": "FunctionDef",
+          "line": 99,
+          "end_line": 101
+        },
+        {
+          "name": "environment",
+          "kind": "FunctionDef",
+          "line": 103,
+          "end_line": 109
+        },
+        {
+          "name": "files",
+          "kind": "FunctionDef",
+          "line": 111,
+          "end_line": 127
+        },
+        {
+          "name": "observed",
+          "kind": "FunctionDef",
+          "line": 129,
+          "end_line": 131
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/coverage.py.md"
     },
     {
       "path": "gtg/discovery.py",
@@ -3203,58 +3307,58 @@
     {
       "path": "gtg/package.py",
       "mode": "100644",
-      "bytes": 11992,
-      "sha256": "2f74b15be27b90c280032bcb318b5c33daae2c23bbfb7a972ed40475aa5402da",
+      "bytes": 12520,
+      "sha256": "bbddbee803f2c99b9d79121ea0ad39b1e4f67e69005fa3d9d0f53e7a1606551f",
       "encoding": "utf-8",
-      "lines": 215,
+      "lines": 224,
       "symbols": [
         {
           "name": "validate_source",
           "kind": "FunctionDef",
-          "line": 23,
-          "end_line": 27
+          "line": 28,
+          "end_line": 32
         },
         {
           "name": "read_source",
           "kind": "FunctionDef",
-          "line": 30,
-          "end_line": 34
+          "line": 35,
+          "end_line": 39
         },
         {
           "name": "copy_file",
           "kind": "FunctionDef",
-          "line": 37,
-          "end_line": 41
+          "line": 42,
+          "end_line": 46
         },
         {
           "name": "copy_source",
           "kind": "FunctionDef",
-          "line": 44,
-          "end_line": 60
+          "line": 49,
+          "end_line": 65
         },
         {
           "name": "check_rule_size",
           "kind": "FunctionDef",
-          "line": 63,
-          "end_line": 65
+          "line": 68,
+          "end_line": 70
         },
         {
           "name": "build",
           "kind": "FunctionDef",
-          "line": 68,
-          "end_line": 106
+          "line": 73,
+          "end_line": 111
         },
         {
           "name": "validated_hooks",
           "kind": "FunctionDef",
-          "line": 109,
-          "end_line": 155
+          "line": 114,
+          "end_line": 160
         },
         {
           "name": "verify",
           "kind": "FunctionDef",
-          "line": 158,
-          "end_line": 215
+          "line": 163,
+          "end_line": 224
         }
       ],
       "trailing_newline": true,
@@ -3281,58 +3385,58 @@
     {
       "path": "gtg/runner.py",
       "mode": "100644",
-      "bytes": 4726,
-      "sha256": "b5e95be8c5c4f6517f99727308b5309a3dae2040c1a498fab39adac7b7535731",
+      "bytes": 5659,
+      "sha256": "67aa6b76cbe4d779344cbe331a6f4c154fc4f60bb3298e2e2df0f3dcd3fa03c7",
       "encoding": "utf-8",
-      "lines": 126,
+      "lines": 137,
       "symbols": [
         {
           "name": "CommandCancelled",
           "kind": "ClassDef",
-          "line": 18,
-          "end_line": 21
+          "line": 19,
+          "end_line": 22
         },
         {
           "name": "cancellation_signals",
           "kind": "FunctionDef",
-          "line": 25,
-          "end_line": 34
+          "line": 26,
+          "end_line": 35
         },
         {
           "name": "group_alive",
           "kind": "FunctionDef",
-          "line": 37,
-          "end_line": 44
+          "line": 38,
+          "end_line": 45
         },
         {
           "name": "terminate",
           "kind": "FunctionDef",
-          "line": 47,
-          "end_line": 55
+          "line": 48,
+          "end_line": 56
         },
         {
           "name": "execute",
           "kind": "FunctionDef",
-          "line": 58,
-          "end_line": 100
+          "line": 59,
+          "end_line": 108
         },
         {
           "name": "status",
           "kind": "FunctionDef",
-          "line": 103,
-          "end_line": 126
+          "line": 111,
+          "end_line": 137
         },
         {
           "name": "__init__",
           "kind": "FunctionDef",
-          "line": 19,
-          "end_line": 21
+          "line": 20,
+          "end_line": 22
         },
         {
           "name": "cancel",
           "kind": "FunctionDef",
-          "line": 27,
-          "end_line": 28
+          "line": 28,
+          "end_line": 29
         }
       ],
       "trailing_newline": true,
@@ -3590,10 +3694,10 @@
     {
       "path": "profile/skills/gtg-build/references/task-contract.md",
       "mode": "100644",
-      "bytes": 11424,
-      "sha256": "ae849ab854be8327e9017425cb8eb77eb6e404efbb42d7ef17bd5b1aeaa7ec31",
+      "bytes": 12250,
+      "sha256": "13e73a17d9a51b6e3b3ede247b090800273797c1395897cdd4adc98274933979",
       "encoding": "utf-8",
-      "lines": 102,
+      "lines": 110,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/profile/skills/gtg-build/references/task-contract.md.md"
@@ -4204,6 +4308,102 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_context_message.py.md"
+    },
+    {
+      "path": "tests/test_coverage.py",
+      "mode": "100644",
+      "bytes": 6679,
+      "sha256": "a65d59a5c3a5b163df38c03b8eaeaddbc89d6af643aaa78bc7dad15ffa811cf5",
+      "encoding": "utf-8",
+      "lines": 138,
+      "symbols": [
+        {
+          "name": "CollectorTests",
+          "kind": "ClassDef",
+          "line": 16,
+          "end_line": 76
+        },
+        {
+          "name": "spec",
+          "kind": "FunctionDef",
+          "line": 79,
+          "end_line": 82
+        },
+        {
+          "name": "RunnerCoverageTests",
+          "kind": "ClassDef",
+          "line": 85,
+          "end_line": 134
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 17,
+          "end_line": 20
+        },
+        {
+          "name": "test_python_subprocess_execution_is_recorded",
+          "kind": "FunctionDef",
+          "line": 22,
+          "end_line": 36
+        },
+        {
+          "name": "test_nested_python_subprocess_is_also_recorded",
+          "kind": "FunctionDef",
+          "line": 38,
+          "end_line": 48
+        },
+        {
+          "name": "test_existing_sitecustomize_still_runs",
+          "kind": "FunctionDef",
+          "line": 50,
+          "end_line": 60
+        },
+        {
+          "name": "test_no_python_execution_reports_nothing_observed",
+          "kind": "FunctionDef",
+          "line": 62,
+          "end_line": 67
+        },
+        {
+          "name": "test_watch_split_only_covers_python_files",
+          "kind": "FunctionDef",
+          "line": 69,
+          "end_line": 76
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 86,
+          "end_line": 94
+        },
+        {
+          "name": "test_passing_check_records_the_file_it_never_executed",
+          "kind": "FunctionDef",
+          "line": 96,
+          "end_line": 102
+        },
+        {
+          "name": "test_non_python_command_does_not_claim_anything_unexecuted",
+          "kind": "FunctionDef",
+          "line": 104,
+          "end_line": 109
+        },
+        {
+          "name": "test_status_and_certificate_carry_the_unverified_scope",
+          "kind": "FunctionDef",
+          "line": 111,
+          "end_line": 119
+        },
+        {
+          "name": "test_a_file_executed_by_any_check_is_not_listed_as_unverified",
+          "kind": "FunctionDef",
+          "line": 121,
+          "end_line": 134
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_coverage.py.md"
     },
     {
       "path": "tests/test_eval_export.py",
@@ -5018,16 +5218,16 @@
     {
       "path": "tests/test_package_limits.py",
       "mode": "100644",
-      "bytes": 2962,
-      "sha256": "fb96dd270903286e537bb4ce0414837e83556a1cf8dfa8fc42bdc3df2d790511",
+      "bytes": 4171,
+      "sha256": "1c363d8e09c1cc3370238eb96dc888bcf1a7b907c62e342e0d75bffe073c2778",
       "encoding": "utf-8",
-      "lines": 66,
+      "lines": 89,
       "symbols": [
         {
           "name": "RuleLimitTests",
           "kind": "ClassDef",
           "line": 16,
-          "end_line": 62
+          "end_line": 85
         },
         {
           "name": "setUp",
@@ -5060,10 +5260,22 @@
           "end_line": 53
         },
         {
-          "name": "test_angle_brackets_in_skill_metadata_are_rejected",
+          "name": "test_invisible_characters_in_shipped_instructions_are_rejected",
           "kind": "FunctionDef",
           "line": 55,
-          "end_line": 62
+          "end_line": 69
+        },
+        {
+          "name": "test_shipped_instructions_are_currently_clean",
+          "kind": "FunctionDef",
+          "line": 71,
+          "end_line": 76
+        },
+        {
+          "name": "test_angle_brackets_in_skill_metadata_are_rejected",
+          "kind": "FunctionDef",
+          "line": 78,
+          "end_line": 85
         }
       ],
       "trailing_newline": true,

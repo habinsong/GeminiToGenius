@@ -1,8 +1,8 @@
 # `gtg/runner.py`
 
 - 형식: `100644`
-- 바이트: 4726
-- SHA-256: `b5e95be8c5c4f6517f99727308b5309a3dae2040c1a498fab39adac7b7535731`
+- 바이트: 5659
+- SHA-256: `67aa6b76cbe4d779344cbe331a6f4c154fc4f60bb3298e2e2df0f3dcd3fa03c7`
 - 인코딩: `utf-8`
 
 ```
@@ -18,6 +18,7 @@ import subprocess
 import sys
 import time
 
+from .coverage import collector, executed_watch
 from .spec import fingerprint
 from .store import Store
 from .checkpoints import latest as latest_checkpoint
@@ -74,25 +75,32 @@ def execute(store: Store, task_id: str, check_id: str) -> dict:
     run_id = store.begin(task_id, check_id)
     started = time.monotonic()
     process = None
-    result = {"status": "error", "returncode": None, "before": before, "after": None}
+    result = {"status": "error", "returncode": None, "before": before, "after": None,
+              "coverage_observed": False, "executed_watch": None, "unexecuted_watch": None}
     try:
-        # 출력은 호스트에 바로 전달하며 상태 DB에 원문을 보관하지 않습니다.
-        process = subprocess.Popen(check["argv"], cwd=workspace, stdin=subprocess.DEVNULL,
-                                   stdout=sys.stderr, stderr=sys.stderr, start_new_session=os.name == "posix")
-        store.attach_process(run_id, process.pid)
-        try:
-            code = process.wait(timeout=check.get("timeout_seconds", 120))
-        except subprocess.TimeoutExpired:
-            terminate(process)
-            result.update(status="timeout", returncode=process.returncode)
-        else:
-            result.update(status="passed" if code == 0 else "failed", returncode=code)
-            if code == 0 and group_alive(process):
-                result["status"] = "background_processes"
-        after = fingerprint(workspace, check["watch"])
-        result["after"] = after
-        if result["status"] == "passed" and before != after:
-            result["status"] = "changed_during_check"
+        with collector() as session:
+            # 출력은 호스트에 바로 전달하며 상태 DB에 원문을 보관하지 않습니다.
+            process = subprocess.Popen(check["argv"], cwd=workspace, stdin=subprocess.DEVNULL,
+                                       stdout=sys.stderr, stderr=sys.stderr, env=session.environment(),
+                                       start_new_session=os.name == "posix")
+            store.attach_process(run_id, process.pid)
+            try:
+                code = process.wait(timeout=check.get("timeout_seconds", 120))
+            except subprocess.TimeoutExpired:
+                terminate(process)
+                result.update(status="timeout", returncode=process.returncode)
+            else:
+                result.update(status="passed" if code == 0 else "failed", returncode=code)
+                if code == 0 and group_alive(process):
+                    result["status"] = "background_processes"
+            after = fingerprint(workspace, check["watch"])
+            result["after"] = after
+            if result["status"] == "passed" and before != after:
+                result["status"] = "changed_during_check"
+            # Python 실행을 하나도 관찰하지 못하면 미실행을 주장하지 않습니다.
+            if session.observed():
+                ran, missed = executed_watch(workspace, check["watch"], session.files())
+                result.update(coverage_observed=True, executed_watch=ran, unexecuted_watch=missed)
     except KeyboardInterrupt:
         if process is not None:
             terminate(process)
@@ -128,7 +136,10 @@ def status(store: Store, task_id: str) -> dict:
                         fingerprints[watched] = None
                 if fingerprints[watched] is None or fingerprints[watched] != run["result"].get("after"):
                     state = "stale"
-        checks.append({"id": check["id"], "criterion": check["criterion"], "status": state})
+        # 통과한 검사에 대해서만 실행 관찰 결과를 전달합니다. 실패·미실행은 범위를 주장하지 않습니다.
+        missed = (run or {}).get("result", {}).get("unexecuted_watch") if state == "passed" else None
+        checks.append({"id": check["id"], "criterion": check["criterion"], "status": state,
+                       "unexecuted_watch": missed})
     return {"task_id": task_id, "goal": task["spec"]["goal"], "spec": task["spec"],
             "verified": all(check["status"] == "passed" for check in checks), "checks": checks,
             "checkpoint": latest_checkpoint(store, task_id)}

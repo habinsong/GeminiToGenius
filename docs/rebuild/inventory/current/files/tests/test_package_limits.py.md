@@ -1,8 +1,8 @@
 # `tests/test_package_limits.py`
 
 - 형식: `100644`
-- 바이트: 2962
-- SHA-256: `fb96dd270903286e537bb4ce0414837e83556a1cf8dfa8fc42bdc3df2d790511`
+- 바이트: 4171
+- SHA-256: `1c363d8e09c1cc3370238eb96dc888bcf1a7b907c62e342e0d75bffe073c2778`
 - 인코딩: `utf-8`
 
 ```
@@ -59,6 +59,29 @@ class RuleLimitTests(unittest.TestCase):
         skill.joinpath("SKILL.md").write_text("---\nname: gtg-build\ndescription: 시험용입니다.\n---\n\n본문\n")
         with self.assertRaisesRegex(ValueError, "규칙"):
             build(source, self.root / "stage", self.root / "stage", "antigravity")
+
+    def test_invisible_characters_in_shipped_instructions_are_rejected(self):
+        build(ROOT, self.root, self.root, "antigravity")
+        cases = {"skills/gtg-build/SKILL.md": "\u200b", "rules/AGENTS.md": "\u202e",
+                 "skills/gtg-research/SKILL.md": "\ufeff"}
+        for name, hidden in cases.items():
+            with self.subTest(name=name):
+                path = self.root / name
+                original = path.read_text(encoding="utf-8")
+                path.write_text(original + "\n\uc228\uc740 \uc9c0\uc2dc" + hidden + "\n", encoding="utf-8")
+                self.refresh(name)
+                with self.assertRaisesRegex(ValueError, "보이지 않는"):
+                    verify(self.root, execute_hooks=False)
+                path.write_text(original, encoding="utf-8")
+                self.refresh(name)
+        self.assertTrue(verify(self.root, execute_hooks=False)["ok"])
+
+    def test_shipped_instructions_are_currently_clean(self):
+        from gtg.package import INVISIBLE
+
+        for path in sorted((ROOT / "profile").rglob("*.md")):
+            with self.subTest(path=path.name):
+                self.assertIsNone(INVISIBLE.search(path.read_text(encoding="utf-8")))
 
     def test_angle_brackets_in_skill_metadata_are_rejected(self):
         build(ROOT, self.root, self.root, "antigravity")

@@ -81,6 +81,10 @@ Codex·Claude Code·OmO보다 나은 결과가 최종 목표이며 같은 조건
 
 같은 사례·요청·채점기로 GTG와 Claude Code를 실행해 둘 다 1/1 통과, 동률이었습니다. Codex CLI는 사용자 설정 충돌과 로컬 프록시 부재로, OmO는 런타임 부재로 실행되지 않았고 `compare`가 이를 `ungraded`로 막았습니다. [실제 시험](validation/2026-09-09-native-certificate/README.md), [비교](validation/2026-09-09-real-comparison/README.md).
 
+## 방금 완료한 미검증 범위 기록
+
+2026-09-09. 검사 실행 중 실제로 실행된 Python 파일을 관찰해 `unexecuted_watch`·`unverified_scope`로 검증하지 못한 범위를 사실로 남깁니다. 배포 지시문의 보이지 않는 문자도 거부합니다. 신규 15개 포함 전체 216개 검사가 통과했습니다. [기록](validation/2026-09-09-evidence-coverage/README.md).
+
 ## 다음 작업
 
 경쟁 비교는 사례 1개·시행 1회입니다. 반복 실행·사례 확대·비용과 지연 수집, 다른 모델 회귀, Antigravity CLI(`agy`) 실환경 확인이 남아 있습니다. Antigravity 서브에이전트(`agents/`) 정의는 공식 필드 목록만 확인했고 실제 로딩을 검증하지 못해 패키지에 넣지 않았습니다. `agy` 실행 파일이 없어 Antigravity CLI의 실제 발견·훅 발행은 미검증이고, 증명서의 실제 모델 채택 효과도 미검증입니다. 관리·실행·감사 역할 분리는 조사만 마쳤고 구현하지 않았습니다.

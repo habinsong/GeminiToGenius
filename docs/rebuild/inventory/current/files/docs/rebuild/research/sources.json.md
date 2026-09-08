@@ -1,13 +1,13 @@
 # `docs/rebuild/research/sources.json`
 
 - 형식: `100644`
-- 바이트: 35589
-- SHA-256: `95aafa9086b9d73d6f4aefbf54a984eb5cb8e52f5467887bcead7eb2c50180b2`
+- 바이트: 39753
+- SHA-256: `e210479a0df768599ae44665ea9e13e071fe873e05b3a90c50f46c7ed6c68d04`
 - 인코딩: `utf-8`
 
 ```
 {
-  "as_of": "2026-09-08",
+  "as_of": "2026-09-09",
   "evidence_boundary": "공식 문서·원문·초록 확인입니다. 실모델 품질과 논문 실험을 재현한 결과가 아닙니다.",
   "sources": [
     {
@@ -688,6 +688,60 @@
       "access": "검색 도구가 인용한 공식 원문 확인",
       "finding": "Gemini 3 계열은 추론 모델이므로 간결하고 직접적인 지시를 권장하며, 장황한 프롬프트 기법은 과분석을 부릅니다. thinking_level로 추론 깊이를 조절하고 temperature는 1.0 기본값 유지를 권장합니다. 함수 호출에는 사고 서명 전달이 필요합니다.",
       "application": "규칙·스킬을 짧고 구조적으로 유지하는 현재 방향과 일치합니다. GTG는 모델 매개변수를 바꾸지 않으므로 호스트 설정을 그대로 둡니다."
+    },
+    {
+      "id": "CODE-AS-HARNESS",
+      "url": "https://arxiv.org/pdf/2605.18747",
+      "kind": "paper",
+      "checked_on": "2026-09-09",
+      "access": "검색 도구가 인용한 본문 확인",
+      "finding": "실행 피드백은 붙은 오라클만큼만 신뢰할 수 있어 통과가 곧 정확성이 아니라고 지적합니다. 검증 산출물마다 무엇을 검증하고 무엇을 검증하지 못하는지 밝히고, 수행한 검사·보존한 가정·검증하지 않은 영역·남은 위험을 담은 증거 묶음을 제안합니다.",
+      "application": "검사 실행 중 실제로 실행된 파일을 관찰해 `unexecuted_watch`·`unverified_scope`로 검증하지 못한 범위를 사실로 기록했습니다."
+    },
+    {
+      "id": "BELIEF-DIVERGENCE",
+      "url": "https://arxiv.org/pdf/2607.04528",
+      "kind": "paper",
+      "checked_on": "2026-09-09",
+      "access": "검색 도구가 인용한 본문 확인",
+      "finding": "검증 선택형 하네스는 각 상태에서 어떤 검증기가 적용됐고 적용되지 않았는지를 기록해 미검증 범위를 측정 가능한 값으로 만듭니다.",
+      "application": "통과한 검사에만 실행 관찰을 붙이고, Python 실행을 관찰하지 못하면 미실행을 주장하지 않도록 했습니다."
+    },
+    {
+      "id": "PEP-669-MONITORING",
+      "url": "https://nedbatchelder.com/blog/202312/coveragepy_with_sysmonitoring.html",
+      "kind": "reference",
+      "checked_on": "2026-09-09",
+      "access": "검색 도구가 인용한 본문 확인",
+      "finding": "Python 3.12의 `sys.monitoring`(PEP 669)은 `sys.settrace`보다 가볍고, coverage.py는 3.14부터 이를 기본 코어로 씁니다. 이미 관찰한 코드 위치를 DISABLE로 되돌려 오버헤드를 낮춥니다. 도구 ID 충돌이 실제 실패 원인입니다.",
+      "application": "PY_START + DISABLE로 파일 단위 실행만 관찰하고, 빈 도구 ID를 찾아 사용하며 실패 시 조용히 관찰을 포기합니다. 실측 고정 비용은 Python 프로세스당 약 4밀리초입니다."
+    },
+    {
+      "id": "TOXICSKILLS",
+      "url": "https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/",
+      "kind": "report",
+      "checked_on": "2026-09-09",
+      "access": "검색 도구가 인용한 본문 확인",
+      "finding": "공개 스킬의 13.4%가 치명적 문제를, 36.8%가 어떤 수준이든 결함을 가졌고 2.9%는 실행 시점에 외부에서 내용을 받아 실행했습니다. 커밋된 SKILL.md만 보는 정적 검토로는 부족합니다.",
+      "application": "GTG는 자체 패키지의 모든 파일을 해시로 고정하고 설치 검증에서 다시 확인합니다. 외부 내용을 실행 시점에 받아오지 않습니다."
+    },
+    {
+      "id": "SKILL-HIDDEN-INSTRUCTIONS",
+      "url": "https://arxiv.org/html/2602.14211v3",
+      "kind": "paper",
+      "checked_on": "2026-09-09",
+      "access": "검색 도구가 인용한 본문 확인",
+      "finding": "SKILL.md에 보이지 않는 유니코드로 지시를 숨기는 공격이 보고됐습니다. 사용자에게는 무해한 문구만 보이고 에이전트는 숨은 명령을 실행합니다. 스캐너만으로는 부분적으로만 막힙니다.",
+      "application": "배포하는 모든 Markdown 지시문에서 제어·양방향·폭 없는 문자를 거부합니다. 현재 원문에는 해당 문자가 없습니다."
+    },
+    {
+      "id": "AGY-SKILL-SLASH-FLAG",
+      "url": "https://antigravity.google/changelog/",
+      "kind": "official",
+      "checked_on": "2026-09-09",
+      "access": "검색 도구가 인용한 변경 기록 확인",
+      "finding": "SKILL.md frontmatter에 `disable-slash-command: true`가 추가돼 슬래시 메뉴에서 숨기면서도 모델이 발견·호출할 수 있게 합니다.",
+      "application": "슬래시를 요구하지 않는 GTG 설계와 맞지만 이번 구간에서는 실호스트로 확인하지 못해 적용하지 않았습니다. 공식 스킬 규격의 허용 키 목록에도 없어 다음 실호스트 확인의 후보로 남깁니다."
     }
   ]
 }

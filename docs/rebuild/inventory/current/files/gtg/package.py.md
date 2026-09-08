@@ -1,8 +1,8 @@
 # `gtg/package.py`
 
 - 형식: `100644`
-- 바이트: 11992
-- SHA-256: `2f74b15be27b90c280032bcb318b5c33daae2c23bbfb7a972ed40475aa5402da`
+- 바이트: 12520
+- SHA-256: `bbddbee803f2c99b9d79121ea0ad39b1e4f67e69005fa3d9d0f53e7a1606551f`
 - 인코딩: `utf-8`
 
 ```
@@ -26,6 +26,11 @@ from .platforms import EVENTS, MAX_RULE_CHARACTERS, NAME, PLATFORMS, antigravity
 from .spec import sensitive
 
 MANIFEST = "gtg-manifest.json"
+# 보이지 않는 문자로 지시를 숨기는 스킬 공격이 보고됐습니다. 배포하는 지시문에서 거부합니다.
+INVISIBLE = re.compile(
+    "[\u0000-\u0008\u000b-\u001f\u007f-\u009f\u00ad\u061c\u180e"
+    "\u200b-\u200f\u202a-\u202e\u2060-\u2064\u2066-\u2069\ufeff\ufff9-\ufffb]")
+
 
 
 def validate_source(path: Path):
@@ -180,6 +185,10 @@ def verify(target: Path, execute_hooks: bool = True, *, installed: Path | None =
             raise ValueError(f"패키지 원문이 변경되었습니다: {name}")
         if path.suffix == ".py":
             ast.parse(path.read_text(encoding="utf-8"))
+        if path.suffix == ".md":
+            hidden = INVISIBLE.search(path.read_text(encoding="utf-8"))
+            if hidden:
+                raise ValueError(f"보이지 않는 문자가 지시문에 있습니다: {name}")
         if path.name == "SKILL.md":
             text = path.read_text(encoding="utf-8")
             match = re.match(r"\A---\nname: ([a-z0-9]+(?:-[a-z0-9]+)*)\ndescription: ([^\n]+)\n---\n", text)

@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 244개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 250개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -19,7 +19,7 @@
 | `CODE_OF_CONDUCT.md` | 352 | [원문](files/CODE_OF_CONDUCT.md.md) |
 | `CONTRIBUTING.md` | 1127 | [원문](files/CONTRIBUTING.md.md) |
 | `LICENSE` | 1066 | [원문](files/LICENSE.md) |
-| `README.md` | 9264 | [원문](files/README.md.md) |
+| `README.md` | 9733 | [원문](files/README.md.md) |
 | `SECURITY.md` | 524 | [원문](files/SECURITY.md.md) |
 | `SUPPORT.md` | 510 | [원문](files/SUPPORT.md.md) |
 | `VERSION` | 14 | [원문](files/VERSION.md) |
@@ -33,17 +33,17 @@
 | `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 10946 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 11354 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 7669 | [원문](files/docs/rebuild/plan/architecture.md.md) |
-| `docs/rebuild/plan/completion-audit.md` | 4864 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
+| `docs/rebuild/plan/completion-audit.md` | 5066 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
 | `docs/rebuild/plan/roadmap.md` | 4540 | [원문](files/docs/rebuild/plan/roadmap.md.md) |
 | `docs/rebuild/plan/verification.md` | 4104 | [원문](files/docs/rebuild/plan/verification.md.md) |
 | `docs/rebuild/research/decisions.md` | 5113 | [원문](files/docs/rebuild/research/decisions.md.md) |
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
-| `docs/rebuild/research/sources.json` | 35589 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 39417 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/research/sources.json` | 39753 | [원문](files/docs/rebuild/research/sources.json.md) |
+| `docs/rebuild/status.md` | 41265 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -151,6 +151,10 @@
 | `docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json` | 270 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/tests.log` | 21385 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/tests.log.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/verification.json` | 5995 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/verification.json.md) |
+| `docs/rebuild/validation/2026-09-09-evidence-coverage/README.md` | 4674 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md) |
+| `docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json` | 844 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json.md) |
+| `docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log` | 21295 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log.md) |
+| `docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json` | 1859 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json.md) |
 | `docs/rebuild/validation/2026-09-09-native-certificate/README.md` | 4633 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-native-certificate/certificate.json` | 1465 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/certificate.json.md) |
 | `docs/rebuild/validation/2026-09-09-native-certificate/model-report.py` | 994 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/model-report.py.md) |
@@ -198,25 +202,26 @@
 | `evals/workspace.py` | 4030 | [원문](files/evals/workspace.py.md) |
 | `gtg/__init__.py` | 79 | [원문](files/gtg/__init__.py.md) |
 | `gtg/__main__.py` | 10866 | [원문](files/gtg/__main__.py.md) |
-| `gtg/certificate.py` | 5590 | [원문](files/gtg/certificate.py.md) |
+| `gtg/certificate.py` | 6437 | [원문](files/gtg/certificate.py.md) |
 | `gtg/checkpoints.py` | 2771 | [원문](files/gtg/checkpoints.py.md) |
 | `gtg/context_message.py` | 2514 | [원문](files/gtg/context_message.py.md) |
+| `gtg/coverage.py` | 6157 | [원문](files/gtg/coverage.py.md) |
 | `gtg/discovery.py` | 4610 | [원문](files/gtg/discovery.py.md) |
 | `gtg/hooks.py` | 9749 | [원문](files/gtg/hooks.py.md) |
 | `gtg/inspection.py` | 7450 | [원문](files/gtg/inspection.py.md) |
 | `gtg/install.py` | 11431 | [원문](files/gtg/install.py.md) |
 | `gtg/install_journal.py` | 7124 | [원문](files/gtg/install_journal.py.md) |
 | `gtg/legacy.py` | 2362 | [원문](files/gtg/legacy.py.md) |
-| `gtg/package.py` | 11992 | [원문](files/gtg/package.py.md) |
+| `gtg/package.py` | 12520 | [원문](files/gtg/package.py.md) |
 | `gtg/platforms.py` | 1801 | [원문](files/gtg/platforms.py.md) |
-| `gtg/runner.py` | 4726 | [원문](files/gtg/runner.py.md) |
+| `gtg/runner.py` | 5659 | [원문](files/gtg/runner.py.md) |
 | `gtg/sessions.py` | 8952 | [원문](files/gtg/sessions.py.md) |
 | `gtg/spec.py` | 5961 | [원문](files/gtg/spec.py.md) |
 | `gtg/store.py` | 6372 | [원문](files/gtg/store.py.md) |
 | `profile/rules/gtg.md` | 1714 | [원문](files/profile/rules/gtg.md.md) |
 | `profile/skills/gtg-build/SKILL.md` | 3636 | [원문](files/profile/skills/gtg-build/SKILL.md.md) |
 | `profile/skills/gtg-build/references/code-intake.md` | 2983 | [원문](files/profile/skills/gtg-build/references/code-intake.md.md) |
-| `profile/skills/gtg-build/references/task-contract.md` | 11424 | [원문](files/profile/skills/gtg-build/references/task-contract.md.md) |
+| `profile/skills/gtg-build/references/task-contract.md` | 12250 | [원문](files/profile/skills/gtg-build/references/task-contract.md.md) |
 | `profile/skills/gtg-interface/SKILL.md` | 1774 | [원문](files/profile/skills/gtg-interface/SKILL.md.md) |
 | `profile/skills/gtg-research/SKILL.md` | 1387 | [원문](files/profile/skills/gtg-research/SKILL.md.md) |
 | `scripts/catalog.py` | 8438 | [원문](files/scripts/catalog.py.md) |
@@ -229,6 +234,7 @@
 | `tests/test_checkpoints.py` | 4243 | [원문](files/tests/test_checkpoints.py.md) |
 | `tests/test_comparison.py` | 6954 | [원문](files/tests/test_comparison.py.md) |
 | `tests/test_context_message.py` | 6937 | [원문](files/tests/test_context_message.py.md) |
+| `tests/test_coverage.py` | 6679 | [원문](files/tests/test_coverage.py.md) |
 | `tests/test_eval_export.py` | 5780 | [원문](files/tests/test_eval_export.py.md) |
 | `tests/test_eval_resume.py` | 3602 | [원문](files/tests/test_eval_resume.py.md) |
 | `tests/test_evals.py` | 7991 | [원문](files/tests/test_evals.py.md) |
@@ -239,7 +245,7 @@
 | `tests/test_long_scenario.py` | 3577 | [원문](files/tests/test_long_scenario.py.md) |
 | `tests/test_multi_workspace.py` | 4050 | [원문](files/tests/test_multi_workspace.py.md) |
 | `tests/test_package_hooks.py` | 4089 | [원문](files/tests/test_package_hooks.py.md) |
-| `tests/test_package_limits.py` | 2962 | [원문](files/tests/test_package_limits.py.md) |
+| `tests/test_package_limits.py` | 4171 | [원문](files/tests/test_package_limits.py.md) |
 | `tests/test_package_sources.py` | 2736 | [원문](files/tests/test_package_sources.py.md) |
 | `tests/test_process_lifecycle.py` | 4346 | [원문](files/tests/test_process_lifecycle.py.md) |
 | `tests/test_repository_noise.py` | 3033 | [원문](files/tests/test_repository_noise.py.md) |

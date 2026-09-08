@@ -1,8 +1,8 @@
 # `docs/rebuild/current-work.md`
 
 - 형식: `100644`
-- 바이트: 10946
-- SHA-256: `ff327b9bc6716b68cd682eb2aa3267912a02942af6370a4dc1f97f358c61be4c`
+- 바이트: 11354
+- SHA-256: `237d7065c9d44809a3c7a0d85ec81c961d6119abc59bac63d0abed3bf14d99a9`
 - 인코딩: `utf-8`
 
 ```
@@ -88,6 +88,10 @@ Codex·Claude Code·OmO보다 나은 결과가 최종 목표이며 같은 조건
 2026-09-09. 실제 요청 3회로 자동 스킬 선택·작업 등록·검증·증명서 생성과 모델의 자체 `replay` 실행을 확인했습니다. 설치물이 사용자 `git status`를 오염시키던 결함을 실제 사용에서 발견하고 고쳤습니다.
 
 같은 사례·요청·채점기로 GTG와 Claude Code를 실행해 둘 다 1/1 통과, 동률이었습니다. Codex CLI는 사용자 설정 충돌과 로컬 프록시 부재로, OmO는 런타임 부재로 실행되지 않았고 `compare`가 이를 `ungraded`로 막았습니다. [실제 시험](validation/2026-09-09-native-certificate/README.md), [비교](validation/2026-09-09-real-comparison/README.md).
+
+## 방금 완료한 미검증 범위 기록
+
+2026-09-09. 검사 실행 중 실제로 실행된 Python 파일을 관찰해 `unexecuted_watch`·`unverified_scope`로 검증하지 못한 범위를 사실로 남깁니다. 배포 지시문의 보이지 않는 문자도 거부합니다. 신규 15개 포함 전체 216개 검사가 통과했습니다. [기록](validation/2026-09-09-evidence-coverage/README.md).
 
 ## 다음 작업
 

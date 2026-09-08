@@ -1,8 +1,8 @@
 # `gtg/certificate.py`
 
 - 형식: `100644`
-- 바이트: 5590
-- SHA-256: `59bfdd370a53ad791b6e81d5de06ada4fbf057e942dc06a49b6bec5cb3413d63`
+- 바이트: 6437
+- SHA-256: `3f3e52d01d209a4e7e429a6ee762b440d737c784f4f8228c9c65396707e369a1`
 - 인코딩: `utf-8`
 
 ```
@@ -25,7 +25,7 @@ from .spec import relative, sensitive
 from .store import Store
 
 SCHEMA = 1
-BODY = ("schema_version", "task_id", "goal", "workspace", "verified", "checks", "created")
+BODY = ("schema_version", "task_id", "goal", "workspace", "verified", "checks", "unverified_scope", "created")
 
 
 def canonical(document: dict) -> bytes:
@@ -47,16 +47,26 @@ def build(store: Store, task_id: str) -> dict:
     latest = store.latest(task_id)
     states = {check["id"]: check["status"] for check in report["checks"]}
     checks = []
+    ran_anywhere, missed_anywhere = set(), set()
     for check in task["spec"]["checks"]:
         result = (latest.get(check["id"]) or {}).get("result") or {}
         state = states[check["id"]]
+        passed = state == "passed"
+        missed = result.get("unexecuted_watch") if passed else None
+        if passed:
+            ran_anywhere.update(result.get("executed_watch") or [])
+            missed_anywhere.update(missed or [])
         checks.append({"id": check["id"], "criterion": check["criterion"], "argv": list(check["argv"]),
                        "watch": sorted(set(check["watch"])), "timeout_seconds": check.get("timeout_seconds", 120),
                        "status": state, "returncode": result.get("returncode"),
                        # 통과한 실행의 증거만 남깁니다. 실패·미실행에는 지문을 붙이지 않습니다.
-                       "evidence_fingerprint": result.get("after") if state == "passed" else None})
+                       "evidence_fingerprint": result.get("after") if passed else None,
+                       "coverage_observed": bool(result.get("coverage_observed")) if passed else False,
+                       "unexecuted_watch": missed})
     document = {"schema_version": SCHEMA, "task_id": task_id, "goal": task["spec"]["goal"],
                 "workspace": task["workspace"], "verified": report["verified"], "checks": checks,
+                # 어떤 검사도 실행하지 않은 검증 대상입니다. 이 증명서가 확인하지 못한 범위입니다.
+                "unverified_scope": sorted(missed_anywhere - ran_anywhere),
                 "created": round(time.time(), 3)}
     return {**document, "digest": digest(document)}
 
@@ -124,5 +134,7 @@ def replay(document: dict, workspace: Path, *, trust_commands: bool = False) -> 
     return {"task_id": document["task_id"], "goal": document["goal"], "workspace": str(workspace),
             "workspace_matches": matches, "claimed_verified": bool(document["verified"]),
             "reconstructed": bool(document["verified"]) and all(item["reconstructed"] for item in outcomes),
+            # 재현에 성공해도 이 목록의 파일은 어떤 검사도 실행하지 않았습니다.
+            "unverified_scope": list(document.get("unverified_scope") or []),
             "checks": outcomes}
 ```
