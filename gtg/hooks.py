@@ -147,16 +147,19 @@ def handle(platform: str, event: str, payload: dict) -> dict:
             return empty
         if any(link["last_event"] == event_id for _, _, _, link in entries):
             return empty
-        if any(link["retries"] >= 2 for _, _, _, link in entries):
-            reason = "자동 재개 상한에 도달했습니다. 등록된 검사에 미검증 항목이 남아 있어 완료로 처리하지 않았습니다."
+        # 여러 작업이 연결됐다면 가장 작은 예산을 따릅니다.
+        budget = min(report["spec"]["max_resumes"] for _, report in reports)
+        if any(link["retries"] >= budget for _, _, _, link in entries):
+            reason = (f"자동 재개 상한 {budget}회에 도달했습니다. "
+                      "등록된 검사에 미검증 항목이 남아 있어 완료로 처리하지 않았습니다.")
             for _, _, sessions, _ in entries:
                 sessions.pause(session, reason)
             return exhausted(platform, reason)
         # 정렬된 첫 DB가 같은 이벤트의 중복 재개를 직렬화합니다.
-        if not entries[0][2].nudge(session, event_id):
+        if not entries[0][2].nudge(session, event_id, budget):
             return empty
         for _, _, sessions, _ in entries[1:]:
-            sessions.nudge(session, event_id)
+            sessions.nudge(session, event_id, budget)
         return {"decision": "continue" if antigravity(platform) else "deny", "reason": message}
 
 

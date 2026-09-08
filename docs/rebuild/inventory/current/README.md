@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 227개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 228개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -19,7 +19,7 @@
 | `CODE_OF_CONDUCT.md` | 352 | [원문](files/CODE_OF_CONDUCT.md.md) |
 | `CONTRIBUTING.md` | 1127 | [원문](files/CONTRIBUTING.md.md) |
 | `LICENSE` | 1066 | [원문](files/LICENSE.md) |
-| `README.md` | 8818 | [원문](files/README.md.md) |
+| `README.md` | 9042 | [원문](files/README.md.md) |
 | `SECURITY.md` | 524 | [원문](files/SECURITY.md.md) |
 | `SUPPORT.md` | 510 | [원문](files/SUPPORT.md.md) |
 | `VERSION` | 14 | [원문](files/VERSION.md) |
@@ -33,7 +33,7 @@
 | `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 9242 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 9766 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 7669 | [원문](files/docs/rebuild/plan/architecture.md.md) |
 | `docs/rebuild/plan/completion-audit.md` | 4379 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 33145 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 33102 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 34314 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -185,12 +185,12 @@
 | `evals/progress.py` | 2165 | [원문](files/evals/progress.py.md) |
 | `evals/workspace.py` | 4030 | [원문](files/evals/workspace.py.md) |
 | `gtg/__init__.py` | 79 | [원문](files/gtg/__init__.py.md) |
-| `gtg/__main__.py` | 10109 | [원문](files/gtg/__main__.py.md) |
+| `gtg/__main__.py` | 10290 | [원문](files/gtg/__main__.py.md) |
 | `gtg/certificate.py` | 5590 | [원문](files/gtg/certificate.py.md) |
 | `gtg/checkpoints.py` | 2771 | [원문](files/gtg/checkpoints.py.md) |
 | `gtg/context_message.py` | 2514 | [원문](files/gtg/context_message.py.md) |
 | `gtg/discovery.py` | 4610 | [원문](files/gtg/discovery.py.md) |
-| `gtg/hooks.py` | 9530 | [원문](files/gtg/hooks.py.md) |
+| `gtg/hooks.py` | 9749 | [원문](files/gtg/hooks.py.md) |
 | `gtg/inspection.py` | 7450 | [원문](files/gtg/inspection.py.md) |
 | `gtg/install.py` | 11009 | [원문](files/gtg/install.py.md) |
 | `gtg/install_journal.py` | 7124 | [원문](files/gtg/install_journal.py.md) |
@@ -198,13 +198,13 @@
 | `gtg/package.py` | 11145 | [원문](files/gtg/package.py.md) |
 | `gtg/platforms.py` | 1652 | [원문](files/gtg/platforms.py.md) |
 | `gtg/runner.py` | 4726 | [원문](files/gtg/runner.py.md) |
-| `gtg/sessions.py` | 8730 | [원문](files/gtg/sessions.py.md) |
-| `gtg/spec.py` | 4785 | [원문](files/gtg/spec.py.md) |
+| `gtg/sessions.py` | 8952 | [원문](files/gtg/sessions.py.md) |
+| `gtg/spec.py` | 5203 | [원문](files/gtg/spec.py.md) |
 | `gtg/store.py` | 6013 | [원문](files/gtg/store.py.md) |
 | `profile/rules/gtg.md` | 1714 | [원문](files/profile/rules/gtg.md.md) |
 | `profile/skills/gtg-build/SKILL.md` | 3636 | [원문](files/profile/skills/gtg-build/SKILL.md.md) |
 | `profile/skills/gtg-build/references/code-intake.md` | 2983 | [원문](files/profile/skills/gtg-build/references/code-intake.md.md) |
-| `profile/skills/gtg-build/references/task-contract.md` | 10320 | [원문](files/profile/skills/gtg-build/references/task-contract.md.md) |
+| `profile/skills/gtg-build/references/task-contract.md` | 10956 | [원문](files/profile/skills/gtg-build/references/task-contract.md.md) |
 | `profile/skills/gtg-interface/SKILL.md` | 1774 | [원문](files/profile/skills/gtg-interface/SKILL.md.md) |
 | `profile/skills/gtg-research/SKILL.md` | 1387 | [원문](files/profile/skills/gtg-research/SKILL.md.md) |
 | `scripts/catalog.py` | 8438 | [원문](files/scripts/catalog.py.md) |
@@ -229,6 +229,7 @@
 | `tests/test_package_hooks.py` | 4089 | [원문](files/tests/test_package_hooks.py.md) |
 | `tests/test_package_sources.py` | 2736 | [원문](files/tests/test_package_sources.py.md) |
 | `tests/test_process_lifecycle.py` | 4346 | [원문](files/tests/test_process_lifecycle.py.md) |
+| `tests/test_resume_budget.py` | 6141 | [원문](files/tests/test_resume_budget.py.md) |
 | `tests/test_runtime.py` | 11787 | [원문](files/tests/test_runtime.py.md) |
 | `tests/test_scenario.py` | 3646 | [원문](files/tests/test_scenario.py.md) |
 | `tests/test_session_start.py` | 4328 | [원문](files/tests/test_session_start.py.md) |

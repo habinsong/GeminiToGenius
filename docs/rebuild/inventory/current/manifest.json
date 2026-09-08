@@ -148,8 +148,8 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "bytes": 8818,
-      "sha256": "97b719797dea941d3dc25459acb72b090fd3d22131794d7900f91335cf91a484",
+      "bytes": 9042,
+      "sha256": "b04ca30596ad7f0bda2f3e73a7dabea61b7f1029a339cc64a84c498efdeac1d2",
       "encoding": "utf-8",
       "lines": 110,
       "symbols": [],
@@ -301,10 +301,10 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 9242,
-      "sha256": "5ec808adaaf2e1508da4076271c8171905b7e5cbed176579549f2959ac46984f",
+      "bytes": 9766,
+      "sha256": "dfb0b84a186ec558722adede831c2cfba161d1ef06a1f352d73eb83f54dceaf0",
       "encoding": "utf-8",
-      "lines": 72,
+      "lines": 76,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/current-work.md.md"
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 33102,
-      "sha256": "34ad6e4201a111b49b46ce844b8acac9ceee687fe8a30486efb52e425b8023c9",
+      "bytes": 34314,
+      "sha256": "95931a15f566685e086b15d1c752c6ef7ff34e9665d135e647ccae377fcf83a4",
       "encoding": "utf-8",
-      "lines": 219,
+      "lines": 226,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -2564,10 +2564,10 @@
     {
       "path": "gtg/__main__.py",
       "mode": "100644",
-      "bytes": 10109,
-      "sha256": "38bd07470f19707513d6165a50eaaeaab9308f33469853917181c370b90fdae3",
+      "bytes": 10290,
+      "sha256": "f9d846efc1dd2901c17b540a32066b3eded7035f305ce13f6b6b464d30ce9c9f",
       "encoding": "utf-8",
-      "lines": 174,
+      "lines": 176,
       "symbols": [
         {
           "name": "read_document",
@@ -2585,7 +2585,7 @@
           "name": "main",
           "kind": "FunctionDef",
           "line": 33,
-          "end_line": 170
+          "end_line": 172
         }
       ],
       "trailing_newline": true,
@@ -2720,10 +2720,10 @@
     {
       "path": "gtg/hooks.py",
       "mode": "100644",
-      "bytes": 9530,
-      "sha256": "b40e370e68694e2aa95d2f24bfe9e7f50d603e96cd3bb0e86963d8e3a31c41a6",
+      "bytes": 9749,
+      "sha256": "4aedd7ea19f620216a0d01eb230aa2df115d5b735ac7188f71af6d0f1cbe00aa",
       "encoding": "utf-8",
-      "lines": 182,
+      "lines": 185,
       "symbols": [
         {
           "name": "parse",
@@ -2759,13 +2759,13 @@
           "name": "handle",
           "kind": "FunctionDef",
           "line": 79,
-          "end_line": 160
+          "end_line": 163
         },
         {
           "name": "main",
           "kind": "FunctionDef",
-          "line": 163,
-          "end_line": 178
+          "line": 166,
+          "end_line": 181
         }
       ],
       "trailing_newline": true,
@@ -3164,10 +3164,10 @@
     {
       "path": "gtg/sessions.py",
       "mode": "100644",
-      "bytes": 8730,
-      "sha256": "d0622586f1fc6a0aa1ba3617be8282fed31cbe3fb545769e7020f547eb0c58b4",
+      "bytes": 8952,
+      "sha256": "a6fcd9126e085be048edd9eb7b5af1fb4f953dd8178bd5fc5d3bdfbffd934adb",
       "encoding": "utf-8",
-      "lines": 157,
+      "lines": 159,
       "symbols": [
         {
           "name": "key",
@@ -3179,7 +3179,7 @@
           "name": "Sessions",
           "kind": "ClassDef",
           "line": 24,
-          "end_line": 157
+          "end_line": 159
         },
         {
           "name": "__init__",
@@ -3245,7 +3245,7 @@
           "name": "nudge",
           "kind": "FunctionDef",
           "line": 151,
-          "end_line": 157
+          "end_line": 159
         }
       ],
       "trailing_newline": true,
@@ -3254,46 +3254,46 @@
     {
       "path": "gtg/spec.py",
       "mode": "100644",
-      "bytes": 4785,
-      "sha256": "a31e4fb5edac39593958e87a8a86a4a3ae525e8c0caf813cf4b63ada0c0aaaf7",
+      "bytes": 5203,
+      "sha256": "5d7632c35b942c89f19073665c83b1ac63a661c0deefdc73c79eba8765278664",
       "encoding": "utf-8",
-      "lines": 105,
+      "lines": 112,
       "symbols": [
         {
           "name": "sensitive",
           "kind": "FunctionDef",
-          "line": 17,
-          "end_line": 22
+          "line": 20,
+          "end_line": 25
         },
         {
           "name": "private",
           "kind": "FunctionDef",
-          "line": 25,
-          "end_line": 27
+          "line": 28,
+          "end_line": 30
         },
         {
           "name": "relative",
           "kind": "FunctionDef",
-          "line": 30,
-          "end_line": 36
+          "line": 33,
+          "end_line": 39
         },
         {
           "name": "validate",
           "kind": "FunctionDef",
-          "line": 39,
-          "end_line": 68
+          "line": 42,
+          "end_line": 75
         },
         {
           "name": "fingerprint",
           "kind": "FunctionDef",
-          "line": 71,
-          "end_line": 105
+          "line": 78,
+          "end_line": 112
         },
         {
           "name": "add",
           "kind": "FunctionDef",
-          "line": 76,
-          "end_line": 101
+          "line": 83,
+          "end_line": 108
         }
       ],
       "trailing_newline": true,
@@ -3407,10 +3407,10 @@
     {
       "path": "profile/skills/gtg-build/references/task-contract.md",
       "mode": "100644",
-      "bytes": 10320,
-      "sha256": "755328cff4008c5ac15b920945fa5aab4a8886b0ce18e1eaabdf1ced7e334783",
+      "bytes": 10956,
+      "sha256": "6df48c030398b7f1adfc274aa0a23a440880681a5ac08a2e4ba08a4d106840b4",
       "encoding": "utf-8",
-      "lines": 96,
+      "lines": 100,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/profile/skills/gtg-build/references/task-contract.md.md"
@@ -4957,6 +4957,114 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_process_lifecycle.py.md"
+    },
+    {
+      "path": "tests/test_resume_budget.py",
+      "mode": "100644",
+      "bytes": 6141,
+      "sha256": "5bd37323dc637a4b9a35f3c671c2e0970a541da59857e47d2d99f84d24eb0a6a",
+      "encoding": "utf-8",
+      "lines": 134,
+      "symbols": [
+        {
+          "name": "spec",
+          "kind": "FunctionDef",
+          "line": 15,
+          "end_line": 21
+        },
+        {
+          "name": "SpecBudgetTests",
+          "kind": "ClassDef",
+          "line": 24,
+          "end_line": 33
+        },
+        {
+          "name": "HookBudgetTests",
+          "kind": "ClassDef",
+          "line": 36,
+          "end_line": 97
+        },
+        {
+          "name": "VerifyAllTests",
+          "kind": "ClassDef",
+          "line": 100,
+          "end_line": 130
+        },
+        {
+          "name": "test_default_budget_is_two_and_is_recorded",
+          "kind": "FunctionDef",
+          "line": 25,
+          "end_line": 26
+        },
+        {
+          "name": "test_declared_budget_is_kept_within_the_hard_cap",
+          "kind": "FunctionDef",
+          "line": 28,
+          "end_line": 33
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 37,
+          "end_line": 41
+        },
+        {
+          "name": "register",
+          "kind": "FunctionDef",
+          "line": 43,
+          "end_line": 48
+        },
+        {
+          "name": "stop",
+          "kind": "FunctionDef",
+          "line": 50,
+          "end_line": 53
+        },
+        {
+          "name": "resumes_until_pause",
+          "kind": "FunctionDef",
+          "line": 55,
+          "end_line": 60
+        },
+        {
+          "name": "test_default_budget_pauses_after_two_resumes",
+          "kind": "FunctionDef",
+          "line": 62,
+          "end_line": 67
+        },
+        {
+          "name": "test_declared_budget_allows_more_resumes_for_a_long_task",
+          "kind": "FunctionDef",
+          "line": 69,
+          "end_line": 72
+        },
+        {
+          "name": "test_stored_state_keeps_the_pause_reason_and_count",
+          "kind": "FunctionDef",
+          "line": 74,
+          "end_line": 80
+        },
+        {
+          "name": "test_a_second_workspace_with_a_smaller_budget_wins",
+          "kind": "FunctionDef",
+          "line": 82,
+          "end_line": 97
+        },
+        {
+          "name": "test_verify_all_runs_every_check_instead_of_stopping_at_the_first_failure",
+          "kind": "FunctionDef",
+          "line": 101,
+          "end_line": 130
+        },
+        {
+          "name": "command",
+          "kind": "FunctionDef",
+          "line": 118,
+          "end_line": 121
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_resume_budget.py.md"
     },
     {
       "path": "tests/test_runtime.py",

@@ -12,6 +12,9 @@ import stat
 
 ID = re.compile(r"[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}\Z")
 PRIVATE_DIRS = {".git", ".gtg", ".ssh", ".aws", ".kube", "__pycache__"}
+# 자동 재개는 사용자 쿼터를 사용합니다. 긴 작업도 이 상한을 넘지 않습니다.
+DEFAULT_RESUMES = 2
+MAX_RESUMES = 8
 
 
 def sensitive(path: Path) -> bool:
@@ -41,6 +44,10 @@ def validate(spec: dict) -> dict:
         raise ValueError("schema_version 1 작업 계약이 필요합니다.")
     if not isinstance(spec.get("goal"), str) or not spec["goal"].strip():
         raise ValueError("구체적인 목표가 필요합니다.")
+    resumes = spec.get("max_resumes", DEFAULT_RESUMES)
+    if type(resumes) is not int or not 1 <= resumes <= MAX_RESUMES:
+        raise ValueError(f"자동 재개 예산은 1 이상 {MAX_RESUMES} 이하의 정수여야 합니다.")
+    spec = {**spec, "max_resumes": resumes}
     checks = spec.get("checks")
     if not isinstance(checks, list) or not checks:
         raise ValueError("하나 이상의 완료 조건과 검증 명령이 필요합니다.")

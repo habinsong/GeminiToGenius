@@ -1,8 +1,8 @@
 # `gtg/sessions.py`
 
 - 형식: `100644`
-- 바이트: 8730
-- SHA-256: `d0622586f1fc6a0aa1ba3617be8282fed31cbe3fb545769e7020f547eb0c58b4`
+- 바이트: 8952
+- SHA-256: `a6fcd9126e085be048edd9eb7b5af1fb4f953dd8178bd5fc5d3bdfbffd934adb`
 - 인코딩: `utf-8`
 
 ```
@@ -18,7 +18,7 @@ import re
 from .store import Store
 from .platforms import PLATFORMS
 from .runner import status
-from .spec import validate
+from .spec import DEFAULT_RESUMES, MAX_RESUMES, validate
 
 
 def key(platform: str, session_id: str) -> str:
@@ -156,11 +156,13 @@ class Sessions:
                 raise ValueError("다른 세션에 연결된 작업입니다. 현재 연결을 확인한 뒤 attach로 선택하세요.")
             self.db.execute("UPDATE sessions SET paused=0, retries=0, last_event=NULL, reason='', turn_open=1 WHERE key=?", (session_key,))
 
-    def nudge(self, session_key: str, event_id: str) -> bool:
+    def nudge(self, session_key: str, event_id: str, budget: int = DEFAULT_RESUMES) -> bool:
         # 중복 이벤트와 동시에 도착한 종료 요청도 한 번만 처리합니다.
+        if type(budget) is not int or not 1 <= budget <= MAX_RESUMES:
+            raise ValueError("자동 재개 예산이 올바르지 않습니다.")
         with self.db:
             cursor = self.db.execute("""UPDATE sessions SET retries=retries+1, last_event=?, turn_open=1
-                WHERE key=? AND paused=0 AND retries<2 AND (last_event IS NULL OR last_event<>?)""",
-                                     (event_id, session_key, event_id))
+                WHERE key=? AND paused=0 AND retries<? AND (last_event IS NULL OR last_event<>?)""",
+                                     (event_id, session_key, budget, event_id))
             return cursor.rowcount == 1
 ```

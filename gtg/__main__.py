@@ -59,6 +59,8 @@ def main() -> int:
     verify = commands.add_parser("verify", help="등록된 검증 명령을 직접 실행합니다.")
     verify.add_argument("task_id")
     verify.add_argument("--check", help="지정한 검사만 실행합니다. 전체 완료 상태는 verified로 구분합니다.")
+    verify.add_argument("--all", action="store_true",
+                        help="첫 실패에서 멈추지 않고 등록된 모든 검사를 실행합니다.")
     for name in ("status", "recover"):
         command = commands.add_parser(name)
         command.add_argument("task_id")
@@ -123,7 +125,7 @@ def main() -> int:
             with cancellation_signals():
                 for check_id in ids:
                     outcome = execute(store, args.task_id, check_id)
-                    if outcome["status"] != "passed":
+                    if outcome["status"] != "passed" and not args.all:
                         break
             result = status(store, args.task_id)
             result["requested_checks"] = ids
