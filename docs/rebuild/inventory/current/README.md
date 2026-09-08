@@ -36,7 +36,7 @@
 | `docs/rebuild/current-work.md` | 10116 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 7669 | [원문](files/docs/rebuild/plan/architecture.md.md) |
-| `docs/rebuild/plan/completion-audit.md` | 4379 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
+| `docs/rebuild/plan/completion-audit.md` | 4848 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
 | `docs/rebuild/plan/roadmap.md` | 4540 | [원문](files/docs/rebuild/plan/roadmap.md.md) |
 | `docs/rebuild/plan/verification.md` | 4104 | [원문](files/docs/rebuild/plan/verification.md.md) |
 | `docs/rebuild/research/decisions.md` | 5113 | [원문](files/docs/rebuild/research/decisions.md.md) |
@@ -59,9 +59,9 @@
 | `docs/rebuild/validation/2026-09-08-harness-comparison/README.md` | 3074 | [원문](files/docs/rebuild/validation/2026-09-08-harness-comparison/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-harness-comparison/comparison-clean.json` | 2119 | [원문](files/docs/rebuild/validation/2026-09-08-harness-comparison/comparison-clean.json.md) |
 | `docs/rebuild/validation/2026-09-08-harness-comparison/comparison-unstable.json` | 2098 | [원문](files/docs/rebuild/validation/2026-09-08-harness-comparison/comparison-unstable.json.md) |
-| `docs/rebuild/validation/2026-09-08-hosts-and-certificate/README.md` | 4098 | [원문](files/docs/rebuild/validation/2026-09-08-hosts-and-certificate/README.md.md) |
-| `docs/rebuild/validation/2026-09-08-hosts-and-certificate/tests.log` | 16656 | [원문](files/docs/rebuild/validation/2026-09-08-hosts-and-certificate/tests.log.md) |
-| `docs/rebuild/validation/2026-09-08-hosts-and-certificate/verification.json` | 2004 | [원문](files/docs/rebuild/validation/2026-09-08-hosts-and-certificate/verification.json.md) |
+| `docs/rebuild/validation/2026-09-08-hosts-and-certificate/README.md` | 4202 | [원문](files/docs/rebuild/validation/2026-09-08-hosts-and-certificate/README.md.md) |
+| `docs/rebuild/validation/2026-09-08-hosts-and-certificate/tests.log` | 19868 | [원문](files/docs/rebuild/validation/2026-09-08-hosts-and-certificate/tests.log.md) |
+| `docs/rebuild/validation/2026-09-08-hosts-and-certificate/verification.json` | 2723 | [원문](files/docs/rebuild/validation/2026-09-08-hosts-and-certificate/verification.json.md) |
 | `docs/rebuild/validation/2026-09-08-ide/README.md` | 1681 | [원문](files/docs/rebuild/validation/2026-09-08-ide/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-ide/observation.json` | 1512 | [원문](files/docs/rebuild/validation/2026-09-08-ide/observation.json.md) |
 | `docs/rebuild/validation/2026-09-08-inspection/README.md` | 1610 | [원문](files/docs/rebuild/validation/2026-09-08-inspection/README.md.md) |

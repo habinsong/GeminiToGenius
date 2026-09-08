@@ -334,10 +334,10 @@
     {
       "path": "docs/rebuild/plan/completion-audit.md",
       "mode": "100644",
-      "bytes": 4379,
-      "sha256": "671bad6bb24f8dce3cd458bb812057fabe9ef0236eedbcce25f4f1fb9fc6a4ee",
+      "bytes": 4848,
+      "sha256": "b433fed71fef63d0569a7859b786267ffd41893e8937518eebb28050e7cfb20b",
       "encoding": "utf-8",
-      "lines": 25,
+      "lines": 27,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/plan/completion-audit.md.md"
@@ -630,8 +630,8 @@
     {
       "path": "docs/rebuild/validation/2026-09-08-hosts-and-certificate/README.md",
       "mode": "100644",
-      "bytes": 4098,
-      "sha256": "b17a62bc7ca3506ed4f70bb95533a3b22115e6f2993c0986d3d9bc0a0d50cbfb",
+      "bytes": 4202,
+      "sha256": "dc43dde99af92d2ebdfab726db1c3ebc1e7b9ff2c2b3820121606e65cea1fa97",
       "encoding": "utf-8",
       "lines": 37,
       "symbols": [],
@@ -641,10 +641,10 @@
     {
       "path": "docs/rebuild/validation/2026-09-08-hosts-and-certificate/tests.log",
       "mode": "100644",
-      "bytes": 16656,
-      "sha256": "5708314060e55ef82712c78f689db7a2089d8587da382b1c17ca40fd30bf9315",
+      "bytes": 19868,
+      "sha256": "56781bbb0d4dec59d74d6de5250cab3a7b2d7dec587d88515caabdea57e1f6fb",
       "encoding": "utf-8",
-      "lines": 185,
+      "lines": 218,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-08-hosts-and-certificate/tests.log.md"
@@ -652,10 +652,10 @@
     {
       "path": "docs/rebuild/validation/2026-09-08-hosts-and-certificate/verification.json",
       "mode": "100644",
-      "bytes": 2004,
-      "sha256": "41e6bb4e811cc0bf5bd3ddee353dac5a4e8d7c78d19d6e1f8bdffe7aa624c945",
+      "bytes": 2723,
+      "sha256": "5513db1945a40819f0df6af131cda377e88d8cd0473af0be8b743c96c99c3c75",
       "encoding": "utf-8",
-      "lines": 29,
+      "lines": 37,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-08-hosts-and-certificate/verification.json.md"

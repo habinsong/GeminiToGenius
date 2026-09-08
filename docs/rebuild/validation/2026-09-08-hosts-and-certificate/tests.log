@@ -25,6 +25,17 @@ test_checkpoint_survives_restart_without_marking_checks_passed (test_checkpoints
 test_private_or_outside_paths_and_result_fields_are_rejected (test_checkpoints.CheckpointTests) ... ok
 test_repeated_save_is_idempotent_and_new_milestone_keeps_history (test_checkpoints.CheckpointTests) ... ok
 test_unbound_note_has_no_file_freshness_claim (test_checkpoints.CheckpointTests) ... ok
+test_conflicting_reports_are_not_silently_resolved (test_comparison.ComparisonTests) ... ok
+test_different_grading_definitions_block_the_comparison (test_comparison.ComparisonTests) ... ok
+test_different_prompts_for_the_same_case_block_the_comparison (test_comparison.ComparisonTests) ... ok
+test_one_arm_alone_is_not_a_comparison (test_comparison.ComparisonTests) ... ok
+test_same_arm_label_with_two_models_stays_separate (test_comparison.ComparisonTests) ... ok
+test_same_conditions_produce_a_per_arm_result (test_comparison.ComparisonTests) ... ok
+test_unequal_case_coverage_blocks_the_comparison (test_comparison.ComparisonTests) ... ok
+test_ungraded_trial_is_reported_instead_of_counted_as_a_loss (test_comparison.ComparisonTests) ... ok
+test_arm_defaults_to_the_profile_name (test_comparison.PreparedArmTests) ... ok
+test_cli_reports_blocking_reasons_with_a_nonzero_exit_code (test_comparison.PreparedArmTests) ... ok
+test_prepare_records_the_declared_arm_and_model_without_installing_for_baseline (test_comparison.PreparedArmTests) ... ok
 test_active_and_unbound_workspaces_keep_candidate_origin (test_context_message.ContextMessageTests) ... ok
 test_each_invocation_rechecks_files_and_does_not_rely_on_previous_message (test_context_message.ContextMessageTests) ... ok
 test_gemini_turns_receive_the_same_current_state (test_context_message.ContextMessageTests) ... ok
@@ -128,6 +139,10 @@ test_disabled_or_malformed_required_hook_is_a_validation_error (test_package_hoo
 test_duplicate_context_hook_cannot_replace_completion (test_package_hooks.PackageHookTests) ... ok
 test_invalid_timeout_values_are_rejected (test_package_hooks.PackageHookTests) ... ok
 test_malformed_and_filtered_cli_hooks_are_rejected_before_execution (test_package_hooks.PackageHookTests) ... ok
+test_angle_brackets_in_skill_metadata_are_rejected (test_package_limits.RuleLimitTests) ... ok
+test_current_rule_fits_the_documented_limit (test_package_limits.RuleLimitTests) ... ok
+test_oversized_rule_is_rejected_when_installed (test_package_limits.RuleLimitTests) ... ok
+test_oversized_source_rule_is_rejected_before_packaging (test_package_limits.RuleLimitTests) ... ok
 test_markdown_separator_does_not_remove_rule_content (test_package_sources.PackageSourceTests) ... ok
 test_required_source_file_links_are_rejected (test_package_sources.PackageSourceTests) ... ok
 test_sensitive_file_cannot_enter_the_package (test_package_sources.PackageSourceTests) ... ok
@@ -136,6 +151,13 @@ test_failure_to_record_process_does_not_leave_it_running (test_process_lifecycle
 test_sigint_cancels_child_and_records_interruption (test_process_lifecycle.ProcessLifecycleTests) ... ok
 test_sigterm_cancels_child_and_records_interruption (test_process_lifecycle.ProcessLifecycleTests) ... ok
 test_successful_parent_with_background_child_is_not_verified (test_process_lifecycle.ProcessLifecycleTests) ... ok
+test_a_second_workspace_with_a_smaller_budget_wins (test_resume_budget.HookBudgetTests) ... ok
+test_declared_budget_allows_more_resumes_for_a_long_task (test_resume_budget.HookBudgetTests) ... ok
+test_default_budget_pauses_after_two_resumes (test_resume_budget.HookBudgetTests) ... ok
+test_stored_state_keeps_the_pause_reason_and_count (test_resume_budget.HookBudgetTests) ... ok
+test_declared_budget_is_kept_within_the_hard_cap (test_resume_budget.SpecBudgetTests) ... ok
+test_default_budget_is_two_and_is_recorded (test_resume_budget.SpecBudgetTests) ... ok
+test_verify_all_runs_every_check_instead_of_stopping_at_the_first_failure (test_resume_budget.VerifyAllTests) ... ok
 test_cli_runs_without_provider_and_returns_failure (test_runtime.RuntimeTests) ... ok
 test_command_cannot_change_watched_code_and_claim_pass (test_runtime.RuntimeTests) ... ok
 test_dead_owner_recovery_keeps_task_unverified (test_runtime.RuntimeTests) ... ok
@@ -178,8 +200,19 @@ test_private_or_linked_state_is_rejected_before_database_access (test_task_hando
 test_running_check_cannot_be_overridden (test_task_handoff.TaskHandoffTests) ... ok
 test_tasks_reads_saved_progress_without_creating_or_changing_state (test_task_handoff.TaskHandoffTests) ... ok
 test_wrong_workspace_or_non_native_state_path_does_not_attach (test_task_handoff.TaskHandoffTests) ... ok
+test_no_op_commands_cannot_be_registered_as_evidence (test_task_hygiene.EvidenceCommandTests) ... ok
+test_previously_stored_specs_remain_readable (test_task_hygiene.EvidenceCommandTests) ... ok
+test_real_commands_are_still_accepted (test_task_hygiene.EvidenceCommandTests) ... ok
+test_existing_ignore_file_is_not_overwritten (test_task_hygiene.StateHygieneTests) ... ok
+test_state_folder_ignores_itself_in_a_git_repository (test_task_hygiene.StateHygieneTests) ... ok
+test_state_outside_a_gtg_folder_does_not_create_an_ignore_file (test_task_hygiene.StateHygieneTests) ... ok
+test_explicit_state_path_takes_precedence_over_workspace (test_workspace_argument.WorkspaceArgumentTests) ... ok
+test_lookup_from_a_directory_without_state_does_not_create_one (test_workspace_argument.WorkspaceArgumentTests) ... ok
+test_recover_and_checkpoint_accept_workspace (test_workspace_argument.WorkspaceArgumentTests) ... ok
+test_status_accepts_workspace_from_another_directory (test_workspace_argument.WorkspaceArgumentTests) ... ok
+test_verify_and_certify_accept_workspace (test_workspace_argument.WorkspaceArgumentTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 168 tests in 49.610s
+Ran 201 tests in 54.288s
 
 OK
