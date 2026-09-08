@@ -301,10 +301,10 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 9766,
-      "sha256": "dfb0b84a186ec558722adede831c2cfba161d1ef06a1f352d73eb83f54dceaf0",
+      "bytes": 10093,
+      "sha256": "8d9588d0d9909a57f84217f67fa4c2b96b89232cb42800cfaa6bf21513369500",
       "encoding": "utf-8",
-      "lines": 76,
+      "lines": 80,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/current-work.md.md"
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 34314,
-      "sha256": "95931a15f566685e086b15d1c752c6ef7ff34e9665d135e647ccae377fcf83a4",
+      "bytes": 35390,
+      "sha256": "46cf03e64ee2835aaab08152c6020c909bab027b5ca31419e9748e9351e65c7d",
       "encoding": "utf-8",
-      "lines": 226,
+      "lines": 235,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -2564,10 +2564,10 @@
     {
       "path": "gtg/__main__.py",
       "mode": "100644",
-      "bytes": 10290,
-      "sha256": "f9d846efc1dd2901c17b540a32066b3eded7035f305ce13f6b6b464d30ce9c9f",
+      "bytes": 10866,
+      "sha256": "f57951bfe23bfa630223b01919d9d76702a9945d5c8e9c67c2fe5bdf2f436a87",
       "encoding": "utf-8",
-      "lines": 176,
+      "lines": 186,
       "symbols": [
         {
           "name": "read_document",
@@ -2585,7 +2585,7 @@
           "name": "main",
           "kind": "FunctionDef",
           "line": 33,
-          "end_line": 172
+          "end_line": 182
         }
       ],
       "trailing_newline": true,
@@ -3407,8 +3407,8 @@
     {
       "path": "profile/skills/gtg-build/references/task-contract.md",
       "mode": "100644",
-      "bytes": 10956,
-      "sha256": "6df48c030398b7f1adfc274aa0a23a440880681a5ac08a2e4ba08a4d106840b4",
+      "bytes": 11089,
+      "sha256": "088bbf2c8f9d973ba862af90b8b0a9b394fdd9b3cdee6eddb23b07997e9a044b",
       "encoding": "utf-8",
       "lines": 100,
       "symbols": [],
@@ -5413,6 +5413,66 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_task_handoff.py.md"
+    },
+    {
+      "path": "tests/test_workspace_argument.py",
+      "mode": "100644",
+      "bytes": 3601,
+      "sha256": "ac68a115aec5fff77aab4aa515d5b3181f92a5b83658ca019ea29469d54b698f",
+      "encoding": "utf-8",
+      "lines": 72,
+      "symbols": [
+        {
+          "name": "WorkspaceArgumentTests",
+          "kind": "ClassDef",
+          "line": 16,
+          "end_line": 68
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 17,
+          "end_line": 31
+        },
+        {
+          "name": "command",
+          "kind": "FunctionDef",
+          "line": 33,
+          "end_line": 37
+        },
+        {
+          "name": "test_status_accepts_workspace_from_another_directory",
+          "kind": "FunctionDef",
+          "line": 39,
+          "end_line": 42
+        },
+        {
+          "name": "test_verify_and_certify_accept_workspace",
+          "kind": "FunctionDef",
+          "line": 44,
+          "end_line": 48
+        },
+        {
+          "name": "test_lookup_from_a_directory_without_state_does_not_create_one",
+          "kind": "FunctionDef",
+          "line": 50,
+          "end_line": 52
+        },
+        {
+          "name": "test_explicit_state_path_takes_precedence_over_workspace",
+          "kind": "FunctionDef",
+          "line": 54,
+          "end_line": 59
+        },
+        {
+          "name": "test_recover_and_checkpoint_accept_workspace",
+          "kind": "FunctionDef",
+          "line": 61,
+          "end_line": 68
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_workspace_argument.py.md"
     }
   ],
   "excluded_roots": {
