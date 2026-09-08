@@ -1,8 +1,8 @@
 # `tests/test_context_message.py`
 
 - 형식: `100644`
-- 바이트: 6937
-- SHA-256: `ce4e8a342adefa5dfc519b56f5af7b7cd7811633a3445afa9103c68dfa7e08ce`
+- 바이트: 8706
+- SHA-256: `9bb4ff9cb0c4318137ab567190d12642a1aa314faf48cbd5796ba19a8b825f59`
 - 인코딩: `utf-8`
 
 ```
@@ -59,6 +59,34 @@ class ContextMessageTests(unittest.TestCase):
         self.assertEqual(item["task_id"], task)
         self.assertEqual(item["unverified"], {"check-0": "pending"})
         self.assertEqual(result["injectSteps"][0]["ephemeralMessage"].count(str(self.root)), 1)
+
+    def test_passed_check_reports_what_it_never_executed(self):
+        (self.root / "covered.py").write_text("VALUE = 1\n")
+        (self.root / "skipped.py").write_text("OTHER = 2\n")
+        spec = {"schema_version": 1, "goal": "일부만 실행합니다.", "checks": [
+            {"id": "partial", "criterion": "덮인 파일만 확인합니다.", "watch": ["covered.py", "skipped.py"],
+             "argv": [sys.executable, "-c", "import covered; assert covered.VALUE == 1"]},
+            {"id": "pending", "criterion": "아직 실행하지 않았습니다.", "watch": ["covered.py"],
+             "argv": [sys.executable, "-c", "pass"]}]}
+        task = self.store.create(self.root, spec)
+        Sessions(self.store).bind(self.session, task)
+        execute(self.store, task, "partial")
+        item = state_data(self.context())["tasks"][0]
+        self.assertEqual(item["unverified"], {"pending": "pending"})
+        self.assertEqual(item["unexecuted"], ["skipped.py"])
+
+    def test_fully_covered_task_says_nothing_extra(self):
+        (self.root / "covered.py").write_text("VALUE = 1\n")
+        spec = {"schema_version": 1, "goal": "전부 실행합니다.", "checks": [
+            {"id": "full", "criterion": "덮인 파일을 확인합니다.", "watch": ["covered.py"],
+             "argv": [sys.executable, "-c", "import covered; assert covered.VALUE == 1"]},
+            {"id": "rest", "criterion": "남은 검사입니다.", "watch": ["covered.py"],
+             "argv": [sys.executable, "-c", "pass"]}]}
+        task = self.store.create(self.root, spec)
+        Sessions(self.store).bind(self.session, task)
+        execute(self.store, task, "full")
+        item = state_data(self.context())["tasks"][0]
+        self.assertNotIn("unexecuted", item)
 
     def test_long_goal_note_and_check_list_report_omissions_and_keep_full_status(self):
         goal = "중요한 요구 " * 40

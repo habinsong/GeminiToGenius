@@ -1,8 +1,8 @@
 # `gtg/runner.py`
 
 - 형식: `100644`
-- 바이트: 5659
-- SHA-256: `67aa6b76cbe4d779344cbe331a6f4c154fc4f60bb3298e2e2df0f3dcd3fa03c7`
+- 바이트: 5779
+- SHA-256: `d81d5f03c54e2c4534e85aa8605a6c04f7b86a5878c5c3130a45d2567c3e5d25`
 - 인코딩: `utf-8`
 
 ```
@@ -137,9 +137,11 @@ def status(store: Store, task_id: str) -> dict:
                 if fingerprints[watched] is None or fingerprints[watched] != run["result"].get("after"):
                     state = "stale"
         # 통과한 검사에 대해서만 실행 관찰 결과를 전달합니다. 실패·미실행은 범위를 주장하지 않습니다.
-        missed = (run or {}).get("result", {}).get("unexecuted_watch") if state == "passed" else None
+        outcome = (run or {}).get("result") or {}
+        passed = state == "passed"
         checks.append({"id": check["id"], "criterion": check["criterion"], "status": state,
-                       "unexecuted_watch": missed})
+                       "executed_watch": outcome.get("executed_watch") if passed else None,
+                       "unexecuted_watch": outcome.get("unexecuted_watch") if passed else None})
     return {"task_id": task_id, "goal": task["spec"]["goal"], "spec": task["spec"],
             "verified": all(check["status"] == "passed" for check in checks), "checks": checks,
             "checkpoint": latest_checkpoint(store, task_id)}

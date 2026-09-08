@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 43022,
-      "sha256": "c5c666c59ecda1c66f46b7d066224b40e1dcbda505b91b56ff22c324ec6e5c2f",
+      "bytes": 43794,
+      "sha256": "2d3715924fffe72075ddc8c9977639232d60e4870b2596c5a27b983ca440f5e9",
       "encoding": "utf-8",
-      "lines": 290,
+      "lines": 297,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -2922,16 +2922,16 @@
     {
       "path": "gtg/context_message.py",
       "mode": "100644",
-      "bytes": 2514,
-      "sha256": "9a1bff312712c0de177c69490c8f927d5c35b502be5f0f090d86ad450ce8199c",
+      "bytes": 3071,
+      "sha256": "a5574c2e7b92be2daf94accf96c6455c8da874dbc843636c2015e779fcb52ba3",
       "encoding": "utf-8",
-      "lines": 46,
+      "lines": 54,
       "symbols": [
         {
           "name": "unfinished_context",
           "kind": "FunctionDef",
           "line": 7,
-          "end_line": 46
+          "end_line": 54
         },
         {
           "name": "brief",
@@ -3426,10 +3426,10 @@
     {
       "path": "gtg/runner.py",
       "mode": "100644",
-      "bytes": 5659,
-      "sha256": "67aa6b76cbe4d779344cbe331a6f4c154fc4f60bb3298e2e2df0f3dcd3fa03c7",
+      "bytes": 5779,
+      "sha256": "d81d5f03c54e2c4534e85aa8605a6c04f7b86a5878c5c3130a45d2567c3e5d25",
       "encoding": "utf-8",
-      "lines": 137,
+      "lines": 139,
       "symbols": [
         {
           "name": "CommandCancelled",
@@ -3465,7 +3465,7 @@
           "name": "status",
           "kind": "FunctionDef",
           "line": 111,
-          "end_line": 137
+          "end_line": 139
         },
         {
           "name": "__init__",
@@ -3735,8 +3735,8 @@
     {
       "path": "profile/skills/gtg-build/references/task-contract.md",
       "mode": "100644",
-      "bytes": 12250,
-      "sha256": "13e73a17d9a51b6e3b3ede247b090800273797c1395897cdd4adc98274933979",
+      "bytes": 12404,
+      "sha256": "a066f1fd0f7252b070a0d541c4f59dc1634006b44df2cb14f3a729bf0518a3bc",
       "encoding": "utf-8",
       "lines": 110,
       "symbols": [],
@@ -4275,10 +4275,10 @@
     {
       "path": "tests/test_context_message.py",
       "mode": "100644",
-      "bytes": 6937,
-      "sha256": "ce4e8a342adefa5dfc519b56f5af7b7cd7811633a3445afa9103c68dfa7e08ce",
+      "bytes": 8706,
+      "sha256": "9bb4ff9cb0c4318137ab567190d12642a1aa314faf48cbd5796ba19a8b825f59",
       "encoding": "utf-8",
-      "lines": 139,
+      "lines": 167,
       "symbols": [
         {
           "name": "state_data",
@@ -4290,7 +4290,7 @@
           "name": "ContextMessageTests",
           "kind": "ClassDef",
           "line": 21,
-          "end_line": 135
+          "end_line": 163
         },
         {
           "name": "setUp",
@@ -4317,34 +4317,46 @@
           "end_line": 53
         },
         {
-          "name": "test_long_goal_note_and_check_list_report_omissions_and_keep_full_status",
+          "name": "test_passed_check_reports_what_it_never_executed",
           "kind": "FunctionDef",
           "line": 55,
-          "end_line": 67
+          "end_line": 68
+        },
+        {
+          "name": "test_fully_covered_task_says_nothing_extra",
+          "kind": "FunctionDef",
+          "line": 70,
+          "end_line": 81
+        },
+        {
+          "name": "test_long_goal_note_and_check_list_report_omissions_and_keep_full_status",
+          "kind": "FunctionDef",
+          "line": 83,
+          "end_line": 95
         },
         {
           "name": "test_each_invocation_rechecks_files_and_does_not_rely_on_previous_message",
           "kind": "FunctionDef",
-          "line": 69,
-          "end_line": 78
+          "line": 97,
+          "end_line": 106
         },
         {
           "name": "test_gemini_turns_receive_the_same_current_state",
           "kind": "FunctionDef",
-          "line": 80,
-          "end_line": 89
+          "line": 108,
+          "end_line": 117
         },
         {
           "name": "test_omitted_workspaces_still_control_running_and_paused_stop",
           "kind": "FunctionDef",
-          "line": 91,
-          "end_line": 119
+          "line": 119,
+          "end_line": 147
         },
         {
           "name": "test_active_and_unbound_workspaces_keep_candidate_origin",
           "kind": "FunctionDef",
-          "line": 121,
-          "end_line": 135
+          "line": 149,
+          "end_line": 163
         }
       ],
       "trailing_newline": true,

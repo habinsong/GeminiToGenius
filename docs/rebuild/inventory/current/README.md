@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 39753 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 43022 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 43794 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -206,7 +206,7 @@
 | `gtg/__main__.py` | 10866 | [원문](files/gtg/__main__.py.md) |
 | `gtg/certificate.py` | 6437 | [원문](files/gtg/certificate.py.md) |
 | `gtg/checkpoints.py` | 2771 | [원문](files/gtg/checkpoints.py.md) |
-| `gtg/context_message.py` | 2514 | [원문](files/gtg/context_message.py.md) |
+| `gtg/context_message.py` | 3071 | [원문](files/gtg/context_message.py.md) |
 | `gtg/coverage.py` | 6649 | [원문](files/gtg/coverage.py.md) |
 | `gtg/discovery.py` | 4610 | [원문](files/gtg/discovery.py.md) |
 | `gtg/hooks.py` | 9749 | [원문](files/gtg/hooks.py.md) |
@@ -216,14 +216,14 @@
 | `gtg/legacy.py` | 2362 | [원문](files/gtg/legacy.py.md) |
 | `gtg/package.py` | 12520 | [원문](files/gtg/package.py.md) |
 | `gtg/platforms.py` | 1801 | [원문](files/gtg/platforms.py.md) |
-| `gtg/runner.py` | 5659 | [원문](files/gtg/runner.py.md) |
+| `gtg/runner.py` | 5779 | [원문](files/gtg/runner.py.md) |
 | `gtg/sessions.py` | 8952 | [원문](files/gtg/sessions.py.md) |
 | `gtg/spec.py` | 5961 | [원문](files/gtg/spec.py.md) |
 | `gtg/store.py` | 6372 | [원문](files/gtg/store.py.md) |
 | `profile/rules/gtg.md` | 1714 | [원문](files/profile/rules/gtg.md.md) |
 | `profile/skills/gtg-build/SKILL.md` | 3636 | [원문](files/profile/skills/gtg-build/SKILL.md.md) |
 | `profile/skills/gtg-build/references/code-intake.md` | 2983 | [원문](files/profile/skills/gtg-build/references/code-intake.md.md) |
-| `profile/skills/gtg-build/references/task-contract.md` | 12250 | [원문](files/profile/skills/gtg-build/references/task-contract.md.md) |
+| `profile/skills/gtg-build/references/task-contract.md` | 12404 | [원문](files/profile/skills/gtg-build/references/task-contract.md.md) |
 | `profile/skills/gtg-interface/SKILL.md` | 1774 | [원문](files/profile/skills/gtg-interface/SKILL.md.md) |
 | `profile/skills/gtg-research/SKILL.md` | 1387 | [원문](files/profile/skills/gtg-research/SKILL.md.md) |
 | `scripts/catalog.py` | 8438 | [원문](files/scripts/catalog.py.md) |
@@ -235,7 +235,7 @@
 | `tests/test_certificate.py` | 7760 | [원문](files/tests/test_certificate.py.md) |
 | `tests/test_checkpoints.py` | 4243 | [원문](files/tests/test_checkpoints.py.md) |
 | `tests/test_comparison.py` | 6954 | [원문](files/tests/test_comparison.py.md) |
-| `tests/test_context_message.py` | 6937 | [원문](files/tests/test_context_message.py.md) |
+| `tests/test_context_message.py` | 8706 | [원문](files/tests/test_context_message.py.md) |
 | `tests/test_coverage.py` | 8262 | [원문](files/tests/test_coverage.py.md) |
 | `tests/test_eval_export.py` | 5780 | [원문](files/tests/test_eval_export.py.md) |
 | `tests/test_eval_resume.py` | 3602 | [원문](files/tests/test_eval_resume.py.md) |

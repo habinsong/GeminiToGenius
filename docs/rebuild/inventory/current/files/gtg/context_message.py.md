@@ -1,8 +1,8 @@
 # `gtg/context_message.py`
 
 - 형식: `100644`
-- 바이트: 2514
-- SHA-256: `9a1bff312712c0de177c69490c8f927d5c35b502be5f0f090d86ad450ce8199c`
+- 바이트: 3071
+- SHA-256: `a5574c2e7b92be2daf94accf96c6455c8da874dbc843636c2015e779fcb52ba3`
 - 인코딩: `utf-8`
 
 ```
@@ -29,6 +29,14 @@ def unfinished_context(platform: str, session: str, roots: tuple[Path, ...], rep
                 "unverified": {check["id"]: check["status"] for check in pending[:8]}}
         if len(pending) > 8:
             item["omitted_checks"] = len(pending) - 8
+        # 통과한 검사가 한 번도 실행하지 않은 검증 대상입니다. 완료 전에 보완할지 판단합니다.
+        executed = {name for check in report["checks"] for name in check.get("executed_watch") or []}
+        unexecuted = sorted({name for check in report["checks"]
+                             for name in check.get("unexecuted_watch") or []} - executed)
+        if unexecuted:
+            item["unexecuted"] = unexecuted[:8]
+            if len(unexecuted) > 8:
+                item["omitted_unexecuted"] = len(unexecuted) - 8
         note = report.get("checkpoint")
         if note:
             item["checkpoint"] = {

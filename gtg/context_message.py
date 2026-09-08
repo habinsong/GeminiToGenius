@@ -21,6 +21,14 @@ def unfinished_context(platform: str, session: str, roots: tuple[Path, ...], rep
                 "unverified": {check["id"]: check["status"] for check in pending[:8]}}
         if len(pending) > 8:
             item["omitted_checks"] = len(pending) - 8
+        # 통과한 검사가 한 번도 실행하지 않은 검증 대상입니다. 완료 전에 보완할지 판단합니다.
+        executed = {name for check in report["checks"] for name in check.get("executed_watch") or []}
+        unexecuted = sorted({name for check in report["checks"]
+                             for name in check.get("unexecuted_watch") or []} - executed)
+        if unexecuted:
+            item["unexecuted"] = unexecuted[:8]
+            if len(unexecuted) > 8:
+                item["omitted_unexecuted"] = len(unexecuted) - 8
         note = report.get("checkpoint")
         if note:
             item["checkpoint"] = {
