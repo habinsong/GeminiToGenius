@@ -1,8 +1,8 @@
 # `gtg/certificate.py`
 
 - 형식: `100644`
-- 바이트: 6437
-- SHA-256: `3f3e52d01d209a4e7e429a6ee762b440d737c784f4f8228c9c65396707e369a1`
+- 바이트: 6914
+- SHA-256: `9dfb43ed91a2b0c2667d15710f3d480ae091b61bd340f3f52a2793c48fa38d35`
 - 인코딩: `utf-8`
 
 ```
@@ -25,7 +25,8 @@ from .spec import relative, sensitive
 from .store import Store
 
 SCHEMA = 1
-BODY = ("schema_version", "task_id", "goal", "workspace", "verified", "checks", "unverified_scope", "created")
+BODY = ("schema_version", "task_id", "goal", "workspace", "verified", "checks",
+        "unverified_scope", "coverage_complete", "created")
 
 
 def canonical(document: dict) -> bytes:
@@ -48,6 +49,7 @@ def build(store: Store, task_id: str) -> dict:
     states = {check["id"]: check["status"] for check in report["checks"]}
     checks = []
     ran_anywhere, missed_anywhere = set(), set()
+    complete = True
     for check in task["spec"]["checks"]:
         result = (latest.get(check["id"]) or {}).get("result") or {}
         state = states[check["id"]]
@@ -56,6 +58,9 @@ def build(store: Store, task_id: str) -> dict:
         if passed:
             ran_anywhere.update(result.get("executed_watch") or [])
             missed_anywhere.update(missed or [])
+            # 관찰하지 못했거나 범위를 다 세지 못한 검사가 있으면 미검증 목록은 하한일 뿐입니다.
+            if missed is None:
+                complete = False
         checks.append({"id": check["id"], "criterion": check["criterion"], "argv": list(check["argv"]),
                        "watch": sorted(set(check["watch"])), "timeout_seconds": check.get("timeout_seconds", 120),
                        "status": state, "returncode": result.get("returncode"),
@@ -67,6 +72,8 @@ def build(store: Store, task_id: str) -> dict:
                 "workspace": task["workspace"], "verified": report["verified"], "checks": checks,
                 # 어떤 검사도 실행하지 않은 검증 대상입니다. 이 증명서가 확인하지 못한 범위입니다.
                 "unverified_scope": sorted(missed_anywhere - ran_anywhere),
+                # 거짓이면 빈 `unverified_scope`를 전부 검증했다는 뜻으로 읽지 않습니다.
+                "coverage_complete": complete,
                 "created": round(time.time(), 3)}
     return {**document, "digest": digest(document)}
 
@@ -136,5 +143,6 @@ def replay(document: dict, workspace: Path, *, trust_commands: bool = False) -> 
             "reconstructed": bool(document["verified"]) and all(item["reconstructed"] for item in outcomes),
             # 재현에 성공해도 이 목록의 파일은 어떤 검사도 실행하지 않았습니다.
             "unverified_scope": list(document.get("unverified_scope") or []),
+            "coverage_complete": bool(document.get("coverage_complete")),
             "checks": outcomes}
 ```

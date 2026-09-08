@@ -1,8 +1,8 @@
 # `tests/test_coverage.py`
 
 - 형식: `100644`
-- 바이트: 8262
-- SHA-256: `d7c9a6faae7d904043f2fbcc4e12d004ddf164cc40c7e5a7c2f8a72d0db362aa`
+- 바이트: 9640
+- SHA-256: `c0d7c4bb7f5948f4f473cf0f6746f3d5302cf0ecee446226d211d689b08e1ce5`
 - 인코딩: `utf-8`
 
 ```
@@ -156,6 +156,32 @@ class RunnerCoverageTests(unittest.TestCase):
         self.assertTrue(document["verified"])
         self.assertEqual(document["checks"][0]["unexecuted_watch"], ["untouched.py"])
         self.assertEqual(document["unverified_scope"], ["untouched.py"])
+
+    def test_unobservable_check_marks_the_scope_as_incomplete(self):
+        task = self.store.create(self.workspace, spec(["/bin/sh", "-c", "exit 0"]))
+        execute(self.store, task, "only")
+        document = build(self.store, task)
+        self.assertTrue(document["verified"])
+        self.assertEqual(document["unverified_scope"], [])
+        self.assertFalse(document["coverage_complete"],
+                         "관찰하지 못한 검사가 있으면 빈 목록을 전부 검증으로 읽히게 두지 않습니다.")
+
+    def test_observed_check_marks_the_scope_as_complete(self):
+        task = self.store.create(self.workspace, spec([sys.executable, "check.py"]))
+        execute(self.store, task, "only")
+        document = build(self.store, task)
+        self.assertTrue(document["coverage_complete"])
+        self.assertEqual(document["unverified_scope"], ["untouched.py"])
+
+    def test_replay_passes_the_scope_and_its_completeness_through(self):
+        from gtg.certificate import replay
+
+        task = self.store.create(self.workspace, spec([sys.executable, "check.py"]))
+        execute(self.store, task, "only")
+        report = replay(build(self.store, task), self.workspace)
+        self.assertTrue(report["reconstructed"])
+        self.assertEqual(report["unverified_scope"], ["untouched.py"])
+        self.assertTrue(report["coverage_complete"])
 
     def test_a_file_executed_by_any_check_is_not_listed_as_unverified(self):
         document = {"schema_version": 1, "goal": "두 검사", "checks": []}

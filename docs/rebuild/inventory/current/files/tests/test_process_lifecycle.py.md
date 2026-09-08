@@ -1,8 +1,8 @@
 # `tests/test_process_lifecycle.py`
 
 - 형식: `100644`
-- 바이트: 4346
-- SHA-256: `ab7bbf23c25c50dea889f833245058ab188caaf098052d7989de96c5857e903d`
+- 바이트: 4770
+- SHA-256: `a9d39993aa381c0ee43fdfc5d8dd23c881d8148daa97811641b4020a30b4fddc`
 - 인코딩: `utf-8`
 
 ```
@@ -43,11 +43,19 @@ class ProcessLifecycleTests(unittest.TestCase):
             "argv": [sys.executable, "-c", code], "timeout_seconds": 10}]})
 
     def cleanup_group(self, pid):
-        if pid:
-            try:
-                os.killpg(pid, signal.SIGKILL)
-            except ProcessLookupError:
-                pass
+        """정리 중인 그룹이 우리가 만든 것일 때만 종료합니다.
+
+        검사 프로세스는 새 세션에서 시작하므로 자기 자신이 그룹 리더입니다. 이미 끝난 뒤
+        PID가 재사용되면 남의 그룹을 겨냥해 `PermissionError`가 나므로 확인 후 종료합니다.
+        """
+        if not pid:
+            return
+        try:
+            if os.getpgid(pid) != pid:
+                return
+            os.killpg(pid, signal.SIGKILL)
+        except (ProcessLookupError, PermissionError):
+            pass
 
     def assert_interruption(self, signum):
         task = self.task("from pathlib import Path; import os,time; Path('ready.tmp').write_text(str(os.getpid())); Path('ready.tmp').replace('ready'); time.sleep(8)")

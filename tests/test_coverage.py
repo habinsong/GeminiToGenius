@@ -149,6 +149,32 @@ class RunnerCoverageTests(unittest.TestCase):
         self.assertEqual(document["checks"][0]["unexecuted_watch"], ["untouched.py"])
         self.assertEqual(document["unverified_scope"], ["untouched.py"])
 
+    def test_unobservable_check_marks_the_scope_as_incomplete(self):
+        task = self.store.create(self.workspace, spec(["/bin/sh", "-c", "exit 0"]))
+        execute(self.store, task, "only")
+        document = build(self.store, task)
+        self.assertTrue(document["verified"])
+        self.assertEqual(document["unverified_scope"], [])
+        self.assertFalse(document["coverage_complete"],
+                         "관찰하지 못한 검사가 있으면 빈 목록을 전부 검증으로 읽히게 두지 않습니다.")
+
+    def test_observed_check_marks_the_scope_as_complete(self):
+        task = self.store.create(self.workspace, spec([sys.executable, "check.py"]))
+        execute(self.store, task, "only")
+        document = build(self.store, task)
+        self.assertTrue(document["coverage_complete"])
+        self.assertEqual(document["unverified_scope"], ["untouched.py"])
+
+    def test_replay_passes_the_scope_and_its_completeness_through(self):
+        from gtg.certificate import replay
+
+        task = self.store.create(self.workspace, spec([sys.executable, "check.py"]))
+        execute(self.store, task, "only")
+        report = replay(build(self.store, task), self.workspace)
+        self.assertTrue(report["reconstructed"])
+        self.assertEqual(report["unverified_scope"], ["untouched.py"])
+        self.assertTrue(report["coverage_complete"])
+
     def test_a_file_executed_by_any_check_is_not_listed_as_unverified(self):
         document = {"schema_version": 1, "goal": "두 검사", "checks": []}
         document = {"schema_version": 1, "goal": "두 검사가 범위를 나눠 덮습니다.", "checks": [

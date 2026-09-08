@@ -301,10 +301,10 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 11688,
-      "sha256": "c4d42d9d857a3ff011320b805de682be602c56901fbd63c814f38bb5ac94c2bf",
+      "bytes": 11993,
+      "sha256": "2999f391c8eb32b9383238952d989b069fea4f10ff3d64b82239fcf7b9c23b46",
       "encoding": "utf-8",
-      "lines": 94,
+      "lines": 98,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/current-work.md.md"
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 43794,
-      "sha256": "2d3715924fffe72075ddc8c9977639232d60e4870b2596c5a27b983ca440f5e9",
+      "bytes": 44672,
+      "sha256": "f5f8bb93d6595ae5ef9d5b7ff367fbef7596c701af48a9261e37040439f0a319",
       "encoding": "utf-8",
-      "lines": 297,
+      "lines": 304,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -1888,10 +1888,10 @@
     {
       "path": "docs/rebuild/validation/2026-09-09-evidence-coverage/README.md",
       "mode": "100644",
-      "bytes": 5089,
-      "sha256": "847769c7f157018b145247bca6f65675e0091f2e09433c9aa85b95f5e68da551",
+      "bytes": 5813,
+      "sha256": "4038771ee2446c4f3ba69f1b80b420b362551624ed465419c50dcf9e443681dc",
       "encoding": "utf-8",
-      "lines": 65,
+      "lines": 69,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md"
@@ -2844,46 +2844,46 @@
     {
       "path": "gtg/certificate.py",
       "mode": "100644",
-      "bytes": 6437,
-      "sha256": "3f3e52d01d209a4e7e429a6ee762b440d737c784f4f8228c9c65396707e369a1",
+      "bytes": 6914,
+      "sha256": "9dfb43ed91a2b0c2667d15710f3d480ae091b61bd340f3f52a2793c48fa38d35",
       "encoding": "utf-8",
-      "lines": 131,
+      "lines": 139,
       "symbols": [
         {
           "name": "canonical",
           "kind": "FunctionDef",
-          "line": 23,
-          "end_line": 25
+          "line": 24,
+          "end_line": 26
         },
         {
           "name": "digest",
           "kind": "FunctionDef",
-          "line": 28,
-          "end_line": 32
+          "line": 29,
+          "end_line": 33
         },
         {
           "name": "build",
           "kind": "FunctionDef",
-          "line": 35,
-          "end_line": 63
+          "line": 36,
+          "end_line": 70
         },
         {
           "name": "validated",
           "kind": "FunctionDef",
-          "line": 66,
-          "end_line": 82
+          "line": 73,
+          "end_line": 89
         },
         {
           "name": "run",
           "kind": "FunctionDef",
-          "line": 85,
-          "end_line": 113
+          "line": 92,
+          "end_line": 120
         },
         {
           "name": "replay",
           "kind": "FunctionDef",
-          "line": 116,
-          "end_line": 131
+          "line": 123,
+          "end_line": 139
         }
       ],
       "trailing_newline": true,
@@ -4365,10 +4365,10 @@
     {
       "path": "tests/test_coverage.py",
       "mode": "100644",
-      "bytes": 8262,
-      "sha256": "d7c9a6faae7d904043f2fbcc4e12d004ddf164cc40c7e5a7c2f8a72d0db362aa",
+      "bytes": 9640,
+      "sha256": "c0d7c4bb7f5948f4f473cf0f6746f3d5302cf0ecee446226d211d689b08e1ce5",
       "encoding": "utf-8",
-      "lines": 169,
+      "lines": 195,
       "symbols": [
         {
           "name": "CollectorTests",
@@ -4386,7 +4386,7 @@
           "name": "RunnerCoverageTests",
           "kind": "ClassDef",
           "line": 116,
-          "end_line": 165
+          "end_line": 191
         },
         {
           "name": "setUp",
@@ -4467,10 +4467,28 @@
           "end_line": 150
         },
         {
-          "name": "test_a_file_executed_by_any_check_is_not_listed_as_unverified",
+          "name": "test_unobservable_check_marks_the_scope_as_incomplete",
           "kind": "FunctionDef",
           "line": 152,
-          "end_line": 165
+          "end_line": 159
+        },
+        {
+          "name": "test_observed_check_marks_the_scope_as_complete",
+          "kind": "FunctionDef",
+          "line": 161,
+          "end_line": 166
+        },
+        {
+          "name": "test_replay_passes_the_scope_and_its_completeness_through",
+          "kind": "FunctionDef",
+          "line": 168,
+          "end_line": 176
+        },
+        {
+          "name": "test_a_file_executed_by_any_check_is_not_listed_as_unverified",
+          "kind": "FunctionDef",
+          "line": 178,
+          "end_line": 191
         }
       ],
       "trailing_newline": true,
@@ -5409,16 +5427,16 @@
     {
       "path": "tests/test_process_lifecycle.py",
       "mode": "100644",
-      "bytes": 4346,
-      "sha256": "ab7bbf23c25c50dea889f833245058ab188caaf098052d7989de96c5857e903d",
+      "bytes": 4770,
+      "sha256": "a9d39993aa381c0ee43fdfc5d8dd23c881d8148daa97811641b4020a30b4fddc",
       "encoding": "utf-8",
-      "lines": 103,
+      "lines": 111,
       "symbols": [
         {
           "name": "ProcessLifecycleTests",
           "kind": "ClassDef",
           "line": 22,
-          "end_line": 99
+          "end_line": 107
         },
         {
           "name": "setUp",
@@ -5436,43 +5454,43 @@
           "name": "cleanup_group",
           "kind": "FunctionDef",
           "line": 37,
-          "end_line": 42
+          "end_line": 50
         },
         {
           "name": "assert_interruption",
           "kind": "FunctionDef",
-          "line": 44,
-          "end_line": 66
+          "line": 52,
+          "end_line": 74
         },
         {
           "name": "test_sigterm_cancels_child_and_records_interruption",
           "kind": "FunctionDef",
-          "line": 68,
-          "end_line": 69
+          "line": 76,
+          "end_line": 77
         },
         {
           "name": "test_sigint_cancels_child_and_records_interruption",
           "kind": "FunctionDef",
-          "line": 71,
-          "end_line": 72
+          "line": 79,
+          "end_line": 80
         },
         {
           "name": "test_successful_parent_with_background_child_is_not_verified",
           "kind": "FunctionDef",
-          "line": 74,
-          "end_line": 82
+          "line": 82,
+          "end_line": 90
         },
         {
           "name": "test_failure_to_record_process_does_not_leave_it_running",
           "kind": "FunctionDef",
-          "line": 84,
-          "end_line": 99
+          "line": 92,
+          "end_line": 107
         },
         {
           "name": "fail",
           "kind": "FunctionDef",
-          "line": 87,
-          "end_line": 89
+          "line": 95,
+          "end_line": 97
         }
       ],
       "trailing_newline": true,
