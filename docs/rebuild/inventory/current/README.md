@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 229개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 230개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -42,8 +42,8 @@
 | `docs/rebuild/research/decisions.md` | 5113 | [원문](files/docs/rebuild/research/decisions.md.md) |
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
-| `docs/rebuild/research/sources.json` | 33145 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 35390 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/research/sources.json` | 35589 | [원문](files/docs/rebuild/research/sources.json.md) |
+| `docs/rebuild/status.md` | 36361 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -195,8 +195,8 @@
 | `gtg/install.py` | 11009 | [원문](files/gtg/install.py.md) |
 | `gtg/install_journal.py` | 7124 | [원문](files/gtg/install_journal.py.md) |
 | `gtg/legacy.py` | 2362 | [원문](files/gtg/legacy.py.md) |
-| `gtg/package.py` | 11145 | [원문](files/gtg/package.py.md) |
-| `gtg/platforms.py` | 1652 | [원문](files/gtg/platforms.py.md) |
+| `gtg/package.py` | 11764 | [원문](files/gtg/package.py.md) |
+| `gtg/platforms.py` | 1801 | [원문](files/gtg/platforms.py.md) |
 | `gtg/runner.py` | 4726 | [원문](files/gtg/runner.py.md) |
 | `gtg/sessions.py` | 8952 | [원문](files/gtg/sessions.py.md) |
 | `gtg/spec.py` | 5203 | [원문](files/gtg/spec.py.md) |
@@ -227,6 +227,7 @@
 | `tests/test_long_scenario.py` | 3577 | [원문](files/tests/test_long_scenario.py.md) |
 | `tests/test_multi_workspace.py` | 4050 | [원문](files/tests/test_multi_workspace.py.md) |
 | `tests/test_package_hooks.py` | 4089 | [원문](files/tests/test_package_hooks.py.md) |
+| `tests/test_package_limits.py` | 2962 | [원문](files/tests/test_package_limits.py.md) |
 | `tests/test_package_sources.py` | 2736 | [원문](files/tests/test_package_sources.py.md) |
 | `tests/test_process_lifecycle.py` | 4346 | [원문](files/tests/test_process_lifecycle.py.md) |
 | `tests/test_resume_budget.py` | 6141 | [원문](files/tests/test_resume_budget.py.md) |

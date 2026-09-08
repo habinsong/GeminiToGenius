@@ -400,10 +400,10 @@
     {
       "path": "docs/rebuild/research/sources.json",
       "mode": "100644",
-      "bytes": 33145,
-      "sha256": "766f84f42c63b3d07b7c730d7e44ee6ccd1cdc15bde2e8f5c22eb8fd5accf193",
+      "bytes": 35589,
+      "sha256": "95aafa9086b9d73d6f4aefbf54a984eb5cb8e52f5467887bcead7eb2c50180b2",
       "encoding": "utf-8",
-      "lines": 658,
+      "lines": 685,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/research/sources.json.md"
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 35390,
-      "sha256": "46cf03e64ee2835aaab08152c6020c909bab027b5ca31419e9748e9351e65c7d",
+      "bytes": 36361,
+      "sha256": "9b92df8adbb447148e13fe31e043f5fdc7f3b29ff27861f3601e399516fbdc96",
       "encoding": "utf-8",
-      "lines": 235,
+      "lines": 242,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -3032,10 +3032,10 @@
     {
       "path": "gtg/package.py",
       "mode": "100644",
-      "bytes": 11145,
-      "sha256": "56f9da5254498e6ba008f9c024c56d13fbd9564e83d6e73b3f726f1be92638bd",
+      "bytes": 11764,
+      "sha256": "57f066cffe43102a9dac05390b5b8d240345935721178062641e4d9d45bcfc25",
       "encoding": "utf-8",
-      "lines": 202,
+      "lines": 213,
       "symbols": [
         {
           "name": "validate_source",
@@ -3062,22 +3062,28 @@
           "end_line": 60
         },
         {
-          "name": "build",
+          "name": "check_rule_size",
           "kind": "FunctionDef",
           "line": 63,
-          "end_line": 98
+          "end_line": 65
+        },
+        {
+          "name": "build",
+          "kind": "FunctionDef",
+          "line": 68,
+          "end_line": 104
         },
         {
           "name": "validated_hooks",
           "kind": "FunctionDef",
-          "line": 101,
-          "end_line": 147
+          "line": 107,
+          "end_line": 153
         },
         {
           "name": "verify",
           "kind": "FunctionDef",
-          "line": 150,
-          "end_line": 202
+          "line": 156,
+          "end_line": 213
         }
       ],
       "trailing_newline": true,
@@ -3086,16 +3092,16 @@
     {
       "path": "gtg/platforms.py",
       "mode": "100644",
-      "bytes": 1652,
-      "sha256": "dd1a71be7ad3f56cb80ffa55005f8d78a22669720278fe59c2fd92be06d4be6f",
+      "bytes": 1801,
+      "sha256": "4f04e6ae4e0762d6325c6dcb431cdd6497924fc01af0cd75f43cc6cbcc2213b9",
       "encoding": "utf-8",
-      "lines": 31,
+      "lines": 34,
       "symbols": [
         {
           "name": "antigravity",
           "kind": "FunctionDef",
-          "line": 27,
-          "end_line": 31
+          "line": 30,
+          "end_line": 34
         }
       ],
       "trailing_newline": true,
@@ -4831,6 +4837,60 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_package_hooks.py.md"
+    },
+    {
+      "path": "tests/test_package_limits.py",
+      "mode": "100644",
+      "bytes": 2962,
+      "sha256": "fb96dd270903286e537bb4ce0414837e83556a1cf8dfa8fc42bdc3df2d790511",
+      "encoding": "utf-8",
+      "lines": 66,
+      "symbols": [
+        {
+          "name": "RuleLimitTests",
+          "kind": "ClassDef",
+          "line": 16,
+          "end_line": 62
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 17,
+          "end_line": 20
+        },
+        {
+          "name": "refresh",
+          "kind": "FunctionDef",
+          "line": 22,
+          "end_line": 26
+        },
+        {
+          "name": "test_current_rule_fits_the_documented_limit",
+          "kind": "FunctionDef",
+          "line": 28,
+          "end_line": 30
+        },
+        {
+          "name": "test_oversized_rule_is_rejected_when_installed",
+          "kind": "FunctionDef",
+          "line": 32,
+          "end_line": 37
+        },
+        {
+          "name": "test_oversized_source_rule_is_rejected_before_packaging",
+          "kind": "FunctionDef",
+          "line": 39,
+          "end_line": 53
+        },
+        {
+          "name": "test_angle_brackets_in_skill_metadata_are_rejected",
+          "kind": "FunctionDef",
+          "line": 55,
+          "end_line": 62
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_package_limits.py.md"
     },
     {
       "path": "tests/test_package_sources.py",

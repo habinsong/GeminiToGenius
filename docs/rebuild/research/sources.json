@@ -336,8 +336,8 @@
       "kind": "official",
       "checked_on": "2026-09-08",
       "access": "원문 페이지 열람",
-      "finding": "규칙 활성화 방식과 디렉터리 범위가 설명되어 있습니다.",
-      "application": "내장 문서 및 실제 로딩과 교차 확인"
+      "finding": "규칙 활성화 방식(Manual·Always On·Model Decision·Glob)과 디렉터리 범위가 설명되어 있습니다. 규칙 파일 하나는 12,000자로 제한되며 전역 규칙은 `~/.gemini/GEMINI.md`, 작업공간 규칙은 `.agents/rules`입니다.",
+      "application": "패키지 검증에 12,000자 한도를 강제했습니다. 현재 규칙 원문은 이보다 훨씬 작습니다."
     },
     {
       "id": "SWE-RPG",
@@ -653,6 +653,33 @@
       "access": "검색 도구가 인용한 초록 확인",
       "finding": "실행 맥락 밖에 작업 상태를 두고 환경에서 독립 검증한 사실로만 갱신하는 관리·실행·감사 순환을 제시합니다. 감사 보고서만 회차 간 기억으로 사용합니다.",
       "application": "상태 외부화와 증거 기반 완료 판정을 유지·강화했습니다. 관리자·감사자 역할 분리는 아직 구현하지 않았습니다."
+    },
+    {
+      "id": "AGY-CLI-BEST-PRACTICES",
+      "url": "https://antigravity.google/docs/cli/best-practices/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "검색 도구가 인용한 공식 원문 확인",
+      "finding": "단일 거대 지침 파일을 토큰 예산 문제로 규정하고 스킬의 점진적 발견·커스텀 에이전트·서브에이전트를 대안으로 제시합니다. 신뢰할 수 있는 수정의 가장 효과적인 방법으로 로컬 검증 수단(테스트·빌드·포매팅 명령)을 듭니다.",
+      "application": "규칙은 작게 유지하고 검증 명령 등록을 핵심으로 두는 현재 설계를 유지했습니다. 스킬을 늘리지 않았습니다."
+    },
+    {
+      "id": "AGY-SUBAGENTS",
+      "url": "https://antigravity.google/docs/subagents/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "검색 도구가 인용한 공식 원문 확인",
+      "finding": "커스텀 에이전트는 `.agents/agents/<name>/agent.md` 또는 `~/.gemini/config/agents/`에 두며 name·description·tools·subagent·mainAgent·model·commandExecutionPolicy·skills 등의 frontmatter를 씁니다. 잘못된 도구 이름은 실행을 멈출 수 있습니다.",
+      "application": "필드 목록만 확인했고 실제 로딩을 검증하지 못해 패키지에 `agents/`를 넣지 않았습니다."
+    },
+    {
+      "id": "GEMINI3-AGENTIC-GUIDE",
+      "url": "https://ai.google.dev/gemini-api/docs/gemini-3",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "검색 도구가 인용한 공식 원문 확인",
+      "finding": "Gemini 3 계열은 추론 모델이므로 간결하고 직접적인 지시를 권장하며, 장황한 프롬프트 기법은 과분석을 부릅니다. thinking_level로 추론 깊이를 조절하고 temperature는 1.0 기본값 유지를 권장합니다. 함수 호출에는 사고 서명 전달이 필요합니다.",
+      "application": "규칙·스킬을 짧고 구조적으로 유지하는 현재 방향과 일치합니다. GTG는 모델 매개변수를 바꾸지 않으므로 호스트 설정을 그대로 둡니다."
     }
   ]
 }

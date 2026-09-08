@@ -1,8 +1,8 @@
 # `gtg/package.py`
 
 - 형식: `100644`
-- 바이트: 11145
-- SHA-256: `56f9da5254498e6ba008f9c024c56d13fbd9564e83d6e73b3f726f1be92638bd`
+- 바이트: 11764
+- SHA-256: `57f066cffe43102a9dac05390b5b8d240345935721178062641e4d9d45bcfc25`
 - 인코딩: `utf-8`
 
 ```
@@ -22,7 +22,7 @@ import subprocess
 import re
 
 from .inspection import open_regular
-from .platforms import EVENTS, NAME, PLATFORMS, antigravity
+from .platforms import EVENTS, MAX_RULE_CHARACTERS, NAME, PLATFORMS, antigravity
 from .spec import sensitive
 
 MANIFEST = "gtg-manifest.json"
@@ -68,6 +68,11 @@ def copy_source(root: Path, name: str, target: Path):
             raise ValueError("패키지 원본에 일반 파일이 아닌 항목이 있습니다.")
 
 
+def check_rule_size(rules: bytes):
+    if len(rules.decode("utf-8")) > MAX_RULE_CHARACTERS:
+        raise ValueError(f"규칙 파일이 호스트 한도 {MAX_RULE_CHARACTERS}자를 넘습니다.")
+
+
 def build(source: Path, target: Path, installed: Path, platform: str) -> dict:
     if platform not in PLATFORMS:
         raise ValueError("지원하지 않는 패키지 호스트입니다.")
@@ -80,6 +85,7 @@ def build(source: Path, target: Path, installed: Path, platform: str) -> dict:
     copy_source(source, "profile/skills", target / "skills")
     copy_file(source, Path("scripts/gtg_runner.py"), target / "run.py")
     rules = read_source(source, "profile/rules/gtg.md")
+    check_rule_size(rules)
     version = read_source(source, "VERSION").decode("utf-8").strip()
     command = "python3 " + shlex.quote(str(installed / "run.py")) + " hook " + platform + " "
     if antigravity(platform):
@@ -177,7 +183,12 @@ def verify(target: Path, execute_hooks: bool = True, *, installed: Path | None =
             match = re.match(r"\A---\nname: ([a-z0-9]+(?:-[a-z0-9]+)*)\ndescription: ([^\n]+)\n---\n", text)
             if not match or match[1] != path.parent.name or len(match[1]) > 64 or len(match[2]) > 1024:
                 raise ValueError(f"스킬 메타데이터가 올바르지 않습니다: {name}")
+            # 메타데이터의 꺾쇠는 시스템 프롬프트에 의도하지 않은 지시를 넣을 수 있습니다.
+            if {"<", ">"} & set(match[2]):
+                raise ValueError(f"스킬 메타데이터에 꺾쇠를 사용할 수 없습니다: {name}")
     platform = manifest["platform"]
+    if antigravity(platform):
+        check_rule_size((target / "rules/AGENTS.md").read_bytes())
     hooks = json.loads((target / ("hooks.json" if antigravity(platform) else "hooks/hooks.json")).read_text())
     entries = validated_hooks(hooks, platform, declared)
     if not execute_hooks:

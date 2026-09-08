@@ -12,6 +12,9 @@ EVENTS = {**{name: ("PreInvocation", "Stop") for name in ANTIGRAVITY},
 
 NAME = "geminitogenius"
 
+# 공식 문서가 규칙 파일 하나당 12,000자로 제한합니다. 넘으면 로딩을 가정하지 않습니다.
+MAX_RULE_CHARACTERS = 12000
+
 # 설치기가 관리하는 호스트·범위별 상위 폴더입니다. 이동 기록도 이 목록만 허용합니다.
 INSTALL_ROOTS = {("antigravity", "workspace"): ".agents/plugins",
                  ("antigravity", "global"): ".gemini/config/plugins",
