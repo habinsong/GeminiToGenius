@@ -301,10 +301,10 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 8592,
-      "sha256": "71900f97c2554e816b0afd46d440018b37a577de361c0a709c2741a81a2e9b2b",
+      "bytes": 9242,
+      "sha256": "5ec808adaaf2e1508da4076271c8171905b7e5cbed176579549f2959ac46984f",
       "encoding": "utf-8",
-      "lines": 68,
+      "lines": 72,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/current-work.md.md"
@@ -334,8 +334,8 @@
     {
       "path": "docs/rebuild/plan/completion-audit.md",
       "mode": "100644",
-      "bytes": 4335,
-      "sha256": "c444b26ed57a1baba2511afdf8a76b9b9a2e60f0fb2f58cf3e7de07fefb4a3f6",
+      "bytes": 4379,
+      "sha256": "671bad6bb24f8dce3cd458bb812057fabe9ef0236eedbcce25f4f1fb9fc6a4ee",
       "encoding": "utf-8",
       "lines": 25,
       "symbols": [],
@@ -345,8 +345,8 @@
     {
       "path": "docs/rebuild/plan/roadmap.md",
       "mode": "100644",
-      "bytes": 4485,
-      "sha256": "2c951fb5fa2c10a378cb2eccb7e42fbcc8faf15e54abf6f2dc9114f21282f52b",
+      "bytes": 4540,
+      "sha256": "30f23e4e1524e0eabeac104ea6c893a0954a676efe14e19422512fc2a23d785f",
       "encoding": "utf-8",
       "lines": 33,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 31565,
-      "sha256": "e963d4f4ba1c13f4c52aecbdc6e8596c85ae7ca39cce7f0ba37a8cc3c1d76c01",
+      "bytes": 33102,
+      "sha256": "34ad6e4201a111b49b46ce844b8acac9ceee687fe8a30486efb52e425b8023c9",
       "encoding": "utf-8",
-      "lines": 208,
+      "lines": 219,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -593,6 +593,39 @@
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-08-evaluation/verification.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-harness-comparison/README.md",
+      "mode": "100644",
+      "bytes": 3074,
+      "sha256": "7a4862a7f10d986752c928261c3b6d6992a84eb28ee311e0dacea92463be3cd7",
+      "encoding": "utf-8",
+      "lines": 37,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-harness-comparison/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-harness-comparison/comparison-clean.json",
+      "mode": "100644",
+      "bytes": 2119,
+      "sha256": "f06a634203fa58b3f0865b53051aab6e76557f4094d26083dc9ddc4b4ebd1577",
+      "encoding": "utf-8",
+      "lines": 75,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/docs/rebuild/validation/2026-09-08-harness-comparison/comparison-clean.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-harness-comparison/comparison-unstable.json",
+      "mode": "100644",
+      "bytes": 2098,
+      "sha256": "72eb50e37fad62e9d05f286f017bfa0fc45e9dd8afbf93874b03ab1a49203a49",
+      "encoding": "utf-8",
+      "lines": 76,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/docs/rebuild/validation/2026-09-08-harness-comparison/comparison-unstable.json.md"
     },
     {
       "path": "docs/rebuild/validation/2026-09-08-hosts-and-certificate/README.md",
@@ -1866,10 +1899,10 @@
     {
       "path": "evals/README.md",
       "mode": "100644",
-      "bytes": 11009,
-      "sha256": "41ad3bd13307fcb6304f2075b48a04e940a25fd637e56fbb60a3cbf16337a477",
+      "bytes": 12377,
+      "sha256": "966f087844f6d00f9f168a892ff067f48c3ae672183cd8081bd0d24912257551",
       "encoding": "utf-8",
-      "lines": 96,
+      "lines": 112,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/evals/README.md.md"
@@ -1895,6 +1928,42 @@
       "symbols": [],
       "trailing_newline": true,
       "document": "files/evals/cases.json.md"
+    },
+    {
+      "path": "evals/comparison.py",
+      "mode": "100644",
+      "bytes": 5128,
+      "sha256": "d3ebbb55048da8c76cee0e005733e8d36a90929e0ac1f35163bd3494e6649964",
+      "encoding": "utf-8",
+      "lines": 105,
+      "symbols": [
+        {
+          "name": "load",
+          "kind": "FunctionDef",
+          "line": 15,
+          "end_line": 45
+        },
+        {
+          "name": "summarize",
+          "kind": "FunctionDef",
+          "line": 48,
+          "end_line": 69
+        },
+        {
+          "name": "blocking",
+          "kind": "FunctionDef",
+          "line": 72,
+          "end_line": 90
+        },
+        {
+          "name": "compare",
+          "kind": "FunctionDef",
+          "line": 93,
+          "end_line": 105
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/comparison.py.md"
     },
     {
       "path": "evals/definitions.py",
@@ -2352,16 +2421,16 @@
     {
       "path": "evals/harness.py",
       "mode": "100644",
-      "bytes": 1532,
-      "sha256": "ad735017cd393dfaf2386c4a62974541222b1ade9f8bcb2136cb2e800c42a838",
+      "bytes": 2247,
+      "sha256": "7acd789f7caab6c950296043d4bc023a038e98cd461be48a0d8b13c6e43c93c8",
       "encoding": "utf-8",
-      "lines": 40,
+      "lines": 50,
       "symbols": [
         {
           "name": "main",
           "kind": "FunctionDef",
-          "line": 20,
-          "end_line": 36
+          "line": 21,
+          "end_line": 46
         }
       ],
       "trailing_newline": true,
@@ -2370,16 +2439,22 @@
     {
       "path": "evals/preparation.py",
       "mode": "100644",
-      "bytes": 2258,
-      "sha256": "c9e501f5a693dd07029102f78a5beb4d8ed302857a0d0f22d27482d3abfa438a",
+      "bytes": 2930,
+      "sha256": "2c22dccb55d7cf3c4fe106fea010a1fce01f56720f761b006ed53ee5a0ec0f81",
       "encoding": "utf-8",
-      "lines": 40,
+      "lines": 56,
       "symbols": [
+        {
+          "name": "label",
+          "kind": "FunctionDef",
+          "line": 20,
+          "end_line": 26
+        },
         {
           "name": "prepare",
           "kind": "FunctionDef",
-          "line": 17,
-          "end_line": 40
+          "line": 29,
+          "end_line": 56
         }
       ],
       "trailing_newline": true,
@@ -3766,6 +3841,108 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_checkpoints.py.md"
+    },
+    {
+      "path": "tests/test_comparison.py",
+      "mode": "100644",
+      "bytes": 6954,
+      "sha256": "4b67e9939117de6d0a7860f5375fa156f6decfbc117883f46fb67bb9456b74f3",
+      "encoding": "utf-8",
+      "lines": 135,
+      "symbols": [
+        {
+          "name": "ComparisonTests",
+          "kind": "ClassDef",
+          "line": 17,
+          "end_line": 99
+        },
+        {
+          "name": "PreparedArmTests",
+          "kind": "ClassDef",
+          "line": 102,
+          "end_line": 131
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 18,
+          "end_line": 22
+        },
+        {
+          "name": "trial",
+          "kind": "FunctionDef",
+          "line": 24,
+          "end_line": 39
+        },
+        {
+          "name": "test_same_conditions_produce_a_per_arm_result",
+          "kind": "FunctionDef",
+          "line": 41,
+          "end_line": 53
+        },
+        {
+          "name": "test_different_grading_definitions_block_the_comparison",
+          "kind": "FunctionDef",
+          "line": 55,
+          "end_line": 58
+        },
+        {
+          "name": "test_different_prompts_for_the_same_case_block_the_comparison",
+          "kind": "FunctionDef",
+          "line": 60,
+          "end_line": 63
+        },
+        {
+          "name": "test_unequal_case_coverage_blocks_the_comparison",
+          "kind": "FunctionDef",
+          "line": 65,
+          "end_line": 68
+        },
+        {
+          "name": "test_conflicting_reports_are_not_silently_resolved",
+          "kind": "FunctionDef",
+          "line": 70,
+          "end_line": 77
+        },
+        {
+          "name": "test_ungraded_trial_is_reported_instead_of_counted_as_a_loss",
+          "kind": "FunctionDef",
+          "line": 79,
+          "end_line": 89
+        },
+        {
+          "name": "test_one_arm_alone_is_not_a_comparison",
+          "kind": "FunctionDef",
+          "line": 91,
+          "end_line": 94
+        },
+        {
+          "name": "test_same_arm_label_with_two_models_stays_separate",
+          "kind": "FunctionDef",
+          "line": 96,
+          "end_line": 99
+        },
+        {
+          "name": "test_prepare_records_the_declared_arm_and_model_without_installing_for_baseline",
+          "kind": "FunctionDef",
+          "line": 103,
+          "end_line": 110
+        },
+        {
+          "name": "test_arm_defaults_to_the_profile_name",
+          "kind": "FunctionDef",
+          "line": 112,
+          "end_line": 118
+        },
+        {
+          "name": "test_cli_reports_blocking_reasons_with_a_nonzero_exit_code",
+          "kind": "FunctionDef",
+          "line": 120,
+          "end_line": 131
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_comparison.py.md"
     },
     {
       "path": "tests/test_context_message.py",

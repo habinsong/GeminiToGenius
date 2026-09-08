@@ -1,8 +1,8 @@
 # `evals/README.md`
 
 - 형식: `100644`
-- 바이트: 11009
-- SHA-256: `41ad3bd13307fcb6304f2075b48a04e940a25fd637e56fbb60a3cbf16337a477`
+- 바이트: 12377
+- SHA-256: `966f087844f6d00f9f168a892ff067f48c3ae672183cd8081bd0d24912257551`
 - 인코딩: `utf-8`
 
 ````
@@ -20,6 +20,8 @@ python3 -m evals.harness grade /absolute/new/trial
 ```
 
 `prepare`는 새 작업 폴더와 프롬프트를 만들며 모델을 호출하지 않습니다. `--profile baseline`은 GTG를 추가하지 않은 폴더, `--profile gtg`는 프로젝트 플러그인을 설치한 폴더입니다. 실제 호스트가 상속하는 전역 설정은 별도로 기록해야 하므로 이 라벨만으로 순수 기본 환경이라고 주장하지 않습니다.
+
+`--arm`과 `--model`은 비교 보고서에서 결과를 묶는 사용자 선언 라벨입니다. 어떤 하네스와 모델이 실제로 실행됐는지 이 도구가 확인하지는 않습니다.
 
 이후 에이전트에 반환된 `workspace`와 `prompt`를 전달합니다. 실제 실행은 아주 드문 통합 확인에만 사용하며 이 도구는 자동으로 호출하지 않습니다. `grade`는 산출물을 검사하고 매번 별도 JSON 보고서를 남깁니다. 실패 기록을 덮어쓰지 않습니다.
 
@@ -100,6 +102,20 @@ GTG 준비 단계는 이전 작업의 완료된 검사를 실제로 실행하고
 | 배포해 | 준비된 결과지만 대상 환경이 없음 | 빌드·검증을 준비하고 배포 대상처럼 결과를 바꾸는 정보만 질문합니다. |
 
 모든 요청은 `/` 접두어 없이 실행합니다. 평가 시 실제 프롬프트·제공 맥락·모델 ID·호스트 버전·사용량·산출물·채점 결과를 기록합니다. 모델이 없는 테스트의 참조 수정은 모델 성능으로 집계하지 않습니다.
+
+## 통제된 하네스 비교
+
+여러 하네스의 결과는 같은 사례·요청·채점 기준을 공유할 때만 모읍니다.
+
+```bash
+python3 -m evals.harness prepare bounds /absolute/new/a --profile baseline --arm codex-cli --model MODEL_LABEL
+python3 -m evals.harness prepare bounds /absolute/new/b --profile gtg --arm gtg --model MODEL_LABEL
+python3 -m evals.harness compare /absolute/new/a /absolute/new/b
+```
+
+각 폴더를 해당 하네스로 실행한 뒤 한 번씩 `grade`합니다. `compare`는 `(arm, model)`별로 통과 수를 세고, 조건이 다르면 `comparable: false`와 막힌 이유를 보고합니다. `single_arm`, `definition_digest`, `prompt_sha256`, `case_coverage`, `ungraded`, `unstable_grades`가 이유가 됩니다. 채점하지 않은 시행을 패배로 세지 않고, 한 시행의 엇갈린 채점 중 하나를 고르지 않습니다.
+
+라벨은 사용자가 선언한 값이며 실제 실행 하네스를 확인하지 않습니다. 토큰 사용량·비용·지연은 수집하지 않으므로 별도로 기록해야 합니다. [실행 기록과 한계](../docs/rebuild/validation/2026-09-08-harness-comparison/README.md).
 
 실행 코어의 독립 통합 시험은 `tests/test_scenario.py`입니다. 잘못된 구현에 실제 검사를 실행하여 실패시키고, 참조 수정 후 통과, 재변경 후 성공 무효화를 확인합니다. 이는 훅과 증거 연결의 검증입니다.
 ````

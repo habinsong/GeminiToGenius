@@ -11,6 +11,7 @@ if not __package__:
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
     __package__ = "evals"
 
+from .comparison import compare
 from .definitions import CASES, PROBE, ROOT, case_by_id, definition_digest
 from .grading import csv_rows, evaluate_function, grade, same_output, same_value, terminate
 from .preparation import prepare
@@ -24,11 +25,20 @@ def main() -> int:
     start.add_argument("case_id")
     start.add_argument("target", type=Path)
     start.add_argument("--profile", choices=("baseline", "gtg"), default="baseline")
+    start.add_argument("--arm", help="비교 보고서에 쓸 하네스 라벨입니다. 기본값은 프로필 이름입니다.")
+    start.add_argument("--model", help="비교 보고서에 쓸 모델 라벨입니다. 선언 값이며 검증하지 않습니다.")
     score = commands.add_parser("grade")
     score.add_argument("target", type=Path)
+    contrast = commands.add_parser("compare", help="같은 조건의 시행만 하네스별로 모읍니다.")
+    contrast.add_argument("trials", nargs="+", type=Path)
     args = parser.parse_args()
     try:
-        result = prepare(args.case_id, args.target, args.profile) if args.command == "prepare" else grade(args.target)
+        if args.command == "compare":
+            report = compare(args.trials)
+            print(json.dumps(report, ensure_ascii=False, indent=2))
+            return int(not report["comparable"])
+        result = (prepare(args.case_id, args.target, args.profile, arm=args.arm, model=args.model)
+                  if args.command == "prepare" else grade(args.target))
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return int(args.command == "grade" and not result["artifact_passed"])
     except (OSError, ValueError) as error:

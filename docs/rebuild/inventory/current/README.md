@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 222개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 227개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -33,17 +33,17 @@
 | `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 8592 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 9242 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 7669 | [원문](files/docs/rebuild/plan/architecture.md.md) |
-| `docs/rebuild/plan/completion-audit.md` | 4335 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
-| `docs/rebuild/plan/roadmap.md` | 4485 | [원문](files/docs/rebuild/plan/roadmap.md.md) |
+| `docs/rebuild/plan/completion-audit.md` | 4379 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
+| `docs/rebuild/plan/roadmap.md` | 4540 | [원문](files/docs/rebuild/plan/roadmap.md.md) |
 | `docs/rebuild/plan/verification.md` | 4104 | [원문](files/docs/rebuild/plan/verification.md.md) |
 | `docs/rebuild/research/decisions.md` | 5113 | [원문](files/docs/rebuild/research/decisions.md.md) |
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 33145 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 31565 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 33102 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -56,6 +56,9 @@
 | `docs/rebuild/validation/2026-09-08-evaluation/reference-trials.json` | 25000 | [원문](files/docs/rebuild/validation/2026-09-08-evaluation/reference-trials.json.md) |
 | `docs/rebuild/validation/2026-09-08-evaluation/tests.log` | 18241 | [원문](files/docs/rebuild/validation/2026-09-08-evaluation/tests.log.md) |
 | `docs/rebuild/validation/2026-09-08-evaluation/verification.json` | 5976 | [원문](files/docs/rebuild/validation/2026-09-08-evaluation/verification.json.md) |
+| `docs/rebuild/validation/2026-09-08-harness-comparison/README.md` | 3074 | [원문](files/docs/rebuild/validation/2026-09-08-harness-comparison/README.md.md) |
+| `docs/rebuild/validation/2026-09-08-harness-comparison/comparison-clean.json` | 2119 | [원문](files/docs/rebuild/validation/2026-09-08-harness-comparison/comparison-clean.json.md) |
+| `docs/rebuild/validation/2026-09-08-harness-comparison/comparison-unstable.json` | 2098 | [원문](files/docs/rebuild/validation/2026-09-08-harness-comparison/comparison-unstable.json.md) |
 | `docs/rebuild/validation/2026-09-08-hosts-and-certificate/README.md` | 4098 | [원문](files/docs/rebuild/validation/2026-09-08-hosts-and-certificate/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-hosts-and-certificate/tests.log` | 16656 | [원문](files/docs/rebuild/validation/2026-09-08-hosts-and-certificate/tests.log.md) |
 | `docs/rebuild/validation/2026-09-08-hosts-and-certificate/verification.json` | 2004 | [원문](files/docs/rebuild/validation/2026-09-08-hosts-and-certificate/verification.json.md) |
@@ -149,9 +152,10 @@
 | `docs/rebuild/validation/2026-09-08-task-handoff/tests.log` | 21385 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/tests.log.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/verification.json` | 5995 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/verification.json.md) |
 | `docs/styles.css` | 12916 | [원문](files/docs/styles.css.md) |
-| `evals/README.md` | 11009 | [원문](files/evals/README.md.md) |
+| `evals/README.md` | 12377 | [원문](files/evals/README.md.md) |
 | `evals/__init__.py` | 74 | [원문](files/evals/__init__.py.md) |
 | `evals/cases.json` | 6485 | [원문](files/evals/cases.json.md) |
+| `evals/comparison.py` | 5128 | [원문](files/evals/comparison.py.md) |
 | `evals/definitions.py` | 1473 | [원문](files/evals/definitions.py.md) |
 | `evals/fixtures/bounds/README.md` | 397 | [원문](files/evals/fixtures/bounds/README.md.md) |
 | `evals/fixtures/bounds/mathlib.py` | 61 | [원문](files/evals/fixtures/bounds/mathlib.py.md) |
@@ -175,8 +179,8 @@
 | `evals/fixtures/resume-export/test_app.py` | 758 | [원문](files/evals/fixtures/resume-export/test_app.py.md) |
 | `evals/fixtures/resume-export/test_exports.py` | 630 | [원문](files/evals/fixtures/resume-export/test_exports.py.md) |
 | `evals/grading.py` | 8757 | [원문](files/evals/grading.py.md) |
-| `evals/harness.py` | 1532 | [원문](files/evals/harness.py.md) |
-| `evals/preparation.py` | 2258 | [원문](files/evals/preparation.py.md) |
+| `evals/harness.py` | 2247 | [원문](files/evals/harness.py.md) |
+| `evals/preparation.py` | 2930 | [원문](files/evals/preparation.py.md) |
 | `evals/probe.py` | 1282 | [원문](files/evals/probe.py.md) |
 | `evals/progress.py` | 2165 | [원문](files/evals/progress.py.md) |
 | `evals/workspace.py` | 4030 | [원문](files/evals/workspace.py.md) |
@@ -211,6 +215,7 @@
 | `tests/test_catalog.py` | 3512 | [원문](files/tests/test_catalog.py.md) |
 | `tests/test_certificate.py` | 7760 | [원문](files/tests/test_certificate.py.md) |
 | `tests/test_checkpoints.py` | 4243 | [원문](files/tests/test_checkpoints.py.md) |
+| `tests/test_comparison.py` | 6954 | [원문](files/tests/test_comparison.py.md) |
 | `tests/test_context_message.py` | 6937 | [원문](files/tests/test_context_message.py.md) |
 | `tests/test_eval_export.py` | 5780 | [원문](files/tests/test_eval_export.py.md) |
 | `tests/test_eval_resume.py` | 3602 | [원문](files/tests/test_eval_resume.py.md) |
