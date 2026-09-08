@@ -1,0 +1,35 @@
+{
+  "checks": [
+    {
+      "platform": "antigravity",
+      "entrypoint_resolved": true,
+      "tasks_exit_code": 0,
+      "status_help_exit_code": 0,
+      "status_has_workspace_option": false
+    },
+    {
+      "platform": "gemini-cli",
+      "entrypoint_resolved": true,
+      "tasks_exit_code": 0,
+      "status_help_exit_code": 0,
+      "status_has_workspace_option": false
+    }
+  ],
+  "additional_model_prompts": 0,
+  "changed_skill_hashes": {
+    "profile/skills/gtg-build/SKILL.md": "9f945c242a1b533d083486f95f1add26d5e13b5c88dd27d2cd038c05b1843d9c",
+    "profile/skills/gtg-build/references/task-contract.md": "5564393c336d809431b32bc1a4414b79fcf1ab7a400c391c6cda6688b21862d0"
+  },
+  "package_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p test_package*.py -v",
+    "count": 10,
+    "elapsed_seconds": 0.777,
+    "exit_code": 0
+  },
+  "initial_quick_validate_failure": "기본 python3에 PyYAML이 없어 ModuleNotFoundError가 발생했습니다.",
+  "quick_validate": {
+    "passed": false,
+    "reason": "기본 Python과 Codex 번들 Python 모두 PyYAML이 없어 공용 검사기를 실행하지 못했습니다.",
+    "repository_package_validation_passed": true
+  }
+}

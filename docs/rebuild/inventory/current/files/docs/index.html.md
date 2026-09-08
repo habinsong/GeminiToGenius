@@ -1,0 +1,158 @@
+# `docs/index.html`
+
+- 형식: `100644`
+- 바이트: 6674
+- SHA-256: `37da84002a56531e86700ed95cbe307c1dd3a37fcf60a01e649f9961b2a6b115`
+- 인코딩: `utf-8`
+
+```
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeminiToGenius — AI 코딩 보조 도구 안내</title>
+  <meta name="description" content="AI가 코드를 꼼꼼하고 안전하게 작성하도록 돕는 안티그래비티 실행 환경 안내 페이지입니다.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 01. Apple.com Global Frosted Navigation Bar -->
+  <header class="apple-global-nav">
+    <div class="apple-nav-inner">
+      <a href="index.html" class="apple-nav-brand">
+        <span>GeminiToGenius</span>
+      </a>
+      <nav aria-label="메인 메뉴">
+        <ul class="apple-nav-links">
+          <li><a href="index.html" class="apple-nav-link active">개요</a></li>
+          <li><a href="#principles" class="apple-nav-link">핵심 약속</a></li>
+          <li><a href="#process" class="apple-nav-link">일하는 과정</a></li>
+          <li><a href="docs.html" class="apple-nav-link">설명서</a></li>
+          <li><a href="changelog.html" class="apple-nav-link">기록</a></li>
+          <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer" class="apple-nav-link">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 02. Main Content Canvas -->
+  <main class="apple-main">
+
+    <!-- Hero Section -->
+    <section class="apple-hero">
+      <span class="apple-tag">v3.0.0-alpha.1 개발 중</span>
+      <h1 class="apple-hero-headline">작업과 검증 결과를 연결하는 Gemini 하네스.</h1>
+      <p class="apple-hero-subhead">
+        자연어 요청을 현재 코드와 오류 맥락에서 구체화하도록 구성합니다.
+        검사 명령을 직접 실행하고, 코드가 바뀌면 이전 성공을 무효화합니다. 실제 모델 품질은 별도 검증이 필요합니다.
+      </p>
+
+      <!-- Apple Terminal Installation Bar -->
+      <div class="apple-terminal-box">
+        <div class="apple-terminal-bar">
+          <span>터미널 (macOS zsh)</span>
+          <span>macOS · Linux</span>
+        </div>
+        <div class="apple-terminal-content">
+          <div class="apple-terminal-code" id="terminalCode">
+            <span class="apple-terminal-prompt">%</span>git clone https://github.com/habinsong/GeminiToGenius.git &amp;&amp; bash GeminiToGenius/scripts/install.sh
+          </div>
+          <button class="apple-btn-copy" id="copyBtn" aria-label="설치 명령어 복사">
+            <span>복사하기</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Principles Section -->
+    <section id="principles">
+      <div class="apple-section-header">
+        <h2 class="apple-section-title">요청부터 검증까지 연결합니다.</h2>
+        <p class="apple-section-desc">특정 Gemini 버전이나 슬래시 명령을 요구하지 않습니다.</p>
+      </div>
+
+      <div class="apple-feature-grid">
+        <div class="apple-feature-item">
+          <span class="apple-feature-badge">약속 01</span>
+          <h3>현재 맥락에서 요청을 구체화합니다.</h3>
+          <p>
+            짧거나 불완전한 요청도 현재 파일·오류·화면을 먼저 확인합니다.
+            결과나 데이터 안전이 달라지는 정보만 질문합니다.
+          </p>
+        </div>
+
+        <div class="apple-feature-item">
+          <span class="apple-feature-badge">약속 02</span>
+          <h3>목표와 완료 조건을 보존합니다.</h3>
+          <p>
+            복잡한 작업은 목표와 검사 명령을 로컬 상태에 기록합니다.
+            중단 뒤에도 미완료 조건을 확인하고 작업을 이어갈 수 있습니다.
+          </p>
+        </div>
+
+        <div class="apple-feature-item">
+          <span class="apple-feature-badge">약속 03</span>
+          <h3>실제 실행 결과를 기록합니다.</h3>
+          <p>
+            종료 코드·검사 시간·검증 대상의 파일 해시를 기록합니다.
+            검증 이후 코드가 바뀌면 성공 기록을 그대로 사용하지 않습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Process Simulator Section -->
+    <section id="process">
+      <div class="apple-section-header">
+        <h2 class="apple-section-title">상황별로 일하는 과정을 직접 살펴보세요.</h2>
+        <p class="apple-section-desc">요청하신 작업 유형에 따라 AI가 어떤 순서로 문제를 해결하는지 보여드립니다.</p>
+      </div>
+
+      <div class="apple-process-container">
+        <div class="apple-tabs" role="tablist" aria-label="작업 유형 선택">
+          <button class="apple-tab-btn active" data-preset="feature" role="tab" aria-selected="true">새로운 기능 만들기</button>
+          <button class="apple-tab-btn" data-preset="bugfix" role="tab" aria-selected="false">오류 고치기</button>
+          <button class="apple-tab-btn" data-preset="ui" role="tab" aria-selected="false">화면 디자인 다듬기</button>
+          <button class="apple-tab-btn" data-preset="research" role="tab" aria-selected="false">공식 문서 찾아보기</button>
+        </div>
+
+        <div class="apple-step-list" id="stepContainer">
+          <!-- Populated by JavaScript -->
+          <div class="apple-step-item">
+            <span class="apple-step-num">01</span>
+            <div class="apple-step-body">
+              <strong>사용자의 지시를 요약하고 목표를 정합니다.</strong>
+              <p>무엇을 만들어야 하는지 명확히 확인하고 현재 폴더 상태를 점검합니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 03. Notification Toast -->
+  <div class="apple-toast" id="toast" role="status" aria-live="polite">
+    <span id="toastText">설치 명령어가 복사되었습니다.</span>
+  </div>
+
+  <!-- 04. Minimal Apple Footer -->
+  <footer class="apple-footer">
+    <div class="apple-footer-inner">
+      <div>
+        <strong>GeminiToGenius</strong> — MIT 라이선스로 누구나 자유롭게 사용하실 수 있습니다. (2026 habinsong)
+      </div>
+      <ul class="apple-footer-links">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="docs.html">상세 설명서</a></li>
+        <li><a href="changelog.html">업데이트 기록</a></li>
+        <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
+```

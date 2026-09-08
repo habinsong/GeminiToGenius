@@ -1,4 +1,4 @@
-name: Validate profile
+name: 하네스 검증
 
 on:
   push:
@@ -9,17 +9,26 @@ permissions:
   contents: read
 
 jobs:
-  profile:
-    runs-on: ubuntu-latest
+  harness:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
     steps:
-      - name: Check out repository
+      - name: 저장소 확인
         uses: actions/checkout@v6
 
-      - name: Install profile with the supported installer
+      - name: 실행·훅·설치·실패 복구 검증
         run: |
           bash -n scripts/install.sh
-          AGY_INSTALL_HOME="$RUNNER_TEMP/gemini-home" bash scripts/install.sh --skip-update
+          python3 -m unittest discover -s tests -v
 
-      - name: Verify installed profile
+      - name: 공식 진입점으로 격리 설치 검사
         run: |
-          AGY_INSTALL_HOME="$RUNNER_TEMP/gemini-home" python3 "$RUNNER_TEMP/gemini-home/.gemini/config/agy-focus/current/scripts/verify_profile.py"
+          bash scripts/install.sh --home "$RUNNER_TEMP/gtg-home"
+          bash scripts/install.sh doctor --home "$RUNNER_TEMP/gtg-home"
+          bash scripts/install.sh uninstall --home "$RUNNER_TEMP/gtg-home"
+      - name: 현재 코드 문서 최신성 검사
+        run: python3 scripts/catalog.py --check

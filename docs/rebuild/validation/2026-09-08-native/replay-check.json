@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "artifact_passed": true,
+  "scope_passed": true,
+  "oracle_unchanged": true,
+  "checks": 8,
+  "model_called": false,
+  "archive": "reproduction.zip"
+}

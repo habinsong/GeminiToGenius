@@ -36,17 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const PRESETS = {
     feature: [
       { num: "01", title: "사용자의 지시를 요약하고 목표를 확정합니다.", desc: "어떤 기능을 만들어야 하는지 명확히 확인하고 현재 폴더 상태를 점검합니다." },
-      { num: "02", title: "관련된 소스 코드와 설정을 끝까지 읽습니다.", desc: "대충 훑어보지 않고 전체 맥락을 꼼꼼히 파악하여 꼭 필요한 파일만 선별합니다." },
-      { num: "03", title: "500줄을 넘지 않도록 역할을 나누어 작성합니다.", desc: "디자인, 계산, 저장 기능을 깔끔하게 분리하여 나중에 수정하기 쉽게 만듭니다." },
+      { num: "02", title: "관련 코드와 설정을 확인합니다.", desc: "실패 경로와 영향을 받는 파일을 확인하고 필요한 내용만 읽습니다." },
+      { num: "03", title: "검증 가능한 단위로 구현합니다.", desc: "디자인, 계산, 저장 기능을 깔끔하게 분리하여 나중에 수정하기 쉽게 만듭니다." },
       { num: "04", title: "실제 동작을 직접 테스트하고 검증합니다.", desc: "에러가 없는지 확인하고 통과된 사실만을 투명하게 보고합니다." }
     ],
     bugfix: [
       { num: "01", title: "에러 로그와 발생 상황을 정확히 확인합니다.", desc: "어떤 입력에서 문제가 생겼는지 먼저 확인하고 가설을 세웁니다." },
-      { num: "02", title: "7단계 원인 분석으로 진짜 버그 위치를 찾습니다.", desc: "엉뚱한 코드를 건드리지 않고 문제가 발생한 핵심 위치만 조심스럽게 고칩니다." },
+      { num: "02", title: "실패한 실행 경계에서 원인을 찾습니다.", desc: "엉뚱한 코드를 건드리지 않고 문제가 발생한 핵심 위치만 조심스럽게 고칩니다." },
       { num: "03", title: "수정 전과 후의 결과를 꼼꼼히 대조합니다.", desc: "기존에 잘 작동하던 다른 기능들이 망가지지 않았는지 재검증합니다." }
     ],
     ui: [
-      { num: "01", title: "가짜 창틀이나 네온 색상 등 AI Slop을 배제합니다.", desc: "과장된 시각 장식 대신 선명한 흑백 대비와 웅장한 타이포그래피를 적용합니다." },
+      { num: "01", title: "현재 화면과 제품의 주요 작업을 확인합니다.", desc: "기존 컴포넌트와 사용자 동선에서 정보 위계와 시각 방향을 정합니다." },
       { num: "02", title: "작은 스마트폰 화면부터 데스크톱까지 대응합니다.", desc: "320px 모바일 화면에서도 글자나 버튼이 잘리지 않고 깔끔하게 보이도록 조절합니다." },
       { num: "03", title: "친절하고 쉬운 일상 문장으로 카피를 작성합니다.", desc: "단답형 나열을 피하고 비전공자도 쉽게 이해할 수 있는 자연스러운 한국어를 씁니다." }
     ],
@@ -57,14 +57,31 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   if (tabBtns.length > 0 && stepContainer) {
-    tabBtns.forEach(btn => {
+    stepContainer.setAttribute("role", "tabpanel");
+    tabBtns.forEach((btn, index) => {
+      btn.id = `process-tab-${index}`;
+      btn.setAttribute("aria-controls", "stepContainer");
+      btn.tabIndex = btn.classList.contains("active") ? 0 : -1;
+      if (btn.classList.contains("active")) stepContainer.setAttribute("aria-labelledby", btn.id);
+      btn.addEventListener("keydown", event => {
+        const next = event.key === "ArrowRight" ? (index + 1) % tabBtns.length
+          : event.key === "ArrowLeft" ? (index - 1 + tabBtns.length) % tabBtns.length
+          : event.key === "Home" ? 0 : event.key === "End" ? tabBtns.length - 1 : null;
+        if (next === null) return;
+        event.preventDefault();
+        tabBtns[next].focus();
+        tabBtns[next].click();
+      });
       btn.addEventListener("click", () => {
         tabBtns.forEach(b => {
           b.classList.remove("active");
           b.setAttribute("aria-selected", "false");
+          b.tabIndex = -1;
         });
         btn.classList.add("active");
         btn.setAttribute("aria-selected", "true");
+        btn.tabIndex = 0;
+        stepContainer.setAttribute("aria-labelledby", btn.id);
 
         const presetKey = btn.getAttribute("data-preset");
         const steps = PRESETS[presetKey] || PRESETS.feature;

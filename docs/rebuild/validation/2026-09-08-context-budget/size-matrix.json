@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "scenario": "one",
+      "workspace_count": 1,
+      "checks_per_task": 1,
+      "old_utf8_bytes": 747,
+      "new_utf8_bytes": 704,
+      "reduction_percent": 5.76,
+      "shown_tasks": 1,
+      "omitted_tasks": 0,
+      "truncated": [],
+      "omitted_checks": 0
+    },
+    {
+      "scenario": "eight",
+      "workspace_count": 8,
+      "checks_per_task": 1,
+      "old_utf8_bytes": 2868,
+      "new_utf8_bytes": 2370,
+      "reduction_percent": 17.36,
+      "shown_tasks": 8,
+      "omitted_tasks": 0,
+      "truncated": [],
+      "omitted_checks": 0
+    },
+    {
+      "scenario": "nine",
+      "workspace_count": 9,
+      "checks_per_task": 1,
+      "old_utf8_bytes": 3047,
+      "new_utf8_bytes": 2487,
+      "reduction_percent": 18.38,
+      "shown_tasks": 8,
+      "omitted_tasks": 1,
+      "truncated": [],
+      "omitted_checks": 0
+    },
+    {
+      "scenario": "long-notes",
+      "workspace_count": 1,
+      "checks_per_task": 12,
+      "old_utf8_bytes": 2785,
+      "new_utf8_bytes": 2641,
+      "reduction_percent": 5.17,
+      "shown_tasks": 1,
+      "omitted_tasks": 0,
+      "truncated": [
+        "goal",
+        "checkpoint.summary",
+        "checkpoint.next_action"
+      ],
+      "omitted_checks": 4
+    }
+  ],
+  "billed_tokens": null,
+  "additional_model_prompts": 0,
+  "model_quality_measured": false
+}

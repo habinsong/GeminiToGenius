@@ -1,0 +1,46 @@
+{
+  "workspace": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-ide-discovery-ynsp4z_d",
+  "installation": {
+    "ok": true,
+    "files": 22,
+    "hooks_executed": 2,
+    "platform": "antigravity",
+    "target": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-ide-discovery-ynsp4z_d/.agents/plugins/geminitogenius",
+    "backup": null,
+    "legacy_backup": null,
+    "recovered_transaction": false
+  },
+  "host": {
+    "bundle_identifier": "com.google.antigravity-ide",
+    "version": "2.5.5"
+  },
+  "evidence_type": "직접 UI 관찰 기록; 모델 실행 기록 아님",
+  "observed": {
+    "rules_title": "GeminiToGenius",
+    "rules_scope_label": "Project · AGENTS.md",
+    "skill_menu_names": [
+      "gtg-build",
+      "gtg-interface",
+      "gtg-research"
+    ],
+    "additional_model_prompts": 0,
+    "input_cleared_before_closing": true,
+    "send_message_disabled_after_clear": true,
+    "verification_window_closed": true
+  },
+  "workspace_trust": {
+    "accepted_workspace_only": true,
+    "parent_directory_trust_selected": false,
+    "trust_entry_may_remain": true
+  },
+  "uninstallation": {
+    "ok": true,
+    "active_plugin_exists": false,
+    "preserved": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-ide-discovery-ynsp4z_d/.gtg/installer/removed-dd3e1dac9d0246a29d914431122acae6"
+  },
+  "not_verified": [
+    "IDE에서 모델의 자동 스킬 선택",
+    "IDE에서 실제 모델 실행 중 훅 발행",
+    "IDE의 장기 작업 재개"
+  ]
+}

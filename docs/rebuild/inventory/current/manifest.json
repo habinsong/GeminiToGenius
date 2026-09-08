@@ -1,0 +1,4584 @@
+{
+  "schema_version": 1,
+  "revision": null,
+  "files": [
+    {
+      "path": ".github/CODEOWNERS",
+      "mode": "100644",
+      "bytes": 49,
+      "sha256": "977658068753c5d87c2897ded188b918c6e4ecb0b3eaec20f9316eac213fb011",
+      "encoding": "utf-8",
+      "lines": 2,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.github/CODEOWNERS.md"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "mode": "100644",
+      "bytes": 1023,
+      "sha256": "406051895ca7b3926e17f507681f97eec60dbdfa28db67dfa136e91fc949183f",
+      "encoding": "utf-8",
+      "lines": 43,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.github/ISSUE_TEMPLATE/bug_report.yml.md"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "mode": "100644",
+      "bytes": 376,
+      "sha256": "e411351fb05b1906da82ba717011d1a4dee1d752b3b5215f23cf755d036408a8",
+      "encoding": "utf-8",
+      "lines": 8,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.github/ISSUE_TEMPLATE/config.yml.md"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "mode": "100644",
+      "bytes": 725,
+      "sha256": "d69cd825cf4fe7f148ae3700af8f5c968b566755212020bc6c8bcb57b05bf446",
+      "encoding": "utf-8",
+      "lines": 28,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.github/ISSUE_TEMPLATE/feature_request.yml.md"
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "mode": "100644",
+      "bytes": 603,
+      "sha256": "1a72c7ccce36b13c87a358a3e2e9215ec4682ea709df3c3e291929994d1208e2",
+      "encoding": "utf-8",
+      "lines": 19,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.github/PULL_REQUEST_TEMPLATE.md.md"
+    },
+    {
+      "path": ".github/workflows/validate-profile.yml",
+      "mode": "100644",
+      "bytes": 888,
+      "sha256": "ba2a49a7220bcfb668bdd80d68a48d122ce8b0e65a747853012ec3c5e1ea0e41",
+      "encoding": "utf-8",
+      "lines": 34,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.github/workflows/validate-profile.yml.md"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "bytes": 96,
+      "sha256": "88bacdb142d2ed485c1df9a9b331c9fa93a818218a5b1cac45600d618334ff4c",
+      "encoding": "utf-8",
+      "lines": 7,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.gitignore.md"
+    },
+    {
+      "path": "AGENTS.md",
+      "mode": "100644",
+      "bytes": 3212,
+      "sha256": "8d364dd6e565e53c755ccad158c6cd24f90f10ef197b7c9d30447afc332ecb98",
+      "encoding": "utf-8",
+      "lines": 20,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/AGENTS.md.md"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "mode": "100644",
+      "bytes": 15860,
+      "sha256": "c32cc3b8f5b48cabf27df652b314683c34856177f7ab148d865a8dd6ec769f64",
+      "encoding": "utf-8",
+      "lines": 216,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/CHANGELOG.md.md"
+    },
+    {
+      "path": "CITATION.cff",
+      "mode": "100644",
+      "bytes": 378,
+      "sha256": "959d5b44a9d5c7e4659920bf6f51f52c17cb4076ec0ee64ec356f5244aa1f90f",
+      "encoding": "utf-8",
+      "lines": 15,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/CITATION.cff.md"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "mode": "100644",
+      "bytes": 352,
+      "sha256": "1c791743bb23b644f87abd9b2eb80cc6f1ca078b2f13e90086a6923e2722211f",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/CODE_OF_CONDUCT.md.md"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "mode": "100644",
+      "bytes": 1127,
+      "sha256": "4fc141c079d8b9979c2a05cd732670b0b9c65b2fc4c09423b34b621207b898b3",
+      "encoding": "utf-8",
+      "lines": 16,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/CONTRIBUTING.md.md"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "bytes": 1066,
+      "sha256": "3e814a061da30b1e1c736fed8d2970e4bb0cce80e5362a0cc12d8f3a4ddd2102",
+      "encoding": "utf-8",
+      "lines": 21,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/LICENSE.md"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "bytes": 7164,
+      "sha256": "942bdfedd6b2c6cab35968c279ef6598d9bb5aaa0aba274654c52484499a376d",
+      "encoding": "utf-8",
+      "lines": 97,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/README.md.md"
+    },
+    {
+      "path": "SECURITY.md",
+      "mode": "100644",
+      "bytes": 524,
+      "sha256": "fa6c5a8d71bc88377c5a02dff958d4c04e9b8e6ac9df4bba9c1012e93c204343",
+      "encoding": "utf-8",
+      "lines": 7,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/SECURITY.md.md"
+    },
+    {
+      "path": "SUPPORT.md",
+      "mode": "100644",
+      "bytes": 510,
+      "sha256": "c8b350451733d2380cfd78d854cdec96385df4271824521928b3f9b402f667cb",
+      "encoding": "utf-8",
+      "lines": 9,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/SUPPORT.md.md"
+    },
+    {
+      "path": "VERSION",
+      "mode": "100644",
+      "bytes": 14,
+      "sha256": "2dc7ad8fe9ad6ea4a18507a6112996b85f4a6d930e7e7f93acfe6e7de8292aca",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/VERSION.md"
+    },
+    {
+      "path": "assets/social-preview.png",
+      "mode": "100644",
+      "bytes": 43510,
+      "sha256": "a6ac13655d4e66f84e6dd80f68df3491fef81aded596ccf2a1fe856b9d60e752",
+      "encoding": "base64",
+      "lines": null,
+      "symbols": [],
+      "document": "files/assets/social-preview.png.md"
+    },
+    {
+      "path": "assets/social-preview.svg",
+      "mode": "100644",
+      "bytes": 2110,
+      "sha256": "5a72d92c199294caccc79f7649d8734465d7559975e58d6d6132caa5c16d36d8",
+      "encoding": "utf-8",
+      "lines": 20,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/assets/social-preview.svg.md"
+    },
+    {
+      "path": "docs/README.ja.md",
+      "mode": "100644",
+      "bytes": 228,
+      "sha256": "ec58471d96e3a04d6bec0fd5eac594176deeadb2342f11a127a3f920053c5d1b",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/README.ja.md.md"
+    },
+    {
+      "path": "docs/README.ko.md",
+      "mode": "100644",
+      "bytes": 228,
+      "sha256": "ec58471d96e3a04d6bec0fd5eac594176deeadb2342f11a127a3f920053c5d1b",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/README.ko.md.md"
+    },
+    {
+      "path": "docs/README.zh-CN.md",
+      "mode": "100644",
+      "bytes": 228,
+      "sha256": "ec58471d96e3a04d6bec0fd5eac594176deeadb2342f11a127a3f920053c5d1b",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/README.zh-CN.md.md"
+    },
+    {
+      "path": "docs/changelog.html",
+      "mode": "100644",
+      "bytes": 8506,
+      "sha256": "8db759f9292fe3e1badea177c17a55bbbfcd9778a6ad204016581a3d9345bf28",
+      "encoding": "utf-8",
+      "lines": 155,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/changelog.html.md"
+    },
+    {
+      "path": "docs/docs.html",
+      "mode": "100644",
+      "bytes": 5057,
+      "sha256": "48422dfac27c7378f5fd8b28fbea90cf0fb3859373e82597e5a23c62867d1827",
+      "encoding": "utf-8",
+      "lines": 74,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/docs.html.md"
+    },
+    {
+      "path": "docs/index.html",
+      "mode": "100644",
+      "bytes": 6674,
+      "sha256": "37da84002a56531e86700ed95cbe307c1dd3a37fcf60a01e649f9961b2a6b115",
+      "encoding": "utf-8",
+      "lines": 149,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/index.html.md"
+    },
+    {
+      "path": "docs/main.js",
+      "mode": "100644",
+      "bytes": 5865,
+      "sha256": "bbe0cfc9e6fc1da63aa0fbd2316b3ee8458cf49bb1c51e621f16eebe640c4e95",
+      "encoding": "utf-8",
+      "lines": 114,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/main.js.md"
+    },
+    {
+      "path": "docs/rebuild/README.md",
+      "mode": "100644",
+      "bytes": 3053,
+      "sha256": "ca99ff6b9bf61d394112469ba858dafd8dd05b63630be1a1245c0fa12e868de6",
+      "encoding": "utf-8",
+      "lines": 34,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/current-work.md",
+      "mode": "100644",
+      "bytes": 7998,
+      "sha256": "00bd433b6bcc6f4edfdf364b32cfa838a16fa436e6810065589aa7fcf7b0b20e",
+      "encoding": "utf-8",
+      "lines": 60,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/current-work.md.md"
+    },
+    {
+      "path": "docs/rebuild/inventory/architecture.md",
+      "mode": "100644",
+      "bytes": 3144,
+      "sha256": "9be3d55af527f55873e0d9085f1a406dcd2f9cb40a2bf8eeb9105352e167b5f6",
+      "encoding": "utf-8",
+      "lines": 31,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/inventory/architecture.md.md"
+    },
+    {
+      "path": "docs/rebuild/plan/architecture.md",
+      "mode": "100644",
+      "bytes": 7669,
+      "sha256": "fa3325385ce21a32ac0a494c627044436398fd87b4f7ee72b29d0fe2d2e3fc25",
+      "encoding": "utf-8",
+      "lines": 58,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/plan/architecture.md.md"
+    },
+    {
+      "path": "docs/rebuild/plan/completion-audit.md",
+      "mode": "100644",
+      "bytes": 3848,
+      "sha256": "4cd628174b6961b0f194d5d926fc32e4110073bdc900bc01ea3533795e6fe2ee",
+      "encoding": "utf-8",
+      "lines": 23,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/plan/completion-audit.md.md"
+    },
+    {
+      "path": "docs/rebuild/plan/roadmap.md",
+      "mode": "100644",
+      "bytes": 4325,
+      "sha256": "88a7c08208b50aa3dc875bb1f073a983fcd0f1bb94e6af6fe90984af36834feb",
+      "encoding": "utf-8",
+      "lines": 33,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/plan/roadmap.md.md"
+    },
+    {
+      "path": "docs/rebuild/plan/verification.md",
+      "mode": "100644",
+      "bytes": 4104,
+      "sha256": "18fbfd06e2d98d1bf9e9103f271c9c6a575d0258a35fea8fce8159c5d1a5484f",
+      "encoding": "utf-8",
+      "lines": 38,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/plan/verification.md.md"
+    },
+    {
+      "path": "docs/rebuild/research/decisions.md",
+      "mode": "100644",
+      "bytes": 4490,
+      "sha256": "a162671479a7349cd1115811464cb495bef0e01ab6aaecab636d2ed754b5fd6c",
+      "encoding": "utf-8",
+      "lines": 30,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/research/decisions.md.md"
+    },
+    {
+      "path": "docs/rebuild/research/native-antigravity.md",
+      "mode": "100644",
+      "bytes": 2525,
+      "sha256": "7c09367d8606c1e8cbca2f6d67cecb3eee31ba076df0d618f58a0c06fbab420b",
+      "encoding": "utf-8",
+      "lines": 26,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/research/native-antigravity.md.md"
+    },
+    {
+      "path": "docs/rebuild/research/platform-contracts.md",
+      "mode": "100644",
+      "bytes": 5535,
+      "sha256": "f38f0141965882b8e2b8be0e5cc74684d12aca9b8755c70e57015097bd2e63cb",
+      "encoding": "utf-8",
+      "lines": 38,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/research/platform-contracts.md.md"
+    },
+    {
+      "path": "docs/rebuild/research/sources.json",
+      "mode": "100644",
+      "bytes": 28582,
+      "sha256": "fef3e2c830879ffaaf0129a3aba1b73888f0dc00d944e7af7bba799cbef364ee",
+      "encoding": "utf-8",
+      "lines": 595,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/research/sources.json.md"
+    },
+    {
+      "path": "docs/rebuild/status.md",
+      "mode": "100644",
+      "bytes": 28713,
+      "sha256": "c9142a7eaacb875082fbdc50b428d589f552746f818ee85d1cba4c5ca0eb8e7c",
+      "encoding": "utf-8",
+      "lines": 190,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/status.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-evaluation/README.md",
+      "mode": "100644",
+      "bytes": 3441,
+      "sha256": "275444da24ed7bfa8af23077d976ff8fe65656e8ad9706bd29c325a8a1f82d0c",
+      "encoding": "utf-8",
+      "lines": 28,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-evaluation/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-evaluation/cli-trial.json",
+      "mode": "100644",
+      "bytes": 709,
+      "sha256": "733984a1033b2a65af4b2a6a50708e1488b965a1fad8349a4f35f55fd4919e0a",
+      "encoding": "utf-8",
+      "lines": 24,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-evaluation/cli-trial.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-evaluation/reference-trials.json",
+      "mode": "100644",
+      "bytes": 25000,
+      "sha256": "dec81a68fc15d60aa489f74fde37c8551cab3ef1e422ebbf8b217fb032879254",
+      "encoding": "utf-8",
+      "lines": 585,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-evaluation/reference-trials.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-evaluation/tests.log",
+      "mode": "100644",
+      "bytes": 18241,
+      "sha256": "9781409883ff33bd34abeea050ce374a9a11fab56bfbe4852d0de401eaab8494",
+      "encoding": "utf-8",
+      "lines": 133,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-evaluation/tests.log.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-evaluation/verification.json",
+      "mode": "100644",
+      "bytes": 5976,
+      "sha256": "9de0414b8ae4e2361c68cc3cee8e58b654e1794d3965b8953c9c155ef343064d",
+      "encoding": "utf-8",
+      "lines": 67,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-evaluation/verification.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-ide/README.md",
+      "mode": "100644",
+      "bytes": 1681,
+      "sha256": "b2b15aa1ef7fd04f93d9c8573120c704fdcf1be18cad30948c652978e9a42119",
+      "encoding": "utf-8",
+      "lines": 14,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-ide/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-ide/observation.json",
+      "mode": "100644",
+      "bytes": 1512,
+      "sha256": "c43c58b9c5f56ac59d434208572edf6b812a32cf23846ca8f1f889db0721c412",
+      "encoding": "utf-8",
+      "lines": 46,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-ide/observation.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-inspection/README.md",
+      "mode": "100644",
+      "bytes": 1610,
+      "sha256": "6e8d9779eaff60f359b444572c983f043732ef7638d24a081795eacd5ba50101",
+      "encoding": "utf-8",
+      "lines": 13,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-inspection/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-inspection/batch-read.json",
+      "mode": "100644",
+      "bytes": 1270,
+      "sha256": "66214c3fc06677d73e9a0c68e3270b9b3d5b6d3bc10a4e9a07583667c7b55321",
+      "encoding": "utf-8",
+      "lines": 44,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-inspection/batch-read.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-inspection/tests.log",
+      "mode": "100644",
+      "bytes": 14862,
+      "sha256": "cac6d7c62e5362a9859ec9cf0892cf17ad8b8ff84ffc70bd78d0f24ee82c67bd",
+      "encoding": "utf-8",
+      "lines": 111,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-inspection/tests.log.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-inspection/verification.json",
+      "mode": "100644",
+      "bytes": 4922,
+      "sha256": "01c3e3d5e96b4690d8f7eb2d074f98fbf07637d919775bc57c505338b948064f",
+      "encoding": "utf-8",
+      "lines": 56,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-inspection/verification.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-lifecycle/tests.log",
+      "mode": "100644",
+      "bytes": 12855,
+      "sha256": "90906d0fd18b50aec1daec1e211dddf9cef577d1a5be7abb16289dd93dd272d2",
+      "encoding": "utf-8",
+      "lines": 97,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-lifecycle/tests.log.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-lifecycle/verification.json",
+      "mode": "100644",
+      "bytes": 3135,
+      "sha256": "eaef7901780c4a4164cfa86251350ea8b8ca8591ea2d2cd092494c09f435cc39",
+      "encoding": "utf-8",
+      "lines": 39,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-lifecycle/verification.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop-recheck/README.md",
+      "mode": "100644",
+      "bytes": 3972,
+      "sha256": "04949ce4832856f09ea9a846b0200c7c3ed108ac1afb2173e8f95e30c9f8c866",
+      "encoding": "utf-8",
+      "lines": 35,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop-recheck/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop-recheck/capture_state.py",
+      "mode": "100644",
+      "bytes": 2954,
+      "sha256": "32a5a3768f21824ddfef768214d0ea0d03bba1b511860adf7b04e7eb448296b0",
+      "encoding": "utf-8",
+      "lines": 66,
+      "symbols": [
+        {
+          "name": "observe",
+          "kind": "FunctionDef",
+          "line": 13,
+          "end_line": 29
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 32,
+          "end_line": 62
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop-recheck/capture_state.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop-recheck/final-status.json",
+      "mode": "100644",
+      "bytes": 438,
+      "sha256": "5a698f97c12335600bc87c33e972bb679b291c9f27b0e506d79556e28f72ad0b",
+      "encoding": "utf-8",
+      "lines": 13,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop-recheck/final-status.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop-recheck/preparation.json",
+      "mode": "100644",
+      "bytes": 3132,
+      "sha256": "3fe9370b2a9f715fcaaeaaa3983bcf68d03d56c426d70da9e21b8cb9de9d05e9",
+      "encoding": "utf-8",
+      "lines": 63,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop-recheck/preparation.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop-recheck/prompt.txt",
+      "mode": "100644",
+      "bytes": 324,
+      "sha256": "2705d504758a920028e8d118a56602f23878c249dbf663cfef7cc4c0ca7ce1c5",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop-recheck/prompt.txt.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop-recheck/retry-message.txt",
+      "mode": "100644",
+      "bytes": 823,
+      "sha256": "9874a955c3649c9af618686fa6d41408c2a7423932ed87d593859a96c93d074c",
+      "encoding": "utf-8",
+      "lines": 4,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop-recheck/retry-message.txt.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop-recheck/sequence-evidence.json",
+      "mode": "100644",
+      "bytes": 1908,
+      "sha256": "e8b80cf53ba3a6b9cf2efd48994a704a7aa1bd1d2847eb23371abaf7e8535466",
+      "encoding": "utf-8",
+      "lines": 68,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop-recheck/sequence-evidence.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop-recheck/snapshot.zip",
+      "mode": "100644",
+      "bytes": 45413,
+      "sha256": "50d78f5a358acfc2b747f8dba65ee9a5f5bbf325fe6c9a943f33c593a8c9a7cd",
+      "encoding": "base64",
+      "lines": null,
+      "symbols": [],
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop-recheck/snapshot.zip.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop-recheck/state-after.sqlite3",
+      "mode": "100644",
+      "bytes": 32768,
+      "sha256": "94697ccf240fc3a65c9dbca642e662b45b5887ae4ab056748826c265b5d0bf16",
+      "encoding": "base64",
+      "lines": null,
+      "symbols": [],
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop-recheck/state-after.sqlite3.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop-recheck/state-before.sqlite3",
+      "mode": "100644",
+      "bytes": 32768,
+      "sha256": "d96f671b7c7952e012b4fd644cce07dfefe26701d914b115b6782698f0965a22",
+      "encoding": "base64",
+      "lines": null,
+      "symbols": [],
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop-recheck/state-before.sqlite3.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop-recheck/state-transitions.jsonl",
+      "mode": "100644",
+      "bytes": 386,
+      "sha256": "381fb34b8b6d06cc5a6687543e9d31361efb9d222b92437361cb4a28595e3d8f",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop-recheck/state-transitions.jsonl.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop-recheck/trace-summary.json",
+      "mode": "100644",
+      "bytes": 1044,
+      "sha256": "6644184cb42fce17069b50e60d7460e2ad3250520b6da5af4d027ec0545388b8",
+      "encoding": "utf-8",
+      "lines": 36,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop-recheck/trace-summary.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/README.md",
+      "mode": "100644",
+      "bytes": 4726,
+      "sha256": "b2ad868b5081a3e04757cb81d4f72417c275b318de1cd36448d4ac71f6cf0b25",
+      "encoding": "utf-8",
+      "lines": 29,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/contract-replay.json",
+      "mode": "100644",
+      "bytes": 897,
+      "sha256": "e3b5eae400d3dfb3a0a357654663bc90346f005f52f6ffad9a410f3dc165ec33",
+      "encoding": "utf-8",
+      "lines": 34,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/contract-replay.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/input/README.md",
+      "mode": "100644",
+      "bytes": 1739,
+      "sha256": "af2dccdf03e6a060160d8dbfde45880f9f147c48ebf4ad440dabe7b1fd7196e3",
+      "encoding": "utf-8",
+      "lines": 11,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/input/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/input/app.py",
+      "mode": "100644",
+      "bytes": 105,
+      "sha256": "b3cda19c426317b623565a34d3c52beb90778d9145f15b32caca7980118588ca",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [
+        {
+          "name": "summarize",
+          "kind": "FunctionDef",
+          "line": 4,
+          "end_line": 5
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/input/app.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/input/records.py",
+      "mode": "100644",
+      "bytes": 355,
+      "sha256": "4ef8ba3cc13e11e8a78d01454f2e944805a3e3e5f032b06515862d653b822714",
+      "encoding": "utf-8",
+      "lines": 12,
+      "symbols": [
+        {
+          "name": "merge_records",
+          "kind": "FunctionDef",
+          "line": 1,
+          "end_line": 11
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/input/records.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/input/task.json",
+      "mode": "100644",
+      "bytes": 502,
+      "sha256": "38240d7daf072cf52e5bf7d9abd9f22eb7f51a2d73b067606976cbf10083569e",
+      "encoding": "utf-8",
+      "lines": 13,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/input/task.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/input/test_records.py",
+      "mode": "100644",
+      "bytes": 1935,
+      "sha256": "57e708a2b867f2bb932166f5aed9ba8c8bbb07ef0d00e7c933febbb6b1686466",
+      "encoding": "utf-8",
+      "lines": 63,
+      "symbols": [
+        {
+          "name": "RecordTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 58
+        },
+        {
+          "name": "test_single_record",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 8
+        },
+        {
+          "name": "test_merge_duplicate_records_preserves_fields",
+          "kind": "FunctionDef",
+          "line": 10,
+          "end_line": 19
+        },
+        {
+          "name": "test_preserves_order_of_first_appearance",
+          "kind": "FunctionDef",
+          "line": 21,
+          "end_line": 39
+        },
+        {
+          "name": "test_does_not_mutate_input_records",
+          "kind": "FunctionDef",
+          "line": 41,
+          "end_line": 48
+        },
+        {
+          "name": "test_zero_is_valid_id",
+          "kind": "FunctionDef",
+          "line": 50,
+          "end_line": 53
+        },
+        {
+          "name": "test_missing_id_raises_value_error",
+          "kind": "FunctionDef",
+          "line": 55,
+          "end_line": 58
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/input/test_records.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/observed-state.sqlite3",
+      "mode": "100644",
+      "bytes": 32768,
+      "sha256": "d96f671b7c7952e012b4fd644cce07dfefe26701d914b115b6782698f0965a22",
+      "encoding": "base64",
+      "lines": null,
+      "symbols": [],
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/observed-state.sqlite3.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/preflight-missing-caller.txt",
+      "mode": "100644",
+      "bytes": 1081,
+      "sha256": "e737e9ffef94fd9eb3eda20bfdab9bebd942eb77188f47a42acc4a4255e17149",
+      "encoding": "utf-8",
+      "lines": 21,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/preflight-missing-caller.txt.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/preflight-tests.txt",
+      "mode": "100644",
+      "bytes": 698,
+      "sha256": "6348f512cdbb1b4fd915ad6fef94a815e6f7c054f01ace04aa3da78fee50ddae",
+      "encoding": "utf-8",
+      "lines": 11,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/preflight-tests.txt.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/preparation.json",
+      "mode": "100644",
+      "bytes": 2565,
+      "sha256": "da213e66dc6004a348bfc988560a03d8180ec440464c70df391dd5d67837aba0",
+      "encoding": "utf-8",
+      "lines": 52,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/preparation.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/prompt.txt",
+      "mode": "100644",
+      "bytes": 324,
+      "sha256": "2705d504758a920028e8d118a56602f23878c249dbf663cfef7cc4c0ca7ce1c5",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/prompt.txt.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/snapshot.zip",
+      "mode": "100644",
+      "bytes": 44436,
+      "sha256": "c7a2b846c94d668a7fa70751e36c418d81fe26523d33dd1bbbfe253cdd19807d",
+      "encoding": "base64",
+      "lines": null,
+      "symbols": [],
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/snapshot.zip.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/state-migration.json",
+      "mode": "100644",
+      "bytes": 155,
+      "sha256": "dd71b5e385ae7948e8ca5a16b7a60d38da0c12312bab2441b5a8e5dcc6626baa",
+      "encoding": "utf-8",
+      "lines": 7,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/state-migration.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/tests.log",
+      "mode": "100644",
+      "bytes": 19019,
+      "sha256": "34d1ed5001de27dbe62679ce92faf74712a2d9adb3fb954bc028575c4e7a7975",
+      "encoding": "utf-8",
+      "lines": 138,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/tests.log.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/trace-summary.json",
+      "mode": "100644",
+      "bytes": 1358,
+      "sha256": "13f650560780932c9836a9ddaa68dcd625084682b2eae38f5781cb4f2de96875",
+      "encoding": "utf-8",
+      "lines": 39,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/trace-summary.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native-stop/verification.json",
+      "mode": "100644",
+      "bytes": 5845,
+      "sha256": "18e6ebb35600ee63e5ad64021cffca97732d0559c1a68e27fad7d2ee2227135c",
+      "encoding": "utf-8",
+      "lines": 65,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native-stop/verification.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/README.md",
+      "mode": "100644",
+      "bytes": 3300,
+      "sha256": "0c1e428cab4850ab46c55b1782b19c0380dbf58c9269ed6d02c9b86e4668a8e3",
+      "encoding": "utf-8",
+      "lines": 33,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/candidate-tests.txt",
+      "mode": "100644",
+      "bytes": 698,
+      "sha256": "6348f512cdbb1b4fd915ad6fef94a815e6f7c054f01ace04aa3da78fee50ddae",
+      "encoding": "utf-8",
+      "lines": 11,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/candidate-tests.txt.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/candidate/README.md",
+      "mode": "100644",
+      "bytes": 539,
+      "sha256": "eab6071254e4867ec4327540cfb1afd255c63d367ef44c37252d5655e811fed0",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/candidate/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/candidate/app.py",
+      "mode": "100644",
+      "bytes": 105,
+      "sha256": "b3cda19c426317b623565a34d3c52beb90778d9145f15b32caca7980118588ca",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [
+        {
+          "name": "summarize",
+          "kind": "FunctionDef",
+          "line": 4,
+          "end_line": 5
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/candidate/app.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/candidate/notes.txt",
+      "mode": "100644",
+      "bytes": 99,
+      "sha256": "f829a4827d6f66fbac0bc683c5d19f91c601337ff6404fb77ee119f1d57d8ec8",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/candidate/notes.txt.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/candidate/records.py",
+      "mode": "100644",
+      "bytes": 355,
+      "sha256": "4ef8ba3cc13e11e8a78d01454f2e944805a3e3e5f032b06515862d653b822714",
+      "encoding": "utf-8",
+      "lines": 12,
+      "symbols": [
+        {
+          "name": "merge_records",
+          "kind": "FunctionDef",
+          "line": 1,
+          "end_line": 11
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/candidate/records.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/candidate/test_records.py",
+      "mode": "100644",
+      "bytes": 1935,
+      "sha256": "57e708a2b867f2bb932166f5aed9ba8c8bbb07ef0d00e7c933febbb6b1686466",
+      "encoding": "utf-8",
+      "lines": 63,
+      "symbols": [
+        {
+          "name": "RecordTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 58
+        },
+        {
+          "name": "test_single_record",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 8
+        },
+        {
+          "name": "test_merge_duplicate_records_preserves_fields",
+          "kind": "FunctionDef",
+          "line": 10,
+          "end_line": 19
+        },
+        {
+          "name": "test_preserves_order_of_first_appearance",
+          "kind": "FunctionDef",
+          "line": 21,
+          "end_line": 39
+        },
+        {
+          "name": "test_does_not_mutate_input_records",
+          "kind": "FunctionDef",
+          "line": 41,
+          "end_line": 48
+        },
+        {
+          "name": "test_zero_is_valid_id",
+          "kind": "FunctionDef",
+          "line": 50,
+          "end_line": 53
+        },
+        {
+          "name": "test_missing_id_raises_value_error",
+          "kind": "FunctionDef",
+          "line": 55,
+          "end_line": 58
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/candidate/test_records.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/evaluator-source/cases.json",
+      "mode": "100644",
+      "bytes": 2126,
+      "sha256": "aac833c12183f12c23f4a58e088713130cfc9ce599be1902dfe05256e41a015d",
+      "encoding": "utf-8",
+      "lines": 53,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/evaluator-source/cases.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/bounds/README.md",
+      "mode": "100644",
+      "bytes": 397,
+      "sha256": "c8d7a361ed4fa845f83b4f4293ab40e8950e57fba66cb22957212927a8167655",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/bounds/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/bounds/mathlib.py",
+      "mode": "100644",
+      "bytes": 61,
+      "sha256": "3a2fe2662497265d0d17d57f08b5d298448f010215baab3f9a93ae442fee296c",
+      "encoding": "utf-8",
+      "lines": 2,
+      "symbols": [
+        {
+          "name": "clamp",
+          "kind": "FunctionDef",
+          "line": 1,
+          "end_line": 2
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/bounds/mathlib.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/bounds/notes.txt",
+      "mode": "100644",
+      "bytes": 105,
+      "sha256": "e9551430733b70654a9b5109759f3b4f57840039267a634147426d2a1bd11053",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/bounds/notes.txt.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/bounds/test_mathlib.py",
+      "mode": "100644",
+      "bytes": 213,
+      "sha256": "80ec21f265da49a2efbd25efea1ab54fad017d7ddd9856745101fcbb6e63f5c6",
+      "encoding": "utf-8",
+      "lines": 12,
+      "symbols": [
+        {
+          "name": "ClampTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 8
+        },
+        {
+          "name": "test_upper_boundary",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 8
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/bounds/test_mathlib.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/merge-records/README.md",
+      "mode": "100644",
+      "bytes": 539,
+      "sha256": "eab6071254e4867ec4327540cfb1afd255c63d367ef44c37252d5655e811fed0",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/merge-records/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/merge-records/app.py",
+      "mode": "100644",
+      "bytes": 105,
+      "sha256": "b3cda19c426317b623565a34d3c52beb90778d9145f15b32caca7980118588ca",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [
+        {
+          "name": "summarize",
+          "kind": "FunctionDef",
+          "line": 4,
+          "end_line": 5
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/merge-records/app.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/merge-records/notes.txt",
+      "mode": "100644",
+      "bytes": 99,
+      "sha256": "f829a4827d6f66fbac0bc683c5d19f91c601337ff6404fb77ee119f1d57d8ec8",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/merge-records/notes.txt.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/merge-records/records.py",
+      "mode": "100644",
+      "bytes": 139,
+      "sha256": "4a81a71f72cc545f1d0e0408a3f144ffb6cb0629346388b6cb8cc22a83c14a9d",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [
+        {
+          "name": "merge_records",
+          "kind": "FunctionDef",
+          "line": 1,
+          "end_line": 5
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/merge-records/records.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/merge-records/test_records.py",
+      "mode": "100644",
+      "bytes": 243,
+      "sha256": "74fbc53df867e6b252feba5d35de30663a622dd7d6ca5c42d5170d97e52aa27b",
+      "encoding": "utf-8",
+      "lines": 12,
+      "symbols": [
+        {
+          "name": "RecordTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 8
+        },
+        {
+          "name": "test_single_record",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 8
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/evaluator-source/fixtures/merge-records/test_records.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/evaluator-source/harness.py",
+      "mode": "100644",
+      "bytes": 9124,
+      "sha256": "c35a37c2f24e9e63bf04e48f112e534b351baae2009c447966f5f94a7ec27dee",
+      "encoding": "utf-8",
+      "lines": 182,
+      "symbols": [
+        {
+          "name": "digest",
+          "kind": "FunctionDef",
+          "line": 27,
+          "end_line": 30
+        },
+        {
+          "name": "snapshot",
+          "kind": "FunctionDef",
+          "line": 33,
+          "end_line": 43
+        },
+        {
+          "name": "definition_digest",
+          "kind": "FunctionDef",
+          "line": 46,
+          "end_line": 48
+        },
+        {
+          "name": "case_by_id",
+          "kind": "FunctionDef",
+          "line": 51,
+          "end_line": 55
+        },
+        {
+          "name": "prepare",
+          "kind": "FunctionDef",
+          "line": 58,
+          "end_line": 77
+        },
+        {
+          "name": "evaluate_function",
+          "kind": "FunctionDef",
+          "line": 80,
+          "end_line": 115
+        },
+        {
+          "name": "grade",
+          "kind": "FunctionDef",
+          "line": 118,
+          "end_line": 159
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 162,
+          "end_line": 178
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/evaluator-source/harness.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/evaluator-source/probe.py",
+      "mode": "100644",
+      "bytes": 1161,
+      "sha256": "0c124848ea6df51f4ac97ce7d545767ce338aa6b9f9e3c35d61141070396f71b",
+      "encoding": "utf-8",
+      "lines": 34,
+      "symbols": [
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 10,
+          "end_line": 30
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/evaluator-source/probe.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/grade.json",
+      "mode": "100644",
+      "bytes": 5889,
+      "sha256": "42aefdcb38301088f2d48c4cac498d67c3a139327a9f6b02655e3e1bab96039a",
+      "encoding": "utf-8",
+      "lines": 142,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/grade.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/manifest.json",
+      "mode": "100644",
+      "bytes": 4735,
+      "sha256": "498bb1f8b850aea1549bcf2395ae2bfc46a29875869a8dc2b023b06f605f836c",
+      "encoding": "utf-8",
+      "lines": 74,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/manifest.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/replay-check.json",
+      "mode": "100644",
+      "bytes": 173,
+      "sha256": "9663dfd45c52f973e95f78b900e79c1735d01220cefeea37dccdadd91c2f5a51",
+      "encoding": "utf-8",
+      "lines": 9,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/replay-check.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/reproduction.zip",
+      "mode": "100644",
+      "bytes": 45455,
+      "sha256": "e0b242e7394892adcbf15a24318e98e9bcb79d566c8c6894a6f55a3259df59c4",
+      "encoding": "base64",
+      "lines": null,
+      "symbols": [],
+      "document": "files/docs/rebuild/validation/2026-09-08-native/reproduction.zip.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-native/trace-summary.json",
+      "mode": "100644",
+      "bytes": 897,
+      "sha256": "e4816bb94ba0f22285bb74ef89fa9dde50636404608d30ad419d18364abcd095",
+      "encoding": "utf-8",
+      "lines": 29,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-native/trace-summary.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-package/README.md",
+      "mode": "100644",
+      "bytes": 3144,
+      "sha256": "8e2f4fd37da4d0e0f619ec59ed87a1256227d936f806b9f648b395d328582b65",
+      "encoding": "utf-8",
+      "lines": 24,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-package/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-package/shell-contract.json",
+      "mode": "100644",
+      "bytes": 746,
+      "sha256": "9abd39db21b6681aeddaef08c5570726ffa99845c9f33d333d8a838f18abb5f0",
+      "encoding": "utf-8",
+      "lines": 34,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-package/shell-contract.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-package/tests.log",
+      "mode": "100644",
+      "bytes": 16487,
+      "sha256": "645c53b169d6cff7f261d93aa67acc515a103343fb4025f34e500a5fb76c65bb",
+      "encoding": "utf-8",
+      "lines": 122,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-package/tests.log.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-package/verification.json",
+      "mode": "100644",
+      "bytes": 5129,
+      "sha256": "b48678a7580cda960ec8dc1c2a9b3f4442851490027e4ed4075ab7d9257989ea",
+      "encoding": "utf-8",
+      "lines": 58,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-package/verification.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/README.md",
+      "mode": "100644",
+      "bytes": 5553,
+      "sha256": "df4a1e69c9d14af11633451d0568aa2db8a3dd790075c41ae5ae308ce50a26e3",
+      "encoding": "utf-8",
+      "lines": 38,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/candidate.diff",
+      "mode": "100644",
+      "bytes": 942,
+      "sha256": "6c071cc78a338a2e4c427d01201f23d070c54b5e9ebd36dea1109b1d2e1f1ecf",
+      "encoding": "utf-8",
+      "lines": 31,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/candidate.diff.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/capture_native.py",
+      "mode": "100644",
+      "bytes": 3729,
+      "sha256": "29478bc0a28bf4cab51703a2fda0c3e7345ce8e5d0a48cc8da5446c9c51a0047",
+      "encoding": "utf-8",
+      "lines": 86,
+      "symbols": [
+        {
+          "name": "varint",
+          "kind": "FunctionDef",
+          "line": 10,
+          "end_line": 19
+        },
+        {
+          "name": "fields",
+          "kind": "FunctionDef",
+          "line": 22,
+          "end_line": 40
+        },
+        {
+          "name": "created_at",
+          "kind": "FunctionDef",
+          "line": 43,
+          "end_line": 47
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 50,
+          "end_line": 82
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/capture_native.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/cleanup.json",
+      "mode": "100644",
+      "bytes": 310,
+      "sha256": "ad172f8027709f3152a6f62ba670440afde2c10022d63fbdb1ac835ab8c14ae4",
+      "encoding": "utf-8",
+      "lines": 7,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/cleanup.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/final-grade.json",
+      "mode": "100644",
+      "bytes": 5824,
+      "sha256": "657992043f894849371b55bb51dd512c344a577badfcbe94769175c6e16ecf2d",
+      "encoding": "utf-8",
+      "lines": 129,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/final-grade.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/final-integrity.json",
+      "mode": "100644",
+      "bytes": 421,
+      "sha256": "46dfdc8dceafd500103bf994167341924d2c5c1f1924b4dbc86066af824fe60d",
+      "encoding": "utf-8",
+      "lines": 13,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/final-integrity.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/final-status.json",
+      "mode": "100644",
+      "bytes": 2638,
+      "sha256": "b69b1fb5a6e39edfa05c4657cc2e28de0affad95f153623e7120bd61febf0a67",
+      "encoding": "utf-8",
+      "lines": 94,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/final-status.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/initial-grade.json",
+      "mode": "100644",
+      "bytes": 5812,
+      "sha256": "9a96144543c6681a7c4489e573b019213cebe23e5da49832cb0bb7c3d7d41b0c",
+      "encoding": "utf-8",
+      "lines": 127,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/initial-grade.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/initial-tasks.json",
+      "mode": "100644",
+      "bytes": 1863,
+      "sha256": "c7d4f36ff20c6f574dc2413f9cee6fde352dcd2cc391d0b50ac564084ce74ef2",
+      "encoding": "utf-8",
+      "lines": 51,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/initial-tasks.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/native-tools.json",
+      "mode": "100644",
+      "bytes": 17651,
+      "sha256": "65096e2b05044d29a2be43a867d37bec8101fdacdca08c9e96e722fee68dc81e",
+      "encoding": "utf-8",
+      "lines": 611,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/native-tools.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/preparation.json",
+      "mode": "100644",
+      "bytes": 5101,
+      "sha256": "f6521ce3eede7a580ed200eb5ed7f8732c255b05d238fde93d7662c01e13d6af",
+      "encoding": "utf-8",
+      "lines": 63,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/preparation.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/prompt.txt",
+      "mode": "100644",
+      "bytes": 84,
+      "sha256": "cc2ec967a8409cec3e105f597deec7cf5946702bd934b368e811523121d8c9dd",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/prompt.txt.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/runner-guidance-check.json",
+      "mode": "100644",
+      "bytes": 1233,
+      "sha256": "24cbd5f14abd832c4cae723c6e12f26d1e2147408d29a08f438e25070566c9ba",
+      "encoding": "utf-8",
+      "lines": 35,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/runner-guidance-check.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/snapshot.zip",
+      "mode": "100644",
+      "bytes": 79240,
+      "sha256": "a89ef63aea2a2021773c8b5f37f065a6c7a1a3c8d203795e075285998539a805",
+      "encoding": "base64",
+      "lines": null,
+      "symbols": [],
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/snapshot.zip.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/state-after.sqlite3",
+      "mode": "100644",
+      "bytes": 32768,
+      "sha256": "3c099cbc6d70005ee6da1ef8b82b75f0fd2b52c3907faaeac928b256cfecb3c6",
+      "encoding": "base64",
+      "lines": null,
+      "symbols": [],
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/state-after.sqlite3.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/state-before.sqlite3",
+      "mode": "100644",
+      "bytes": 32768,
+      "sha256": "8aec5efc91748c80e1f7e9ec8ceac489bbcf02ab31391469255d879112371dae",
+      "encoding": "base64",
+      "lines": null,
+      "symbols": [],
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/state-before.sqlite3.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/tests.log",
+      "mode": "100644",
+      "bytes": 22458,
+      "sha256": "81ba06c3232342725dcb2c32d983d0508d86c4320aac134754ec481f346ffd42",
+      "encoding": "utf-8",
+      "lines": 164,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/tests.log.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/trace-summary.json",
+      "mode": "100644",
+      "bytes": 1471,
+      "sha256": "7c793a6c302fbe7845d01b5b8a898aca318cc975123fa099de0cb424f84bb8b6",
+      "encoding": "utf-8",
+      "lines": 48,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/trace-summary.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-resume-eval/verification.json",
+      "mode": "100644",
+      "bytes": 7495,
+      "sha256": "1b98b6e629de7a02e7bf8164207a5000da7131ef302d9f1c20bd5b8d577ca9b6",
+      "encoding": "utf-8",
+      "lines": 80,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-resume-eval/verification.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-task-handoff/README.md",
+      "mode": "100644",
+      "bytes": 3413,
+      "sha256": "afb8a9e7545c9ba8541393429dfd2f2af414b9481f03fa294c748f391c3b4bfe",
+      "encoding": "utf-8",
+      "lines": 34,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-task-handoff/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-task-handoff/installed-scenario.json",
+      "mode": "100644",
+      "bytes": 14665,
+      "sha256": "58375fbbe91878ea5ce60b53d829d99caccb701e95ca4c8fb5b34f3f362f8858",
+      "encoding": "utf-8",
+      "lines": 455,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-task-handoff/installed-scenario.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json",
+      "mode": "100644",
+      "bytes": 270,
+      "sha256": "cb51e3c4709f0505021b4cc70b978158044fe54e8b0f6d90a1e308792064e9ea",
+      "encoding": "utf-8",
+      "lines": 9,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-task-handoff/tests.log",
+      "mode": "100644",
+      "bytes": 21385,
+      "sha256": "d7c1e21e5520fc5e91a6463836daf497fdc8c7afcd62f265b985784a727b4f91",
+      "encoding": "utf-8",
+      "lines": 152,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-task-handoff/tests.log.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-task-handoff/verification.json",
+      "mode": "100644",
+      "bytes": 5995,
+      "sha256": "95a6869eb8d878d56ba1a636815823c3c6cf9b901aeaa248183d83bb92fb95ea",
+      "encoding": "utf-8",
+      "lines": 66,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-task-handoff/verification.json.md"
+    },
+    {
+      "path": "docs/styles.css",
+      "mode": "100644",
+      "bytes": 12916,
+      "sha256": "ffcc4eb0d9fca2d8324e1d3fc04c6b69cc80e10c1accefdc089ebcfde4dc0dca",
+      "encoding": "utf-8",
+      "lines": 595,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/styles.css.md"
+    },
+    {
+      "path": "evals/README.md",
+      "mode": "100644",
+      "bytes": 11009,
+      "sha256": "41ad3bd13307fcb6304f2075b48a04e940a25fd637e56fbb60a3cbf16337a477",
+      "encoding": "utf-8",
+      "lines": 96,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/README.md.md"
+    },
+    {
+      "path": "evals/__init__.py",
+      "mode": "100644",
+      "bytes": 74,
+      "sha256": "23e43df2038bd9d3adc1496512d11db1310d10498411f9dce957fe8f28e3e1d0",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/__init__.py.md"
+    },
+    {
+      "path": "evals/cases.json",
+      "mode": "100644",
+      "bytes": 6485,
+      "sha256": "1729926f6061d0113d2fe3446dcf7cea2d1c5f052da1ffcd5f99bc2f12ff3e3a",
+      "encoding": "utf-8",
+      "lines": 209,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/cases.json.md"
+    },
+    {
+      "path": "evals/definitions.py",
+      "mode": "100644",
+      "bytes": 1473,
+      "sha256": "ce431460233097ed46a0887d683816b51b48b6cf78d73ff2a2cd8071335dd1fa",
+      "encoding": "utf-8",
+      "lines": 36,
+      "symbols": [
+        {
+          "name": "definition_digest",
+          "kind": "FunctionDef",
+          "line": 16,
+          "end_line": 19
+        },
+        {
+          "name": "case_by_id",
+          "kind": "FunctionDef",
+          "line": 22,
+          "end_line": 36
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/definitions.py.md"
+    },
+    {
+      "path": "evals/fixtures/bounds/README.md",
+      "mode": "100644",
+      "bytes": 397,
+      "sha256": "c8d7a361ed4fa845f83b4f4293ab40e8950e57fba66cb22957212927a8167655",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/bounds/README.md.md"
+    },
+    {
+      "path": "evals/fixtures/bounds/mathlib.py",
+      "mode": "100644",
+      "bytes": 61,
+      "sha256": "3a2fe2662497265d0d17d57f08b5d298448f010215baab3f9a93ae442fee296c",
+      "encoding": "utf-8",
+      "lines": 2,
+      "symbols": [
+        {
+          "name": "clamp",
+          "kind": "FunctionDef",
+          "line": 1,
+          "end_line": 2
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/bounds/mathlib.py.md"
+    },
+    {
+      "path": "evals/fixtures/bounds/notes.txt",
+      "mode": "100644",
+      "bytes": 105,
+      "sha256": "e9551430733b70654a9b5109759f3b4f57840039267a634147426d2a1bd11053",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/bounds/notes.txt.md"
+    },
+    {
+      "path": "evals/fixtures/bounds/test_mathlib.py",
+      "mode": "100644",
+      "bytes": 213,
+      "sha256": "80ec21f265da49a2efbd25efea1ab54fad017d7ddd9856745101fcbb6e63f5c6",
+      "encoding": "utf-8",
+      "lines": 12,
+      "symbols": [
+        {
+          "name": "ClampTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 8
+        },
+        {
+          "name": "test_upper_boundary",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 8
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/bounds/test_mathlib.py.md"
+    },
+    {
+      "path": "evals/fixtures/merge-records/README.md",
+      "mode": "100644",
+      "bytes": 539,
+      "sha256": "eab6071254e4867ec4327540cfb1afd255c63d367ef44c37252d5655e811fed0",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/merge-records/README.md.md"
+    },
+    {
+      "path": "evals/fixtures/merge-records/app.py",
+      "mode": "100644",
+      "bytes": 105,
+      "sha256": "b3cda19c426317b623565a34d3c52beb90778d9145f15b32caca7980118588ca",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [
+        {
+          "name": "summarize",
+          "kind": "FunctionDef",
+          "line": 4,
+          "end_line": 5
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/merge-records/app.py.md"
+    },
+    {
+      "path": "evals/fixtures/merge-records/notes.txt",
+      "mode": "100644",
+      "bytes": 99,
+      "sha256": "f829a4827d6f66fbac0bc683c5d19f91c601337ff6404fb77ee119f1d57d8ec8",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/merge-records/notes.txt.md"
+    },
+    {
+      "path": "evals/fixtures/merge-records/records.py",
+      "mode": "100644",
+      "bytes": 139,
+      "sha256": "4a81a71f72cc545f1d0e0408a3f144ffb6cb0629346388b6cb8cc22a83c14a9d",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [
+        {
+          "name": "merge_records",
+          "kind": "FunctionDef",
+          "line": 1,
+          "end_line": 5
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/merge-records/records.py.md"
+    },
+    {
+      "path": "evals/fixtures/merge-records/test_records.py",
+      "mode": "100644",
+      "bytes": 243,
+      "sha256": "74fbc53df867e6b252feba5d35de30663a622dd7d6ca5c42d5170d97e52aa27b",
+      "encoding": "utf-8",
+      "lines": 12,
+      "symbols": [
+        {
+          "name": "RecordTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 8
+        },
+        {
+          "name": "test_single_record",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 8
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/merge-records/test_records.py.md"
+    },
+    {
+      "path": "evals/fixtures/report-export/README.md",
+      "mode": "100644",
+      "bytes": 1535,
+      "sha256": "e1e674e74505814c9cdefb19557e0ecdcaff534c6be9f02c65f6d3f3b98e24bc",
+      "encoding": "utf-8",
+      "lines": 11,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/report-export/README.md.md"
+    },
+    {
+      "path": "evals/fixtures/report-export/app.py",
+      "mode": "100644",
+      "bytes": 307,
+      "sha256": "2906dc64761ec0dafc14dc248fe30f57f726aa506152e5aa595dd7723dc9dc2d",
+      "encoding": "utf-8",
+      "lines": 11,
+      "symbols": [
+        {
+          "name": "download",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 11
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/report-export/app.py.md"
+    },
+    {
+      "path": "evals/fixtures/report-export/exports.py",
+      "mode": "100644",
+      "bytes": 97,
+      "sha256": "3bb0d265067a84d71eefe4328e0c4f61d00381c13362454ba4dd6942ab280e6d",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [
+        {
+          "name": "to_json",
+          "kind": "FunctionDef",
+          "line": 4,
+          "end_line": 5
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/report-export/exports.py.md"
+    },
+    {
+      "path": "evals/fixtures/report-export/notes.txt",
+      "mode": "100644",
+      "bytes": 115,
+      "sha256": "ea68fead1ada7abdfb8c2993617c96e6cd889aed964043ad179de964ef0d6837",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/report-export/notes.txt.md"
+    },
+    {
+      "path": "evals/fixtures/report-export/test_app.py",
+      "mode": "100644",
+      "bytes": 504,
+      "sha256": "525cae662a4a5b5ce52c103e826dde4b0eb6f5808bf1afebea5a17a73eb832a5",
+      "encoding": "utf-8",
+      "lines": 18,
+      "symbols": [
+        {
+          "name": "DownloadTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 14
+        },
+        {
+          "name": "test_existing_json_download",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 10
+        },
+        {
+          "name": "test_unknown_format",
+          "kind": "FunctionDef",
+          "line": 12,
+          "end_line": 14
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/report-export/test_app.py.md"
+    },
+    {
+      "path": "evals/fixtures/resume-export/README.md",
+      "mode": "100644",
+      "bytes": 1526,
+      "sha256": "075615919a523b930176fb889018c7a37510df11081a6ce90f1905af35227723",
+      "encoding": "utf-8",
+      "lines": 11,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/resume-export/README.md.md"
+    },
+    {
+      "path": "evals/fixtures/resume-export/app.py",
+      "mode": "100644",
+      "bytes": 307,
+      "sha256": "2906dc64761ec0dafc14dc248fe30f57f726aa506152e5aa595dd7723dc9dc2d",
+      "encoding": "utf-8",
+      "lines": 11,
+      "symbols": [
+        {
+          "name": "download",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 11
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/resume-export/app.py.md"
+    },
+    {
+      "path": "evals/fixtures/resume-export/exports.py",
+      "mode": "100644",
+      "bytes": 393,
+      "sha256": "b95c91ff1457f5cec1bc47c6eeef66e56e62155b2d84a4b66d909938ae479bd4",
+      "encoding": "utf-8",
+      "lines": 16,
+      "symbols": [
+        {
+          "name": "to_json",
+          "kind": "FunctionDef",
+          "line": 6,
+          "end_line": 7
+        },
+        {
+          "name": "to_csv",
+          "kind": "FunctionDef",
+          "line": 10,
+          "end_line": 16
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/resume-export/exports.py.md"
+    },
+    {
+      "path": "evals/fixtures/resume-export/notes.txt",
+      "mode": "100644",
+      "bytes": 115,
+      "sha256": "ea68fead1ada7abdfb8c2993617c96e6cd889aed964043ad179de964ef0d6837",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/resume-export/notes.txt.md"
+    },
+    {
+      "path": "evals/fixtures/resume-export/progress.json",
+      "mode": "100644",
+      "bytes": 1118,
+      "sha256": "1e3a74b32c2ce4f68fb927042d7b5593fb8bc96d75d92761e2bdca046b825b1e",
+      "encoding": "utf-8",
+      "lines": 26,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/resume-export/progress.json.md"
+    },
+    {
+      "path": "evals/fixtures/resume-export/test_app.py",
+      "mode": "100644",
+      "bytes": 758,
+      "sha256": "4389b90434e47e8ff8ee100b4c08826b5a563c13c60ec153ac10d82da1a0ae0a",
+      "encoding": "utf-8",
+      "lines": 23,
+      "symbols": [
+        {
+          "name": "DownloadTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 19
+        },
+        {
+          "name": "test_existing_json_download",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 10
+        },
+        {
+          "name": "test_csv_download",
+          "kind": "FunctionDef",
+          "line": 12,
+          "end_line": 15
+        },
+        {
+          "name": "test_unknown_format",
+          "kind": "FunctionDef",
+          "line": 17,
+          "end_line": 19
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/resume-export/test_app.py.md"
+    },
+    {
+      "path": "evals/fixtures/resume-export/test_exports.py",
+      "mode": "100644",
+      "bytes": 630,
+      "sha256": "13130aa76779508e04722a1c5feddb15df276f12eef7e6736ff57e3414225c27",
+      "encoding": "utf-8",
+      "lines": 21,
+      "symbols": [
+        {
+          "name": "CSVTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 17
+        },
+        {
+          "name": "test_empty_rows_keep_header",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 8
+        },
+        {
+          "name": "test_quotes_and_newlines_are_preserved",
+          "kind": "FunctionDef",
+          "line": 10,
+          "end_line": 12
+        },
+        {
+          "name": "test_input_is_unchanged",
+          "kind": "FunctionDef",
+          "line": 14,
+          "end_line": 17
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/resume-export/test_exports.py.md"
+    },
+    {
+      "path": "evals/grading.py",
+      "mode": "100644",
+      "bytes": 8757,
+      "sha256": "982a06e3e854e9c572d05a7c31d3e15f504e0dcba2057806b8ca711a7cbcf10f",
+      "encoding": "utf-8",
+      "lines": 173,
+      "symbols": [
+        {
+          "name": "terminate",
+          "kind": "FunctionDef",
+          "line": 21,
+          "end_line": 29
+        },
+        {
+          "name": "same_value",
+          "kind": "FunctionDef",
+          "line": 32,
+          "end_line": 41
+        },
+        {
+          "name": "csv_rows",
+          "kind": "FunctionDef",
+          "line": 44,
+          "end_line": 57
+        },
+        {
+          "name": "same_output",
+          "kind": "FunctionDef",
+          "line": 60,
+          "end_line": 71
+        },
+        {
+          "name": "evaluate_function",
+          "kind": "FunctionDef",
+          "line": 74,
+          "end_line": 110
+        },
+        {
+          "name": "grade",
+          "kind": "FunctionDef",
+          "line": 113,
+          "end_line": 173
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/grading.py.md"
+    },
+    {
+      "path": "evals/harness.py",
+      "mode": "100644",
+      "bytes": 1532,
+      "sha256": "ad735017cd393dfaf2386c4a62974541222b1ade9f8bcb2136cb2e800c42a838",
+      "encoding": "utf-8",
+      "lines": 40,
+      "symbols": [
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 20,
+          "end_line": 36
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/harness.py.md"
+    },
+    {
+      "path": "evals/preparation.py",
+      "mode": "100644",
+      "bytes": 2258,
+      "sha256": "c9e501f5a693dd07029102f78a5beb4d8ed302857a0d0f22d27482d3abfa438a",
+      "encoding": "utf-8",
+      "lines": 40,
+      "symbols": [
+        {
+          "name": "prepare",
+          "kind": "FunctionDef",
+          "line": 17,
+          "end_line": 40
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/preparation.py.md"
+    },
+    {
+      "path": "evals/probe.py",
+      "mode": "100644",
+      "bytes": 1282,
+      "sha256": "f4abe5106a8c74285403b4614b6269f92abeab5954f035c8eaf1cb57d550365f",
+      "encoding": "utf-8",
+      "lines": 36,
+      "symbols": [
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 10,
+          "end_line": 32
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/probe.py.md"
+    },
+    {
+      "path": "evals/progress.py",
+      "mode": "100644",
+      "bytes": 2165,
+      "sha256": "e9ec3ae75b53c405bef9b67943a1d6e58bb7de5fca998cbe789ae4915657a1c5",
+      "encoding": "utf-8",
+      "lines": 42,
+      "symbols": [
+        {
+          "name": "seed_progress",
+          "kind": "FunctionDef",
+          "line": 12,
+          "end_line": 42
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/progress.py.md"
+    },
+    {
+      "path": "evals/workspace.py",
+      "mode": "100644",
+      "bytes": 4030,
+      "sha256": "368f5fd92ed504261e6dce8a58c104b3d3bef0f495baa735a4ad7105075dc40d",
+      "encoding": "utf-8",
+      "lines": 87,
+      "symbols": [
+        {
+          "name": "private",
+          "kind": "FunctionDef",
+          "line": 12,
+          "end_line": 19
+        },
+        {
+          "name": "digest",
+          "kind": "FunctionDef",
+          "line": 22,
+          "end_line": 25
+        },
+        {
+          "name": "snapshot",
+          "kind": "FunctionDef",
+          "line": 28,
+          "end_line": 38
+        },
+        {
+          "name": "git_command",
+          "kind": "FunctionDef",
+          "line": 41,
+          "end_line": 44
+        },
+        {
+          "name": "git_state",
+          "kind": "FunctionDef",
+          "line": 47,
+          "end_line": 59
+        },
+        {
+          "name": "seed_user_edits",
+          "kind": "FunctionDef",
+          "line": 62,
+          "end_line": 79
+        },
+        {
+          "name": "environment_info",
+          "kind": "FunctionDef",
+          "line": 82,
+          "end_line": 87
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/workspace.py.md"
+    },
+    {
+      "path": "gtg/__init__.py",
+      "mode": "100644",
+      "bytes": 79,
+      "sha256": "d33dad4c6806fb8fe0743f55e39ca607ac7df4c271d75a59a9d4e02f34f896bb",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/gtg/__init__.py.md"
+    },
+    {
+      "path": "gtg/__main__.py",
+      "mode": "100644",
+      "bytes": 8053,
+      "sha256": "6fb286f6b27db4e3f42f5662d12378c5fba219dd4ae55243b89361c91b4064d2",
+      "encoding": "utf-8",
+      "lines": 145,
+      "symbols": [
+        {
+          "name": "read_document",
+          "kind": "FunctionDef",
+          "line": 19,
+          "end_line": 22
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 25,
+          "end_line": 141
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/__main__.py.md"
+    },
+    {
+      "path": "gtg/checkpoints.py",
+      "mode": "100644",
+      "bytes": 2771,
+      "sha256": "891a3ce8ee3674e82e3004aaba0c22a31440f6b7c918ab85dbf283bf3eff46a7",
+      "encoding": "utf-8",
+      "lines": 59,
+      "symbols": [
+        {
+          "name": "normalize",
+          "kind": "FunctionDef",
+          "line": 13,
+          "end_line": 23
+        },
+        {
+          "name": "record",
+          "kind": "FunctionDef",
+          "line": 26,
+          "end_line": 44
+        },
+        {
+          "name": "latest",
+          "kind": "FunctionDef",
+          "line": 47,
+          "end_line": 59
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/checkpoints.py.md"
+    },
+    {
+      "path": "gtg/discovery.py",
+      "mode": "100644",
+      "bytes": 4610,
+      "sha256": "21cb02fb912c49d0fbf7fad9a331a84dcb4f3d7bc34bbfd7d6914dfb5cc14b64",
+      "encoding": "utf-8",
+      "lines": 69,
+      "symbols": [
+        {
+          "name": "saved_tasks",
+          "kind": "FunctionDef",
+          "line": 13,
+          "end_line": 54
+        },
+        {
+          "name": "discover",
+          "kind": "FunctionDef",
+          "line": 57,
+          "end_line": 69
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/discovery.py.md"
+    },
+    {
+      "path": "gtg/hooks.py",
+      "mode": "100644",
+      "bytes": 10931,
+      "sha256": "16e1366afb414bf970994515b846925c3493cc459f1c2f885856dc62fa72ef16",
+      "encoding": "utf-8",
+      "lines": 196,
+      "symbols": [
+        {
+          "name": "parse",
+          "kind": "FunctionDef",
+          "line": 24,
+          "end_line": 51
+        },
+        {
+          "name": "allow_stop",
+          "kind": "FunctionDef",
+          "line": 54,
+          "end_line": 55
+        },
+        {
+          "name": "context",
+          "kind": "FunctionDef",
+          "line": 58,
+          "end_line": 60
+        },
+        {
+          "name": "exhausted",
+          "kind": "FunctionDef",
+          "line": 63,
+          "end_line": 66
+        },
+        {
+          "name": "stop_details",
+          "kind": "FunctionDef",
+          "line": 69,
+          "end_line": 75
+        },
+        {
+          "name": "handle",
+          "kind": "FunctionDef",
+          "line": 78,
+          "end_line": 174
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 177,
+          "end_line": 192
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/hooks.py.md"
+    },
+    {
+      "path": "gtg/inspection.py",
+      "mode": "100644",
+      "bytes": 7450,
+      "sha256": "bb9761e94a74fc67c473b79ee047d22ebf096adbe57b0397d3f8a2388a57fad3",
+      "encoding": "utf-8",
+      "lines": 161,
+      "symbols": [
+        {
+          "name": "ChangedDuringRead",
+          "kind": "ClassDef",
+          "line": 18,
+          "end_line": 19
+        },
+        {
+          "name": "open_regular",
+          "kind": "FunctionDef",
+          "line": 23,
+          "end_line": 60
+        },
+        {
+          "name": "signature",
+          "kind": "FunctionDef",
+          "line": 63,
+          "end_line": 64
+        },
+        {
+          "name": "read_range",
+          "kind": "FunctionDef",
+          "line": 67,
+          "end_line": 113
+        },
+        {
+          "name": "inspect",
+          "kind": "FunctionDef",
+          "line": 116,
+          "end_line": 161
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/inspection.py.md"
+    },
+    {
+      "path": "gtg/install.py",
+      "mode": "100644",
+      "bytes": 9088,
+      "sha256": "b2d2609ada2584c016f8ee4a27a0834c216409ad3c2f6e7432d0114684b5d3d8",
+      "encoding": "utf-8",
+      "lines": 204,
+      "symbols": [
+        {
+          "name": "destination",
+          "kind": "FunctionDef",
+          "line": 19,
+          "end_line": 24
+        },
+        {
+          "name": "safe_path",
+          "kind": "FunctionDef",
+          "line": 27,
+          "end_line": 29
+        },
+        {
+          "name": "lock",
+          "kind": "FunctionDef",
+          "line": 33,
+          "end_line": 48
+        },
+        {
+          "name": "install",
+          "kind": "FunctionDef",
+          "line": 51,
+          "end_line": 89
+        },
+        {
+          "name": "uninstall",
+          "kind": "FunctionDef",
+          "line": 92,
+          "end_line": 111
+        },
+        {
+          "name": "restore",
+          "kind": "FunctionDef",
+          "line": 114,
+          "end_line": 143
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 146,
+          "end_line": 200
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/install.py.md"
+    },
+    {
+      "path": "gtg/install_journal.py",
+      "mode": "100644",
+      "bytes": 7162,
+      "sha256": "1d0d0e12d548d9a9f125ae7a9d4b37e0db998d1c44d42a5e5d5232bc776b1bfb",
+      "encoding": "utf-8",
+      "lines": 169,
+      "symbols": [
+        {
+          "name": "exists",
+          "kind": "FunctionDef",
+          "line": 15,
+          "end_line": 16
+        },
+        {
+          "name": "identity",
+          "kind": "FunctionDef",
+          "line": 19,
+          "end_line": 24
+        },
+        {
+          "name": "sync_directory",
+          "kind": "FunctionDef",
+          "line": 27,
+          "end_line": 32
+        },
+        {
+          "name": "durable_json",
+          "kind": "FunctionDef",
+          "line": 35,
+          "end_line": 46
+        },
+        {
+          "name": "sync_tree",
+          "kind": "FunctionDef",
+          "line": 49,
+          "end_line": 56
+        },
+        {
+          "name": "MoveJournal",
+          "kind": "ClassDef",
+          "line": 59,
+          "end_line": 169
+        },
+        {
+          "name": "__init__",
+          "kind": "FunctionDef",
+          "line": 62,
+          "end_line": 67
+        },
+        {
+          "name": "allowed",
+          "kind": "FunctionDef",
+          "line": 69,
+          "end_line": 86
+        },
+        {
+          "name": "read",
+          "kind": "FunctionDef",
+          "line": 88,
+          "end_line": 106
+        },
+        {
+          "name": "prepare",
+          "kind": "FunctionDef",
+          "line": 108,
+          "end_line": 126
+        },
+        {
+          "name": "move",
+          "kind": "FunctionDef",
+          "line": 128,
+          "end_line": 134
+        },
+        {
+          "name": "apply",
+          "kind": "FunctionDef",
+          "line": 136,
+          "end_line": 144
+        },
+        {
+          "name": "clear",
+          "kind": "FunctionDef",
+          "line": 146,
+          "end_line": 148
+        },
+        {
+          "name": "commit",
+          "kind": "FunctionDef",
+          "line": 150,
+          "end_line": 154
+        },
+        {
+          "name": "recover",
+          "kind": "FunctionDef",
+          "line": 156,
+          "end_line": 169
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/install_journal.py.md"
+    },
+    {
+      "path": "gtg/legacy.py",
+      "mode": "100644",
+      "bytes": 2362,
+      "sha256": "ad6f1d8a48d9a7f55e82a9988bd1576a3d73b877fd66d9b7ba6bd033bc7951a3",
+      "encoding": "utf-8",
+      "lines": 59,
+      "symbols": [
+        {
+          "name": "prepare_migration",
+          "kind": "FunctionDef",
+          "line": 16,
+          "end_line": 30
+        },
+        {
+          "name": "restore_moves",
+          "kind": "FunctionDef",
+          "line": 33,
+          "end_line": 46
+        },
+        {
+          "name": "restore",
+          "kind": "FunctionDef",
+          "line": 49,
+          "end_line": 59
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/legacy.py.md"
+    },
+    {
+      "path": "gtg/package.py",
+      "mode": "100644",
+      "bytes": 11202,
+      "sha256": "ab59215b746bc8ab1cce994594deabfa91c4bcfbe5a43e0ab32b7c034dc382b7",
+      "encoding": "utf-8",
+      "lines": 203,
+      "symbols": [
+        {
+          "name": "validate_source",
+          "kind": "FunctionDef",
+          "line": 23,
+          "end_line": 27
+        },
+        {
+          "name": "read_source",
+          "kind": "FunctionDef",
+          "line": 30,
+          "end_line": 34
+        },
+        {
+          "name": "copy_file",
+          "kind": "FunctionDef",
+          "line": 37,
+          "end_line": 41
+        },
+        {
+          "name": "copy_source",
+          "kind": "FunctionDef",
+          "line": 44,
+          "end_line": 60
+        },
+        {
+          "name": "build",
+          "kind": "FunctionDef",
+          "line": 63,
+          "end_line": 98
+        },
+        {
+          "name": "validated_hooks",
+          "kind": "FunctionDef",
+          "line": 101,
+          "end_line": 148
+        },
+        {
+          "name": "verify",
+          "kind": "FunctionDef",
+          "line": 151,
+          "end_line": 203
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/package.py.md"
+    },
+    {
+      "path": "gtg/runner.py",
+      "mode": "100644",
+      "bytes": 4726,
+      "sha256": "b5e95be8c5c4f6517f99727308b5309a3dae2040c1a498fab39adac7b7535731",
+      "encoding": "utf-8",
+      "lines": 126,
+      "symbols": [
+        {
+          "name": "CommandCancelled",
+          "kind": "ClassDef",
+          "line": 18,
+          "end_line": 21
+        },
+        {
+          "name": "cancellation_signals",
+          "kind": "FunctionDef",
+          "line": 25,
+          "end_line": 34
+        },
+        {
+          "name": "group_alive",
+          "kind": "FunctionDef",
+          "line": 37,
+          "end_line": 44
+        },
+        {
+          "name": "terminate",
+          "kind": "FunctionDef",
+          "line": 47,
+          "end_line": 55
+        },
+        {
+          "name": "execute",
+          "kind": "FunctionDef",
+          "line": 58,
+          "end_line": 100
+        },
+        {
+          "name": "status",
+          "kind": "FunctionDef",
+          "line": 103,
+          "end_line": 126
+        },
+        {
+          "name": "__init__",
+          "kind": "FunctionDef",
+          "line": 19,
+          "end_line": 21
+        },
+        {
+          "name": "cancel",
+          "kind": "FunctionDef",
+          "line": 27,
+          "end_line": 28
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/runner.py.md"
+    },
+    {
+      "path": "gtg/sessions.py",
+      "mode": "100644",
+      "bytes": 8717,
+      "sha256": "4e7c18e51787e21643cda76b757cb128ba5bcab658c9ac140f0f103947eee30d",
+      "encoding": "utf-8",
+      "lines": 156,
+      "symbols": [
+        {
+          "name": "key",
+          "kind": "FunctionDef",
+          "line": 15,
+          "end_line": 20
+        },
+        {
+          "name": "Sessions",
+          "kind": "ClassDef",
+          "line": 23,
+          "end_line": 156
+        },
+        {
+          "name": "__init__",
+          "kind": "FunctionDef",
+          "line": 24,
+          "end_line": 39
+        },
+        {
+          "name": "start",
+          "kind": "FunctionDef",
+          "line": 41,
+          "end_line": 58
+        },
+        {
+          "name": "bind",
+          "kind": "FunctionDef",
+          "line": 60,
+          "end_line": 72
+        },
+        {
+          "name": "attach",
+          "kind": "FunctionDef",
+          "line": 74,
+          "end_line": 106
+        },
+        {
+          "name": "get",
+          "kind": "FunctionDef",
+          "line": 108,
+          "end_line": 110
+        },
+        {
+          "name": "for_task",
+          "kind": "FunctionDef",
+          "line": 112,
+          "end_line": 114
+        },
+        {
+          "name": "observe_stop",
+          "kind": "FunctionDef",
+          "line": 116,
+          "end_line": 123
+        },
+        {
+          "name": "observe_start",
+          "kind": "FunctionDef",
+          "line": 125,
+          "end_line": 127
+        },
+        {
+          "name": "pause",
+          "kind": "FunctionDef",
+          "line": 129,
+          "end_line": 135
+        },
+        {
+          "name": "resume",
+          "kind": "FunctionDef",
+          "line": 137,
+          "end_line": 148
+        },
+        {
+          "name": "nudge",
+          "kind": "FunctionDef",
+          "line": 150,
+          "end_line": 156
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/sessions.py.md"
+    },
+    {
+      "path": "gtg/spec.py",
+      "mode": "100644",
+      "bytes": 4785,
+      "sha256": "a31e4fb5edac39593958e87a8a86a4a3ae525e8c0caf813cf4b63ada0c0aaaf7",
+      "encoding": "utf-8",
+      "lines": 105,
+      "symbols": [
+        {
+          "name": "sensitive",
+          "kind": "FunctionDef",
+          "line": 17,
+          "end_line": 22
+        },
+        {
+          "name": "private",
+          "kind": "FunctionDef",
+          "line": 25,
+          "end_line": 27
+        },
+        {
+          "name": "relative",
+          "kind": "FunctionDef",
+          "line": 30,
+          "end_line": 36
+        },
+        {
+          "name": "validate",
+          "kind": "FunctionDef",
+          "line": 39,
+          "end_line": 68
+        },
+        {
+          "name": "fingerprint",
+          "kind": "FunctionDef",
+          "line": 71,
+          "end_line": 105
+        },
+        {
+          "name": "add",
+          "kind": "FunctionDef",
+          "line": 76,
+          "end_line": 101
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/spec.py.md"
+    },
+    {
+      "path": "gtg/store.py",
+      "mode": "100644",
+      "bytes": 6013,
+      "sha256": "111ec87f64fd48216d2cb1086e6b8c2bccb89732b20e4081e4c88f988e35e95b",
+      "encoding": "utf-8",
+      "lines": 126,
+      "symbols": [
+        {
+          "name": "Store",
+          "kind": "ClassDef",
+          "line": 17,
+          "end_line": 126
+        },
+        {
+          "name": "__init__",
+          "kind": "FunctionDef",
+          "line": 18,
+          "end_line": 52
+        },
+        {
+          "name": "close",
+          "kind": "FunctionDef",
+          "line": 54,
+          "end_line": 55
+        },
+        {
+          "name": "create",
+          "kind": "FunctionDef",
+          "line": 57,
+          "end_line": 66
+        },
+        {
+          "name": "task",
+          "kind": "FunctionDef",
+          "line": 68,
+          "end_line": 72
+        },
+        {
+          "name": "begin",
+          "kind": "FunctionDef",
+          "line": 74,
+          "end_line": 85
+        },
+        {
+          "name": "finish",
+          "kind": "FunctionDef",
+          "line": 87,
+          "end_line": 92
+        },
+        {
+          "name": "attach_process",
+          "kind": "FunctionDef",
+          "line": 94,
+          "end_line": 96
+        },
+        {
+          "name": "latest",
+          "kind": "FunctionDef",
+          "line": 98,
+          "end_line": 103
+        },
+        {
+          "name": "recover",
+          "kind": "FunctionDef",
+          "line": 105,
+          "end_line": 126
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/store.py.md"
+    },
+    {
+      "path": "profile/rules/gtg.md",
+      "mode": "100644",
+      "bytes": 1714,
+      "sha256": "37d6987d0f4e6794de6211daaf59c56fe82c8010e4ba547b236a6e4691d21665",
+      "encoding": "utf-8",
+      "lines": 13,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/profile/rules/gtg.md.md"
+    },
+    {
+      "path": "profile/skills/gtg-build/SKILL.md",
+      "mode": "100644",
+      "bytes": 3372,
+      "sha256": "9f945c242a1b533d083486f95f1add26d5e13b5c88dd27d2cd038c05b1843d9c",
+      "encoding": "utf-8",
+      "lines": 22,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/profile/skills/gtg-build/SKILL.md.md"
+    },
+    {
+      "path": "profile/skills/gtg-build/references/code-intake.md",
+      "mode": "100644",
+      "bytes": 2983,
+      "sha256": "8840325030a4fd4c0db0664a5457eeb168e1902a42bbe705e21ad71f98dd7478",
+      "encoding": "utf-8",
+      "lines": 30,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/profile/skills/gtg-build/references/code-intake.md.md"
+    },
+    {
+      "path": "profile/skills/gtg-build/references/task-contract.md",
+      "mode": "100644",
+      "bytes": 8856,
+      "sha256": "5564393c336d809431b32bc1a4414b79fcf1ab7a400c391c6cda6688b21862d0",
+      "encoding": "utf-8",
+      "lines": 81,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/profile/skills/gtg-build/references/task-contract.md.md"
+    },
+    {
+      "path": "profile/skills/gtg-interface/SKILL.md",
+      "mode": "100644",
+      "bytes": 1774,
+      "sha256": "25e5280544be9d88925de469cc9590588122466f3ea7ded62cf0bb8e59f12102",
+      "encoding": "utf-8",
+      "lines": 16,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/profile/skills/gtg-interface/SKILL.md.md"
+    },
+    {
+      "path": "profile/skills/gtg-research/SKILL.md",
+      "mode": "100644",
+      "bytes": 1387,
+      "sha256": "79cf34d6a09722eb1ffe4bb93d4aaf1aa381c5327c1c64ecbe797564af8b3fde",
+      "encoding": "utf-8",
+      "lines": 14,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/profile/skills/gtg-research/SKILL.md.md"
+    },
+    {
+      "path": "scripts/catalog.py",
+      "mode": "100644",
+      "bytes": 8438,
+      "sha256": "d45943c59007e9190dbefe71ec6c5a894f272477e260b37ff37e126c2561e0e3",
+      "encoding": "utf-8",
+      "lines": 175,
+      "symbols": [
+        {
+          "name": "generated",
+          "kind": "FunctionDef",
+          "line": 22,
+          "end_line": 23
+        },
+        {
+          "name": "sensitive",
+          "kind": "FunctionDef",
+          "line": 26,
+          "end_line": 32
+        },
+        {
+          "name": "git",
+          "kind": "FunctionDef",
+          "line": 35,
+          "end_line": 36
+        },
+        {
+          "name": "source_files",
+          "kind": "FunctionDef",
+          "line": 39,
+          "end_line": 73
+        },
+        {
+          "name": "symbols",
+          "kind": "FunctionDef",
+          "line": 76,
+          "end_line": 86
+        },
+        {
+          "name": "render",
+          "kind": "FunctionDef",
+          "line": 89,
+          "end_line": 139
+        },
+        {
+          "name": "sync",
+          "kind": "FunctionDef",
+          "line": 142,
+          "end_line": 155
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 158,
+          "end_line": 171
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/scripts/catalog.py.md"
+    },
+    {
+      "path": "scripts/gtg_runner.py",
+      "mode": "100644",
+      "bytes": 293,
+      "sha256": "df6f8577c5c1d224cf6d20b21f301baeea5b508ad6c3f87385d41a0175cf9a83",
+      "encoding": "utf-8",
+      "lines": 12,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/scripts/gtg_runner.py.md"
+    },
+    {
+      "path": "scripts/install.py",
+      "mode": "100644",
+      "bytes": 257,
+      "sha256": "cca22a44e7cc79ccfc07fd62b6ca0fa97c3ebdcf5fecaabb6ee79cb080d0295d",
+      "encoding": "utf-8",
+      "lines": 9,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/scripts/install.py.md"
+    },
+    {
+      "path": "scripts/install.sh",
+      "mode": "100644",
+      "bytes": 142,
+      "sha256": "7caf933397b9eeae215f2d631d5efcc21683bcee51c9a142aeca82546c3a7258",
+      "encoding": "utf-8",
+      "lines": 4,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/scripts/install.sh.md"
+    },
+    {
+      "path": "tests/test_catalog.py",
+      "mode": "100644",
+      "bytes": 3512,
+      "sha256": "f2bca8e8609ecab50e8447c516dd9a708df24ec585f1e1381ba5c9b25999ea65",
+      "encoding": "utf-8",
+      "lines": 80,
+      "symbols": [
+        {
+          "name": "CatalogTests",
+          "kind": "ClassDef",
+          "line": 17,
+          "end_line": 76
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 18,
+          "end_line": 22
+        },
+        {
+          "name": "put",
+          "kind": "FunctionDef",
+          "line": 24,
+          "end_line": 28
+        },
+        {
+          "name": "test_text_binary_and_link_are_lossless",
+          "kind": "FunctionDef",
+          "line": 30,
+          "end_line": 47
+        },
+        {
+          "name": "test_change_addition_and_deletion_are_detected",
+          "kind": "FunctionDef",
+          "line": 49,
+          "end_line": 61
+        },
+        {
+          "name": "test_authored_inventory_doc_is_included_but_generated_docs_are_not",
+          "kind": "FunctionDef",
+          "line": 63,
+          "end_line": 67
+        },
+        {
+          "name": "test_sensitive_names_are_listed_without_reading",
+          "kind": "FunctionDef",
+          "line": 69,
+          "end_line": 76
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_catalog.py.md"
+    },
+    {
+      "path": "tests/test_checkpoints.py",
+      "mode": "100644",
+      "bytes": 4243,
+      "sha256": "055218c2c6b3ddf7050309769e1ebc192f989cebfd31f9dee973522860a91fbb",
+      "encoding": "utf-8",
+      "lines": 84,
+      "symbols": [
+        {
+          "name": "CheckpointTests",
+          "kind": "ClassDef",
+          "line": 20,
+          "end_line": 80
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 21,
+          "end_line": 32
+        },
+        {
+          "name": "test_checkpoint_survives_restart_without_marking_checks_passed",
+          "kind": "FunctionDef",
+          "line": 34,
+          "end_line": 43
+        },
+        {
+          "name": "test_changed_files_make_note_stale_without_erasing_it",
+          "kind": "FunctionDef",
+          "line": 45,
+          "end_line": 50
+        },
+        {
+          "name": "test_repeated_save_is_idempotent_and_new_milestone_keeps_history",
+          "kind": "FunctionDef",
+          "line": 52,
+          "end_line": 57
+        },
+        {
+          "name": "test_unbound_note_has_no_file_freshness_claim",
+          "kind": "FunctionDef",
+          "line": 59,
+          "end_line": 61
+        },
+        {
+          "name": "test_private_or_outside_paths_and_result_fields_are_rejected",
+          "kind": "FunctionDef",
+          "line": 63,
+          "end_line": 67
+        },
+        {
+          "name": "test_checkpoint_cli_and_host_context",
+          "kind": "FunctionDef",
+          "line": 69,
+          "end_line": 80
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_checkpoints.py.md"
+    },
+    {
+      "path": "tests/test_eval_export.py",
+      "mode": "100644",
+      "bytes": 5780,
+      "sha256": "304d75ff5487d3d67d57a98f17ee4986801673d49e9b74938304bebe911da760",
+      "encoding": "utf-8",
+      "lines": 129,
+      "symbols": [
+        {
+          "name": "ExportEvalTests",
+          "kind": "ClassDef",
+          "line": 37,
+          "end_line": 125
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 38,
+          "end_line": 43
+        },
+        {
+          "name": "reference_fix",
+          "kind": "FunctionDef",
+          "line": 45,
+          "end_line": 51
+        },
+        {
+          "name": "test_initial_failure_and_reference_feature_preserve_existing_user_diff",
+          "kind": "FunctionDef",
+          "line": 53,
+          "end_line": 65
+        },
+        {
+          "name": "test_only_implementing_the_new_helper_does_not_complete_the_feature",
+          "kind": "FunctionDef",
+          "line": 67,
+          "end_line": 71
+        },
+        {
+          "name": "test_user_filename_and_existing_json_contract_are_not_optional",
+          "kind": "FunctionDef",
+          "line": 73,
+          "end_line": 82
+        },
+        {
+          "name": "test_permitted_new_test_and_unrelated_file_are_distinguished",
+          "kind": "FunctionDef",
+          "line": 84,
+          "end_line": 91
+        },
+        {
+          "name": "test_reading_git_status_is_allowed_but_staging_user_work_is_not",
+          "kind": "FunctionDef",
+          "line": 93,
+          "end_line": 102
+        },
+        {
+          "name": "test_unreadable_git_state_cannot_be_reported_as_preserved",
+          "kind": "FunctionDef",
+          "line": 104,
+          "end_line": 110
+        },
+        {
+          "name": "test_equivalent_csv_quoting_is_allowed_but_wrong_record_endings_are_not",
+          "kind": "FunctionDef",
+          "line": 112,
+          "end_line": 119
+        },
+        {
+          "name": "test_existing_keyword_argument_cannot_be_renamed",
+          "kind": "FunctionDef",
+          "line": 121,
+          "end_line": 125
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_eval_export.py.md"
+    },
+    {
+      "path": "tests/test_eval_resume.py",
+      "mode": "100644",
+      "bytes": 3602,
+      "sha256": "4d1dd3d2b933890886c1aa7d7af4136b98e79a8b6af6c50c368f61b297213928",
+      "encoding": "utf-8",
+      "lines": 74,
+      "symbols": [
+        {
+          "name": "ResumeEvalTests",
+          "kind": "ClassDef",
+          "line": 20,
+          "end_line": 70
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 21,
+          "end_line": 24
+        },
+        {
+          "name": "test_gtg_setup_contains_one_partial_task_and_a_newer_completed_task",
+          "kind": "FunctionDef",
+          "line": 26,
+          "end_line": 42
+        },
+        {
+          "name": "test_partial_fixture_fails_and_only_connecting_the_existing_helper_passes",
+          "kind": "FunctionDef",
+          "line": 44,
+          "end_line": 55
+        },
+        {
+          "name": "test_baseline_has_same_visible_progress_without_installing_gtg",
+          "kind": "FunctionDef",
+          "line": 57,
+          "end_line": 61
+        },
+        {
+          "name": "test_existing_module_and_script_entrypoints_remain_available",
+          "kind": "FunctionDef",
+          "line": 63,
+          "end_line": 70
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_eval_resume.py.md"
+    },
+    {
+      "path": "tests/test_evals.py",
+      "mode": "100644",
+      "bytes": 7991,
+      "sha256": "36e87fc8b481ee588a360a4b152ee893ee5173ccd05fc72d1cfddd046911c913",
+      "encoding": "utf-8",
+      "lines": 169,
+      "symbols": [
+        {
+          "name": "EvalTests",
+          "kind": "ClassDef",
+          "line": 30,
+          "end_line": 165
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 31,
+          "end_line": 34
+        },
+        {
+          "name": "test_buggy_fixture_fails_and_reference_fix_passes_without_model_claim",
+          "kind": "FunctionDef",
+          "line": 36,
+          "end_line": 43
+        },
+        {
+          "name": "test_rewriting_visible_tests_does_not_make_wrong_code_pass",
+          "kind": "FunctionDef",
+          "line": 45,
+          "end_line": 48
+        },
+        {
+          "name": "test_unrelated_user_file_changes_fail_even_with_correct_code",
+          "kind": "FunctionDef",
+          "line": 50,
+          "end_line": 57
+        },
+        {
+          "name": "test_multi_file_task_checks_error_and_input_preservation",
+          "kind": "FunctionDef",
+          "line": 59,
+          "end_line": 66
+        },
+        {
+          "name": "test_multi_file_task_does_not_pass_with_a_broken_existing_caller",
+          "kind": "FunctionDef",
+          "line": 68,
+          "end_line": 72
+        },
+        {
+          "name": "test_read_only_task_cannot_pass_without_human_review",
+          "kind": "FunctionDef",
+          "line": 74,
+          "end_line": 81
+        },
+        {
+          "name": "test_early_success_exit_is_not_a_valid_test_result",
+          "kind": "FunctionDef",
+          "line": 83,
+          "end_line": 88
+        },
+        {
+          "name": "test_boolean_cannot_replace_a_numeric_result",
+          "kind": "FunctionDef",
+          "line": 90,
+          "end_line": 97
+        },
+        {
+          "name": "test_prepared_trial_is_not_overwritten_and_modified_criteria_are_rejected",
+          "kind": "FunctionDef",
+          "line": 99,
+          "end_line": 108
+        },
+        {
+          "name": "test_gtg_preparation_is_local_and_protects_installed_harness",
+          "kind": "FunctionDef",
+          "line": 110,
+          "end_line": 118
+        },
+        {
+          "name": "test_grading_does_not_import_the_product_under_test",
+          "kind": "FunctionDef",
+          "line": 120,
+          "end_line": 136
+        },
+        {
+          "name": "test_candidate_changed_during_grading_cannot_keep_a_pass",
+          "kind": "FunctionDef",
+          "line": 138,
+          "end_line": 146
+        },
+        {
+          "name": "test_changed_prepared_prompt_is_not_the_same_trial",
+          "kind": "FunctionDef",
+          "line": 148,
+          "end_line": 152
+        },
+        {
+          "name": "test_bytecode_cache_cannot_replace_current_source",
+          "kind": "FunctionDef",
+          "line": 154,
+          "end_line": 165
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_evals.py.md"
+    },
+    {
+      "path": "tests/test_hooks.py",
+      "mode": "100644",
+      "bytes": 11636,
+      "sha256": "ab26c62e90dd994520d041a3d0776572a4d88b0bbb78d6a5d1b8f0a41f705da3",
+      "encoding": "utf-8",
+      "lines": 200,
+      "symbols": [
+        {
+          "name": "HookTests",
+          "kind": "ClassDef",
+          "line": 19,
+          "end_line": 196
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 20,
+          "end_line": 37
+        },
+        {
+          "name": "test_platforms_have_distinct_stop_contracts",
+          "kind": "FunctionDef",
+          "line": 39,
+          "end_line": 43
+        },
+        {
+          "name": "test_retry_cap_and_duplicate_event_do_not_loop_forever",
+          "kind": "FunctionDef",
+          "line": 45,
+          "end_line": 51
+        },
+        {
+          "name": "test_host_error_and_user_stop_pause_without_forcing_retry",
+          "kind": "FunctionDef",
+          "line": 53,
+          "end_line": 60
+        },
+        {
+          "name": "test_background_work_is_not_forced_to_retry",
+          "kind": "FunctionDef",
+          "line": 62,
+          "end_line": 65
+        },
+        {
+          "name": "test_live_check_does_not_consume_retry_budget",
+          "kind": "FunctionDef",
+          "line": 67,
+          "end_line": 71
+        },
+        {
+          "name": "test_verified_task_stops_and_accepts_next_task",
+          "kind": "FunctionDef",
+          "line": 73,
+          "end_line": 79
+        },
+        {
+          "name": "test_native_context_fields_are_preserved",
+          "kind": "FunctionDef",
+          "line": 81,
+          "end_line": 86
+        },
+        {
+          "name": "test_unbound_sessions_have_no_effect",
+          "kind": "FunctionDef",
+          "line": 88,
+          "end_line": 90
+        },
+        {
+          "name": "test_invalid_contracts_and_path_injection_are_rejected",
+          "kind": "FunctionDef",
+          "line": 92,
+          "end_line": 97
+        },
+        {
+          "name": "test_rebind_does_not_clear_pause_or_retry_count",
+          "kind": "FunctionDef",
+          "line": 99,
+          "end_line": 105
+        },
+        {
+          "name": "test_hook_subprocess_outputs_only_json_and_redacts_bad_payload",
+          "kind": "FunctionDef",
+          "line": 107,
+          "end_line": 114
+        },
+        {
+          "name": "test_retry_exhaustion_is_persisted_and_not_reported_as_completion",
+          "kind": "FunctionDef",
+          "line": 116,
+          "end_line": 122
+        },
+        {
+          "name": "test_gemini_retry_flag_false_cannot_create_an_endless_loop",
+          "kind": "FunctionDef",
+          "line": 124,
+          "end_line": 129
+        },
+        {
+          "name": "test_paused_context_keeps_the_session_id_needed_to_resume",
+          "kind": "FunctionDef",
+          "line": 131,
+          "end_line": 134
+        },
+        {
+          "name": "test_duplicate_last_retry_does_not_pause_the_inflight_attempt",
+          "kind": "FunctionDef",
+          "line": 136,
+          "end_line": 141
+        },
+        {
+          "name": "test_published_native_no_tool_call_reason_is_a_natural_stop",
+          "kind": "FunctionDef",
+          "line": 143,
+          "end_line": 149
+        },
+        {
+          "name": "test_stop_metadata_is_visible_without_recording_error_or_prompt_text",
+          "kind": "FunctionDef",
+          "line": 151,
+          "end_line": 158
+        },
+        {
+          "name": "test_native_reason_does_not_override_host_error_or_background_work",
+          "kind": "FunctionDef",
+          "line": 160,
+          "end_line": 169
+        },
+        {
+          "name": "test_stop_metadata_omits_freeform_reason_and_gemini_prompt",
+          "kind": "FunctionDef",
+          "line": 171,
+          "end_line": 179
+        },
+        {
+          "name": "test_older_session_schema_keeps_task_pause_and_retry_state",
+          "kind": "FunctionDef",
+          "line": 181,
+          "end_line": 196
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_hooks.py.md"
+    },
+    {
+      "path": "tests/test_inspection.py",
+      "mode": "100644",
+      "bytes": 7715,
+      "sha256": "bb659339d2674ee607b9d0d713baecc1cad46a7b74f61f0d0db50b3cb45ab736",
+      "encoding": "utf-8",
+      "lines": 158,
+      "symbols": [
+        {
+          "name": "InspectionTests",
+          "kind": "ClassDef",
+          "line": 19,
+          "end_line": 154
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 20,
+          "end_line": 23
+        },
+        {
+          "name": "inspect",
+          "kind": "FunctionDef",
+          "line": 25,
+          "end_line": 29
+        },
+        {
+          "name": "test_small_files_are_batched_without_creating_state",
+          "kind": "FunctionDef",
+          "line": 31,
+          "end_line": 41
+        },
+        {
+          "name": "test_partial_read_is_labelled_and_can_resume",
+          "kind": "FunctionDef",
+          "line": 43,
+          "end_line": 56
+        },
+        {
+          "name": "test_range_reports_only_requested_lines",
+          "kind": "FunctionDef",
+          "line": 58,
+          "end_line": 66
+        },
+        {
+          "name": "test_later_files_are_reported_when_budget_is_used_up",
+          "kind": "FunctionDef",
+          "line": 68,
+          "end_line": 74
+        },
+        {
+          "name": "test_long_line_and_non_text_are_not_silently_cut",
+          "kind": "FunctionDef",
+          "line": 76,
+          "end_line": 82
+        },
+        {
+          "name": "test_sensitive_ancestors_symlinks_and_special_files_are_not_read",
+          "kind": "FunctionDef",
+          "line": 84,
+          "end_line": 96
+        },
+        {
+          "name": "test_absolute_paths_are_scoped_and_empty_files_are_complete",
+          "kind": "FunctionDef",
+          "line": 98,
+          "end_line": 104
+        },
+        {
+          "name": "test_atomic_replacement_during_read_is_reported_without_old_content",
+          "kind": "FunctionDef",
+          "line": 106,
+          "end_line": 119
+        },
+        {
+          "name": "test_parent_directory_replacement_is_not_followed",
+          "kind": "FunctionDef",
+          "line": 121,
+          "end_line": 133
+        },
+        {
+          "name": "test_unicode_line_is_never_returned_as_a_broken_prefix",
+          "kind": "FunctionDef",
+          "line": 135,
+          "end_line": 139
+        },
+        {
+          "name": "test_scan_budget_is_not_reported_as_a_complete_range",
+          "kind": "FunctionDef",
+          "line": 141,
+          "end_line": 147
+        },
+        {
+          "name": "test_unsupported_platform_is_identified",
+          "kind": "FunctionDef",
+          "line": 149,
+          "end_line": 154
+        },
+        {
+          "name": "replace_after_read",
+          "kind": "FunctionDef",
+          "line": 109,
+          "end_line": 114
+        },
+        {
+          "name": "replace_parent",
+          "kind": "FunctionDef",
+          "line": 125,
+          "end_line": 129
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_inspection.py.md"
+    },
+    {
+      "path": "tests/test_install.py",
+      "mode": "100644",
+      "bytes": 7687,
+      "sha256": "934abb08137bc425c8f293df8b61676812009d76d48858b1714176d619bcc013",
+      "encoding": "utf-8",
+      "lines": 158,
+      "symbols": [
+        {
+          "name": "InstallTests",
+          "kind": "ClassDef",
+          "line": 19,
+          "end_line": 154
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 20,
+          "end_line": 24
+        },
+        {
+          "name": "test_antigravity_install_executes_both_hooks_and_preserves_other_files",
+          "kind": "FunctionDef",
+          "line": 26,
+          "end_line": 33
+        },
+        {
+          "name": "test_gemini_extension_has_its_own_manifest_and_timeout_units",
+          "kind": "FunctionDef",
+          "line": 35,
+          "end_line": 41
+        },
+        {
+          "name": "test_reinstall_backs_up_previous_package_and_uninstall_preserves_it",
+          "kind": "FunctionDef",
+          "line": 43,
+          "end_line": 54
+        },
+        {
+          "name": "test_preflight_failure_does_not_modify_existing_install",
+          "kind": "FunctionDef",
+          "line": 56,
+          "end_line": 63
+        },
+        {
+          "name": "test_post_activation_failure_restores_previous_bytes",
+          "kind": "FunctionDef",
+          "line": 65,
+          "end_line": 82
+        },
+        {
+          "name": "test_tampered_or_missing_source_is_detected",
+          "kind": "FunctionDef",
+          "line": 84,
+          "end_line": 92
+        },
+        {
+          "name": "test_unknown_existing_folder_and_symlink_are_preserved",
+          "kind": "FunctionDef",
+          "line": 94,
+          "end_line": 106
+        },
+        {
+          "name": "test_concurrent_install_lock_is_not_ignored",
+          "kind": "FunctionDef",
+          "line": 108,
+          "end_line": 111
+        },
+        {
+          "name": "test_legacy_migration_only_moves_owned_links_and_can_restore",
+          "kind": "FunctionDef",
+          "line": 113,
+          "end_line": 126
+        },
+        {
+          "name": "test_regular_user_global_rules_are_not_migrated",
+          "kind": "FunctionDef",
+          "line": 128,
+          "end_line": 134
+        },
+        {
+          "name": "test_shell_entrypoint_preserves_callers_workspace",
+          "kind": "FunctionDef",
+          "line": 136,
+          "end_line": 142
+        },
+        {
+          "name": "test_doctor_rejects_a_moved_install_and_reinstall_repairs_it",
+          "kind": "FunctionDef",
+          "line": 144,
+          "end_line": 154
+        },
+        {
+          "name": "fail_second",
+          "kind": "FunctionDef",
+          "line": 71,
+          "end_line": 76
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_install.py.md"
+    },
+    {
+      "path": "tests/test_install_crash.py",
+      "mode": "100644",
+      "bytes": 7343,
+      "sha256": "f5a9098a6357f52f344333b758c4cc01ce665d33a77460bf32621593f6a8aa14",
+      "encoding": "utf-8",
+      "lines": 157,
+      "symbols": [
+        {
+          "name": "InstallCrashTests",
+          "kind": "ClassDef",
+          "line": 33,
+          "end_line": 153
+        },
+        {
+          "name": "test_doctor_recovers_a_process_killed_during_replacement",
+          "kind": "FunctionDef",
+          "line": 34,
+          "end_line": 48
+        },
+        {
+          "name": "test_committed_replacement_is_preserved_after_crash_before_journal_cleanup",
+          "kind": "FunctionDef",
+          "line": 50,
+          "end_line": 72
+        },
+        {
+          "name": "test_partial_legacy_link_migration_is_rolled_back",
+          "kind": "FunctionDef",
+          "line": 74,
+          "end_line": 98
+        },
+        {
+          "name": "test_interrupted_recovery_can_be_retried",
+          "kind": "FunctionDef",
+          "line": 100,
+          "end_line": 124
+        },
+        {
+          "name": "test_user_file_created_after_crash_is_not_overwritten",
+          "kind": "FunctionDef",
+          "line": 126,
+          "end_line": 139
+        },
+        {
+          "name": "test_corrupt_or_out_of_scope_journal_cannot_move_files",
+          "kind": "FunctionDef",
+          "line": 141,
+          "end_line": 153
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_install_crash.py.md"
+    },
+    {
+      "path": "tests/test_long_scenario.py",
+      "mode": "100644",
+      "bytes": 3577,
+      "sha256": "ad35a2d381b5749d19e6e40c640f7237cbaf0b1b86d35d64676ac0f2428900fc",
+      "encoding": "utf-8",
+      "lines": 66,
+      "symbols": [
+        {
+          "name": "LongScenarioTests",
+          "kind": "ClassDef",
+          "line": 16,
+          "end_line": 62
+        },
+        {
+          "name": "test_installed_gemini_extension_resumes_without_losing_goal_or_evidence",
+          "kind": "FunctionDef",
+          "line": 17,
+          "end_line": 62
+        },
+        {
+          "name": "call",
+          "kind": "FunctionDef",
+          "line": 32,
+          "end_line": 35
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_long_scenario.py.md"
+    },
+    {
+      "path": "tests/test_multi_workspace.py",
+      "mode": "100644",
+      "bytes": 4050,
+      "sha256": "01c24919407e6073b80061da4f575e11508e023ecfcceb0c2514e2373251ffde",
+      "encoding": "utf-8",
+      "lines": 78,
+      "symbols": [
+        {
+          "name": "MultiWorkspaceTests",
+          "kind": "ClassDef",
+          "line": 14,
+          "end_line": 74
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 15,
+          "end_line": 35
+        },
+        {
+          "name": "test_all_mounted_tasks_must_pass_before_stopping",
+          "kind": "FunctionDef",
+          "line": 37,
+          "end_line": 44
+        },
+        {
+          "name": "test_order_changes_and_duplicates_do_not_reset_retry_budget",
+          "kind": "FunctionDef",
+          "line": 46,
+          "end_line": 53
+        },
+        {
+          "name": "test_a_pause_in_either_folder_prevents_automatic_retry",
+          "kind": "FunctionDef",
+          "line": 55,
+          "end_line": 58
+        },
+        {
+          "name": "test_host_cancel_pauses_every_bound_task",
+          "kind": "FunctionDef",
+          "line": 60,
+          "end_line": 63
+        },
+        {
+          "name": "test_projectless_turn_does_not_need_a_workspace",
+          "kind": "FunctionDef",
+          "line": 65,
+          "end_line": 66
+        },
+        {
+          "name": "test_unregistered_folder_does_not_create_a_database",
+          "kind": "FunctionDef",
+          "line": 68,
+          "end_line": 74
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_multi_workspace.py.md"
+    },
+    {
+      "path": "tests/test_package_hooks.py",
+      "mode": "100644",
+      "bytes": 4089,
+      "sha256": "2de19bd5bcd8a4bae8ecd0744af54010bf2a29ffa0a0a62d2374eaf08166614c",
+      "encoding": "utf-8",
+      "lines": 94,
+      "symbols": [
+        {
+          "name": "PackageHookTests",
+          "kind": "ClassDef",
+          "line": 15,
+          "end_line": 90
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 16,
+          "end_line": 19
+        },
+        {
+          "name": "rewrite",
+          "kind": "FunctionDef",
+          "line": 21,
+          "end_line": 24
+        },
+        {
+          "name": "refresh_hash",
+          "kind": "FunctionDef",
+          "line": 26,
+          "end_line": 30
+        },
+        {
+          "name": "test_duplicate_context_hook_cannot_replace_completion",
+          "kind": "FunctionDef",
+          "line": 32,
+          "end_line": 39
+        },
+        {
+          "name": "test_declared_millisecond_timeout_is_enforced",
+          "kind": "FunctionDef",
+          "line": 41,
+          "end_line": 50
+        },
+        {
+          "name": "test_disabled_or_malformed_required_hook_is_a_validation_error",
+          "kind": "FunctionDef",
+          "line": 52,
+          "end_line": 58
+        },
+        {
+          "name": "test_command_cannot_dispatch_a_different_event",
+          "kind": "FunctionDef",
+          "line": 60,
+          "end_line": 67
+        },
+        {
+          "name": "test_malformed_and_filtered_cli_hooks_are_rejected_before_execution",
+          "kind": "FunctionDef",
+          "line": 69,
+          "end_line": 79
+        },
+        {
+          "name": "test_invalid_timeout_values_are_rejected",
+          "kind": "FunctionDef",
+          "line": 81,
+          "end_line": 90
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_package_hooks.py.md"
+    },
+    {
+      "path": "tests/test_package_sources.py",
+      "mode": "100644",
+      "bytes": 2736,
+      "sha256": "bedde0a8aee65b80547a12deeb8baac79193f87496e955a5ecbd55fc15b20cd1",
+      "encoding": "utf-8",
+      "lines": 69,
+      "symbols": [
+        {
+          "name": "PackageSourceTests",
+          "kind": "ClassDef",
+          "line": 14,
+          "end_line": 65
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 15,
+          "end_line": 25
+        },
+        {
+          "name": "package",
+          "kind": "FunctionDef",
+          "line": 27,
+          "end_line": 29
+        },
+        {
+          "name": "test_markdown_separator_does_not_remove_rule_content",
+          "kind": "FunctionDef",
+          "line": 31,
+          "end_line": 35
+        },
+        {
+          "name": "test_required_source_file_links_are_rejected",
+          "kind": "FunctionDef",
+          "line": 37,
+          "end_line": 53
+        },
+        {
+          "name": "test_source_directory_link_is_rejected",
+          "kind": "FunctionDef",
+          "line": 55,
+          "end_line": 60
+        },
+        {
+          "name": "test_sensitive_file_cannot_enter_the_package",
+          "kind": "FunctionDef",
+          "line": 62,
+          "end_line": 65
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_package_sources.py.md"
+    },
+    {
+      "path": "tests/test_process_lifecycle.py",
+      "mode": "100644",
+      "bytes": 4346,
+      "sha256": "ab7bbf23c25c50dea889f833245058ab188caaf098052d7989de96c5857e903d",
+      "encoding": "utf-8",
+      "lines": 103,
+      "symbols": [
+        {
+          "name": "ProcessLifecycleTests",
+          "kind": "ClassDef",
+          "line": 22,
+          "end_line": 99
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 23,
+          "end_line": 30
+        },
+        {
+          "name": "task",
+          "kind": "FunctionDef",
+          "line": 32,
+          "end_line": 35
+        },
+        {
+          "name": "cleanup_group",
+          "kind": "FunctionDef",
+          "line": 37,
+          "end_line": 42
+        },
+        {
+          "name": "assert_interruption",
+          "kind": "FunctionDef",
+          "line": 44,
+          "end_line": 66
+        },
+        {
+          "name": "test_sigterm_cancels_child_and_records_interruption",
+          "kind": "FunctionDef",
+          "line": 68,
+          "end_line": 69
+        },
+        {
+          "name": "test_sigint_cancels_child_and_records_interruption",
+          "kind": "FunctionDef",
+          "line": 71,
+          "end_line": 72
+        },
+        {
+          "name": "test_successful_parent_with_background_child_is_not_verified",
+          "kind": "FunctionDef",
+          "line": 74,
+          "end_line": 82
+        },
+        {
+          "name": "test_failure_to_record_process_does_not_leave_it_running",
+          "kind": "FunctionDef",
+          "line": 84,
+          "end_line": 99
+        },
+        {
+          "name": "fail",
+          "kind": "FunctionDef",
+          "line": 87,
+          "end_line": 89
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_process_lifecycle.py.md"
+    },
+    {
+      "path": "tests/test_runtime.py",
+      "mode": "100644",
+      "bytes": 11787,
+      "sha256": "a3117658eb56419bcd2a546199ccb7c7f461ebce5dfdb8503f4d1de062e86a3a",
+      "encoding": "utf-8",
+      "lines": 229,
+      "symbols": [
+        {
+          "name": "RuntimeTests",
+          "kind": "ClassDef",
+          "line": 21,
+          "end_line": 225
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 22,
+          "end_line": 35
+        },
+        {
+          "name": "start",
+          "kind": "FunctionDef",
+          "line": 37,
+          "end_line": 38
+        },
+        {
+          "name": "test_pass_and_changed_code_invalidates_prior_evidence",
+          "kind": "FunctionDef",
+          "line": 40,
+          "end_line": 48
+        },
+        {
+          "name": "test_subsequent_failed_check_overrides_success",
+          "kind": "FunctionDef",
+          "line": 50,
+          "end_line": 55
+        },
+        {
+          "name": "test_command_cannot_change_watched_code_and_claim_pass",
+          "kind": "FunctionDef",
+          "line": 57,
+          "end_line": 61
+        },
+        {
+          "name": "test_timeout_and_missing_executable_are_not_success",
+          "kind": "FunctionDef",
+          "line": 63,
+          "end_line": 69
+        },
+        {
+          "name": "test_restart_and_task_isolation",
+          "kind": "FunctionDef",
+          "line": 71,
+          "end_line": 77
+        },
+        {
+          "name": "test_parallel_execution_is_rejected_and_running_is_not_complete",
+          "kind": "FunctionDef",
+          "line": 79,
+          "end_line": 89
+        },
+        {
+          "name": "test_dead_owner_recovery_keeps_task_unverified",
+          "kind": "FunctionDef",
+          "line": 91,
+          "end_line": 97
+        },
+        {
+          "name": "test_recovery_rejects_a_still_running_child",
+          "kind": "FunctionDef",
+          "line": 99,
+          "end_line": 111
+        },
+        {
+          "name": "test_fixed_check_spec_cannot_be_replaced_by_caller",
+          "kind": "FunctionDef",
+          "line": 113,
+          "end_line": 118
+        },
+        {
+          "name": "test_multiple_criteria_all_need_evidence",
+          "kind": "FunctionDef",
+          "line": 120,
+          "end_line": 128
+        },
+        {
+          "name": "test_directory_add_delete_mode_and_missing_file_change_fingerprint",
+          "kind": "FunctionDef",
+          "line": 130,
+          "end_line": 142
+        },
+        {
+          "name": "test_private_contents_not_read_and_symlinks_rejected",
+          "kind": "FunctionDef",
+          "line": 144,
+          "end_line": 153
+        },
+        {
+          "name": "test_invalid_spec_inputs_are_rejected",
+          "kind": "FunctionDef",
+          "line": 155,
+          "end_line": 163
+        },
+        {
+          "name": "test_raw_output_is_not_persisted",
+          "kind": "FunctionDef",
+          "line": 165,
+          "end_line": 170
+        },
+        {
+          "name": "test_cli_runs_without_provider_and_returns_failure",
+          "kind": "FunctionDef",
+          "line": 172,
+          "end_line": 185
+        },
+        {
+          "name": "test_start_from_another_directory_uses_the_explicit_workspace",
+          "kind": "FunctionDef",
+          "line": 187,
+          "end_line": 200
+        },
+        {
+          "name": "test_shared_watch_is_read_once_per_status_but_never_cached_across_queries",
+          "kind": "FunctionDef",
+          "line": 202,
+          "end_line": 213
+        },
+        {
+          "name": "test_targeted_success_is_distinct_from_whole_task_completion",
+          "kind": "FunctionDef",
+          "line": 215,
+          "end_line": 225
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_runtime.py.md"
+    },
+    {
+      "path": "tests/test_scenario.py",
+      "mode": "100644",
+      "bytes": 3646,
+      "sha256": "a7ebbc4cd9657114235d9e8d06db0232a4800f19cc46822327f747e08006c70d",
+      "encoding": "utf-8",
+      "lines": 65,
+      "symbols": [
+        {
+          "name": "ScenarioTests",
+          "kind": "ClassDef",
+          "line": 16,
+          "end_line": 61
+        },
+        {
+          "name": "test_installed_harness_tracks_real_failure_fix_and_stale_evidence",
+          "kind": "FunctionDef",
+          "line": 17,
+          "end_line": 61
+        },
+        {
+          "name": "command",
+          "kind": "FunctionDef",
+          "line": 31,
+          "end_line": 34
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_scenario.py.md"
+    },
+    {
+      "path": "tests/test_session_start.py",
+      "mode": "100644",
+      "bytes": 4328,
+      "sha256": "c069bd350e175bc396442eebe6810275ec36c60fb97c0669933fae779f4fbba2",
+      "encoding": "utf-8",
+      "lines": 96,
+      "symbols": [
+        {
+          "name": "SessionStartTests",
+          "kind": "ClassDef",
+          "line": 17,
+          "end_line": 92
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 18,
+          "end_line": 30
+        },
+        {
+          "name": "run_start",
+          "kind": "FunctionDef",
+          "line": 32,
+          "end_line": 33
+        },
+        {
+          "name": "test_identical_start_is_idempotent",
+          "kind": "FunctionDef",
+          "line": 35,
+          "end_line": 42
+        },
+        {
+          "name": "test_conflicting_start_does_not_leave_an_orphan",
+          "kind": "FunctionDef",
+          "line": 44,
+          "end_line": 51
+        },
+        {
+          "name": "test_retry_does_not_unpause_or_reset_budget",
+          "kind": "FunctionDef",
+          "line": 53,
+          "end_line": 65
+        },
+        {
+          "name": "test_simultaneous_identical_starts_share_one_task",
+          "kind": "FunctionDef",
+          "line": 67,
+          "end_line": 82
+        },
+        {
+          "name": "test_resume_of_active_task_does_not_refill_retry_budget",
+          "kind": "FunctionDef",
+          "line": 84,
+          "end_line": 92
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_session_start.py.md"
+    },
+    {
+      "path": "tests/test_task_handoff.py",
+      "mode": "100644",
+      "bytes": 12227,
+      "sha256": "c02bc092e9be30433aba54d06a413be6a7215a20e3b86b55a2838cf7f3deaa19",
+      "encoding": "utf-8",
+      "lines": 224,
+      "symbols": [
+        {
+          "name": "TaskHandoffTests",
+          "kind": "ClassDef",
+          "line": 23,
+          "end_line": 220
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 24,
+          "end_line": 42
+        },
+        {
+          "name": "call",
+          "kind": "FunctionDef",
+          "line": 44,
+          "end_line": 45
+        },
+        {
+          "name": "attach",
+          "kind": "FunctionDef",
+          "line": 47,
+          "end_line": 49
+        },
+        {
+          "name": "test_tasks_reads_saved_progress_without_creating_or_changing_state",
+          "kind": "FunctionDef",
+          "line": 51,
+          "end_line": 65
+        },
+        {
+          "name": "test_attach_preserves_task_evidence_checkpoint_and_retries_on_repeat",
+          "kind": "FunctionDef",
+          "line": 67,
+          "end_line": 83
+        },
+        {
+          "name": "test_active_or_unknown_host_needs_explicit_stopped_confirmation",
+          "kind": "FunctionDef",
+          "line": 85,
+          "end_line": 92
+        },
+        {
+          "name": "test_running_check_cannot_be_overridden",
+          "kind": "FunctionDef",
+          "line": 94,
+          "end_line": 101
+        },
+        {
+          "name": "test_completed_host_can_transfer_but_new_invocation_invalidates_idle_state",
+          "kind": "FunctionDef",
+          "line": 103,
+          "end_line": 116
+        },
+        {
+          "name": "test_first_context_shows_candidates_without_attaching_them",
+          "kind": "FunctionDef",
+          "line": 118,
+          "end_line": 122
+        },
+        {
+          "name": "test_listing_is_workspace_scoped_paginated_and_not_a_fresh_pass",
+          "kind": "FunctionDef",
+          "line": 124,
+          "end_line": 140
+        },
+        {
+          "name": "test_private_or_linked_state_is_rejected_before_database_access",
+          "kind": "FunctionDef",
+          "line": 142,
+          "end_line": 150
+        },
+        {
+          "name": "test_concurrent_attach_does_not_create_two_active_owners",
+          "kind": "FunctionDef",
+          "line": 152,
+          "end_line": 167
+        },
+        {
+          "name": "test_conflicting_current_goal_rolls_back_attachment",
+          "kind": "FunctionDef",
+          "line": 169,
+          "end_line": 177
+        },
+        {
+          "name": "test_wrong_workspace_or_non_native_state_path_does_not_attach",
+          "kind": "FunctionDef",
+          "line": 179,
+          "end_line": 186
+        },
+        {
+          "name": "test_corrupt_saved_contract_cannot_be_attached_or_reported_passed",
+          "kind": "FunctionDef",
+          "line": 188,
+          "end_line": 194
+        },
+        {
+          "name": "test_long_saved_goal_is_partial_in_the_list_and_complete_in_status",
+          "kind": "FunctionDef",
+          "line": 196,
+          "end_line": 205
+        },
+        {
+          "name": "test_new_session_finishes_remaining_check_with_the_original_contract",
+          "kind": "FunctionDef",
+          "line": 207,
+          "end_line": 220
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_task_handoff.py.md"
+    }
+  ],
+  "excluded_roots": {
+    ".git/": "Git 내부 데이터베이스",
+    "docs/rebuild/inventory/baseline/": "기준 원본 생성 산출물",
+    "docs/rebuild/inventory/current/": "현재 원본 생성 산출물"
+  },
+  "ignored_paths": "Git ignore 대상은 코드 목록에서 제외합니다. 로컬 관찰 목록은 별도 기록합니다."
+}

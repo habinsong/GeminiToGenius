@@ -1,0 +1,9 @@
+{
+  "actual_model_called": false,
+  "copied_state_only": true,
+  "original_state_unchanged": true,
+  "legacy_turn_open": null,
+  "old_stop_not_assumed_currently_idle": true,
+  "default_attach_rejected": true,
+  "explicit_stopped_confirmation_attached_same_task": true
+}

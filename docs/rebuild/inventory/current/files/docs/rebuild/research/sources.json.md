@@ -1,0 +1,604 @@
+# `docs/rebuild/research/sources.json`
+
+- 형식: `100644`
+- 바이트: 28582
+- SHA-256: `fef3e2c830879ffaaf0129a3aba1b73888f0dc00d944e7af7bba799cbef364ee`
+- 인코딩: `utf-8`
+
+```
+{
+  "as_of": "2026-09-08",
+  "evidence_boundary": "공식 문서·원문·초록 확인입니다. 실모델 품질과 논문 실험을 재현한 결과가 아닙니다.",
+  "sources": [
+    {
+      "id": "AGY-HOOKS",
+      "url": "https://antigravity.google/docs/hooks",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "이벤트별 camelCase 입력과 JSON 출력 계약, 초 단위 timeout을 확인했습니다.",
+      "application": "전용 어댑터와 이벤트 재생 테스트"
+    },
+    {
+      "id": "AGY-IDE-HOOKS",
+      "url": "https://antigravity.google/docs/ide/hooks",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "IDE 문서의 PostInvocation 설명은 공통 문서와 다릅니다.",
+      "application": "해당 이벤트를 종료 판정 근거로 가정하지 않기"
+    },
+    {
+      "id": "AGY-PLUGINS",
+      "url": "https://antigravity.google/docs/plugins",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "plugin.json과 작업공간·전역 플러그인 탐색 경로를 확인했습니다.",
+      "application": "독립 패키지 설치 및 복구 테스트"
+    },
+    {
+      "id": "AGY-SKILLS",
+      "url": "https://antigravity.google/docs/skills",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "스킬의 설명·본문·참고 자료를 단계적으로 로딩합니다.",
+      "application": "작은 자동 선택 스킬"
+    },
+    {
+      "id": "AGY-RULES",
+      "url": "https://antigravity.google/docs/ide/rules",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "규칙은 지속적인 행동 제약을 제공하는 Markdown 문서입니다.",
+      "application": "작은 기본 계약"
+    },
+    {
+      "id": "AGY-MIGRATION",
+      "url": "https://antigravity.google/docs/migration/workflows-to-skills/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "워크플로는 2026-11-01 폐기 예정으로 안내됩니다.",
+      "application": "새 진입점은 스킬로 구현"
+    },
+    {
+      "id": "GEMINI-38",
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "gemini-3.8-flash와 low/medium/high 지원, minimal 미지원을 확인했습니다.",
+      "application": "모델 설정 계약 검증; 실제 선택은 호스트 확인"
+    },
+    {
+      "id": "GEMINI-PROMPT",
+      "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "명확한 지시와 예시, 반복 검증을 통한 프롬프트 개선을 설명합니다.",
+      "application": "모호한 요청 평가와 조건부 지침"
+    },
+    {
+      "id": "GEMINI-THINKING",
+      "url": "https://ai.google.dev/gemini-api/docs/thinking",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "API별 사고 표현과 설정이 구분됩니다.",
+      "application": "호스트의 사고·서명 처리를 덮어쓰지 않기"
+    },
+    {
+      "id": "GEMINI-INTERACTIONS",
+      "url": "https://ai.google.dev/gemini-api/docs/interactions-overview",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "Interactions API의 별도 문서와 상태 관리 표면을 확인했습니다.",
+      "application": "직접 API 경로가 필요할 때만 별도 설계"
+    },
+    {
+      "id": "CLI-HOOKS",
+      "url": "https://geminicli.com/docs/hooks/reference/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "BeforeTool·AfterAgent와 snake_case 입력, 밀리초 timeout을 확인했습니다.",
+      "application": "Antigravity와 분리한 어댑터"
+    },
+    {
+      "id": "CLI-EXTENSIONS",
+      "url": "https://geminicli.com/docs/extensions/reference/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "확장 manifest·hooks/hooks.json·skills와 ${extensionPath}·${workspacePath} 변수 치환을 확인했습니다.",
+      "application": "설치 위치별 생성 패키지 검사; 임의 폴더 이동 후 훅 실행은 별도 검증 전까지 지원 주장하지 않기"
+    },
+    {
+      "id": "SKILLS-SPEC",
+      "url": "https://agentskills.io/specification",
+      "kind": "specification",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "SKILL.md의 메타데이터와 점진적 로딩 규격입니다.",
+      "application": "스킬 구조 검증"
+    },
+    {
+      "id": "ANTHROPIC-LONG",
+      "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+      "kind": "engineering",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "긴 작업에서 진행 상태와 실행 가능한 완료 검증을 분리합니다.",
+      "application": "영속 목표·검증 증거"
+    },
+    {
+      "id": "ANTHROPIC-EVALS",
+      "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+      "kind": "engineering",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "에이전트의 설명과 최종 환경 결과를 구분하고 회귀·능력 평가를 나눕니다.",
+      "application": "실제 명령·산출물 검사; L0~L4 구분"
+    },
+    {
+      "id": "ANTHROPIC-CONTEXT",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "kind": "engineering",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "필요한 컨텍스트를 적시에 가져오고 장기 상태를 외부화합니다.",
+      "application": "전 파일 강제 로딩 폐기"
+    },
+    {
+      "id": "ANTHROPIC-HARNESS",
+      "url": "https://www.anthropic.com/engineering/harness-design-long-running-apps",
+      "kind": "engineering",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "장시간 애플리케이션 작업에서 생성과 평가 역할을 분리하는 설계입니다.",
+      "application": "명령 증거와 제품 품질 평가 분리"
+    },
+    {
+      "id": "CLAUDE-HOOKS",
+      "url": "https://code.claude.com/docs/en/hooks",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "Stop 재개 반복 여부와 오류·취소의 차이를 설명합니다.",
+      "application": "재시도 상한·사용자 취소 존중"
+    },
+    {
+      "id": "CODEX-SKILLS",
+      "url": "https://learn.chatgpt.com/docs/build-skills",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "Codex skills 공식 경로가 해당 페이지로 이동합니다.",
+      "application": "스킬 발견과 실행 범위 비교"
+    },
+    {
+      "id": "CODEX-SECURITY",
+      "url": "https://learn.chatgpt.com/docs/security",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "Codex 보안 공식 경로가 해당 페이지로 이동합니다.",
+      "application": "호스트 권한 경계와 자체 검증의 역할 분리"
+    },
+    {
+      "id": "HARNESS-BENCH",
+      "url": "https://arxiv.org/abs/2605.27922",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "공유 작업 환경·예산·프로토콜에서 하네스 효과를 비교하는 연구입니다.",
+      "application": "통제된 비교 평가; 초록 확인이며 실험 재현 아님"
+    },
+    {
+      "id": "SWE-SKILLS-BENCH",
+      "url": "https://arxiv.org/abs/2603.15401",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "작업별 스킬의 추가 효과와 버전 불일치에 따른 성능 하락을 평가합니다.",
+      "application": "스킬 유무 대조·보류 과제; 초록 확인"
+    },
+    {
+      "id": "TERMINAL-BENCH",
+      "url": "https://arxiv.org/abs/2601.11868",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "실제 터미널 작업과 독립 실행 검증으로 에이전트를 평가합니다.",
+      "application": "완료 결과 중심 로컬 사례; 초록 확인"
+    },
+    {
+      "id": "LOOP-SPEC",
+      "url": "https://arxiv.org/abs/2607.00038",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "목표·검증·정지 조건·메모리를 갖춘 반복 작업 명세를 다룹니다.",
+      "application": "상한 있는 반복과 재개; 초록 확인"
+    },
+    {
+      "id": "MCP-SECURITY",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/security-considerations",
+      "kind": "specification",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "토큰 대상 검증과 토큰 중계 금지를 명시합니다.",
+      "application": "불필요한 자체 인증·중계 경로를 만들지 않기"
+    },
+    {
+      "id": "OMO-ORCHESTRATION",
+      "url": "https://github.com/code-yeongyu/oh-my-openagent/blob/dev/docs/guide/orchestration.md",
+      "kind": "source-doc",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "계획·실행 역할 분리와 컨텍스트·검증 경계를 설명합니다.",
+      "application": "목표 지속의 목적 참고; 전체 구조 복제하지 않기"
+    },
+    {
+      "id": "OMO-SOURCE-1",
+      "url": "https://github.com/code-yeongyu/oh-my-openagent/blob/a470d3d9ddd0893e1c2b56ff098ba8061358c924/packages/omo-opencode/src/hooks/stop-continuation-guard/hook.ts",
+      "kind": "source-code",
+      "checked_on": "2026-09-08",
+      "access": "고정 커밋 원문 전체 열람",
+      "sha256": "044463c608f493d8538569d86d7e17a4bd21f07bfb25b9dadfa38ddf5b33e84b",
+      "finding": "중단 상태를 일반 사용자 메시지로 해제하지 않고 하위 실행을 취소합니다.",
+      "application": "중단·정체·압축 회귀 사례에 반영"
+    },
+    {
+      "id": "OMO-SOURCE-2",
+      "url": "https://github.com/code-yeongyu/oh-my-openagent/blob/a470d3d9ddd0893e1c2b56ff098ba8061358c924/packages/omo-opencode/src/hooks/todo-continuation-enforcer/stagnation-detection.ts",
+      "kind": "source-code",
+      "checked_on": "2026-09-08",
+      "access": "고정 커밋 원문 전체 열람",
+      "sha256": "4addf29cc6e02073c00bc4e538a0a12248a64f5d98ca0da9b50a0d482fee933f",
+      "finding": "진행 변화와 정체 횟수에 따라 자동 지속을 중단합니다.",
+      "application": "중단·정체·압축 회귀 사례에 반영"
+    },
+    {
+      "id": "OMO-SOURCE-3",
+      "url": "https://github.com/code-yeongyu/oh-my-openagent/blob/a470d3d9ddd0893e1c2b56ff098ba8061358c924/packages/omo-opencode/src/hooks/todo-continuation-enforcer/token-limit-detection.ts",
+      "kind": "source-code",
+      "checked_on": "2026-09-08",
+      "access": "고정 커밋 원문 전체 열람",
+      "sha256": "ec0db9fa7090f687a8a972bcc7d5255096ca913bf9156534d04f8093c1a87110",
+      "finding": "컨텍스트 한도 오류를 다른 재시도 가능 오류와 구별합니다.",
+      "application": "중단·정체·압축 회귀 사례에 반영"
+    },
+    {
+      "id": "OMO-SOURCE-4",
+      "url": "https://github.com/code-yeongyu/oh-my-openagent/blob/a470d3d9ddd0893e1c2b56ff098ba8061358c924/packages/omo-opencode/src/hooks/compaction-todo-preserver/hook.ts",
+      "kind": "source-code",
+      "checked_on": "2026-09-08",
+      "access": "고정 커밋 원문 전체 열람",
+      "sha256": "123e618b26f4767ab26f01e236df8c9822f4f5abb1520195c70e70e0823491e2",
+      "finding": "압축 전후 할 일 상태를 비교해 더 구체적인 진행 상태를 보존합니다.",
+      "application": "중단·정체·압축 회귀 사례에 반영"
+    },
+    {
+      "id": "GEMINI-MODEL-METADATA",
+      "url": "https://ai.google.dev/api/models",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "모델 메타데이터 조회 표면입니다. 검증되지 않은 모델을 하드코딩하지 않습니다.",
+      "application": "모델 독립 코어와 호스트 설정 유지"
+    },
+    {
+      "id": "GEMINI-MODEL-CATALOG",
+      "url": "https://ai.google.dev/gemini-api/docs/models",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "현재 모델 목록에서 Gemini 4 Pro의 공식 항목을 확인하지 못했습니다.",
+      "application": "모델 독립 코어와 호스트 설정 유지"
+    },
+    {
+      "id": "AGY-MODELS",
+      "url": "https://antigravity.google/docs/models/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "호스트의 모델 선택 표면을 확인했습니다. 실제 사용자 계정 가용성은 별도입니다.",
+      "application": "모델 독립 코어와 호스트 설정 유지"
+    },
+    {
+      "id": "PYTHON-FILESYSTEM",
+      "url": "https://docs.python.org/3/library/os.html",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "os.replace의 원자적 이름 교체와 fsync 계약을 확인했습니다.",
+      "application": "이동 전 기록과 디렉터리 동기화"
+    },
+    {
+      "id": "SQLITE-ATOMIC-COMMIT",
+      "url": "https://www.sqlite.org/atomiccommit.html",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "복구 기록과 파일시스템 동기화의 순서 및 실제 장애 시험을 설명합니다.",
+      "application": "SIGKILL과 복구 중 재종료 시험; 전원 차단과 구분"
+    },
+    {
+      "id": "AGY-PROJECTS",
+      "url": "https://antigravity.google/docs/projects",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "하나의 프로젝트가 여러 폴더를 포함할 수 있습니다.",
+      "application": "workspacePaths 전체 집계"
+    },
+    {
+      "id": "AGY-RULE-ACTIVATION",
+      "url": "https://antigravity.google/docs/rules-workflows",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "규칙 활성화 방식과 디렉터리 범위가 설명되어 있습니다.",
+      "application": "내장 문서 및 실제 로딩과 교차 확인"
+    },
+    {
+      "id": "SWE-RPG",
+      "url": "https://arxiv.org/abs/2608.09072",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "초록 열람",
+      "finding": "요구 복원·계획·코드 결과를 나눠 평가하는 연구의 초록을 확인했습니다.",
+      "application": "기존 호출자·암묵적 계약을 결과 검사에 포함"
+    },
+    {
+      "id": "UNDERSPEC-BENCH",
+      "url": "https://arxiv.org/abs/2607.02294",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "초록 열람",
+      "finding": "목표·대상·영향 범위가 불명확한 요청의 행동 경계를 평가합니다.",
+      "application": "수정 금지 및 보호 파일 검사를 기능 통과와 분리"
+    },
+    {
+      "id": "REWARD-HACKING-BENCH",
+      "url": "https://arxiv.org/abs/2605.02964",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "초록 열람",
+      "finding": "검증 생략·평가 함수 조작 등 도구 사용 중 우회 행동을 평가합니다.",
+      "application": "보이는 테스트 무력화·조기 정상 종료를 부정 사례로 사용"
+    },
+    {
+      "id": "HARBOR-TASKS",
+      "url": "https://www.harborframework.com/docs/tasks",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "에이전트 작업과 별도 verifier 및 multi-step 작업 구성을 설명합니다.",
+      "application": "작업 폴더 밖의 평가 기준과 독립 프로세스 검사"
+    },
+    {
+      "id": "CLI-HOOK-BEST-PRACTICES",
+      "url": "https://geminicli.com/docs/hooks/best-practices/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "훅의 동기 실행 지연·이벤트 선택·독립 검증 원칙을 확인했습니다.",
+      "application": "같은 상태 조회 안에서 중복 해시 계산을 공유하고 다음 조회에서는 재검증"
+    },
+    {
+      "id": "CLI-RETRY-FLAG-ISSUE",
+      "url": "https://github.com/google-gemini/gemini-cli/issues/20426",
+      "kind": "source-issue",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "0.30.0에서 stop_hook_active 전파 누락이 보고됐고 이슈는 닫혀 있습니다. 현재 버전의 결함이라고 단정하지 않습니다.",
+      "application": "플래그가 계속 false인 입력에도 자체 재개 상한이 유지되는 회귀 사례"
+    },
+    {
+      "id": "ANTHROPIC-CWC-LONG-RUNNING",
+      "url": "https://github.com/anthropics/cwc-long-running-agents",
+      "kind": "source-doc",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "진행 메모·독립 평가·운영 중단을 분리하는 패턴을 확인했습니다.",
+      "application": "메모 이력과 실제 검사 결과 분리; 자동 커밋 및 매번 모델 평가기는 채택하지 않음"
+    },
+    {
+      "id": "PROGRESS-MIRAGE",
+      "url": "https://arxiv.org/abs/2607.25152",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "초록 열람",
+      "finding": "자기평가와 외부 상태 기반 평가 차이를 다루는 파일럿 연구의 초록을 확인했습니다.",
+      "application": "checkpoint 메모에 검증 지위를 부여하지 않고 현재 파일과 직접 검사 결과를 별도로 표시"
+    },
+    {
+      "id": "ANTHROPIC-TOOL-RESPONSES",
+      "url": "https://www.anthropic.com/engineering/writing-tools-for-agents",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "연관된 작업 통합, 유용한 응답 필드, 출력 제한과 평가 방법을 설명합니다.",
+      "application": "자주 이어지는 관련 파일 읽기를 묶고 범위·생략을 명시합니다. 실제 모델 효과는 별도 측정합니다."
+    },
+    {
+      "id": "GEMINI-LONG-CONTEXT",
+      "url": "https://ai.google.dev/gemini-api/docs/long-context",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "긴 문맥을 구성하는 방법과 구체적인 질문을 뒤에 배치하는 지침을 확인했습니다.",
+      "application": "큰 문맥 지원을 모든 파일 무조건 로딩으로 해석하지 않고 필요한 범위를 선택합니다."
+    },
+    {
+      "id": "CLI-FILE-SYSTEM-TOOLS",
+      "url": "https://geminicli.com/docs/tools/file-system/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "네이티브 파일 읽기와 다중 파일 도구의 계약을 확인했습니다.",
+      "application": "네이티브 다중 읽기가 있으면 우선 사용하고 보조 조회기를 모든 상황에 강제하지 않습니다."
+    },
+    {
+      "id": "AGY-IDE-PLUGINS",
+      "url": "https://antigravity.google/docs/ide/plugins",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람 및 IDE 2.5.5 발견 화면 관찰",
+      "finding": "IDE도 plugin.json·rules·skills·hooks와 .agents/plugins 작업공간 탐색을 문서화합니다.",
+      "application": "독립 임시 작업공간에서 규칙 진입점과 스킬 3개 발견을 확인; 실제 모델 실행과 구분"
+    },
+    {
+      "id": "AGY-IDE-CODELAB",
+      "url": "https://codelabs.developers.google.com/getting-started-agy-ide",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "IDE의 별도 제품 경계, Customizations 진입과 슬래시 목록을 설명합니다.",
+      "application": "모델에게 요청을 보내지 않고 IDE의 규칙·스킬 발견만 확인"
+    },
+    {
+      "id": "CLI-WRITING-EXTENSIONS",
+      "url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/extensions/writing-extensions.md",
+      "kind": "official-source",
+      "checked_on": "2026-09-08",
+      "access": "공식 저장소 원문 열람",
+      "finding": "확장의 GEMINI.md 지속 컨텍스트와 필요 시 스킬 활성화, 환경 변수 정제와 명시적 설정을 설명합니다.",
+      "application": "규칙 원문 보존과 작은 스킬 유지; 미확인 환경 변수를 실행 경로로 가정하지 않기"
+    },
+    {
+      "id": "DESIGN-CONSTRAINT-EVALS",
+      "url": "https://arxiv.org/abs/2604.05955",
+      "kind": "paper",
+      "checked_on": "2026-09-08",
+      "access": "초록 열람",
+      "finding": "기능 테스트 통과와 저장소 설계 제약 준수를 분리해 평가합니다.",
+      "application": "새 기능·기존 출력·사용자 파일명·변경 범위를 별도 검사; 논문 실험을 재현했다고 주장하지 않기"
+    },
+    {
+      "id": "ANTHROPIC-INFRA-NOISE",
+      "url": "https://www.anthropic.com/engineering/infrastructure-noise",
+      "kind": "engineering",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "모델·작업이 같아도 실행 자원과 제한 방식이 평가 결과를 바꿀 수 있습니다.",
+      "application": "준비·채점 환경과 시간 제한을 기록하고 CPU·메모리 제한 미적용을 명시"
+    },
+    {
+      "id": "PYTHON-CSV",
+      "url": "https://docs.python.org/3/library/csv.html",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "CSV의 인용·개행·빈 필드 처리를 표준 라이브러리에서 설명합니다.",
+      "application": "새 내보내기 사례의 공개 계약과 참조 구현 검증"
+    },
+    {
+      "id": "GIT-INDEX-ENTRIES",
+      "url": "https://git-scm.com/docs/git-ls-files",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "공식 명령 문서 열람",
+      "finding": "인덱스의 mode·object ID·stage를 출력하는 --stage와 NUL 구분을 설명합니다.",
+      "application": "인덱스 파일의 캐시 메타데이터 대신 논리적 등록 내용을 비교"
+    },
+    {
+      "id": "GIT-WORKING-DIFF",
+      "url": "https://git-scm.com/docs/git-diff",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "공식 명령 문서 열람",
+      "finding": "인덱스와 작업 디렉터리 사이의 변경을 확인하는 경로를 설명합니다.",
+      "application": "커밋 없는 임시 Git 인덱스에 원본을 준비하고 사용자 변경이 실제 diff로 보이는지 확인"
+    },
+    {
+      "id": "PYTHON-ISOLATION-CACHE",
+      "url": "https://docs.python.org/3/using/cmdline.html",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "격리 모드의 환경 변수 무시와 -B·UTF-8·pycache_prefix 명령 인자를 설명합니다.",
+      "application": "평가가 오래된 바이트코드를 읽는 실패를 재현하고 빈 캐시 경로와 명시적 실행 인자로 수정"
+    },
+    {
+      "id": "AGY-NATIVE-STOP-TRACE",
+      "url": "https://atamel.dev/posts/2026/07-16_where_agy_hooks/",
+      "kind": "firsthand",
+      "checked_on": "2026-09-08",
+      "access": "저자가 직접 실행한 훅 입력 기록과 예제 원문 열람",
+      "finding": "자연 종료 시 terminationReason이 NO_TOOL_CALL인 실행 입력이 제시되어 공식 문서의 model_stop 예시 외 경로를 확인했습니다.",
+      "application": "공개 입력 재생 회귀와 종료 메타데이터 보존; 자체 시험의 미수집 원문을 같은 값으로 단정하지 않기"
+    },
+    {
+      "id": "CLI-SESSION-MANAGEMENT",
+      "url": "https://geminicli.com/docs/cli/session-management/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "대화 저장·프로젝트별 범위·세션 목록과 ID 기반 재개를 설명합니다.",
+      "application": "호스트 대화 복원과 GTG 작업 연결을 구분하고 작업 후보·원래 명세를 조회"
+    },
+    {
+      "id": "CLI-FILE-CHECKPOINT",
+      "url": "https://geminicli.com/docs/cli/checkpointing/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "원문 페이지 열람",
+      "finding": "호스트 체크포인트 복원은 프로젝트 파일과 대화 상태를 되돌릴 수 있습니다.",
+      "application": "GTG의 메모·작업 연결은 현재 파일을 유지하며 파일 복원과 분리"
+    },
+    {
+      "id": "SCROLL-CONTEXT-ENVIRONMENT",
+      "url": "https://arxiv.org/abs/2608.21690",
+      "kind": "paper",
+      "checked_on": "2026-09-08",
+      "access": "초록 열람",
+      "finding": "원래 사건 기록을 보존하면서 필요한 상태만 작업 컨텍스트에 투영하는 접근입니다.",
+      "application": "작은 작업 후보와 전체 명세 조회 분리; 영속 Python 커널이나 논문 성능 수치를 구현 성능으로 차용하지 않기"
+    },
+    {
+      "id": "CONTEXT-CODEC-COMMITMENTS",
+      "url": "https://arxiv.org/abs/2605.17304",
+      "kind": "paper",
+      "checked_on": "2026-09-08",
+      "access": "초록 열람",
+      "finding": "목표·제약·결정·근거 같은 약속의 보존을 압축 길이와 별도로 검증합니다.",
+      "application": "같은 작업 ID·원래 조건·검증·메모 보존 회귀; 생략은 명시하고 전체 원문으로 복귀"
+    },
+    {
+      "id": "HORIZON-GAP",
+      "url": "https://arxiv.org/abs/2608.06663",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "초록 열람",
+      "finding": "장기 작업·긴 컨텍스트·세션 간 기억을 구분하고 모델 역량과 하네스 효과의 분리 측정을 과제로 다룹니다.",
+      "application": "세션 연결·산출물·장기 작업 능력을 별도 판정; 단일 재개 성공을 전체 장기 성능으로 확대하지 않기"
+    },
+    {
+      "id": "AGENT-REWIND",
+      "url": "https://arxiv.org/abs/2608.14380",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "초록 열람",
+      "finding": "컨텍스트와 제어 환경의 맞물린 체크포인트 복구 및 완료·부분 진행 평가를 제안합니다.",
+      "application": "부분 완료 상태에서 원래 목표·이력·현재 사용자 편집 보존을 함께 평가; 파일 자동 되돌리기나 논문 성능 수치 차용은 하지 않기"
+    },
+    {
+      "id": "CLI-SKILLS-DISCOVERY-LIFECYCLE",
+      "url": "https://geminicli.com/docs/cli/skills/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "공식 원문 열람",
+      "finding": "스킬의 설명 발견·모델 선택·본문 주입·추가 자원 접근을 단계별로 설명합니다.",
+      "application": "설치된 스킬 본문에 실행기 위치를 즉시 알리고 상세 작업 계약은 필요 시 읽게 유지"
+    }
+  ]
+}
+```

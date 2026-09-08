@@ -1,0 +1,29 @@
+# `assets/social-preview.svg`
+
+- 형식: `100644`
+- 바이트: 2110
+- SHA-256: `5a72d92c199294caccc79f7649d8734465d7559975e58d6d6132caa5c16d36d8`
+- 인코딩: `utf-8`
+
+```
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">GeminiToGenius focus harness</title>
+  <desc id="desc">Versioned focus rules, hooks, and skills for Gemini in Antigravity.</desc>
+  <rect width="1280" height="640" fill="#F1EEE7"/>
+  <rect x="0" y="0" width="28" height="640" fill="#D94432"/>
+  <rect x="884" y="86" width="302" height="468" fill="#121212"/>
+  <rect x="920" y="122" width="230" height="6" fill="#D94432"/>
+  <text x="920" y="194" fill="#F1EEE7" font-family="Helvetica Neue, Arial, sans-serif" font-size="22" letter-spacing="4">FOCUS HARNESS</text>
+  <text x="920" y="266" fill="#F1EEE7" font-family="Helvetica Neue, Arial, sans-serif" font-size="38" font-weight="700">12 / 14 / 9</text>
+  <text x="920" y="304" fill="#BEBAB0" font-family="Helvetica Neue, Arial, sans-serif" font-size="18" letter-spacing="1">RULES · HOOKS · SKILLS</text>
+  <line x1="920" y1="364" x2="1150" y2="364" stroke="#BEBAB0" stroke-width="1"/>
+  <text x="920" y="414" fill="#F1EEE7" font-family="Helvetica Neue, Arial, sans-serif" font-size="20">GEMINI 3.6 FLASH (HIGH)</text>
+  <text x="920" y="454" fill="#F1EEE7" font-family="Helvetica Neue, Arial, sans-serif" font-size="18">ANTIGRAVITY / IDE</text>
+  <text x="920" y="516" fill="#D94432" font-family="Helvetica Neue, Arial, sans-serif" font-size="16" letter-spacing="2">v1.17.0</text>
+  <text x="94" y="154" fill="#121212" font-family="Helvetica Neue, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="7">GEMINI</text>
+  <text x="88" y="300" fill="#121212" font-family="Helvetica Neue, Arial, sans-serif" font-size="142" font-weight="700" letter-spacing="-8">TO</text>
+  <text x="88" y="438" fill="#121212" font-family="Helvetica Neue, Arial, sans-serif" font-size="116" font-weight="700" letter-spacing="-6">GENIUS</text>
+  <rect x="96" y="496" width="148" height="10" fill="#D94432"/>
+  <text x="96" y="552" fill="#121212" font-family="Helvetica Neue, Arial, sans-serif" font-size="18" letter-spacing="2">LESS DRIFT. MORE FOCUS.</text>
+</svg>
+```

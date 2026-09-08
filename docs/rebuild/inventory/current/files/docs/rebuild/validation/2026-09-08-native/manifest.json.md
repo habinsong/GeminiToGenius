@@ -1,0 +1,83 @@
+# `docs/rebuild/validation/2026-09-08-native/manifest.json`
+
+- 형식: `100644`
+- 바이트: 4735
+- SHA-256: `498bb1f8b850aea1549bcf2395ae2bfc46a29875869a8dc2b023b06f605f836c`
+- 인코딩: `utf-8`
+
+```
+{
+  "schema_version": 1,
+  "trial_id": "1cf1f6c4f48942f3b699512de923896f",
+  "case_id": "merge-records",
+  "prepared_at": "2026-09-08T02:48:39.569409+00:00",
+  "profile": "gtg",
+  "definition_digest": "02299302fe2cfaad45a53cbf22cb0a7dd35fd5534d646751f69be8f02e1004b7",
+  "baseline": {
+    "notes.txt": "f829a4827d6f66fbac0bc683c5d19f91c601337ff6404fb77ee119f1d57d8ec8",
+    "records.py": "4a81a71f72cc545f1d0e0408a3f144ffb6cb0629346388b6cb8cc22a83c14a9d",
+    "test_records.py": "74fbc53df867e6b252feba5d35de30663a622dd7d6ca5c42d5170d97e52aa27b",
+    "README.md": "eab6071254e4867ec4327540cfb1afd255c63d367ef44c37252d5655e811fed0",
+    "app.py": "b3cda19c426317b623565a34d3c52beb90778d9145f15b32caca7980118588ca",
+    ".agents/plugins/geminitogenius/run.py": "df6f8577c5c1d224cf6d20b21f301baeea5b508ad6c3f87385d41a0175cf9a83",
+    ".agents/plugins/geminitogenius/plugin.json": "c68b170acdb7edf356e51cda5163c97f6183488cc766fe5fbdf586da732b066a",
+    ".agents/plugins/geminitogenius/gtg-manifest.json": "ef83e2df17d21c532e251fa72e7a32e230b5fdda0653fe8bc675df97a4e2874a",
+    ".agents/plugins/geminitogenius/hooks.json": "3e873b413692df45742466a6197a240b3910a0eecb6a0ca51b458a1f09346683",
+    ".agents/plugins/geminitogenius/gtg/package.py": "77e38b93a5f370383c40fe4569f3f882abf94deb2d402d3d5d723c5203b121d4",
+    ".agents/plugins/geminitogenius/gtg/store.py": "850cf5a7c82a63cde864d00f95234886ab2afbde273d20c19b891e0dd6cdd167",
+    ".agents/plugins/geminitogenius/gtg/sessions.py": "e5a44cf53b5d6fc51edeac4fd05557f2a182a61eec83c40724edba13bd4bc884",
+    ".agents/plugins/geminitogenius/gtg/runner.py": "826069e76e959947c947490cf6ccd88d574664c0ef47cea543d4e7a99ea8335a",
+    ".agents/plugins/geminitogenius/gtg/hooks.py": "2cd963872d39bae8e591c0e637fd87e7f0b3e14f41b9ab957b68543dd8725125",
+    ".agents/plugins/geminitogenius/gtg/legacy.py": "ad6f1d8a48d9a7f55e82a9988bd1576a3d73b877fd66d9b7ba6bd033bc7951a3",
+    ".agents/plugins/geminitogenius/gtg/__init__.py": "d33dad4c6806fb8fe0743f55e39ca607ac7df4c271d75a59a9d4e02f34f896bb",
+    ".agents/plugins/geminitogenius/gtg/spec.py": "23ca42ac4229e08afdb9cb17706a1ea470c88120174507f4a0de6a7b7f75ce6c",
+    ".agents/plugins/geminitogenius/gtg/install.py": "28c39fbe9a39c8f90576055f6e76111a1b5713799cd1ff39bbe347a44c1efa6b",
+    ".agents/plugins/geminitogenius/gtg/install_journal.py": "1d0d0e12d548d9a9f125ae7a9d4b37e0db998d1c44d42a5e5d5232bc776b1bfb",
+    ".agents/plugins/geminitogenius/gtg/__main__.py": "dd6ad147c46baf209826adc06e3ccf88c1c74f4f69af28f17376e1215288e499",
+    ".agents/plugins/geminitogenius/rules/AGENTS.md": "37d6987d0f4e6794de6211daaf59c56fe82c8010e4ba547b236a6e4691d21665",
+    ".agents/plugins/geminitogenius/skills/gtg-research/SKILL.md": "79cf34d6a09722eb1ffe4bb93d4aaf1aa381c5327c1c64ecbe797564af8b3fde",
+    ".agents/plugins/geminitogenius/skills/gtg-build/SKILL.md": "4020f76b1000056063eec76b18664155d676032ff5340b304d80f5d4e28ac671",
+    ".agents/plugins/geminitogenius/skills/gtg-build/references/task-contract.md": "2a3ea615820543bf515b61088cfe473e84f0fd7f68574dd16087ae1204abd775",
+    ".agents/plugins/geminitogenius/skills/gtg-interface/SKILL.md": "25e5280544be9d88925de469cc9590588122466f3ea7ded62cf0bb8e59f12102"
+  },
+  "runtime_observation": {
+    "host": "Antigravity",
+    "host_version": "2.11.0",
+    "selected_model_label": "Gemini 3.8 Flash High",
+    "response_model_id": null,
+    "native_project_id": "70325b4b-b5fc-4df8-92a1-5546b8ae203e",
+    "native_conversation_id": "c8b6c22b-8b72-43bd-983f-0784c39e7fd1",
+    "prompt_submitted_at": "2026-09-08 02:52:03 UTC",
+    "prompt_count": 1,
+    "inference_request_count": null,
+    "quota_before": {
+      "weekly_remaining_percent": 100,
+      "five_hour_remaining_percent": 100
+    },
+    "completed": true,
+    "global_customizations": "기존 사용자 전역 설정을 상속하며 변경하지 않았습니다.",
+    "completion_evidence": "네이티브 최종 답변 표시, Stop execution 버튼 없음",
+    "model_response_steps": 22,
+    "tool_counts": {
+      "view_file": 13,
+      "find_by_name": 2,
+      "run_command": 4,
+      "replace_file_content": 2
+    },
+    "started_at": "2026-09-08T02:52:17Z",
+    "last_response_at": "2026-09-08T02:53:31Z",
+    "gtg_preinvocation_observed": true,
+    "gtg_build_read_first": true,
+    "gtg_build_content_returned": true,
+    "durable_task_registered": false,
+    "quota_after": {
+      "weekly_remaining_percent": 100,
+      "five_hour_remaining_percent": 99
+    },
+    "quota_note": "UI의 반올림된 계정 잔여 표시이며 개별 요청 토큰 사용량이 아닙니다.",
+    "project_name": "GTG 단일 검증 2026-09-08",
+    "conversation_title": "데이터 중복 합치기 오류",
+    "native_elapsed_seconds": 74.0
+  }
+}
+```

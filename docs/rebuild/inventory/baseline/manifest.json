@@ -1,0 +1,1459 @@
+{
+  "schema_version": 1,
+  "revision": "5cd1c5a5ca98a06fd8640ce35398ab0552341c04",
+  "files": [
+    {
+      "path": ".github/CODEOWNERS",
+      "mode": "100644",
+      "bytes": 49,
+      "sha256": "977658068753c5d87c2897ded188b918c6e4ecb0b3eaec20f9316eac213fb011",
+      "encoding": "utf-8",
+      "lines": 2,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.github/CODEOWNERS.md"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "mode": "100644",
+      "bytes": 1023,
+      "sha256": "406051895ca7b3926e17f507681f97eec60dbdfa28db67dfa136e91fc949183f",
+      "encoding": "utf-8",
+      "lines": 43,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.github/ISSUE_TEMPLATE/bug_report.yml.md"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "mode": "100644",
+      "bytes": 376,
+      "sha256": "e411351fb05b1906da82ba717011d1a4dee1d752b3b5215f23cf755d036408a8",
+      "encoding": "utf-8",
+      "lines": 8,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.github/ISSUE_TEMPLATE/config.yml.md"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "mode": "100644",
+      "bytes": 725,
+      "sha256": "d69cd825cf4fe7f148ae3700af8f5c968b566755212020bc6c8bcb57b05bf446",
+      "encoding": "utf-8",
+      "lines": 28,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.github/ISSUE_TEMPLATE/feature_request.yml.md"
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "mode": "100644",
+      "bytes": 603,
+      "sha256": "1a72c7ccce36b13c87a358a3e2e9215ec4682ea709df3c3e291929994d1208e2",
+      "encoding": "utf-8",
+      "lines": 19,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.github/PULL_REQUEST_TEMPLATE.md.md"
+    },
+    {
+      "path": ".github/workflows/validate-profile.yml",
+      "mode": "100644",
+      "bytes": 636,
+      "sha256": "01bd5e6f1a57beb16c5a8394c56fa89f1b23b206acaa37bf6962bc12b8c4771a",
+      "encoding": "utf-8",
+      "lines": 25,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.github/workflows/validate-profile.yml.md"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "bytes": 33,
+      "sha256": "fa5b2d4433b835933b22140e01833a4972a0ee8532d76951286e3dd071994af0",
+      "encoding": "utf-8",
+      "lines": 3,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/.gitignore.md"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "mode": "100644",
+      "bytes": 15205,
+      "sha256": "90edeb35560e9137de5a1e6ff13bcc768e47325e27a22b6fae03d6b7222e237d",
+      "encoding": "utf-8",
+      "lines": 207,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/CHANGELOG.md.md"
+    },
+    {
+      "path": "CITATION.cff",
+      "mode": "100644",
+      "bytes": 424,
+      "sha256": "ee783bf83a2aa447e9658c519e12a9203d492487c7fcb353d2109eb408c2cb61",
+      "encoding": "utf-8",
+      "lines": 17,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/CITATION.cff.md"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "mode": "100644",
+      "bytes": 352,
+      "sha256": "1c791743bb23b644f87abd9b2eb80cc6f1ca078b2f13e90086a6923e2722211f",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/CODE_OF_CONDUCT.md.md"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "mode": "100644",
+      "bytes": 1158,
+      "sha256": "e33c55605750bcdc32e158c32861a1b2054e6794a4885055652297fc1484a67b",
+      "encoding": "utf-8",
+      "lines": 31,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/CONTRIBUTING.md.md"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "bytes": 1066,
+      "sha256": "3e814a061da30b1e1c736fed8d2970e4bb0cce80e5362a0cc12d8f3a4ddd2102",
+      "encoding": "utf-8",
+      "lines": 21,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/LICENSE.md"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "bytes": 6401,
+      "sha256": "2a95d7dc44f9db67e6851253b1e31d9c6f9e7fb49f0a1b6ed0d071ac3c9c39df",
+      "encoding": "utf-8",
+      "lines": 168,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/README.md.md"
+    },
+    {
+      "path": "SECURITY.md",
+      "mode": "100644",
+      "bytes": 524,
+      "sha256": "fa6c5a8d71bc88377c5a02dff958d4c04e9b8e6ac9df4bba9c1012e93c204343",
+      "encoding": "utf-8",
+      "lines": 7,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/SECURITY.md.md"
+    },
+    {
+      "path": "SUPPORT.md",
+      "mode": "100644",
+      "bytes": 748,
+      "sha256": "990fd4065ab89ec0207f3259496ae77ee8c15b22371e875d0a2af1204e826ec8",
+      "encoding": "utf-8",
+      "lines": 11,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/SUPPORT.md.md"
+    },
+    {
+      "path": "VERSION",
+      "mode": "100644",
+      "bytes": 7,
+      "sha256": "c90c3058290761eb1f40ef36a2febaa5a8933a3f473d817f6803f6069def3050",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/VERSION.md"
+    },
+    {
+      "path": "agy-focus/current",
+      "mode": "120000",
+      "bytes": 16,
+      "sha256": "ca46ff4de9fa1927a9bb4734ac9d414cd9e4e381b6b600c001a13ee609ce7196",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/agy-focus/current.md"
+    },
+    {
+      "path": "agy-focus/state/last_state.json",
+      "mode": "100644",
+      "bytes": 227,
+      "sha256": "e7d025e861f09b2942ec49a833de7287b703fa04d92b6879cb83b50df1dc88fc",
+      "encoding": "utf-8",
+      "lines": 10,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/state/last_state.json.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/CHANGELOG.md",
+      "mode": "100644",
+      "bytes": 15205,
+      "sha256": "90edeb35560e9137de5a1e6ff13bcc768e47325e27a22b6fae03d6b7222e237d",
+      "encoding": "utf-8",
+      "lines": 207,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/CHANGELOG.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/GEMINI.md",
+      "mode": "100644",
+      "bytes": 8278,
+      "sha256": "72549dc268d6790bf8731e647aa33cbf6191e6f3e60cf038ef488386a45956f8",
+      "encoding": "utf-8",
+      "lines": 94,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/GEMINI.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/MANIFEST.json",
+      "mode": "100644",
+      "bytes": 2088,
+      "sha256": "2f6a7a559de3a276ee82784445704b60f48f0b2a6a1b1ae199f08e483afe0b74",
+      "encoding": "utf-8",
+      "lines": 25,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/MANIFEST.json.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/VERSION",
+      "mode": "100644",
+      "bytes": 6,
+      "sha256": "5a6de52371c760d50b5862e3c7ec27bee4ca35d68941355c9031fd218d2336c3",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/agy-focus/versions/v2.15.0/VERSION.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/hooks/hooks.json",
+      "mode": "100644",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/hooks/hooks.json.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/rules/01-contract.md",
+      "mode": "100644",
+      "bytes": 844,
+      "sha256": "72370405a94b4a3d9ef61a7594c5cb742e6da6f76186c5e009210e6eea1fa014",
+      "encoding": "utf-8",
+      "lines": 8,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/rules/01-contract.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/rules/02-goal-lock.md",
+      "mode": "100644",
+      "bytes": 585,
+      "sha256": "4a6f04c45cc62928901d6d70ed638516cb9906543b5576d863a80fa51aa2d856",
+      "encoding": "utf-8",
+      "lines": 8,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/rules/02-goal-lock.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/rules/03-window-state.md",
+      "mode": "100644",
+      "bytes": 395,
+      "sha256": "63c12ff5522fb53dfcf40af8f8fdea13861abc24323d72eb666d35762d22e6cf",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/rules/03-window-state.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/rules/04-context-budget.md",
+      "mode": "100644",
+      "bytes": 1065,
+      "sha256": "0aac872fddac3b794bbc5a9a780679a023b1b5123754a93949f34b0f4dba6bf4",
+      "encoding": "utf-8",
+      "lines": 8,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/rules/04-context-budget.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/rules/05-inspect-before-change.md",
+      "mode": "100644",
+      "bytes": 1505,
+      "sha256": "7f1a9b3a405009360178980c07ea0a4038abf0246941ade896f9ea13c10367a4",
+      "encoding": "utf-8",
+      "lines": 11,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/rules/05-inspect-before-change.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/rules/06-safety-boundaries.md",
+      "mode": "100644",
+      "bytes": 444,
+      "sha256": "7cc22d55e9b6846b9f332aacb682307ace4b94827c1a6dfab45b324c7548f606",
+      "encoding": "utf-8",
+      "lines": 6,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/rules/06-safety-boundaries.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/rules/07-no-plugin-default.md",
+      "mode": "100644",
+      "bytes": 390,
+      "sha256": "2f2bfb24dce890d871c602d6582fb959d6bb132e76141697aa0e9db0976506d9",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/rules/07-no-plugin-default.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/rules/08-mcp-gate.md",
+      "mode": "100644",
+      "bytes": 341,
+      "sha256": "0e758f062ea6dad082832c275aba7d821f90680eaacb2f2781ba4a69ded42601",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/rules/08-mcp-gate.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/rules/09-network-and-tools.md",
+      "mode": "100644",
+      "bytes": 397,
+      "sha256": "5d99eb804d35850b16296203a0f160dc35d3478e55f5fca341e435fdafbb9b14",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/rules/09-network-and-tools.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/rules/10-verification.md",
+      "mode": "100644",
+      "bytes": 937,
+      "sha256": "532b1e53402f76ae013fa6a5f35925cf648380dac658ef0d1b9a463d2ef90828",
+      "encoding": "utf-8",
+      "lines": 8,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/rules/10-verification.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/rules/11-change-hygiene.md",
+      "mode": "100644",
+      "bytes": 332,
+      "sha256": "e37b5cc588b934434f9e64c6d8c15e4c55addafe1e3c6347ad592c7834631e5b",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/rules/11-change-hygiene.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/rules/12-reporting.md",
+      "mode": "100644",
+      "bytes": 662,
+      "sha256": "2a790861df1412a90e6ae223765d119ee1e65af79c9d23ed8137183af33c4b8e",
+      "encoding": "utf-8",
+      "lines": 6,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/rules/12-reporting.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/scripts/assemble_gemini.py",
+      "mode": "100644",
+      "bytes": 1462,
+      "sha256": "5aafca9cdaf2d63c28196ed3a50b517dd18e79ee9262c1e5d88ce14383f77ae7",
+      "encoding": "utf-8",
+      "lines": 45,
+      "symbols": [
+        {
+          "name": "render_profile",
+          "kind": "FunctionDef",
+          "line": 14,
+          "end_line": 33
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 36,
+          "end_line": 41
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/scripts/assemble_gemini.py.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/scripts/motion_audit.py",
+      "mode": "100644",
+      "bytes": 872,
+      "sha256": "62dc3b23b1b0051d4ff2b5fa65d93c17ecd1f2ddb769674b9e20c52e2b2c11a7",
+      "encoding": "utf-8",
+      "lines": 28,
+      "symbols": [
+        {
+          "name": "reduced_motion_audit",
+          "kind": "FunctionDef",
+          "line": 11,
+          "end_line": 28
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/scripts/motion_audit.py.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/scripts/ui_render_audit.py",
+      "mode": "100644",
+      "bytes": 7767,
+      "sha256": "affba739fc3281fb31ece0fe4f568bb5cbdf33dc8cc5b9d2be27a25307cb7018",
+      "encoding": "utf-8",
+      "lines": 162,
+      "symbols": [
+        {
+          "name": "keyboard_focus_audit",
+          "kind": "FunctionDef",
+          "line": 131,
+          "end_line": 162
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/scripts/ui_render_audit.py.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/scripts/verify_multi_page.py",
+      "mode": "100644",
+      "bytes": 6710,
+      "sha256": "946c312021923744580c4443fd8b8190f8df9d3f061c6e0e7de0d1901371cb5f",
+      "encoding": "utf-8",
+      "lines": 147,
+      "symbols": [
+        {
+          "name": "routes",
+          "kind": "FunctionDef",
+          "line": 20,
+          "end_line": 21
+        },
+        {
+          "name": "route_target",
+          "kind": "FunctionDef",
+          "line": 24,
+          "end_line": 37
+        },
+        {
+          "name": "_tag_text",
+          "kind": "FunctionDef",
+          "line": 40,
+          "end_line": 42
+        },
+        {
+          "name": "_has_reduced_motion_override",
+          "kind": "FunctionDef",
+          "line": 45,
+          "end_line": 55
+        },
+        {
+          "name": "static_checks",
+          "kind": "FunctionDef",
+          "line": 58,
+          "end_line": 99
+        },
+        {
+          "name": "render",
+          "kind": "FunctionDef",
+          "line": 102,
+          "end_line": 113
+        },
+        {
+          "name": "verify",
+          "kind": "FunctionDef",
+          "line": 116,
+          "end_line": 129
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 132,
+          "end_line": 143
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/scripts/verify_multi_page.py.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/scripts/verify_plan.py",
+      "mode": "100644",
+      "bytes": 6452,
+      "sha256": "3343307391d27c5242ed18856adce46be942c1db023c6c3134bcd233fd797cef",
+      "encoding": "utf-8",
+      "lines": 94,
+      "symbols": [
+        {
+          "name": "check",
+          "kind": "FunctionDef",
+          "line": 46,
+          "end_line": 76
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 79,
+          "end_line": 90
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/scripts/verify_plan.py.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/scripts/verify_profile.py",
+      "mode": "100644",
+      "bytes": 8989,
+      "sha256": "087c1a3f715a2270daae90a98673b72efabeba76db81769a283a4cfccd31b706",
+      "encoding": "utf-8",
+      "lines": 204,
+      "symbols": [
+        {
+          "name": "frontmatter",
+          "kind": "FunctionDef",
+          "line": 30,
+          "end_line": 42
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 45,
+          "end_line": 200
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/scripts/verify_profile.py.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/scripts/verify_ui_render.py",
+      "mode": "100644",
+      "bytes": 10136,
+      "sha256": "f1481ba7f390577e3aa500e2e55e47c28c7fef4e5bf48811694c14fb1b75ff47",
+      "encoding": "utf-8",
+      "lines": 256,
+      "symbols": [
+        {
+          "name": "chrome_path",
+          "kind": "FunctionDef",
+          "line": 33,
+          "end_line": 43
+        },
+        {
+          "name": "target_url",
+          "kind": "FunctionDef",
+          "line": 46,
+          "end_line": 52
+        },
+        {
+          "name": "receive_exact",
+          "kind": "FunctionDef",
+          "line": 55,
+          "end_line": 64
+        },
+        {
+          "name": "DevTools",
+          "kind": "ClassDef",
+          "line": 67,
+          "end_line": 134
+        },
+        {
+          "name": "wait_for_debug_port",
+          "kind": "FunctionDef",
+          "line": 137,
+          "end_line": 145
+        },
+        {
+          "name": "page_websocket",
+          "kind": "FunctionDef",
+          "line": 148,
+          "end_line": 154
+        },
+        {
+          "name": "wait_for_page",
+          "kind": "FunctionDef",
+          "line": 157,
+          "end_line": 164
+        },
+        {
+          "name": "evaluate",
+          "kind": "FunctionDef",
+          "line": 167,
+          "end_line": 172
+        },
+        {
+          "name": "render_viewport",
+          "kind": "FunctionDef",
+          "line": 175,
+          "end_line": 209
+        },
+        {
+          "name": "verify",
+          "kind": "FunctionDef",
+          "line": 212,
+          "end_line": 238
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 241,
+          "end_line": 252
+        },
+        {
+          "name": "__init__",
+          "kind": "FunctionDef",
+          "line": 68,
+          "end_line": 85
+        },
+        {
+          "name": "send_frame",
+          "kind": "FunctionDef",
+          "line": 87,
+          "end_line": 100
+        },
+        {
+          "name": "receive_frame",
+          "kind": "FunctionDef",
+          "line": 102,
+          "end_line": 119
+        },
+        {
+          "name": "call",
+          "kind": "FunctionDef",
+          "line": 121,
+          "end_line": 131
+        },
+        {
+          "name": "close",
+          "kind": "FunctionDef",
+          "line": 133,
+          "end_line": 134
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/scripts/verify_ui_render.py.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/agy-one-tap/SKILL.md",
+      "mode": "100644",
+      "bytes": 1827,
+      "sha256": "4067f4687bd38345dae727a99f59ba19295c04761f0f7a86006be55b79ac904f",
+      "encoding": "utf-8",
+      "lines": 17,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/agy-one-tap/SKILL.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/architecture-boundaries/SKILL.md",
+      "mode": "100644",
+      "bytes": 3138,
+      "sha256": "d22cd7e6088a5966ccc95c06c4654541924750ed7c6ebfb90019a5e8807a9942",
+      "encoding": "utf-8",
+      "lines": 17,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/architecture-boundaries/SKILL.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/architecture-boundaries/references/evidence.md",
+      "mode": "100644",
+      "bytes": 916,
+      "sha256": "ac78f497a3d00d5d63b0a3e75e4448b1004be32c02762c6011bfeb1af09e1412",
+      "encoding": "utf-8",
+      "lines": 10,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/architecture-boundaries/references/evidence.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/focus-session/SKILL.md",
+      "mode": "100644",
+      "bytes": 2154,
+      "sha256": "a5d3b7fc9f7b7d33d6858b5cd3a16ffab7146700abcc5ec33cc490d14c943ed1",
+      "encoding": "utf-8",
+      "lines": 29,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/focus-session/SKILL.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/gemini-38-flash-high/SKILL.md",
+      "mode": "100644",
+      "bytes": 2836,
+      "sha256": "20166dcfdd3b1a7d7a92df16d079f073d340347eedcdceb3ad7db32123a8e0da",
+      "encoding": "utf-8",
+      "lines": 45,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/gemini-38-flash-high/SKILL.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/gtg/SKILL.md",
+      "mode": "100644",
+      "bytes": 5550,
+      "sha256": "26d5098e5e88d728b26c58148bb455f79add5a8e0f908ec4019a1060137c700b",
+      "encoding": "utf-8",
+      "lines": 32,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/gtg/SKILL.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/gtg/references/architecture-rules.md",
+      "mode": "100644",
+      "bytes": 2096,
+      "sha256": "016b6c8956913364f304d6eebd1ed37fbc5006039c305c7e79b8874bfeb43d12",
+      "encoding": "utf-8",
+      "lines": 43,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/gtg/references/architecture-rules.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/gtg/references/coding-standards.md",
+      "mode": "100644",
+      "bytes": 3064,
+      "sha256": "7a306e851558d4d5b9d5d3c203bc6b80a61dd1209c6ca06e8b6d326cb18df579",
+      "encoding": "utf-8",
+      "lines": 82,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/gtg/references/coding-standards.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/gtg/references/debugging-and-testing.md",
+      "mode": "100644",
+      "bytes": 1188,
+      "sha256": "d7fe3f476dc24b14d59c0fabd23346da0bfbe52b25c10cf6f26d5c125c5eb66e",
+      "encoding": "utf-8",
+      "lines": 44,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/gtg/references/debugging-and-testing.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/gtg/references/repository-standards.md",
+      "mode": "100644",
+      "bytes": 2568,
+      "sha256": "a5bc67646254e0ae1b0d6499888a7104fc0b69d9727b7588b6378684b1c7cffb",
+      "encoding": "utf-8",
+      "lines": 91,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/gtg/references/repository-standards.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/gtg/references/security-and-git.md",
+      "mode": "100644",
+      "bytes": 1233,
+      "sha256": "8866144f469f009d540d62d05bd34f8db48bcad697477c94f2ee9c0706836fa0",
+      "encoding": "utf-8",
+      "lines": 68,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/gtg/references/security-and-git.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/gtg/references/ui-quality.md",
+      "mode": "100644",
+      "bytes": 4970,
+      "sha256": "82516c4a48b54d9c1bb8aabfaf84f4632448ae5c742358c2d5ca9ae07adfd2f5",
+      "encoding": "utf-8",
+      "lines": 57,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/gtg/references/ui-quality.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/gtg/references/verification-commands.md",
+      "mode": "100644",
+      "bytes": 1132,
+      "sha256": "c462acc35bc69bc1697138a4471e5016520cc95c022face7305a19f0af8fe5f7",
+      "encoding": "utf-8",
+      "lines": 51,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/gtg/references/verification-commands.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/human-copy/SKILL.md",
+      "mode": "100644",
+      "bytes": 2673,
+      "sha256": "b06ff2c3c819ce9479a86fb73494f4973fb87830871708017f51889c9fd5b511",
+      "encoding": "utf-8",
+      "lines": 19,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/human-copy/SKILL.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/interface-implementation/SKILL.md",
+      "mode": "100644",
+      "bytes": 5148,
+      "sha256": "716966dbbf24ff6a55d9183c2af92b6d753bfdeb14af16174204e533f0849fca",
+      "encoding": "utf-8",
+      "lines": 24,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/interface-implementation/SKILL.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/interface-implementation/references/evidence.md",
+      "mode": "100644",
+      "bytes": 7330,
+      "sha256": "036e0b6786b83b433de6702d8e163ec226370997ad4550c82220200caba1da36",
+      "encoding": "utf-8",
+      "lines": 39,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/interface-implementation/references/evidence.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/interface-planning/SKILL.md",
+      "mode": "100644",
+      "bytes": 3990,
+      "sha256": "83f7263777dc8ff65bfb07061b4bf92ef2befeabcd57a647011b8fba3018631d",
+      "encoding": "utf-8",
+      "lines": 20,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/interface-planning/SKILL.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/interface-planning/references/evidence.md",
+      "mode": "100644",
+      "bytes": 12918,
+      "sha256": "ff62bc244b41eb4bc64e1e9ade890697ac734e15c50d0a9f783cb1461079eae3",
+      "encoding": "utf-8",
+      "lines": 59,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/interface-planning/references/evidence.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/official-research/SKILL.md",
+      "mode": "100644",
+      "bytes": 2044,
+      "sha256": "35a0d106836386e4460071b467d6b88d1799bd6eebb6294018ab32bf79b3dda7",
+      "encoding": "utf-8",
+      "lines": 23,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/official-research/SKILL.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/ui-evidence-review/SKILL.md",
+      "mode": "100644",
+      "bytes": 3871,
+      "sha256": "d6b7690b0d6d7eaa2cc6a7c2ce891d81860fc7f86241b6841feaf3c597ed72f8",
+      "encoding": "utf-8",
+      "lines": 24,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/ui-evidence-review/SKILL.md.md"
+    },
+    {
+      "path": "agy-focus/versions/v2.15.0/skills/workspace-intake/SKILL.md",
+      "mode": "100644",
+      "bytes": 2329,
+      "sha256": "8c2d735296fb5936edff9f5ec51e962dc6ab983926f88e5f88326676833ca2a6",
+      "encoding": "utf-8",
+      "lines": 21,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/agy-focus/versions/v2.15.0/skills/workspace-intake/SKILL.md.md"
+    },
+    {
+      "path": "assets/social-preview.png",
+      "mode": "100644",
+      "bytes": 43510,
+      "sha256": "a6ac13655d4e66f84e6dd80f68df3491fef81aded596ccf2a1fe856b9d60e752",
+      "encoding": "base64",
+      "lines": null,
+      "symbols": [],
+      "document": "files/assets/social-preview.png.md"
+    },
+    {
+      "path": "assets/social-preview.svg",
+      "mode": "100644",
+      "bytes": 2110,
+      "sha256": "5a72d92c199294caccc79f7649d8734465d7559975e58d6d6132caa5c16d36d8",
+      "encoding": "utf-8",
+      "lines": 20,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/assets/social-preview.svg.md"
+    },
+    {
+      "path": "docs/README.ja.md",
+      "mode": "100644",
+      "bytes": 3146,
+      "sha256": "f7dfc01e1dc09cf08fce5bc5bd039fc177a299fed738742253a4d5a1da9a0cbe",
+      "encoding": "utf-8",
+      "lines": 58,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/README.ja.md.md"
+    },
+    {
+      "path": "docs/README.ko.md",
+      "mode": "100644",
+      "bytes": 6874,
+      "sha256": "129da19663e3bd3a9f7e26ef7ae68abb37daab7c7870a1e327d5c989c83902ee",
+      "encoding": "utf-8",
+      "lines": 141,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/README.ko.md.md"
+    },
+    {
+      "path": "docs/README.zh-CN.md",
+      "mode": "100644",
+      "bytes": 2454,
+      "sha256": "3b95a68aa54116d0ebdeb0d00aeab336dcbdf5d4f02b84ccd1791fea7d96152a",
+      "encoding": "utf-8",
+      "lines": 59,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/README.zh-CN.md.md"
+    },
+    {
+      "path": "docs/changelog.html",
+      "mode": "100644",
+      "bytes": 7748,
+      "sha256": "8a15c7abc05f912569d1f2bd3e33ad61199dcafbb435cd8ea739fc7dfe7106d2",
+      "encoding": "utf-8",
+      "lines": 146,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/changelog.html.md"
+    },
+    {
+      "path": "docs/docs.html",
+      "mode": "100644",
+      "bytes": 7368,
+      "sha256": "2030a306a4e42016b8910903eb5ab8fc94c4f7283054f6a366f47eb6e75d38c5",
+      "encoding": "utf-8",
+      "lines": 143,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/docs.html.md"
+    },
+    {
+      "path": "docs/index.html",
+      "mode": "100644",
+      "bytes": 6887,
+      "sha256": "6908547e49a0119a82fa82f59055ae4031d9ed6373131945b2afce0d2d264912",
+      "encoding": "utf-8",
+      "lines": 149,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/index.html.md"
+    },
+    {
+      "path": "docs/main.js",
+      "mode": "100644",
+      "bytes": 5071,
+      "sha256": "892e0a195b0648fe942f67d9dc520d3b29bcf343ead0384efb792e13a5c121f8",
+      "encoding": "utf-8",
+      "lines": 97,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/main.js.md"
+    },
+    {
+      "path": "docs/styles.css",
+      "mode": "100644",
+      "bytes": 12843,
+      "sha256": "f693b989a1027654dacf94f95ea904547607df067471ebbb3b474f19c001840a",
+      "encoding": "utf-8",
+      "lines": 591,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/styles.css.md"
+    },
+    {
+      "path": "installed/GEMINI.md",
+      "mode": "100644",
+      "bytes": 8278,
+      "sha256": "72549dc268d6790bf8731e647aa33cbf6191e6f3e60cf038ef488386a45956f8",
+      "encoding": "utf-8",
+      "lines": 94,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/GEMINI.md.md"
+    },
+    {
+      "path": "installed/VERSION",
+      "mode": "100644",
+      "bytes": 6,
+      "sha256": "5a6de52371c760d50b5862e3c7ec27bee4ca35d68941355c9031fd218d2336c3",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/installed/VERSION.md"
+    },
+    {
+      "path": "installed/hooks.json",
+      "mode": "100644",
+      "bytes": 3746,
+      "sha256": "5ba572c3d21366dfbc9bd9cb1a0feece578a2228fa55813199328e1d501161b3",
+      "encoding": "utf-8",
+      "lines": 158,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/hooks.json.md"
+    },
+    {
+      "path": "installed/hooks/hooks.json",
+      "mode": "100644",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/hooks/hooks.json.md"
+    },
+    {
+      "path": "installed/rules/01-contract.md",
+      "mode": "100644",
+      "bytes": 844,
+      "sha256": "72370405a94b4a3d9ef61a7594c5cb742e6da6f76186c5e009210e6eea1fa014",
+      "encoding": "utf-8",
+      "lines": 8,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/rules/01-contract.md.md"
+    },
+    {
+      "path": "installed/rules/02-goal-lock.md",
+      "mode": "100644",
+      "bytes": 585,
+      "sha256": "4a6f04c45cc62928901d6d70ed638516cb9906543b5576d863a80fa51aa2d856",
+      "encoding": "utf-8",
+      "lines": 8,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/rules/02-goal-lock.md.md"
+    },
+    {
+      "path": "installed/rules/03-window-state.md",
+      "mode": "100644",
+      "bytes": 395,
+      "sha256": "63c12ff5522fb53dfcf40af8f8fdea13861abc24323d72eb666d35762d22e6cf",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/rules/03-window-state.md.md"
+    },
+    {
+      "path": "installed/rules/04-context-budget.md",
+      "mode": "100644",
+      "bytes": 1065,
+      "sha256": "0aac872fddac3b794bbc5a9a780679a023b1b5123754a93949f34b0f4dba6bf4",
+      "encoding": "utf-8",
+      "lines": 8,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/rules/04-context-budget.md.md"
+    },
+    {
+      "path": "installed/rules/05-inspect-before-change.md",
+      "mode": "100644",
+      "bytes": 1505,
+      "sha256": "7f1a9b3a405009360178980c07ea0a4038abf0246941ade896f9ea13c10367a4",
+      "encoding": "utf-8",
+      "lines": 11,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/rules/05-inspect-before-change.md.md"
+    },
+    {
+      "path": "installed/rules/06-safety-boundaries.md",
+      "mode": "100644",
+      "bytes": 444,
+      "sha256": "7cc22d55e9b6846b9f332aacb682307ace4b94827c1a6dfab45b324c7548f606",
+      "encoding": "utf-8",
+      "lines": 6,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/rules/06-safety-boundaries.md.md"
+    },
+    {
+      "path": "installed/rules/07-no-plugin-default.md",
+      "mode": "100644",
+      "bytes": 390,
+      "sha256": "2f2bfb24dce890d871c602d6582fb959d6bb132e76141697aa0e9db0976506d9",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/rules/07-no-plugin-default.md.md"
+    },
+    {
+      "path": "installed/rules/08-mcp-gate.md",
+      "mode": "100644",
+      "bytes": 341,
+      "sha256": "0e758f062ea6dad082832c275aba7d821f90680eaacb2f2781ba4a69ded42601",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/rules/08-mcp-gate.md.md"
+    },
+    {
+      "path": "installed/rules/09-network-and-tools.md",
+      "mode": "100644",
+      "bytes": 397,
+      "sha256": "5d99eb804d35850b16296203a0f160dc35d3478e55f5fca341e435fdafbb9b14",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/rules/09-network-and-tools.md.md"
+    },
+    {
+      "path": "installed/rules/10-verification.md",
+      "mode": "100644",
+      "bytes": 937,
+      "sha256": "532b1e53402f76ae013fa6a5f35925cf648380dac658ef0d1b9a463d2ef90828",
+      "encoding": "utf-8",
+      "lines": 8,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/rules/10-verification.md.md"
+    },
+    {
+      "path": "installed/rules/11-change-hygiene.md",
+      "mode": "100644",
+      "bytes": 332,
+      "sha256": "e37b5cc588b934434f9e64c6d8c15e4c55addafe1e3c6347ad592c7834631e5b",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/rules/11-change-hygiene.md.md"
+    },
+    {
+      "path": "installed/rules/12-reporting.md",
+      "mode": "100644",
+      "bytes": 662,
+      "sha256": "2a790861df1412a90e6ae223765d119ee1e65af79c9d23ed8137183af33c4b8e",
+      "encoding": "utf-8",
+      "lines": 6,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/rules/12-reporting.md.md"
+    },
+    {
+      "path": "installed/skills/agy-one-tap/SKILL.md",
+      "mode": "100644",
+      "bytes": 1827,
+      "sha256": "4067f4687bd38345dae727a99f59ba19295c04761f0f7a86006be55b79ac904f",
+      "encoding": "utf-8",
+      "lines": 17,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/agy-one-tap/SKILL.md.md"
+    },
+    {
+      "path": "installed/skills/architecture-boundaries/SKILL.md",
+      "mode": "100644",
+      "bytes": 3138,
+      "sha256": "d22cd7e6088a5966ccc95c06c4654541924750ed7c6ebfb90019a5e8807a9942",
+      "encoding": "utf-8",
+      "lines": 17,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/architecture-boundaries/SKILL.md.md"
+    },
+    {
+      "path": "installed/skills/architecture-boundaries/references/evidence.md",
+      "mode": "100644",
+      "bytes": 916,
+      "sha256": "ac78f497a3d00d5d63b0a3e75e4448b1004be32c02762c6011bfeb1af09e1412",
+      "encoding": "utf-8",
+      "lines": 10,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/architecture-boundaries/references/evidence.md.md"
+    },
+    {
+      "path": "installed/skills/focus-session/SKILL.md",
+      "mode": "100644",
+      "bytes": 2154,
+      "sha256": "a5d3b7fc9f7b7d33d6858b5cd3a16ffab7146700abcc5ec33cc490d14c943ed1",
+      "encoding": "utf-8",
+      "lines": 29,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/focus-session/SKILL.md.md"
+    },
+    {
+      "path": "installed/skills/gemini-38-flash-high/SKILL.md",
+      "mode": "100644",
+      "bytes": 2836,
+      "sha256": "20166dcfdd3b1a7d7a92df16d079f073d340347eedcdceb3ad7db32123a8e0da",
+      "encoding": "utf-8",
+      "lines": 45,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/gemini-38-flash-high/SKILL.md.md"
+    },
+    {
+      "path": "installed/skills/gtg/SKILL.md",
+      "mode": "100644",
+      "bytes": 5550,
+      "sha256": "26d5098e5e88d728b26c58148bb455f79add5a8e0f908ec4019a1060137c700b",
+      "encoding": "utf-8",
+      "lines": 32,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/gtg/SKILL.md.md"
+    },
+    {
+      "path": "installed/skills/gtg/references/architecture-rules.md",
+      "mode": "100644",
+      "bytes": 2096,
+      "sha256": "016b6c8956913364f304d6eebd1ed37fbc5006039c305c7e79b8874bfeb43d12",
+      "encoding": "utf-8",
+      "lines": 43,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/gtg/references/architecture-rules.md.md"
+    },
+    {
+      "path": "installed/skills/gtg/references/coding-standards.md",
+      "mode": "100644",
+      "bytes": 3064,
+      "sha256": "7a306e851558d4d5b9d5d3c203bc6b80a61dd1209c6ca06e8b6d326cb18df579",
+      "encoding": "utf-8",
+      "lines": 82,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/gtg/references/coding-standards.md.md"
+    },
+    {
+      "path": "installed/skills/gtg/references/debugging-and-testing.md",
+      "mode": "100644",
+      "bytes": 1188,
+      "sha256": "d7fe3f476dc24b14d59c0fabd23346da0bfbe52b25c10cf6f26d5c125c5eb66e",
+      "encoding": "utf-8",
+      "lines": 44,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/gtg/references/debugging-and-testing.md.md"
+    },
+    {
+      "path": "installed/skills/gtg/references/repository-standards.md",
+      "mode": "100644",
+      "bytes": 2568,
+      "sha256": "a5bc67646254e0ae1b0d6499888a7104fc0b69d9727b7588b6378684b1c7cffb",
+      "encoding": "utf-8",
+      "lines": 91,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/gtg/references/repository-standards.md.md"
+    },
+    {
+      "path": "installed/skills/gtg/references/security-and-git.md",
+      "mode": "100644",
+      "bytes": 1233,
+      "sha256": "8866144f469f009d540d62d05bd34f8db48bcad697477c94f2ee9c0706836fa0",
+      "encoding": "utf-8",
+      "lines": 68,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/gtg/references/security-and-git.md.md"
+    },
+    {
+      "path": "installed/skills/gtg/references/ui-quality.md",
+      "mode": "100644",
+      "bytes": 4970,
+      "sha256": "82516c4a48b54d9c1bb8aabfaf84f4632448ae5c742358c2d5ca9ae07adfd2f5",
+      "encoding": "utf-8",
+      "lines": 57,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/gtg/references/ui-quality.md.md"
+    },
+    {
+      "path": "installed/skills/gtg/references/verification-commands.md",
+      "mode": "100644",
+      "bytes": 1132,
+      "sha256": "c462acc35bc69bc1697138a4471e5016520cc95c022face7305a19f0af8fe5f7",
+      "encoding": "utf-8",
+      "lines": 51,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/gtg/references/verification-commands.md.md"
+    },
+    {
+      "path": "installed/skills/human-copy/SKILL.md",
+      "mode": "100644",
+      "bytes": 2673,
+      "sha256": "b06ff2c3c819ce9479a86fb73494f4973fb87830871708017f51889c9fd5b511",
+      "encoding": "utf-8",
+      "lines": 19,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/human-copy/SKILL.md.md"
+    },
+    {
+      "path": "installed/skills/interface-implementation/SKILL.md",
+      "mode": "100644",
+      "bytes": 5148,
+      "sha256": "716966dbbf24ff6a55d9183c2af92b6d753bfdeb14af16174204e533f0849fca",
+      "encoding": "utf-8",
+      "lines": 24,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/interface-implementation/SKILL.md.md"
+    },
+    {
+      "path": "installed/skills/interface-implementation/references/evidence.md",
+      "mode": "100644",
+      "bytes": 7330,
+      "sha256": "036e0b6786b83b433de6702d8e163ec226370997ad4550c82220200caba1da36",
+      "encoding": "utf-8",
+      "lines": 39,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/interface-implementation/references/evidence.md.md"
+    },
+    {
+      "path": "installed/skills/interface-planning/SKILL.md",
+      "mode": "100644",
+      "bytes": 3990,
+      "sha256": "83f7263777dc8ff65bfb07061b4bf92ef2befeabcd57a647011b8fba3018631d",
+      "encoding": "utf-8",
+      "lines": 20,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/interface-planning/SKILL.md.md"
+    },
+    {
+      "path": "installed/skills/interface-planning/references/evidence.md",
+      "mode": "100644",
+      "bytes": 12918,
+      "sha256": "ff62bc244b41eb4bc64e1e9ade890697ac734e15c50d0a9f783cb1461079eae3",
+      "encoding": "utf-8",
+      "lines": 59,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/interface-planning/references/evidence.md.md"
+    },
+    {
+      "path": "installed/skills/official-research/SKILL.md",
+      "mode": "100644",
+      "bytes": 2044,
+      "sha256": "35a0d106836386e4460071b467d6b88d1799bd6eebb6294018ab32bf79b3dda7",
+      "encoding": "utf-8",
+      "lines": 23,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/official-research/SKILL.md.md"
+    },
+    {
+      "path": "installed/skills/ui-evidence-review/SKILL.md",
+      "mode": "100644",
+      "bytes": 3871,
+      "sha256": "d6b7690b0d6d7eaa2cc6a7c2ce891d81860fc7f86241b6841feaf3c597ed72f8",
+      "encoding": "utf-8",
+      "lines": 24,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/ui-evidence-review/SKILL.md.md"
+    },
+    {
+      "path": "installed/skills/workspace-intake/SKILL.md",
+      "mode": "100644",
+      "bytes": 2329,
+      "sha256": "8c2d735296fb5936edff9f5ec51e962dc6ab983926f88e5f88326676833ca2a6",
+      "encoding": "utf-8",
+      "lines": 21,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/installed/skills/workspace-intake/SKILL.md.md"
+    },
+    {
+      "path": "legacy/GEMINI.legacy-2026-08-01.md",
+      "mode": "100644",
+      "bytes": 13425,
+      "sha256": "c823e49a07a7835e57912bc65f0a6e4f7f8de1e7f5e0da4131b41c8b75d9431d",
+      "encoding": "utf-8",
+      "lines": 444,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/legacy/GEMINI.legacy-2026-08-01.md.md"
+    },
+    {
+      "path": "scripts/install.sh",
+      "mode": "100644",
+      "bytes": 3860,
+      "sha256": "a97364367b13f6b52920d74fa6322ef729a05c624a5a266e9e6added1a125bc7",
+      "encoding": "utf-8",
+      "lines": 108,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/scripts/install.sh.md"
+    },
+    {
+      "path": "scripts/sync_version.py",
+      "mode": "100644",
+      "bytes": 2438,
+      "sha256": "c88b8ae2d2beab2d49a9533d0d8e15ff97bb1806d9e4ae8d403272a413aabd82",
+      "encoding": "utf-8",
+      "lines": 67,
+      "symbols": [
+        {
+          "name": "sync_version",
+          "kind": "FunctionDef",
+          "line": 14,
+          "end_line": 63
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/scripts/sync_version.py.md"
+    }
+  ],
+  "excluded_roots": {
+    ".git/": "Git 내부 데이터베이스",
+    "docs/rebuild/inventory/": "재귀 복제를 막기 위한 생성 산출물"
+  },
+  "ignored_paths": []
+}

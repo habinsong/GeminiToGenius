@@ -1,11 +1,9 @@
-# Support
+# 지원
 
-- First install or update: run `bash scripts/install.sh` from a clean clone.
-- Historical profile: run `bash scripts/install.sh --version vX.Y.Z`.
-- Installer options: run `bash scripts/install.sh --help`.
-- Usage question: [Discussions](https://github.com/habinsong/GeminiToGenius/discussions)
-- Reproducible bug: [Bug report](https://github.com/habinsong/GeminiToGenius/issues/new?template=bug_report.yml)
-- Scoped improvement: [Feature request](https://github.com/habinsong/GeminiToGenius/issues/new?template=feature_request.yml)
-- Security: [SECURITY.md](SECURITY.md)
+설치·검사는 `bash scripts/install.sh`와 `bash scripts/install.sh doctor`를 사용합니다. 옵션은 `--help`로 확인합니다.
 
-For help, include the profile version, model, app, installer or verifier output, and the smallest reproducible example. Remove credentials and private paths first.
+문제 보고에는 버전·호스트·실제 모델·명령·최소 재현 절차를 포함합니다. 비밀값이나 개인 프롬프트를 첨부하지 않습니다.
+
+- [버그 신고](https://github.com/habinsong/GeminiToGenius/issues/new?template=bug_report.yml)
+- [질문](https://github.com/habinsong/GeminiToGenius/discussions)
+- [보안](SECURITY.md)

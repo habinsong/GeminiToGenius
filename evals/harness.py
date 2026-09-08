@@ -1,0 +1,40 @@
+"""평가 CLI와 기존 Python 호출 진입점을 유지합니다."""
+
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+import sys
+
+if not __package__:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    __package__ = "evals"
+
+from .definitions import CASES, PROBE, ROOT, case_by_id, definition_digest
+from .grading import csv_rows, evaluate_function, grade, same_output, same_value, terminate
+from .preparation import prepare
+from .workspace import digest, environment_info, git_command, git_state, private, seed_user_edits, snapshot
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    commands = parser.add_subparsers(dest="command", required=True)
+    start = commands.add_parser("prepare")
+    start.add_argument("case_id")
+    start.add_argument("target", type=Path)
+    start.add_argument("--profile", choices=("baseline", "gtg"), default="baseline")
+    score = commands.add_parser("grade")
+    score.add_argument("target", type=Path)
+    args = parser.parse_args()
+    try:
+        result = prepare(args.case_id, args.target, args.profile) if args.command == "prepare" else grade(args.target)
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return int(args.command == "grade" and not result["artifact_passed"])
+    except (OSError, ValueError) as error:
+        print(json.dumps({"ok": False, "error": str(error)}, ensure_ascii=False))
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

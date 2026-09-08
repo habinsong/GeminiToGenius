@@ -1,0 +1,167 @@
+# `installed/hooks.json`
+
+- 형식: `100644`
+- 바이트: 3746
+- SHA-256: `5ba572c3d21366dfbc9bd9cb1a0feece578a2228fa55813199328e1d501161b3`
+- 인코딩: `utf-8`
+
+```
+{
+  "focus-anchor": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py focus-anchor",
+        "timeout": 3
+      }
+    ]
+  },
+  "scope-intake-anchor": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py scope-intake-anchor",
+        "timeout": 5
+      }
+    ]
+  },
+  "design-context-anchor": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py design-context-anchor",
+        "timeout": 3
+      }
+    ]
+  },
+  "copy-context-anchor": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py copy-context-anchor",
+        "timeout": 3
+      }
+    ]
+  },
+  "architecture-boundary-anchor": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py architecture-boundary-anchor",
+        "timeout": 3
+      }
+    ]
+  },
+  "mcp-purpose-gate": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp.*|plugin.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py mcp-purpose-gate",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  },
+  "destructive-command-gate": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py destructive-command-gate",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  },
+  "external-input-gate": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py external-input-gate",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  },
+  "scope-read-gate": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py scope-read-gate",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "tool-audit": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py tool-audit",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  },
+  "failure-anchor": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py failure-anchor",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  },
+  "invocation-state": {
+    "PostInvocation": [
+      {
+        "type": "command",
+        "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py invocation-state",
+        "timeout": 3
+      }
+    ]
+  },
+  "visual-evidence-anchor": {
+    "PostInvocation": [
+      {
+        "type": "command",
+        "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py visual-evidence-anchor",
+        "timeout": 3
+      }
+    ]
+  },
+  "stop-snapshot": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "python3 ~/.gemini/config/agy-focus/current/hooks/hook_runner.py stop-snapshot",
+        "timeout": 3
+      }
+    ]
+  }
+}
+```

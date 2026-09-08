@@ -1,0 +1,620 @@
+# `docs/rebuild/validation/2026-09-08-resume-eval/native-tools.json`
+
+- 형식: `100644`
+- 바이트: 17651
+- SHA-256: `65096e2b05044d29a2be43a867d37bec8101fdacdca08c9e96e722fee68dc81e`
+- 인코딩: `utf-8`
+
+```
+{
+  "conversation_id": "55bff795-2bca-4449-ac1e-77d0a5be9f59",
+  "native_database": "/Users/songhabin/.gemini/antigravity/conversations/55bff795-2bca-4449-ac1e-77d0a5be9f59.db",
+  "response_content_copied": false,
+  "thinking_content_copied": false,
+  "step_type_counts": {
+    "14": 1,
+    "15": 33,
+    "90": 14,
+    "132": 32
+  },
+  "times": [
+    {
+      "step": 0,
+      "created_at": "2026-09-08T08:43:51.344527+00:00"
+    },
+    {
+      "step": 1,
+      "created_at": "2026-09-08T08:43:51.923324+00:00"
+    },
+    {
+      "step": 2,
+      "created_at": "2026-09-08T08:43:51.926743+00:00"
+    },
+    {
+      "step": 3,
+      "created_at": "2026-09-08T08:43:56.384286+00:00"
+    },
+    {
+      "step": 4,
+      "created_at": "2026-09-08T08:43:56.961502+00:00"
+    },
+    {
+      "step": 5,
+      "created_at": "2026-09-08T08:44:02.392674+00:00"
+    },
+    {
+      "step": 6,
+      "created_at": "2026-09-08T08:44:02.805500+00:00"
+    },
+    {
+      "step": 7,
+      "created_at": "2026-09-08T08:44:05.184941+00:00"
+    },
+    {
+      "step": 8,
+      "created_at": "2026-09-08T08:44:05.555420+00:00"
+    },
+    {
+      "step": 9,
+      "created_at": "2026-09-08T08:44:10.656061+00:00"
+    },
+    {
+      "step": 10,
+      "created_at": "2026-09-08T08:44:10.960640+00:00"
+    },
+    {
+      "step": 11,
+      "created_at": "2026-09-08T08:44:14.171881+00:00"
+    },
+    {
+      "step": 12,
+      "created_at": "2026-09-08T08:44:14.700175+00:00"
+    },
+    {
+      "step": 13,
+      "created_at": "2026-09-08T08:44:16.708910+00:00"
+    },
+    {
+      "step": 14,
+      "created_at": "2026-09-08T08:44:17.085164+00:00"
+    },
+    {
+      "step": 15,
+      "created_at": "2026-09-08T08:44:18.925552+00:00"
+    },
+    {
+      "step": 16,
+      "created_at": "2026-09-08T08:44:19.490536+00:00"
+    },
+    {
+      "step": 17,
+      "created_at": "2026-09-08T08:44:22.582574+00:00"
+    },
+    {
+      "step": 18,
+      "created_at": "2026-09-08T08:44:23.452198+00:00"
+    },
+    {
+      "step": 19,
+      "created_at": "2026-09-08T08:44:25.166651+00:00"
+    },
+    {
+      "step": 20,
+      "created_at": "2026-09-08T08:44:25.820388+00:00"
+    },
+    {
+      "step": 21,
+      "created_at": "2026-09-08T08:44:28.241428+00:00"
+    },
+    {
+      "step": 22,
+      "created_at": "2026-09-08T08:44:28.810562+00:00"
+    },
+    {
+      "step": 23,
+      "created_at": "2026-09-08T08:44:31.523726+00:00"
+    },
+    {
+      "step": 24,
+      "created_at": "2026-09-08T08:44:32.272628+00:00"
+    },
+    {
+      "step": 25,
+      "created_at": "2026-09-08T08:44:36.391238+00:00"
+    },
+    {
+      "step": 26,
+      "created_at": "2026-09-08T08:44:36.835813+00:00"
+    },
+    {
+      "step": 27,
+      "created_at": "2026-09-08T08:44:36.840940+00:00"
+    },
+    {
+      "step": 28,
+      "created_at": "2026-09-08T08:44:39.778809+00:00"
+    },
+    {
+      "step": 29,
+      "created_at": "2026-09-08T08:44:40.149248+00:00"
+    },
+    {
+      "step": 30,
+      "created_at": "2026-09-08T08:44:40.163054+00:00"
+    },
+    {
+      "step": 31,
+      "created_at": "2026-09-08T08:44:43.066916+00:00"
+    },
+    {
+      "step": 32,
+      "created_at": "2026-09-08T08:44:43.355399+00:00"
+    },
+    {
+      "step": 33,
+      "created_at": "2026-09-08T08:44:43.367559+00:00"
+    },
+    {
+      "step": 34,
+      "created_at": "2026-09-08T08:44:45.149466+00:00"
+    },
+    {
+      "step": 35,
+      "created_at": "2026-09-08T08:44:45.384428+00:00"
+    },
+    {
+      "step": 36,
+      "created_at": "2026-09-08T08:44:45.393681+00:00"
+    },
+    {
+      "step": 37,
+      "created_at": "2026-09-08T08:44:47.338960+00:00"
+    },
+    {
+      "step": 38,
+      "created_at": "2026-09-08T08:44:47.675988+00:00"
+    },
+    {
+      "step": 39,
+      "created_at": "2026-09-08T08:44:47.688447+00:00"
+    },
+    {
+      "step": 40,
+      "created_at": "2026-09-08T08:44:49.919980+00:00"
+    },
+    {
+      "step": 41,
+      "created_at": "2026-09-08T08:44:50.172197+00:00"
+    },
+    {
+      "step": 42,
+      "created_at": "2026-09-08T08:44:50.185719+00:00"
+    },
+    {
+      "step": 43,
+      "created_at": "2026-09-08T08:44:51.711047+00:00"
+    },
+    {
+      "step": 44,
+      "created_at": "2026-09-08T08:44:52.014742+00:00"
+    },
+    {
+      "step": 45,
+      "created_at": "2026-09-08T08:44:52.030213+00:00"
+    },
+    {
+      "step": 46,
+      "created_at": "2026-09-08T08:44:54.094537+00:00"
+    },
+    {
+      "step": 47,
+      "created_at": "2026-09-08T08:44:54.343793+00:00"
+    },
+    {
+      "step": 48,
+      "created_at": "2026-09-08T08:44:54.352624+00:00"
+    },
+    {
+      "step": 49,
+      "created_at": "2026-09-08T08:44:56.582992+00:00"
+    },
+    {
+      "step": 50,
+      "created_at": "2026-09-08T08:44:56.972398+00:00"
+    },
+    {
+      "step": 51,
+      "created_at": "2026-09-08T08:44:56.992511+00:00"
+    },
+    {
+      "step": 52,
+      "created_at": "2026-09-08T08:45:00.091122+00:00"
+    },
+    {
+      "step": 53,
+      "created_at": "2026-09-08T08:45:00.557055+00:00"
+    },
+    {
+      "step": 54,
+      "created_at": "2026-09-08T08:45:00.565706+00:00"
+    },
+    {
+      "step": 55,
+      "created_at": "2026-09-08T08:45:07.226333+00:00"
+    },
+    {
+      "step": 56,
+      "created_at": "2026-09-08T08:45:07.549158+00:00"
+    },
+    {
+      "step": 57,
+      "created_at": "2026-09-08T08:45:07.562339+00:00"
+    },
+    {
+      "step": 58,
+      "created_at": "2026-09-08T08:45:10.827600+00:00"
+    },
+    {
+      "step": 59,
+      "created_at": "2026-09-08T08:45:11.472800+00:00"
+    },
+    {
+      "step": 60,
+      "created_at": "2026-09-08T08:45:11.486638+00:00"
+    },
+    {
+      "step": 61,
+      "created_at": "2026-09-08T08:45:14.903903+00:00"
+    },
+    {
+      "step": 62,
+      "created_at": "2026-09-08T08:45:15.359884+00:00"
+    },
+    {
+      "step": 63,
+      "created_at": "2026-09-08T08:45:15.386521+00:00"
+    },
+    {
+      "step": 64,
+      "created_at": "2026-09-08T08:45:17.487024+00:00"
+    },
+    {
+      "step": 65,
+      "created_at": "2026-09-08T08:45:18.319452+00:00"
+    },
+    {
+      "step": 66,
+      "created_at": "2026-09-08T08:45:24.602076+00:00"
+    },
+    {
+      "step": 67,
+      "created_at": "2026-09-08T08:45:24.971800+00:00"
+    },
+    {
+      "step": 68,
+      "created_at": "2026-09-08T08:45:31.034503+00:00"
+    },
+    {
+      "step": 69,
+      "created_at": "2026-09-08T08:45:31.403645+00:00"
+    },
+    {
+      "step": 70,
+      "created_at": "2026-09-08T08:45:34.851557+00:00"
+    },
+    {
+      "step": 71,
+      "created_at": "2026-09-08T08:45:36.368638+00:00"
+    },
+    {
+      "step": 72,
+      "created_at": "2026-09-08T08:45:38.920453+00:00"
+    },
+    {
+      "step": 73,
+      "created_at": "2026-09-08T08:45:40.055179+00:00"
+    },
+    {
+      "step": 74,
+      "created_at": "2026-09-08T08:45:41.874955+00:00"
+    },
+    {
+      "step": 75,
+      "created_at": "2026-09-08T08:45:42.472317+00:00"
+    },
+    {
+      "step": 76,
+      "created_at": "2026-09-08T08:45:44.749038+00:00"
+    },
+    {
+      "step": 77,
+      "created_at": "2026-09-08T08:45:45.382883+00:00"
+    },
+    {
+      "step": 78,
+      "created_at": "2026-09-08T08:45:48.378518+00:00"
+    },
+    {
+      "step": 79,
+      "created_at": "2026-09-08T08:45:48.741610+00:00"
+    }
+  ],
+  "tools": [
+    {
+      "step": 3,
+      "arguments": {
+        "toolSummary": "View gtg-build skill",
+        "AbsolutePath": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace/.agents/plugins/geminitogenius/skills/gtg-build/SKILL.md",
+        "toolAction": "Viewing file"
+      }
+    },
+    {
+      "step": 5,
+      "arguments": {
+        "toolAction": "Searching files",
+        "toolSummary": "Find files in workspace"
+      }
+    },
+    {
+      "step": 7,
+      "arguments": {
+        "CommandLine": "git status",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace",
+        "toolAction": "Running command",
+        "toolSummary": "Check git status"
+      }
+    },
+    {
+      "step": 9,
+      "arguments": {
+        "toolAction": "Searching files",
+        "toolSummary": "Find files in .gtg"
+      }
+    },
+    {
+      "step": 11,
+      "arguments": {
+        "toolAction": "Running command",
+        "toolSummary": "Check gtg command",
+        "CommandLine": "which gtg; gtg --help || python3 -m gtg --help",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace"
+      }
+    },
+    {
+      "step": 13,
+      "arguments": {
+        "toolSummary": "Find files in .agents",
+        "toolAction": "Searching files"
+      }
+    },
+    {
+      "step": 15,
+      "arguments": {
+        "AbsolutePath": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace/.agents/plugins/geminitogenius/skills/gtg-build/references/task-contract.md",
+        "toolAction": "Viewing file",
+        "toolSummary": "View task-contract.md"
+      }
+    },
+    {
+      "step": 17,
+      "arguments": {
+        "toolAction": "Running command",
+        "toolSummary": "List GTG tasks",
+        "CommandLine": "python3 .agents/plugins/geminitogenius/run.py tasks --workspace .",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace"
+      }
+    },
+    {
+      "step": 19,
+      "arguments": {
+        "toolAction": "Running command",
+        "toolSummary": "Check status of task 3c1764d16ffc4f8aa101e0df716cd620",
+        "CommandLine": "python3 .agents/plugins/geminitogenius/run.py status 3c1764d16ffc4f8aa101e0df716cd620 --workspace .",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace"
+      }
+    },
+    {
+      "step": 21,
+      "arguments": {
+        "toolAction": "Running command",
+        "toolSummary": "Check task status",
+        "CommandLine": "python3 .agents/plugins/geminitogenius/run.py status 3c1764d16ffc4f8aa101e0df716cd620",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace"
+      }
+    },
+    {
+      "step": 23,
+      "arguments": {
+        "CommandLine": "python3 .agents/plugins/geminitogenius/run.py attach --help",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace",
+        "toolAction": "Running command",
+        "toolSummary": "Check attach help"
+      }
+    },
+    {
+      "step": 25,
+      "arguments": {
+        "CommandLine": "python3 .agents/plugins/geminitogenius/run.py attach 3c1764d16ffc4f8aa101e0df716cd620 --workspace . --platform antigravity --session 55bff795-2bca-4449-ac1e-77d0a5be9f59",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace",
+        "toolAction": "Running command",
+        "toolSummary": "Attach task"
+      }
+    },
+    {
+      "step": 28,
+      "arguments": {
+        "toolAction": "Viewing file",
+        "toolSummary": "View app.py",
+        "AbsolutePath": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace/app.py"
+      }
+    },
+    {
+      "step": 31,
+      "arguments": {
+        "toolAction": "Viewing file",
+        "toolSummary": "View exports.py",
+        "AbsolutePath": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace/exports.py"
+      }
+    },
+    {
+      "step": 34,
+      "arguments": {
+        "AbsolutePath": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace/test_exports.py",
+        "toolAction": "Viewing file",
+        "toolSummary": "View test_exports.py"
+      }
+    },
+    {
+      "step": 37,
+      "arguments": {
+        "AbsolutePath": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace/test_app.py",
+        "toolAction": "Viewing file",
+        "toolSummary": "View test_app.py"
+      }
+    },
+    {
+      "step": 40,
+      "arguments": {
+        "toolAction": "Viewing file",
+        "toolSummary": "View notes.txt",
+        "AbsolutePath": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace/notes.txt"
+      }
+    },
+    {
+      "step": 43,
+      "arguments": {
+        "toolAction": "Viewing file",
+        "toolSummary": "View progress.json",
+        "AbsolutePath": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace/progress.json"
+      }
+    },
+    {
+      "step": 46,
+      "arguments": {
+        "toolAction": "Viewing file",
+        "toolSummary": "View README.md",
+        "AbsolutePath": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace/README.md"
+      }
+    },
+    {
+      "step": 49,
+      "arguments": {
+        "toolAction": "Running command",
+        "toolSummary": "Check git diff on app.py",
+        "CommandLine": "git diff app.py",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace"
+      }
+    },
+    {
+      "step": 52,
+      "arguments": {
+        "toolAction": "Running command",
+        "toolSummary": "Run discover tests",
+        "CommandLine": "python3 -m unittest discover -v",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace"
+      }
+    },
+    {
+      "step": 55,
+      "arguments": {
+        "TargetFile": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace/app.py",
+        "toolAction": "Editing file",
+        "toolSummary": "Update app.py to support CSV export"
+      }
+    },
+    {
+      "step": 58,
+      "arguments": {
+        "AbsolutePath": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace/app.py",
+        "toolAction": "Viewing file",
+        "toolSummary": "View app.py after edit"
+      }
+    },
+    {
+      "step": 61,
+      "arguments": {
+        "toolAction": "Running command",
+        "toolSummary": "Run unittests",
+        "CommandLine": "python3 -m unittest discover -v",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace"
+      }
+    },
+    {
+      "step": 64,
+      "arguments": {
+        "toolAction": "Running command",
+        "toolSummary": "Verify task with GTG runner",
+        "CommandLine": "python3 .agents/plugins/geminitogenius/run.py verify 3c1764d16ffc4f8aa101e0df716cd620",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace"
+      }
+    },
+    {
+      "step": 66,
+      "arguments": {
+        "toolAction": "Searching files",
+        "toolSummary": "Check files in .gtg"
+      }
+    },
+    {
+      "step": 68,
+      "arguments": {
+        "TargetFile": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace/.gtg/checkpoint.json",
+        "toolAction": "Writing file",
+        "toolSummary": "Create .gtg/checkpoint.json"
+      }
+    },
+    {
+      "step": 70,
+      "arguments": {
+        "CommandLine": "python3 .agents/plugins/geminitogenius/run.py checkpoint --help",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace",
+        "toolAction": "Running command",
+        "toolSummary": "Check checkpoint help"
+      }
+    },
+    {
+      "step": 72,
+      "arguments": {
+        "toolAction": "Running command",
+        "toolSummary": "Record GTG checkpoint",
+        "CommandLine": "python3 -c '\nimport json\ndata = {\n  \"summary\": \"app.download에 CSV 다운로드 경로를 연결하고, 사용자가 수정한 파일명(현장 기록)과 기존 JSON 다운로드 동작을 온전히 유지하며 모든 등록 검사를 통과했습니다.\",\n  \"next_action\": \"작업 완료 보고\",\n  \"files\": [\"app.py\", \"exports.py\", \"test_app.py\", \"test_exports.py\"]\n}\nwith open(\".gtg/checkpoint.json\", \"w\", encoding=\"utf-8\") as f:\n    json.dump(data, f, ensure_ascii=False, indent=2)\n' && python3 .agents/plugins/geminitogenius/run.py checkpoint 3c1764d16ffc4f8aa101e0df716cd620 --note .gtg/checkpoint.json",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace"
+      }
+    },
+    {
+      "step": 74,
+      "arguments": {
+        "toolSummary": "Check status",
+        "CommandLine": "python3 .agents/plugins/geminitogenius/run.py status 3c1764d16ffc4f8aa101e0df716cd620",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace",
+        "toolAction": "Running command"
+      }
+    },
+    {
+      "step": 76,
+      "arguments": {
+        "toolAction": "Running command",
+        "toolSummary": "Check git status",
+        "CommandLine": "git status",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace"
+      }
+    },
+    {
+      "step": 78,
+      "arguments": {
+        "CommandLine": "git diff app.py",
+        "Cwd": "/private/var/folders/wt/88c641tj50z4rzrm6pfdld6c0000gn/T/gtg-native-resume-eyttktas/trial/workspace",
+        "toolAction": "Running command",
+        "toolSummary": "Check git diff of app.py"
+      }
+    }
+  ],
+  "tool_action_counts": {
+    "Viewing file": 10,
+    "Searching files": 4,
+    "Running command": 16,
+    "Editing file": 1,
+    "Writing file": 1
+  }
+}
+```

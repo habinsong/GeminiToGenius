@@ -33,18 +33,18 @@
 
     <!-- Hero Section -->
     <section class="apple-hero">
-      <span class="apple-tag">v2.15.0 릴리즈</span>
-      <h1 class="apple-hero-headline">AI가 코드를 다룰 때 지키는 가장 정직한 기준.</h1>
+      <span class="apple-tag">v3.0.0-alpha.1 사전 릴리스</span>
+      <h1 class="apple-hero-headline">작업과 검증 결과를 연결하는 Gemini 하네스.</h1>
       <p class="apple-hero-subhead">
-        대충 짐작해서 코드를 짜거나 확인도 안 한 채 거짓말을 하지 않도록 돕습니다.
-        사용자의 지시를 정확히 확인하고, 파일을 처음부터 끝까지 읽은 뒤 꼭 필요한 부분만 안전하게 수정합니다.
+        자연어 요청을 현재 코드와 오류 맥락에서 구체화하도록 구성합니다.
+        검사 명령을 직접 실행하고, 코드가 바뀌면 이전 성공을 무효화합니다. 실제 모델 품질은 별도 검증이 필요합니다.
       </p>
 
       <!-- Apple Terminal Installation Bar -->
       <div class="apple-terminal-box">
         <div class="apple-terminal-bar">
           <span>터미널 (macOS zsh)</span>
-          <span>1초 만에 설치하기</span>
+          <span>macOS · Linux</span>
         </div>
         <div class="apple-terminal-content">
           <div class="apple-terminal-code" id="terminalCode">
@@ -60,35 +60,35 @@
     <!-- Key Principles Section -->
     <section id="principles">
       <div class="apple-section-header">
-        <h2 class="apple-section-title">AI가 스스로 지키는 3가지 기본 약속입니다.</h2>
-        <p class="apple-section-desc">비전공자나 일반 사용자도 안심하고 코딩을 맡길 수 있도록 설계되었습니다.</p>
+        <h2 class="apple-section-title">요청부터 검증까지 연결합니다.</h2>
+        <p class="apple-section-desc">특정 Gemini 버전이나 슬래시 명령을 요구하지 않습니다.</p>
       </div>
 
       <div class="apple-feature-grid">
         <div class="apple-feature-item">
           <span class="apple-feature-badge">약속 01</span>
-          <h3>말씀하신 내용을 먼저 다시 확인합니다.</h3>
+          <h3>현재 맥락에서 요청을 구체화합니다.</h3>
           <p>
-            일을 시작하기 전에 사용자가 무엇을 요청했는지 먼저 명확하게 요약해서 말씀드립니다.
-            엉뚱한 방향으로 작업을 시작하지 않도록 목표를 서로 확실히 맞춥니다.
+            짧거나 불완전한 요청도 현재 파일·오류·화면을 먼저 확인합니다.
+            결과나 데이터 안전이 달라지는 정보만 질문합니다.
           </p>
         </div>
 
         <div class="apple-feature-item">
           <span class="apple-feature-badge">약속 02</span>
-          <h3>파일을 처음부터 끝까지 꼼꼼히 읽습니다.</h3>
+          <h3>목표와 완료 조건을 보존합니다.</h3>
           <p>
-            코드의 일부분만 대충 훑어보고 넘겨짚지 않습니다.
-            전체 맥락과 연관된 파일들을 빠짐없이 확인한 뒤에 꼭 고쳐야 할 부분만 조심스럽게 수정합니다.
+            복잡한 작업은 목표와 검사 명령을 로컬 상태에 기록합니다.
+            중단 뒤에도 미완료 조건을 확인하고 작업을 이어갈 수 있습니다.
           </p>
         </div>
 
         <div class="apple-feature-item">
           <span class="apple-feature-badge">약속 03</span>
-          <h3>직접 실행해 보고 통과했을 때만 보고합니다.</h3>
+          <h3>실제 실행 결과를 기록합니다.</h3>
           <p>
-            확인해보지도 않고 잘 돌아간다고 거짓말하지 않습니다.
-            실제 화면이 잘 나오는지, 에러가 없는지 직접 테스트해 본 뒤 결과를 투명하게 말씀드립니다.
+            종료 코드·검사 시간·검증 대상의 파일 해시를 기록합니다.
+            검증 이후 코드가 바뀌면 성공 기록을 그대로 사용하지 않습니다.
           </p>
         </div>
       </div>

@@ -1,0 +1,34 @@
+{
+  "shell": "/bin/sh",
+  "shell_metacharacters_in_path": true,
+  "working_directory_is_outside_package": true,
+  "injected_marker_files_created": false,
+  "state_database_created": false,
+  "additional_model_prompts": 0,
+  "results": [
+    {
+      "platform": "antigravity",
+      "event": "PreInvocation",
+      "exit_code": 0,
+      "expected_output": true
+    },
+    {
+      "platform": "antigravity",
+      "event": "Stop",
+      "exit_code": 0,
+      "expected_output": true
+    },
+    {
+      "platform": "gemini-cli",
+      "event": "BeforeAgent",
+      "exit_code": 0,
+      "expected_output": true
+    },
+    {
+      "platform": "gemini-cli",
+      "event": "AfterAgent",
+      "exit_code": 0,
+      "expected_output": true
+    }
+  ]
+}

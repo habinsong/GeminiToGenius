@@ -1,0 +1,114 @@
+# `gtg/spec.py`
+
+- 형식: `100644`
+- 바이트: 4785
+- SHA-256: `a31e4fb5edac39593958e87a8a86a4a3ae525e8c0caf813cf4b63ada0c0aaaf7`
+- 인코딩: `utf-8`
+
+```
+"""작업 계약과 검증 대상의 내용을 다룹니다."""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+from pathlib import Path
+import re
+import stat
+
+
+ID = re.compile(r"[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}\Z")
+PRIVATE_DIRS = {".git", ".gtg", ".ssh", ".aws", ".kube", "__pycache__"}
+
+
+def sensitive(path: Path) -> bool:
+    parts = tuple(part.casefold() for part in path.parts)
+    return (bool(set(parts) & {".ssh", ".aws", ".kube"})
+            or any(part == ".env" or part.startswith(".env.") or Path(part).suffix in {".key", ".pem"}
+                   or part in {"id_rsa", "id_ed25519"} for part in parts)
+            or any(a == ".config" and b == "gh" for a, b in zip(parts, parts[1:])))
+
+
+def private(path: Path) -> bool:
+    return (sensitive(path) or bool({part.casefold() for part in path.parts} & PRIVATE_DIRS)
+            or path.suffix.casefold() == ".pyc" or path.name.casefold() == ".ds_store")
+
+
+def relative(value: str) -> Path:
+    if not isinstance(value, str) or not value or "\0" in value:
+        raise ValueError("검증 경로가 비어 있거나 올바르지 않습니다.")
+    path = Path(value)
+    if path.is_absolute() or ".." in path.parts or private(path):
+        raise ValueError("검증 경로는 작업공간 내부의 비민감 경로여야 합니다.")
+    return path
+
+
+def validate(spec: dict) -> dict:
+    if not isinstance(spec, dict) or type(spec.get("schema_version")) is not int or spec["schema_version"] != 1:
+        raise ValueError("schema_version 1 작업 계약이 필요합니다.")
+    if not isinstance(spec.get("goal"), str) or not spec["goal"].strip():
+        raise ValueError("구체적인 목표가 필요합니다.")
+    checks = spec.get("checks")
+    if not isinstance(checks, list) or not checks:
+        raise ValueError("하나 이상의 완료 조건과 검증 명령이 필요합니다.")
+    seen = set()
+    for check in checks:
+        if not isinstance(check, dict) or not isinstance(check.get("id"), str) or not ID.fullmatch(check["id"]):
+            raise ValueError("검사 식별자가 올바르지 않습니다.")
+        if check["id"] in seen:
+            raise ValueError("검사 식별자가 중복됩니다.")
+        seen.add(check["id"])
+        if not isinstance(check.get("criterion"), str) or not check["criterion"].strip():
+            raise ValueError("검사마다 사용자 요구와 연결된 완료 조건이 필요합니다.")
+        command = check.get("argv")
+        if not isinstance(command, list) or not command or any(
+                not isinstance(arg, str) or "\0" in arg for arg in command) or not command[0]:
+            raise ValueError("검증 명령은 비어 있지 않은 argv 배열이어야 합니다.")
+        timeout = check.get("timeout_seconds", 120)
+        if isinstance(timeout, bool) or not isinstance(timeout, (int, float)) or not math.isfinite(timeout) or not 0 < timeout <= 3600:
+            raise ValueError("명령 시간 제한은 0초 초과 3600초 이하여야 합니다.")
+        watch = check.get("watch")
+        if not isinstance(watch, list) or not watch:
+            raise ValueError("검증 근거에 포함할 파일 또는 폴더가 필요합니다.")
+        for name in watch:
+            relative(name)
+    return json.loads(json.dumps(spec, allow_nan=False))
+
+
+def fingerprint(root: Path, watched: list[str]) -> str:
+    """파일 내용·모드·삭제를 비교합니다. 제외 경로의 내용은 읽지 않습니다."""
+    root = root.resolve(strict=True)
+    records = {}
+
+    def add(path: Path):
+        name = path.relative_to(root).as_posix()
+        if private(Path(name)):
+            return
+        for parent in [path, *path.parents]:
+            if parent == root:
+                break
+            if parent.is_symlink():
+                raise ValueError("검증 대상의 심볼릭 링크는 지원하지 않습니다.")
+        try:
+            info = path.lstat()
+        except FileNotFoundError:
+            records[name] = "missing"
+            return
+        if stat.S_ISDIR(info.st_mode):
+            records[name] = "directory"
+            for child in sorted(path.iterdir()):
+                add(child)
+        elif stat.S_ISREG(info.st_mode):
+            digest = hashlib.sha256()
+            with path.open("rb") as stream:
+                for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                    digest.update(chunk)
+            records[name] = f"{stat.S_IMODE(info.st_mode):o}:{digest.hexdigest()}"
+        else:
+            raise ValueError("검증 대상에 일반 파일이 아닌 항목이 있습니다.")
+
+    for name in watched:
+        add(root / relative(name))
+    return hashlib.sha256(json.dumps(records, sort_keys=True).encode()).hexdigest()
+```
