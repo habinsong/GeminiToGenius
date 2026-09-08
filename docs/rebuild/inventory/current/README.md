@@ -11,15 +11,15 @@
 | `.github/ISSUE_TEMPLATE/config.yml` | 376 | [원문](files/.github/ISSUE_TEMPLATE/config.yml.md) |
 | `.github/ISSUE_TEMPLATE/feature_request.yml` | 725 | [원문](files/.github/ISSUE_TEMPLATE/feature_request.yml.md) |
 | `.github/PULL_REQUEST_TEMPLATE.md` | 603 | [원문](files/.github/PULL_REQUEST_TEMPLATE.md.md) |
-| `.github/workflows/validate-profile.yml` | 888 | [원문](files/.github/workflows/validate-profile.yml.md) |
+| `.github/workflows/validate-profile.yml` | 1828 | [원문](files/.github/workflows/validate-profile.yml.md) |
 | `.gitignore` | 96 | [원문](files/.gitignore.md) |
 | `AGENTS.md` | 3212 | [원문](files/AGENTS.md.md) |
-| `CHANGELOG.md` | 16049 | [원문](files/CHANGELOG.md.md) |
+| `CHANGELOG.md` | 17247 | [원문](files/CHANGELOG.md.md) |
 | `CITATION.cff` | 378 | [원문](files/CITATION.cff.md) |
 | `CODE_OF_CONDUCT.md` | 352 | [원문](files/CODE_OF_CONDUCT.md.md) |
 | `CONTRIBUTING.md` | 1127 | [원문](files/CONTRIBUTING.md.md) |
 | `LICENSE` | 1066 | [원문](files/LICENSE.md) |
-| `README.md` | 9174 | [원문](files/README.md.md) |
+| `README.md` | 9264 | [원문](files/README.md.md) |
 | `SECURITY.md` | 524 | [원문](files/SECURITY.md.md) |
 | `SUPPORT.md` | 510 | [원문](files/SUPPORT.md.md) |
 | `VERSION` | 14 | [원문](files/VERSION.md) |
@@ -33,7 +33,7 @@
 | `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 10093 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 10116 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 7669 | [원문](files/docs/rebuild/plan/architecture.md.md) |
 | `docs/rebuild/plan/completion-audit.md` | 4379 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |

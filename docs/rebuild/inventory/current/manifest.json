@@ -60,10 +60,10 @@
     {
       "path": ".github/workflows/validate-profile.yml",
       "mode": "100644",
-      "bytes": 888,
-      "sha256": "ba2a49a7220bcfb668bdd80d68a48d122ce8b0e65a747853012ec3c5e1ea0e41",
+      "bytes": 1828,
+      "sha256": "c99f02f5437a8a7bdc9e8a83740247bed56338a56179f8c89581339bd98ab90e",
       "encoding": "utf-8",
-      "lines": 34,
+      "lines": 48,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/.github/workflows/validate-profile.yml.md"
@@ -93,10 +93,10 @@
     {
       "path": "CHANGELOG.md",
       "mode": "100644",
-      "bytes": 16049,
-      "sha256": "e576cc9321f5bc4e298f1a6eb2d2c2691c5d6304f842cfb5e396cebccbb8efde",
+      "bytes": 17247,
+      "sha256": "49adce07708d0e202c5a7e00f138e9502d9cc991386d3b7f23a02b63f74838c9",
       "encoding": "utf-8",
-      "lines": 217,
+      "lines": 229,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/CHANGELOG.md.md"
@@ -148,8 +148,8 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "bytes": 9174,
-      "sha256": "058f2b1cf053bc313fdd7f7c471dcb053fed0f4bf45670351f14dfe56d5d78eb",
+      "bytes": 9264,
+      "sha256": "6dcf5bd5b85fa1de1fe50e48b4a0640ff44e6c484f5d9e706c358167807c1daa",
       "encoding": "utf-8",
       "lines": 110,
       "symbols": [],
@@ -182,7 +182,7 @@
       "path": "VERSION",
       "mode": "100644",
       "bytes": 14,
-      "sha256": "2dc7ad8fe9ad6ea4a18507a6112996b85f4a6d930e7e7f93acfe6e7de8292aca",
+      "sha256": "92405a9ba45222d75def43db7de7dbbcc6e6f8da274e2fe9c14c7131b1c38bc8",
       "encoding": "utf-8",
       "lines": 1,
       "symbols": [],
@@ -301,8 +301,8 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 10093,
-      "sha256": "8d9588d0d9909a57f84217f67fa4c2b96b89232cb42800cfaa6bf21513369500",
+      "bytes": 10116,
+      "sha256": "d256907a3ec7d3cd89e445d5849ba7c5670e186849fc74fc3425c8c085d66e1d",
       "encoding": "utf-8",
       "lines": 80,
       "symbols": [],
