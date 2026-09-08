@@ -1,8 +1,8 @@
 # `docs/changelog.html`
 
 - 형식: `100644`
-- 바이트: 8506
-- SHA-256: `8db759f9292fe3e1badea177c17a55bbbfcd9778a6ad204016581a3d9345bf28`
+- 바이트: 8501
+- SHA-256: `660fd44d50c5dfcd76c1a42bb14ba772c9a8bad60a281a77e18cfc5aa0b1a2d7`
 - 인코딩: `utf-8`
 
 ```
@@ -51,7 +51,7 @@
     <!-- Release List Section -->
     <section>
       <div class="apple-release-item">
-        <div class="apple-release-meta"><span class="apple-release-version">v3.0.0-alpha.1</span><span class="apple-release-date">2026-09-08 · 개발 중, 미발행</span></div>
+        <div class="apple-release-meta"><span class="apple-release-version">v3.0.0-alpha.1</span><span class="apple-release-date">2026-09-08 · 사전 릴리스</span></div>
         <div class="apple-release-notes"><ul>
           <li>모델과 독립적인 실행·상태·검증 코어를 새로 구현했습니다.</li>
           <li>Antigravity·Gemini CLI의 훅과 패키징을 분리했습니다.</li>

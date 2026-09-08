@@ -93,10 +93,10 @@
     {
       "path": "CHANGELOG.md",
       "mode": "100644",
-      "bytes": 15860,
-      "sha256": "c32cc3b8f5b48cabf27df652b314683c34856177f7ab148d865a8dd6ec769f64",
+      "bytes": 16049,
+      "sha256": "e576cc9321f5bc4e298f1a6eb2d2c2691c5d6304f842cfb5e396cebccbb8efde",
       "encoding": "utf-8",
-      "lines": 216,
+      "lines": 217,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/CHANGELOG.md.md"
@@ -148,8 +148,8 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "bytes": 7164,
-      "sha256": "942bdfedd6b2c6cab35968c279ef6598d9bb5aaa0aba274654c52484499a376d",
+      "bytes": 7198,
+      "sha256": "3df491a453e6050e1f0916e1993c6a31d1f0c2d634bf0731a298436e09579c9a",
       "encoding": "utf-8",
       "lines": 97,
       "symbols": [],
@@ -246,8 +246,8 @@
     {
       "path": "docs/changelog.html",
       "mode": "100644",
-      "bytes": 8506,
-      "sha256": "8db759f9292fe3e1badea177c17a55bbbfcd9778a6ad204016581a3d9345bf28",
+      "bytes": 8501,
+      "sha256": "660fd44d50c5dfcd76c1a42bb14ba772c9a8bad60a281a77e18cfc5aa0b1a2d7",
       "encoding": "utf-8",
       "lines": 155,
       "symbols": [],
@@ -268,8 +268,8 @@
     {
       "path": "docs/index.html",
       "mode": "100644",
-      "bytes": 6674,
-      "sha256": "37da84002a56531e86700ed95cbe307c1dd3a37fcf60a01e649f9961b2a6b115",
+      "bytes": 6680,
+      "sha256": "bebca7619d7a771fd007d2f66b84ddb5ec1da014f00ffbc4e1b71aeb515b53e2",
       "encoding": "utf-8",
       "lines": 149,
       "symbols": [],
@@ -301,10 +301,10 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 7998,
-      "sha256": "00bd433b6bcc6f4edfdf364b32cfa838a16fa436e6810065589aa7fcf7b0b20e",
+      "bytes": 7754,
+      "sha256": "be05baf231cda72f62d8f01f8cd9f9f7af7f824f6cf11fafc42f46418e23adac",
       "encoding": "utf-8",
-      "lines": 60,
+      "lines": 59,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/current-work.md.md"
@@ -335,7 +335,7 @@
       "path": "docs/rebuild/plan/completion-audit.md",
       "mode": "100644",
       "bytes": 3848,
-      "sha256": "4cd628174b6961b0f194d5d926fc32e4110073bdc900bc01ea3533795e6fe2ee",
+      "sha256": "c7c8792cbc59bc79bc8afd59900b571030dec6b85255f1010f0f1877f4958dd2",
       "encoding": "utf-8",
       "lines": 23,
       "symbols": [],
@@ -367,10 +367,10 @@
     {
       "path": "docs/rebuild/research/decisions.md",
       "mode": "100644",
-      "bytes": 4490,
-      "sha256": "a162671479a7349cd1115811464cb495bef0e01ab6aaecab636d2ed754b5fd6c",
+      "bytes": 5113,
+      "sha256": "07aa81267d03f84f62aabde3e7b772aa1526ec7bc69ad4fad73ef83a14744753",
       "encoding": "utf-8",
-      "lines": 30,
+      "lines": 32,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/research/decisions.md.md"
@@ -389,10 +389,10 @@
     {
       "path": "docs/rebuild/research/platform-contracts.md",
       "mode": "100644",
-      "bytes": 5535,
-      "sha256": "f38f0141965882b8e2b8be0e5cc74684d12aca9b8755c70e57015097bd2e63cb",
+      "bytes": 6171,
+      "sha256": "32f38d66e222acf2d9f36622ca9df9b62af33678003b74eceeee39c444dae516",
       "encoding": "utf-8",
-      "lines": 38,
+      "lines": 40,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/research/platform-contracts.md.md"
@@ -400,10 +400,10 @@
     {
       "path": "docs/rebuild/research/sources.json",
       "mode": "100644",
-      "bytes": 28582,
-      "sha256": "fef3e2c830879ffaaf0129a3aba1b73888f0dc00d944e7af7bba799cbef364ee",
+      "bytes": 29899,
+      "sha256": "481a853ce4a4c0747b78ee70327dba5b5654999cae4db66ed3ecb8603a8d0aa9",
       "encoding": "utf-8",
-      "lines": 595,
+      "lines": 613,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/research/sources.json.md"
@@ -411,13 +411,133 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 28713,
-      "sha256": "c9142a7eaacb875082fbdc50b428d589f552746f818ee85d1cba4c5ca0eb8e7c",
+      "bytes": 29399,
+      "sha256": "90cebbefef33b9d157d075193c77e2e8622268300fd0ae0ffd4134133324ac07",
       "encoding": "utf-8",
-      "lines": 190,
+      "lines": 196,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-context-budget/README.md",
+      "mode": "100644",
+      "bytes": 1574,
+      "sha256": "c95f0de700b28f45f6a835f84a0027af96549a7a7d08f14cd031ff40e66513ec",
+      "encoding": "utf-8",
+      "lines": 12,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py",
+      "mode": "100644",
+      "bytes": 10931,
+      "sha256": "16e1366afb414bf970994515b846925c3493cc459f1c2f885856dc62fa72ef16",
+      "encoding": "utf-8",
+      "lines": 196,
+      "symbols": [
+        {
+          "name": "parse",
+          "kind": "FunctionDef",
+          "line": 24,
+          "end_line": 51
+        },
+        {
+          "name": "allow_stop",
+          "kind": "FunctionDef",
+          "line": 54,
+          "end_line": 55
+        },
+        {
+          "name": "context",
+          "kind": "FunctionDef",
+          "line": 58,
+          "end_line": 60
+        },
+        {
+          "name": "exhausted",
+          "kind": "FunctionDef",
+          "line": 63,
+          "end_line": 66
+        },
+        {
+          "name": "stop_details",
+          "kind": "FunctionDef",
+          "line": 69,
+          "end_line": 75
+        },
+        {
+          "name": "handle",
+          "kind": "FunctionDef",
+          "line": 78,
+          "end_line": 174
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 177,
+          "end_line": 192
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json",
+      "mode": "100644",
+      "bytes": 3816,
+      "sha256": "7bf818749793eb18063ca716faa1ea97ac61adea0a007b459d5c7fe9ba9d77e3",
+      "encoding": "utf-8",
+      "lines": 83,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-context-budget/native-injection-audit.json",
+      "mode": "100644",
+      "bytes": 21861,
+      "sha256": "57f8f28f8a7d8151ba1273a90bb7fd1064aa864d5b55651da7482e33e9bd9cdb",
+      "encoding": "utf-8",
+      "lines": 128,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-context-budget/native-injection-audit.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-context-budget/size-matrix.json",
+      "mode": "100644",
+      "bytes": 1354,
+      "sha256": "72392ce7ba65022a6713b4356833e06a86b8befd9c84b0bb7595d94d938d1bfd",
+      "encoding": "utf-8",
+      "lines": 59,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-context-budget/size-matrix.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-context-budget/tests.log",
+      "mode": "100644",
+      "bytes": 23522,
+      "sha256": "1da481407c92c0708a3369fa867aabd43249515b51de4e22c2f7b34504bf71cb",
+      "encoding": "utf-8",
+      "lines": 170,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-context-budget/tests.log.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-08-context-budget/verification.json",
+      "mode": "100644",
+      "bytes": 4262,
+      "sha256": "ff146f235c30a3da4eee75669d6d7ecbb108dfcc4b12127244b3ae23ea674f23",
+      "encoding": "utf-8",
+      "lines": 50,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-08-context-budget/verification.json.md"
     },
     {
       "path": "docs/rebuild/validation/2026-09-08-evaluation/README.md",
@@ -2388,6 +2508,30 @@
       "document": "files/gtg/checkpoints.py.md"
     },
     {
+      "path": "gtg/context_message.py",
+      "mode": "100644",
+      "bytes": 2514,
+      "sha256": "9a1bff312712c0de177c69490c8f927d5c35b502be5f0f090d86ad450ce8199c",
+      "encoding": "utf-8",
+      "lines": 46,
+      "symbols": [
+        {
+          "name": "unfinished_context",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 46
+        },
+        {
+          "name": "brief",
+          "kind": "FunctionDef",
+          "line": 13,
+          "end_line": 16
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/gtg/context_message.py.md"
+    },
+    {
       "path": "gtg/discovery.py",
       "mode": "100644",
       "bytes": 4610,
@@ -2414,52 +2558,52 @@
     {
       "path": "gtg/hooks.py",
       "mode": "100644",
-      "bytes": 10931,
-      "sha256": "16e1366afb414bf970994515b846925c3493cc459f1c2f885856dc62fa72ef16",
+      "bytes": 9615,
+      "sha256": "fc7485a5a20d4892b21bfc0fef50cd6c64c1e976671329d73e3cb9ce6b2381b4",
       "encoding": "utf-8",
-      "lines": 196,
+      "lines": 182,
       "symbols": [
         {
           "name": "parse",
           "kind": "FunctionDef",
-          "line": 24,
-          "end_line": 51
+          "line": 25,
+          "end_line": 52
         },
         {
           "name": "allow_stop",
           "kind": "FunctionDef",
-          "line": 54,
-          "end_line": 55
+          "line": 55,
+          "end_line": 56
         },
         {
           "name": "context",
           "kind": "FunctionDef",
-          "line": 58,
-          "end_line": 60
+          "line": 59,
+          "end_line": 61
         },
         {
           "name": "exhausted",
           "kind": "FunctionDef",
-          "line": 63,
-          "end_line": 66
+          "line": 64,
+          "end_line": 67
         },
         {
           "name": "stop_details",
           "kind": "FunctionDef",
-          "line": 69,
-          "end_line": 75
+          "line": 70,
+          "end_line": 76
         },
         {
           "name": "handle",
           "kind": "FunctionDef",
-          "line": 78,
-          "end_line": 174
+          "line": 79,
+          "end_line": 160
         },
         {
           "name": "main",
           "kind": "FunctionDef",
-          "line": 177,
-          "end_line": 192
+          "line": 163,
+          "end_line": 178
         }
       ],
       "trailing_newline": true,
@@ -3289,6 +3433,84 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_checkpoints.py.md"
+    },
+    {
+      "path": "tests/test_context_message.py",
+      "mode": "100644",
+      "bytes": 6937,
+      "sha256": "ce4e8a342adefa5dfc519b56f5af7b7cd7811633a3445afa9103c68dfa7e08ce",
+      "encoding": "utf-8",
+      "lines": 139,
+      "symbols": [
+        {
+          "name": "state_data",
+          "kind": "FunctionDef",
+          "line": 16,
+          "end_line": 18
+        },
+        {
+          "name": "ContextMessageTests",
+          "kind": "ClassDef",
+          "line": 21,
+          "end_line": 135
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 22,
+          "end_line": 30
+        },
+        {
+          "name": "task",
+          "kind": "FunctionDef",
+          "line": 32,
+          "end_line": 39
+        },
+        {
+          "name": "context",
+          "kind": "FunctionDef",
+          "line": 41,
+          "end_line": 42
+        },
+        {
+          "name": "test_self_contained_status_reuses_workspace_without_repeating_path",
+          "kind": "FunctionDef",
+          "line": 44,
+          "end_line": 53
+        },
+        {
+          "name": "test_long_goal_note_and_check_list_report_omissions_and_keep_full_status",
+          "kind": "FunctionDef",
+          "line": 55,
+          "end_line": 67
+        },
+        {
+          "name": "test_each_invocation_rechecks_files_and_does_not_rely_on_previous_message",
+          "kind": "FunctionDef",
+          "line": 69,
+          "end_line": 78
+        },
+        {
+          "name": "test_gemini_turns_receive_the_same_current_state",
+          "kind": "FunctionDef",
+          "line": 80,
+          "end_line": 89
+        },
+        {
+          "name": "test_omitted_workspaces_still_control_running_and_paused_stop",
+          "kind": "FunctionDef",
+          "line": 91,
+          "end_line": 119
+        },
+        {
+          "name": "test_active_and_unbound_workspaces_keep_candidate_origin",
+          "kind": "FunctionDef",
+          "line": 121,
+          "end_line": 135
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_context_message.py.md"
     },
     {
       "path": "tests/test_eval_export.py",

@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 206개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 215개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -14,12 +14,12 @@
 | `.github/workflows/validate-profile.yml` | 888 | [원문](files/.github/workflows/validate-profile.yml.md) |
 | `.gitignore` | 96 | [원문](files/.gitignore.md) |
 | `AGENTS.md` | 3212 | [원문](files/AGENTS.md.md) |
-| `CHANGELOG.md` | 15860 | [원문](files/CHANGELOG.md.md) |
+| `CHANGELOG.md` | 16049 | [원문](files/CHANGELOG.md.md) |
 | `CITATION.cff` | 378 | [원문](files/CITATION.cff.md) |
 | `CODE_OF_CONDUCT.md` | 352 | [원문](files/CODE_OF_CONDUCT.md.md) |
 | `CONTRIBUTING.md` | 1127 | [원문](files/CONTRIBUTING.md.md) |
 | `LICENSE` | 1066 | [원문](files/LICENSE.md) |
-| `README.md` | 7164 | [원문](files/README.md.md) |
+| `README.md` | 7198 | [원문](files/README.md.md) |
 | `SECURITY.md` | 524 | [원문](files/SECURITY.md.md) |
 | `SUPPORT.md` | 510 | [원문](files/SUPPORT.md.md) |
 | `VERSION` | 14 | [원문](files/VERSION.md) |
@@ -28,22 +28,29 @@
 | `docs/README.ja.md` | 228 | [원문](files/docs/README.ja.md.md) |
 | `docs/README.ko.md` | 228 | [원문](files/docs/README.ko.md.md) |
 | `docs/README.zh-CN.md` | 228 | [원문](files/docs/README.zh-CN.md.md) |
-| `docs/changelog.html` | 8506 | [원문](files/docs/changelog.html.md) |
+| `docs/changelog.html` | 8501 | [원문](files/docs/changelog.html.md) |
 | `docs/docs.html` | 5057 | [원문](files/docs/docs.html.md) |
-| `docs/index.html` | 6674 | [원문](files/docs/index.html.md) |
+| `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 7998 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 7754 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 7669 | [원문](files/docs/rebuild/plan/architecture.md.md) |
 | `docs/rebuild/plan/completion-audit.md` | 3848 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
 | `docs/rebuild/plan/roadmap.md` | 4325 | [원문](files/docs/rebuild/plan/roadmap.md.md) |
 | `docs/rebuild/plan/verification.md` | 4104 | [원문](files/docs/rebuild/plan/verification.md.md) |
-| `docs/rebuild/research/decisions.md` | 4490 | [원문](files/docs/rebuild/research/decisions.md.md) |
+| `docs/rebuild/research/decisions.md` | 5113 | [원문](files/docs/rebuild/research/decisions.md.md) |
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
-| `docs/rebuild/research/platform-contracts.md` | 5535 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
-| `docs/rebuild/research/sources.json` | 28582 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 28713 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/research/platform-contracts.md` | 6171 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
+| `docs/rebuild/research/sources.json` | 29899 | [원문](files/docs/rebuild/research/sources.json.md) |
+| `docs/rebuild/status.md` | 29399 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
+| `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
+| `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
+| `docs/rebuild/validation/2026-09-08-context-budget/native-injection-audit.json` | 21861 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/native-injection-audit.json.md) |
+| `docs/rebuild/validation/2026-09-08-context-budget/size-matrix.json` | 1354 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/size-matrix.json.md) |
+| `docs/rebuild/validation/2026-09-08-context-budget/tests.log` | 23522 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/tests.log.md) |
+| `docs/rebuild/validation/2026-09-08-context-budget/verification.json` | 4262 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/verification.json.md) |
 | `docs/rebuild/validation/2026-09-08-evaluation/README.md` | 3441 | [원문](files/docs/rebuild/validation/2026-09-08-evaluation/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-evaluation/cli-trial.json` | 709 | [원문](files/docs/rebuild/validation/2026-09-08-evaluation/cli-trial.json.md) |
 | `docs/rebuild/validation/2026-09-08-evaluation/reference-trials.json` | 25000 | [원문](files/docs/rebuild/validation/2026-09-08-evaluation/reference-trials.json.md) |
@@ -173,8 +180,9 @@
 | `gtg/__init__.py` | 79 | [원문](files/gtg/__init__.py.md) |
 | `gtg/__main__.py` | 8053 | [원문](files/gtg/__main__.py.md) |
 | `gtg/checkpoints.py` | 2771 | [원문](files/gtg/checkpoints.py.md) |
+| `gtg/context_message.py` | 2514 | [원문](files/gtg/context_message.py.md) |
 | `gtg/discovery.py` | 4610 | [원문](files/gtg/discovery.py.md) |
-| `gtg/hooks.py` | 10931 | [원문](files/gtg/hooks.py.md) |
+| `gtg/hooks.py` | 9615 | [원문](files/gtg/hooks.py.md) |
 | `gtg/inspection.py` | 7450 | [원문](files/gtg/inspection.py.md) |
 | `gtg/install.py` | 9088 | [원문](files/gtg/install.py.md) |
 | `gtg/install_journal.py` | 7162 | [원문](files/gtg/install_journal.py.md) |
@@ -196,6 +204,7 @@
 | `scripts/install.sh` | 142 | [원문](files/scripts/install.sh.md) |
 | `tests/test_catalog.py` | 3512 | [원문](files/tests/test_catalog.py.md) |
 | `tests/test_checkpoints.py` | 4243 | [원문](files/tests/test_checkpoints.py.md) |
+| `tests/test_context_message.py` | 6937 | [원문](files/tests/test_context_message.py.md) |
 | `tests/test_eval_export.py` | 5780 | [원문](files/tests/test_eval_export.py.md) |
 | `tests/test_eval_resume.py` | 3602 | [원문](files/tests/test_eval_resume.py.md) |
 | `tests/test_evals.py` | 7991 | [원문](files/tests/test_evals.py.md) |

@@ -1,8 +1,8 @@
 # `docs/index.html`
 
 - 형식: `100644`
-- 바이트: 6674
-- SHA-256: `37da84002a56531e86700ed95cbe307c1dd3a37fcf60a01e649f9961b2a6b115`
+- 바이트: 6680
+- SHA-256: `bebca7619d7a771fd007d2f66b84ddb5ec1da014f00ffbc4e1b71aeb515b53e2`
 - 인코딩: `utf-8`
 
 ```
@@ -41,7 +41,7 @@
 
     <!-- Hero Section -->
     <section class="apple-hero">
-      <span class="apple-tag">v3.0.0-alpha.1 개발 중</span>
+      <span class="apple-tag">v3.0.0-alpha.1 사전 릴리스</span>
       <h1 class="apple-hero-headline">작업과 검증 결과를 연결하는 Gemini 하네스.</h1>
       <p class="apple-hero-subhead">
         자연어 요청을 현재 코드와 오류 맥락에서 구체화하도록 구성합니다.

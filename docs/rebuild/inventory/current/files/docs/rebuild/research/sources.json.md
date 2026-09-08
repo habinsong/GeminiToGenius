@@ -1,8 +1,8 @@
 # `docs/rebuild/research/sources.json`
 
 - 형식: `100644`
-- 바이트: 28582
-- SHA-256: `fef3e2c830879ffaaf0129a3aba1b73888f0dc00d944e7af7bba799cbef364ee`
+- 바이트: 29899
+- SHA-256: `481a853ce4a4c0747b78ee70327dba5b5654999cae4db66ed3ecb8603a8d0aa9`
 - 인코딩: `utf-8`
 
 ```
@@ -16,8 +16,8 @@
       "kind": "official",
       "checked_on": "2026-09-08",
       "access": "원문 페이지 열람",
-      "finding": "이벤트별 camelCase 입력과 JSON 출력 계약, 초 단위 timeout을 확인했습니다.",
-      "application": "전용 어댑터와 이벤트 재생 테스트"
+      "finding": "PreInvocation은 모델 호출 전 실행하며 ephemeralMessage는 임시 시스템 메시지로 정의됩니다. 공식 transcriptPath 위치도 확인했습니다.",
+      "application": "현재 상태를 매번 제공하되 메시지의 중복 경로·설명만 줄입니다. 영구 유지나 정확한 누적 토큰은 가정하지 않습니다."
     },
     {
       "id": "AGY-IDE-HOOKS",
@@ -106,8 +106,8 @@
       "kind": "official",
       "checked_on": "2026-09-08",
       "access": "원문 페이지 열람",
-      "finding": "BeforeTool·AfterAgent와 snake_case 입력, 밀리초 timeout을 확인했습니다.",
-      "application": "Antigravity와 분리한 어댑터"
+      "finding": "BeforeAgent의 additionalContext는 현재 사용자 턴에만 적용되며 AfterAgent는 턴 종료와 재개를 처리합니다.",
+      "application": "사용자 턴마다 현재 상태를 다시 제공하고 Antigravity 호출 단위와 같은 수명으로 취급하지 않습니다."
     },
     {
       "id": "CLI-EXTENSIONS",
@@ -598,6 +598,24 @@
       "access": "공식 원문 열람",
       "finding": "스킬의 설명 발견·모델 선택·본문 주입·추가 자원 접근을 단계별로 설명합니다.",
       "application": "설치된 스킬 본문에 실행기 위치를 즉시 알리고 상세 작업 계약은 필요 시 읽게 유지"
+    },
+    {
+      "id": "HARNESS-RHI",
+      "url": "https://arxiv.org/abs/2607.15524",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "초록 열람",
+      "finding": "사용자 하네스의 실행 이력과 비교 피드백으로 작업별 지침을 개선하는 연구를 제안합니다.",
+      "application": "관측한 실패·변경 전후 결과를 보존하되 자동 하네스 자기수정·추가 모델 호출·논문 비용 수치 차용은 하지 않기"
+    },
+    {
+      "id": "MEMO-HARNESS",
+      "url": "https://arxiv.org/abs/2607.14159",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "초록 열람",
+      "finding": "사례 진단과 공통 패턴을 분리해 작업별 경험을 적용하며 통계적 강건성·기여 분리의 한계를 밝힙니다.",
+      "application": "단일 재개 사례의 낭비를 수정하되 이를 전체 모델의 품질 향상으로 보고하지 않기"
     }
   ]
 }

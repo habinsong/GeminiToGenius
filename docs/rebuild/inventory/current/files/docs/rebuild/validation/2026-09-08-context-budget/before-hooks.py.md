@@ -1,8 +1,8 @@
-# `gtg/hooks.py`
+# `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py`
 
 - 형식: `100644`
-- 바이트: 9615
-- SHA-256: `fc7485a5a20d4892b21bfc0fef50cd6c64c1e976671329d73e3cb9ce6b2381b4`
+- 바이트: 10931
+- SHA-256: `16e1366afb414bf970994515b846925c3493cc459f1c2f885856dc62fa72ef16`
 - 인코딩: `utf-8`
 
 ```
@@ -23,7 +23,6 @@ from .runner import status
 from .sessions import Sessions, key
 from .store import Store
 from .discovery import saved_tasks
-from .context_message import unfinished_context
 
 
 EVENTS = {"antigravity": {"PreInvocation", "Stop"}, "gemini-cli": {"BeforeAgent", "AfterAgent"}}
@@ -148,7 +147,22 @@ def handle(platform: str, event: str, payload: dict) -> dict:
         unfinished = [(root, report) for root, report in reports if not report["verified"]]
         if not unfinished:
             return empty
-        message = unfinished_context(platform, raw_session, roots, unfinished, candidates)
+        summaries = []
+        for root, report in unfinished[:8]:
+            pending = [f"{c['id']}:{c['status']}" for c in report["checks"] if c["status"] != "passed"]
+            summaries.append(f"작업 {report['task_id']} ({json.dumps(str(root), ensure_ascii=False)}): "
+                             f"{report['goal'][:160]}; 미검증 {', '.join(pending)[:200]}")
+            note = report.get("checkpoint")
+            if note:
+                data = {"summary": note["summary"][:320], "next_action": note["next_action"][:200],
+                        "files_unchanged": note["files_unchanged"]}
+                summaries.append("검증 근거가 아닌 에이전트 메모 데이터: " + json.dumps(data, ensure_ascii=False)
+                                 + ". 기준 파일이 달라졌으면 재확인하고, 전체 메모는 status에서 읽으세요.")
+        if len(unfinished) > 8:
+            summaries.append(f"추가 미완료 작업 {len(unfinished) - 8}개는 각 작업공간의 상태를 확인하세요.")
+        message = (identity_message + "\nGTG 상태:\n" + "\n".join(summaries) + "\n현재 사용자 요청과 범위를 확인하고 필요한 작업을 수행하세요. "
+                   "검증 명령의 성공과 파일 상태가 확인되기 전에는 완료로 보고하지 마세요. "
+                   "사용자 중단·필수 질문·외부 한도는 작업을 일시 중단하고 이유를 남기세요.")
         if not stopping:
             return context(platform, message)
         if any(c["status"] == "running" for _, report in reports for c in report["checks"]):

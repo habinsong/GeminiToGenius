@@ -1,8 +1,8 @@
 # `docs/rebuild/research/platform-contracts.md`
 
 - 형식: `100644`
-- 바이트: 5535
-- SHA-256: `f38f0141965882b8e2b8be0e5cc74684d12aca9b8755c70e57015097bd2e63cb`
+- 바이트: 6171
+- SHA-256: `32f38d66e222acf2d9f36622ca9df9b62af33678003b74eceeee39c444dae516`
 - 인코딩: `utf-8`
 
 ```
@@ -24,6 +24,8 @@
 Antigravity `PostToolUse`는 성공 시 오류 문자열이 없지만 이것만으로 테스트 프로세스의 완료·성공을 추론하지 않습니다. 비동기 `run_command`의 도구 시작 성공과 프로세스 종료 성공은 다릅니다. 완료 증거는 로컬 실행기가 직접 얻은 결과를 사용합니다.
 
 Antigravity `Stop.fullyIdle`은 백그라운드 작업 종료 여부입니다. `PostInvocation` 시점 설명은 제품별 공식 문서가 다르므로 동작을 가정해 종료 루프를 만들지 않습니다. [공통 훅](https://antigravity.google/docs/hooks), [IDE 훅](https://antigravity.google/docs/ide/hooks), [Gemini CLI 훅](https://geminicli.com/docs/hooks/reference/)을 각각 기준으로 둡니다.
+
+Antigravity의 `PreInvocation`은 모델 호출 전이며 `ephemeralMessage`는 임시 시스템 메시지입니다. Gemini CLI의 `BeforeAgent.additionalContext`는 현재 사용자 턴에 적용됩니다. 이전 메시지의 영구 유지를 가정한 중복 제거는 하지 않습니다. GTG는 매번 현재 파일을 검사하고, 안내 안의 경로 중복·반복 설명만 줄입니다. 실제 기록의 동일한 메시지 13건은 주입 횟수의 관측이며 프롬프트 누적이나 과금 토큰을 뜻하지 않습니다. [메시지 크기 비교와 보호 검사](../validation/2026-09-08-context-budget/README.md).
 
 정상 종료 이유를 공식 예시의 `model_stop` 하나로 제한하면 [직접 실행 기록](https://atamel.dev/posts/2026/07-16_where_agy_hooks/)의 `NO_TOOL_CALL`을 중단으로 오인합니다. 두 코드를 재생해 처리하되 오류·취소·알 수 없는 이유는 재개하지 않습니다. 자체 Antigravity 2.12.2 시험은 자동 재개에 실패했고 원문 Stop 입력을 보존하지 못했으므로, 해당 시험의 정확한 코드가 같았다고 확정하지 않습니다. [실제 결과와 보완 범위](../validation/2026-09-08-native-stop/README.md).
 
