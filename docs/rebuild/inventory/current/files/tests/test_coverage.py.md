@@ -1,8 +1,8 @@
 # `tests/test_coverage.py`
 
 - 형식: `100644`
-- 바이트: 6679
-- SHA-256: `a65d59a5c3a5b163df38c03b8eaeaddbc89d6af643aaa78bc7dad15ffa811cf5`
+- 바이트: 8262
+- SHA-256: `d7c9a6faae7d904043f2fbcc4e12d004ddf164cc40c7e5a7c2f8a72d0db362aa`
 - 인코딩: `utf-8`
 
 ```
@@ -73,6 +73,37 @@ class CollectorTests(unittest.TestCase):
                            capture_output=True, check=True)
             self.assertEqual(session.files(), set())
             self.assertFalse(session.observed())
+
+    def test_isolated_interpreter_reports_nothing_instead_of_failing(self):
+        (self.root / "thing.py").write_text("VALUE = 1\n")
+        with collector() as session:
+            for flag in ("-I", "-E", "-S"):
+                with self.subTest(flag=flag):
+                    done = subprocess.run([sys.executable, flag, "-c", "pass"], cwd=self.root,
+                                          env=session.environment(), capture_output=True)
+                    self.assertEqual(done.returncode, 0, done.stderr)
+            self.assertEqual(session.files(), set(), "격리 모드는 관찰되지 않으며 오류도 아닙니다.")
+
+    def test_large_watch_scope_is_capped_instead_of_walking_forever(self):
+        from gtg.coverage import MAX_WATCHED_FILES, watched_python_files
+
+        big = self.root / "many"
+        big.mkdir()
+        for index in range(MAX_WATCHED_FILES + 25):
+            (big / f"module_{index:05d}.py").write_text("X = 1\n")
+        found = watched_python_files(self.root, ["many"])
+        self.assertEqual(len(found), MAX_WATCHED_FILES)
+
+    def test_capped_scope_does_not_claim_unexecuted_files(self):
+        from gtg.coverage import MAX_WATCHED_FILES, executed_watch
+
+        big = self.root / "wide"
+        big.mkdir()
+        for index in range(MAX_WATCHED_FILES + 3):
+            (big / f"mod_{index:05d}.py").write_text("X = 1\n")
+        ran, missed = executed_watch(self.root, ["wide"], set())
+        self.assertEqual(ran, [])
+        self.assertIsNone(missed, "범위를 다 세지 못하면 미실행을 주장하지 않습니다.")
 
     def test_watch_split_only_covers_python_files(self):
         (self.root / "pkg").mkdir()

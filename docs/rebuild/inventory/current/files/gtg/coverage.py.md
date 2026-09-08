@@ -1,8 +1,8 @@
 # `gtg/coverage.py`
 
 - 형식: `100644`
-- 바이트: 6157
-- SHA-256: `0882550afe4ba7dc94f985b952a859ec67e70a0db05d305bd5fe3802e36d14c0`
+- 바이트: 6649
+- SHA-256: `e5194dbb5b5710a8e93dee006f5ce962ef7cb2d8f64986a212ec2a9b624b6137`
 - 인코딩: `utf-8`
 
 ```
@@ -25,6 +25,8 @@ import tempfile
 from .spec import private, relative
 
 DIRECTORY = "GTG_COVERAGE_DIR"
+# 넓은 검증 범위에서 목록 작성 자체가 비싸지지 않게 막습니다. 상한을 넘으면 범위를 주장하지 않습니다.
+MAX_WATCHED_FILES = 2000
 
 # 인터프리터 시작 시점에 등록해야 사용자 코드의 첫 실행부터 관찰합니다.
 # 다른 sitecustomize를 가리지 않도록 남은 경로에서 원본을 이어서 불러옵니다.
@@ -166,16 +168,21 @@ def watched_python_files(root: Path, watched: list[str]) -> list[Path]:
         for path in candidates:
             if path.suffix == ".py" and not private(path.relative_to(root)) and path not in found:
                 found.append(path)
+                if len(found) >= MAX_WATCHED_FILES:
+                    return found
     return found
 
 
-def executed_watch(root: Path, watched: list[str], files: set[Path]) -> tuple[list[str], list[str]]:
+def executed_watch(root: Path, watched: list[str], files: set[Path]) -> tuple[list[str], list[str] | None]:
+    """실행한 대상과 실행하지 않은 대상입니다. 범위를 다 세지 못하면 두 번째 값이 없습니다."""
+    candidates = watched_python_files(root, watched)
+    complete = len(candidates) < MAX_WATCHED_FILES
     ran, missed = [], []
-    for path in watched_python_files(root, watched):
+    for path in candidates:
         try:
             resolved = path.resolve()
         except OSError:
             continue
         (ran if resolved in files else missed).append(path.relative_to(root).as_posix())
-    return sorted(ran), sorted(missed)
+    return sorted(ran), sorted(missed) if complete else None
 ```
