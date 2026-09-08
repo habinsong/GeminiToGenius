@@ -148,8 +148,8 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "bytes": 9042,
-      "sha256": "b04ca30596ad7f0bda2f3e73a7dabea61b7f1029a339cc64a84c498efdeac1d2",
+      "bytes": 9174,
+      "sha256": "058f2b1cf053bc313fdd7f7c471dcb053fed0f4bf45670351f14dfe56d5d78eb",
       "encoding": "utf-8",
       "lines": 110,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 36361,
-      "sha256": "9b92df8adbb447148e13fe31e043f5fdc7f3b29ff27861f3601e399516fbdc96",
+      "bytes": 37232,
+      "sha256": "8aef86b452bf734b0f5ff80234252f63fa844b7ce4a863089f2c563a15f66e10",
       "encoding": "utf-8",
-      "lines": 242,
+      "lines": 249,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -3260,46 +3260,52 @@
     {
       "path": "gtg/spec.py",
       "mode": "100644",
-      "bytes": 5203,
-      "sha256": "5d7632c35b942c89f19073665c83b1ac63a661c0deefdc73c79eba8765278664",
+      "bytes": 5961,
+      "sha256": "0a4084ca04f998703dc5a0f496829821ce5628f521fa7557f510a8a39456240f",
       "encoding": "utf-8",
-      "lines": 112,
+      "lines": 123,
       "symbols": [
         {
           "name": "sensitive",
           "kind": "FunctionDef",
-          "line": 20,
-          "end_line": 25
+          "line": 23,
+          "end_line": 28
         },
         {
           "name": "private",
           "kind": "FunctionDef",
-          "line": 28,
-          "end_line": 30
+          "line": 31,
+          "end_line": 33
         },
         {
           "name": "relative",
           "kind": "FunctionDef",
-          "line": 33,
-          "end_line": 39
+          "line": 36,
+          "end_line": 42
         },
         {
           "name": "validate",
           "kind": "FunctionDef",
-          "line": 42,
-          "end_line": 75
+          "line": 45,
+          "end_line": 78
+        },
+        {
+          "name": "evidential",
+          "kind": "FunctionDef",
+          "line": 81,
+          "end_line": 86
         },
         {
           "name": "fingerprint",
           "kind": "FunctionDef",
-          "line": 78,
-          "end_line": 112
+          "line": 89,
+          "end_line": 123
         },
         {
           "name": "add",
           "kind": "FunctionDef",
-          "line": 83,
-          "end_line": 108
+          "line": 94,
+          "end_line": 119
         }
       ],
       "trailing_newline": true,
@@ -3308,70 +3314,70 @@
     {
       "path": "gtg/store.py",
       "mode": "100644",
-      "bytes": 6013,
-      "sha256": "111ec87f64fd48216d2cb1086e6b8c2bccb89732b20e4081e4c88f988e35e95b",
+      "bytes": 6372,
+      "sha256": "1d221b9db4143dc42d276fa23112122a4cf8562a4510ac12a11416fde628ac6a",
       "encoding": "utf-8",
-      "lines": 126,
+      "lines": 130,
       "symbols": [
         {
           "name": "Store",
           "kind": "ClassDef",
           "line": 17,
-          "end_line": 126
+          "end_line": 130
         },
         {
           "name": "__init__",
           "kind": "FunctionDef",
           "line": 18,
-          "end_line": 52
+          "end_line": 56
         },
         {
           "name": "close",
           "kind": "FunctionDef",
-          "line": 54,
-          "end_line": 55
+          "line": 58,
+          "end_line": 59
         },
         {
           "name": "create",
           "kind": "FunctionDef",
-          "line": 57,
-          "end_line": 66
+          "line": 61,
+          "end_line": 70
         },
         {
           "name": "task",
           "kind": "FunctionDef",
-          "line": 68,
-          "end_line": 72
+          "line": 72,
+          "end_line": 76
         },
         {
           "name": "begin",
           "kind": "FunctionDef",
-          "line": 74,
-          "end_line": 85
+          "line": 78,
+          "end_line": 89
         },
         {
           "name": "finish",
           "kind": "FunctionDef",
-          "line": 87,
-          "end_line": 92
+          "line": 91,
+          "end_line": 96
         },
         {
           "name": "attach_process",
           "kind": "FunctionDef",
-          "line": 94,
-          "end_line": 96
+          "line": 98,
+          "end_line": 100
         },
         {
           "name": "latest",
           "kind": "FunctionDef",
-          "line": 98,
-          "end_line": 103
+          "line": 102,
+          "end_line": 107
         },
         {
           "name": "recover",
           "kind": "FunctionDef",
-          "line": 105,
-          "end_line": 126
+          "line": 109,
+          "end_line": 130
         }
       ],
       "trailing_newline": true,
@@ -3413,10 +3419,10 @@
     {
       "path": "profile/skills/gtg-build/references/task-contract.md",
       "mode": "100644",
-      "bytes": 11089,
-      "sha256": "088bbf2c8f9d973ba862af90b8b0a9b394fdd9b3cdee6eddb23b07997e9a044b",
+      "bytes": 11424,
+      "sha256": "ae849ab854be8327e9017425cb8eb77eb6e404efbb42d7ef17bd5b1aeaa7ec31",
       "encoding": "utf-8",
-      "lines": 100,
+      "lines": 102,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/profile/skills/gtg-build/references/task-contract.md.md"
@@ -5473,6 +5479,90 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_task_handoff.py.md"
+    },
+    {
+      "path": "tests/test_task_hygiene.py",
+      "mode": "100644",
+      "bytes": 3902,
+      "sha256": "49fb4c3d0bfc77bba3fbe0f4241f51b8c6172c696ad98a7554bd8b17a1c0373e",
+      "encoding": "utf-8",
+      "lines": 85,
+      "symbols": [
+        {
+          "name": "spec",
+          "kind": "FunctionDef",
+          "line": 13,
+          "end_line": 16
+        },
+        {
+          "name": "StateHygieneTests",
+          "kind": "ClassDef",
+          "line": 19,
+          "end_line": 51
+        },
+        {
+          "name": "EvidenceCommandTests",
+          "kind": "ClassDef",
+          "line": 54,
+          "end_line": 81
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 20,
+          "end_line": 24
+        },
+        {
+          "name": "git",
+          "kind": "FunctionDef",
+          "line": 26,
+          "end_line": 29
+        },
+        {
+          "name": "test_state_folder_ignores_itself_in_a_git_repository",
+          "kind": "FunctionDef",
+          "line": 31,
+          "end_line": 39
+        },
+        {
+          "name": "test_existing_ignore_file_is_not_overwritten",
+          "kind": "FunctionDef",
+          "line": 41,
+          "end_line": 46
+        },
+        {
+          "name": "test_state_outside_a_gtg_folder_does_not_create_an_ignore_file",
+          "kind": "FunctionDef",
+          "line": 48,
+          "end_line": 51
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 55,
+          "end_line": 61
+        },
+        {
+          "name": "test_no_op_commands_cannot_be_registered_as_evidence",
+          "kind": "FunctionDef",
+          "line": 63,
+          "end_line": 66
+        },
+        {
+          "name": "test_real_commands_are_still_accepted",
+          "kind": "FunctionDef",
+          "line": 68,
+          "end_line": 71
+        },
+        {
+          "name": "test_previously_stored_specs_remain_readable",
+          "kind": "FunctionDef",
+          "line": 73,
+          "end_line": 81
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_task_hygiene.py.md"
     },
     {
       "path": "tests/test_workspace_argument.py",

@@ -5,7 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
 import stat
 
@@ -15,6 +15,9 @@ PRIVATE_DIRS = {".git", ".gtg", ".ssh", ".aws", ".kube", "__pycache__"}
 # 자동 재개는 사용자 쿼터를 사용합니다. 긴 작업도 이 상한을 넘지 않습니다.
 DEFAULT_RESUMES = 2
 MAX_RESUMES = 8
+# 이 명령들은 항상 성공하거나 입력을 그대로 출력하므로 어떤 요구도 검증하지 못합니다.
+# 셸을 거친 우회까지 막지는 못하며, 실제 방어는 증명서의 독립 재실행입니다.
+NO_EVIDENCE = {"true", ":", "echo", "printf", "yes", "test", "[", "sleep", "cat"}
 
 
 def sensitive(path: Path) -> bool:
@@ -73,6 +76,14 @@ def validate(spec: dict) -> dict:
         for name in watch:
             relative(name)
     return json.loads(json.dumps(spec, allow_nan=False))
+
+
+def evidential(spec: dict) -> dict:
+    """새 작업 등록에만 적용합니다. 저장된 기존 명세는 그대로 읽습니다."""
+    for check in spec["checks"]:
+        if PurePosixPath(check["argv"][0]).name.casefold() in NO_EVIDENCE:
+            raise ValueError("결과를 만들지 않는 명령은 완료 증거가 될 수 없습니다. 실제 테스트·빌드·결과 검사를 등록하세요.")
+    return spec
 
 
 def fingerprint(root: Path, watched: list[str]) -> str:

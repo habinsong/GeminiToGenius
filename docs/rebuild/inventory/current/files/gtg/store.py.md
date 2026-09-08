@@ -1,8 +1,8 @@
 # `gtg/store.py`
 
 - 형식: `100644`
-- 바이트: 6013
-- SHA-256: `111ec87f64fd48216d2cb1086e6b8c2bccb89732b20e4081e4c88f988e35e95b`
+- 바이트: 6372
+- SHA-256: `1d221b9db4143dc42d276fa23112122a4cf8562a4510ac12a11416fde628ac6a`
 - 인코딩: `utf-8`
 
 ```
@@ -19,7 +19,7 @@ import sqlite3
 import time
 import uuid
 
-from .spec import validate
+from .spec import evidential, validate
 
 
 class Store:
@@ -28,6 +28,10 @@ class Store:
         if any(p.is_symlink() for p in [path, *path.parents]):
             raise ValueError("상태 저장 경로에 심볼릭 링크를 사용할 수 없습니다.")
         path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
+        ignore = path.parent / ".gitignore"
+        # 상태 폴더가 사용자 저장소의 추적 목록에 나타나지 않게 합니다. 사용자 파일은 덮어쓰지 않습니다.
+        if path.parent.name == ".gtg" and not ignore.exists() and not ignore.is_symlink():
+            ignore.write_text("*\n", encoding="utf-8")
         try:
             descriptor = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
         except FileExistsError:
@@ -63,7 +67,7 @@ class Store:
         self.connection.close()
 
     def create(self, workspace: Path, spec: dict) -> str:
-        spec = validate(spec)
+        spec = evidential(validate(spec))
         workspace = workspace.resolve(strict=True)
         if not workspace.is_dir():
             raise ValueError("작업공간 폴더가 필요합니다.")

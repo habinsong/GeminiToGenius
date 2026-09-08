@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 230개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 231개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -19,7 +19,7 @@
 | `CODE_OF_CONDUCT.md` | 352 | [원문](files/CODE_OF_CONDUCT.md.md) |
 | `CONTRIBUTING.md` | 1127 | [원문](files/CONTRIBUTING.md.md) |
 | `LICENSE` | 1066 | [원문](files/LICENSE.md) |
-| `README.md` | 9042 | [원문](files/README.md.md) |
+| `README.md` | 9174 | [원문](files/README.md.md) |
 | `SECURITY.md` | 524 | [원문](files/SECURITY.md.md) |
 | `SUPPORT.md` | 510 | [원문](files/SUPPORT.md.md) |
 | `VERSION` | 14 | [원문](files/VERSION.md) |
@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 35589 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 36361 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 37232 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -199,12 +199,12 @@
 | `gtg/platforms.py` | 1801 | [원문](files/gtg/platforms.py.md) |
 | `gtg/runner.py` | 4726 | [원문](files/gtg/runner.py.md) |
 | `gtg/sessions.py` | 8952 | [원문](files/gtg/sessions.py.md) |
-| `gtg/spec.py` | 5203 | [원문](files/gtg/spec.py.md) |
-| `gtg/store.py` | 6013 | [원문](files/gtg/store.py.md) |
+| `gtg/spec.py` | 5961 | [원문](files/gtg/spec.py.md) |
+| `gtg/store.py` | 6372 | [원문](files/gtg/store.py.md) |
 | `profile/rules/gtg.md` | 1714 | [원문](files/profile/rules/gtg.md.md) |
 | `profile/skills/gtg-build/SKILL.md` | 3636 | [원문](files/profile/skills/gtg-build/SKILL.md.md) |
 | `profile/skills/gtg-build/references/code-intake.md` | 2983 | [원문](files/profile/skills/gtg-build/references/code-intake.md.md) |
-| `profile/skills/gtg-build/references/task-contract.md` | 11089 | [원문](files/profile/skills/gtg-build/references/task-contract.md.md) |
+| `profile/skills/gtg-build/references/task-contract.md` | 11424 | [원문](files/profile/skills/gtg-build/references/task-contract.md.md) |
 | `profile/skills/gtg-interface/SKILL.md` | 1774 | [원문](files/profile/skills/gtg-interface/SKILL.md.md) |
 | `profile/skills/gtg-research/SKILL.md` | 1387 | [원문](files/profile/skills/gtg-research/SKILL.md.md) |
 | `scripts/catalog.py` | 8438 | [원문](files/scripts/catalog.py.md) |
@@ -235,6 +235,7 @@
 | `tests/test_scenario.py` | 3646 | [원문](files/tests/test_scenario.py.md) |
 | `tests/test_session_start.py` | 4328 | [원문](files/tests/test_session_start.py.md) |
 | `tests/test_task_handoff.py` | 12227 | [원문](files/tests/test_task_handoff.py.md) |
+| `tests/test_task_hygiene.py` | 3902 | [원문](files/tests/test_task_hygiene.py.md) |
 | `tests/test_workspace_argument.py` | 3601 | [원문](files/tests/test_workspace_argument.py.md) |
 
 제외 범위는 manifest.json, 로컬 ignored 관찰은 상위 조사 문서에 명시합니다.
