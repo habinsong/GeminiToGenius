@@ -301,10 +301,10 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 10116,
-      "sha256": "d256907a3ec7d3cd89e445d5849ba7c5670e186849fc74fc3425c8c085d66e1d",
+      "bytes": 10946,
+      "sha256": "ff327b9bc6716b68cd682eb2aa3267912a02942af6370a4dc1f97f358c61be4c",
       "encoding": "utf-8",
-      "lines": 80,
+      "lines": 86,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/current-work.md.md"
@@ -334,8 +334,8 @@
     {
       "path": "docs/rebuild/plan/completion-audit.md",
       "mode": "100644",
-      "bytes": 4848,
-      "sha256": "b433fed71fef63d0569a7859b786267ffd41893e8937518eebb28050e7cfb20b",
+      "bytes": 4864,
+      "sha256": "7f3b153f0295e80c8612d73928c55d8ed92fe2570ba40efe2936f6566c3d70ce",
       "encoding": "utf-8",
       "lines": 27,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 37232,
-      "sha256": "8aef86b452bf734b0f5ff80234252f63fa844b7ce4a863089f2c563a15f66e10",
+      "bytes": 39417,
+      "sha256": "1b0d564eadd3a0b4edc53991db39417b176e329b14f1fb754a04ab7f7f917cb6",
       "encoding": "utf-8",
-      "lines": 249,
+      "lines": 263,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -1969,6 +1969,86 @@
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-09-native-certificate/task.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-real-comparison/README.md",
+      "mode": "100644",
+      "bytes": 3204,
+      "sha256": "5b528dfeff91771a0e7e724bc88445e403efe68015da3b0aaf892e0d6c598316",
+      "encoding": "utf-8",
+      "lines": 46,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-real-comparison/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-real-comparison/claude-code-mathlib.py",
+      "mode": "100644",
+      "bytes": 179,
+      "sha256": "2ed45c162e80ffa23c5c359aef6e9a83fda522c9ae6b02ae326e7614c21d789a",
+      "encoding": "utf-8",
+      "lines": 4,
+      "symbols": [
+        {
+          "name": "clamp",
+          "kind": "FunctionDef",
+          "line": 1,
+          "end_line": 4
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-real-comparison/claude-code-mathlib.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-real-comparison/comparison.json",
+      "mode": "100644",
+      "bytes": 2179,
+      "sha256": "d19b653bdf365bf393fdcb6f262d6eeead8403cd6061da47d544157a2e85b1d5",
+      "encoding": "utf-8",
+      "lines": 75,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-real-comparison/comparison.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-real-comparison/grade-claude-code.json",
+      "mode": "100644",
+      "bytes": 2097,
+      "sha256": "61e52a9ec827d3be0cd36091e086dd3c2a36ddba3d9924e3bbf74d5ce7fd3d1f",
+      "encoding": "utf-8",
+      "lines": 84,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/docs/rebuild/validation/2026-09-09-real-comparison/grade-claude-code.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json",
+      "mode": "100644",
+      "bytes": 5588,
+      "sha256": "25ea72787ae5c08bfb4288778c36c1203aca719a80086c56a64278d0dec3d868",
+      "encoding": "utf-8",
+      "lines": 112,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py",
+      "mode": "100644",
+      "bytes": 159,
+      "sha256": "d9a109c6c055fb8d29006a6b9021cb65bff5a446f971dd738307f09b6a57e1c7",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [
+        {
+          "name": "clamp",
+          "kind": "FunctionDef",
+          "line": 1,
+          "end_line": 4
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py.md"
     },
     {
       "path": "docs/styles.css",

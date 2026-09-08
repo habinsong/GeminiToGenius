@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 238개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 244개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -33,17 +33,17 @@
 | `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 10116 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 10946 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 7669 | [원문](files/docs/rebuild/plan/architecture.md.md) |
-| `docs/rebuild/plan/completion-audit.md` | 4848 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
+| `docs/rebuild/plan/completion-audit.md` | 4864 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
 | `docs/rebuild/plan/roadmap.md` | 4540 | [원문](files/docs/rebuild/plan/roadmap.md.md) |
 | `docs/rebuild/plan/verification.md` | 4104 | [원문](files/docs/rebuild/plan/verification.md.md) |
 | `docs/rebuild/research/decisions.md` | 5113 | [원문](files/docs/rebuild/research/decisions.md.md) |
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 35589 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 37232 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 39417 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -157,6 +157,12 @@
 | `docs/rebuild/validation/2026-09-09-native-certificate/replay-clean.json` | 1051 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/replay-clean.json.md) |
 | `docs/rebuild/validation/2026-09-09-native-certificate/state-snapshot.json` | 2284 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/state-snapshot.json.md) |
 | `docs/rebuild/validation/2026-09-09-native-certificate/task.json` | 772 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/task.json.md) |
+| `docs/rebuild/validation/2026-09-09-real-comparison/README.md` | 3204 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/README.md.md) |
+| `docs/rebuild/validation/2026-09-09-real-comparison/claude-code-mathlib.py` | 179 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/claude-code-mathlib.py.md) |
+| `docs/rebuild/validation/2026-09-09-real-comparison/comparison.json` | 2179 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/comparison.json.md) |
+| `docs/rebuild/validation/2026-09-09-real-comparison/grade-claude-code.json` | 2097 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/grade-claude-code.json.md) |
+| `docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json` | 5588 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json.md) |
+| `docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py` | 159 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py.md) |
 | `docs/styles.css` | 12916 | [원문](files/docs/styles.css.md) |
 | `evals/README.md` | 12377 | [원문](files/evals/README.md.md) |
 | `evals/__init__.py` | 74 | [원문](files/evals/__init__.py.md) |
