@@ -1921,10 +1921,10 @@
     {
       "path": "docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log",
       "mode": "100644",
-      "bytes": 21295,
-      "sha256": "9501e4d5f70ad4da4742aacb6580241d51845b45f7ba4f9b86f1e7902926f7e7",
+      "bytes": 22743,
+      "sha256": "74b1f4e928c2cf1ab6ac1876f37e90002e0cbc97f44689c36fb76f6b12fa1e9c",
       "encoding": "utf-8",
-      "lines": 233,
+      "lines": 249,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log.md"
@@ -1932,10 +1932,10 @@
     {
       "path": "docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json",
       "mode": "100644",
-      "bytes": 1859,
-      "sha256": "4b08c6acdd57933436ba0149d6fa5ef87cc60d9b5e86f5853b3f6638138de7df",
+      "bytes": 2794,
+      "sha256": "f8b7dfa18b7ba6e35e46c85212993d420924c16c7bfb813d3a57ddf5d91303e6",
       "encoding": "utf-8",
-      "lines": 27,
+      "lines": 37,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json.md"

@@ -1,8 +1,8 @@
 # `docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log`
 
 - 형식: `100644`
-- 바이트: 21295
-- SHA-256: `9501e4d5f70ad4da4742aacb6580241d51845b45f7ba4f9b86f1e7902926f7e7`
+- 바이트: 22743
+- SHA-256: `74b1f4e928c2cf1ab6ac1876f37e90002e0cbc97f44689c36fb76f6b12fa1e9c`
 - 인코딩: `utf-8`
 
 ```
@@ -46,19 +46,27 @@ test_cli_reports_blocking_reasons_with_a_nonzero_exit_code (test_comparison.Prep
 test_prepare_records_the_declared_arm_and_model_without_installing_for_baseline (test_comparison.PreparedArmTests) ... ok
 test_active_and_unbound_workspaces_keep_candidate_origin (test_context_message.ContextMessageTests) ... ok
 test_each_invocation_rechecks_files_and_does_not_rely_on_previous_message (test_context_message.ContextMessageTests) ... ok
+test_fully_covered_task_says_nothing_extra (test_context_message.ContextMessageTests) ... ok
 test_gemini_turns_receive_the_same_current_state (test_context_message.ContextMessageTests) ... ok
 test_long_goal_note_and_check_list_report_omissions_and_keep_full_status (test_context_message.ContextMessageTests) ... ok
 test_omitted_workspaces_still_control_running_and_paused_stop (test_context_message.ContextMessageTests) ... ok
+test_passed_check_reports_what_it_never_executed (test_context_message.ContextMessageTests) ... ok
 test_self_contained_status_reuses_workspace_without_repeating_path (test_context_message.ContextMessageTests) ... ok
+test_capped_scope_does_not_claim_unexecuted_files (test_coverage.CollectorTests) ... ok
 test_existing_sitecustomize_still_runs (test_coverage.CollectorTests) ... ok
+test_isolated_interpreter_reports_nothing_instead_of_failing (test_coverage.CollectorTests) ... ok
+test_large_watch_scope_is_capped_instead_of_walking_forever (test_coverage.CollectorTests) ... ok
 test_nested_python_subprocess_is_also_recorded (test_coverage.CollectorTests) ... ok
 test_no_python_execution_reports_nothing_observed (test_coverage.CollectorTests) ... ok
 test_python_subprocess_execution_is_recorded (test_coverage.CollectorTests) ... ok
 test_watch_split_only_covers_python_files (test_coverage.CollectorTests) ... ok
 test_a_file_executed_by_any_check_is_not_listed_as_unverified (test_coverage.RunnerCoverageTests) ... ok
 test_non_python_command_does_not_claim_anything_unexecuted (test_coverage.RunnerCoverageTests) ... ok
+test_observed_check_marks_the_scope_as_complete (test_coverage.RunnerCoverageTests) ... ok
 test_passing_check_records_the_file_it_never_executed (test_coverage.RunnerCoverageTests) ... ok
+test_replay_passes_the_scope_and_its_completeness_through (test_coverage.RunnerCoverageTests) ... ok
 test_status_and_certificate_carry_the_unverified_scope (test_coverage.RunnerCoverageTests) ... ok
+test_unobservable_check_marks_the_scope_as_incomplete (test_coverage.RunnerCoverageTests) ... ok
 test_equivalent_csv_quoting_is_allowed_but_wrong_record_endings_are_not (test_eval_export.ExportEvalTests) ... ok
 test_existing_keyword_argument_cannot_be_renamed (test_eval_export.ExportEvalTests) ... ok
 test_initial_failure_and_reference_feature_preserve_existing_user_diff (test_eval_export.ExportEvalTests) ... ok
@@ -229,6 +237,14 @@ test_real_commands_are_still_accepted (test_task_hygiene.EvidenceCommandTests) .
 test_existing_ignore_file_is_not_overwritten (test_task_hygiene.StateHygieneTests) ... ok
 test_state_folder_ignores_itself_in_a_git_repository (test_task_hygiene.StateHygieneTests) ... ok
 test_state_outside_a_gtg_folder_does_not_create_an_ignore_file (test_task_hygiene.StateHygieneTests) ... ok
+test_cli_exposes_run_after_a_separator (test_trial_run.CliRunTests) ... ok
+test_compare_reports_observed_duration_per_arm (test_trial_run.ComparisonDurationTests) ... ok
+test_failing_arm_is_recorded_rather_than_hidden (test_trial_run.RunArmTests) ... ok
+test_grade_report_carries_the_observation (test_trial_run.RunArmTests) ... ok
+test_missing_placeholder_is_refused (test_trial_run.RunArmTests) ... ok
+test_prepared_prompt_is_passed_verbatim_and_observed (test_trial_run.RunArmTests) ... ok
+test_second_run_is_refused_so_one_trial_is_one_attempt (test_trial_run.RunArmTests) ... ok
+test_timeout_is_recorded_and_does_not_leave_the_child_running (test_trial_run.RunArmTests) ... ok
 test_explicit_state_path_takes_precedence_over_workspace (test_workspace_argument.WorkspaceArgumentTests) ... ok
 test_lookup_from_a_directory_without_state_does_not_create_one (test_workspace_argument.WorkspaceArgumentTests) ... ok
 test_recover_and_checkpoint_accept_workspace (test_workspace_argument.WorkspaceArgumentTests) ... ok
@@ -236,7 +252,7 @@ test_status_accepts_workspace_from_another_directory (test_workspace_argument.Wo
 test_verify_and_certify_accept_workspace (test_workspace_argument.WorkspaceArgumentTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 216 tests in 68.116s
+Ran 232 tests in 99.326s
 
 OK
 ```
