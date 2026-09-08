@@ -38,7 +38,7 @@ python3 "$GTG_RUNNER" status TASK_ID
 
 상태는 `start --workspace`로 지정한 폴더에 저장됩니다. 다른 폴더에서 후속 명령을 실행한다면 응답의 실제 `state_path`를 전역 옵션 `--state`로 전달합니다. 여러 작업공간에 걸친 요청은 각 폴더에서 같은 호스트 세션 ID로 작업을 연결합니다. 훅은 모든 연결 작업의 현재 검사 결과를 함께 확인합니다. 한 폴더가 사용자 응답을 기다리며 중단되어 있으면 전체 세션을 자동 재개하지 않습니다.
 
-호스트 세션 ID를 실제 메타데이터에서 얻은 경우 `start`에 `--platform antigravity --session <확인한 ID>` 또는 `--platform gemini-cli --session <확인한 ID>`를 함께 전달합니다. ID를 추정하지 않습니다. 연결되면 훅이 미검증 상태를 알리고 자연 종료를 최대 두 번 재개할 수 있습니다. 훅에서 모델이나 테스트를 자동 실행하지 않습니다.
+호스트 세션 ID를 실제 메타데이터에서 얻은 경우 `start`에 `--platform <호스트> --session <확인한 ID>`를 함께 전달합니다. 호스트 값은 훅 메타데이터의 `platform`을 그대로 사용하며 `antigravity`(데스크톱·IDE), `antigravity-cli`(agy), `gemini-cli` 중 하나입니다. ID를 추정하지 않습니다. 연결되면 훅이 미검증 상태를 알리고 자연 종료를 최대 두 번 재개할 수 있습니다. 훅에서 모델이나 테스트를 자동 실행하지 않습니다.
 
 같은 세션·작업공간·명세로 `start`를 다시 호출하면 기존 작업 ID를 반환합니다. 응답을 받지 못했다고 새 작업을 임의로 만들지 않습니다. 다른 미완료 목표가 이미 연결되어 있다면 현재 사용자 요청이 목표 변경인지 먼저 판단합니다.
 
@@ -52,7 +52,7 @@ python3 "$GTG_RUNNER" status TASK_ID
 python3 "$GTG_RUNNER" attach TASK_ID --workspace . --platform antigravity --session ACTUAL_SESSION_ID
 ```
 
-실제 확인한 작업 ID·세션 ID로 바꿔 실행합니다. Gemini CLI라면 `--platform gemini-cli`를 사용합니다. 목록은 저장된 기록이며 현재 파일을 검사하지 않습니다. 긴 목표·메모와 연결 목록의 생략 여부를 명시하며 전체 목표·명세·메모와 파일의 현재 상태는 `status`에서 확인합니다. `next_offset`이 있으면 `tasks --offset`으로 이어서 조회할 수 있습니다.
+실제 확인한 작업 ID·세션 ID로 바꿔 실행합니다. `--platform`에는 훅 메타데이터에서 확인한 호스트 값을 그대로 사용합니다. 목록은 저장된 기록이며 현재 파일을 검사하지 않습니다. 긴 목표·메모와 연결 목록의 생략 여부를 명시하며 전체 목표·명세·메모와 파일의 현재 상태는 `status`에서 확인합니다. `next_offset`이 있으면 `tasks --offset`으로 이어서 조회할 수 있습니다.
 
 `attach`는 같은 작업 ID·완료 조건·검사 결과·메모를 유지하고 현재 세션의 연결을 옮깁니다. 현재 파일은 유지합니다. 저장된 성공도 파일이 달라졌으면 `stale`로 표시됩니다. 활성 상태에서 같은 연결 요청을 반복해도 재개 예산을 초기화하지 않습니다. 이전 세션의 다른 활성 연결을 임의로 되살리는 `resume`은 거부됩니다.
 
@@ -79,3 +79,18 @@ python3 "$GTG_RUNNER" checkpoint TASK_ID --note .gtg/checkpoint.json
 메모는 검사 성공을 대신하지 않습니다. 재개 시 원래 목표·현재 검사 결과·메모를 함께 확인합니다. `files_unchanged: false`이면 기준 파일이 달라졌으므로 메모를 다시 확인합니다. 값이 `null`이면 파일 근거를 연결하지 않은 메모입니다. 새로운 단계의 메모를 저장해도 이전 기록은 보존합니다.
 
 검증 대상 파일과 검사 명령 선택의 적절성은 별도 확인이 필요합니다. `verified: true`는 등록된 검사가 현재 대상에 대해 통과했다는 뜻이며, 모든 사용자 요구나 UI 품질을 자동 증명하지 않습니다.
+
+## 완료 증명서
+
+작업을 완료로 보고할 때는 주장과 증거를 한 문서로 묶습니다. 사용자가 이 문서만으로 상태 DB 없이 다시 확인할 수 있습니다.
+
+```bash
+python3 "$GTG_RUNNER" certify TASK_ID --output .gtg/certificate.json
+python3 "$GTG_RUNNER" replay --certificate .gtg/certificate.json --workspace .
+```
+
+증명서에는 완료 조건마다 실제 실행한 명령·종료 코드·검증 대상 파일 지문이 들어갑니다. 통과하지 않은 검사에는 지문을 붙이지 않으며, 미검증 작업의 `certify`는 종료 코드 1과 `verified: false`를 반환합니다. 본문을 고치면 `digest`가 달라져 `replay`가 거부합니다.
+
+`replay`는 증명서와 현재 파일만 사용합니다. 명령을 다시 실행해 종료 코드 0과 기록된 지문이 모두 재현될 때만 `reconstructed: true`입니다. 파일이 달라졌으면 `reason: "fingerprint"`로 표시되며 이는 증명서가 현재 상태를 더는 뒷받침하지 못한다는 뜻입니다. 다른 폴더의 증명서를 실행하려면 명령을 검토한 뒤 `--trust-commands`를 지정합니다.
+
+증명서는 등록된 검사 범위의 재현 가능성만 보여 줍니다. 검사 설계가 사용자 요구를 모두 담았는지는 별도로 설명합니다.

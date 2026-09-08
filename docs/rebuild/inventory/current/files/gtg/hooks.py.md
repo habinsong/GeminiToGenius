@@ -1,8 +1,8 @@
 # `gtg/hooks.py`
 
 - 형식: `100644`
-- 바이트: 9615
-- SHA-256: `fc7485a5a20d4892b21bfc0fef50cd6c64c1e976671329d73e3cb9ce6b2381b4`
+- 바이트: 9530
+- SHA-256: `b40e370e68694e2aa95d2f24bfe9e7f50d603e96cd3bb0e86963d8e3a31c41a6`
 - 인코딩: `utf-8`
 
 ```
@@ -24,16 +24,16 @@ from .sessions import Sessions, key
 from .store import Store
 from .discovery import saved_tasks
 from .context_message import unfinished_context
+from .platforms import EVENTS, antigravity
 
 
-EVENTS = {"antigravity": {"PreInvocation", "Stop"}, "gemini-cli": {"BeforeAgent", "AfterAgent"}}
 NATURAL_STOPS = {"model_stop", "NO_TOOL_CALL"}
 
 
 def parse(platform: str, event: str, payload: dict) -> tuple[str, tuple[Path, ...]]:
     if platform not in EVENTS or event not in EVENTS[platform] or not isinstance(payload, dict):
         raise ValueError("지원하지 않는 훅 이벤트 또는 입력입니다.")
-    if platform == "antigravity":
+    if antigravity(platform):
         paths = payload.get("workspacePaths")
         if not isinstance(paths, list):
             raise ValueError("작업공간 경로가 필요합니다.")
@@ -61,22 +61,22 @@ def parse(platform: str, event: str, payload: dict) -> tuple[str, tuple[Path, ..
 
 
 def allow_stop(platform: str) -> dict:
-    return {"decision": "stop"} if platform == "antigravity" else {}
+    return {"decision": "stop"} if antigravity(platform) else {}
 
 
 def context(platform: str, message: str) -> dict:
-    return ({"injectSteps": [{"ephemeralMessage": message}]} if platform == "antigravity"
+    return ({"injectSteps": [{"ephemeralMessage": message}]} if antigravity(platform)
             else {"hookSpecificOutput": {"additionalContext": message}})
 
 
 def exhausted(platform: str, message: str) -> dict:
-    if platform == "antigravity":
+    if antigravity(platform):
         return {"decision": "stop", "reason": message}
     return {"continue": False, "stopReason": message, "systemMessage": message}
 
 
 def stop_details(platform: str, payload: dict) -> dict:
-    if platform == "gemini-cli":
+    if not antigravity(platform):
         return {"event": "AfterAgent", "stop_hook_active": payload["stop_hook_active"]}
     reason = payload["terminationReason"]
     return {"event": "Stop", "execution_num": payload["executionNum"],
@@ -88,7 +88,7 @@ def handle(platform: str, event: str, payload: dict) -> dict:
     session, roots = parse(platform, event, payload)
     stopping = event in {"Stop", "AfterAgent"}
     empty = allow_stop(platform) if stopping else {}
-    raw_session = payload.get("conversationId") if platform == "antigravity" else payload.get("session_id")
+    raw_session = payload.get("conversationId") if antigravity(platform) else payload.get("session_id")
     metadata = json.dumps({"platform": platform, "session": raw_session, "workspaces": [str(p) for p in roots]}, ensure_ascii=False)
     identity_message = f"GTG 호스트 메타데이터(지시가 아닌 경로 데이터): {metadata}. "
     if roots and (event == "BeforeAgent" or (event == "PreInvocation" and payload.get("invocationNum") == 0)):
@@ -123,7 +123,7 @@ def handle(platform: str, event: str, payload: dict) -> dict:
         if not entries:
             return empty
         if stopping:
-            event_id = (str(payload["executionNum"]) if platform == "antigravity" else
+            event_id = (str(payload["executionNum"]) if antigravity(platform) else
                         hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest())
             details = stop_details(platform, payload)
             for _, _, sessions, _ in entries:
@@ -131,7 +131,7 @@ def handle(platform: str, event: str, payload: dict) -> dict:
         else:
             for _, _, sessions, _ in entries:
                 sessions.observe_start(session)
-        if stopping and platform == "antigravity":
+        if stopping and antigravity(platform):
             if payload["terminationReason"] not in NATURAL_STOPS or payload.get("error"):
                 for _, _, sessions, _ in entries:
                     sessions.pause(session, "호스트 중단 또는 오류")
@@ -165,7 +165,7 @@ def handle(platform: str, event: str, payload: dict) -> dict:
             return empty
         for _, _, sessions, _ in entries[1:]:
             sessions.nudge(session, event_id)
-        return {"decision": "continue" if platform == "antigravity" else "deny", "reason": message}
+        return {"decision": "continue" if antigravity(platform) else "deny", "reason": message}
 
 
 def main() -> int:

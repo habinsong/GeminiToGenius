@@ -1,8 +1,8 @@
 # `gtg/sessions.py`
 
 - 형식: `100644`
-- 바이트: 8717
-- SHA-256: `4e7c18e51787e21643cda76b757cb128ba5bcab658c9ac140f0f103947eee30d`
+- 바이트: 8730
+- SHA-256: `d0622586f1fc6a0aa1ba3617be8282fed31cbe3fb545769e7020f547eb0c58b4`
 - 인코딩: `utf-8`
 
 ```
@@ -16,12 +16,13 @@ from pathlib import Path
 import re
 
 from .store import Store
+from .platforms import PLATFORMS
 from .runner import status
 from .spec import validate
 
 
 def key(platform: str, session_id: str) -> str:
-    if platform not in {"antigravity", "gemini-cli"}:
+    if platform not in PLATFORMS:
         raise ValueError("지원하지 않는 호스트입니다.")
     if not isinstance(session_id, str) or not re.fullmatch(r"[a-zA-Z0-9_-]{1,128}", session_id):
         raise ValueError("호스트 세션 식별자가 올바르지 않습니다.")

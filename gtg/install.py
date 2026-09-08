@@ -12,16 +12,19 @@ import tempfile
 import uuid
 
 from .package import MANIFEST, NAME, build, verify
+from .platforms import HOST_MARKERS, INSTALL_ROOTS, PLATFORMS
 from . import legacy
 from .install_journal import MoveJournal, sync_tree
 
 
 def destination(root: Path, platform: str, scope: str) -> Path:
-    if platform == "antigravity":
-        return root / (".agents/plugins" if scope == "workspace" else ".gemini/config/plugins") / NAME
-    if platform == "gemini-cli" and scope == "global":
-        return root / ".gemini/extensions" / NAME
-    raise ValueError("Gemini CLI 확장은 전역 설치를 지원합니다. 워크스페이스별 활성화는 호스트가 관리합니다.")
+    """호스트별 공식 플러그인·확장 경로입니다. 확인하지 않은 조합은 설치하지 않습니다."""
+    if platform not in PLATFORMS:
+        raise ValueError("지원하지 않는 설치 호스트입니다.")
+    parent = INSTALL_ROOTS.get((platform, scope))
+    if parent is None:
+        raise ValueError("이 호스트는 전역 설치만 검증했습니다. 워크스페이스별 활성화는 호스트가 관리합니다.")
+    return root / parent / NAME
 
 
 def safe_path(path: Path):
@@ -143,10 +146,52 @@ def restore(root: Path, platform: str, scope: str, backup: Path) -> dict:
                 "recovered_transaction": recovered}
 
 
+def doctor(root: Path, platform: str, scope: str) -> dict:
+    target = destination(root, platform, scope)
+    safe_path(target)
+    working = root / (".gtg/installer" if scope == "workspace" else ".gemini/gtg-installer")
+    safe_path(working)
+    with lock(working):
+        recovered = MoveJournal(root, working).recover()
+        return {**verify(target), "target": str(target), "recovered_transaction": recovered}
+
+
+def detected(root: Path) -> list[str]:
+    """호스트가 직접 만든 설정 파일만 근거로 사용합니다. GTG가 만든 폴더는 근거가 아닙니다."""
+    return [platform for platform, marker in HOST_MARKERS.items() if (root / marker).is_file()]
+
+
+def targeted(root: Path, scope: str) -> list[str]:
+    """이미 GTG가 설치된 호스트입니다. manifest가 있는 경로만 대상으로 봅니다."""
+    return [platform for platform, host_scope in INSTALL_ROOTS
+            if host_scope == scope and (destination(root, platform, scope) / MANIFEST).is_file()]
+
+
+def hosts_for(command: str, root: Path, scope: str, platform: str | None) -> list[str]:
+    """--platform이 없으면 실제로 존재하는 호스트를 찾아 한 번에 처리합니다."""
+    if platform:
+        return [platform]
+    if scope == "workspace":
+        return ["antigravity"]
+    found = targeted(root, scope) if command in {"doctor", "uninstall"} else detected(root)
+    return found or ["antigravity"]
+
+
+def run_hosts(command: str, hosts: list[str], action) -> tuple[dict, int]:
+    results = []
+    for platform in hosts:
+        try:
+            results.append({"platform": platform, "ok": True, **action(platform)})
+        except (OSError, ValueError) as error:
+            results.append({"platform": platform, "ok": False, "error": str(error)})
+    ok = all(item["ok"] for item in results)
+    return {"ok": ok, "command": command, "hosts": results}, 0 if ok else 1
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("install", "doctor", "uninstall", "restore", "restore-legacy"), nargs="?", default="install")
-    parser.add_argument("--platform", choices=("antigravity", "gemini-cli"), default="antigravity")
+    parser.add_argument("--platform", choices=PLATFORMS)
     scopes = parser.add_mutually_exclusive_group()
     scopes.add_argument("--workspace", type=Path)
     scopes.add_argument("--home", type=Path)
@@ -155,17 +200,22 @@ def main() -> int:
     root = (args.workspace or args.home or Path.home()).expanduser().absolute()
     scope = "workspace" if args.workspace else "global"
     source = Path(__file__).resolve().parents[1]
+    platform = args.platform or "antigravity"
     try:
-        if args.command == "install":
-            result = install(source, root, args.platform, scope)
-        elif args.command == "uninstall":
-            result = uninstall(root, args.platform, scope)
-        elif args.command == "restore":
+        if args.command in {"install", "doctor", "uninstall"}:
+            actions = {"install": lambda name: install(source, root, name, scope),
+                       "doctor": lambda name: doctor(root, name, scope),
+                       "uninstall": lambda name: uninstall(root, name, scope)}
+            hosts = hosts_for(args.command, root, scope, args.platform)
+            report, code = run_hosts(args.command, hosts, actions[args.command])
+            print(json.dumps(report, ensure_ascii=False, indent=2))
+            return code
+        if args.command == "restore":
             if args.backup is None:
                 raise ValueError("--backup으로 출력된 보존 경로를 지정하세요.")
-            result = restore(root, args.platform, scope, args.backup)
-        elif args.command == "restore-legacy":
-            if scope != "global" or args.platform != "antigravity" or args.backup is None:
+            result = restore(root, platform, scope, args.backup)
+        else:
+            if scope != "global" or platform != "antigravity" or args.backup is None:
                 raise ValueError("이전 전역 프로필 복구에는 --backup이 필요합니다.")
             working = root / ".gemini/gtg-installer"
             saved = args.backup.absolute()
@@ -175,7 +225,7 @@ def main() -> int:
             with lock(working):
                 journal = MoveJournal(root, working)
                 journal.recover()
-                if destination(root, args.platform, scope).exists():
+                if destination(root, platform, scope).exists():
                     raise ValueError("현재 GTG 플러그인을 uninstall한 뒤 이전 프로필을 복구하세요.")
                 journal.prepare(legacy.restore_moves(root, saved))
                 try:
@@ -185,14 +235,6 @@ def main() -> int:
                     journal.recover()
                     raise
             result = {"ok": True, "restored_legacy": str(saved), "legacy_verified": False}
-        else:
-            target = destination(root, args.platform, scope)
-            safe_path(target)
-            working = root / (".gtg/installer" if scope == "workspace" else ".gemini/gtg-installer")
-            safe_path(working)
-            with lock(working):
-                recovered = MoveJournal(root, working).recover()
-                result = {**verify(target), "target": str(target), "recovered_transaction": recovered}
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
     except (OSError, ValueError) as error:

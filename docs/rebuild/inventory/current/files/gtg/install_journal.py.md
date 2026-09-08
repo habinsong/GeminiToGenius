@@ -1,8 +1,8 @@
 # `gtg/install_journal.py`
 
 - 형식: `100644`
-- 바이트: 7162
-- SHA-256: `1d0d0e12d548d9a9f125ae7a9d4b37e0db998d1c44d42a5e5d5232bc776b1bfb`
+- 바이트: 7124
+- SHA-256: `718f1162e1bd1f26be57e31bf3f31f9cd3669820f6caaacdcae0de021de0b8f0`
 - 인코딩: `utf-8`
 
 ```
@@ -18,6 +18,7 @@ import stat
 import uuid
 
 from .legacy import LINKS
+from .platforms import INSTALL_ROOTS, NAME
 
 
 def exists(path: Path) -> bool:
@@ -81,8 +82,8 @@ class MoveJournal:
         if relative.is_absolute() or ".." in relative.parts:
             raise ValueError("설치 기록이 지정 루트 밖을 가리킵니다.")
         path = self.root / relative
-        targets = {self.root / ".agents/plugins/geminitogenius", self.root / ".gemini/config/plugins/geminitogenius",
-                   self.root / ".gemini/extensions/geminitogenius", *(self.root / ".gemini" / p for p in LINKS)}
+        targets = {*(self.root / parent / NAME for parent in INSTALL_ROOTS.values()),
+                   *(self.root / ".gemini" / p for p in LINKS)}
         internal = path.is_relative_to(self.working) and path != self.working
         if internal:
             first = path.relative_to(self.working).parts[0]

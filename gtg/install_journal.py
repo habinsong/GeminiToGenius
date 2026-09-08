@@ -10,6 +10,7 @@ import stat
 import uuid
 
 from .legacy import LINKS
+from .platforms import INSTALL_ROOTS, NAME
 
 
 def exists(path: Path) -> bool:
@@ -73,8 +74,8 @@ class MoveJournal:
         if relative.is_absolute() or ".." in relative.parts:
             raise ValueError("설치 기록이 지정 루트 밖을 가리킵니다.")
         path = self.root / relative
-        targets = {self.root / ".agents/plugins/geminitogenius", self.root / ".gemini/config/plugins/geminitogenius",
-                   self.root / ".gemini/extensions/geminitogenius", *(self.root / ".gemini" / p for p in LINKS)}
+        targets = {*(self.root / parent / NAME for parent in INSTALL_ROOTS.values()),
+                   *(self.root / ".gemini" / p for p in LINKS)}
         internal = path.is_relative_to(self.working) and path != self.working
         if internal:
             first = path.relative_to(self.working).parts[0]

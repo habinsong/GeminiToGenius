@@ -2,6 +2,8 @@
 
 확인일: 2026-09-08. 공식 원문을 열어 확인했습니다. 문서 확인과 실환경 테스트는 별도입니다.
 
+지원 호스트는 세 개입니다. Antigravity 데스크톱·IDE(`antigravity`), Antigravity CLI(`antigravity-cli`), Gemini CLI 확장(`gemini-cli`)입니다. 앞의 둘은 같은 하네스를 사용하므로 훅 이벤트·입출력 계약이 같고 설치 경로만 다릅니다.
+
 | 항목 | Antigravity | Gemini CLI |
 | --- | --- | --- |
 | 훅 설정 | 이름 → 이벤트별 핸들러 | `hooks` → 이벤트별 그룹 |
@@ -24,6 +26,10 @@ Antigravity의 `PreInvocation`은 모델 호출 전이며 `ephemeralMessage`는 
 보완 후 같은 입력의 [실호스트 재검증](../validation/2026-09-08-native-stop-recheck/README.md)에서는 재개 1회·등록 검사 통과·최종 종료를 확인했습니다. 마지막 실제 종료 메타데이터에 `NO_TOOL_CALL`, 실행 번호 1, `fully_idle: true`, 오류 없음이 기록됐습니다. 짧은 연결 시험의 결과로 범위를 제한합니다.
 
 Antigravity 플러그인은 `plugin.json`, 선택적인 `hooks.json`, `skills/`, `rules/`, `mcp_config.json`을 담습니다. 작업공간은 `.agents/plugins/`, 전역은 `~/.gemini/config/plugins/`에서 탐색합니다. Gemini CLI는 별도의 `gemini-extension.json`과 확장 훅 규약을 사용합니다. [플러그인](https://antigravity.google/docs/plugins), [확장](https://geminicli.com/docs/extensions/reference/).
+
+Antigravity CLI(`agy`)는 같은 플러그인 구성 요소를 `~/.gemini/antigravity-cli/plugins/<plugin_name>/`에 스테이징하고 `import_manifest.json`으로 추적합니다. `agents/` 하위의 서브에이전트 정의도 함께 읽습니다. 훅 이벤트 이름과 `hooks.json` 구조는 데스크톱과 같습니다. 이 경로는 이 컴퓨터의 홈에도 실제로 존재합니다. [CLI 플러그인](https://antigravity.google/docs/cli/plugins/). GTG는 이 경로에 설치하고 훅 두 개를 실제로 실행해 확인하지만, `agy` 실행 파일로 발견·훅 발행을 확인하지는 않았습니다. `agents/` 정의는 형식을 확인하기 전까지 생성하지 않습니다.
+
+Gemini CLI는 2026-06-18부터 개인 계정 요청 처리를 중단했고 확장은 Antigravity 플러그인으로 이전합니다. 오픈소스 저장소와 조직 라이선스는 유지됩니다. GTG는 `gemini-cli` 패키지를 남겨 두되 자동 감지 대상에서 제외하고 명시 지정에만 설치합니다. [전환 발표](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/), [마이그레이션](https://antigravity.google/docs/cli/gcli-migration/).
 
 실제 Antigravity 2.11.0에서 일반 이름의 규칙 파일은 로딩되지 않았습니다. 내장 공식 안내에 맞춰 `rules/AGENTS.md`로 생성한 뒤 실제 설정에서 규칙 추가를 확인했습니다. [내장 문서와 실제 발견 기록](native-antigravity.md).
 

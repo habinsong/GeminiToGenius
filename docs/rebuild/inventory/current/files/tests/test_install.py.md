@@ -1,8 +1,8 @@
 # `tests/test_install.py`
 
 - 형식: `100644`
-- 바이트: 7687
-- SHA-256: `934abb08137bc425c8f293df8b61676812009d76d48858b1714176d619bcc013`
+- 바이트: 7804
+- SHA-256: `8c419a4b1f58829e32c64ea125eac1c7f3b061f623efa58d4e2663a20e6dbcd8`
 - 인코딩: `utf-8`
 
 ```
@@ -145,7 +145,9 @@ class InstallTests(unittest.TestCase):
         command = ["bash", str(ROOT / "scripts/install.sh")]
         installed = subprocess.run(command + ["--workspace", "."], cwd=self.root, capture_output=True, text=True)
         self.assertEqual(installed.returncode, 0, installed.stdout + installed.stderr)
-        self.assertEqual(Path(json.loads(installed.stdout)["target"]), destination(self.root, "antigravity", "workspace"))
+        report = json.loads(installed.stdout)["hosts"]
+        self.assertEqual([item["platform"] for item in report], ["antigravity"])
+        self.assertEqual(Path(report[0]["target"]), destination(self.root, "antigravity", "workspace"))
         checked = subprocess.run(command + ["doctor", "--workspace", "."], cwd=self.root, capture_output=True, text=True)
         self.assertEqual(checked.returncode, 0, checked.stdout + checked.stderr)
 

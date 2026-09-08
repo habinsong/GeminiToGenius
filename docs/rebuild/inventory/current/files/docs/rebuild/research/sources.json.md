@@ -1,8 +1,8 @@
 # `docs/rebuild/research/sources.json`
 
 - 형식: `100644`
-- 바이트: 29899
-- SHA-256: `481a853ce4a4c0747b78ee70327dba5b5654999cae4db66ed3ecb8603a8d0aa9`
+- 바이트: 33145
+- SHA-256: `766f84f42c63b3d07b7c730d7e44ee6ccd1cdc15bde2e8f5c22eb8fd5accf193`
 - 인코딩: `utf-8`
 
 ```
@@ -616,6 +616,51 @@
       "access": "초록 열람",
       "finding": "사례 진단과 공통 패턴을 분리해 작업별 경험을 적용하며 통계적 강건성·기여 분리의 한계를 밝힙니다.",
       "application": "단일 재개 사례의 낭비를 수정하되 이를 전체 모델의 품질 향상으로 보고하지 않기"
+    },
+    {
+      "id": "AGY-CLI-PLUGINS",
+      "url": "https://antigravity.google/docs/cli/plugins/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "검색 도구가 인용한 공식 원문 확인. 페이지 직접 가져오기는 도구 오류로 실패했습니다.",
+      "finding": "Antigravity CLI는 플러그인을 `~/.gemini/antigravity-cli/plugins/<plugin_name>/`에 스테이징하며 plugin.json·hooks.json·skills/·agents/·rules/와 import_manifest.json을 사용합니다.",
+      "application": "antigravity-cli 호스트의 설치 경로로 사용했습니다. 로컬 홈에 같은 폴더가 실제로 있는 것도 확인했습니다. agents/ 정의는 형식을 확인하기 전까지 생성하지 않습니다."
+    },
+    {
+      "id": "AGY-CLI-MIGRATION",
+      "url": "https://antigravity.google/docs/cli/gcli-migration/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "검색 도구가 인용한 공식 원문 확인",
+      "finding": "Gemini CLI 확장은 Antigravity 플러그인으로 이름과 배치가 바뀌었고 `agy plugin import gemini`로 변환합니다.",
+      "application": "Gemini CLI 확장을 유지하되 기본 CLI 대상은 antigravity-cli로 두었습니다. 자동 변환 명령의 동작은 미검증입니다."
+    },
+    {
+      "id": "GCLI-SUNSET",
+      "url": "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/",
+      "kind": "official",
+      "checked_on": "2026-09-08",
+      "access": "검색 도구가 인용한 공식 발표 확인",
+      "finding": "2026-06-18부터 개인 계정의 Gemini CLI 요청 처리가 중단됐고 오픈소스 저장소는 유지됩니다. 조직 라이선스는 영향을 받지 않습니다.",
+      "application": "gemini-cli를 자동 감지 대상에서 제외하고 명시 지정 시에만 설치합니다. 기존 사용자를 위해 제거하지는 않았습니다."
+    },
+    {
+      "id": "ECT-TERMINATION",
+      "url": "https://arxiv.org/abs/2608.23623",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "검색 도구가 인용한 초록 확인",
+      "finding": "종료 시점에 모든 주장을 추적 증거에 묶고 결정적 재실행으로 값을 재구성할 때만 완료를 허용하는 설계를 제안합니다. DONE 선언·체크리스트·LLM 심사자는 근거가 약하다고 지적합니다.",
+      "application": "certify·replay를 구현했습니다. 논문의 수치나 안전성 주장을 GTG 성능으로 사용하지 않습니다."
+    },
+    {
+      "id": "LONG-HORIZON-HARNESS",
+      "url": "https://arxiv.org/abs/2608.01964",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-08",
+      "access": "검색 도구가 인용한 초록 확인",
+      "finding": "실행 맥락 밖에 작업 상태를 두고 환경에서 독립 검증한 사실로만 갱신하는 관리·실행·감사 순환을 제시합니다. 감사 보고서만 회차 간 기억으로 사용합니다.",
+      "application": "상태 외부화와 증거 기반 완료 판정을 유지·강화했습니다. 관리자·감사자 역할 분리는 아직 구현하지 않았습니다."
     }
   ]
 }

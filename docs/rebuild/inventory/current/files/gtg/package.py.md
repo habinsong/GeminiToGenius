@@ -1,8 +1,8 @@
 # `gtg/package.py`
 
 - 형식: `100644`
-- 바이트: 11202
-- SHA-256: `ab59215b746bc8ab1cce994594deabfa91c4bcfbe5a43e0ab32b7c034dc382b7`
+- 바이트: 11145
+- SHA-256: `56f9da5254498e6ba008f9c024c56d13fbd9564e83d6e73b3f726f1be92638bd`
 - 인코딩: `utf-8`
 
 ```
@@ -22,9 +22,9 @@ import subprocess
 import re
 
 from .inspection import open_regular
+from .platforms import EVENTS, NAME, PLATFORMS, antigravity
 from .spec import sensitive
 
-NAME = "geminitogenius"
 MANIFEST = "gtg-manifest.json"
 
 
@@ -69,7 +69,7 @@ def copy_source(root: Path, name: str, target: Path):
 
 
 def build(source: Path, target: Path, installed: Path, platform: str) -> dict:
-    if platform not in {"antigravity", "gemini-cli"}:
+    if platform not in PLATFORMS:
         raise ValueError("지원하지 않는 패키지 호스트입니다.")
     source = source.absolute()
     validate_source(source)
@@ -82,7 +82,7 @@ def build(source: Path, target: Path, installed: Path, platform: str) -> dict:
     rules = read_source(source, "profile/rules/gtg.md")
     version = read_source(source, "VERSION").decode("utf-8").strip()
     command = "python3 " + shlex.quote(str(installed / "run.py")) + " hook " + platform + " "
-    if platform == "antigravity":
+    if antigravity(platform):
         (target / "rules").mkdir()
         (target / "rules/AGENTS.md").write_bytes(rules)
         (target / "plugin.json").write_text(json.dumps({"name": NAME}) + "\n")
@@ -108,12 +108,11 @@ def build(source: Path, target: Path, installed: Path, platform: str) -> dict:
 
 def validated_hooks(hooks: dict, platform: str, installed: Path) -> list:
     """GTG가 생성하는 두 필수 훅의 구조와 실행 인자를 검사합니다."""
-    required = {"antigravity": {"PreInvocation", "Stop"},
-                "gemini-cli": {"BeforeAgent", "AfterAgent"}}
+    required = {name: set(events) for name, events in EVENTS.items()}
     if platform not in required or not isinstance(hooks, dict):
         raise ValueError("패키지 훅 형식이 올바르지 않습니다.")
     entries = []
-    if platform == "antigravity":
+    if antigravity(platform):
         for named in hooks.values():
             if (not isinstance(named, dict) or named.get("enabled", True) is not True
                     or set(named) - required[platform] - {"enabled"}):
@@ -149,7 +148,7 @@ def validated_hooks(hooks: dict, platform: str, installed: Path) -> list:
         timeout = handler.get("timeout")
         if type(timeout) not in {int, float} or not math.isfinite(timeout) or timeout <= 0:
             raise ValueError("훅 시간 제한은 양의 유한 수여야 합니다.")
-        if platform == "antigravity" and type(timeout) is not int:
+        if antigravity(platform) and type(timeout) is not int:
             raise ValueError("Antigravity 훅 시간 제한은 정수 초여야 합니다.")
         seconds = timeout / 1000 if platform == "gemini-cli" else timeout
         result.append((event, argv, min(seconds, 5)))
@@ -162,7 +161,7 @@ def verify(target: Path, execute_hooks: bool = True, *, installed: Path | None =
     if not declared.is_absolute() or declared != (installed or target).absolute():
         raise ValueError("설치 위치가 바뀌었습니다. 현재 경로에 다시 설치하세요.")
     expected = manifest["files"]
-    if manifest["platform"] == "antigravity" and "rules/AGENTS.md" not in expected:
+    if antigravity(manifest["platform"]) and "rules/AGENTS.md" not in expected:
         raise ValueError("호스트가 읽는 기본 규칙 진입점이 없습니다.")
     actual = {path.relative_to(target).as_posix(): path for path in target.rglob("*")
               if path.is_file() and path.name != MANIFEST and "__pycache__" not in path.parts and path.suffix != ".pyc"}
@@ -179,7 +178,7 @@ def verify(target: Path, execute_hooks: bool = True, *, installed: Path | None =
             if not match or match[1] != path.parent.name or len(match[1]) > 64 or len(match[2]) > 1024:
                 raise ValueError(f"스킬 메타데이터가 올바르지 않습니다: {name}")
     platform = manifest["platform"]
-    hooks = json.loads((target / ("hooks.json" if platform == "antigravity" else "hooks/hooks.json")).read_text())
+    hooks = json.loads((target / ("hooks.json" if antigravity(platform) else "hooks/hooks.json")).read_text())
     entries = validated_hooks(hooks, platform, declared)
     if not execute_hooks:
         return {"ok": True, "files": len(actual), "hooks_executed": 0}
@@ -189,7 +188,7 @@ def verify(target: Path, execute_hooks: bool = True, *, installed: Path | None =
         argv[1] = str(target / "run.py")
         payload = ({"conversationId": "package-check", "workspacePaths": [str(target)], "invocationNum": 0,
                     "executionNum": 0, "fullyIdle": True, "terminationReason": "model_stop"}
-                   if platform == "antigravity" else
+                   if antigravity(platform) else
                    {"session_id": "package-check", "cwd": str(target), "hook_event_name": event, "stop_hook_active": False})
         try:
             process = subprocess.run(argv, input=json.dumps(payload), text=True, capture_output=True, timeout=timeout,

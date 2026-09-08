@@ -8,12 +8,13 @@ from pathlib import Path
 import re
 
 from .store import Store
+from .platforms import PLATFORMS
 from .runner import status
 from .spec import validate
 
 
 def key(platform: str, session_id: str) -> str:
-    if platform not in {"antigravity", "gemini-cli"}:
+    if platform not in PLATFORMS:
         raise ValueError("지원하지 않는 호스트입니다.")
     if not isinstance(session_id, str) or not re.fullmatch(r"[a-zA-Z0-9_-]{1,128}", session_id):
         raise ValueError("호스트 세션 식별자가 올바르지 않습니다.")

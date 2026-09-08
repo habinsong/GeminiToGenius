@@ -15,7 +15,9 @@ git clone https://github.com/habinsong/GeminiToGenius.git
 bash GeminiToGenius/scripts/install.sh
 ```
 
-기본 설치는 Antigravity 전역 플러그인입니다. 패키지를 별도 폴더에서 검증한 뒤 설치하며, 기존 GTG는 보존 경로로 옮깁니다. 기존 v2 설치기가 만든 것으로 확인되는 링크만 따로 보존·해제합니다. 사용자 전역 규칙과 다른 플러그인은 그대로 둡니다. 현재 checkout을 설치하며 자동 `git pull`은 하지 않습니다.
+설치기는 홈 폴더에서 호스트가 직접 만든 설정 파일을 찾아 감지한 호스트마다 설치합니다. Antigravity 데스크톱·IDE는 `~/.gemini/config/plugins/`, Antigravity CLI(`agy`)는 [공식 스테이징 경로](https://antigravity.google/docs/cli/plugins/)인 `~/.gemini/antigravity-cli/plugins/`를 사용합니다. 감지된 호스트가 없으면 Antigravity 전역 플러그인 하나만 설치합니다. 결과의 `hosts`에 호스트별 성공 여부가 나옵니다.
+
+패키지를 별도 폴더에서 검증한 뒤 설치하며, 기존 GTG는 보존 경로로 옮깁니다. 기존 v2 설치기가 만든 것으로 확인되는 링크만 따로 보존·해제합니다. 사용자 전역 규칙과 다른 플러그인은 그대로 둡니다. 현재 checkout을 설치하며 자동 `git pull`은 하지 않습니다.
 
 특정 프로젝트에만 설치하려면 다음처럼 실행합니다.
 
@@ -23,10 +25,10 @@ bash GeminiToGenius/scripts/install.sh
 bash scripts/install.sh --workspace /absolute/path/to/project
 ```
 
-Gemini CLI의 확장 형식은 별도로 생성합니다.
+호스트를 직접 고르려면 `--platform`에 `antigravity`, `antigravity-cli`, `gemini-cli` 중 하나를 지정합니다. Gemini CLI는 2026-06-18에 개인 계정 서비스가 종료됐으므로 자동 감지 대상이 아니며 필요할 때만 지정합니다.
 
 ```bash
-bash scripts/install.sh --platform gemini-cli
+bash scripts/install.sh --platform antigravity-cli
 ```
 
 설치 후 호스트를 다시 시작합니다. 모델은 호스트에서 선택한 설정을 유지합니다. 특정 Flash 버전이나 사고 수준을 강제하지 않으며, 출시 전 모델의 호환성을 가정하지 않습니다.
@@ -56,6 +58,17 @@ bash scripts/install.sh --platform gemini-cli
 
 `status`의 `continuation[].last_stop`에서 마지막으로 받은 종료 코드·조건을 확인할 수 있습니다. 원본 프롬프트와 오류 본문은 저장하지 않습니다. 이전 버전에서 이미 끝난 이벤트의 정보는 복원하지 않습니다.
 
+## 완료 증명서
+
+완료 보고는 주장 대신 재현으로 확인합니다. `certify`는 완료 조건마다 실제 실행한 명령·종료 코드·검증 대상 파일 지문을 한 문서로 묶고, `replay`는 상태 DB 없이 그 문서만으로 명령을 다시 실행합니다.
+
+```bash
+python3 <설치_경로>/run.py certify TASK_ID --output .gtg/certificate.json
+python3 <설치_경로>/run.py replay --certificate .gtg/certificate.json --workspace .
+```
+
+종료 코드 0과 기록된 지문이 모두 재현될 때만 `reconstructed: true`입니다. 본문을 고치면 `digest`가 달라져 거부하고, 검증 대상 파일이 바뀌었으면 `reason: "fingerprint"`로 표시합니다. 미검증 작업의 `certify`는 종료 코드 1과 `verified: false`를 반환합니다. 증명서는 등록된 검사 범위의 재현 가능성만 보이며 검사 설계의 적절성은 별도 판단입니다.
+
 ## 설치 검사와 제거
 
 ```bash
@@ -63,7 +76,7 @@ bash scripts/install.sh doctor
 bash scripts/install.sh uninstall
 ```
 
-프로젝트 설치라면 두 명령에도 같은 `--workspace`를 전달합니다. Gemini CLI라면 같은 `--platform gemini-cli`를 전달합니다. 제거는 삭제 대신 보존 폴더로 이동합니다.
+프로젝트 설치라면 두 명령에도 같은 `--workspace`를 전달합니다. `--platform` 없이 실행하면 GTG가 실제로 설치된 호스트를 모두 검사·제거합니다. 제거는 삭제 대신 보존 폴더로 이동합니다.
 
 `doctor`는 미완료 설치 기록이 있으면 먼저 이전 파일 배치를 복구한 뒤 검사합니다. 새 사용자 파일과 충돌하면 덮어쓰지 않고 중단합니다.
 

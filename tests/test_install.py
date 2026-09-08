@@ -137,7 +137,9 @@ class InstallTests(unittest.TestCase):
         command = ["bash", str(ROOT / "scripts/install.sh")]
         installed = subprocess.run(command + ["--workspace", "."], cwd=self.root, capture_output=True, text=True)
         self.assertEqual(installed.returncode, 0, installed.stdout + installed.stderr)
-        self.assertEqual(Path(json.loads(installed.stdout)["target"]), destination(self.root, "antigravity", "workspace"))
+        report = json.loads(installed.stdout)["hosts"]
+        self.assertEqual([item["platform"] for item in report], ["antigravity"])
+        self.assertEqual(Path(report[0]["target"]), destination(self.root, "antigravity", "workspace"))
         checked = subprocess.run(command + ["doctor", "--workspace", "."], cwd=self.root, capture_output=True, text=True)
         self.assertEqual(checked.returncode, 0, checked.stdout + checked.stderr)
 
