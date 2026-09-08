@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 250개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 253개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -33,7 +33,7 @@
 | `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 11354 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 11688 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 7669 | [원문](files/docs/rebuild/plan/architecture.md.md) |
 | `docs/rebuild/plan/completion-audit.md` | 5066 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 39753 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 41265 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 42550 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -153,6 +153,7 @@
 | `docs/rebuild/validation/2026-09-08-task-handoff/verification.json` | 5995 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/verification.json.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/README.md` | 4674 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json` | 844 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json.md) |
+| `docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json` | 2525 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log` | 21295 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json` | 1859 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json.md) |
 | `docs/rebuild/validation/2026-09-09-native-certificate/README.md` | 4633 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/README.md.md) |
@@ -168,11 +169,12 @@
 | `docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json` | 5588 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json.md) |
 | `docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py` | 159 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py.md) |
 | `docs/styles.css` | 12916 | [원문](files/docs/styles.css.md) |
-| `evals/README.md` | 12377 | [원문](files/evals/README.md.md) |
+| `evals/README.md` | 13026 | [원문](files/evals/README.md.md) |
 | `evals/__init__.py` | 74 | [원문](files/evals/__init__.py.md) |
 | `evals/cases.json` | 6485 | [원문](files/evals/cases.json.md) |
-| `evals/comparison.py` | 5128 | [원문](files/evals/comparison.py.md) |
+| `evals/comparison.py` | 5928 | [원문](files/evals/comparison.py.md) |
 | `evals/definitions.py` | 1473 | [원문](files/evals/definitions.py.md) |
+| `evals/execution.py` | 3804 | [원문](files/evals/execution.py.md) |
 | `evals/fixtures/bounds/README.md` | 397 | [원문](files/evals/fixtures/bounds/README.md.md) |
 | `evals/fixtures/bounds/mathlib.py` | 61 | [원문](files/evals/fixtures/bounds/mathlib.py.md) |
 | `evals/fixtures/bounds/notes.txt` | 105 | [원문](files/evals/fixtures/bounds/notes.txt.md) |
@@ -195,7 +197,7 @@
 | `evals/fixtures/resume-export/test_app.py` | 758 | [원문](files/evals/fixtures/resume-export/test_app.py.md) |
 | `evals/fixtures/resume-export/test_exports.py` | 630 | [원문](files/evals/fixtures/resume-export/test_exports.py.md) |
 | `evals/grading.py` | 8757 | [원문](files/evals/grading.py.md) |
-| `evals/harness.py` | 2247 | [원문](files/evals/harness.py.md) |
+| `evals/harness.py` | 2901 | [원문](files/evals/harness.py.md) |
 | `evals/preparation.py` | 2930 | [원문](files/evals/preparation.py.md) |
 | `evals/probe.py` | 1282 | [원문](files/evals/probe.py.md) |
 | `evals/progress.py` | 2165 | [원문](files/evals/progress.py.md) |
@@ -255,6 +257,7 @@
 | `tests/test_session_start.py` | 4328 | [원문](files/tests/test_session_start.py.md) |
 | `tests/test_task_handoff.py` | 12227 | [원문](files/tests/test_task_handoff.py.md) |
 | `tests/test_task_hygiene.py` | 3902 | [원문](files/tests/test_task_hygiene.py.md) |
+| `tests/test_trial_run.py` | 5932 | [원문](files/tests/test_trial_run.py.md) |
 | `tests/test_workspace_argument.py` | 3601 | [원문](files/tests/test_workspace_argument.py.md) |
 
 제외 범위는 manifest.json, 로컬 ignored 관찰은 상위 조사 문서에 명시합니다.

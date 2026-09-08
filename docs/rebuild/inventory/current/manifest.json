@@ -301,10 +301,10 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 11354,
-      "sha256": "237d7065c9d44809a3c7a0d85ec81c961d6119abc59bac63d0abed3bf14d99a9",
+      "bytes": 11688,
+      "sha256": "c4d42d9d857a3ff011320b805de682be602c56901fbd63c814f38bb5ac94c2bf",
       "encoding": "utf-8",
-      "lines": 90,
+      "lines": 94,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/current-work.md.md"
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 41265,
-      "sha256": "b5bc48bfc134b6ed856a78a45f3f712220c9c6ca2a1810760f3aecc435955847",
+      "bytes": 42550,
+      "sha256": "877a91fc8988b0e95e5de968e34df77c95ad4cc9d39fedb139259954027767f7",
       "encoding": "utf-8",
-      "lines": 275,
+      "lines": 284,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -1908,6 +1908,17 @@
       "document": "files/docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json.md"
     },
     {
+      "path": "docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json",
+      "mode": "100644",
+      "bytes": 2525,
+      "sha256": "72fcdc7eda4c815b8837db27a9f273ad3341627cb9dd5e126ac4966c42ad5ba0",
+      "encoding": "utf-8",
+      "lines": 89,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json.md"
+    },
+    {
       "path": "docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log",
       "mode": "100644",
       "bytes": 21295,
@@ -2108,10 +2119,10 @@
     {
       "path": "evals/README.md",
       "mode": "100644",
-      "bytes": 12377,
-      "sha256": "966f087844f6d00f9f168a892ff067f48c3ae672183cd8081bd0d24912257551",
+      "bytes": 13026,
+      "sha256": "65bad46c1ba49c68a277761bc253caeb6657cf5506b36e2ee1b73dcd18fea456",
       "encoding": "utf-8",
-      "lines": 112,
+      "lines": 115,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/evals/README.md.md"
@@ -2141,34 +2152,34 @@
     {
       "path": "evals/comparison.py",
       "mode": "100644",
-      "bytes": 5128,
-      "sha256": "d3ebbb55048da8c76cee0e005733e8d36a90929e0ac1f35163bd3494e6649964",
+      "bytes": 5928,
+      "sha256": "e485620b97c3c2122f89ebc7a954ffaa97eb8433a83891d446775246086e8096",
       "encoding": "utf-8",
-      "lines": 105,
+      "lines": 116,
       "symbols": [
         {
           "name": "load",
           "kind": "FunctionDef",
           "line": 15,
-          "end_line": 45
+          "end_line": 49
         },
         {
           "name": "summarize",
           "kind": "FunctionDef",
-          "line": 48,
-          "end_line": 69
+          "line": 52,
+          "end_line": 80
         },
         {
           "name": "blocking",
           "kind": "FunctionDef",
-          "line": 72,
-          "end_line": 90
+          "line": 83,
+          "end_line": 101
         },
         {
           "name": "compare",
           "kind": "FunctionDef",
-          "line": 93,
-          "end_line": 105
+          "line": 104,
+          "end_line": 116
         }
       ],
       "trailing_newline": true,
@@ -2197,6 +2208,36 @@
       ],
       "trailing_newline": true,
       "document": "files/evals/definitions.py.md"
+    },
+    {
+      "path": "evals/execution.py",
+      "mode": "100644",
+      "bytes": 3804,
+      "sha256": "4a0886648fdcf557ae88851cec952a4ee94cb2037d2eb7e845db2177d284b041",
+      "encoding": "utf-8",
+      "lines": 83,
+      "symbols": [
+        {
+          "name": "terminate",
+          "kind": "FunctionDef",
+          "line": 22,
+          "end_line": 30
+        },
+        {
+          "name": "resolved",
+          "kind": "FunctionDef",
+          "line": 33,
+          "end_line": 38
+        },
+        {
+          "name": "run_arm",
+          "kind": "FunctionDef",
+          "line": 41,
+          "end_line": 83
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/execution.py.md"
     },
     {
       "path": "evals/fixtures/bounds/README.md",
@@ -2630,16 +2671,16 @@
     {
       "path": "evals/harness.py",
       "mode": "100644",
-      "bytes": 2247,
-      "sha256": "7acd789f7caab6c950296043d4bc023a038e98cd461be48a0d8b13c6e43c93c8",
+      "bytes": 2901,
+      "sha256": "bf746be33cb4c385f56ae808915757f5a699b76d5f438d33a6bf0de38dba1178",
       "encoding": "utf-8",
-      "lines": 50,
+      "lines": 59,
       "symbols": [
         {
           "name": "main",
           "kind": "FunctionDef",
-          "line": 21,
-          "end_line": 46
+          "line": 22,
+          "end_line": 55
         }
       ],
       "trailing_newline": true,
@@ -6006,6 +6047,96 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_task_hygiene.py.md"
+    },
+    {
+      "path": "tests/test_trial_run.py",
+      "mode": "100644",
+      "bytes": 5932,
+      "sha256": "d1acb81e5c27d8e8501048d5a51f21245151eec68721393b5e8d4d41b05290bb",
+      "encoding": "utf-8",
+      "lines": 134,
+      "symbols": [
+        {
+          "name": "fake_harness",
+          "kind": "FunctionDef",
+          "line": 17,
+          "end_line": 20
+        },
+        {
+          "name": "RunArmTests",
+          "kind": "ClassDef",
+          "line": 23,
+          "end_line": 86
+        },
+        {
+          "name": "ComparisonDurationTests",
+          "kind": "ClassDef",
+          "line": 89,
+          "end_line": 115
+        },
+        {
+          "name": "CliRunTests",
+          "kind": "ClassDef",
+          "line": 118,
+          "end_line": 130
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 24,
+          "end_line": 30
+        },
+        {
+          "name": "test_prepared_prompt_is_passed_verbatim_and_observed",
+          "kind": "FunctionDef",
+          "line": 32,
+          "end_line": 43
+        },
+        {
+          "name": "test_missing_placeholder_is_refused",
+          "kind": "FunctionDef",
+          "line": 45,
+          "end_line": 47
+        },
+        {
+          "name": "test_failing_arm_is_recorded_rather_than_hidden",
+          "kind": "FunctionDef",
+          "line": 49,
+          "end_line": 55
+        },
+        {
+          "name": "test_second_run_is_refused_so_one_trial_is_one_attempt",
+          "kind": "FunctionDef",
+          "line": 57,
+          "end_line": 61
+        },
+        {
+          "name": "test_timeout_is_recorded_and_does_not_leave_the_child_running",
+          "kind": "FunctionDef",
+          "line": 63,
+          "end_line": 69
+        },
+        {
+          "name": "test_grade_report_carries_the_observation",
+          "kind": "FunctionDef",
+          "line": 71,
+          "end_line": 86
+        },
+        {
+          "name": "test_compare_reports_observed_duration_per_arm",
+          "kind": "FunctionDef",
+          "line": 90,
+          "end_line": 115
+        },
+        {
+          "name": "test_cli_exposes_run_after_a_separator",
+          "kind": "FunctionDef",
+          "line": 119,
+          "end_line": 130
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_trial_run.py.md"
     },
     {
       "path": "tests/test_workspace_argument.py",

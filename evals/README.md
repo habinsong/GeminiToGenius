@@ -101,12 +101,15 @@ GTG 준비 단계는 이전 작업의 완료된 검사를 실제로 실행하고
 
 ```bash
 python3 -m evals.harness prepare bounds /absolute/new/a --profile baseline --arm codex-cli --model MODEL_LABEL
-python3 -m evals.harness prepare bounds /absolute/new/b --profile gtg --arm gtg --model MODEL_LABEL
+python3 -m evals.harness run /absolute/new/a -- codex exec "{prompt}"
+python3 -m evals.harness grade /absolute/new/a
 python3 -m evals.harness compare /absolute/new/a /absolute/new/b
 ```
 
-각 폴더를 해당 하네스로 실행한 뒤 한 번씩 `grade`합니다. `compare`는 `(arm, model)`별로 통과 수를 세고, 조건이 다르면 `comparable: false`와 막힌 이유를 보고합니다. `single_arm`, `definition_digest`, `prompt_sha256`, `case_coverage`, `ungraded`, `unstable_grades`가 이유가 됩니다. 채점하지 않은 시행을 패배로 세지 않고, 한 시행의 엇갈린 채점 중 하나를 고르지 않습니다.
+`run`은 준비된 요청 문자열을 `{prompt}` 자리에 그대로 넣어 실행합니다. 모든 팔이 같은 문자열을 받았다는 것을 사람이 아니라 코드가 보장합니다. 자리 표시가 없는 명령은 거부하고, 실행 시간·종료 상태·출력 크기를 시행 기록에 남기며 한 시행은 한 번만 실행합니다. 표준 출력과 오류는 `arm-stdout.log`·`arm-stderr.log`에 최대 256KiB까지 보존합니다.
 
-라벨은 사용자가 선언한 값이며 실제 실행 하네스를 확인하지 않습니다. 토큰 사용량·비용·지연은 수집하지 않으므로 별도로 기록해야 합니다. [실행 기록과 한계](../docs/rebuild/validation/2026-09-08-harness-comparison/README.md).
+`run`을 쓰지 않고 직접 실행해도 되지만 그 경우 실행 시간이 기록되지 않아 비교 보고서에 `unobserved_runs`로 표시됩니다. 각 폴더를 실행한 뒤 한 번씩 `grade`합니다. `compare`는 `(arm, model)`별로 통과 수를 세고, 조건이 다르면 `comparable: false`와 막힌 이유를 보고합니다. `single_arm`, `definition_digest`, `prompt_sha256`, `case_coverage`, `ungraded`, `unstable_grades`가 이유가 됩니다. 채점하지 않은 시행을 패배로 세지 않고, 한 시행의 엇갈린 채점 중 하나를 고르지 않습니다.
+
+라벨은 사용자가 선언한 값이며 실제 실행 하네스를 확인하지 않습니다. `run`으로 실행하면 벽시계 시간은 수집되지만 토큰 사용량과 비용은 이 도구가 알 수 없습니다. [실행 기록과 한계](../docs/rebuild/validation/2026-09-08-harness-comparison/README.md).
 
 실행 코어의 독립 통합 시험은 `tests/test_scenario.py`입니다. 잘못된 구현에 실제 검사를 실행하여 실패시키고, 참조 수정 후 통과, 재변경 후 성공 무효화를 확인합니다. 이는 훅과 증거 연결의 검증입니다.

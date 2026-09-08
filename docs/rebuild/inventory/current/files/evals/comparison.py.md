@@ -1,8 +1,8 @@
 # `evals/comparison.py`
 
 - 형식: `100644`
-- 바이트: 5128
-- SHA-256: `d3ebbb55048da8c76cee0e005733e8d36a90929e0ac1f35163bd3494e6649964`
+- 바이트: 5928
+- SHA-256: `e485620b97c3c2122f89ebc7a954ffaa97eb8433a83891d446775246086e8096`
 - 인코딩: `utf-8`
 
 ```
@@ -27,6 +27,10 @@ def load(trial: Path) -> dict:
              "arm": manifest.get("arm") or manifest.get("profile"), "model": manifest.get("model"),
              "profile": manifest.get("profile"), **{name: manifest.get(name) for name in FIELDS},
              "state": "ungraded", "passed": False, "scope_violations": []}
+    observation = manifest.get("runtime_observation")
+    entry["observation"] = ({"status": observation.get("status"), "returncode": observation.get("returncode"),
+                             "duration_seconds": observation.get("duration_seconds")}
+                            if isinstance(observation, dict) else None)
     folder = trial / "grades"
     reports = sorted(folder.glob("*.json")) if folder.is_dir() else []
     grades = []
@@ -59,9 +63,16 @@ def summarize(entries: list[dict]) -> list[dict]:
         arm = arms.setdefault((entry["arm"], entry["model"]),
                               {"arm": entry["arm"], "model": entry["model"], "trials": 0, "passed": 0,
                                "ungraded": 0, "unstable": 0, "human_review": 0, "scope_violation_trials": 0,
-                               "cases": [], "profiles": []})
+                               "cases": [], "profiles": [], "total_duration_seconds": 0.0,
+                               "unobserved_runs": 0})
         arm["trials"] += 1
         arm["cases"].append(entry["case_id"])
+        seconds = (entry.get("observation") or {}).get("duration_seconds")
+        if isinstance(seconds, (int, float)) and not isinstance(seconds, bool):
+            arm["total_duration_seconds"] = round(arm["total_duration_seconds"] + seconds, 3)
+        else:
+            # 실행 시간을 관측하지 않은 시행은 0초로 세지 않습니다.
+            arm["unobserved_runs"] += 1
         if entry["profile"] not in arm["profiles"]:
             arm["profiles"].append(entry["profile"])
         if entry["state"] == "ungraded":
