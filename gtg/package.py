@@ -162,11 +162,23 @@ def validated_hooks(hooks: dict, platform: str, installed: Path) -> list:
     return result
 
 
-def verify(target: Path, execute_hooks: bool = True, *, installed: Path | None = None) -> dict:
-    manifest = json.loads((target / MANIFEST).read_text())
-    declared = Path(manifest["installed_path"])
-    if not declared.is_absolute() or declared != (installed or target).absolute():
-        raise ValueError("설치 위치가 바뀌었습니다. 현재 경로에 다시 설치하세요.")
+def check_instructions(name: str, path: Path):
+    """배포하는 지시문의 무결성입니다. 숨은 지시와 잘못된 스킬 메타데이터를 거부합니다."""
+    if path.suffix == ".md" and INVISIBLE.search(path.read_text(encoding="utf-8")):
+        raise ValueError(f"보이지 않는 문자가 지시문에 있습니다: {name}")
+    if path.name != "SKILL.md":
+        return
+    text = path.read_text(encoding="utf-8")
+    match = re.match(r"\A---\nname: ([a-z0-9]+(?:-[a-z0-9]+)*)\ndescription: ([^\n]+)\n---\n", text)
+    if not match or match[1] != path.parent.name or len(match[1]) > 64 or len(match[2]) > 1024:
+        raise ValueError(f"스킬 메타데이터가 올바르지 않습니다: {name}")
+    # 메타데이터의 꺾쇠는 시스템 프롬프트에 의도하지 않은 지시를 넣을 수 있습니다.
+    if {"<", ">"} & set(match[2]):
+        raise ValueError(f"스킬 메타데이터에 꺾쇠를 사용할 수 없습니다: {name}")
+
+
+def check_contents(target: Path, manifest: dict) -> dict:
+    """manifest에 적힌 파일만, 적힌 해시 그대로 있는지 확인합니다."""
     expected = manifest["files"]
     if antigravity(manifest["platform"]) and "rules/AGENTS.md" not in expected:
         raise ValueError("호스트가 읽는 기본 규칙 진입점이 없습니다.")
@@ -179,18 +191,46 @@ def verify(target: Path, execute_hooks: bool = True, *, installed: Path | None =
             raise ValueError(f"패키지 원문이 변경되었습니다: {name}")
         if path.suffix == ".py":
             ast.parse(path.read_text(encoding="utf-8"))
-        if path.suffix == ".md":
-            hidden = INVISIBLE.search(path.read_text(encoding="utf-8"))
-            if hidden:
-                raise ValueError(f"보이지 않는 문자가 지시문에 있습니다: {name}")
-        if path.name == "SKILL.md":
-            text = path.read_text(encoding="utf-8")
-            match = re.match(r"\A---\nname: ([a-z0-9]+(?:-[a-z0-9]+)*)\ndescription: ([^\n]+)\n---\n", text)
-            if not match or match[1] != path.parent.name or len(match[1]) > 64 or len(match[2]) > 1024:
-                raise ValueError(f"스킬 메타데이터가 올바르지 않습니다: {name}")
-            # 메타데이터의 꺾쇠는 시스템 프롬프트에 의도하지 않은 지시를 넣을 수 있습니다.
-            if {"<", ">"} & set(match[2]):
-                raise ValueError(f"스킬 메타데이터에 꺾쇠를 사용할 수 없습니다: {name}")
+        check_instructions(name, path)
+    return actual
+
+
+def hook_payload(platform: str, event: str, target: Path) -> dict:
+    if antigravity(platform):
+        return {"conversationId": "package-check", "workspacePaths": [str(target)], "invocationNum": 0,
+                "executionNum": 0, "fullyIdle": True, "terminationReason": "model_stop"}
+    return {"session_id": "package-check", "cwd": str(target), "hook_event_name": event, "stop_hook_active": False}
+
+
+def run_hook(target: Path, platform: str, event: str, argv: list, timeout: float):
+    """실제 진입점을 실행해 이벤트별 필수 응답을 확인합니다."""
+    # 설치 전에는 동일한 진입점을 staging 경로에서 실행합니다.
+    argv[1] = str(target / "run.py")
+    try:
+        process = subprocess.run(argv, input=json.dumps(hook_payload(platform, event, target)), text=True,
+                                 capture_output=True, timeout=timeout,
+                                 env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
+    except subprocess.TimeoutExpired as error:
+        raise ValueError("패키지 훅이 시간 제한 안에 끝나지 않았습니다.") from error
+    if process.returncode or process.stderr.strip():
+        raise ValueError("패키지 훅 실행이 실패했습니다.")
+    output = json.loads(process.stdout)
+    if not isinstance(output, dict):
+        raise ValueError("훅 출력이 JSON 객체가 아닙니다.")
+    if event == "Stop" and output.get("decision") != "stop":
+        raise ValueError("작업 없는 종료 훅이 종료를 허용하지 않습니다.")
+    if event == "PreInvocation" and not output.get("injectSteps"):
+        raise ValueError("첫 호출의 세션 정보가 없습니다.")
+    if event == "BeforeAgent" and not output.get("hookSpecificOutput", {}).get("additionalContext"):
+        raise ValueError("첫 요청의 세션 정보가 없습니다.")
+
+
+def verify(target: Path, execute_hooks: bool = True, *, installed: Path | None = None) -> dict:
+    manifest = json.loads((target / MANIFEST).read_text())
+    declared = Path(manifest["installed_path"])
+    if not declared.is_absolute() or declared != (installed or target).absolute():
+        raise ValueError("설치 위치가 바뀌었습니다. 현재 경로에 다시 설치하세요.")
+    actual = check_contents(target, manifest)
     platform = manifest["platform"]
     if antigravity(platform):
         check_rule_size((target / "rules/AGENTS.md").read_bytes())
@@ -198,29 +238,6 @@ def verify(target: Path, execute_hooks: bool = True, *, installed: Path | None =
     entries = validated_hooks(hooks, platform, declared)
     if not execute_hooks:
         return {"ok": True, "files": len(actual), "hooks_executed": 0}
-    count = 0
     for event, argv, timeout in entries:
-        # 설치 전에는 동일한 진입점을 staging 경로에서 실행합니다.
-        argv[1] = str(target / "run.py")
-        payload = ({"conversationId": "package-check", "workspacePaths": [str(target)], "invocationNum": 0,
-                    "executionNum": 0, "fullyIdle": True, "terminationReason": "model_stop"}
-                   if antigravity(platform) else
-                   {"session_id": "package-check", "cwd": str(target), "hook_event_name": event, "stop_hook_active": False})
-        try:
-            process = subprocess.run(argv, input=json.dumps(payload), text=True, capture_output=True, timeout=timeout,
-                                     env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
-        except subprocess.TimeoutExpired as error:
-            raise ValueError("패키지 훅이 시간 제한 안에 끝나지 않았습니다.") from error
-        if process.returncode or process.stderr.strip():
-            raise ValueError("패키지 훅 실행이 실패했습니다.")
-        output = json.loads(process.stdout)
-        if not isinstance(output, dict):
-            raise ValueError("훅 출력이 JSON 객체가 아닙니다.")
-        if event == "Stop" and output.get("decision") != "stop":
-            raise ValueError("작업 없는 종료 훅이 종료를 허용하지 않습니다.")
-        if event == "PreInvocation" and not output.get("injectSteps"):
-            raise ValueError("첫 호출의 세션 정보가 없습니다.")
-        if event == "BeforeAgent" and not output.get("hookSpecificOutput", {}).get("additionalContext"):
-            raise ValueError("첫 요청의 세션 정보가 없습니다.")
-        count += 1
-    return {"ok": True, "files": len(actual), "hooks_executed": count, "platform": platform}
+        run_hook(target, platform, event, argv, timeout)
+    return {"ok": True, "files": len(actual), "hooks_executed": len(entries), "platform": platform}

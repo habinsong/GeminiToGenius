@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 65084,
-      "sha256": "43da1952a2ce929a80feac38ece8106fb3630b3bca7bf3e1592ab5b97b5129f1",
+      "bytes": 65932,
+      "sha256": "b8506d3def06db8ee979cdf6001407b1f2aeae631b3541851c5d52888bc8265f",
       "encoding": "utf-8",
-      "lines": 486,
+      "lines": 495,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -3780,10 +3780,10 @@
     {
       "path": "gtg/package.py",
       "mode": "100644",
-      "bytes": 12733,
-      "sha256": "192277fa042c301dcc88e30d27ab7a175da8da542e5395e073315f6b1eb75404",
+      "bytes": 13292,
+      "sha256": "ae01c1ee404faab04ad2fb1f1e8526b41e96a34e546e16fbf6325b105a7eb07d",
       "encoding": "utf-8",
-      "lines": 226,
+      "lines": 243,
       "symbols": [
         {
           "name": "validate_source",
@@ -3828,10 +3828,34 @@
           "end_line": 162
         },
         {
-          "name": "verify",
+          "name": "check_instructions",
           "kind": "FunctionDef",
           "line": 165,
-          "end_line": 226
+          "end_line": 177
+        },
+        {
+          "name": "check_contents",
+          "kind": "FunctionDef",
+          "line": 180,
+          "end_line": 195
+        },
+        {
+          "name": "hook_payload",
+          "kind": "FunctionDef",
+          "line": 198,
+          "end_line": 202
+        },
+        {
+          "name": "run_hook",
+          "kind": "FunctionDef",
+          "line": 205,
+          "end_line": 225
+        },
+        {
+          "name": "verify",
+          "kind": "FunctionDef",
+          "line": 228,
+          "end_line": 243
         }
       ],
       "trailing_newline": true,
