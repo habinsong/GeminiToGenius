@@ -1,14 +1,15 @@
 # `tests/test_coverage.py`
 
 - 형식: `100644`
-- 바이트: 15504
-- SHA-256: `e3636fe5efb0f863397cbdba718c2e225f9019e008a26d0c4c26d638ed93ba99`
+- 바이트: 19792
+- SHA-256: `94a0220767b630a888b3fd7100e27a7d2e906e0411e272286c847d6dce3519c0`
 - 인코딩: `utf-8`
 
 ```
 """검사가 실제로 실행한 검증 대상 파일을 기록하고, 실행하지 않은 범위를 사실로 표시합니다."""
 
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -105,6 +106,25 @@ class CollectorTests(unittest.TestCase):
         ran, missed = executed_watch(self.root, ["wide"], set())
         self.assertEqual(ran, [])
         self.assertIsNone(missed, "범위를 다 세지 못하면 미실행을 주장하지 않습니다.")
+
+    def test_nested_collectors_still_chain_to_the_user_sitecustomize(self):
+        """관찰기 안에서 관찰기가 또 돌아도 사용자 sitecustomize를 건너뛰지 않습니다."""
+        other = self.root / "site-extra"
+        other.mkdir()
+        marker = self.root / "nested-marker.txt"
+        (other / "sitecustomize.py").write_text(f"open({str(marker)!r}, 'w').write('ran')\n")
+        with collector() as outer:
+            outer_environment = outer.environment()
+            with collector() as inner:
+                environment = {**outer_environment, **inner.environment()}
+                environment["PYTHONPATH"] = (inner.environment()["PYTHONPATH"] + os.pathsep
+                                             + outer_environment["PYTHONPATH"] + os.pathsep + str(other))
+                (self.root / "work.py").write_text("VALUE = 1\n")
+                done = subprocess.run([sys.executable, "-c", "import work; assert work.VALUE == 1"],
+                                      cwd=self.root, env=environment, capture_output=True, text=True)
+                self.assertEqual(done.returncode, 0, done.stderr)
+                self.assertIn((self.root / "work.py").resolve(), inner.files())
+        self.assertEqual(marker.read_text(), "ran", "중첩 시 사용자 sitecustomize가 실행되어야 합니다.")
 
     def test_watch_split_only_covers_python_files(self):
         (self.root / "pkg").mkdir()
@@ -316,4 +336,52 @@ class JavaScriptCoverageTests(unittest.TestCase):
         document = build(self.store, task)
         self.assertTrue(document["coverage_complete"])
         self.assertEqual(document["unverified_scope"], ["unused.js"])
+
+
+class TypeScriptScopeTests(unittest.TestCase):
+    """TypeScript는 네이티브로 실행될 때만 관찰됩니다. 실행 방식은 관측으로 판단합니다."""
+
+    @classmethod
+    def setUpClass(cls):
+        import shutil as _shutil
+        if _shutil.which("node") is None:
+            raise unittest.SkipTest("node를 찾지 못했습니다.")
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.workspace = Path(self.temp.name).resolve()
+        (self.workspace / "lib.ts").write_text("export function double(n: number): number { return n * 2; }\n")
+        (self.workspace / "spare.ts").write_text("export function unused(n: number): number { return n + 1; }\n")
+        (self.workspace / "main.ts").write_text(
+            "import { double } from './lib.ts';\nif (double(2) !== 4) { throw new Error('bad'); }\n")
+        self.store = Store(self.workspace / ".gtg/state.sqlite3")
+        self.addCleanup(self.store.close)
+
+    def test_natively_executed_typescript_is_measured(self):
+        spec = {"schema_version": 1, "goal": "TypeScript를 직접 실행합니다.", "checks": [
+            {"id": "ts", "criterion": "타입스크립트 검사가 통과합니다.", "argv": ["node", "main.ts"],
+             "watch": ["lib.ts", "main.ts", "spare.ts"]}]}
+        task = self.store.create(self.workspace, spec)
+        result = execute(self.store, task, "ts")
+        if result["status"] != "passed":
+            self.skipTest("이 Node는 TypeScript를 직접 실행하지 않습니다.")
+        self.assertEqual(result["executed_watch"], ["lib.ts", "main.ts"])
+        self.assertEqual(result["unexecuted_watch"], ["spare.ts"],
+                         "네이티브 실행이 관측되면 나머지는 실제로 실행되지 않은 것입니다.")
+        self.assertTrue(build(self.store, task)["coverage_complete"])
+
+    def test_compiled_workflow_does_not_claim_typescript_was_unexecuted(self):
+        (self.workspace / "built.js").write_text("module.exports = { double: (n) => n * 2 };\n")
+        (self.workspace / "check.js").write_text(
+            "const { double } = require('./built.js');\nif (double(2) !== 4) { throw new Error('bad'); }\n")
+        spec = {"schema_version": 1, "goal": "컴파일 산출물을 실행합니다.", "checks": [
+            {"id": "compiled", "criterion": "빌드 산출물 검사가 통과합니다.", "argv": ["node", "check.js"],
+             "watch": ["lib.ts", "spare.ts", "built.js", "check.js"]}]}
+        task = self.store.create(self.workspace, spec)
+        result = execute(self.store, task, "compiled")
+        self.assertEqual(result["status"], "passed")
+        self.assertIsNone(result["unexecuted_watch"],
+                          "TypeScript 실행이 관측되지 않으면 미실행을 주장하지 않습니다.")
+        self.assertFalse(build(self.store, task)["coverage_complete"])
 ```

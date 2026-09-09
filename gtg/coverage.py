@@ -24,8 +24,10 @@ from .spec import private, relative
 DIRECTORY = "GTG_COVERAGE_DIR"
 # 실행을 실제로 관찰할 수 있는 확장자입니다.
 OBSERVABLE = (".py", ".js", ".mjs", ".cjs")
+# 네이티브로 실행하면 관찰되고 컴파일해서 실행하면 보이지 않습니다. 실행 방식은 관측으로 판단합니다.
+AMBIGUOUS = (".ts", ".mts", ".cts")
 # 관찰할 수 없는 코드입니다. 범위에 있으면 미실행을 주장하지 않습니다.
-UNOBSERVED_CODE = (".ts", ".tsx", ".jsx", ".go", ".rs", ".rb", ".java", ".kt", ".swift",
+UNOBSERVED_CODE = (".tsx", ".jsx", ".go", ".rs", ".rb", ".java", ".kt", ".swift",
                    ".c", ".cc", ".cpp", ".h", ".hpp", ".cs", ".php", ".sh", ".bash", ".zsh", ".pl", ".lua")
 # 넓은 검증 범위에서 목록 작성 자체가 비싸지지 않게 막습니다. 상한을 넘으면 범위를 주장하지 않습니다.
 MAX_WATCHED_FILES = 2000
@@ -39,8 +41,10 @@ import json
 import os
 import sys
 
-_target = os.environ.get("GTG_COVERAGE_DIR")
+# 중첩 실행에서 두 번 등록하지 않습니다. 바깥 관찰기가 이미 붙어 있으면 그대로 둡니다.
+_target = os.environ.get("GTG_COVERAGE_DIR") if not getattr(sys, "_gtg_coverage_active", False) else None
 if _target:
+    sys._gtg_coverage_active = True
     _seen = set()
 
     def _dump():
@@ -94,6 +98,9 @@ try:
     _spec = None
     for _entry in _rest:
         _candidate_path = os.path.join(_entry, "sitecustomize.py")
+        # 다른 GTG 부트스트랩 폴더는 같은 내용이므로 건너뛰고 사용자 파일을 찾습니다.
+        if os.path.isfile(os.path.join(_entry, "gtg-node-coverage.js")):
+            continue
         if os.path.isfile(_candidate_path):
             _spec = importlib.util.spec_from_file_location("_gtg_prior_sitecustomize", _candidate_path)
             break
@@ -194,8 +201,13 @@ def collector():
         shutil.rmtree(directory, ignore_errors=True)
 
 
-def watched_code_files(root: Path, watched: list[str]) -> tuple[list[Path], bool]:
-    """관찰 가능한 코드 파일과, 관찰할 수 없는 코드가 범위에 있었는지를 돌려줍니다."""
+def watched_code_files(root: Path, watched: list[str], *, native: bool = False) -> tuple[list[Path], bool]:
+    """관찰 가능한 코드 파일과, 관찰할 수 없는 코드가 범위에 있었는지를 돌려줍니다.
+
+    `native`는 이번 실행에서 TypeScript가 직접 실행되는 것을 관측했는지입니다. 관측하지
+    못했다면 컴파일 산출물을 실행했을 수 있으므로 원본 TypeScript의 미실행을 주장하지 않습니다.
+    """
+    observable = OBSERVABLE + AMBIGUOUS if native else OBSERVABLE
     found, opaque = [], False
     for name in watched:
         target = root / relative(name)
@@ -209,9 +221,9 @@ def watched_code_files(root: Path, watched: list[str]) -> tuple[list[Path], bool
             if private(path.relative_to(root)):
                 continue
             suffix = path.suffix.casefold()
-            if suffix in UNOBSERVED_CODE:
+            if suffix in UNOBSERVED_CODE or (suffix in AMBIGUOUS and not native):
                 opaque = True
-            elif suffix in OBSERVABLE and path not in found:
+            elif suffix in observable and path not in found:
                 found.append(path)
                 if len(found) >= MAX_WATCHED_FILES:
                     return found, opaque
@@ -220,7 +232,9 @@ def watched_code_files(root: Path, watched: list[str]) -> tuple[list[Path], bool
 
 def executed_watch(root: Path, watched: list[str], files: set[Path]) -> tuple[list[str], list[str] | None]:
     """실행한 대상과 실행하지 않은 대상입니다. 범위를 다 세지 못하면 두 번째 값이 없습니다."""
-    candidates, opaque = watched_code_files(root, watched)
+    # 실행 기록 어디에든 TypeScript가 있으면 이 실행은 네이티브로 돌린 것입니다.
+    native = any(path.suffix.casefold() in AMBIGUOUS for path in files)
+    candidates, opaque = watched_code_files(root, watched, native=native)
     complete = len(candidates) < MAX_WATCHED_FILES and not opaque
     ran, missed = [], []
     for path in candidates:

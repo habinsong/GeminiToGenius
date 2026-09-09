@@ -301,8 +301,8 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 4388,
-      "sha256": "baaad1b0a52189755b22fd9155194628d03d53dc39dc6377e2229f73685e6a0c",
+      "bytes": 4428,
+      "sha256": "b723a81af7dd877f799cf22cd6c42fc0b527f77750fd54c6fbd421d89f710e43",
       "encoding": "utf-8",
       "lines": 45,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 48145,
-      "sha256": "eb5082b9d5d6b628d8e00a021513f9832e4eb5314ce43f457bf97f1cb9988b01",
+      "bytes": 49219,
+      "sha256": "7d337c7c19ce2cd4da4361cc45014c013fbb7855afa9eb2cda5a12dd04558ede",
       "encoding": "utf-8",
-      "lines": 331,
+      "lines": 339,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -1888,10 +1888,10 @@
     {
       "path": "docs/rebuild/validation/2026-09-09-evidence-coverage/README.md",
       "mode": "100644",
-      "bytes": 6821,
-      "sha256": "a1283c34d62e745790e55c80119abc757a2f1ef18a530c58d0e9a95bfc407672",
+      "bytes": 8352,
+      "sha256": "3e7b7628b57427f3c1f09cd27c1abdd76b2225941d2a1a35f8cc6d87c537b408",
       "encoding": "utf-8",
-      "lines": 78,
+      "lines": 92,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md"
@@ -2952,58 +2952,58 @@
     {
       "path": "gtg/coverage.py",
       "mode": "100644",
-      "bytes": 9180,
-      "sha256": "5a66808947a912fd2c33786d5fbd0b8e65b2c7ae6c646e89a481a886d47caa3e",
+      "bytes": 10362,
+      "sha256": "34e5c03505b8d81c23e109e86aa6e47f254e268eacd6cc4159112cecccaefd9e",
       "encoding": "utf-8",
-      "lines": 232,
+      "lines": 246,
       "symbols": [
         {
           "name": "Session",
           "kind": "ClassDef",
-          "line": 136,
-          "end_line": 180
+          "line": 143,
+          "end_line": 187
         },
         {
           "name": "collector",
           "kind": "FunctionDef",
-          "line": 184,
-          "end_line": 194
+          "line": 191,
+          "end_line": 201
         },
         {
           "name": "watched_code_files",
           "kind": "FunctionDef",
-          "line": 197,
-          "end_line": 218
+          "line": 204,
+          "end_line": 230
         },
         {
           "name": "executed_watch",
           "kind": "FunctionDef",
-          "line": 221,
-          "end_line": 232
+          "line": 233,
+          "end_line": 246
         },
         {
           "name": "__init__",
           "kind": "FunctionDef",
-          "line": 139,
-          "end_line": 141
+          "line": 146,
+          "end_line": 148
         },
         {
           "name": "environment",
           "kind": "FunctionDef",
-          "line": 143,
-          "end_line": 154
+          "line": 150,
+          "end_line": 161
         },
         {
           "name": "files",
           "kind": "FunctionDef",
-          "line": 156,
-          "end_line": 176
+          "line": 163,
+          "end_line": 183
         },
         {
           "name": "observed",
           "kind": "FunctionDef",
-          "line": 178,
-          "end_line": 180
+          "line": 185,
+          "end_line": 187
         }
       ],
       "trailing_newline": true,
@@ -4389,202 +4389,238 @@
     {
       "path": "tests/test_coverage.py",
       "mode": "100644",
-      "bytes": 15504,
-      "sha256": "e3636fe5efb0f863397cbdba718c2e225f9019e008a26d0c4c26d638ed93ba99",
+      "bytes": 19792,
+      "sha256": "94a0220767b630a888b3fd7100e27a7d2e906e0411e272286c847d6dce3519c0",
       "encoding": "utf-8",
-      "lines": 310,
+      "lines": 378,
       "symbols": [
         {
           "name": "CollectorTests",
           "kind": "ClassDef",
-          "line": 16,
-          "end_line": 108
+          "line": 17,
+          "end_line": 128
         },
         {
           "name": "spec",
           "kind": "FunctionDef",
-          "line": 111,
-          "end_line": 114
+          "line": 131,
+          "end_line": 134
         },
         {
           "name": "RunnerCoverageTests",
           "kind": "ClassDef",
-          "line": 117,
-          "end_line": 224
+          "line": 137,
+          "end_line": 244
         },
         {
           "name": "JavaScriptCoverageTests",
           "kind": "ClassDef",
-          "line": 231,
-          "end_line": 310
+          "line": 251,
+          "end_line": 330
+        },
+        {
+          "name": "TypeScriptScopeTests",
+          "kind": "ClassDef",
+          "line": 333,
+          "end_line": 378
         },
         {
           "name": "setUp",
           "kind": "FunctionDef",
-          "line": 17,
-          "end_line": 20
+          "line": 18,
+          "end_line": 21
         },
         {
           "name": "test_python_subprocess_execution_is_recorded",
           "kind": "FunctionDef",
-          "line": 22,
-          "end_line": 36
+          "line": 23,
+          "end_line": 37
         },
         {
           "name": "test_nested_python_subprocess_is_also_recorded",
           "kind": "FunctionDef",
-          "line": 38,
-          "end_line": 48
+          "line": 39,
+          "end_line": 49
         },
         {
           "name": "test_existing_sitecustomize_still_runs",
           "kind": "FunctionDef",
-          "line": 50,
-          "end_line": 60
+          "line": 51,
+          "end_line": 61
         },
         {
           "name": "test_no_python_execution_reports_nothing_observed",
           "kind": "FunctionDef",
-          "line": 62,
-          "end_line": 67
+          "line": 63,
+          "end_line": 68
         },
         {
           "name": "test_isolated_interpreter_reports_nothing_instead_of_failing",
           "kind": "FunctionDef",
-          "line": 69,
-          "end_line": 77
+          "line": 70,
+          "end_line": 78
         },
         {
           "name": "test_large_watch_scope_is_capped_instead_of_walking_forever",
           "kind": "FunctionDef",
-          "line": 79,
-          "end_line": 88
+          "line": 80,
+          "end_line": 89
         },
         {
           "name": "test_capped_scope_does_not_claim_unexecuted_files",
           "kind": "FunctionDef",
-          "line": 90,
-          "end_line": 99
+          "line": 91,
+          "end_line": 100
+        },
+        {
+          "name": "test_nested_collectors_still_chain_to_the_user_sitecustomize",
+          "kind": "FunctionDef",
+          "line": 102,
+          "end_line": 119
         },
         {
           "name": "test_watch_split_only_covers_python_files",
           "kind": "FunctionDef",
-          "line": 101,
-          "end_line": 108
+          "line": 121,
+          "end_line": 128
         },
         {
           "name": "setUp",
           "kind": "FunctionDef",
-          "line": 118,
-          "end_line": 126
+          "line": 138,
+          "end_line": 146
         },
         {
           "name": "test_passing_check_records_the_file_it_never_executed",
           "kind": "FunctionDef",
-          "line": 128,
-          "end_line": 134
+          "line": 148,
+          "end_line": 154
         },
         {
           "name": "test_non_python_command_does_not_claim_anything_unexecuted",
           "kind": "FunctionDef",
-          "line": 136,
-          "end_line": 141
+          "line": 156,
+          "end_line": 161
         },
         {
           "name": "test_status_and_certificate_carry_the_unverified_scope",
           "kind": "FunctionDef",
-          "line": 143,
-          "end_line": 151
+          "line": 163,
+          "end_line": 171
         },
         {
           "name": "test_unobservable_check_marks_the_scope_as_incomplete",
           "kind": "FunctionDef",
-          "line": 153,
-          "end_line": 160
+          "line": 173,
+          "end_line": 180
         },
         {
           "name": "test_observed_check_marks_the_scope_as_complete",
           "kind": "FunctionDef",
-          "line": 162,
-          "end_line": 167
+          "line": 182,
+          "end_line": 187
         },
         {
           "name": "test_replay_passes_the_scope_and_its_completeness_through",
           "kind": "FunctionDef",
-          "line": 169,
-          "end_line": 177
+          "line": 189,
+          "end_line": 197
         },
         {
           "name": "test_replay_verdict_is_three_valued",
           "kind": "FunctionDef",
-          "line": 179,
-          "end_line": 190
+          "line": 199,
+          "end_line": 210
         },
         {
           "name": "test_incomplete_coverage_is_inconclusive_not_pass",
           "kind": "FunctionDef",
-          "line": 192,
-          "end_line": 201
+          "line": 212,
+          "end_line": 221
         },
         {
           "name": "test_unverified_task_replays_as_invalid",
           "kind": "FunctionDef",
-          "line": 203,
-          "end_line": 209
+          "line": 223,
+          "end_line": 229
         },
         {
           "name": "test_a_file_executed_by_any_check_is_not_listed_as_unverified",
           "kind": "FunctionDef",
-          "line": 211,
-          "end_line": 224
+          "line": 231,
+          "end_line": 244
         },
         {
           "name": "setUpClass",
           "kind": "FunctionDef",
-          "line": 235,
-          "end_line": 238
+          "line": 255,
+          "end_line": 258
         },
         {
           "name": "setUp",
           "kind": "FunctionDef",
-          "line": 240,
-          "end_line": 249
+          "line": 260,
+          "end_line": 269
         },
         {
           "name": "js_spec",
           "kind": "FunctionDef",
-          "line": 251,
-          "end_line": 254
+          "line": 271,
+          "end_line": 274
         },
         {
           "name": "test_node_execution_is_recorded_like_python",
           "kind": "FunctionDef",
-          "line": 256,
-          "end_line": 262
+          "line": 276,
+          "end_line": 282
         },
         {
           "name": "test_esm_modules_are_recorded",
           "kind": "FunctionDef",
-          "line": 264,
-          "end_line": 276
+          "line": 284,
+          "end_line": 296
         },
         {
           "name": "test_existing_node_options_are_preserved",
           "kind": "FunctionDef",
-          "line": 278,
-          "end_line": 291
+          "line": 298,
+          "end_line": 311
         },
         {
           "name": "test_unobservable_code_in_scope_is_not_silently_treated_as_covered",
           "kind": "FunctionDef",
-          "line": 293,
-          "end_line": 301
+          "line": 313,
+          "end_line": 321
         },
         {
           "name": "test_data_files_in_scope_do_not_block_completeness",
           "kind": "FunctionDef",
-          "line": 303,
-          "end_line": 310
+          "line": 323,
+          "end_line": 330
+        },
+        {
+          "name": "setUpClass",
+          "kind": "FunctionDef",
+          "line": 337,
+          "end_line": 340
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 342,
+          "end_line": 351
+        },
+        {
+          "name": "test_natively_executed_typescript_is_measured",
+          "kind": "FunctionDef",
+          "line": 353,
+          "end_line": 364
+        },
+        {
+          "name": "test_compiled_workflow_does_not_claim_typescript_was_unexecuted",
+          "kind": "FunctionDef",
+          "line": 366,
+          "end_line": 378
         }
       ],
       "trailing_newline": true,

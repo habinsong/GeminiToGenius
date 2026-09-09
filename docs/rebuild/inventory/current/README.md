@@ -33,7 +33,7 @@
 | `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 4388 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 4428 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 7669 | [원문](files/docs/rebuild/plan/architecture.md.md) |
 | `docs/rebuild/plan/completion-audit.md` | 5066 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 44562 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 48145 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 49219 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -151,7 +151,7 @@
 | `docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json` | 270 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/tests.log` | 21385 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/tests.log.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/verification.json` | 5995 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/verification.json.md) |
-| `docs/rebuild/validation/2026-09-09-evidence-coverage/README.md` | 6821 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md) |
+| `docs/rebuild/validation/2026-09-09-evidence-coverage/README.md` | 8352 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json` | 844 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json` | 2525 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log` | 23577 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log.md) |
@@ -207,7 +207,7 @@
 | `gtg/certificate.py` | 7606 | [원문](files/gtg/certificate.py.md) |
 | `gtg/checkpoints.py` | 2771 | [원문](files/gtg/checkpoints.py.md) |
 | `gtg/context_message.py` | 3071 | [원문](files/gtg/context_message.py.md) |
-| `gtg/coverage.py` | 9180 | [원문](files/gtg/coverage.py.md) |
+| `gtg/coverage.py` | 10362 | [원문](files/gtg/coverage.py.md) |
 | `gtg/discovery.py` | 4610 | [원문](files/gtg/discovery.py.md) |
 | `gtg/hooks.py` | 9749 | [원문](files/gtg/hooks.py.md) |
 | `gtg/inspection.py` | 7450 | [원문](files/gtg/inspection.py.md) |
@@ -236,7 +236,7 @@
 | `tests/test_checkpoints.py` | 4243 | [원문](files/tests/test_checkpoints.py.md) |
 | `tests/test_comparison.py` | 6954 | [원문](files/tests/test_comparison.py.md) |
 | `tests/test_context_message.py` | 8706 | [원문](files/tests/test_context_message.py.md) |
-| `tests/test_coverage.py` | 15504 | [원문](files/tests/test_coverage.py.md) |
+| `tests/test_coverage.py` | 19792 | [원문](files/tests/test_coverage.py.md) |
 | `tests/test_doc_contract.py` | 4245 | [원문](files/tests/test_doc_contract.py.md) |
 | `tests/test_eval_export.py` | 5780 | [원문](files/tests/test_eval_export.py.md) |
 | `tests/test_eval_resume.py` | 3602 | [원문](files/tests/test_eval_resume.py.md) |
