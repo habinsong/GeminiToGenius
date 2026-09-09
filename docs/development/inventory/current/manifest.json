@@ -148,8 +148,8 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "bytes": 5734,
-      "sha256": "a448ccaa253896ecd4535a4c6b96e286bb6e332194af160f0171ac8fde5f4494",
+      "bytes": 5662,
+      "sha256": "1a46e99a8af05b4d094cbdd25599a65ff60c8c03a45893fe7cdea77762e35ee5",
       "encoding": "utf-8",
       "lines": 110,
       "symbols": [],
@@ -213,8 +213,8 @@
     {
       "path": "docs/README.en.md",
       "mode": "100644",
-      "bytes": 6409,
-      "sha256": "18f49e6b36e9f7bb0804bb7052c9f038c006c60cb3ee65b1981c520de220650b",
+      "bytes": 6397,
+      "sha256": "0a7cd4fae9d82df40e20ab4f5154b368109b237c8487976439751fe36ddd2085",
       "encoding": "utf-8",
       "lines": 106,
       "symbols": [],
@@ -279,8 +279,8 @@
     {
       "path": "docs/development/current-work.md",
       "mode": "100644",
-      "bytes": 5695,
-      "sha256": "afa478eedb55de777e7ee7e4883d49ca99aa32d61863066c18e4d48115012b05",
+      "bytes": 5812,
+      "sha256": "2253eca04d29bdca101b1b41e4ea1952c44a978b2f8393364436353b92bc8f1d",
       "encoding": "utf-8",
       "lines": 48,
       "symbols": [],
@@ -389,8 +389,8 @@
     {
       "path": "docs/development/status.md",
       "mode": "100644",
-      "bytes": 72022,
-      "sha256": "b3eec9e6e19006f685c555eb92065b211069c56307274aa41d56235d8afdda1d",
+      "bytes": 72147,
+      "sha256": "6f68c996c35758c9e28fac3bb58dbfc28eecbd2ce813811687af6cc8b584bda0",
       "encoding": "utf-8",
       "lines": 523,
       "symbols": [],

@@ -2,7 +2,7 @@
 
 <h1>GeminiToGenius</h1>
 
-<p>A local harness that makes Gemini verify its own work before it says it is done.</p>
+<p>A plugin that makes Gemini a little smarter—or at least less dumb.</p>
 
 <p><a href="../README.md">한국어</a> · English</p>
 

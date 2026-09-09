@@ -1,8 +1,8 @@
 # `docs/README.en.md`
 
 - 형식: `100644`
-- 바이트: 6409
-- SHA-256: `18f49e6b36e9f7bb0804bb7052c9f038c006c60cb3ee65b1981c520de220650b`
+- 바이트: 6397
+- SHA-256: `0a7cd4fae9d82df40e20ab4f5154b368109b237c8487976439751fe36ddd2085`
 - 인코딩: `utf-8`
 
 ````
@@ -10,7 +10,7 @@
 
 <h1>GeminiToGenius</h1>
 
-<p>A local harness that makes Gemini verify its own work before it says it is done.</p>
+<p>A plugin that makes Gemini a little smarter—or at least less dumb.</p>
 
 <p><a href="../README.md">한국어</a> · English</p>
 

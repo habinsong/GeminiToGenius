@@ -1,8 +1,8 @@
 # `README.md`
 
 - 형식: `100644`
-- 바이트: 5734
-- SHA-256: `a448ccaa253896ecd4535a4c6b96e286bb6e332194af160f0171ac8fde5f4494`
+- 바이트: 5662
+- SHA-256: `1a46e99a8af05b4d094cbdd25599a65ff60c8c03a45893fe7cdea77762e35ee5`
 - 인코딩: `utf-8`
 
 ````
@@ -10,13 +10,13 @@
 
 <h1>GeminiToGenius</h1>
 
-<p>작업이 끝났다고 말하기 전에, 정해 둔 검사를 실제로 실행하고 그 기록을 남기는 로컬 플러그인입니다.</p>
+<p>Gemini를 조금 더 똑똑하게(덜 멍청하게) 만드는 플러그인입니다.</p>
 
 <p>한국어 · <a href="docs/README.en.md">English</a></p>
 
 <p><a href="https://github.com/habinsong/GeminiToGenius/releases">릴리즈</a> · <a href="docs/product/getting-started.md">설치 안내</a> · <a href="docs/verification/README.md">검증 기록과 한계</a> · <a href="CHANGELOG.md">변경 기록</a></p>
 
-<p>GTG 3.0.0은 Antigravity 데스크톱·IDE, Antigravity CLI(<code>agy</code>), Gemini CLI에 설치합니다.</p>
+<p>GTG 3.0.0은 Antigravity 데스크톱·IDE, Antigravity CLI, Gemini CLI에 설치합니다.</p>
 
 </div>
 
