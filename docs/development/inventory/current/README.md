@@ -19,7 +19,7 @@
 | `CODE_OF_CONDUCT.md` | 352 | [원문](files/CODE_OF_CONDUCT.md.md) |
 | `CONTRIBUTING.md` | 1131 | [원문](files/CONTRIBUTING.md.md) |
 | `LICENSE` | 1066 | [원문](files/LICENSE.md) |
-| `README.md` | 7200 | [원문](files/README.md.md) |
+| `README.md` | 5603 | [원문](files/README.md.md) |
 | `SECURITY.md` | 524 | [원문](files/SECURITY.md.md) |
 | `SUPPORT.md` | 510 | [원문](files/SUPPORT.md.md) |
 | `VERSION` | 6 | [원문](files/VERSION.md) |
@@ -31,7 +31,7 @@
 | `docs/architecture/overview.md` | 3456 | [원문](files/docs/architecture/overview.md.md) |
 | `docs/changelog.html` | 8501 | [원문](files/docs/changelog.html.md) |
 | `docs/development/README.md` | 3053 | [원문](files/docs/development/README.md.md) |
-| `docs/development/current-work.md` | 5417 | [원문](files/docs/development/current-work.md.md) |
+| `docs/development/current-work.md` | 5606 | [원문](files/docs/development/current-work.md.md) |
 | `docs/development/inventory/architecture.md` | 3144 | [원문](files/docs/development/inventory/architecture.md.md) |
 | `docs/development/plan/architecture.md` | 9535 | [원문](files/docs/development/plan/architecture.md.md) |
 | `docs/development/plan/completion-audit.md` | 5066 | [원문](files/docs/development/plan/completion-audit.md.md) |
@@ -41,7 +41,7 @@
 | `docs/development/research/native-antigravity.md` | 2525 | [원문](files/docs/development/research/native-antigravity.md.md) |
 | `docs/development/research/platform-contracts.md` | 10353 | [원문](files/docs/development/research/platform-contracts.md.md) |
 | `docs/development/research/sources.json` | 49370 | [원문](files/docs/development/research/sources.json.md) |
-| `docs/development/status.md` | 71304 | [원문](files/docs/development/status.md.md) |
+| `docs/development/status.md` | 71873 | [원문](files/docs/development/status.md.md) |
 | `docs/development/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/development/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/development/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/development/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/development/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/development/validation/2026-09-08-context-budget/message-comparison.json.md) |
