@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 44562 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 59331 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 60494 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -224,7 +224,7 @@
 | `gtg/context_message.py` | 3071 | [원문](files/gtg/context_message.py.md) |
 | `gtg/coverage.py` | 10362 | [원문](files/gtg/coverage.py.md) |
 | `gtg/discovery.py` | 4610 | [원문](files/gtg/discovery.py.md) |
-| `gtg/hooks.py` | 10755 | [원문](files/gtg/hooks.py.md) |
+| `gtg/hooks.py` | 11698 | [원문](files/gtg/hooks.py.md) |
 | `gtg/inspection.py` | 7450 | [원문](files/gtg/inspection.py.md) |
 | `gtg/install.py` | 11431 | [원문](files/gtg/install.py.md) |
 | `gtg/install_journal.py` | 7124 | [원문](files/gtg/install_journal.py.md) |

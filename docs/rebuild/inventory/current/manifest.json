@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 59331,
-      "sha256": "80b52b294ad2674ed5275e2ffa0c31d5f76e1b8fb2bcee5a40a36f319a156f3d",
+      "bytes": 60494,
+      "sha256": "675aebfca7e990efa5875958a12de0a2fd5102da7c0ad555b1b45bf460c51563",
       "encoding": "utf-8",
-      "lines": 429,
+      "lines": 439,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -3402,10 +3402,10 @@
     {
       "path": "gtg/hooks.py",
       "mode": "100644",
-      "bytes": 10755,
-      "sha256": "080e92a141092066839a031d2f641a6f81568a1f5a1144a23b025f4436acad62",
+      "bytes": 11698,
+      "sha256": "d49a197c65783f9b52f7baf37c351f193ac13a20a592b540a4b9b932f3a9a9ef",
       "encoding": "utf-8",
-      "lines": 200,
+      "lines": 224,
       "symbols": [
         {
           "name": "parse",
@@ -3438,16 +3438,34 @@
           "end_line": 76
         },
         {
-          "name": "handle",
+          "name": "first_turn",
           "kind": "FunctionDef",
           "line": 79,
-          "end_line": 163
+          "end_line": 85
+        },
+        {
+          "name": "connect",
+          "kind": "FunctionDef",
+          "line": 88,
+          "end_line": 113
+        },
+        {
+          "name": "resume",
+          "kind": "FunctionDef",
+          "line": 116,
+          "end_line": 136
+        },
+        {
+          "name": "handle",
+          "kind": "FunctionDef",
+          "line": 139,
+          "end_line": 187
         },
         {
           "name": "main",
           "kind": "FunctionDef",
-          "line": 166,
-          "end_line": 196
+          "line": 190,
+          "end_line": 220
         }
       ],
       "trailing_newline": true,
