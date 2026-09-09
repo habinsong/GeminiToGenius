@@ -168,15 +168,30 @@ def main() -> int:
     parser.add_argument("platform", choices=EVENTS)
     parser.add_argument("event")
     args = parser.parse_args()
+    stopping = args.event in {"Stop", "AfterAgent"}
+    # 훅은 모든 턴에서 실행됩니다. 어떤 오류에서도 유효한 JSON을 내고 종료 코드는 0입니다.
     try:
         raw = sys.stdin.buffer.read(256 * 1024 + 1)
         if len(raw) > 256 * 1024:
             raise ValueError("훅 입력 크기가 제한을 넘었습니다.")
-        result = handle(args.platform, args.event, json.loads(raw))
-    except (OSError, ValueError, sqlite3.Error) as error:
-        # 런타임 오류로 호스트를 무한 재시작하거나 원문 입력을 로그에 남기지 않습니다.
+        payload = json.loads(raw)
+        # 입력 형식 문제는 호스트 계약의 문제이므로 조용히 넘깁니다.
+        parse(args.platform, args.event, payload)
+    except Exception as error:
+        print(f"GTG 훅 입력 확인 실패: {type(error).__name__}", file=sys.stderr)
+        print(json.dumps(allow_stop(args.platform) if stopping else {}, ensure_ascii=False))
+        return 0
+    try:
+        result = handle(args.platform, args.event, payload)
+    except Exception as error:
+        # 상태를 읽지 못한 경우입니다. 원문 입력이나 세션 값을 로그에 남기지 않습니다.
         print(f"GTG 훅 검사 실패: {type(error).__name__}", file=sys.stderr)
-        result = allow_stop(args.platform) if args.event in {"Stop", "AfterAgent"} else {}
+        # 종료는 허용합니다. 막으면 호스트가 무한히 재시작합니다.
+        # 조용히 비우면 모델이 검증이 걸린 줄 아므로 사실만 짧게 알립니다.
+        result = allow_stop(args.platform) if stopping else context(
+            args.platform,
+            "GTG가 현재 작업 상태를 읽지 못했습니다. 이번 턴에는 등록된 완료 조건이 적용되지 "
+            "않습니다. 검증이 필요하면 작업 상태를 직접 확인하고 필요하면 다시 등록하세요.")
     print(json.dumps(result, ensure_ascii=False))
     return 0
 

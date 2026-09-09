@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 255개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 256개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 44562 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 52943 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 54113 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -209,7 +209,7 @@
 | `gtg/context_message.py` | 3071 | [원문](files/gtg/context_message.py.md) |
 | `gtg/coverage.py` | 10362 | [원문](files/gtg/coverage.py.md) |
 | `gtg/discovery.py` | 4610 | [원문](files/gtg/discovery.py.md) |
-| `gtg/hooks.py` | 9749 | [원문](files/gtg/hooks.py.md) |
+| `gtg/hooks.py` | 10755 | [원문](files/gtg/hooks.py.md) |
 | `gtg/inspection.py` | 7450 | [원문](files/gtg/inspection.py.md) |
 | `gtg/install.py` | 11431 | [원문](files/gtg/install.py.md) |
 | `gtg/install_journal.py` | 7124 | [원문](files/gtg/install_journal.py.md) |
@@ -241,6 +241,7 @@
 | `tests/test_eval_export.py` | 5780 | [원문](files/tests/test_eval_export.py.md) |
 | `tests/test_eval_resume.py` | 3602 | [원문](files/tests/test_eval_resume.py.md) |
 | `tests/test_evals.py` | 7991 | [원문](files/tests/test_evals.py.md) |
+| `tests/test_hook_resilience.py` | 3191 | [원문](files/tests/test_hook_resilience.py.md) |
 | `tests/test_hooks.py` | 11636 | [원문](files/tests/test_hooks.py.md) |
 | `tests/test_inspection.py` | 7715 | [원문](files/tests/test_inspection.py.md) |
 | `tests/test_install.py` | 7804 | [원문](files/tests/test_install.py.md) |

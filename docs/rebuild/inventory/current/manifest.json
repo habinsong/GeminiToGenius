@@ -302,7 +302,7 @@
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
       "bytes": 4570,
-      "sha256": "8b05b5dc8f192b96ffc31277104ea2815c09b55dcfc7e577832206111e7e745c",
+      "sha256": "9c0d6244afd490309b0a9935104dbd310448006ffd7ffc367120efea23104fef",
       "encoding": "utf-8",
       "lines": 45,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 52943,
-      "sha256": "719355646113bfdddc928c777553daf749d777c177f7a4e163edb8d05a82edbb",
+      "bytes": 54113,
+      "sha256": "0714d8d6ae4f32f2c70a747e22bc0c29e0b8d17ffea964334c21fd817803d13d",
       "encoding": "utf-8",
-      "lines": 373,
+      "lines": 384,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -3042,10 +3042,10 @@
     {
       "path": "gtg/hooks.py",
       "mode": "100644",
-      "bytes": 9749,
-      "sha256": "4aedd7ea19f620216a0d01eb230aa2df115d5b735ac7188f71af6d0f1cbe00aa",
+      "bytes": 10755,
+      "sha256": "080e92a141092066839a031d2f641a6f81568a1f5a1144a23b025f4436acad62",
       "encoding": "utf-8",
-      "lines": 185,
+      "lines": 200,
       "symbols": [
         {
           "name": "parse",
@@ -3087,7 +3087,7 @@
           "name": "main",
           "kind": "FunctionDef",
           "line": 166,
-          "end_line": 181
+          "end_line": 196
         }
       ],
       "trailing_newline": true,
@@ -4979,6 +4979,78 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_evals.py.md"
+    },
+    {
+      "path": "tests/test_hook_resilience.py",
+      "mode": "100644",
+      "bytes": 3191,
+      "sha256": "27687cf55e4c9d24cdd3f1c57001afe3c9452b03a009fcf486706fa26a9bf3da",
+      "encoding": "utf-8",
+      "lines": 71,
+      "symbols": [
+        {
+          "name": "HookResilienceTests",
+          "kind": "ClassDef",
+          "line": 16,
+          "end_line": 67
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 17,
+          "end_line": 23
+        },
+        {
+          "name": "call",
+          "kind": "FunctionDef",
+          "line": 25,
+          "end_line": 30
+        },
+        {
+          "name": "payload",
+          "kind": "FunctionDef",
+          "line": 32,
+          "end_line": 33
+        },
+        {
+          "name": "corrupt",
+          "kind": "FunctionDef",
+          "line": 35,
+          "end_line": 38
+        },
+        {
+          "name": "test_malformed_input_still_returns_valid_json",
+          "kind": "FunctionDef",
+          "line": 40,
+          "end_line": 43
+        },
+        {
+          "name": "test_stop_defaults_to_allowing_completion_on_internal_error",
+          "kind": "FunctionDef",
+          "line": 45,
+          "end_line": 49
+        },
+        {
+          "name": "test_unreadable_state_is_announced_instead_of_staying_silent",
+          "kind": "FunctionDef",
+          "line": 51,
+          "end_line": 57
+        },
+        {
+          "name": "test_workspace_without_tasks_stays_silent",
+          "kind": "FunctionDef",
+          "line": 59,
+          "end_line": 61
+        },
+        {
+          "name": "test_unexpected_internal_failure_still_emits_json",
+          "kind": "FunctionDef",
+          "line": 63,
+          "end_line": 67
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_hook_resilience.py.md"
     },
     {
       "path": "tests/test_hooks.py",
