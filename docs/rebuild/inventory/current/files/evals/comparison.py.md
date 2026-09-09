@@ -1,8 +1,8 @@
 # `evals/comparison.py`
 
 - 형식: `100644`
-- 바이트: 6211
-- SHA-256: `bbaf77b6fdddabde31a35c4b2c340fbac479adc0f92f212f1ff2c764c2b64273`
+- 바이트: 6915
+- SHA-256: `7b0863f05f643e0b886c0e6e212c279289c1582ec7bcb77500f455ec6645399f`
 - 인코딩: `utf-8`
 
 ```
@@ -65,9 +65,14 @@ def summarize(entries: list[dict]) -> list[dict]:
                               {"arm": entry["arm"], "model": entry["model"], "trials": 0, "passed": 0,
                                "ungraded": 0, "unstable": 0, "human_review": 0, "scope_violation_trials": 0,
                                "cases": [], "profiles": [], "total_duration_seconds": 0.0,
-                               "unobserved_runs": 0, "runs_that_executed_code": 0})
+                               "unobserved_runs": 0, "runs_that_executed_code": 0,
+                               "case_results": {}})
         arm["trials"] += 1
         arm["cases"].append(entry["case_id"])
+        # 한 번의 성공과 반복된 성공을 구분합니다. 채점하지 못한 시행도 시도로 셉니다.
+        per_case = arm["case_results"].setdefault(entry["case_id"], {"attempts": 0, "passed": 0})
+        per_case["attempts"] += 1
+        per_case["passed"] += int(entry["state"] == "graded" and entry["passed"])
         seconds = (entry.get("observation") or {}).get("duration_seconds")
         if isinstance(seconds, (int, float)) and not isinstance(seconds, bool):
             arm["total_duration_seconds"] = round(arm["total_duration_seconds"] + seconds, 3)
@@ -88,6 +93,9 @@ def summarize(entries: list[dict]) -> list[dict]:
             arm["scope_violation_trials"] += int(bool(entry["scope_violations"]))
     for arm in arms.values():
         arm["cases"] = sorted(arm["cases"])
+        # 모든 시도에서 통과한 사례 수입니다. 반복 없이 한 번만 돌렸다면 통과 수와 같습니다.
+        arm["cases_always_passed"] = sum(1 for result in arm["case_results"].values()
+                                         if result["attempts"] and result["passed"] == result["attempts"])
     return [arms[name] for name in sorted(arms, key=lambda name: (name[0], name[1] or ""))]
 
 

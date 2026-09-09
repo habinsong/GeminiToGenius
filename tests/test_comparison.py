@@ -131,5 +131,68 @@ class PreparedArmTests(unittest.TestCase):
             self.assertIn("ungraded", report["blocking_reasons"])
 
 
+class ReliabilityTests(unittest.TestCase):
+    """한 번의 성공과 반복된 성공을 구분합니다."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name).resolve()
+        self.counter = 0
+
+    def trial(self, arm, case_id, passed):
+        self.counter += 1
+        target = self.root / f"t{self.counter}"
+        (target / "grades").mkdir(parents=True)
+        manifest = {"schema_version": 1, "trial_id": f"t{self.counter}", "case_id": case_id,
+                    "profile": "baseline", "arm": arm, "model": "m",
+                    "definition_digest": "d", "prompt_sha256": "p-" + case_id}
+        (target / "manifest.json").write_text(json.dumps(manifest))
+        grade = {"kind": "artifact_grade", "trial_id": manifest["trial_id"], "case_id": case_id,
+                 "definition_digest": "d", "prompt_sha256": "p-" + case_id, "profile": "baseline",
+                 "checked_at": "2026-09-09T00:00:00+00:00", "artifact_passed": passed,
+                 "scope_passed": passed, "functional_passed": passed,
+                 "requires_human_review": False, "scope_violations": []}
+        (target / "grades/0.json").write_text(json.dumps(grade))
+        return target
+
+    def test_per_case_results_expose_an_unreliable_case(self):
+        trials = [self.trial("a", "bounds", True), self.trial("a", "bounds", False),
+                  self.trial("a", "dead-code", True),
+                  self.trial("b", "bounds", True), self.trial("b", "bounds", True),
+                  self.trial("b", "dead-code", True)]
+        report = compare(trials)
+        self.assertTrue(report["comparable"], report["blocking_reasons"])
+        arms = {arm["arm"]: arm for arm in report["arms"]}
+        self.assertEqual(arms["a"]["case_results"]["bounds"], {"attempts": 2, "passed": 1})
+        self.assertEqual(arms["b"]["case_results"]["bounds"], {"attempts": 2, "passed": 2})
+        self.assertEqual(arms["a"]["cases_always_passed"], 1, "bounds가 한 번 실패했습니다.")
+        self.assertEqual(arms["b"]["cases_always_passed"], 2)
+        self.assertEqual(arms["a"]["passed"], arms["b"]["passed"] - 1)
+
+    def test_same_total_but_different_reliability_is_visible(self):
+        # 두 팔의 통과 수는 같지만 한쪽만 모든 사례를 매번 통과했습니다.
+        trials = [self.trial("steady", "bounds", True), self.trial("steady", "bounds", True),
+                  self.trial("steady", "dead-code", False), self.trial("steady", "dead-code", False),
+                  self.trial("flaky", "bounds", True), self.trial("flaky", "bounds", False),
+                  self.trial("flaky", "dead-code", True), self.trial("flaky", "dead-code", False)]
+        arms = {arm["arm"]: arm for arm in compare(trials)["arms"]}
+        self.assertEqual(arms["steady"]["passed"], arms["flaky"]["passed"])
+        self.assertEqual(arms["steady"]["cases_always_passed"], 1)
+        self.assertEqual(arms["flaky"]["cases_always_passed"], 0,
+                         "매번 통과한 사례가 없다는 사실이 드러나야 합니다.")
+
+    def test_ungraded_and_unstable_trials_are_counted_per_case(self):
+        good = self.trial("a", "bounds", True)
+        pending = self.trial("a", "bounds", True)
+        for report_file in (pending / "grades").iterdir():
+            report_file.unlink()
+        arms = {arm["arm"]: arm for arm in compare([good, pending, self.trial("b", "bounds", True),
+                                                    self.trial("b", "bounds", True)])["arms"]}
+        self.assertEqual(arms["a"]["case_results"]["bounds"], {"attempts": 2, "passed": 1},
+                         "채점하지 못한 시행도 시도 횟수에는 들어갑니다.")
+        self.assertEqual(arms["a"]["cases_always_passed"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()

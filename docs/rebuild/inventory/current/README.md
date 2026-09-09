@@ -33,7 +33,7 @@
 | `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 4570 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 4604 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 9487 | [원문](files/docs/rebuild/plan/architecture.md.md) |
 | `docs/rebuild/plan/completion-audit.md` | 5066 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 44562 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 64306 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 65084 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -169,10 +169,10 @@
 | `docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json` | 5588 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json.md) |
 | `docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py` | 159 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py.md) |
 | `docs/styles.css` | 12916 | [원문](files/docs/styles.css.md) |
-| `evals/README.md` | 17466 | [원문](files/evals/README.md.md) |
+| `evals/README.md` | 18033 | [원문](files/evals/README.md.md) |
 | `evals/__init__.py` | 74 | [원문](files/evals/__init__.py.md) |
 | `evals/cases.json` | 15923 | [원문](files/evals/cases.json.md) |
-| `evals/comparison.py` | 6211 | [원문](files/evals/comparison.py.md) |
+| `evals/comparison.py` | 6915 | [원문](files/evals/comparison.py.md) |
 | `evals/criteria.py` | 4138 | [원문](files/evals/criteria.py.md) |
 | `evals/definitions.py` | 1473 | [원문](files/evals/definitions.py.md) |
 | `evals/execution.py` | 5155 | [원문](files/evals/execution.py.md) |
@@ -250,7 +250,7 @@
 | `tests/test_catalog.py` | 3512 | [원문](files/tests/test_catalog.py.md) |
 | `tests/test_certificate.py` | 10070 | [원문](files/tests/test_certificate.py.md) |
 | `tests/test_checkpoints.py` | 4243 | [원문](files/tests/test_checkpoints.py.md) |
-| `tests/test_comparison.py` | 6954 | [원문](files/tests/test_comparison.py.md) |
+| `tests/test_comparison.py` | 10809 | [원문](files/tests/test_comparison.py.md) |
 | `tests/test_context_message.py` | 8706 | [원문](files/tests/test_context_message.py.md) |
 | `tests/test_coverage.py` | 22906 | [원문](files/tests/test_coverage.py.md) |
 | `tests/test_dead_code_case.py` | 4735 | [원문](files/tests/test_dead_code_case.py.md) |

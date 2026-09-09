@@ -301,8 +301,8 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 4570,
-      "sha256": "4a078e0f1d1a34e32cefa886b93e75d8ae07e1914697ad93bd3de35aba2f0ae8",
+      "bytes": 4604,
+      "sha256": "c1b13f3e1c50e10d39f2acaa661cd0c5d24853ec2ce24efd5238a8f343f2ca1c",
       "encoding": "utf-8",
       "lines": 45,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 64306,
-      "sha256": "1d676ab8b9a2b09a36fc3b9d2374b87b7847413d05c36068e4621d711010a56c",
+      "bytes": 65084,
+      "sha256": "43da1952a2ce929a80feac38ece8106fb3630b3bca7bf3e1592ab5b97b5129f1",
       "encoding": "utf-8",
-      "lines": 477,
+      "lines": 486,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -2119,10 +2119,10 @@
     {
       "path": "evals/README.md",
       "mode": "100644",
-      "bytes": 17466,
-      "sha256": "51c2562c611a1e26bac64a42dcba3cda96d35f6fa5282a08572045b6ba00ac7f",
+      "bytes": 18033,
+      "sha256": "5482faf78fa1a8c3a1ea3af5ed1f9142acc82edeb3d390460e2927209502cbac",
       "encoding": "utf-8",
-      "lines": 162,
+      "lines": 166,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/evals/README.md.md"
@@ -2152,10 +2152,10 @@
     {
       "path": "evals/comparison.py",
       "mode": "100644",
-      "bytes": 6211,
-      "sha256": "bbaf77b6fdddabde31a35c4b2c340fbac479adc0f92f212f1ff2c764c2b64273",
+      "bytes": 6915,
+      "sha256": "7b0863f05f643e0b886c0e6e212c279289c1582ec7bcb77500f455ec6645399f",
       "encoding": "utf-8",
-      "lines": 119,
+      "lines": 127,
       "symbols": [
         {
           "name": "load",
@@ -2167,19 +2167,19 @@
           "name": "summarize",
           "kind": "FunctionDef",
           "line": 53,
-          "end_line": 83
+          "end_line": 91
         },
         {
           "name": "blocking",
           "kind": "FunctionDef",
-          "line": 86,
-          "end_line": 104
+          "line": 94,
+          "end_line": 112
         },
         {
           "name": "compare",
           "kind": "FunctionDef",
-          "line": 107,
-          "end_line": 119
+          "line": 115,
+          "end_line": 127
         }
       ],
       "trailing_newline": true,
@@ -4701,10 +4701,10 @@
     {
       "path": "tests/test_comparison.py",
       "mode": "100644",
-      "bytes": 6954,
-      "sha256": "4b67e9939117de6d0a7860f5375fa156f6decfbc117883f46fb67bb9456b74f3",
+      "bytes": 10809,
+      "sha256": "e2f44ba03b79c14bc0c95bc347a8aa6aa13f08187bc2d391cfec2c3ff3144713",
       "encoding": "utf-8",
-      "lines": 135,
+      "lines": 198,
       "symbols": [
         {
           "name": "ComparisonTests",
@@ -4717,6 +4717,12 @@
           "kind": "ClassDef",
           "line": 102,
           "end_line": 131
+        },
+        {
+          "name": "ReliabilityTests",
+          "kind": "ClassDef",
+          "line": 134,
+          "end_line": 194
         },
         {
           "name": "setUp",
@@ -4795,6 +4801,36 @@
           "kind": "FunctionDef",
           "line": 120,
           "end_line": 131
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 137,
+          "end_line": 141
+        },
+        {
+          "name": "trial",
+          "kind": "FunctionDef",
+          "line": 143,
+          "end_line": 157
+        },
+        {
+          "name": "test_per_case_results_expose_an_unreliable_case",
+          "kind": "FunctionDef",
+          "line": 159,
+          "end_line": 171
+        },
+        {
+          "name": "test_same_total_but_different_reliability_is_visible",
+          "kind": "FunctionDef",
+          "line": 173,
+          "end_line": 183
+        },
+        {
+          "name": "test_ungraded_and_unstable_trials_are_counted_per_case",
+          "kind": "FunctionDef",
+          "line": 185,
+          "end_line": 194
         }
       ],
       "trailing_newline": true,

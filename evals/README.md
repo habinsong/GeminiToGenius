@@ -153,6 +153,10 @@ python3 -m evals.harness compare /absolute/new/a /absolute/new/b
 
 `run`을 쓰지 않고 직접 실행해도 되지만 그 경우 실행 시간이 기록되지 않아 비교 보고서에 `unobserved_runs`로 표시됩니다. 각 폴더를 실행한 뒤 한 번씩 `grade`합니다. `compare`는 `(arm, model)`별로 통과 수를 세고, 조건이 다르면 `comparable: false`와 막힌 이유를 보고합니다. `single_arm`, `definition_digest`, `prompt_sha256`, `case_coverage`, `ungraded`, `unstable_grades`가 이유가 됩니다. 채점하지 않은 시행을 패배로 세지 않고, 한 시행의 엇갈린 채점 중 하나를 고르지 않습니다.
 
+같은 사례를 여러 번 돌리면 보고서가 사례별로 시도와 통과를 나눠 셉니다. `case_results`에 사례별 `attempts`·`passed`가 들어가고, `cases_always_passed`는 모든 시도에서 통과한 사례 수입니다. 통과 총합이 같아도 매번 통과한 쪽과 들쭉날쭉한 쪽이 구분됩니다. 채점하지 못한 시행도 시도 횟수에는 들어가므로 성공률을 부풀리지 않습니다.
+
+팔마다 반복 횟수가 다르면 `case_coverage`로 막힙니다. 같은 횟수로 맞춰야 비교가 성립합니다.
+
 `run`은 모든 팔에 같은 계측을 붙여 **그 하네스가 실제로 프로젝트 코드를 실행했는지**를 관측합니다. 자기 보고가 아니라 실행 사실입니다. 비교 보고서의 `runs_that_executed_code`가 코드를 실제로 실행한 시행 수입니다. 산출물이 통과해도 검증을 한 번도 돌리지 않은 팔이 그대로 드러납니다.
 
 관측 대상은 Python·Node·네이티브 실행 TypeScript입니다. Go·Rust·셸만으로 검증한 하네스는 실행했더라도 0으로 보이므로, 이 값을 낮은 품질의 증거로 바로 쓰지 말고 어떤 언어를 썼는지 함께 확인합니다.
