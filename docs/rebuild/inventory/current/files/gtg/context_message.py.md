@@ -1,8 +1,8 @@
 # `gtg/context_message.py`
 
 - 형식: `100644`
-- 바이트: 3071
-- SHA-256: `a5574c2e7b92be2daf94accf96c6455c8da874dbc843636c2015e779fcb52ba3`
+- 바이트: 3525
+- SHA-256: `a92c0a28f135ad4365fcc6ed89072ba1eff030cc48d06014c550d1fd32919484`
 - 인코딩: `utf-8`
 
 ```
@@ -37,6 +37,12 @@ def unfinished_context(platform: str, session: str, roots: tuple[Path, ...], rep
             item["unexecuted"] = unexecuted[:8]
             if len(unexecuted) > 8:
                 item["omitted_unexecuted"] = len(unexecuted) - 8
+        # 미실행 목록을 만들지 못한 검사가 있으면 무엇이 막았는지 밝힙니다. 범위를 좁히면 얻을 수 있습니다.
+        blocked = sorted({name for check in report["checks"]
+                          if check["status"] == "passed" and check.get("unexecuted_watch") is None
+                          for name in check.get("unobservable_watch") or []})
+        if blocked:
+            item["unobservable"] = blocked[:3]
         note = report.get("checkpoint")
         if note:
             item["checkpoint"] = {

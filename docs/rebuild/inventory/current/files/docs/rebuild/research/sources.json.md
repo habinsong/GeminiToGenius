@@ -1,8 +1,8 @@
 # `docs/rebuild/research/sources.json`
 
 - 형식: `100644`
-- 바이트: 44562
-- SHA-256: `6f72d66c48d18de7004055346026c0639297a91c62892bf1840c39cfa115294f`
+- 바이트: 49370
+- SHA-256: `b426e12da2cae92e5953e54ae123a89b534538251c8e28b63e091cd599939296`
 - 인코딩: `utf-8`
 
 ```
@@ -805,6 +805,60 @@
       "access": "서브에이전트 조사가 인용한 공식 문서 확인",
       "finding": "CLI 문서의 `plugin.json`은 `name`(필수)·`description`(선택)·`$schema`(선택)이며, 데스크톱 플러그인 문서는 `name`만 선택 항목으로 설명해 두 페이지가 어긋납니다.",
       "application": "더 엄격한 CLI 쪽에 맞춰 세 필드를 모두 생성합니다. 두 호스트 모두에서 검증을 통과합니다."
+    },
+    {
+      "id": "AGY-STOP-OUTPUT",
+      "url": "https://antigravity.google/docs/hooks",
+      "kind": "official",
+      "checked_on": "2026-09-09",
+      "access": "원문 페이지 열람",
+      "finding": "Stop 훅의 출력 필드는 decision과 reason 둘뿐입니다. reason은 decision이 \"continue\"일 때만 시스템 메시지로 대화에 주입된다고 규정되며, \"stop\"이라는 값 자체가 문서에 없고(\"그 밖의 값은 종료를 허용\") 종료를 허용하는 응답의 reason이 어디로 가는지는 문서에 없습니다.",
+      "application": "실행 중인 검사 안내를 Stop의 reason으로 싣되 전달을 보장하지 않습니다. 무시되면 종전과 같은 허용이며 같은 미검증 상태는 다음 턴 PreInvocation이 다시 알립니다."
+    },
+    {
+      "id": "GCLI-AFTERAGENT-OUTPUT",
+      "url": "https://geminicli.com/docs/hooks/reference/",
+      "kind": "official",
+      "checked_on": "2026-09-09",
+      "access": "원문 페이지와 저장소 docs/hooks/reference.md 대조",
+      "finding": "AfterAgent의 출력은 decision(deny로 재시도 강제), reason(deny일 때 모델에 전달), continue(false면 세션 중단), hookSpecificOutput.clearContext입니다. additionalContext는 BeforeAgent·AfterTool·SessionStart 전용이며 AfterAgent에는 없습니다.",
+      "application": "AfterAgent에서 모델 컨텍스트에 넣으려면 종료를 막아야 하므로, 실행 중인 검사 안내에는 사용하지 않습니다."
+    },
+    {
+      "id": "GCLI-SYSTEMMESSAGE",
+      "url": "https://github.com/google-gemini/gemini-cli",
+      "kind": "official",
+      "checked_on": "2026-09-09",
+      "access": "저장소 원본 코드 확인(packages/core/src/hooks/hookEventHandler.ts의 logHookExecution, packages/cli/src/ui/AppContainer.tsx 구독부)",
+      "finding": "systemMessage는 decision·continue를 검사하지 않는 경로에서 무조건 발행되어 종료를 막지 않고 표시됩니다. 다만 구독자가 대화형 UI뿐이라 비대화형 실행에서는 사라지고, 모델 컨텍스트에는 들어가지 않습니다. 공식 best-practices 문서도 suppressOutput이 systemMessage 표시를 막지 않는다고 적습니다.",
+      "application": "Gemini CLI에서 실행 중인 검사 안내를 종료를 막지 않고 systemMessage로 전달합니다. 두 한계는 기록에 남깁니다."
+    },
+    {
+      "id": "AGY-CHANGELOG-HOOKS-2026-08",
+      "url": "https://antigravity.google/changelog",
+      "kind": "official",
+      "checked_on": "2026-09-09",
+      "access": "변경 기록 열람",
+      "finding": "2.6.0(2026-08-07)에서 종료 훅이 계속 턴 종료를 막으면 반복 차단 뒤 턴이 끝나도록 호스트가 상한을 두었습니다. 같은 판에서 실행될 수 없는 훅 설정을 적재 시점에 거부하고, 모델을 호출하는 훅은 설정한 시간 제한에서 멈춥니다. 2.12.0(2026-09-02)에서는 실패한 훅이 세션을 끝내지 않고 오류로 보고됩니다.",
+      "application": "GTG의 자체 재개 상한(기본 2, 최대 8)은 호스트 상한과 충돌하지 않습니다. 훅이 어떤 오류에서도 유효한 JSON과 종료 코드 0을 내는 현재 설계를 유지합니다."
+    },
+    {
+      "id": "AGY-SKILL-FLAGS",
+      "url": "https://antigravity.google/docs/skills",
+      "kind": "official",
+      "checked_on": "2026-09-09",
+      "access": "규격 페이지와 변경 기록 대조, gemini-cli 저장소 전체 검색",
+      "finding": "규격 페이지의 SKILL.md 머리말은 name(선택, 폴더명 기본값)과 description(필수) 둘뿐입니다. disable-slash-command는 CLI 1.1.12(2026-08-11) 변경 기록에만 있고 규격·플러그인 문서·gemini-cli 저장소 어디에도 없습니다. metadata.icon(CLI 1.1.20)도 같습니다.",
+      "application": "두 키 모두 적용하지 않습니다. 규격에 없는 키를 배포 패키지에 넣지 않는 기존 판단이 근거를 얻었습니다."
+    },
+    {
+      "id": "AGY-PLUGIN-SCHEMA-CONFLICT",
+      "url": "https://antigravity.google/docs/cli/plugins",
+      "kind": "official",
+      "checked_on": "2026-09-09",
+      "access": "두 공식 페이지 대조(/docs/cli/plugins와 /docs/plugins)",
+      "finding": "두 문서가 어긋납니다. CLI 쪽은 plugin.json의 name을 필수로 두고 스킬을 폴더+SKILL.md로 적지만, Antigravity 2.0 쪽은 name을 선택(폴더명 기본값)으로 적고 일부 예시는 스킬을 단일 .md로 적습니다. agents/는 CLI 문서에만 있습니다.",
+      "application": "더 엄격한 CLI 스키마를 만족시킵니다. 현재 패키지는 plugin.json에 name을 넣고 스킬을 폴더+SKILL.md로 배치하므로 양쪽 모두에 맞습니다."
     }
   ]
 }

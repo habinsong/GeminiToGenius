@@ -1,8 +1,8 @@
 # `gtg/hooks.py`
 
 - 형식: `100644`
-- 바이트: 12903
-- SHA-256: `99d15166813c56d785e94625b64b54d28083bac9bfc35a75d305b4d16577b93b`
+- 바이트: 13453
+- SHA-256: `2b3dc6ede13fb8c5bf80104e3c05eef1376dce9ea0ea26f62b931a982f3b4f3b`
 - 인코딩: `utf-8`
 
 ```
@@ -132,13 +132,18 @@ def still_running(platform: str, reports: list, empty: dict) -> dict | None:
                     if check["status"] == "running"})
     if not names:
         return None
+    notice = ("GTG: 등록된 검사가 아직 실행 중이라 완료가 검증되지 않았습니다"
+              f"({', '.join(names)[:200]}). 자동 재개는 하지 않습니다. "
+              "검사 결과를 확인하고, 중단된 실행이면 recover 뒤 다시 검증하세요.")
     if not antigravity(platform):
-        # 종료를 막지 않으면서 사실만 전달하는 출력 형식을 확인하지 못했습니다.
-        return empty
-    return {"decision": "stop",
-            "reason": ("GTG: 등록된 검사가 아직 실행 중이라 완료가 검증되지 않았습니다"
-                       f"({', '.join(names)[:200]}). 자동 재개는 하지 않습니다. "
-                       "검사 결과를 확인하고, 중단된 실행이면 recover 뒤 다시 검증하세요.")}
+        # `systemMessage`는 decision·continue를 보지 않는 경로에서 발행되므로 종료를 막지 않습니다.
+        # 대화형 터미널에만 표시되며 모델 컨텍스트에는 들어가지 않습니다.
+        return {**empty, "systemMessage": notice}
+    # Antigravity는 종료를 허용하는 응답에 메시지를 싣는 경로가 문서에 없습니다. `reason`은
+    # `decision: "continue"`에 대해서만 규정되어 있어, 이 값은 전달되지 않을 수 있습니다.
+    # 그래도 조용한 허용보다는 낫고, 무시되면 종전 동작과 같습니다. 다음 턴의 PreInvocation이
+    # 같은 미검증 상태를 다시 알립니다.
+    return {"decision": "stop", "reason": notice}
 
 
 def resume(platform: str, session: str, entries: list, reports: list,

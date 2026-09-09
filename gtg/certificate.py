@@ -19,9 +19,9 @@ from .spec import relative, sensitive
 from .store import Store
 
 # 본문 필드가 늘어난 판입니다. 이전 판은 digest 계산이 달라 그대로 읽지 않습니다.
-SCHEMA = 2
+SCHEMA = 3
 BODY = ("schema_version", "task_id", "goal", "workspace", "verified", "checks",
-        "unverified_scope", "coverage_complete", "created")
+        "unverified_scope", "coverage_complete", "unobservable_scope", "created")
 
 
 def canonical(document: dict) -> bytes:
@@ -43,7 +43,7 @@ def build(store: Store, task_id: str) -> dict:
     latest = store.latest(task_id)
     states = {check["id"]: check["status"] for check in report["checks"]}
     checks = []
-    ran_anywhere, missed_anywhere = set(), set()
+    ran_anywhere, missed_anywhere, opaque_anywhere = set(), set(), set()
     complete = True
     for check in task["spec"]["checks"]:
         result = (latest.get(check["id"]) or {}).get("result") or {}
@@ -56,6 +56,7 @@ def build(store: Store, task_id: str) -> dict:
             # 관찰하지 못했거나 범위를 다 세지 못한 검사가 있으면 미검증 목록은 하한일 뿐입니다.
             if missed is None:
                 complete = False
+                opaque_anywhere.update(result.get("unobservable_watch") or [])
         checks.append({"id": check["id"], "criterion": check["criterion"], "argv": list(check["argv"]),
                        "watch": sorted(set(check["watch"])), "timeout_seconds": check.get("timeout_seconds", 120),
                        "status": state, "returncode": result.get("returncode"),
@@ -69,6 +70,8 @@ def build(store: Store, task_id: str) -> dict:
                 "unverified_scope": sorted(missed_anywhere - ran_anywhere),
                 # 거짓이면 빈 `unverified_scope`를 전부 검증했다는 뜻으로 읽지 않습니다.
                 "coverage_complete": complete,
+                # 미검증 범위를 세지 못하게 만든 파일의 표본입니다. 비어 있으면 이유가 범위 크기입니다.
+                "unobservable_scope": sorted(opaque_anywhere),
                 "created": round(time.time(), 3)}
     return {**document, "digest": digest(document)}
 
@@ -144,4 +147,5 @@ def replay(document: dict, workspace: Path, *, trust_commands: bool = False) -> 
             # 재현에 성공해도 이 목록의 파일은 어떤 검사도 실행하지 않았습니다.
             "unverified_scope": list(document.get("unverified_scope") or []),
             "coverage_complete": complete,
+            "unobservable_scope": list(document.get("unobservable_scope") or []),
             "checks": outcomes}

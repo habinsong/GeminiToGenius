@@ -1,8 +1,8 @@
 # `docs/rebuild/research/platform-contracts.md`
 
 - 형식: `100644`
-- 바이트: 7681
-- SHA-256: `ae5e426882250ed51fd9d156f990c7ba65020fbf6cf522f17bd86d08a8a51332`
+- 바이트: 10353
+- SHA-256: `d2357e2ece989cd0c5cf21fbab67768e90df3e4bec909c78de4691dec9216122`
 - 인코딩: `utf-8`
 
 ```
@@ -52,4 +52,26 @@ Gemini CLI는 확장과 훅 JSON의 `${extensionPath}` 치환을 문서화합니
 Gemini 3.8 Flash의 공식 모델 ID는 `gemini-3.8-flash`이며 `low`, `medium`, `high` 사고 수준이 문서화되어 있습니다. `minimal`은 지원하지 않는다고 명시되어 있습니다. 설정 지원과 실제 세션에서 선택된 모델은 구분합니다. [모델 문서](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash).
 
 API를 직접 다루게 될 경우 Interactions와 Generate Content의 생각 서명·함수 호출 표현을 혼합하지 않습니다. 호스트 하네스를 확장하는 단계에서 자체 API 호출 경로를 불필요하게 추가하지 않습니다. [Interactions](https://ai.google.dev/gemini-api/docs/interactions-overview), [사고 설정](https://ai.google.dev/gemini-api/docs/thinking).
+
+## 훅 출력 계약 (2026-09-09 확인)
+
+두 호스트의 **종료를 허용하면서 메시지를 전달하는** 경로가 서로 다릅니다.
+
+| 항목 | Antigravity `Stop` | Gemini CLI `AfterAgent` |
+| --- | --- | --- |
+| 문서화된 출력 필드 | `decision`, `reason` | `decision`, `reason`, `continue`, `hookSpecificOutput.clearContext` (+공통 `systemMessage`·`suppressOutput`·`stopReason`) |
+| 종료를 막지 않고 사용자에게 표시 | 문서에 없음 | `systemMessage` (대화형 UI 전용) |
+| 종료를 막지 않고 모델에 전달 | 문서에 없음 | 없음 (`additionalContext`는 `BeforeAgent` 전용) |
+| 모델에 전달하려면 | `decision: "continue"` (재개 소비) | `decision: "deny"` + `reason` (재시도 강제) |
+
+`reason`은 Antigravity 문서에서 `decision`이 `"continue"`일 때만 규정됩니다. `"stop"`이라는 값 자체가 문서에 없고 "그 밖의 값은 종료를 허용한다"고만 적혀 있어, **종료를 허용하는 응답의 `reason`이 전달되는지는 확인되지 않았습니다.** GTG는 이 값을 넣되 전달을 주장하지 않습니다. Gemini CLI의 `systemMessage`는 `decision`·`continue`를 검사하지 않는 경로에서 발행되는 것을 저장소 원본 코드로 확인했으므로 그대로 사용합니다. [실행 중인 검사 처리](../validation/2026-09-09-running-check-stop/README.md).
+
+호스트도 2.6.0(2026-08-07)부터 종료 훅의 반복 차단에 자체 상한을 둡니다. GTG의 재개 상한(기본 2, 최대 8)은 그보다 작게 유지합니다. 2.12.0(2026-09-02)부터는 실패한 훅이 세션을 끝내지 않고 오류로 보고되지만, 어떤 오류에서도 유효한 JSON과 종료 코드 0을 내는 현재 설계를 그대로 둡니다.
+
+서브에이전트 정의 형식은 [공식 문서](https://antigravity.google/docs/subagents)에 규정되어 있고 발견 위치에 플러그인의 `agents/`가 포함됩니다. 형식 미확인이라는 보류 사유는 사라졌지만, 실호스트에서 발견·동작을 확인하기 전에는 생성하지 않는 판단을 유지합니다.
+
+`disable-slash-command`(CLI 1.1.12)와 `metadata.icon`(CLI 1.1.20)은 변경 기록에만 있고 스킬 규격·플러그인 문서·`gemini-cli` 저장소 어디에도 없습니다. 두 키 모두 적용하지 않습니다.
+
+두 공식 플러그인 문서가 `plugin.json`의 `name` 필수 여부와 스킬 배치(폴더+`SKILL.md` 대 단일 `.md`)에서 어긋납니다. GTG는 더 엄격한 CLI 스키마를 만족시킵니다. 현재 패키지는 `name`을 넣고 스킬을 폴더+`SKILL.md`로 배치하므로 양쪽 모두에 맞습니다.
+
 ```

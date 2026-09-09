@@ -29,6 +29,12 @@ def unfinished_context(platform: str, session: str, roots: tuple[Path, ...], rep
             item["unexecuted"] = unexecuted[:8]
             if len(unexecuted) > 8:
                 item["omitted_unexecuted"] = len(unexecuted) - 8
+        # 미실행 목록을 만들지 못한 검사가 있으면 무엇이 막았는지 밝힙니다. 범위를 좁히면 얻을 수 있습니다.
+        blocked = sorted({name for check in report["checks"]
+                          if check["status"] == "passed" and check.get("unexecuted_watch") is None
+                          for name in check.get("unobservable_watch") or []})
+        if blocked:
+            item["unobservable"] = blocked[:3]
         note = report.get("checkpoint")
         if note:
             item["checkpoint"] = {

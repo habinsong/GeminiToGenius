@@ -1,8 +1,8 @@
 # `gtg/runner.py`
 
 - 형식: `100644`
-- 바이트: 6257
-- SHA-256: `0451c0204c5ef4dceeddcc215575e0407bf42ba99683ad70cf075e7011ec0557`
+- 바이트: 6600
+- SHA-256: `1180c0835e96ba8ce91b67c4b3c97fcacfcd4c4a7ae4c20ed46e39f6f01f749e`
 - 인코딩: `utf-8`
 
 ```
@@ -80,7 +80,8 @@ def execute(store: Store, task_id: str, check_id: str) -> dict:
     started = time.monotonic()
     process = None
     result = {"status": "error", "returncode": None, "before": before, "after": None,
-              "coverage_observed": False, "executed_watch": None, "unexecuted_watch": None}
+              "coverage_observed": False, "executed_watch": None, "unexecuted_watch": None,
+              "unobservable_watch": None}
     try:
         with collector() as session:
             # 출력은 호스트에 바로 전달하며 상태 DB에 원문을 보관하지 않습니다.
@@ -105,8 +106,9 @@ def execute(store: Store, task_id: str, check_id: str) -> dict:
                 result["status"] = "changed_during_check"
             # Python 실행을 하나도 관찰하지 못하면 미실행을 주장하지 않습니다.
             if session.observed():
-                ran, missed = executed_watch(workspace, check["watch"], session.files())
-                result.update(coverage_observed=True, executed_watch=ran, unexecuted_watch=missed)
+                ran, missed, opaque = executed_watch(workspace, check["watch"], session.files())
+                result.update(coverage_observed=True, executed_watch=ran, unexecuted_watch=missed,
+                              unobservable_watch=opaque)
     except KeyboardInterrupt:
         if process is not None:
             terminate(process)
@@ -147,7 +149,9 @@ def status(store: Store, task_id: str) -> dict:
         passed = state == "passed"
         checks.append({"id": check["id"], "criterion": check["criterion"], "status": state,
                        "executed_watch": outcome.get("executed_watch") if passed else None,
-                       "unexecuted_watch": outcome.get("unexecuted_watch") if passed else None})
+                       "unexecuted_watch": outcome.get("unexecuted_watch") if passed else None,
+                       # 미실행 목록이 없을 때 그 이유를 밝힙니다. 범위를 좁히면 다시 얻을 수 있습니다.
+                       "unobservable_watch": outcome.get("unobservable_watch") if passed else None})
     return {"task_id": task_id, "goal": task["spec"]["goal"], "spec": task["spec"],
             "verified": all(check["status"] == "passed" for check in checks), "checks": checks,
             "checkpoint": latest_checkpoint(store, task_id)}

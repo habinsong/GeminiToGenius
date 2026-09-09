@@ -1,8 +1,8 @@
 # `tests/test_coverage.py`
 
 - 형식: `100644`
-- 바이트: 22906
-- SHA-256: `cb38c14c9e27aa6dde2ea77ed0dc55141ac86a925dd42e253b07917db70830c2`
+- 바이트: 23742
+- SHA-256: `b9183d125c717f0ef95718d45425d2f059b45d76d3ff1832ce9dc41b04aeb13a`
 - 인코딩: `utf-8`
 
 ```
@@ -103,9 +103,10 @@ class CollectorTests(unittest.TestCase):
         big.mkdir()
         for index in range(MAX_WATCHED_FILES + 3):
             (big / f"mod_{index:05d}.py").write_text("X = 1\n")
-        ran, missed = executed_watch(self.root, ["wide"], set())
+        ran, missed, opaque = executed_watch(self.root, ["wide"], set())
         self.assertEqual(ran, [])
         self.assertIsNone(missed, "범위를 다 세지 못하면 미실행을 주장하지 않습니다.")
+        self.assertEqual(opaque, [], "이 경우의 이유는 관찰 불가 언어가 아니라 범위 크기입니다.")
 
     def test_nested_collectors_still_chain_to_the_user_sitecustomize(self):
         """관찰기 안에서 관찰기가 또 돌아도 사용자 sitecustomize를 건너뛰지 않습니다."""
@@ -131,9 +132,20 @@ class CollectorTests(unittest.TestCase):
         (self.root / "pkg/a.py").write_text("A = 1\n")
         (self.root / "pkg/b.py").write_text("B = 1\n")
         (self.root / "pkg/data.txt").write_text("not python\n")
-        ran, missed = executed_watch(self.root, ["pkg"], {(self.root / "pkg/a.py").resolve()})
+        ran, missed, opaque = executed_watch(self.root, ["pkg"], {(self.root / "pkg/a.py").resolve()})
         self.assertEqual(ran, ["pkg/a.py"])
         self.assertEqual(missed, ["pkg/b.py"])
+        self.assertEqual(opaque, [])
+
+    def test_unobservable_language_names_what_blocked_the_report(self):
+        """미실행 목록을 만들지 못하면 무엇이 막았는지 밝혀야 범위를 좁힐 수 있습니다."""
+        (self.root / "mix").mkdir()
+        (self.root / "mix/a.py").write_text("A = 1\n")
+        (self.root / "mix/tool.sh").write_text("echo hi\n")
+        ran, missed, opaque = executed_watch(self.root, ["mix"], {(self.root / "mix/a.py").resolve()})
+        self.assertEqual(ran, ["mix/a.py"])
+        self.assertIsNone(missed, "관찰할 수 없는 파일이 있으면 미실행을 주장하지 않습니다.")
+        self.assertEqual(opaque, ["mix/tool.sh"])
 
 
 def spec(argv):

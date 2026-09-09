@@ -1,8 +1,8 @@
 # `tests/test_hooks.py`
 
 - 형식: `100644`
-- 바이트: 13104
-- SHA-256: `bd9c9970fb29208435e00779e335a77fc96a9c9ea49b8558be3a75f14ee011e8`
+- 바이트: 13443
+- SHA-256: `6737135e41c161c251257d2393a48cb0b9566e771f5753280ff2f0bef0dada9f`
 - 인코딩: `utf-8`
 
 ```
@@ -60,6 +60,10 @@ class HookTests(unittest.TestCase):
         self.assertIn("check", agy["reason"], "어떤 검사가 남았는지 밝힙니다.")
         self.assertEqual(self.sessions.get(key("antigravity", "test-session"))["retries"], 0,
                          "재개 예산을 쓰지 않습니다.")
+        cli = handle("gemini-cli", "AfterAgent", self.cli)
+        self.assertNotIn("decision", cli, "Gemini CLI에서는 종료를 막지 않습니다.")
+        self.assertNotIn("continue", cli, "종료를 막지 않아야 systemMessage가 대화형 화면에 표시됩니다.")
+        self.assertIn("실행 중", cli["systemMessage"])
 
     def test_interrupted_run_left_behind_does_not_pass_as_complete(self):
         """중단된 실행이 남긴 기록이 완료 보고를 조용히 허용하면 안 됩니다."""

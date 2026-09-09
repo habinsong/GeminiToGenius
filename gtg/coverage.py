@@ -31,6 +31,8 @@ UNOBSERVED_CODE = (".tsx", ".jsx", ".go", ".rs", ".rb", ".java", ".kt", ".swift"
                    ".c", ".cc", ".cpp", ".h", ".hpp", ".cs", ".php", ".sh", ".bash", ".zsh", ".pl", ".lua")
 # 넓은 검증 범위에서 목록 작성 자체가 비싸지지 않게 막습니다. 상한을 넘으면 범위를 주장하지 않습니다.
 MAX_WATCHED_FILES = 2000
+# 왜 판단하지 못했는지 알리기 위한 표본입니다. 전체 목록이 아닙니다.
+MAX_UNOBSERVABLE = 8
 
 # 인터프리터 시작 시점에 등록해야 사용자 코드의 첫 실행부터 관찰합니다.
 # 다른 sitecustomize를 가리지 않도록 남은 경로에서 원본을 이어서 불러옵니다.
@@ -201,14 +203,17 @@ def collector():
         shutil.rmtree(directory, ignore_errors=True)
 
 
-def watched_code_files(root: Path, watched: list[str], *, native: bool = False) -> tuple[list[Path], bool]:
-    """관찰 가능한 코드 파일과, 관찰할 수 없는 코드가 범위에 있었는지를 돌려줍니다.
+def watched_code_files(root: Path, watched: list[str], *, native: bool = False) -> tuple[list[Path], list[Path]]:
+    """관찰 가능한 코드 파일과, 판단을 막은 관찰 불가 파일을 돌려줍니다.
+
+    두 번째 값이 비어 있지 않으면 미실행 목록을 만들 수 없습니다. 어떤 파일 때문인지
+    알려야 검증 범위를 좁혀 다시 시도할 수 있습니다.
 
     `native`는 이번 실행에서 TypeScript가 직접 실행되는 것을 관측했는지입니다. 관측하지
     못했다면 컴파일 산출물을 실행했을 수 있으므로 원본 TypeScript의 미실행을 주장하지 않습니다.
     """
     observable = OBSERVABLE + AMBIGUOUS if native else OBSERVABLE
-    found, opaque = [], False
+    found, opaque = [], []
     for name in watched:
         target = root / relative(name)
         if target.is_file():
@@ -222,7 +227,8 @@ def watched_code_files(root: Path, watched: list[str], *, native: bool = False) 
                 continue
             suffix = path.suffix.casefold()
             if suffix in UNOBSERVED_CODE or (suffix in AMBIGUOUS and not native):
-                opaque = True
+                if len(opaque) < MAX_UNOBSERVABLE:
+                    opaque.append(path)
             elif suffix in observable and path not in found:
                 found.append(path)
                 if len(found) >= MAX_WATCHED_FILES:
@@ -230,8 +236,13 @@ def watched_code_files(root: Path, watched: list[str], *, native: bool = False) 
     return found, opaque
 
 
-def executed_watch(root: Path, watched: list[str], files: set[Path]) -> tuple[list[str], list[str] | None]:
-    """실행한 대상과 실행하지 않은 대상입니다. 범위를 다 세지 못하면 두 번째 값이 없습니다."""
+def executed_watch(root: Path, watched: list[str],
+                   files: set[Path]) -> tuple[list[str], list[str] | None, list[str]]:
+    """실행한 대상, 실행하지 않은 대상, 그리고 그 판단을 막은 관찰 불가 대상입니다.
+
+    두 번째 값이 없는 이유는 두 가지입니다. 관찰할 수 없는 언어가 범위에 있거나
+    범위가 너무 커서 다 세지 못한 경우이며, 앞의 경우에만 세 번째 값이 채워집니다.
+    """
     # 실행 기록 어디에든 TypeScript가 있으면 이 실행은 네이티브로 돌린 것입니다.
     native = any(path.suffix.casefold() in AMBIGUOUS for path in files)
     candidates, opaque = watched_code_files(root, watched, native=native)
@@ -243,4 +254,5 @@ def executed_watch(root: Path, watched: list[str], files: set[Path]) -> tuple[li
         except OSError:
             continue
         (ran if resolved in files else missed).append(path.relative_to(root).as_posix())
-    return sorted(ran), sorted(missed) if complete else None
+    return (sorted(ran), sorted(missed) if complete else None,
+            sorted(path.relative_to(root).as_posix() for path in opaque))
