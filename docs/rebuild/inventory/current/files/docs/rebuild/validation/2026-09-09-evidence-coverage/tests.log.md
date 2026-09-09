@@ -1,8 +1,8 @@
 # `docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log`
 
 - 형식: `100644`
-- 바이트: 22743
-- SHA-256: `74b1f4e928c2cf1ab6ac1876f37e90002e0cbc97f44689c36fb76f6b12fa1e9c`
+- 바이트: 23577
+- SHA-256: `1cf20a5ffe74c992e0e36b38761d7e27c62abd2587090ccd7cbf091ba89e2bbb`
 - 인코딩: `utf-8`
 
 ```
@@ -26,7 +26,9 @@ test_failing_command_is_reported_as_a_broken_claim (test_certificate.Certificate
 test_foreign_workspace_commands_are_not_run_without_consent (test_certificate.CertificateTests) ... ok
 test_replay_reconstructs_the_claim_without_the_state_database (test_certificate.CertificateTests) ... ok
 test_unverified_task_cannot_produce_a_completion_claim (test_certificate.CertificateTests) ... ok
+test_inconclusive_replay_uses_its_own_exit_code (test_certificate.InstalledCertificateTests) ... ok
 test_installed_cli_writes_a_certificate_and_replays_it_after_the_state_is_gone (test_certificate.InstalledCertificateTests) ... ok
+test_plugin_manifest_matches_the_documented_cli_schema (test_certificate.InstalledCertificateTests) ... ok
 test_changed_files_make_note_stale_without_erasing_it (test_checkpoints.CheckpointTests) ... ok
 test_checkpoint_cli_and_host_context (test_checkpoints.CheckpointTests) ... ok
 test_checkpoint_survives_restart_without_marking_checks_passed (test_checkpoints.CheckpointTests) ... ok
@@ -61,12 +63,19 @@ test_no_python_execution_reports_nothing_observed (test_coverage.CollectorTests)
 test_python_subprocess_execution_is_recorded (test_coverage.CollectorTests) ... ok
 test_watch_split_only_covers_python_files (test_coverage.CollectorTests) ... ok
 test_a_file_executed_by_any_check_is_not_listed_as_unverified (test_coverage.RunnerCoverageTests) ... ok
+test_incomplete_coverage_is_inconclusive_not_pass (test_coverage.RunnerCoverageTests) ... ok
 test_non_python_command_does_not_claim_anything_unexecuted (test_coverage.RunnerCoverageTests) ... ok
 test_observed_check_marks_the_scope_as_complete (test_coverage.RunnerCoverageTests) ... ok
 test_passing_check_records_the_file_it_never_executed (test_coverage.RunnerCoverageTests) ... ok
 test_replay_passes_the_scope_and_its_completeness_through (test_coverage.RunnerCoverageTests) ... ok
+test_replay_verdict_is_three_valued (test_coverage.RunnerCoverageTests) ... ok
 test_status_and_certificate_carry_the_unverified_scope (test_coverage.RunnerCoverageTests) ... ok
 test_unobservable_check_marks_the_scope_as_incomplete (test_coverage.RunnerCoverageTests) ... ok
+test_unverified_task_replays_as_invalid (test_coverage.RunnerCoverageTests) ... ok
+test_a_stale_flag_is_detected (test_doc_contract.DocumentedCommandTests) ... ok
+test_documentation_actually_contains_runner_examples (test_doc_contract.DocumentedCommandTests) ... ok
+test_every_command_is_documented_somewhere (test_doc_contract.DocumentedCommandTests) ... ok
+test_every_documented_command_and_flag_exists (test_doc_contract.DocumentedCommandTests) ... ok
 test_equivalent_csv_quoting_is_allowed_but_wrong_record_endings_are_not (test_eval_export.ExportEvalTests) ... ok
 test_existing_keyword_argument_cannot_be_renamed (test_eval_export.ExportEvalTests) ... ok
 test_initial_failure_and_reference_feature_preserve_existing_user_diff (test_eval_export.ExportEvalTests) ... ok
@@ -252,7 +261,7 @@ test_status_accepts_workspace_from_another_directory (test_workspace_argument.Wo
 test_verify_and_certify_accept_workspace (test_workspace_argument.WorkspaceArgumentTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 232 tests in 99.326s
+Ran 241 tests in 74.511s
 
 OK
 ```

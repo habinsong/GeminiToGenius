@@ -14,7 +14,7 @@
 | `.github/workflows/validate-profile.yml` | 1828 | [원문](files/.github/workflows/validate-profile.yml.md) |
 | `.gitignore` | 96 | [원문](files/.gitignore.md) |
 | `AGENTS.md` | 3212 | [원문](files/AGENTS.md.md) |
-| `CHANGELOG.md` | 17247 | [원문](files/CHANGELOG.md.md) |
+| `CHANGELOG.md` | 18393 | [원문](files/CHANGELOG.md.md) |
 | `CITATION.cff` | 378 | [원문](files/CITATION.cff.md) |
 | `CODE_OF_CONDUCT.md` | 352 | [원문](files/CODE_OF_CONDUCT.md.md) |
 | `CONTRIBUTING.md` | 1127 | [원문](files/CONTRIBUTING.md.md) |
@@ -154,8 +154,8 @@
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/README.md` | 5813 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json` | 844 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json` | 2525 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json.md) |
-| `docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log` | 22743 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log.md) |
-| `docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json` | 2794 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json.md) |
+| `docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log` | 23577 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log.md) |
+| `docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json` | 2877 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json.md) |
 | `docs/rebuild/validation/2026-09-09-native-certificate/README.md` | 4633 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-native-certificate/certificate.json` | 1465 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/certificate.json.md) |
 | `docs/rebuild/validation/2026-09-09-native-certificate/model-report.py` | 994 | [원문](files/docs/rebuild/validation/2026-09-09-native-certificate/model-report.py.md) |
