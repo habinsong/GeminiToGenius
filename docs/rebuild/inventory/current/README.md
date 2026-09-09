@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 44562 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 54113 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 55082 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -151,7 +151,7 @@
 | `docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json` | 270 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/tests.log` | 21385 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/tests.log.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/verification.json` | 5995 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/verification.json.md) |
-| `docs/rebuild/validation/2026-09-09-evidence-coverage/README.md` | 8352 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md) |
+| `docs/rebuild/validation/2026-09-09-evidence-coverage/README.md` | 9686 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json` | 844 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json` | 2525 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log` | 24443 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/tests.log.md) |

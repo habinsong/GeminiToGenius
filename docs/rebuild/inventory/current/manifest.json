@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 54113,
-      "sha256": "0714d8d6ae4f32f2c70a747e22bc0c29e0b8d17ffea964334c21fd817803d13d",
+      "bytes": 55082,
+      "sha256": "a5a61fa2860dad93b28671a3a66fb1842edb08c142d016394fecdba364ce41c2",
       "encoding": "utf-8",
-      "lines": 384,
+      "lines": 390,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -1888,10 +1888,10 @@
     {
       "path": "docs/rebuild/validation/2026-09-09-evidence-coverage/README.md",
       "mode": "100644",
-      "bytes": 8352,
-      "sha256": "3e7b7628b57427f3c1f09cd27c1abdd76b2225941d2a1a35f8cc6d87c537b408",
+      "bytes": 9686,
+      "sha256": "6a0193ae02995746901650b97086539c6082fb78284a4b35f1a092c6cf10807d",
       "encoding": "utf-8",
-      "lines": 92,
+      "lines": 106,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md"
