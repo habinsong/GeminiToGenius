@@ -1,14 +1,18 @@
-# GeminiToGenius
+<div align="center">
 
-A local harness that makes Gemini verify its own work before it says it is done.
+<h1>GeminiToGenius</h1>
 
-[한국어](../README.md) · English
+<p>A local harness that makes Gemini verify its own work before it says it is done.</p>
 
-[Documentation](README.md) · [What is checked and what is not](verification/README.md) · [Changelog](../CHANGELOG.md)
+<p><a href="../README.md">한국어</a> · English</p>
 
-GTG is a plugin for Antigravity and Gemini CLI. When a request looks like it will take more than one turn, the model first pins down what counts as finished, runs those conditions as real commands, and only then reports completion. The report comes with a certificate that ties the claim to the commands it ran, their exit codes, and fingerprints of the files under test. Anyone holding that file can check it again.
+<p><a href="README.md">Documentation</a> · <a href="verification/README.md">What is checked and what is not</a> · <a href="../CHANGELOG.md">Changelog</a></p>
 
-No slash commands. No spec files to fill in. Ask the way you normally would.
+<p>GTG is a plugin for Antigravity and Gemini CLI. When a request looks like it will take more than one turn, the model first pins down what counts as finished, runs those conditions as real commands, and only then reports completion. The report comes with a certificate that ties the claim to the commands it ran, their exit codes, and fingerprints of the files under test. Anyone holding that file can check it again.</p>
+
+<p>No slash commands. No spec files to fill in. Ask the way you normally would.</p>
+
+</div>
 
 ## Why this exists
 
