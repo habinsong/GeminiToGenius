@@ -11,7 +11,7 @@ import sqlite3
 import time
 import uuid
 
-from .spec import evidential, scope_size, validate
+from .spec import evidential, task_scope, validate
 
 
 class Store:
@@ -63,9 +63,8 @@ class Store:
         workspace = workspace.resolve(strict=True)
         if not workspace.is_dir():
             raise ValueError("작업공간 폴더가 필요합니다.")
-        # 훅 예산 안에서 상태를 만들 수 있는 범위인지 등록 시점에 확인합니다.
-        for check in spec["checks"]:
-            scope_size(workspace, check["watch"])
+        # 훅 예산 안에서 상태를 만들 수 있는지 작업 전체 기준으로 확인합니다.
+        task_scope(workspace, spec["checks"])
         task_id = uuid.uuid4().hex
         with nullcontext() if self.connection.in_transaction else self.connection:
             self.connection.execute("INSERT INTO tasks VALUES (?, ?, ?, ?)",

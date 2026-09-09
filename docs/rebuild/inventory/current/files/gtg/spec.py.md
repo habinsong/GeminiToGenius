@@ -1,8 +1,8 @@
 # `gtg/spec.py`
 
 - 형식: `100644`
-- 바이트: 8017
-- SHA-256: `2f9a7a089e3a5c30e0387ea94f3bb31e8d4d1bacf2456a6e3e2f62e7a279804b`
+- 바이트: 9183
+- SHA-256: `e3af912abc6c9a99db04c6d04241177a4ae7daececc408c0c0cbea1a6f050159`
 - 인코딩: `utf-8`
 
 ```
@@ -98,6 +98,16 @@ def evidential(spec: dict) -> dict:
     return spec
 
 
+class ScopeTooLarge(ValueError):
+    """검증 대상이 훅 예산을 넘었습니다. 호출자가 실제 상한을 담은 안내로 바꿉니다."""
+
+
+def limit_message() -> str:
+    return (f"검증 대상이 너무 넓습니다. 작업 전체가 파일 {MAX_WATCH_FILES}개·"
+            f"{MAX_WATCH_BYTES // (1024 * 1024)}MB 이하가 되도록 watch 범위를 좁히세요. "
+            "생성물과 의존성 폴더는 제외합니다.")
+
+
 def scope_size(root: Path, watched: list[str], *,
                max_files: int = MAX_WATCH_FILES, max_bytes: int = MAX_WATCH_BYTES) -> tuple[int, int]:
     """검증 대상의 파일 수와 크기입니다. 내용을 읽지 않으므로 해싱보다 훨씬 쌉니다.
@@ -129,12 +139,29 @@ def scope_size(root: Path, watched: list[str], *,
         files += 1
         size += info.st_size
         if files > max_files or size > max_bytes:
-            raise ValueError(
-                f"검증 대상이 너무 넓습니다. 파일 {max_files}개·{max_bytes // (1024 * 1024)}MB 이하로 "
-                "watch 범위를 좁히세요. 생성물과 의존성 폴더는 제외합니다.")
+            raise ScopeTooLarge("검증 대상이 상한을 넘었습니다.")
 
     for name in watched:
         walk(root / relative(name))
+    return files, size
+
+
+def task_scope(root: Path, checks: list[dict]) -> tuple[int, int]:
+    """작업 전체가 상태 조회 한 번에 읽는 양입니다.
+
+    훅은 연결된 작업의 모든 검사를 한 번에 처리합니다. 같은 범위는 조회 안에서 한 번만
+    해싱되므로 서로 다른 범위마다 한 번씩 셉니다. 예산은 작업 전체가 함께 씁니다.
+    """
+    files = size = 0
+    for scope in sorted({tuple(sorted(set(check["watch"]))) for check in checks}):
+        try:
+            counted, measured = scope_size(root, list(scope),
+                                           max_files=MAX_WATCH_FILES - files,
+                                           max_bytes=MAX_WATCH_BYTES - size)
+        except ScopeTooLarge as error:
+            raise ValueError(limit_message()) from error
+        files += counted
+        size += measured
     return files, size
 
 

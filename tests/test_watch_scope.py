@@ -108,3 +108,60 @@ class RegistrationBoundTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TaskWideBudgetTests(unittest.TestCase):
+    """훅은 작업의 모든 검사를 한 번에 처리하므로 예산도 작업 단위여야 합니다."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name).resolve()
+        self.store = Store(self.root / ".gtg/state.sqlite3")
+        self.addCleanup(self.store.close)
+
+    def folder(self, name, count):
+        target = self.root / name
+        target.mkdir(exist_ok=True)
+        for index in range(count):
+            (target / f"f{index:05d}.py").write_text("X = 1\n")
+        return name
+
+    def task(self, *scopes):
+        return {"schema_version": 1, "goal": "여러 검사가 범위를 나눠 봅니다.", "checks": [
+            {"id": f"c{index}", "criterion": "검사입니다.", "argv": [sys.executable, "-c", "pass"],
+             "watch": list(scope)} for index, scope in enumerate(scopes)]}
+
+    def test_each_check_under_the_limit_but_the_task_over_it_is_refused(self):
+        share = MAX_WATCH_FILES // 2 + 100
+        a, b, c = self.folder("a", share), self.folder("b", share), self.folder("c", 10)
+        with self.assertRaisesRegex(ValueError, "검증 대상"):
+            self.store.create(self.root, self.task([a], [b], [c]))
+
+    def test_repeated_identical_scopes_are_counted_once(self):
+        share = MAX_WATCH_FILES // 2 + 100
+        a = self.folder("a", share)
+        # 같은 범위는 상태 조회에서 한 번만 해싱되므로 예산도 한 번만 씁니다.
+        self.assertTrue(self.store.create(self.root, self.task([a], [a], [a])))
+
+    def test_ordinary_task_with_several_scopes_is_accepted(self):
+        src, tests = self.folder("src", 300), self.folder("tests", 120)
+        self.assertTrue(self.store.create(self.root, self.task([src], [src, tests], [tests])))
+
+    def test_refusal_states_the_real_limit_not_the_remaining_budget(self):
+        share = MAX_WATCH_FILES // 2 + 100
+        a, b = self.folder("a", share), self.folder("b", share)
+        with self.assertRaises(ValueError) as caught:
+            self.store.create(self.root, self.task([a], [b]))
+        message = str(caught.exception)
+        self.assertIn(str(MAX_WATCH_FILES), message,
+                      "남은 예산이 아니라 실제 상한을 알려 주어야 모델이 올바르게 좁힙니다.")
+        self.assertIn(str(MAX_WATCH_BYTES // (1024 * 1024)), message)
+
+    def test_task_scope_reports_the_measured_total(self):
+        from gtg.spec import task_scope
+
+        src, tests = self.folder("src", 40), self.folder("tests", 25)
+        files, size = task_scope(self.root, self.task([src], [src, tests])["checks"])
+        self.assertEqual(files, 40 + 65, "서로 다른 범위는 각각 해싱되므로 각각 셉니다.")
+        self.assertGreater(size, 0)

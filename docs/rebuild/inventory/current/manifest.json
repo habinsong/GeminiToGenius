@@ -302,7 +302,7 @@
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
       "bytes": 4570,
-      "sha256": "8ae12eed362bf2cf8769f9dd79e9d51443a795ffc3a62d2151fa5a5008cdfea8",
+      "sha256": "8b05b5dc8f192b96ffc31277104ea2815c09b55dcfc7e577832206111e7e745c",
       "encoding": "utf-8",
       "lines": 45,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 51550,
-      "sha256": "02c89751136920680cf71946a2cb0f6c71cddd71cf98952420b8406d9f5cbe70",
+      "bytes": 52943,
+      "sha256": "719355646113bfdddc928c777553daf749d777c177f7a4e163edb8d05a82edbb",
       "encoding": "utf-8",
-      "lines": 360,
+      "lines": 373,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -3588,10 +3588,10 @@
     {
       "path": "gtg/spec.py",
       "mode": "100644",
-      "bytes": 8017,
-      "sha256": "2f9a7a089e3a5c30e0387ea94f3bb31e8d4d1bacf2456a6e3e2f62e7a279804b",
+      "bytes": 9183,
+      "sha256": "e3af912abc6c9a99db04c6d04241177a4ae7daececc408c0c0cbea1a6f050159",
       "encoding": "utf-8",
-      "lines": 172,
+      "lines": 199,
       "symbols": [
         {
           "name": "sensitive",
@@ -3624,28 +3624,46 @@
           "end_line": 90
         },
         {
+          "name": "ScopeTooLarge",
+          "kind": "ClassDef",
+          "line": 93,
+          "end_line": 94
+        },
+        {
+          "name": "limit_message",
+          "kind": "FunctionDef",
+          "line": 97,
+          "end_line": 100
+        },
+        {
           "name": "scope_size",
           "kind": "FunctionDef",
-          "line": 93,
-          "end_line": 130
+          "line": 103,
+          "end_line": 138
+        },
+        {
+          "name": "task_scope",
+          "kind": "FunctionDef",
+          "line": 141,
+          "end_line": 157
         },
         {
           "name": "fingerprint",
           "kind": "FunctionDef",
-          "line": 133,
-          "end_line": 172
+          "line": 160,
+          "end_line": 199
         },
         {
           "name": "walk",
           "kind": "FunctionDef",
-          "line": 103,
-          "end_line": 126
+          "line": 113,
+          "end_line": 134
         },
         {
           "name": "add",
           "kind": "FunctionDef",
-          "line": 139,
-          "end_line": 168
+          "line": 166,
+          "end_line": 195
         }
       ],
       "trailing_newline": true,
@@ -3654,16 +3672,16 @@
     {
       "path": "gtg/store.py",
       "mode": "100644",
-      "bytes": 6577,
-      "sha256": "2b5f5b96032768dd2fa9e2e59cfd312d495c74e955effdde2d965be34fd3cc12",
+      "bytes": 6536,
+      "sha256": "46b0c791ec7388da4f5986366d919d423f2436a1f333dac30ef36e01dc53de2e",
       "encoding": "utf-8",
-      "lines": 133,
+      "lines": 132,
       "symbols": [
         {
           "name": "Store",
           "kind": "ClassDef",
           "line": 17,
-          "end_line": 133
+          "end_line": 132
         },
         {
           "name": "__init__",
@@ -3681,43 +3699,43 @@
           "name": "create",
           "kind": "FunctionDef",
           "line": 61,
-          "end_line": 73
+          "end_line": 72
         },
         {
           "name": "task",
           "kind": "FunctionDef",
-          "line": 75,
-          "end_line": 79
+          "line": 74,
+          "end_line": 78
         },
         {
           "name": "begin",
           "kind": "FunctionDef",
-          "line": 81,
-          "end_line": 92
+          "line": 80,
+          "end_line": 91
         },
         {
           "name": "finish",
           "kind": "FunctionDef",
-          "line": 94,
-          "end_line": 99
+          "line": 93,
+          "end_line": 98
         },
         {
           "name": "attach_process",
           "kind": "FunctionDef",
-          "line": 101,
-          "end_line": 103
+          "line": 100,
+          "end_line": 102
         },
         {
           "name": "latest",
           "kind": "FunctionDef",
-          "line": 105,
-          "end_line": 110
+          "line": 104,
+          "end_line": 109
         },
         {
           "name": "recover",
           "kind": "FunctionDef",
-          "line": 112,
-          "end_line": 133
+          "line": 111,
+          "end_line": 132
         }
       ],
       "trailing_newline": true,
@@ -3759,8 +3777,8 @@
     {
       "path": "profile/skills/gtg-build/references/task-contract.md",
       "mode": "100644",
-      "bytes": 13766,
-      "sha256": "094ffc23b3f8d0a2eae691df297d40a5cca0379a530a69841fc7cf5372016ff7",
+      "bytes": 13926,
+      "sha256": "b6b472ca949a0ec8336d904fb60b94a863e22e99929b3b25848051748725dfe8",
       "encoding": "utf-8",
       "lines": 122,
       "symbols": [],
@@ -6459,10 +6477,10 @@
     {
       "path": "tests/test_watch_scope.py",
       "mode": "100644",
-      "bytes": 4556,
-      "sha256": "613349a08e16ccf65f9db9f492341513a1180f6b3ed90946b322ed007f32b8d5",
+      "bytes": 7419,
+      "sha256": "b0bd4df2ddaabfb82dff4a24f421bbcfd5918675f12a0002f0de4d9b2d30baa7",
       "encoding": "utf-8",
-      "lines": 110,
+      "lines": 167,
       "symbols": [
         {
           "name": "spec",
@@ -6481,6 +6499,12 @@
           "kind": "ClassDef",
           "line": 69,
           "end_line": 106
+        },
+        {
+          "name": "TaskWideBudgetTests",
+          "kind": "ClassDef",
+          "line": 113,
+          "end_line": 167
         },
         {
           "name": "setUp",
@@ -6553,6 +6577,54 @@
           "kind": "FunctionDef",
           "line": 103,
           "end_line": 106
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 116,
+          "end_line": 121
+        },
+        {
+          "name": "folder",
+          "kind": "FunctionDef",
+          "line": 123,
+          "end_line": 128
+        },
+        {
+          "name": "task",
+          "kind": "FunctionDef",
+          "line": 130,
+          "end_line": 133
+        },
+        {
+          "name": "test_each_check_under_the_limit_but_the_task_over_it_is_refused",
+          "kind": "FunctionDef",
+          "line": 135,
+          "end_line": 139
+        },
+        {
+          "name": "test_repeated_identical_scopes_are_counted_once",
+          "kind": "FunctionDef",
+          "line": 141,
+          "end_line": 145
+        },
+        {
+          "name": "test_ordinary_task_with_several_scopes_is_accepted",
+          "kind": "FunctionDef",
+          "line": 147,
+          "end_line": 149
+        },
+        {
+          "name": "test_refusal_states_the_real_limit_not_the_remaining_budget",
+          "kind": "FunctionDef",
+          "line": 151,
+          "end_line": 159
+        },
+        {
+          "name": "test_task_scope_reports_the_measured_total",
+          "kind": "FunctionDef",
+          "line": 161,
+          "end_line": 167
         }
       ],
       "trailing_newline": true,
