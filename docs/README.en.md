@@ -14,14 +14,6 @@
 
 </div>
 
-## Why this exists
-
-"I fixed it" and "it is fixed" are different things. Agents report completion without running the tests, and when they say they ran them there is no way for you to tell.
-
-GTG 2.x handled this with prompts. There was no executable that dealt with goals or verification results, and the structure check accepted an empty hook configuration as valid. 3.0.0 removed all of that and rebuilt it around a Python execution core.
-
-The idea is one thing. **Pin the finish conditions first, run them for real, and leave the run in a form someone else can reproduce.** The conditions cannot be moved somewhere easier afterwards, and there is no way to mark an unrun check as passed.
-
 ## What it does
 
 | | |

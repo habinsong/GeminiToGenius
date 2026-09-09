@@ -148,10 +148,10 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "bytes": 5662,
-      "sha256": "1a46e99a8af05b4d094cbdd25599a65ff60c8c03a45893fe7cdea77762e35ee5",
+      "bytes": 5132,
+      "sha256": "e847e63140aab84585eabe42c0edafda5f627cbbe8904f8d342bf20608ea8c97",
       "encoding": "utf-8",
-      "lines": 110,
+      "lines": 104,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/README.md.md"
@@ -213,10 +213,10 @@
     {
       "path": "docs/README.en.md",
       "mode": "100644",
-      "bytes": 6397,
-      "sha256": "0a7cd4fae9d82df40e20ab4f5154b368109b237c8487976439751fe36ddd2085",
+      "bytes": 5705,
+      "sha256": "f780e73a6a4cdab90a54f7f0b45e8ef2eec0a87bdd66722b181fcab93616b6ea",
       "encoding": "utf-8",
-      "lines": 106,
+      "lines": 98,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/README.en.md.md"
@@ -279,8 +279,8 @@
     {
       "path": "docs/development/current-work.md",
       "mode": "100644",
-      "bytes": 5812,
-      "sha256": "2253eca04d29bdca101b1b41e4ea1952c44a978b2f8393364436353b92bc8f1d",
+      "bytes": 5813,
+      "sha256": "e9633d4a4df7a0e6dae17c0294390603b0d2279b6261e3b209dcbce0f2e01533",
       "encoding": "utf-8",
       "lines": 48,
       "symbols": [],
@@ -389,8 +389,8 @@
     {
       "path": "docs/development/status.md",
       "mode": "100644",
-      "bytes": 72147,
-      "sha256": "6f68c996c35758c9e28fac3bb58dbfc28eecbd2ce813811687af6cc8b584bda0",
+      "bytes": 72082,
+      "sha256": "b48e35803c8bbca478fc83e6ad324da3823e8dc78445f2d9eb752074e9392cef",
       "encoding": "utf-8",
       "lines": 523,
       "symbols": [],

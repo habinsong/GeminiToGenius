@@ -1,8 +1,8 @@
 # `docs/README.en.md`
 
 - 형식: `100644`
-- 바이트: 6397
-- SHA-256: `0a7cd4fae9d82df40e20ab4f5154b368109b237c8487976439751fe36ddd2085`
+- 바이트: 5705
+- SHA-256: `f780e73a6a4cdab90a54f7f0b45e8ef2eec0a87bdd66722b181fcab93616b6ea`
 - 인코딩: `utf-8`
 
 ````
@@ -21,14 +21,6 @@
 <p>No slash commands. No spec files to fill in. Ask the way you normally would.</p>
 
 </div>
-
-## Why this exists
-
-"I fixed it" and "it is fixed" are different things. Agents report completion without running the tests, and when they say they ran them there is no way for you to tell.
-
-GTG 2.x handled this with prompts. There was no executable that dealt with goals or verification results, and the structure check accepted an empty hook configuration as valid. 3.0.0 removed all of that and rebuilt it around a Python execution core.
-
-The idea is one thing. **Pin the finish conditions first, run them for real, and leave the run in a form someone else can reproduce.** The conditions cannot be moved somewhere easier afterwards, and there is no way to mark an unrun check as passed.
 
 ## What it does
 
