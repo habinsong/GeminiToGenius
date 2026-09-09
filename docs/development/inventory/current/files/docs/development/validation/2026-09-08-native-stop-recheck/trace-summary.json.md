@@ -1,0 +1,45 @@
+# `docs/development/validation/2026-09-08-native-stop-recheck/trace-summary.json`
+
+- 형식: `100644`
+- 바이트: 1044
+- SHA-256: `6644184cb42fce17069b50e60d7460e2ad3250520b6da5af4d027ec0545388b8`
+- 인코딩: `utf-8`
+
+```
+{
+  "kind": "native_stop_recheck",
+  "host_version": "2.12.2",
+  "selected_model_label": "Gemini 3.8 Flash High",
+  "native_project_id": "203ebab1-6617-4748-892f-767073cd2526",
+  "native_conversation_id": "73a22604-7cf2-48d3-ba3e-fcfd45ba2304",
+  "conversation_title": "종료 훅 연결 시험",
+  "user_prompt_count": 1,
+  "model_response_steps": 7,
+  "inference_request_count": null,
+  "tool_counts": {
+    "view_file": 2,
+    "run_command": 3
+  },
+  "started_at": "2026-09-08T06:32:18Z",
+  "last_response_at": "2026-09-08T06:32:35Z",
+  "elapsed_seconds": 17.0,
+  "first_final_step": 9,
+  "system_retry_step": 10,
+  "last_response_step": 17,
+  "native_retry_verified": true,
+  "registered_check_executed": true,
+  "verified": true,
+  "retries": 1,
+  "last_stop": {
+    "event": "Stop",
+    "execution_num": 1,
+    "termination_reason": "NO_TOOL_CALL",
+    "fully_idle": true,
+    "has_error": false
+  },
+  "previous_paused_task_preserved": true,
+  "fixture_unchanged": true,
+  "package_unchanged": true,
+  "model_performance_claim": false
+}
+```

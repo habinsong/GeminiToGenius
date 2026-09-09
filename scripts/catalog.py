@@ -15,7 +15,7 @@ import stat
 import subprocess
 
 
-OUTPUT = "docs/rebuild/inventory"
+OUTPUT = "docs/development/inventory"
 SENSITIVE_DIRS = {".ssh", ".aws", ".kube"}
 
 

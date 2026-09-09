@@ -1,6 +1,6 @@
 # 기여 안내
 
-현재 개발 규칙은 [AGENTS.md](AGENTS.md), 단계별 계획은 [재개발 문서](docs/rebuild/README.md)를 확인합니다.
+현재 개발 규칙은 [AGENTS.md](AGENTS.md), 단계별 계획은 [재개발 문서](docs/development/README.md)를 확인합니다.
 
 `gtg/`는 모델과 독립적인 실행 코어, `profile/`은 규칙·스킬의 원본입니다. 설치 사본을 저장소에서 중복 관리하지 않습니다. 모델을 호출하는 평가를 일반 테스트에 추가하지 않습니다.
 
