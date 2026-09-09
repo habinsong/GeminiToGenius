@@ -1,8 +1,8 @@
 # `docs/rebuild/validation/2026-09-09-evidence-coverage/README.md`
 
 - 형식: `100644`
-- 바이트: 5813
-- SHA-256: `4038771ee2446c4f3ba69f1b80b420b362551624ed465419c50dcf9e443681dc`
+- 바이트: 6821
+- SHA-256: `a1283c34d62e745790e55c80119abc757a2f1ef18a530c58d0e9a95bfc407672`
 - 인코딩: `utf-8`
 
 ````
@@ -59,6 +59,15 @@ unverified_scope: ['untested.py']
 
 - 격리 실행(`-I`, `-E`, `-S`)은 `PYTHONPATH`나 `site`를 쓰지 않으므로 관찰되지 않습니다. 오류로 만들지 않고 관찰 없음으로 처리해 미실행을 주장하지 않습니다.
 - 검증 범위가 2,000개 파일을 넘으면 목록 작성을 멈추고 `unexecuted_watch`를 `null`로 둡니다. 다 세지 못한 범위를 미실행이라고 말하지 않습니다.
+
+## JavaScript 확장
+
+Python 전용이던 관찰을 Node로 넓혔습니다. 가정 없이 먼저 실험해 `module.registerHooks`가 CommonJS·ESM·하위 프로세스·`node --test`에서 모두 동작하는 것을 확인한 뒤 구현했습니다.
+
+- `NODE_OPTIONS`에 `--require`로 관찰기를 얹고 사용자의 기존 값은 뒤에 그대로 둡니다.
+- `load` 훅에서 `file://` URL만 모으고 종료 시 같은 기록 폴더에 씁니다. 실패하면 조용히 포기합니다.
+- 실제 CLI로 `node --test`를 등록한 작업을 실행해 `cart.js`·`cart.test.js`가 실행되고 `discount.js`는 한 번도 실행되지 않았음을 확인했습니다. 증명서의 `unverified_scope`에 그대로 나왔습니다.
+- 관찰할 수 없는 코드(TypeScript·Go·Rust·셸 등)가 범위에 있으면 `unexecuted_watch`를 `null`로 두고 `coverage_complete`를 거짓으로 만듭니다. 문서·설정 같은 비실행 파일은 대상이 아니므로 완전성을 깨지 않습니다.
 
 ## 한계
 

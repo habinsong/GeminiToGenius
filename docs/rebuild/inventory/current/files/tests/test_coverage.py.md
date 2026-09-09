@@ -1,8 +1,8 @@
 # `tests/test_coverage.py`
 
 - 형식: `100644`
-- 바이트: 11109
-- SHA-256: `9e49ec89987a909c505de4c47b4871c477a5b8e2425e74355db9dc98005991c3`
+- 바이트: 15504
+- SHA-256: `e3636fe5efb0f863397cbdba718c2e225f9019e008a26d0c4c26d638ed93ba99`
 - 인코딩: `utf-8`
 
 ```
@@ -85,14 +85,15 @@ class CollectorTests(unittest.TestCase):
             self.assertEqual(session.files(), set(), "격리 모드는 관찰되지 않으며 오류도 아닙니다.")
 
     def test_large_watch_scope_is_capped_instead_of_walking_forever(self):
-        from gtg.coverage import MAX_WATCHED_FILES, watched_python_files
+        from gtg.coverage import MAX_WATCHED_FILES, watched_code_files
 
         big = self.root / "many"
         big.mkdir()
         for index in range(MAX_WATCHED_FILES + 25):
             (big / f"module_{index:05d}.py").write_text("X = 1\n")
-        found = watched_python_files(self.root, ["many"])
+        found, opaque = watched_code_files(self.root, ["many"])
         self.assertEqual(len(found), MAX_WATCHED_FILES)
+        self.assertFalse(opaque)
 
     def test_capped_scope_does_not_claim_unexecuted_files(self):
         from gtg.coverage import MAX_WATCHED_FILES, executed_watch
@@ -233,4 +234,86 @@ class RunnerCoverageTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class JavaScriptCoverageTests(unittest.TestCase):
+    """Node 실행도 같은 방식으로 관찰합니다. Node가 없으면 건너뜁니다."""
+
+    @classmethod
+    def setUpClass(cls):
+        import shutil as _shutil
+        if _shutil.which("node") is None:
+            raise unittest.SkipTest("node를 찾지 못했습니다.")
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.workspace = Path(self.temp.name).resolve()
+        (self.workspace / "used.js").write_text("module.exports = { value: 1 };\n")
+        (self.workspace / "unused.js").write_text("module.exports = { value: 2 };\n")
+        (self.workspace / "check.js").write_text(
+            "const used = require('./used.js');\nif (used.value !== 1) { throw new Error('bad'); }\n")
+        self.store = Store(self.workspace / ".gtg/state.sqlite3")
+        self.addCleanup(self.store.close)
+
+    def js_spec(self, watch):
+        return {"schema_version": 1, "goal": "자바스크립트 실행을 관찰합니다.", "checks": [
+            {"id": "node", "criterion": "노드 검사가 통과합니다.",
+             "argv": ["node", "check.js"], "watch": watch}]}
+
+    def test_node_execution_is_recorded_like_python(self):
+        task = self.store.create(self.workspace, self.js_spec(["used.js", "unused.js", "check.js"]))
+        result = execute(self.store, task, "node")
+        self.assertEqual(result["status"], "passed")
+        self.assertTrue(result["coverage_observed"])
+        self.assertEqual(result["executed_watch"], ["check.js", "used.js"])
+        self.assertEqual(result["unexecuted_watch"], ["unused.js"])
+
+    def test_esm_modules_are_recorded(self):
+        (self.workspace / "lib.mjs").write_text("export const value = 3;\n")
+        (self.workspace / "main.mjs").write_text(
+            "import { value } from './lib.mjs';\nif (value !== 3) { throw new Error('bad'); }\n")
+        (self.workspace / "spare.mjs").write_text("export const other = 4;\n")
+        spec = {"schema_version": 1, "goal": "ESM을 관찰합니다.", "checks": [
+            {"id": "esm", "criterion": "ESM 검사가 통과합니다.", "argv": ["node", "main.mjs"],
+             "watch": ["lib.mjs", "main.mjs", "spare.mjs"]}]}
+        task = self.store.create(self.workspace, spec)
+        result = execute(self.store, task, "esm")
+        self.assertEqual(result["status"], "passed")
+        self.assertEqual(result["executed_watch"], ["lib.mjs", "main.mjs"])
+        self.assertEqual(result["unexecuted_watch"], ["spare.mjs"])
+
+    def test_existing_node_options_are_preserved(self):
+        import os as _os
+        from gtg.coverage import collector
+
+        with collector() as session:
+            previous = dict(_os.environ)
+            try:
+                _os.environ["NODE_OPTIONS"] = "--max-old-space-size=512"
+                environment = session.environment()
+            finally:
+                _os.environ.clear()
+                _os.environ.update(previous)
+        self.assertIn("--max-old-space-size=512", environment["NODE_OPTIONS"])
+        self.assertIn("--require", environment["NODE_OPTIONS"])
+
+    def test_unobservable_code_in_scope_is_not_silently_treated_as_covered(self):
+        (self.workspace / "typed.ts").write_text("export const value: number = 1;\n")
+        task = self.store.create(self.workspace, self.js_spec(["used.js", "check.js", "typed.ts"]))
+        result = execute(self.store, task, "node")
+        self.assertEqual(result["status"], "passed")
+        self.assertIsNone(result["unexecuted_watch"],
+                          "관찰할 수 없는 코드가 범위에 있으면 미실행을 주장하지 않습니다.")
+        document = build(self.store, task)
+        self.assertFalse(document["coverage_complete"])
+
+    def test_data_files_in_scope_do_not_block_completeness(self):
+        (self.workspace / "notes.md").write_text("설명 문서입니다.\n")
+        (self.workspace / "config.json").write_text("{}\n")
+        task = self.store.create(self.workspace, self.js_spec(["used.js", "unused.js", "check.js", "notes.md", "config.json"]))
+        execute(self.store, task, "node")
+        document = build(self.store, task)
+        self.assertTrue(document["coverage_complete"])
+        self.assertEqual(document["unverified_scope"], ["unused.js"])
 ```
