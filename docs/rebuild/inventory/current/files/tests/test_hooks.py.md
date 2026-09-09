@@ -1,8 +1,8 @@
 # `tests/test_hooks.py`
 
 - 형식: `100644`
-- 바이트: 11636
-- SHA-256: `ab26c62e90dd994520d041a3d0776572a4d88b0bbb78d6a5d1b8f0a41f705da3`
+- 바이트: 13104
+- SHA-256: `bd9c9970fb29208435e00779e335a77fc96a9c9ea49b8558be3a75f14ee011e8`
 - 인코딩: `utf-8`
 
 ```
@@ -49,6 +49,27 @@ class HookTests(unittest.TestCase):
         cli = handle("gemini-cli", "AfterAgent", self.cli)
         self.assertEqual(agy["decision"], "continue")
         self.assertEqual(cli["decision"], "deny")
+
+    def test_running_check_stops_without_claiming_completion(self):
+        """검사가 실행 중이면 재개하지 않되 미검증을 조용히 통과시키지 않습니다."""
+        run = self.store.begin(self.task, "check")
+        self.addCleanup(self.store.finish, run, {"status": "interrupted", "returncode": None})
+        agy = handle("antigravity", "Stop", self.agy)
+        self.assertEqual(agy["decision"], "stop", "실행 중인 검사를 재개로 중복 실행하지 않습니다.")
+        self.assertIn("실행 중", agy["reason"])
+        self.assertIn("check", agy["reason"], "어떤 검사가 남았는지 밝힙니다.")
+        self.assertEqual(self.sessions.get(key("antigravity", "test-session"))["retries"], 0,
+                         "재개 예산을 쓰지 않습니다.")
+
+    def test_interrupted_run_left_behind_does_not_pass_as_complete(self):
+        """중단된 실행이 남긴 기록이 완료 보고를 조용히 허용하면 안 됩니다."""
+        script = ("from pathlib import Path; from gtg.store import Store; import sys; "
+                  "Store(Path(sys.argv[1])).begin(sys.argv[2], 'check')")
+        subprocess.run([sys.executable, "-c", script, str(self.root / ".gtg/state.sqlite3"), self.task],
+                       cwd=ROOT, check=True)
+        response = handle("antigravity", "Stop", self.agy)
+        self.assertEqual(response["decision"], "stop")
+        self.assertIn("recover", response["reason"])
 
     def test_retry_cap_and_duplicate_event_do_not_loop_forever(self):
         self.assertEqual(handle("antigravity", "Stop", self.agy)["decision"], "continue")

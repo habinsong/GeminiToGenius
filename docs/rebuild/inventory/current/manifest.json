@@ -302,7 +302,7 @@
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
       "bytes": 4802,
-      "sha256": "fb25d68903f2b2796c57d5e7565864e3fb32e1aa815e3d146c9ebd5a22361b71",
+      "sha256": "1fe973f301df54b053d8c6d50ddceb2d1c7922f264f87ee013b0fac4a869da11",
       "encoding": "utf-8",
       "lines": 46,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 66834,
-      "sha256": "4e88ad02527fdd5f13b1a340bf6572d5d58c058e78bcb188f7d9af7e96a3700f",
+      "bytes": 67782,
+      "sha256": "0fd0d4ad71987c7bc9475d6cfcecd9c477160eae55f3cc1fb9fd95fe63f0d5a2",
       "encoding": "utf-8",
-      "lines": 499,
+      "lines": 504,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -2108,13 +2108,24 @@
     {
       "path": "docs/rebuild/validation/2026-09-09-reboot-recovery/README.md",
       "mode": "100644",
-      "bytes": 5418,
-      "sha256": "2896acbc4cfed0d13676e48b39051964b0f834b2645dadf6863df6783d1ff6aa",
+      "bytes": 5465,
+      "sha256": "bacaf82274499e3a9815bcca38029ad1042334d6596877ab4b094c415d15d5fe",
       "encoding": "utf-8",
       "lines": 79,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-09-reboot-recovery/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-running-check-stop/README.md",
+      "mode": "100644",
+      "bytes": 4489,
+      "sha256": "08c5d371b3cb81ec233f476436518dadda430b185a930a06f24c81aa510897ab",
+      "encoding": "utf-8",
+      "lines": 64,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-running-check-stop/README.md.md"
     },
     {
       "path": "docs/styles.css",
@@ -3455,10 +3466,10 @@
     {
       "path": "gtg/hooks.py",
       "mode": "100644",
-      "bytes": 11698,
-      "sha256": "d49a197c65783f9b52f7baf37c351f193ac13a20a592b540a4b9b932f3a9a9ef",
+      "bytes": 12903,
+      "sha256": "99d15166813c56d785e94625b64b54d28083bac9bfc35a75d305b4d16577b93b",
       "encoding": "utf-8",
-      "lines": 224,
+      "lines": 245,
       "symbols": [
         {
           "name": "parse",
@@ -3503,22 +3514,28 @@
           "end_line": 113
         },
         {
-          "name": "resume",
+          "name": "still_running",
           "kind": "FunctionDef",
           "line": 116,
-          "end_line": 136
+          "end_line": 133
+        },
+        {
+          "name": "resume",
+          "kind": "FunctionDef",
+          "line": 136,
+          "end_line": 157
         },
         {
           "name": "handle",
           "kind": "FunctionDef",
-          "line": 139,
-          "end_line": 187
+          "line": 160,
+          "end_line": 208
         },
         {
           "name": "main",
           "kind": "FunctionDef",
-          "line": 190,
-          "end_line": 220
+          "line": 211,
+          "end_line": 241
         }
       ],
       "trailing_newline": true,
@@ -5882,16 +5899,16 @@
     {
       "path": "tests/test_hooks.py",
       "mode": "100644",
-      "bytes": 11636,
-      "sha256": "ab26c62e90dd994520d041a3d0776572a4d88b0bbb78d6a5d1b8f0a41f705da3",
+      "bytes": 13104,
+      "sha256": "bd9c9970fb29208435e00779e335a77fc96a9c9ea49b8558be3a75f14ee011e8",
       "encoding": "utf-8",
-      "lines": 200,
+      "lines": 221,
       "symbols": [
         {
           "name": "HookTests",
           "kind": "ClassDef",
           "line": 19,
-          "end_line": 196
+          "end_line": 217
         },
         {
           "name": "setUp",
@@ -5906,118 +5923,130 @@
           "end_line": 43
         },
         {
-          "name": "test_retry_cap_and_duplicate_event_do_not_loop_forever",
+          "name": "test_running_check_stops_without_claiming_completion",
           "kind": "FunctionDef",
           "line": 45,
-          "end_line": 51
+          "end_line": 54
+        },
+        {
+          "name": "test_interrupted_run_left_behind_does_not_pass_as_complete",
+          "kind": "FunctionDef",
+          "line": 56,
+          "end_line": 64
+        },
+        {
+          "name": "test_retry_cap_and_duplicate_event_do_not_loop_forever",
+          "kind": "FunctionDef",
+          "line": 66,
+          "end_line": 72
         },
         {
           "name": "test_host_error_and_user_stop_pause_without_forcing_retry",
           "kind": "FunctionDef",
-          "line": 53,
-          "end_line": 60
+          "line": 74,
+          "end_line": 81
         },
         {
           "name": "test_background_work_is_not_forced_to_retry",
           "kind": "FunctionDef",
-          "line": 62,
-          "end_line": 65
+          "line": 83,
+          "end_line": 86
         },
         {
           "name": "test_live_check_does_not_consume_retry_budget",
           "kind": "FunctionDef",
-          "line": 67,
-          "end_line": 71
+          "line": 88,
+          "end_line": 92
         },
         {
           "name": "test_verified_task_stops_and_accepts_next_task",
           "kind": "FunctionDef",
-          "line": 73,
-          "end_line": 79
+          "line": 94,
+          "end_line": 100
         },
         {
           "name": "test_native_context_fields_are_preserved",
           "kind": "FunctionDef",
-          "line": 81,
-          "end_line": 86
+          "line": 102,
+          "end_line": 107
         },
         {
           "name": "test_unbound_sessions_have_no_effect",
           "kind": "FunctionDef",
-          "line": 88,
-          "end_line": 90
+          "line": 109,
+          "end_line": 111
         },
         {
           "name": "test_invalid_contracts_and_path_injection_are_rejected",
           "kind": "FunctionDef",
-          "line": 92,
-          "end_line": 97
+          "line": 113,
+          "end_line": 118
         },
         {
           "name": "test_rebind_does_not_clear_pause_or_retry_count",
           "kind": "FunctionDef",
-          "line": 99,
-          "end_line": 105
+          "line": 120,
+          "end_line": 126
         },
         {
           "name": "test_hook_subprocess_outputs_only_json_and_redacts_bad_payload",
           "kind": "FunctionDef",
-          "line": 107,
-          "end_line": 114
+          "line": 128,
+          "end_line": 135
         },
         {
           "name": "test_retry_exhaustion_is_persisted_and_not_reported_as_completion",
           "kind": "FunctionDef",
-          "line": 116,
-          "end_line": 122
+          "line": 137,
+          "end_line": 143
         },
         {
           "name": "test_gemini_retry_flag_false_cannot_create_an_endless_loop",
           "kind": "FunctionDef",
-          "line": 124,
-          "end_line": 129
+          "line": 145,
+          "end_line": 150
         },
         {
           "name": "test_paused_context_keeps_the_session_id_needed_to_resume",
           "kind": "FunctionDef",
-          "line": 131,
-          "end_line": 134
+          "line": 152,
+          "end_line": 155
         },
         {
           "name": "test_duplicate_last_retry_does_not_pause_the_inflight_attempt",
           "kind": "FunctionDef",
-          "line": 136,
-          "end_line": 141
+          "line": 157,
+          "end_line": 162
         },
         {
           "name": "test_published_native_no_tool_call_reason_is_a_natural_stop",
           "kind": "FunctionDef",
-          "line": 143,
-          "end_line": 149
+          "line": 164,
+          "end_line": 170
         },
         {
           "name": "test_stop_metadata_is_visible_without_recording_error_or_prompt_text",
           "kind": "FunctionDef",
-          "line": 151,
-          "end_line": 158
+          "line": 172,
+          "end_line": 179
         },
         {
           "name": "test_native_reason_does_not_override_host_error_or_background_work",
           "kind": "FunctionDef",
-          "line": 160,
-          "end_line": 169
+          "line": 181,
+          "end_line": 190
         },
         {
           "name": "test_stop_metadata_omits_freeform_reason_and_gemini_prompt",
           "kind": "FunctionDef",
-          "line": 171,
-          "end_line": 179
+          "line": 192,
+          "end_line": 200
         },
         {
           "name": "test_older_session_schema_keeps_task_pause_and_retry_state",
           "kind": "FunctionDef",
-          "line": 181,
-          "end_line": 196
+          "line": 202,
+          "end_line": 217
         }
       ],
       "trailing_newline": true,

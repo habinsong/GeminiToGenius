@@ -1,8 +1,8 @@
 # `gtg/hooks.py`
 
 - 형식: `100644`
-- 바이트: 11698
-- SHA-256: `d49a197c65783f9b52f7baf37c351f193ac13a20a592b540a4b9b932f3a9a9ef`
+- 바이트: 12903
+- SHA-256: `99d15166813c56d785e94625b64b54d28083bac9bfc35a75d305b4d16577b93b`
 - 인코딩: `utf-8`
 
 ```
@@ -121,11 +121,32 @@ def connect(resources: ExitStack, event: str, session: str, roots: tuple[Path, .
     return entries, candidates
 
 
+def still_running(platform: str, reports: list, empty: dict) -> dict | None:
+    """검사가 실행 중이면 재개하지 않습니다. 다만 미검증을 조용히 통과시키지도 않습니다.
+
+    재개는 사용자 쿼터를 쓰고 실행 중인 검사를 중복시키므로 하지 않습니다.
+    그렇다고 빈 허용을 돌려주면 실행 중인 검사가 완료 보고를 막지 못합니다.
+    중단된 실행이 남긴 기록도 여기에 해당하므로 복구 경로를 함께 알립니다.
+    """
+    names = sorted({check["id"] for _, report in reports for check in report["checks"]
+                    if check["status"] == "running"})
+    if not names:
+        return None
+    if not antigravity(platform):
+        # 종료를 막지 않으면서 사실만 전달하는 출력 형식을 확인하지 못했습니다.
+        return empty
+    return {"decision": "stop",
+            "reason": ("GTG: 등록된 검사가 아직 실행 중이라 완료가 검증되지 않았습니다"
+                       f"({', '.join(names)[:200]}). 자동 재개는 하지 않습니다. "
+                       "검사 결과를 확인하고, 중단된 실행이면 recover 뒤 다시 검증하세요.")}
+
+
 def resume(platform: str, session: str, entries: list, reports: list,
            event_id: str, message: str, empty: dict) -> dict:
     """남은 예산 안에서만 자연 종료를 되돌립니다. 상한에 닿으면 이유와 함께 중단합니다."""
-    if any(check["status"] == "running" for _, report in reports for check in report["checks"]):
-        return empty
+    held = still_running(platform, reports, empty)
+    if held is not None:
+        return held
     if any(link["last_event"] == event_id for _, _, _, link in entries):
         return empty
     # 여러 작업이 연결됐다면 가장 작은 예산을 따릅니다.
