@@ -50,10 +50,17 @@ test_capped_scope_does_not_claim_unexecuted_files (test_coverage.CollectorTests)
 test_existing_sitecustomize_still_runs (test_coverage.CollectorTests) ... ok
 test_isolated_interpreter_reports_nothing_instead_of_failing (test_coverage.CollectorTests) ... ok
 test_large_watch_scope_is_capped_instead_of_walking_forever (test_coverage.CollectorTests) ... ok
+test_nested_collectors_still_chain_to_the_user_sitecustomize (test_coverage.CollectorTests)
+관찰기 안에서 관찰기가 또 돌아도 사용자 sitecustomize를 건너뛰지 않습니다. ... ok
 test_nested_python_subprocess_is_also_recorded (test_coverage.CollectorTests) ... ok
 test_no_python_execution_reports_nothing_observed (test_coverage.CollectorTests) ... ok
 test_python_subprocess_execution_is_recorded (test_coverage.CollectorTests) ... ok
 test_watch_split_only_covers_python_files (test_coverage.CollectorTests) ... ok
+test_data_files_in_scope_do_not_block_completeness (test_coverage.JavaScriptCoverageTests) ... ok
+test_esm_modules_are_recorded (test_coverage.JavaScriptCoverageTests) ... ok
+test_existing_node_options_are_preserved (test_coverage.JavaScriptCoverageTests) ... ok
+test_node_execution_is_recorded_like_python (test_coverage.JavaScriptCoverageTests) ... ok
+test_unobservable_code_in_scope_is_not_silently_treated_as_covered (test_coverage.JavaScriptCoverageTests) ... ok
 test_a_file_executed_by_any_check_is_not_listed_as_unverified (test_coverage.RunnerCoverageTests) ... ok
 test_incomplete_coverage_is_inconclusive_not_pass (test_coverage.RunnerCoverageTests) ... ok
 test_non_python_command_does_not_claim_anything_unexecuted (test_coverage.RunnerCoverageTests) ... ok
@@ -64,6 +71,8 @@ test_replay_verdict_is_three_valued (test_coverage.RunnerCoverageTests) ... ok
 test_status_and_certificate_carry_the_unverified_scope (test_coverage.RunnerCoverageTests) ... ok
 test_unobservable_check_marks_the_scope_as_incomplete (test_coverage.RunnerCoverageTests) ... ok
 test_unverified_task_replays_as_invalid (test_coverage.RunnerCoverageTests) ... ok
+test_compiled_workflow_does_not_claim_typescript_was_unexecuted (test_coverage.TypeScriptScopeTests) ... ok
+test_natively_executed_typescript_is_measured (test_coverage.TypeScriptScopeTests) ... ok
 test_a_stale_flag_is_detected (test_doc_contract.DocumentedCommandTests) ... ok
 test_documentation_actually_contains_runner_examples (test_doc_contract.DocumentedCommandTests) ... ok
 test_every_command_is_documented_somewhere (test_doc_contract.DocumentedCommandTests) ... ok
@@ -253,6 +262,6 @@ test_status_accepts_workspace_from_another_directory (test_workspace_argument.Wo
 test_verify_and_certify_accept_workspace (test_workspace_argument.WorkspaceArgumentTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 241 tests in 74.511s
+Ran 249 tests in 81.637s
 
 OK

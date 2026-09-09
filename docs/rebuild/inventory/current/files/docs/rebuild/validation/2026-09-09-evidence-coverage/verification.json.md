@@ -1,17 +1,18 @@
 # `docs/rebuild/validation/2026-09-09-evidence-coverage/verification.json`
 
 - 형식: `100644`
-- 바이트: 2877
-- SHA-256: `3e481dc286531124cf5bfb1a59afd70dec1c9281e4e6be7d30a7c083088de9e1`
+- 바이트: 2893
+- SHA-256: `3d57efeb40edc5a00ff1d54b8184b018d654d1951a06a7686628314c6dc034b1`
 - 인코딩: `utf-8`
 
 ```
 {
   "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v",
   "exit_code": 0,
-  "tests": 241,
-  "unittest_reported_seconds": 74.511,
-  "elapsed_seconds": 74.882,
+  "tests": 249,
+  "unittest_reported_seconds": 81.637,
+  "elapsed_seconds": 82.003,
+  "skipped": 0,
   "source_sha256": {
     "VERSION": "f600c27b212789c898c4ab86ab973467f430a42da840095cf383f8f25cdc924f",
     "evals/__init__.py": "23e43df2038bd9d3adc1496512d11db1310d10498411f9dce957fe8f28e3e1d0",
@@ -29,7 +30,7 @@
     "gtg/certificate.py": "b64c7d5e1a9e8a738245da66c9e0acd193b46ea2c1f7897f18f022ffd3239a2d",
     "gtg/checkpoints.py": "891a3ce8ee3674e82e3004aaba0c22a31440f6b7c918ab85dbf283bf3eff46a7",
     "gtg/context_message.py": "a5574c2e7b92be2daf94accf96c6455c8da874dbc843636c2015e779fcb52ba3",
-    "gtg/coverage.py": "e5194dbb5b5710a8e93dee006f5ce962ef7cb2d8f64986a212ec2a9b624b6137",
+    "gtg/coverage.py": "34e5c03505b8d81c23e109e86aa6e47f254e268eacd6cc4159112cecccaefd9e",
     "gtg/discovery.py": "21cb02fb912c49d0fbf7fad9a331a84dcb4f3d7bc34bbfd7d6914dfb5cc14b64",
     "gtg/hooks.py": "4aedd7ea19f620216a0d01eb230aa2df115d5b735ac7188f71af6d0f1cbe00aa",
     "gtg/inspection.py": "bb9761e94a74fc67c473b79ee047d22ebf096adbe57b0397d3f8a2388a57fad3",
