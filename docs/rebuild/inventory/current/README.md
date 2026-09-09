@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 287개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 297개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -182,7 +182,7 @@
 | `docs/styles.css` | 12916 | [원문](files/docs/styles.css.md) |
 | `evals/README.md` | 18033 | [원문](files/evals/README.md.md) |
 | `evals/__init__.py` | 74 | [원문](files/evals/__init__.py.md) |
-| `evals/cases.json` | 15923 | [원문](files/evals/cases.json.md) |
+| `evals/cases.json` | 18545 | [원문](files/evals/cases.json.md) |
 | `evals/comparison.py` | 6915 | [원문](files/evals/comparison.py.md) |
 | `evals/criteria.py` | 4138 | [원문](files/evals/criteria.py.md) |
 | `evals/definitions.py` | 1473 | [원문](files/evals/definitions.py.md) |
@@ -191,6 +191,12 @@
 | `evals/fixtures/bounds/mathlib.py` | 61 | [원문](files/evals/fixtures/bounds/mathlib.py.md) |
 | `evals/fixtures/bounds/notes.txt` | 105 | [원문](files/evals/fixtures/bounds/notes.txt.md) |
 | `evals/fixtures/bounds/test_mathlib.py` | 213 | [원문](files/evals/fixtures/bounds/test_mathlib.py.md) |
+| `evals/fixtures/cross-module-break/README.md` | 424 | [원문](files/evals/fixtures/cross-module-break/README.md.md) |
+| `evals/fixtures/cross-module-break/currency.py` | 89 | [원문](files/evals/fixtures/cross-module-break/currency.py.md) |
+| `evals/fixtures/cross-module-break/notes.txt` | 62 | [원문](files/evals/fixtures/cross-module-break/notes.txt.md) |
+| `evals/fixtures/cross-module-break/receipt.py` | 228 | [원문](files/evals/fixtures/cross-module-break/receipt.py.md) |
+| `evals/fixtures/cross-module-break/test_currency.py` | 211 | [원문](files/evals/fixtures/cross-module-break/test_currency.py.md) |
+| `evals/fixtures/cross-module-break/test_receipt.py` | 358 | [원문](files/evals/fixtures/cross-module-break/test_receipt.py.md) |
 | `evals/fixtures/dead-code/README.md` | 196 | [원문](files/evals/fixtures/dead-code/README.md.md) |
 | `evals/fixtures/dead-code/dashboard.py` | 370 | [원문](files/evals/fixtures/dead-code/dashboard.py.md) |
 | `evals/fixtures/dead-code/notes.txt` | 48 | [원문](files/evals/fixtures/dead-code/notes.txt.md) |
@@ -222,6 +228,10 @@
 | `evals/fixtures/run-tests-only/inventory.py` | 280 | [원문](files/evals/fixtures/run-tests-only/inventory.py.md) |
 | `evals/fixtures/run-tests-only/notes.txt` | 48 | [원문](files/evals/fixtures/run-tests-only/notes.txt.md) |
 | `evals/fixtures/run-tests-only/test_inventory.py` | 580 | [원문](files/evals/fixtures/run-tests-only/test_inventory.py.md) |
+| `evals/fixtures/test-encodes-bug/README.md` | 440 | [원문](files/evals/fixtures/test-encodes-bug/README.md.md) |
+| `evals/fixtures/test-encodes-bug/notes.txt` | 61 | [원문](files/evals/fixtures/test-encodes-bug/notes.txt.md) |
+| `evals/fixtures/test-encodes-bug/shipping.py` | 260 | [원문](files/evals/fixtures/test-encodes-bug/shipping.py.md) |
+| `evals/fixtures/test-encodes-bug/test_shipping.py` | 454 | [원문](files/evals/fixtures/test-encodes-bug/test_shipping.py.md) |
 | `evals/grading.py` | 8845 | [원문](files/evals/grading.py.md) |
 | `evals/harness.py` | 2901 | [원문](files/evals/harness.py.md) |
 | `evals/preparation.py` | 2930 | [원문](files/evals/preparation.py.md) |
@@ -268,7 +278,7 @@
 | `tests/test_doc_contract.py` | 4245 | [원문](files/tests/test_doc_contract.py.md) |
 | `tests/test_eval_export.py` | 5780 | [원문](files/tests/test_eval_export.py.md) |
 | `tests/test_eval_resume.py` | 3602 | [원문](files/tests/test_eval_resume.py.md) |
-| `tests/test_evals.py` | 8971 | [원문](files/tests/test_evals.py.md) |
+| `tests/test_evals.py` | 11181 | [원문](files/tests/test_evals.py.md) |
 | `tests/test_execution_graded_case.py` | 2741 | [원문](files/tests/test_execution_graded_case.py.md) |
 | `tests/test_hook_concurrency.py` | 8487 | [원문](files/tests/test_hook_concurrency.py.md) |
 | `tests/test_hook_resilience.py` | 3191 | [원문](files/tests/test_hook_resilience.py.md) |

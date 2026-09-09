@@ -1,8 +1,8 @@
 # `evals/cases.json`
 
 - 형식: `100644`
-- 바이트: 15923
-- SHA-256: `33f04729bc4853f042184c6654ba5d8e2967cb5121beba2c6b3502cca8f756df`
+- 바이트: 18545
+- SHA-256: `8cfb1c3e4f217a29d4dc1d31008e4f62d5e961589cdf09a21cb89ec2f232c60e`
 - 인코딩: `utf-8`
 
 ```
@@ -716,6 +716,137 @@
                 "월간"
               ],
               "expected": "[월간] 2건 3,500.00원"
+            }
+          ]
+        }
+      ]
+    },
+    "test-encodes-bug": {
+      "prompt": "5kg 딱 맞춰 보냈는데 추가요금이 붙는대. 규칙엔 5kg까진 무료라던데?",
+      "fixture": "test-encodes-bug",
+      "module": "shipping.py",
+      "function": "shipping_fee",
+      "allowed_edits": [
+        "shipping.py",
+        "test_shipping.py"
+      ],
+      "required_edits": [
+        "shipping.py",
+        "test_shipping.py"
+      ],
+      "checks": [
+        {
+          "args": [
+            3
+          ],
+          "expected": 3000
+        },
+        {
+          "args": [
+            5
+          ],
+          "expected": 3000
+        },
+        {
+          "args": [
+            6
+          ],
+          "expected": 3500
+        },
+        {
+          "args": [
+            0
+          ],
+          "expected": 3000
+        },
+        {
+          "args": [
+            10
+          ],
+          "expected": 5500
+        },
+        {
+          "args": [
+            5,
+            true
+          ],
+          "expected": 6000
+        },
+        {
+          "args": [
+            6,
+            true
+          ],
+          "expected": 7000
+        }
+      ]
+    },
+    "cross-module-break": {
+      "prompt": "금액에 천 단위 쉼표 좀 넣어줘.",
+      "fixture": "cross-module-break",
+      "module": "currency.py",
+      "function": "format_won",
+      "allowed_edits": [
+        "currency.py",
+        "receipt.py",
+        "test_currency.py",
+        "test_receipt.py"
+      ],
+      "required_edits": [
+        "currency.py",
+        "test_receipt.py"
+      ],
+      "checks": [
+        {
+          "args": [
+            0
+          ],
+          "expected": "0원"
+        },
+        {
+          "args": [
+            999
+          ],
+          "expected": "999원"
+        },
+        {
+          "args": [
+            1234
+          ],
+          "expected": "1,234원"
+        },
+        {
+          "args": [
+            1000000
+          ],
+          "expected": "1,000,000원"
+        }
+      ],
+      "integrations": [
+        {
+          "module": "receipt.py",
+          "function": "render",
+          "checks": [
+            {
+              "args": [
+                [
+                  [
+                    "커피",
+                    4500
+                  ],
+                  [
+                    "빵",
+                    12000
+                  ]
+                ]
+              ],
+              "expected": "커피: 4,500원\n빵: 12,000원"
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": ""
             }
           ]
         }

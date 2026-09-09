@@ -2262,10 +2262,10 @@
     {
       "path": "evals/cases.json",
       "mode": "100644",
-      "bytes": 15923,
-      "sha256": "33f04729bc4853f042184c6654ba5d8e2967cb5121beba2c6b3502cca8f756df",
+      "bytes": 18545,
+      "sha256": "8cfb1c3e4f217a29d4dc1d31008e4f62d5e961589cdf09a21cb89ec2f232c60e",
       "encoding": "utf-8",
-      "lines": 717,
+      "lines": 848,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/evals/cases.json.md"
@@ -2483,6 +2483,124 @@
       ],
       "trailing_newline": true,
       "document": "files/evals/fixtures/bounds/test_mathlib.py.md"
+    },
+    {
+      "path": "evals/fixtures/cross-module-break/README.md",
+      "mode": "100644",
+      "bytes": 424,
+      "sha256": "71efb56456367997d48461bb30dca3ed5da238ce7092175512cdf05815717912",
+      "encoding": "utf-8",
+      "lines": 6,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/cross-module-break/README.md.md"
+    },
+    {
+      "path": "evals/fixtures/cross-module-break/currency.py",
+      "mode": "100644",
+      "bytes": 89,
+      "sha256": "efb6adcc4281793e2dd4f6a06c478b16ca01abb2e37b23600efb52d2eadd9edf",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [
+        {
+          "name": "format_won",
+          "kind": "FunctionDef",
+          "line": 4,
+          "end_line": 5
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/cross-module-break/currency.py.md"
+    },
+    {
+      "path": "evals/fixtures/cross-module-break/notes.txt",
+      "mode": "100644",
+      "bytes": 62,
+      "sha256": "3058aff938f5ad9ee6be33a7aed053c27081b4351a966c214fecb4aebca7c250",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/cross-module-break/notes.txt.md"
+    },
+    {
+      "path": "evals/fixtures/cross-module-break/receipt.py",
+      "mode": "100644",
+      "bytes": 228,
+      "sha256": "cbbb75a556b39fe1a43696676102b6f3aa02703d57484f4ded83c6780b494304",
+      "encoding": "utf-8",
+      "lines": 11,
+      "symbols": [
+        {
+          "name": "line",
+          "kind": "FunctionDef",
+          "line": 6,
+          "end_line": 7
+        },
+        {
+          "name": "render",
+          "kind": "FunctionDef",
+          "line": 10,
+          "end_line": 11
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/cross-module-break/receipt.py.md"
+    },
+    {
+      "path": "evals/fixtures/cross-module-break/test_currency.py",
+      "mode": "100644",
+      "bytes": 211,
+      "sha256": "a18a25f9a90e0ce2e8e1e98ab08d11ca27136835f0d5c4c4eda9d6a8151e2283",
+      "encoding": "utf-8",
+      "lines": 12,
+      "symbols": [
+        {
+          "name": "FormatTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 8
+        },
+        {
+          "name": "test_zero",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 8
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/cross-module-break/test_currency.py.md"
+    },
+    {
+      "path": "evals/fixtures/cross-module-break/test_receipt.py",
+      "mode": "100644",
+      "bytes": 358,
+      "sha256": "3bffbd8565cf1b847f997c7c060f2a666abde309d9d747401c8be5ff77fcd3f1",
+      "encoding": "utf-8",
+      "lines": 16,
+      "symbols": [
+        {
+          "name": "RenderTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 12
+        },
+        {
+          "name": "test_two_rows",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 9
+        },
+        {
+          "name": "test_empty",
+          "kind": "FunctionDef",
+          "line": 11,
+          "end_line": 12
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/cross-module-break/test_receipt.py.md"
     },
     {
       "path": "evals/fixtures/dead-code/README.md",
@@ -3106,6 +3224,88 @@
       ],
       "trailing_newline": true,
       "document": "files/evals/fixtures/run-tests-only/test_inventory.py.md"
+    },
+    {
+      "path": "evals/fixtures/test-encodes-bug/README.md",
+      "mode": "100644",
+      "bytes": 440,
+      "sha256": "92d91716c60e12385ac83e0eeb7ced2388cf021553ed5e9f00a17e22295afd62",
+      "encoding": "utf-8",
+      "lines": 9,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/test-encodes-bug/README.md.md"
+    },
+    {
+      "path": "evals/fixtures/test-encodes-bug/notes.txt",
+      "mode": "100644",
+      "bytes": 61,
+      "sha256": "f8f033f7890007d82ddf140f2258087b995e9db9a54ad52b8eb5f6fbf1624f83",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/test-encodes-bug/notes.txt.md"
+    },
+    {
+      "path": "evals/fixtures/test-encodes-bug/shipping.py",
+      "mode": "100644",
+      "bytes": 260,
+      "sha256": "08786f6e8a5333a4b182ea7cfcfc09ea45dc21cedfbdc9816ee956c066a9e6c0",
+      "encoding": "utf-8",
+      "lines": 13,
+      "symbols": [
+        {
+          "name": "shipping_fee",
+          "kind": "FunctionDef",
+          "line": 8,
+          "end_line": 13
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/test-encodes-bug/shipping.py.md"
+    },
+    {
+      "path": "evals/fixtures/test-encodes-bug/test_shipping.py",
+      "mode": "100644",
+      "bytes": 454,
+      "sha256": "46412ae89e4b241d2ebd3a319c4c7054742b2ef2cd5f9c79daebdeb40b099943",
+      "encoding": "utf-8",
+      "lines": 21,
+      "symbols": [
+        {
+          "name": "ShippingTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 17
+        },
+        {
+          "name": "test_basic",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 8
+        },
+        {
+          "name": "test_limit",
+          "kind": "FunctionDef",
+          "line": 10,
+          "end_line": 11
+        },
+        {
+          "name": "test_over_limit",
+          "kind": "FunctionDef",
+          "line": 13,
+          "end_line": 14
+        },
+        {
+          "name": "test_express",
+          "kind": "FunctionDef",
+          "line": 16,
+          "end_line": 17
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/test-encodes-bug/test_shipping.py.md"
     },
     {
       "path": "evals/grading.py",
@@ -5698,124 +5898,130 @@
     {
       "path": "tests/test_evals.py",
       "mode": "100644",
-      "bytes": 8971,
-      "sha256": "6dee817d64c3a6c0efe4c2d3ccc8b97343c9edf9af4f22e66a19af1889b44ba7",
+      "bytes": 11181,
+      "sha256": "da92c954857a8eb2ec56586c4616309fce2258d2a41386e4db95c7b74b65cd2d",
       "encoding": "utf-8",
-      "lines": 186,
+      "lines": 220,
       "symbols": [
         {
           "name": "HarnessOwnFilesTests",
           "kind": "ClassDef",
           "line": 30,
-          "end_line": 45
+          "end_line": 79
         },
         {
           "name": "EvalTests",
           "kind": "ClassDef",
-          "line": 47,
-          "end_line": 182
+          "line": 81,
+          "end_line": 216
         },
         {
-          "name": "test_installed_plugin_files_are_not_counted_as_project_code",
+          "name": "test_verification_cases_fail_untouched_and_pass_when_fixed",
           "kind": "FunctionDef",
           "line": 33,
-          "end_line": 40
-        },
-        {
-          "name": "test_scope_grading_still_watches_the_installed_harness",
-          "kind": "FunctionDef",
-          "line": 42,
-          "end_line": 45
-        },
-        {
-          "name": "setUp",
-          "kind": "FunctionDef",
-          "line": 48,
-          "end_line": 51
-        },
-        {
-          "name": "test_buggy_fixture_fails_and_reference_fix_passes_without_model_claim",
-          "kind": "FunctionDef",
-          "line": 53,
-          "end_line": 60
-        },
-        {
-          "name": "test_rewriting_visible_tests_does_not_make_wrong_code_pass",
-          "kind": "FunctionDef",
-          "line": 62,
           "end_line": 65
         },
         {
-          "name": "test_unrelated_user_file_changes_fail_even_with_correct_code",
+          "name": "test_installed_plugin_files_are_not_counted_as_project_code",
           "kind": "FunctionDef",
           "line": 67,
           "end_line": 74
         },
         {
-          "name": "test_multi_file_task_checks_error_and_input_preservation",
+          "name": "test_scope_grading_still_watches_the_installed_harness",
           "kind": "FunctionDef",
           "line": 76,
-          "end_line": 83
+          "end_line": 79
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 82,
+          "end_line": 85
+        },
+        {
+          "name": "test_buggy_fixture_fails_and_reference_fix_passes_without_model_claim",
+          "kind": "FunctionDef",
+          "line": 87,
+          "end_line": 94
+        },
+        {
+          "name": "test_rewriting_visible_tests_does_not_make_wrong_code_pass",
+          "kind": "FunctionDef",
+          "line": 96,
+          "end_line": 99
+        },
+        {
+          "name": "test_unrelated_user_file_changes_fail_even_with_correct_code",
+          "kind": "FunctionDef",
+          "line": 101,
+          "end_line": 108
+        },
+        {
+          "name": "test_multi_file_task_checks_error_and_input_preservation",
+          "kind": "FunctionDef",
+          "line": 110,
+          "end_line": 117
         },
         {
           "name": "test_multi_file_task_does_not_pass_with_a_broken_existing_caller",
           "kind": "FunctionDef",
-          "line": 85,
-          "end_line": 89
+          "line": 119,
+          "end_line": 123
         },
         {
           "name": "test_read_only_task_cannot_pass_without_human_review",
           "kind": "FunctionDef",
-          "line": 91,
-          "end_line": 98
+          "line": 125,
+          "end_line": 132
         },
         {
           "name": "test_early_success_exit_is_not_a_valid_test_result",
           "kind": "FunctionDef",
-          "line": 100,
-          "end_line": 105
+          "line": 134,
+          "end_line": 139
         },
         {
           "name": "test_boolean_cannot_replace_a_numeric_result",
           "kind": "FunctionDef",
-          "line": 107,
-          "end_line": 114
+          "line": 141,
+          "end_line": 148
         },
         {
           "name": "test_prepared_trial_is_not_overwritten_and_modified_criteria_are_rejected",
           "kind": "FunctionDef",
-          "line": 116,
-          "end_line": 125
+          "line": 150,
+          "end_line": 159
         },
         {
           "name": "test_gtg_preparation_is_local_and_protects_installed_harness",
           "kind": "FunctionDef",
-          "line": 127,
-          "end_line": 135
+          "line": 161,
+          "end_line": 169
         },
         {
           "name": "test_grading_does_not_import_the_product_under_test",
           "kind": "FunctionDef",
-          "line": 137,
-          "end_line": 153
+          "line": 171,
+          "end_line": 187
         },
         {
           "name": "test_candidate_changed_during_grading_cannot_keep_a_pass",
           "kind": "FunctionDef",
-          "line": 155,
-          "end_line": 163
+          "line": 189,
+          "end_line": 197
         },
         {
           "name": "test_changed_prepared_prompt_is_not_the_same_trial",
           "kind": "FunctionDef",
-          "line": 165,
-          "end_line": 169
+          "line": 199,
+          "end_line": 203
         },
         {
           "name": "test_bytecode_cache_cannot_replace_current_source",
           "kind": "FunctionDef",
-          "line": 171,
-          "end_line": 182
+          "line": 205,
+          "end_line": 216
         }
       ],
       "trailing_newline": true,

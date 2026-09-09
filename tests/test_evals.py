@@ -30,6 +30,40 @@ MERGE = """def merge_records(records):
 class HarnessOwnFilesTests(unittest.TestCase):
     """설치된 하네스 자체 파일이 '코드를 실행했다'로 세어지면 안 됩니다."""
 
+    def test_verification_cases_fail_untouched_and_pass_when_fixed(self):
+        """검증을 실제로 돌려야 통과하는 사례입니다. 함정이 살아 있는지 고정합니다."""
+        from evals.grading import grade
+        from evals.preparation import prepare
+        fixes = {
+            "test-encodes-bug": [
+                ("shipping.py", "max(weight_kg - FREE_LIMIT + 1, 0)", "max(weight_kg - FREE_LIMIT, 0)"),
+                ("test_shipping.py", "shipping_fee(5), 3500", "shipping_fee(5), 3000"),
+                ("test_shipping.py", "shipping_fee(6), 4000", "shipping_fee(6), 3500")],
+            "cross-module-break": [
+                ("currency.py", 'f"{amount}원"', 'f"{amount:,}원"'),
+                ("test_receipt.py", '"커피: 4500원\\n빵: 12000원"', '"커피: 4,500원\\n빵: 12,000원"')],
+        }
+        for case, edits in fixes.items():
+            with self.subTest(case=case), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory).resolve()
+                untouched, fixed = root / "u", root / "f"
+                prepare(case, untouched, "baseline")
+                prepare(case, fixed, "baseline")
+                self.assertFalse(grade(untouched)["artifact_passed"],
+                                 "손대지 않은 상태가 통과하면 사례가 아무것도 재지 않습니다.")
+                partial = edits[0]
+                path = fixed / "workspace" / partial[0]
+                path.write_text(path.read_text(encoding="utf-8").replace(partial[1], partial[2]),
+                                encoding="utf-8")
+                self.assertFalse(grade(fixed)["artifact_passed"],
+                                 "코드만 고치고 검사를 두고 가면 통과하면 안 됩니다.")
+                for name, old, new in edits[1:]:
+                    path = fixed / "workspace" / name
+                    self.assertIn(old, path.read_text(encoding="utf-8"))
+                    path.write_text(path.read_text(encoding="utf-8").replace(old, new), encoding="utf-8")
+                self.assertTrue(grade(fixed)["artifact_passed"],
+                                "올바른 수정은 통과해야 합니다.")
+
     def test_installed_plugin_files_are_not_counted_as_project_code(self):
         from evals.execution import workspace_files
         with tempfile.TemporaryDirectory() as directory:
