@@ -302,7 +302,7 @@
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
       "bytes": 4570,
-      "sha256": "991718af3edc0e1e59859836ce26eca22e01142b8284caed8ff26e7e52977645",
+      "sha256": "e8b2aaf5909ad1306c30a96bac8baadb6417049d51a804e6766e0a03145055fc",
       "encoding": "utf-8",
       "lines": 45,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 56210,
-      "sha256": "302d09fcebe0b186babaf9ad1840d33681fe55890e3eb063bfac231c28613323",
+      "bytes": 57305,
+      "sha256": "96f006e34d0320da8212fa96f0c29be85f717964c457df3d2cd1eff34f50a9d7",
       "encoding": "utf-8",
-      "lines": 400,
+      "lines": 410,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -2119,10 +2119,10 @@
     {
       "path": "evals/README.md",
       "mode": "100644",
-      "bytes": 14898,
-      "sha256": "4d3ff4929e232f7973b02799010d36aac5037ddb865599f347b81ff2cbbbd4a5",
+      "bytes": 16141,
+      "sha256": "c4beabc7c937f9766c94bdd68de59b045ec8e90a329351e4b3206400c5bb5e89",
       "encoding": "utf-8",
-      "lines": 132,
+      "lines": 146,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/evals/README.md.md"
@@ -2141,10 +2141,10 @@
     {
       "path": "evals/cases.json",
       "mode": "100644",
-      "bytes": 12649,
-      "sha256": "6df05402d45ee04ad5212206db81a1ff3a88e8b9b38f1693b8a75103a4311a4c",
+      "bytes": 13473,
+      "sha256": "c8abacba952b53fba8a65d8534348af3887190daf2750bc4cb5cec874296fa6d",
       "encoding": "utf-8",
-      "lines": 562,
+      "lines": 604,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/evals/cases.json.md"
@@ -2739,12 +2739,94 @@
       "document": "files/evals/fixtures/resume-export/test_exports.py.md"
     },
     {
+      "path": "evals/fixtures/run-tests-only/README.md",
+      "mode": "100644",
+      "bytes": 145,
+      "sha256": "31f0e9c01f16886893e66efb41ac5c6f6afdbfc656c18275e924f3467285e434",
+      "encoding": "utf-8",
+      "lines": 5,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/run-tests-only/README.md.md"
+    },
+    {
+      "path": "evals/fixtures/run-tests-only/inventory.py",
+      "mode": "100644",
+      "bytes": 280,
+      "sha256": "87162af2134ad536f3259a125134520d1bdd7a043810239f7bd92ab2b2a6adb0",
+      "encoding": "utf-8",
+      "lines": 9,
+      "symbols": [
+        {
+          "name": "restock",
+          "kind": "FunctionDef",
+          "line": 4,
+          "end_line": 5
+        },
+        {
+          "name": "low_stock",
+          "kind": "FunctionDef",
+          "line": 8,
+          "end_line": 9
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/run-tests-only/inventory.py.md"
+    },
+    {
+      "path": "evals/fixtures/run-tests-only/notes.txt",
+      "mode": "100644",
+      "bytes": 48,
+      "sha256": "041943cd3ad3a19be40e3a5af559ff6567d4fb2f69666245a33ddef2f2578b66",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/run-tests-only/notes.txt.md"
+    },
+    {
+      "path": "evals/fixtures/run-tests-only/test_inventory.py",
+      "mode": "100644",
+      "bytes": 580,
+      "sha256": "f94669bb2b3cefb0f680f3dc8a8dfcff75ce5e4aa401e33aeab28cd10039727d",
+      "encoding": "utf-8",
+      "lines": 20,
+      "symbols": [
+        {
+          "name": "InventoryTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 16
+        },
+        {
+          "name": "test_restock_raises_low_counts",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 8
+        },
+        {
+          "name": "test_restock_keeps_input",
+          "kind": "FunctionDef",
+          "line": 10,
+          "end_line": 13
+        },
+        {
+          "name": "test_low_stock_lists_names",
+          "kind": "FunctionDef",
+          "line": 15,
+          "end_line": 16
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/run-tests-only/test_inventory.py.md"
+    },
+    {
       "path": "evals/grading.py",
       "mode": "100644",
-      "bytes": 9165,
-      "sha256": "e10af65d8c7ca908f74d4dbdb7a0469e275b63a4a880efda991a9c1a1318356a",
+      "bytes": 9881,
+      "sha256": "4cd00fc387e7774b892a59fac3d25cc9abed92c1c704222fa7f7a5e0451b06da",
       "encoding": "utf-8",
-      "lines": 178,
+      "lines": 189,
       "symbols": [
         {
           "name": "terminate",
@@ -2780,7 +2862,7 @@
           "name": "grade",
           "kind": "FunctionDef",
           "line": 113,
-          "end_line": 178
+          "end_line": 189
         }
       ],
       "trailing_newline": true,
@@ -5091,6 +5173,66 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_evals.py.md"
+    },
+    {
+      "path": "tests/test_execution_graded_case.py",
+      "mode": "100644",
+      "bytes": 2741,
+      "sha256": "14a4634e0da7693d057d024fa205478e2a0126e3b26710b5b9af0379c974a789",
+      "encoding": "utf-8",
+      "lines": 67,
+      "symbols": [
+        {
+          "name": "ExecutionGradedCaseTests",
+          "kind": "ClassDef",
+          "line": 14,
+          "end_line": 63
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 15,
+          "end_line": 18
+        },
+        {
+          "name": "arm",
+          "kind": "FunctionDef",
+          "line": 20,
+          "end_line": 26
+        },
+        {
+          "name": "test_running_the_suite_without_edits_passes",
+          "kind": "FunctionDef",
+          "line": 28,
+          "end_line": 34
+        },
+        {
+          "name": "test_identical_artifact_without_running_fails",
+          "kind": "FunctionDef",
+          "line": 36,
+          "end_line": 41
+        },
+        {
+          "name": "test_editing_protected_code_is_still_a_scope_violation",
+          "kind": "FunctionDef",
+          "line": 43,
+          "end_line": 48
+        },
+        {
+          "name": "test_unobserved_run_is_left_for_human_review_not_passed",
+          "kind": "FunctionDef",
+          "line": 50,
+          "end_line": 56
+        },
+        {
+          "name": "test_other_cases_do_not_require_execution",
+          "kind": "FunctionDef",
+          "line": 58,
+          "end_line": 63
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_execution_graded_case.py.md"
     },
     {
       "path": "tests/test_hook_resilience.py",

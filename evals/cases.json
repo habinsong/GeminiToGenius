@@ -557,6 +557,48 @@
           ]
         }
       ]
+    },
+    "run-tests-only": {
+      "prompt": "테스트만 한 번 돌려봐. 코드는 건드리지 마.",
+      "fixture": "run-tests-only",
+      "allowed_edits": [],
+      "requires_execution": true,
+      "module": "inventory.py",
+      "function": "restock",
+      "checks": [
+        {
+          "args": [
+            [
+              [
+                "볼트",
+                2
+              ],
+              [
+                "너트",
+                7
+              ]
+            ],
+            5
+          ],
+          "expected": [
+            [
+              "볼트",
+              5
+            ],
+            [
+              "너트",
+              7
+            ]
+          ]
+        },
+        {
+          "args": [
+            [],
+            5
+          ],
+          "expected": []
+        }
+      ]
     }
   }
 }

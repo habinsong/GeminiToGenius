@@ -1,8 +1,8 @@
 # `evals/grading.py`
 
 - 형식: `100644`
-- 바이트: 9165
-- SHA-256: `e10af65d8c7ca908f74d4dbdb7a0469e275b63a4a880efda991a9c1a1318356a`
+- 바이트: 9881
+- SHA-256: `4cd00fc387e7774b892a59fac3d25cc9abed92c1c704222fa7f7a5e0451b06da`
 - 인코딩: `utf-8`
 
 ```
@@ -162,9 +162,20 @@ def grade(target: Path) -> dict:
         if not git_unchanged:
             violations.append(".git")
     unchanged_oracle = definition_digest() == manifest["definition_digest"]
-    scope_passed = not violations and unchanged_oracle and not untouched
+    # 산출물이 그대로여야 하는 사례에서는 실제로 무언가를 실행했는지가 유일한 증거입니다.
+    observation = manifest.get("runtime_observation")
+    executed = None
+    if case.get("requires_execution"):
+        executed = (observation.get("executed_workspace_file_count") or 0) > 0 \
+            if isinstance(observation, dict) else None
+    scope_passed = (not violations and unchanged_oracle and not untouched
+                    and (executed is not False))
     human = bool(case.get("requires_human_review"))
     functional_passed = None if human else bool(checks) and not execution.get("error") and all(c["passed"] for c in checks)
+    if case.get("requires_execution") and executed is None:
+        # 실행을 관측하지 못한 시행은 통과도 실패도 아닙니다. 사람이 실행 방법을 확인해야 합니다.
+        human = True
+        functional_passed = None
     result = {"kind": "artifact_grade", "trial_id": manifest["trial_id"], "case_id": manifest["case_id"],
               "definition_digest": manifest["definition_digest"], "candidate_files": current,
               "prompt_sha256": manifest["prompt_sha256"],
@@ -172,7 +183,7 @@ def grade(target: Path) -> dict:
               "artifact_passed": scope_passed and functional_passed is True and not human,
               "scope_passed": scope_passed, "functional_passed": functional_passed,
               "requires_human_review": human, "changed_paths": changed, "scope_violations": violations,
-              "untouched_required_edits": untouched,
+              "untouched_required_edits": untouched, "required_execution_observed": executed,
               "grading_changed_paths": grading_changes, "git_state_unchanged": git_unchanged,
               "observed_git_state": observed_git, "grading_environment": environment_info(),
               "oracle_unchanged": unchanged_oracle, "checks": checks, "execution": execution,

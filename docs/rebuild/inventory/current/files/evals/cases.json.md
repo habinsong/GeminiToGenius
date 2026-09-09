@@ -1,8 +1,8 @@
 # `evals/cases.json`
 
 - 형식: `100644`
-- 바이트: 12649
-- SHA-256: `6df05402d45ee04ad5212206db81a1ff3a88e8b9b38f1693b8a75103a4311a4c`
+- 바이트: 13473
+- SHA-256: `c8abacba952b53fba8a65d8534348af3887190daf2750bc4cb5cec874296fa6d`
 - 인코딩: `utf-8`
 
 ```
@@ -563,6 +563,48 @@
               }
             }
           ]
+        }
+      ]
+    },
+    "run-tests-only": {
+      "prompt": "테스트만 한 번 돌려봐. 코드는 건드리지 마.",
+      "fixture": "run-tests-only",
+      "allowed_edits": [],
+      "requires_execution": true,
+      "module": "inventory.py",
+      "function": "restock",
+      "checks": [
+        {
+          "args": [
+            [
+              [
+                "볼트",
+                2
+              ],
+              [
+                "너트",
+                7
+              ]
+            ],
+            5
+          ],
+          "expected": [
+            [
+              "볼트",
+              5
+            ],
+            [
+              "너트",
+              7
+            ]
+          ]
+        },
+        {
+          "args": [
+            [],
+            5
+          ],
+          "expected": []
         }
       ]
     }

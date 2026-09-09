@@ -70,6 +70,20 @@ python3 -m evals.harness grade /absolute/new/trial
 
 세 공개 함수와 호출자 `checkout.py`의 반환값·예외를 모두 검사합니다. 할인율을 바꾸거나 함수를 지우면 잡힙니다. 무관한 `notes.txt`를 건드리면 범위 위반입니다. 참조 리팩터링으로 13개 검사 통과, 무작업으로 범위 실패, 계약 파손으로 기능 실패를 각각 확인했습니다. 참조 수정은 시험 코드가 수행하며 모델 성능 결과가 아닙니다.
 
+## 수정 없이 실행만 하는 요청
+
+```bash
+python3 -m evals.harness prepare run-tests-only /absolute/new/trial --profile gtg
+python3 -m evals.harness run /absolute/new/trial -- <하네스 명령> "{prompt}"
+python3 -m evals.harness grade /absolute/new/trial
+```
+
+`run-tests-only`의 요청은 `테스트만 한 번 돌려봐. 코드는 건드리지 마.`이며 정답 산출물은 **아무 변경도 없는 상태**입니다. 그래서 아무것도 하지 않은 시행과 요청을 제대로 수행한 시행의 산출물이 완전히 같습니다. 파일만 봐서는 구분할 수 없습니다.
+
+사례에 `requires_execution`을 두어 `run`이 관측한 실제 실행 사실을 판정에 씁니다. 참조 검증에서 테스트를 실행한 시행만 통과했고, 산출물이 같지만 실행하지 않은 시행과 보호 파일을 고친 시행은 실패했습니다.
+
+`run` 없이 실행해 관측 기록이 없으면 통과도 실패도 아닌 사람 검토 대상으로 표시합니다. 관측하지 못한 것을 성공으로 세지 않습니다. 이 판정은 관측 가능한 런타임(Python·Node·네이티브 TypeScript)에 한정되므로, 다른 언어로 검증한 하네스는 사람이 확인해야 합니다.
+
 ## 유지보수 경계
 
 | 파일 | 책임 |
