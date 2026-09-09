@@ -301,8 +301,8 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 4530,
-      "sha256": "7811469e3f4bdf04eefbc05b2ad65fe68dc31cd359de213b8e038c3b5225897f",
+      "bytes": 4570,
+      "sha256": "8ae12eed362bf2cf8769f9dd79e9d51443a795ffc3a62d2151fa5a5008cdfea8",
       "encoding": "utf-8",
       "lines": 45,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 50475,
-      "sha256": "0fb7bfa9e9fd59c2376179a059c11d81473869908c5b0d646a6553cbf8c8d2e8",
+      "bytes": 51550,
+      "sha256": "02c89751136920680cf71946a2cb0f6c71cddd71cf98952420b8406d9f5cbe70",
       "encoding": "utf-8",
-      "lines": 350,
+      "lines": 360,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -3588,52 +3588,64 @@
     {
       "path": "gtg/spec.py",
       "mode": "100644",
-      "bytes": 5961,
-      "sha256": "0a4084ca04f998703dc5a0f496829821ce5628f521fa7557f510a8a39456240f",
+      "bytes": 8017,
+      "sha256": "2f9a7a089e3a5c30e0387ea94f3bb31e8d4d1bacf2456a6e3e2f62e7a279804b",
       "encoding": "utf-8",
-      "lines": 123,
+      "lines": 172,
       "symbols": [
         {
           "name": "sensitive",
           "kind": "FunctionDef",
-          "line": 23,
-          "end_line": 28
+          "line": 27,
+          "end_line": 32
         },
         {
           "name": "private",
           "kind": "FunctionDef",
-          "line": 31,
-          "end_line": 33
+          "line": 35,
+          "end_line": 37
         },
         {
           "name": "relative",
           "kind": "FunctionDef",
-          "line": 36,
-          "end_line": 42
+          "line": 40,
+          "end_line": 46
         },
         {
           "name": "validate",
           "kind": "FunctionDef",
-          "line": 45,
-          "end_line": 78
+          "line": 49,
+          "end_line": 82
         },
         {
           "name": "evidential",
           "kind": "FunctionDef",
-          "line": 81,
-          "end_line": 86
+          "line": 85,
+          "end_line": 90
+        },
+        {
+          "name": "scope_size",
+          "kind": "FunctionDef",
+          "line": 93,
+          "end_line": 130
         },
         {
           "name": "fingerprint",
           "kind": "FunctionDef",
-          "line": 89,
-          "end_line": 123
+          "line": 133,
+          "end_line": 172
+        },
+        {
+          "name": "walk",
+          "kind": "FunctionDef",
+          "line": 103,
+          "end_line": 126
         },
         {
           "name": "add",
           "kind": "FunctionDef",
-          "line": 94,
-          "end_line": 119
+          "line": 139,
+          "end_line": 168
         }
       ],
       "trailing_newline": true,
@@ -3642,16 +3654,16 @@
     {
       "path": "gtg/store.py",
       "mode": "100644",
-      "bytes": 6372,
-      "sha256": "1d221b9db4143dc42d276fa23112122a4cf8562a4510ac12a11416fde628ac6a",
+      "bytes": 6577,
+      "sha256": "2b5f5b96032768dd2fa9e2e59cfd312d495c74e955effdde2d965be34fd3cc12",
       "encoding": "utf-8",
-      "lines": 130,
+      "lines": 133,
       "symbols": [
         {
           "name": "Store",
           "kind": "ClassDef",
           "line": 17,
-          "end_line": 130
+          "end_line": 133
         },
         {
           "name": "__init__",
@@ -3669,43 +3681,43 @@
           "name": "create",
           "kind": "FunctionDef",
           "line": 61,
-          "end_line": 70
+          "end_line": 73
         },
         {
           "name": "task",
           "kind": "FunctionDef",
-          "line": 72,
-          "end_line": 76
+          "line": 75,
+          "end_line": 79
         },
         {
           "name": "begin",
           "kind": "FunctionDef",
-          "line": 78,
-          "end_line": 89
+          "line": 81,
+          "end_line": 92
         },
         {
           "name": "finish",
           "kind": "FunctionDef",
-          "line": 91,
-          "end_line": 96
+          "line": 94,
+          "end_line": 99
         },
         {
           "name": "attach_process",
           "kind": "FunctionDef",
-          "line": 98,
-          "end_line": 100
+          "line": 101,
+          "end_line": 103
         },
         {
           "name": "latest",
           "kind": "FunctionDef",
-          "line": 102,
-          "end_line": 107
+          "line": 105,
+          "end_line": 110
         },
         {
           "name": "recover",
           "kind": "FunctionDef",
-          "line": 109,
-          "end_line": 130
+          "line": 112,
+          "end_line": 133
         }
       ],
       "trailing_newline": true,
@@ -3747,10 +3759,10 @@
     {
       "path": "profile/skills/gtg-build/references/task-contract.md",
       "mode": "100644",
-      "bytes": 13301,
-      "sha256": "3faacdafc93fefc797ef3153751cc6240cfb9d23d1e422167425a7c6e871dab6",
+      "bytes": 13766,
+      "sha256": "094ffc23b3f8d0a2eae691df297d40a5cca0379a530a69841fc7cf5372016ff7",
       "encoding": "utf-8",
-      "lines": 120,
+      "lines": 122,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/profile/skills/gtg-build/references/task-contract.md.md"
@@ -6443,6 +6455,108 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_trial_run.py.md"
+    },
+    {
+      "path": "tests/test_watch_scope.py",
+      "mode": "100644",
+      "bytes": 4556,
+      "sha256": "613349a08e16ccf65f9db9f492341513a1180f6b3ed90946b322ed007f32b8d5",
+      "encoding": "utf-8",
+      "lines": 110,
+      "symbols": [
+        {
+          "name": "spec",
+          "kind": "FunctionDef",
+          "line": 14,
+          "end_line": 17
+        },
+        {
+          "name": "ScopeSizeTests",
+          "kind": "ClassDef",
+          "line": 20,
+          "end_line": 66
+        },
+        {
+          "name": "RegistrationBoundTests",
+          "kind": "ClassDef",
+          "line": 69,
+          "end_line": 106
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 21,
+          "end_line": 24
+        },
+        {
+          "name": "spread",
+          "kind": "FunctionDef",
+          "line": 26,
+          "end_line": 30
+        },
+        {
+          "name": "test_small_scope_is_measured",
+          "kind": "FunctionDef",
+          "line": 32,
+          "end_line": 37
+        },
+        {
+          "name": "test_missing_paths_do_not_fail_measurement",
+          "kind": "FunctionDef",
+          "line": 39,
+          "end_line": 42
+        },
+        {
+          "name": "test_too_many_files_are_refused_with_a_clear_reason",
+          "kind": "FunctionDef",
+          "line": 44,
+          "end_line": 47
+        },
+        {
+          "name": "test_too_many_bytes_are_refused",
+          "kind": "FunctionDef",
+          "line": 49,
+          "end_line": 56
+        },
+        {
+          "name": "test_measurement_is_much_cheaper_than_hashing",
+          "kind": "FunctionDef",
+          "line": 58,
+          "end_line": 66
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 70,
+          "end_line": 76
+        },
+        {
+          "name": "test_oversized_scope_is_rejected_at_registration",
+          "kind": "FunctionDef",
+          "line": 78,
+          "end_line": 84
+        },
+        {
+          "name": "test_normal_scope_is_accepted",
+          "kind": "FunctionDef",
+          "line": 86,
+          "end_line": 87
+        },
+        {
+          "name": "test_scope_that_grows_later_marks_the_check_stale_instead_of_crashing",
+          "kind": "FunctionDef",
+          "line": 89,
+          "end_line": 101
+        },
+        {
+          "name": "test_documented_limits_are_reasonable_for_the_hook_budget",
+          "kind": "FunctionDef",
+          "line": 103,
+          "end_line": 106
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_watch_scope.py.md"
     },
     {
       "path": "tests/test_workspace_argument.py",

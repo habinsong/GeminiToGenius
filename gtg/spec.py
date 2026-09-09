@@ -18,6 +18,10 @@ MAX_RESUMES = 8
 # 이 명령들은 항상 성공하거나 입력을 그대로 출력하므로 어떤 요구도 검증하지 못합니다.
 # 셸을 거친 우회까지 막지는 못하며, 실제 방어는 증명서의 독립 재실행입니다.
 NO_EVIDENCE = {"true", ":", "echo", "printf", "yes", "test", "[", "sleep", "cat"}
+# 훅은 5초 안에 상태를 만들어야 하고 상태 조회는 검증 대상을 다시 읽습니다.
+# 측정한 처리량은 초당 약 1만 4천 개·57MB이므로 검사 하나가 예산을 넘지 않도록 상한을 둡니다.
+MAX_WATCH_FILES = 20000
+MAX_WATCH_BYTES = 200 * 1024 * 1024
 
 
 def sensitive(path: Path) -> bool:
@@ -86,10 +90,51 @@ def evidential(spec: dict) -> dict:
     return spec
 
 
+def scope_size(root: Path, watched: list[str], *,
+               max_files: int = MAX_WATCH_FILES, max_bytes: int = MAX_WATCH_BYTES) -> tuple[int, int]:
+    """검증 대상의 파일 수와 크기입니다. 내용을 읽지 않으므로 해싱보다 훨씬 쌉니다.
+
+    상한을 넘으면 즉시 멈추고 거부합니다. 등록 시점에 알려 주어야 모델이 범위를 좁힐 수 있습니다.
+    """
+    root = root.resolve(strict=True)
+    files = size = 0
+    seen = set()
+
+    def walk(path: Path):
+        nonlocal files, size
+        try:
+            info = path.lstat()
+        except OSError:
+            return
+        if stat.S_ISDIR(info.st_mode):
+            try:
+                children = sorted(path.iterdir())
+            except OSError:
+                return
+            for child in children:
+                walk(child)
+            return
+        name = path.relative_to(root).as_posix()
+        if private(Path(name)) or name in seen:
+            return
+        seen.add(name)
+        files += 1
+        size += info.st_size
+        if files > max_files or size > max_bytes:
+            raise ValueError(
+                f"검증 대상이 너무 넓습니다. 파일 {max_files}개·{max_bytes // (1024 * 1024)}MB 이하로 "
+                "watch 범위를 좁히세요. 생성물과 의존성 폴더는 제외합니다.")
+
+    for name in watched:
+        walk(root / relative(name))
+    return files, size
+
+
 def fingerprint(root: Path, watched: list[str]) -> str:
     """파일 내용·모드·삭제를 비교합니다. 제외 경로의 내용은 읽지 않습니다."""
     root = root.resolve(strict=True)
     records = {}
+    budget = {"files": 0, "bytes": 0}
 
     def add(path: Path):
         name = path.relative_to(root).as_posix()
@@ -110,6 +155,10 @@ def fingerprint(root: Path, watched: list[str]) -> str:
             for child in sorted(path.iterdir()):
                 add(child)
         elif stat.S_ISREG(info.st_mode):
+            budget["files"] += 1
+            budget["bytes"] += info.st_size
+            if budget["files"] > MAX_WATCH_FILES or budget["bytes"] > MAX_WATCH_BYTES:
+                raise ValueError("검증 대상이 상한을 넘었습니다. watch 범위를 좁히세요.")
             digest = hashlib.sha256()
             with path.open("rb") as stream:
                 for chunk in iter(lambda: stream.read(1024 * 1024), b""):

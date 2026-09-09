@@ -1,8 +1,8 @@
 # `gtg/store.py`
 
 - 형식: `100644`
-- 바이트: 6372
-- SHA-256: `1d221b9db4143dc42d276fa23112122a4cf8562a4510ac12a11416fde628ac6a`
+- 바이트: 6577
+- SHA-256: `2b5f5b96032768dd2fa9e2e59cfd312d495c74e955effdde2d965be34fd3cc12`
 - 인코딩: `utf-8`
 
 ```
@@ -19,7 +19,7 @@ import sqlite3
 import time
 import uuid
 
-from .spec import evidential, validate
+from .spec import evidential, scope_size, validate
 
 
 class Store:
@@ -71,6 +71,9 @@ class Store:
         workspace = workspace.resolve(strict=True)
         if not workspace.is_dir():
             raise ValueError("작업공간 폴더가 필요합니다.")
+        # 훅 예산 안에서 상태를 만들 수 있는 범위인지 등록 시점에 확인합니다.
+        for check in spec["checks"]:
+            scope_size(workspace, check["watch"])
         task_id = uuid.uuid4().hex
         with nullcontext() if self.connection.in_transaction else self.connection:
             self.connection.execute("INSERT INTO tasks VALUES (?, ?, ?, ?)",
