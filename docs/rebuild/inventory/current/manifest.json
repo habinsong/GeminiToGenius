@@ -301,10 +301,10 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 5110,
-      "sha256": "409dfe7264f55522d5665b64830b8d05862de850f4fc87bfea306d2b1f38b881",
+      "bytes": 5476,
+      "sha256": "ebf8fbea7eb772135ace13096fc3ded53f33040665316adf95844d27b2583fe2",
       "encoding": "utf-8",
-      "lines": 46,
+      "lines": 47,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/current-work.md.md"
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 69654,
-      "sha256": "d53b6ae0fbd431e8411dd550de2817fbc6cb6c9dfeb3dca8270f67c10d4aab3d",
+      "bytes": 71300,
+      "sha256": "1d5c54b0f5ca3c4b61b598c9ff1c5af62a8ba98fa9a5cf27fd23c406c872d558",
       "encoding": "utf-8",
-      "lines": 512,
+      "lines": 520,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -1888,10 +1888,10 @@
     {
       "path": "docs/rebuild/validation/2026-09-09-agy-cli/README.md",
       "mode": "100644",
-      "bytes": 6691,
-      "sha256": "f7525bd4f473321d737d7eb51bd1a71f710bf7a8310791d7738054e560e235bd",
+      "bytes": 7585,
+      "sha256": "4aa26fc892a43954ab8b9e84f0cdea1c3e7bc8061f0a03807734d7629df8b646",
       "encoding": "utf-8",
-      "lines": 117,
+      "lines": 125,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-09-agy-cli/README.md.md"
@@ -2126,6 +2126,17 @@
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-09-reboot-recovery/README.md.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-repeated-comparison/README.md",
+      "mode": "100644",
+      "bytes": 6635,
+      "sha256": "42f4c0ef6033a3abfe39180a0ee825818d75e397303e82da2a5cb92ea1d43475",
+      "encoding": "utf-8",
+      "lines": 86,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-repeated-comparison/README.md.md"
     },
     {
       "path": "docs/rebuild/validation/2026-09-09-repeated-comparison/comparison.json",

@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 286개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 287개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -33,7 +33,7 @@
 | `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 5110 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 5476 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 9535 | [원문](files/docs/rebuild/plan/architecture.md.md) |
 | `docs/rebuild/plan/completion-audit.md` | 5066 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 10353 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 49370 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 69654 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 71300 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -151,7 +151,7 @@
 | `docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json` | 270 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/tests.log` | 21385 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/tests.log.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/verification.json` | 5995 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/verification.json.md) |
-| `docs/rebuild/validation/2026-09-09-agy-cli/README.md` | 6691 | [원문](files/docs/rebuild/validation/2026-09-09-agy-cli/README.md.md) |
+| `docs/rebuild/validation/2026-09-09-agy-cli/README.md` | 7585 | [원문](files/docs/rebuild/validation/2026-09-09-agy-cli/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/README.md` | 9686 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json` | 844 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json` | 2525 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json.md) |
@@ -170,6 +170,7 @@
 | `docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json` | 5588 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json.md) |
 | `docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py` | 159 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py.md) |
 | `docs/rebuild/validation/2026-09-09-reboot-recovery/README.md` | 5465 | [원문](files/docs/rebuild/validation/2026-09-09-reboot-recovery/README.md.md) |
+| `docs/rebuild/validation/2026-09-09-repeated-comparison/README.md` | 6635 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-repeated-comparison/comparison.json` | 59998 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/comparison.json.md) |
 | `docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-gtg.json` | 3107 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-gtg.json.md) |
 | `docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-plain.json` | 3090 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-plain.json.md) |
