@@ -1,8 +1,8 @@
 # `evals/cases.json`
 
 - 형식: `100644`
-- 바이트: 6485
-- SHA-256: `1729926f6061d0113d2fe3446dcf7cea2d1c5f052da1ffcd5f99bc2f12ff3e3a`
+- 바이트: 12649
+- SHA-256: `6df05402d45ee04ad5212206db81a1ff3a88e8b9b38f1693b8a75103a4311a4c`
 - 인코딩: `utf-8`
 
 ```
@@ -14,14 +14,59 @@
       "fixture": "bounds",
       "module": "mathlib.py",
       "function": "clamp",
-      "allowed_edits": ["mathlib.py", "test_mathlib.py"],
+      "allowed_edits": [
+        "mathlib.py",
+        "test_mathlib.py"
+      ],
       "checks": [
-        {"args": [-3, 0, 10], "expected": 0},
-        {"args": [15, 0, 10], "expected": 10},
-        {"args": [5, 0, 10], "expected": 5},
-        {"args": [-1.5, -1, 2], "expected": -1},
-        {"args": [3, 3, 3], "expected": 3},
-        {"args": [0, 10, 1], "error": "ValueError"}
+        {
+          "args": [
+            -3,
+            0,
+            10
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            15,
+            0,
+            10
+          ],
+          "expected": 10
+        },
+        {
+          "args": [
+            5,
+            0,
+            10
+          ],
+          "expected": 5
+        },
+        {
+          "args": [
+            -1.5,
+            -1,
+            2
+          ],
+          "expected": -1
+        },
+        {
+          "args": [
+            3,
+            3,
+            3
+          ],
+          "expected": 3
+        },
+        {
+          "args": [
+            0,
+            10,
+            1
+          ],
+          "error": "ValueError"
+        }
       ]
     },
     "merge-records": {
@@ -29,13 +74,98 @@
       "fixture": "merge-records",
       "module": "records.py",
       "function": "merge_records",
-      "allowed_edits": ["records.py", "test_records.py", "app.py"],
+      "allowed_edits": [
+        "records.py",
+        "test_records.py",
+        "app.py"
+      ],
       "checks": [
-        {"args": [[{"id": "a", "name": "사진"}, {"id": "a", "count": 2}]], "expected": [{"id": "a", "name": "사진", "count": 2}]},
-        {"args": [[{"id": "a", "count": 1}, {"id": "b", "count": 5}, {"id": "a", "count": 3}]], "expected": [{"id": "a", "count": 3}, {"id": "b", "count": 5}]},
-        {"args": [[]], "expected": []},
-        {"args": [[{"id": 0, "name": "영"}, {"id": 0, "count": 1}]], "expected": [{"id": 0, "name": "영", "count": 1}]},
-        {"args": [[{"name": "ID 없음"}]], "error": "ValueError"}
+        {
+          "args": [
+            [
+              {
+                "id": "a",
+                "name": "사진"
+              },
+              {
+                "id": "a",
+                "count": 2
+              }
+            ]
+          ],
+          "expected": [
+            {
+              "id": "a",
+              "name": "사진",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "id": "a",
+                "count": 1
+              },
+              {
+                "id": "b",
+                "count": 5
+              },
+              {
+                "id": "a",
+                "count": 3
+              }
+            ]
+          ],
+          "expected": [
+            {
+              "id": "a",
+              "count": 3
+            },
+            {
+              "id": "b",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              {
+                "id": 0,
+                "name": "영"
+              },
+              {
+                "id": 0,
+                "count": 1
+              }
+            ]
+          ],
+          "expected": [
+            {
+              "id": 0,
+              "name": "영",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "name": "ID 없음"
+              }
+            ]
+          ],
+          "error": "ValueError"
+        }
       ],
       "preserve_arguments": true,
       "integrations": [
@@ -44,9 +174,47 @@
           "function": "summarize",
           "preserve_arguments": true,
           "checks": [
-            {"args": [[{"id": "a", "name": "사진"}, {"id": "a", "count": 2}]], "expected": {"items": [{"id": "a", "name": "사진", "count": 2}]}},
-            {"args": [[]], "expected": {"items": []}},
-            {"args": [[{"name": "ID 없음"}]], "error": "ValueError"}
+            {
+              "args": [
+                [
+                  {
+                    "id": "a",
+                    "name": "사진"
+                  },
+                  {
+                    "id": "a",
+                    "count": 2
+                  }
+                ]
+              ],
+              "expected": {
+                "items": [
+                  {
+                    "id": "a",
+                    "name": "사진",
+                    "count": 2
+                  }
+                ]
+              }
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": {
+                "items": []
+              }
+            },
+            {
+              "args": [
+                [
+                  {
+                    "name": "ID 없음"
+                  }
+                ]
+              ],
+              "error": "ValueError"
+            }
           ]
         }
       ]
@@ -212,6 +380,191 @@
           "to": "DOWNLOAD_STEM = \"현장 기록\""
         }
       }
+    },
+    "refactor-pricing": {
+      "prompt": "여기 중복 심한데 좀 정리해줘. 쓰는 쪽 깨지면 안 됨.",
+      "fixture": "refactor-pricing",
+      "module": "pricing.py",
+      "function": "member_total",
+      "allowed_edits": [
+        "pricing.py",
+        "test_pricing.py"
+      ],
+      "required_edits": [
+        "pricing.py"
+      ],
+      "checks": [
+        {
+          "args": [
+            [
+              {
+                "price": 100,
+                "count": 2
+              }
+            ],
+            0.1
+          ],
+          "expected": 180.0
+        },
+        {
+          "args": [
+            [
+              {
+                "price": 100,
+                "count": 2
+              }
+            ],
+            0.0
+          ],
+          "expected": 200.0
+        },
+        {
+          "args": [
+            [],
+            0.5
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              {
+                "price": 19.99,
+                "count": 3
+              }
+            ],
+            0.15
+          ],
+          "expected": 50.97
+        },
+        {
+          "args": [
+            [
+              {
+                "price": 10,
+                "count": -1
+              }
+            ],
+            0.1
+          ],
+          "error": "ValueError"
+        }
+      ],
+      "integrations": [
+        {
+          "module": "pricing.py",
+          "function": "guest_total",
+          "checks": [
+            {
+              "args": [
+                [
+                  {
+                    "price": 100,
+                    "count": 2
+                  }
+                ]
+              ],
+              "expected": 200.0
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                [
+                  {
+                    "price": 10,
+                    "count": -1
+                  }
+                ]
+              ],
+              "error": "ValueError"
+            }
+          ]
+        },
+        {
+          "module": "pricing.py",
+          "function": "staff_total",
+          "checks": [
+            {
+              "args": [
+                [
+                  {
+                    "price": 100,
+                    "count": 1
+                  }
+                ]
+              ],
+              "expected": 70.0
+            },
+            {
+              "args": [
+                [
+                  {
+                    "price": 10,
+                    "count": -1
+                  }
+                ]
+              ],
+              "error": "ValueError"
+            }
+          ]
+        },
+        {
+          "module": "checkout.py",
+          "function": "receipt",
+          "checks": [
+            {
+              "args": [
+                [
+                  {
+                    "price": 100,
+                    "count": 2
+                  }
+                ],
+                "member"
+              ],
+              "expected": {
+                "kind": "member",
+                "total": 180.0
+              }
+            },
+            {
+              "args": [
+                [
+                  {
+                    "price": 100,
+                    "count": 1
+                  }
+                ],
+                "staff"
+              ],
+              "expected": {
+                "kind": "staff",
+                "total": 70.0
+              }
+            },
+            {
+              "args": [
+                [
+                  {
+                    "price": 100,
+                    "count": 2
+                  }
+                ],
+                "guest"
+              ],
+              "expected": {
+                "kind": "guest",
+                "total": 200.0
+              }
+            }
+          ]
+        }
+      ]
     }
   }
 }

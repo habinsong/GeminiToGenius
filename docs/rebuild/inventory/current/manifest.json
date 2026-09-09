@@ -302,7 +302,7 @@
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
       "bytes": 4570,
-      "sha256": "9c0d6244afd490309b0a9935104dbd310448006ffd7ffc367120efea23104fef",
+      "sha256": "991718af3edc0e1e59859836ce26eca22e01142b8284caed8ff26e7e52977645",
       "encoding": "utf-8",
       "lines": 45,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 55082,
-      "sha256": "a5a61fa2860dad93b28671a3a66fb1842edb08c142d016394fecdba364ce41c2",
+      "bytes": 56210,
+      "sha256": "302d09fcebe0b186babaf9ad1840d33681fe55890e3eb063bfac231c28613323",
       "encoding": "utf-8",
-      "lines": 390,
+      "lines": 400,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -2119,10 +2119,10 @@
     {
       "path": "evals/README.md",
       "mode": "100644",
-      "bytes": 13683,
-      "sha256": "2fc19686d70e2019e53c141c7bc5f2842d424dbfe402c5de5d3609706bb91812",
+      "bytes": 14898,
+      "sha256": "4d3ff4929e232f7973b02799010d36aac5037ddb865599f347b81ff2cbbbd4a5",
       "encoding": "utf-8",
-      "lines": 119,
+      "lines": 132,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/evals/README.md.md"
@@ -2141,10 +2141,10 @@
     {
       "path": "evals/cases.json",
       "mode": "100644",
-      "bytes": 6485,
-      "sha256": "1729926f6061d0113d2fe3446dcf7cea2d1c5f052da1ffcd5f99bc2f12ff3e3a",
+      "bytes": 12649,
+      "sha256": "6df05402d45ee04ad5212206db81a1ff3a88e8b9b38f1693b8a75103a4311a4c",
       "encoding": "utf-8",
-      "lines": 209,
+      "lines": 562,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/evals/cases.json.md"
@@ -2392,6 +2392,118 @@
       "document": "files/evals/fixtures/merge-records/test_records.py.md"
     },
     {
+      "path": "evals/fixtures/refactor-pricing/README.md",
+      "mode": "100644",
+      "bytes": 635,
+      "sha256": "952e3b1191505d571c7188a43f7672726006e47f4229222f025c254a52c26674",
+      "encoding": "utf-8",
+      "lines": 10,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/refactor-pricing/README.md.md"
+    },
+    {
+      "path": "evals/fixtures/refactor-pricing/checkout.py",
+      "mode": "100644",
+      "bytes": 418,
+      "sha256": "6eec92dbeed0da3ec7880a21d8aa6cb67b52faab93e4ffe02c513302a685be2f",
+      "encoding": "utf-8",
+      "lines": 11,
+      "symbols": [
+        {
+          "name": "receipt",
+          "kind": "FunctionDef",
+          "line": 6,
+          "end_line": 11
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/refactor-pricing/checkout.py.md"
+    },
+    {
+      "path": "evals/fixtures/refactor-pricing/notes.txt",
+      "mode": "100644",
+      "bytes": 105,
+      "sha256": "e0a0266538df46ea2b34cf5f5952df972081fc1d6ec89414e8acaa8dd5c62b4f",
+      "encoding": "utf-8",
+      "lines": 1,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/refactor-pricing/notes.txt.md"
+    },
+    {
+      "path": "evals/fixtures/refactor-pricing/pricing.py",
+      "mode": "100644",
+      "bytes": 1200,
+      "sha256": "e60f9db76de3a73bb2e8279294352177d6a9ad25ef1aaff1a882cb0aab67b694",
+      "encoding": "utf-8",
+      "lines": 43,
+      "symbols": [
+        {
+          "name": "member_total",
+          "kind": "FunctionDef",
+          "line": 4,
+          "end_line": 15
+        },
+        {
+          "name": "guest_total",
+          "kind": "FunctionDef",
+          "line": 18,
+          "end_line": 29
+        },
+        {
+          "name": "staff_total",
+          "kind": "FunctionDef",
+          "line": 32,
+          "end_line": 43
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/refactor-pricing/pricing.py.md"
+    },
+    {
+      "path": "evals/fixtures/refactor-pricing/test_pricing.py",
+      "mode": "100644",
+      "bytes": 657,
+      "sha256": "cbb14d0768aa95c2b784fa06aa67e7462f9d551ec2bac43433b0cf82e3958e22",
+      "encoding": "utf-8",
+      "lines": 22,
+      "symbols": [
+        {
+          "name": "PricingTests",
+          "kind": "ClassDef",
+          "line": 6,
+          "end_line": 18
+        },
+        {
+          "name": "test_member_discount",
+          "kind": "FunctionDef",
+          "line": 7,
+          "end_line": 8
+        },
+        {
+          "name": "test_guest_has_no_discount",
+          "kind": "FunctionDef",
+          "line": 10,
+          "end_line": 11
+        },
+        {
+          "name": "test_staff_discount",
+          "kind": "FunctionDef",
+          "line": 13,
+          "end_line": 14
+        },
+        {
+          "name": "test_negative_count_is_rejected",
+          "kind": "FunctionDef",
+          "line": 16,
+          "end_line": 18
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/fixtures/refactor-pricing/test_pricing.py.md"
+    },
+    {
       "path": "evals/fixtures/report-export/README.md",
       "mode": "100644",
       "bytes": 1535,
@@ -2629,10 +2741,10 @@
     {
       "path": "evals/grading.py",
       "mode": "100644",
-      "bytes": 8757,
-      "sha256": "982a06e3e854e9c572d05a7c31d3e15f504e0dcba2057806b8ca711a7cbcf10f",
+      "bytes": 9165,
+      "sha256": "e10af65d8c7ca908f74d4dbdb7a0469e275b63a4a880efda991a9c1a1318356a",
       "encoding": "utf-8",
-      "lines": 173,
+      "lines": 178,
       "symbols": [
         {
           "name": "terminate",
@@ -2668,7 +2780,7 @@
           "name": "grade",
           "kind": "FunctionDef",
           "line": 113,
-          "end_line": 173
+          "end_line": 178
         }
       ],
       "trailing_newline": true,
@@ -5819,6 +5931,78 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_process_lifecycle.py.md"
+    },
+    {
+      "path": "tests/test_refactor_case.py",
+      "mode": "100644",
+      "bytes": 3994,
+      "sha256": "50eb2e21248ce8964504923884e0ee90f708daea42593eb9c3d41fd274dd1267",
+      "encoding": "utf-8",
+      "lines": 106,
+      "symbols": [
+        {
+          "name": "RefactorCaseTests",
+          "kind": "ClassDef",
+          "line": 39,
+          "end_line": 102
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 40,
+          "end_line": 43
+        },
+        {
+          "name": "trial",
+          "kind": "FunctionDef",
+          "line": 45,
+          "end_line": 48
+        },
+        {
+          "name": "test_case_declares_the_file_that_must_change",
+          "kind": "FunctionDef",
+          "line": 50,
+          "end_line": 53
+        },
+        {
+          "name": "test_doing_nothing_keeps_behaviour_but_fails_the_scope",
+          "kind": "FunctionDef",
+          "line": 55,
+          "end_line": 60
+        },
+        {
+          "name": "test_reference_refactor_passes_every_check",
+          "kind": "FunctionDef",
+          "line": 62,
+          "end_line": 69
+        },
+        {
+          "name": "test_breaking_a_public_contract_is_caught",
+          "kind": "FunctionDef",
+          "line": 71,
+          "end_line": 77
+        },
+        {
+          "name": "test_touching_an_unrelated_file_is_a_scope_violation",
+          "kind": "FunctionDef",
+          "line": 79,
+          "end_line": 85
+        },
+        {
+          "name": "test_deleting_a_public_function_is_caught",
+          "kind": "FunctionDef",
+          "line": 87,
+          "end_line": 94
+        },
+        {
+          "name": "test_existing_cases_without_required_edits_are_unaffected",
+          "kind": "FunctionDef",
+          "line": 96,
+          "end_line": 102
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_refactor_case.py.md"
     },
     {
       "path": "tests/test_repository_noise.py",
