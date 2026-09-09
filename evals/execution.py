@@ -23,15 +23,25 @@ OUTPUT_LIMIT = 256 * 1024
 FILE_LIMIT = 50
 
 
+# 준비 단계가 설치한 하네스 자체 파일입니다. 평가 대상 코드가 아닙니다.
+INSTALLED_HARNESS = ".agents"
+
+
 def workspace_files(files, workspace: Path) -> list[str]:
-    """관측된 실행 파일 중 작업공간 안의 것만 상대 경로로 모읍니다."""
+    """관측된 실행 파일 중 작업공간 안의 평가 대상 코드만 상대 경로로 모읍니다.
+
+    설치된 하네스 자체의 모듈을 세면 하네스를 설치한 팔만 "코드를 실행했다"가 되어
+    비교가 그 팔에 유리하게 기웁니다. 채점의 범위 검사는 이 폴더를 계속 감시하므로
+    하네스를 고쳐 검사를 무력화하는 시도는 그대로 잡힙니다.
+    """
     found = set()
     for path in files:
         try:
             found.add(path.relative_to(workspace).as_posix())
         except ValueError:
             continue
-    return sorted(name for name in found if not private(Path(name)))
+    return sorted(name for name in found
+                  if not private(Path(name)) and Path(name).parts[:1] != (INSTALLED_HARNESS,))
 
 
 def terminate(process: subprocess.Popen):

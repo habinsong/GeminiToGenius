@@ -1,8 +1,8 @@
 # `tests/test_evals.py`
 
 - 형식: `100644`
-- 바이트: 7991
-- SHA-256: `36e87fc8b481ee588a360a4b152ee893ee5173ccd05fc72d1cfddd046911c913`
+- 바이트: 8971
+- SHA-256: `6dee817d64c3a6c0efe4c2d3ccc8b97343c9edf9af4f22e66a19af1889b44ba7`
 - 인코딩: `utf-8`
 
 ```
@@ -34,6 +34,23 @@ MERGE = """def merge_records(records):
     return list(merged.values())
 """
 
+
+class HarnessOwnFilesTests(unittest.TestCase):
+    """설치된 하네스 자체 파일이 '코드를 실행했다'로 세어지면 안 됩니다."""
+
+    def test_installed_plugin_files_are_not_counted_as_project_code(self):
+        from evals.execution import workspace_files
+        with tempfile.TemporaryDirectory() as directory:
+            workspace = Path(directory).resolve()
+            observed = [workspace / ".agents/plugins/geminitogenius/gtg/store.py",
+                        workspace / ".agents/plugins/geminitogenius/run.py",
+                        workspace / "mathlib.py"]
+            self.assertEqual(workspace_files(observed, workspace), ["mathlib.py"])
+
+    def test_scope_grading_still_watches_the_installed_harness(self):
+        """실행 관측에서 뺀 것이 채점의 감시까지 푸는 것은 아닙니다."""
+        from evals.workspace import private
+        self.assertFalse(private(Path(".agents/plugins/geminitogenius/rules/AGENTS.md")))
 
 class EvalTests(unittest.TestCase):
     def setUp(self):

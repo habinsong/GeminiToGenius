@@ -27,6 +27,23 @@ MERGE = """def merge_records(records):
 """
 
 
+class HarnessOwnFilesTests(unittest.TestCase):
+    """설치된 하네스 자체 파일이 '코드를 실행했다'로 세어지면 안 됩니다."""
+
+    def test_installed_plugin_files_are_not_counted_as_project_code(self):
+        from evals.execution import workspace_files
+        with tempfile.TemporaryDirectory() as directory:
+            workspace = Path(directory).resolve()
+            observed = [workspace / ".agents/plugins/geminitogenius/gtg/store.py",
+                        workspace / ".agents/plugins/geminitogenius/run.py",
+                        workspace / "mathlib.py"]
+            self.assertEqual(workspace_files(observed, workspace), ["mathlib.py"])
+
+    def test_scope_grading_still_watches_the_installed_harness(self):
+        """실행 관측에서 뺀 것이 채점의 감시까지 푸는 것은 아닙니다."""
+        from evals.workspace import private
+        self.assertFalse(private(Path(".agents/plugins/geminitogenius/rules/AGENTS.md")))
+
 class EvalTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()

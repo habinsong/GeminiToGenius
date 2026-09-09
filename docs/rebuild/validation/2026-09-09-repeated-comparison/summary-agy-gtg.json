@@ -1,0 +1,162 @@
+[
+  {
+    "case": "bounds",
+    "run": 1,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 37.11,
+    "executed_files": 14
+  },
+  {
+    "case": "merge-records",
+    "run": 1,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 56.448,
+    "executed_files": 15
+  },
+  {
+    "case": "inspect-only",
+    "run": 1,
+    "passed": false,
+    "human_review": true,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 31.539,
+    "executed_files": 14
+  },
+  {
+    "case": "report-export",
+    "run": 1,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 85.261,
+    "executed_files": 19
+  },
+  {
+    "case": "resume-export",
+    "run": 1,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 69.685,
+    "executed_files": 19
+  },
+  {
+    "case": "refactor-pricing",
+    "run": 1,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 109.149,
+    "executed_files": 18
+  },
+  {
+    "case": "run-tests-only",
+    "run": 1,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 25.069,
+    "executed_files": 14
+  },
+  {
+    "case": "dead-code",
+    "run": 1,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 52.13,
+    "executed_files": 15
+  },
+  {
+    "case": "bounds",
+    "run": 2,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 59.188,
+    "executed_files": 17
+  },
+  {
+    "case": "merge-records",
+    "run": 2,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 83.106,
+    "executed_files": 18
+  },
+  {
+    "case": "inspect-only",
+    "run": 2,
+    "passed": false,
+    "human_review": true,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 27.939,
+    "executed_files": 14
+  },
+  {
+    "case": "report-export",
+    "run": 2,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 116.199,
+    "executed_files": 19
+  },
+  {
+    "case": "resume-export",
+    "run": 2,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 124.203,
+    "executed_files": 19
+  },
+  {
+    "case": "refactor-pricing",
+    "run": 2,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 61.778,
+    "executed_files": 15
+  },
+  {
+    "case": "run-tests-only",
+    "run": 2,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 28.045,
+    "executed_files": 14
+  },
+  {
+    "case": "dead-code",
+    "run": 2,
+    "passed": true,
+    "human_review": false,
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 71.949,
+    "executed_files": 18
+  }
+]

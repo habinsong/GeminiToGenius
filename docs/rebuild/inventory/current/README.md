@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 279개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 286개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -33,7 +33,7 @@
 | `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 4862 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 5110 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 9535 | [원문](files/docs/rebuild/plan/architecture.md.md) |
 | `docs/rebuild/plan/completion-audit.md` | 5066 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
@@ -151,6 +151,7 @@
 | `docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json` | 270 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/tests.log` | 21385 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/tests.log.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/verification.json` | 5995 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/verification.json.md) |
+| `docs/rebuild/validation/2026-09-09-agy-cli/README.md` | 6691 | [원문](files/docs/rebuild/validation/2026-09-09-agy-cli/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/README.md` | 9686 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json` | 844 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json` | 2525 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json.md) |
@@ -169,6 +170,12 @@
 | `docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json` | 5588 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json.md) |
 | `docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py` | 159 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py.md) |
 | `docs/rebuild/validation/2026-09-09-reboot-recovery/README.md` | 5465 | [원문](files/docs/rebuild/validation/2026-09-09-reboot-recovery/README.md.md) |
+| `docs/rebuild/validation/2026-09-09-repeated-comparison/comparison.json` | 59998 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/comparison.json.md) |
+| `docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-gtg.json` | 3107 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-gtg.json.md) |
+| `docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-plain.json` | 3090 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-plain.json.md) |
+| `docs/rebuild/validation/2026-09-09-repeated-comparison/summary-claude-code.json` | 3091 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary-claude-code.json.md) |
+| `docs/rebuild/validation/2026-09-09-repeated-comparison/summary-codex-cli.json` | 3098 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary-codex-cli.json.md) |
+| `docs/rebuild/validation/2026-09-09-repeated-comparison/summary.txt` | 1325 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary.txt.md) |
 | `docs/rebuild/validation/2026-09-09-running-check-stop/README.md` | 6246 | [원문](files/docs/rebuild/validation/2026-09-09-running-check-stop/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-unobservable-scope/README.md` | 3336 | [원문](files/docs/rebuild/validation/2026-09-09-unobservable-scope/README.md.md) |
 | `docs/styles.css` | 12916 | [원문](files/docs/styles.css.md) |
@@ -178,7 +185,7 @@
 | `evals/comparison.py` | 6915 | [원문](files/evals/comparison.py.md) |
 | `evals/criteria.py` | 4138 | [원문](files/evals/criteria.py.md) |
 | `evals/definitions.py` | 1473 | [원문](files/evals/definitions.py.md) |
-| `evals/execution.py` | 5155 | [원문](files/evals/execution.py.md) |
+| `evals/execution.py` | 5694 | [원문](files/evals/execution.py.md) |
 | `evals/fixtures/bounds/README.md` | 397 | [원문](files/evals/fixtures/bounds/README.md.md) |
 | `evals/fixtures/bounds/mathlib.py` | 61 | [원문](files/evals/fixtures/bounds/mathlib.py.md) |
 | `evals/fixtures/bounds/notes.txt` | 105 | [원문](files/evals/fixtures/bounds/notes.txt.md) |
@@ -229,7 +236,7 @@
 | `gtg/discovery.py` | 4610 | [원문](files/gtg/discovery.py.md) |
 | `gtg/hooks.py` | 13453 | [원문](files/gtg/hooks.py.md) |
 | `gtg/inspection.py` | 7450 | [원문](files/gtg/inspection.py.md) |
-| `gtg/install.py` | 11431 | [원문](files/gtg/install.py.md) |
+| `gtg/install.py` | 12833 | [원문](files/gtg/install.py.md) |
 | `gtg/install_journal.py` | 7124 | [원문](files/gtg/install_journal.py.md) |
 | `gtg/legacy.py` | 2362 | [원문](files/gtg/legacy.py.md) |
 | `gtg/package.py` | 13292 | [원문](files/gtg/package.py.md) |
@@ -248,7 +255,7 @@
 | `scripts/gtg_runner.py` | 293 | [원문](files/scripts/gtg_runner.py.md) |
 | `scripts/install.py` | 257 | [원문](files/scripts/install.py.md) |
 | `scripts/install.sh` | 142 | [원문](files/scripts/install.sh.md) |
-| `tests/test_antigravity_cli.py` | 6820 | [원문](files/tests/test_antigravity_cli.py.md) |
+| `tests/test_antigravity_cli.py` | 8378 | [원문](files/tests/test_antigravity_cli.py.md) |
 | `tests/test_architecture_map.py` | 1770 | [원문](files/tests/test_architecture_map.py.md) |
 | `tests/test_catalog.py` | 3512 | [원문](files/tests/test_catalog.py.md) |
 | `tests/test_certificate.py` | 10070 | [원문](files/tests/test_certificate.py.md) |
@@ -260,7 +267,7 @@
 | `tests/test_doc_contract.py` | 4245 | [원문](files/tests/test_doc_contract.py.md) |
 | `tests/test_eval_export.py` | 5780 | [원문](files/tests/test_eval_export.py.md) |
 | `tests/test_eval_resume.py` | 3602 | [원문](files/tests/test_eval_resume.py.md) |
-| `tests/test_evals.py` | 7991 | [원문](files/tests/test_evals.py.md) |
+| `tests/test_evals.py` | 8971 | [원문](files/tests/test_evals.py.md) |
 | `tests/test_execution_graded_case.py` | 2741 | [원문](files/tests/test_execution_graded_case.py.md) |
 | `tests/test_hook_concurrency.py` | 8487 | [원문](files/tests/test_hook_concurrency.py.md) |
 | `tests/test_hook_resilience.py` | 3191 | [원문](files/tests/test_hook_resilience.py.md) |

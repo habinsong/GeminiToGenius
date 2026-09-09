@@ -301,8 +301,8 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 4862,
-      "sha256": "80012f5ee3267dbb821388c3933d9cf9ddd7b733a204d9d4a77cde810f9fec45",
+      "bytes": 5110,
+      "sha256": "409dfe7264f55522d5665b64830b8d05862de850f4fc87bfea306d2b1f38b881",
       "encoding": "utf-8",
       "lines": 46,
       "symbols": [],
@@ -1886,6 +1886,17 @@
       "document": "files/docs/rebuild/validation/2026-09-08-task-handoff/verification.json.md"
     },
     {
+      "path": "docs/rebuild/validation/2026-09-09-agy-cli/README.md",
+      "mode": "100644",
+      "bytes": 6691,
+      "sha256": "f7525bd4f473321d737d7eb51bd1a71f710bf7a8310791d7738054e560e235bd",
+      "encoding": "utf-8",
+      "lines": 117,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-agy-cli/README.md.md"
+    },
+    {
       "path": "docs/rebuild/validation/2026-09-09-evidence-coverage/README.md",
       "mode": "100644",
       "bytes": 9686,
@@ -2117,6 +2128,72 @@
       "document": "files/docs/rebuild/validation/2026-09-09-reboot-recovery/README.md.md"
     },
     {
+      "path": "docs/rebuild/validation/2026-09-09-repeated-comparison/comparison.json",
+      "mode": "100644",
+      "bytes": 59998,
+      "sha256": "8b0bff10bf3e196c111cd73f6c2a14b72a6eb667692ec1eb7de90ca3833d7b1d",
+      "encoding": "utf-8",
+      "lines": 1639,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/docs/rebuild/validation/2026-09-09-repeated-comparison/comparison.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-gtg.json",
+      "mode": "100644",
+      "bytes": 3107,
+      "sha256": "3592f648c3364e69ac15418de0fe4a867f09846dc34b71f5f08fdf7fe5035097",
+      "encoding": "utf-8",
+      "lines": 162,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-gtg.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-plain.json",
+      "mode": "100644",
+      "bytes": 3090,
+      "sha256": "b4e157d88c18a8d3691f205abe0540b44abbcc063f883e6a53ae10d71e6cbe18",
+      "encoding": "utf-8",
+      "lines": 162,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-plain.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-repeated-comparison/summary-claude-code.json",
+      "mode": "100644",
+      "bytes": 3091,
+      "sha256": "30603afb1786a1aa608687fdf359f9e7af642876f59fda3410dc9a442d8ee362",
+      "encoding": "utf-8",
+      "lines": 162,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary-claude-code.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-repeated-comparison/summary-codex-cli.json",
+      "mode": "100644",
+      "bytes": 3098,
+      "sha256": "ef6bd0471ac713e8f974266a61cfd138a4ecfd77e333446c78480a471f90a69b",
+      "encoding": "utf-8",
+      "lines": 162,
+      "symbols": [],
+      "trailing_newline": false,
+      "document": "files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary-codex-cli.json.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-repeated-comparison/summary.txt",
+      "mode": "100644",
+      "bytes": 1325,
+      "sha256": "31f3c213f241bbcbde6c90cd5c40f9eb60db7ad146221b2d160aa927da947834",
+      "encoding": "utf-8",
+      "lines": 20,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary.txt.md"
+    },
+    {
       "path": "docs/rebuild/validation/2026-09-09-running-check-stop/README.md",
       "mode": "100644",
       "bytes": 6246,
@@ -2299,34 +2376,34 @@
     {
       "path": "evals/execution.py",
       "mode": "100644",
-      "bytes": 5155,
-      "sha256": "f279f408aab1dcbebacc8c161dbe55c3a59d953d0d065b3f3544c2a4f6d7ff9b",
+      "bytes": 5694,
+      "sha256": "533ac666fc7d5ff9c7b98339fc39b7676d9b97c1743e5a5de5c1d529f3a3fe14",
       "encoding": "utf-8",
-      "lines": 109,
+      "lines": 119,
       "symbols": [
         {
           "name": "workspace_files",
           "kind": "FunctionDef",
-          "line": 26,
-          "end_line": 34
+          "line": 30,
+          "end_line": 44
         },
         {
           "name": "terminate",
           "kind": "FunctionDef",
-          "line": 37,
-          "end_line": 45
+          "line": 47,
+          "end_line": 55
         },
         {
           "name": "resolved",
           "kind": "FunctionDef",
-          "line": 48,
-          "end_line": 53
+          "line": 58,
+          "end_line": 63
         },
         {
           "name": "run_arm",
           "kind": "FunctionDef",
-          "line": 56,
-          "end_line": 109
+          "line": 66,
+          "end_line": 119
         }
       ],
       "trailing_newline": true,
@@ -3597,88 +3674,94 @@
     {
       "path": "gtg/install.py",
       "mode": "100644",
-      "bytes": 11431,
-      "sha256": "9d349350a5376ace98eea0dbaeed86f7034a45bbfa260adf94b724563714b5e7",
+      "bytes": 12833,
+      "sha256": "c796e30104f621bc3fdcea5a141f1c84f68e5867c2b73c455447a7d150e90ce8",
       "encoding": "utf-8",
-      "lines": 254,
+      "lines": 281,
       "symbols": [
         {
           "name": "destination",
           "kind": "FunctionDef",
-          "line": 20,
-          "end_line": 27
+          "line": 21,
+          "end_line": 28
         },
         {
           "name": "ignore_state",
           "kind": "FunctionDef",
-          "line": 30,
-          "end_line": 34
+          "line": 31,
+          "end_line": 35
         },
         {
           "name": "safe_path",
           "kind": "FunctionDef",
-          "line": 37,
-          "end_line": 39
+          "line": 38,
+          "end_line": 40
         },
         {
           "name": "lock",
           "kind": "FunctionDef",
-          "line": 43,
-          "end_line": 59
+          "line": 44,
+          "end_line": 60
+        },
+        {
+          "name": "register",
+          "kind": "FunctionDef",
+          "line": 63,
+          "end_line": 85
         },
         {
           "name": "install",
           "kind": "FunctionDef",
-          "line": 62,
-          "end_line": 100
+          "line": 88,
+          "end_line": 127
         },
         {
           "name": "uninstall",
           "kind": "FunctionDef",
-          "line": 103,
-          "end_line": 122
+          "line": 130,
+          "end_line": 149
         },
         {
           "name": "restore",
           "kind": "FunctionDef",
-          "line": 125,
-          "end_line": 154
+          "line": 152,
+          "end_line": 181
         },
         {
           "name": "doctor",
           "kind": "FunctionDef",
-          "line": 157,
-          "end_line": 164
+          "line": 184,
+          "end_line": 191
         },
         {
           "name": "detected",
           "kind": "FunctionDef",
-          "line": 167,
-          "end_line": 169
+          "line": 194,
+          "end_line": 196
         },
         {
           "name": "targeted",
           "kind": "FunctionDef",
-          "line": 172,
-          "end_line": 175
+          "line": 199,
+          "end_line": 202
         },
         {
           "name": "hosts_for",
           "kind": "FunctionDef",
-          "line": 178,
-          "end_line": 185
+          "line": 205,
+          "end_line": 212
         },
         {
           "name": "run_hosts",
           "kind": "FunctionDef",
-          "line": 188,
-          "end_line": 196
+          "line": 215,
+          "end_line": 223
         },
         {
           "name": "main",
           "kind": "FunctionDef",
-          "line": 199,
-          "end_line": 250
+          "line": 226,
+          "end_line": 277
         }
       ],
       "trailing_newline": true,
@@ -4428,94 +4511,112 @@
     {
       "path": "tests/test_antigravity_cli.py",
       "mode": "100644",
-      "bytes": 6820,
-      "sha256": "48c86ea42ec3744648016204117873d2be2760c1ef6c7aa3f0fbc99c869c71be",
+      "bytes": 8378,
+      "sha256": "c0112eff4e9ba41b23b59a9ecbe0aed0cdbe9ffc367c230f4c05b7c4ccc3c7e8",
       "encoding": "utf-8",
-      "lines": 127,
+      "lines": 153,
       "symbols": [
         {
           "name": "AntigravityCliPackageTests",
           "kind": "ClassDef",
-          "line": 18,
-          "end_line": 62
+          "line": 20,
+          "end_line": 88
         },
         {
           "name": "HostDetectionTests",
           "kind": "ClassDef",
-          "line": 65,
-          "end_line": 123
+          "line": 91,
+          "end_line": 149
         },
         {
           "name": "setUp",
           "kind": "FunctionDef",
-          "line": 19,
-          "end_line": 23
+          "line": 21,
+          "end_line": 25
         },
         {
           "name": "test_global_destination_matches_official_cli_plugin_path",
           "kind": "FunctionDef",
-          "line": 25,
-          "end_line": 27
+          "line": 27,
+          "end_line": 29
         },
         {
           "name": "test_workspace_scope_is_rejected_until_verified",
           "kind": "FunctionDef",
-          "line": 29,
-          "end_line": 31
+          "line": 31,
+          "end_line": 33
+        },
+        {
+          "name": "test_cli_install_registers_the_plugin_with_the_host",
+          "kind": "FunctionDef",
+          "line": 35,
+          "end_line": 46
+        },
+        {
+          "name": "test_missing_host_binary_reports_the_manual_command_instead_of_failing",
+          "kind": "FunctionDef",
+          "line": 48,
+          "end_line": 53
+        },
+        {
+          "name": "test_other_hosts_do_not_run_a_registration_command",
+          "kind": "FunctionDef",
+          "line": 55,
+          "end_line": 57
         },
         {
           "name": "test_package_uses_plugin_layout_and_executes_both_hooks",
           "kind": "FunctionDef",
-          "line": 33,
-          "end_line": 43
+          "line": 59,
+          "end_line": 69
         },
         {
           "name": "test_install_is_independent_from_the_desktop_plugin",
           "kind": "FunctionDef",
-          "line": 45,
-          "end_line": 53
+          "line": 71,
+          "end_line": 79
         },
         {
           "name": "test_hook_events_use_the_shared_antigravity_contract",
           "kind": "FunctionDef",
-          "line": 55,
-          "end_line": 62
+          "line": 81,
+          "end_line": 88
         },
         {
           "name": "setUp",
           "kind": "FunctionDef",
-          "line": 66,
-          "end_line": 69
+          "line": 92,
+          "end_line": 95
         },
         {
           "name": "marker",
           "kind": "FunctionDef",
-          "line": 71,
-          "end_line": 74
+          "line": 97,
+          "end_line": 100
         },
         {
           "name": "test_only_host_written_settings_count_as_evidence",
           "kind": "FunctionDef",
-          "line": 76,
-          "end_line": 82
+          "line": 102,
+          "end_line": 108
         },
         {
           "name": "test_missing_platform_falls_back_to_desktop_and_never_guesses_workspace",
           "kind": "FunctionDef",
-          "line": 84,
-          "end_line": 89
+          "line": 110,
+          "end_line": 115
         },
         {
           "name": "test_one_command_installs_checks_and_removes_every_detected_host",
           "kind": "FunctionDef",
-          "line": 91,
-          "end_line": 108
+          "line": 117,
+          "end_line": 134
         },
         {
           "name": "test_one_failing_host_is_reported_without_hiding_the_others",
           "kind": "FunctionDef",
-          "line": 110,
-          "end_line": 123
+          "line": 136,
+          "end_line": 149
         }
       ],
       "trailing_newline": true,
@@ -5586,106 +5687,124 @@
     {
       "path": "tests/test_evals.py",
       "mode": "100644",
-      "bytes": 7991,
-      "sha256": "36e87fc8b481ee588a360a4b152ee893ee5173ccd05fc72d1cfddd046911c913",
+      "bytes": 8971,
+      "sha256": "6dee817d64c3a6c0efe4c2d3ccc8b97343c9edf9af4f22e66a19af1889b44ba7",
       "encoding": "utf-8",
-      "lines": 169,
+      "lines": 186,
       "symbols": [
+        {
+          "name": "HarnessOwnFilesTests",
+          "kind": "ClassDef",
+          "line": 30,
+          "end_line": 45
+        },
         {
           "name": "EvalTests",
           "kind": "ClassDef",
-          "line": 30,
-          "end_line": 165
+          "line": 47,
+          "end_line": 182
+        },
+        {
+          "name": "test_installed_plugin_files_are_not_counted_as_project_code",
+          "kind": "FunctionDef",
+          "line": 33,
+          "end_line": 40
+        },
+        {
+          "name": "test_scope_grading_still_watches_the_installed_harness",
+          "kind": "FunctionDef",
+          "line": 42,
+          "end_line": 45
         },
         {
           "name": "setUp",
           "kind": "FunctionDef",
-          "line": 31,
-          "end_line": 34
+          "line": 48,
+          "end_line": 51
         },
         {
           "name": "test_buggy_fixture_fails_and_reference_fix_passes_without_model_claim",
           "kind": "FunctionDef",
-          "line": 36,
-          "end_line": 43
+          "line": 53,
+          "end_line": 60
         },
         {
           "name": "test_rewriting_visible_tests_does_not_make_wrong_code_pass",
           "kind": "FunctionDef",
-          "line": 45,
-          "end_line": 48
+          "line": 62,
+          "end_line": 65
         },
         {
           "name": "test_unrelated_user_file_changes_fail_even_with_correct_code",
           "kind": "FunctionDef",
-          "line": 50,
-          "end_line": 57
+          "line": 67,
+          "end_line": 74
         },
         {
           "name": "test_multi_file_task_checks_error_and_input_preservation",
           "kind": "FunctionDef",
-          "line": 59,
-          "end_line": 66
+          "line": 76,
+          "end_line": 83
         },
         {
           "name": "test_multi_file_task_does_not_pass_with_a_broken_existing_caller",
           "kind": "FunctionDef",
-          "line": 68,
-          "end_line": 72
+          "line": 85,
+          "end_line": 89
         },
         {
           "name": "test_read_only_task_cannot_pass_without_human_review",
           "kind": "FunctionDef",
-          "line": 74,
-          "end_line": 81
+          "line": 91,
+          "end_line": 98
         },
         {
           "name": "test_early_success_exit_is_not_a_valid_test_result",
           "kind": "FunctionDef",
-          "line": 83,
-          "end_line": 88
+          "line": 100,
+          "end_line": 105
         },
         {
           "name": "test_boolean_cannot_replace_a_numeric_result",
           "kind": "FunctionDef",
-          "line": 90,
-          "end_line": 97
+          "line": 107,
+          "end_line": 114
         },
         {
           "name": "test_prepared_trial_is_not_overwritten_and_modified_criteria_are_rejected",
           "kind": "FunctionDef",
-          "line": 99,
-          "end_line": 108
+          "line": 116,
+          "end_line": 125
         },
         {
           "name": "test_gtg_preparation_is_local_and_protects_installed_harness",
           "kind": "FunctionDef",
-          "line": 110,
-          "end_line": 118
+          "line": 127,
+          "end_line": 135
         },
         {
           "name": "test_grading_does_not_import_the_product_under_test",
           "kind": "FunctionDef",
-          "line": 120,
-          "end_line": 136
+          "line": 137,
+          "end_line": 153
         },
         {
           "name": "test_candidate_changed_during_grading_cannot_keep_a_pass",
           "kind": "FunctionDef",
-          "line": 138,
-          "end_line": 146
+          "line": 155,
+          "end_line": 163
         },
         {
           "name": "test_changed_prepared_prompt_is_not_the_same_trial",
           "kind": "FunctionDef",
-          "line": 148,
-          "end_line": 152
+          "line": 165,
+          "end_line": 169
         },
         {
           "name": "test_bytecode_cache_cannot_replace_current_source",
           "kind": "FunctionDef",
-          "line": 154,
-          "end_line": 165
+          "line": 171,
+          "end_line": 182
         }
       ],
       "trailing_newline": true,

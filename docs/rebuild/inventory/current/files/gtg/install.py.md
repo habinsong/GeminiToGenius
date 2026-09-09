@@ -1,8 +1,8 @@
 # `gtg/install.py`
 
 - 형식: `100644`
-- 바이트: 11431
-- SHA-256: `9d349350a5376ace98eea0dbaeed86f7034a45bbfa260adf94b724563714b5e7`
+- 바이트: 12833
+- SHA-256: `c796e30104f621bc3fdcea5a141f1c84f68e5867c2b73c455447a7d150e90ce8`
 - 인코딩: `utf-8`
 
 ```
@@ -16,6 +16,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import subprocess
 import tempfile
 import uuid
 
@@ -67,6 +68,31 @@ def lock(root: Path):
             fcntl.flock(stream, fcntl.LOCK_UN)
 
 
+def register(platform: str, target: Path) -> dict | None:
+    """Antigravity CLI는 파일을 놓아 두는 것만으로 플러그인을 읽지 않습니다.
+
+    `agy plugin install`로 가져오기 목록에 올려야 스킬과 훅이 동작합니다. 실제 확인
+    결과, 등록 전에는 `agy plugin list`가 비어 있고 훅도 발행되지 않았습니다.
+    `agy`가 없으면 실패로 보지 않고 사용자가 할 명령을 알려 줍니다.
+    """
+    if platform != "antigravity-cli":
+        return None
+    command = shutil.which("agy")
+    if command is None:
+        return {"registered": False, "reason": "agy 실행 파일을 찾지 못했습니다.",
+                "manual_command": f"agy plugin install {target}"}
+    try:
+        done = subprocess.run([command, "plugin", "install", str(target)],
+                              capture_output=True, text=True, timeout=120)
+    except (OSError, subprocess.SubprocessError) as error:
+        return {"registered": False, "reason": type(error).__name__,
+                "manual_command": f"agy plugin install {target}"}
+    if done.returncode != 0:
+        return {"registered": False, "reason": (done.stderr or done.stdout).strip()[:200],
+                "manual_command": f"agy plugin install {target}"}
+    return {"registered": True}
+
+
 def install(source: Path, root: Path, platform: str, scope: str) -> dict:
     root = root.absolute()
     target = destination(root, platform, scope)
@@ -105,7 +131,8 @@ def install(source: Path, root: Path, platform: str, scope: str) -> dict:
             if stage.exists() and not journal.path.exists():
                 shutil.rmtree(stage)
         return {**report, "target": str(target), "backup": str(backup) if backup else None,
-                "legacy_backup": str(legacy_backup) if legacy_backup else None, "recovered_transaction": recovered}
+                "legacy_backup": str(legacy_backup) if legacy_backup else None,
+                "recovered_transaction": recovered, "host_registration": register(platform, target)}
 
 
 def uninstall(root: Path, platform: str, scope: str) -> dict:

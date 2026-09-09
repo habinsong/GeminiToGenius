@@ -1,18 +1,20 @@
 # `tests/test_antigravity_cli.py`
 
 - 형식: `100644`
-- 바이트: 6820
-- SHA-256: `48c86ea42ec3744648016204117873d2be2760c1ef6c7aa3f0fbc99c869c71be`
+- 바이트: 8378
+- SHA-256: `c0112eff4e9ba41b23b59a9ecbe0aed0cdbe9ffc367c230f4c05b7c4ccc3c7e8`
 - 인코딩: `utf-8`
 
 ```
 """Antigravity CLI 플러그인 경로와 훅 계약을 실제 파일·실행으로 검사합니다."""
 
 import json
+import os
 from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+import unittest.mock
 
 from gtg.hooks import handle
 from gtg.install import destination, detected, hosts_for, install
@@ -37,6 +39,30 @@ class AntigravityCliPackageTests(unittest.TestCase):
     def test_workspace_scope_is_rejected_until_verified(self):
         with self.assertRaises(ValueError):
             destination(self.root, "antigravity-cli", "workspace")
+
+    def test_cli_install_registers_the_plugin_with_the_host(self):
+        """파일만 놓아 두면 agy가 플러그인을 읽지 않습니다. 등록 명령까지 실행해야 합니다."""
+        fake = self.root / "bin"
+        fake.mkdir()
+        log = self.root / "agy-calls.log"
+        (fake / "agy").write_text(f'#!/bin/sh\necho "$@" >> "{log}"\nexit 0\n', encoding="utf-8")
+        (fake / "agy").chmod(0o755)
+        with unittest.mock.patch.dict(os.environ, {"PATH": f"{fake}:{os.environ['PATH']}"}):
+            report = install(ROOT, self.root, "antigravity-cli", "global")
+        self.assertEqual(report["host_registration"], {"registered": True})
+        target = destination(self.root, "antigravity-cli", "global")
+        self.assertEqual(log.read_text(encoding="utf-8").strip(), f"plugin install {target}")
+
+    def test_missing_host_binary_reports_the_manual_command_instead_of_failing(self):
+        with unittest.mock.patch("gtg.install.shutil.which", return_value=None):
+            report = install(ROOT, self.root, "antigravity-cli", "global")
+        self.assertTrue(report["ok"], "등록 도구가 없다고 설치가 실패하지 않습니다.")
+        self.assertFalse(report["host_registration"]["registered"])
+        self.assertIn("agy plugin install", report["host_registration"]["manual_command"])
+
+    def test_other_hosts_do_not_run_a_registration_command(self):
+        report = install(ROOT, self.root, "antigravity", "global")
+        self.assertIsNone(report["host_registration"])
 
     def test_package_uses_plugin_layout_and_executes_both_hooks(self):
         stage = self.root / "stage"
