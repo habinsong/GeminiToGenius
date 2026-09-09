@@ -301,10 +301,10 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 4604,
-      "sha256": "c1b13f3e1c50e10d39f2acaa661cd0c5d24853ec2ce24efd5238a8f343f2ca1c",
+      "bytes": 4802,
+      "sha256": "fb25d68903f2b2796c57d5e7565864e3fb32e1aa815e3d146c9ebd5a22361b71",
       "encoding": "utf-8",
-      "lines": 45,
+      "lines": 46,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/current-work.md.md"
@@ -323,8 +323,8 @@
     {
       "path": "docs/rebuild/plan/architecture.md",
       "mode": "100644",
-      "bytes": 9487,
-      "sha256": "ea586ab96d1b1e67e7b0e16da21e003bdcd47e365de5992815fd5f61b94f2590",
+      "bytes": 9535,
+      "sha256": "9f4b0aaec0036bfa563c1b583502571133733b62f1ffd152e2f8b4c62e44064c",
       "encoding": "utf-8",
       "lines": 84,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 65932,
-      "sha256": "b8506d3def06db8ee979cdf6001407b1f2aeae631b3541851c5d52888bc8265f",
+      "bytes": 66834,
+      "sha256": "4e88ad02527fdd5f13b1a340bf6572d5d58c058e78bcb188f7d9af7e96a3700f",
       "encoding": "utf-8",
-      "lines": 495,
+      "lines": 499,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -2104,6 +2104,17 @@
       ],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py.md"
+    },
+    {
+      "path": "docs/rebuild/validation/2026-09-09-reboot-recovery/README.md",
+      "mode": "100644",
+      "bytes": 5418,
+      "sha256": "2896acbc4cfed0d13676e48b39051964b0f834b2645dadf6863df6783d1ff6aa",
+      "encoding": "utf-8",
+      "lines": 79,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/rebuild/validation/2026-09-09-reboot-recovery/README.md.md"
     },
     {
       "path": "docs/styles.css",
@@ -3882,10 +3893,10 @@
     {
       "path": "gtg/runner.py",
       "mode": "100644",
-      "bytes": 5779,
-      "sha256": "d81d5f03c54e2c4534e85aa8605a6c04f7b86a5878c5c3130a45d2567c3e5d25",
+      "bytes": 6257,
+      "sha256": "0451c0204c5ef4dceeddcc215575e0407bf42ba99683ad70cf075e7011ec0557",
       "encoding": "utf-8",
-      "lines": 139,
+      "lines": 145,
       "symbols": [
         {
           "name": "CommandCancelled",
@@ -3903,25 +3914,25 @@
           "name": "group_alive",
           "kind": "FunctionDef",
           "line": 38,
-          "end_line": 45
+          "end_line": 48
         },
         {
           "name": "terminate",
           "kind": "FunctionDef",
-          "line": 48,
-          "end_line": 56
+          "line": 51,
+          "end_line": 60
         },
         {
           "name": "execute",
           "kind": "FunctionDef",
-          "line": 59,
-          "end_line": 108
+          "line": 63,
+          "end_line": 114
         },
         {
           "name": "status",
           "kind": "FunctionDef",
-          "line": 111,
-          "end_line": 139
+          "line": 117,
+          "end_line": 145
         },
         {
           "name": "__init__",
@@ -4116,70 +4127,112 @@
     {
       "path": "gtg/store.py",
       "mode": "100644",
-      "bytes": 6536,
-      "sha256": "46b0c791ec7388da4f5986366d919d423f2436a1f333dac30ef36e01dc53de2e",
+      "bytes": 9855,
+      "sha256": "9403bec019e32b1e2ebb481acb635ac48e0be3d596481dffc1175d674c2a0b37",
       "encoding": "utf-8",
-      "lines": 132,
+      "lines": 218,
       "symbols": [
+        {
+          "name": "lock_path",
+          "kind": "FunctionDef",
+          "line": 26,
+          "end_line": 27
+        },
+        {
+          "name": "hold",
+          "kind": "FunctionDef",
+          "line": 30,
+          "end_line": 44
+        },
+        {
+          "name": "running",
+          "kind": "FunctionDef",
+          "line": 47,
+          "end_line": 66
+        },
+        {
+          "name": "pid_alive",
+          "kind": "FunctionDef",
+          "line": 69,
+          "end_line": 78
+        },
         {
           "name": "Store",
           "kind": "ClassDef",
-          "line": 17,
-          "end_line": 132
+          "line": 81,
+          "end_line": 218
         },
         {
           "name": "__init__",
           "kind": "FunctionDef",
-          "line": 18,
-          "end_line": 56
+          "line": 82,
+          "end_line": 121
         },
         {
           "name": "close",
           "kind": "FunctionDef",
-          "line": 58,
-          "end_line": 59
+          "line": 123,
+          "end_line": 126
+        },
+        {
+          "name": "release",
+          "kind": "FunctionDef",
+          "line": 128,
+          "end_line": 133
+        },
+        {
+          "name": "inherited",
+          "kind": "FunctionDef",
+          "line": 135,
+          "end_line": 138
         },
         {
           "name": "create",
           "kind": "FunctionDef",
-          "line": 61,
-          "end_line": 72
+          "line": 140,
+          "end_line": 151
         },
         {
           "name": "task",
           "kind": "FunctionDef",
-          "line": 74,
-          "end_line": 78
+          "line": 153,
+          "end_line": 157
         },
         {
           "name": "begin",
           "kind": "FunctionDef",
-          "line": 80,
-          "end_line": 91
+          "line": 159,
+          "end_line": 174
         },
         {
           "name": "finish",
           "kind": "FunctionDef",
-          "line": 93,
-          "end_line": 98
+          "line": 176,
+          "end_line": 182
         },
         {
           "name": "attach_process",
           "kind": "FunctionDef",
-          "line": 100,
-          "end_line": 102
+          "line": 184,
+          "end_line": 186
         },
         {
           "name": "latest",
           "kind": "FunctionDef",
-          "line": 104,
-          "end_line": 109
+          "line": 188,
+          "end_line": 193
+        },
+        {
+          "name": "alive",
+          "kind": "FunctionDef",
+          "line": 195,
+          "end_line": 204
         },
         {
           "name": "recover",
           "kind": "FunctionDef",
-          "line": 111,
-          "end_line": 132
+          "line": 206,
+          "end_line": 218
         }
       ],
       "trailing_newline": true,
@@ -6837,136 +6890,154 @@
     {
       "path": "tests/test_runtime.py",
       "mode": "100644",
-      "bytes": 11787,
-      "sha256": "a3117658eb56419bcd2a546199ccb7c7f461ebce5dfdb8503f4d1de062e86a3a",
+      "bytes": 14255,
+      "sha256": "90801837cb59ddb038d434fbec85976dbdef917e0f363b5f270a1b2ba28dd7b0",
       "encoding": "utf-8",
-      "lines": 229,
+      "lines": 269,
       "symbols": [
         {
           "name": "RuntimeTests",
           "kind": "ClassDef",
-          "line": 21,
-          "end_line": 225
+          "line": 22,
+          "end_line": 265
         },
         {
           "name": "setUp",
           "kind": "FunctionDef",
-          "line": 22,
-          "end_line": 35
+          "line": 23,
+          "end_line": 36
         },
         {
           "name": "start",
           "kind": "FunctionDef",
-          "line": 37,
-          "end_line": 38
+          "line": 38,
+          "end_line": 39
         },
         {
           "name": "test_pass_and_changed_code_invalidates_prior_evidence",
           "kind": "FunctionDef",
-          "line": 40,
-          "end_line": 48
+          "line": 41,
+          "end_line": 49
         },
         {
           "name": "test_subsequent_failed_check_overrides_success",
           "kind": "FunctionDef",
-          "line": 50,
-          "end_line": 55
+          "line": 51,
+          "end_line": 56
         },
         {
           "name": "test_command_cannot_change_watched_code_and_claim_pass",
           "kind": "FunctionDef",
-          "line": 57,
-          "end_line": 61
+          "line": 58,
+          "end_line": 62
         },
         {
           "name": "test_timeout_and_missing_executable_are_not_success",
           "kind": "FunctionDef",
-          "line": 63,
-          "end_line": 69
+          "line": 64,
+          "end_line": 70
         },
         {
           "name": "test_restart_and_task_isolation",
           "kind": "FunctionDef",
-          "line": 71,
-          "end_line": 77
+          "line": 72,
+          "end_line": 78
         },
         {
           "name": "test_parallel_execution_is_rejected_and_running_is_not_complete",
           "kind": "FunctionDef",
-          "line": 79,
-          "end_line": 89
+          "line": 80,
+          "end_line": 90
         },
         {
           "name": "test_dead_owner_recovery_keeps_task_unverified",
           "kind": "FunctionDef",
-          "line": 91,
-          "end_line": 97
+          "line": 92,
+          "end_line": 98
+        },
+        {
+          "name": "owner_leaving_a_child",
+          "kind": "FunctionDef",
+          "line": 100,
+          "end_line": 111
         },
         {
           "name": "test_recovery_rejects_a_still_running_child",
           "kind": "FunctionDef",
-          "line": 99,
-          "end_line": 111
+          "line": 113,
+          "end_line": 127
+        },
+        {
+          "name": "test_recovery_works_after_the_owner_pid_is_reused",
+          "kind": "FunctionDef",
+          "line": 129,
+          "end_line": 139
+        },
+        {
+          "name": "test_reused_pid_without_a_lock_record_does_not_crash",
+          "kind": "FunctionDef",
+          "line": 141,
+          "end_line": 151
         },
         {
           "name": "test_fixed_check_spec_cannot_be_replaced_by_caller",
           "kind": "FunctionDef",
-          "line": 113,
-          "end_line": 118
+          "line": 153,
+          "end_line": 158
         },
         {
           "name": "test_multiple_criteria_all_need_evidence",
           "kind": "FunctionDef",
-          "line": 120,
-          "end_line": 128
+          "line": 160,
+          "end_line": 168
         },
         {
           "name": "test_directory_add_delete_mode_and_missing_file_change_fingerprint",
           "kind": "FunctionDef",
-          "line": 130,
-          "end_line": 142
+          "line": 170,
+          "end_line": 182
         },
         {
           "name": "test_private_contents_not_read_and_symlinks_rejected",
           "kind": "FunctionDef",
-          "line": 144,
-          "end_line": 153
+          "line": 184,
+          "end_line": 193
         },
         {
           "name": "test_invalid_spec_inputs_are_rejected",
           "kind": "FunctionDef",
-          "line": 155,
-          "end_line": 163
+          "line": 195,
+          "end_line": 203
         },
         {
           "name": "test_raw_output_is_not_persisted",
           "kind": "FunctionDef",
-          "line": 165,
-          "end_line": 170
+          "line": 205,
+          "end_line": 210
         },
         {
           "name": "test_cli_runs_without_provider_and_returns_failure",
           "kind": "FunctionDef",
-          "line": 172,
-          "end_line": 185
+          "line": 212,
+          "end_line": 225
         },
         {
           "name": "test_start_from_another_directory_uses_the_explicit_workspace",
           "kind": "FunctionDef",
-          "line": 187,
-          "end_line": 200
+          "line": 227,
+          "end_line": 240
         },
         {
           "name": "test_shared_watch_is_read_once_per_status_but_never_cached_across_queries",
           "kind": "FunctionDef",
-          "line": 202,
-          "end_line": 213
+          "line": 242,
+          "end_line": 253
         },
         {
           "name": "test_targeted_success_is_distinct_from_whole_task_completion",
           "kind": "FunctionDef",
-          "line": 215,
-          "end_line": 225
+          "line": 255,
+          "end_line": 265
         }
       ],
       "trailing_newline": true,

@@ -1,8 +1,8 @@
 # `docs/rebuild/plan/architecture.md`
 
 - 형식: `100644`
-- 바이트: 9487
-- SHA-256: `ea586ab96d1b1e67e7b0e16da21e003bdcd47e365de5992815fd5f61b94f2590`
+- 바이트: 9535
+- SHA-256: `9f4b0aaec0036bfa563c1b583502571133733b62f1ffd152e2f8b4c62e44064c`
 - 인코딩: `utf-8`
 
 ```
@@ -37,7 +37,7 @@ v2.15.0 프로필은 대부분 프롬프트였습니다. 목표·진행·실패�
 | --- | --- |
 | `gtg/platforms.py` | 호스트별 훅 이벤트·설치 경로·감지 표식의 단일 정의 |
 | `gtg/spec.py` | 작업 계약 검증, 검증 대상의 지문과 범위 예산 |
-| `gtg/store.py` | 작업·실행·메모의 SQLite 상태 |
+| `gtg/store.py` | 작업·실행·메모의 SQLite 상태와 실행 중 여부를 알리는 파일 잠금 |
 | `gtg/runner.py` | 검증 명령 실행과 현재 상태 조회 |
 | `gtg/coverage.py` | 검사가 실제로 실행한 코드 파일 관찰 |
 | `gtg/certificate.py` | 완료 증명서 생성과 상태 DB 없는 재실행 |

@@ -1,8 +1,8 @@
 # `gtg/runner.py`
 
 - 형식: `100644`
-- 바이트: 5779
-- SHA-256: `d81d5f03c54e2c4534e85aa8605a6c04f7b86a5878c5c3130a45d2567c3e5d25`
+- 바이트: 6257
+- SHA-256: `0451c0204c5ef4dceeddcc215575e0407bf42ba99683ad70cf075e7011ec0557`
 - 인코딩: `utf-8`
 
 ```
@@ -50,6 +50,9 @@ def group_alive(process: subprocess.Popen) -> bool:
         os.killpg(process.pid, 0)
     except ProcessLookupError:
         return False
+    except PermissionError:
+        # 재사용된 PID가 다른 사용자의 프로세스를 가리킵니다. 우리가 만든 그룹이 아닙니다.
+        return False
     return True
 
 
@@ -57,7 +60,8 @@ def terminate(process: subprocess.Popen):
     if os.name == "posix":
         try:
             os.killpg(process.pid, signal.SIGKILL)
-        except ProcessLookupError:
+        except (ProcessLookupError, PermissionError):
+            # 남의 프로세스 그룹은 종료하지 않습니다.
             pass
     else:
         process.kill()
@@ -82,7 +86,9 @@ def execute(store: Store, task_id: str, check_id: str) -> dict:
             # 출력은 호스트에 바로 전달하며 상태 DB에 원문을 보관하지 않습니다.
             process = subprocess.Popen(check["argv"], cwd=workspace, stdin=subprocess.DEVNULL,
                                        stdout=sys.stderr, stderr=sys.stderr, env=session.environment(),
-                                       start_new_session=os.name == "posix")
+                                       start_new_session=os.name == "posix",
+                                       # 실행 잠금을 물려줍니다. 소유자가 죽어도 검사가 살아 있으면 드러납니다.
+                                       pass_fds=store.inherited(run_id))
             store.attach_process(run_id, process.pid)
             try:
                 code = process.wait(timeout=check.get("timeout_seconds", 120))

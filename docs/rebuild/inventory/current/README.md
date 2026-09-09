@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 276개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 277개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -33,9 +33,9 @@
 | `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 4604 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 4802 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
-| `docs/rebuild/plan/architecture.md` | 9487 | [원문](files/docs/rebuild/plan/architecture.md.md) |
+| `docs/rebuild/plan/architecture.md` | 9535 | [원문](files/docs/rebuild/plan/architecture.md.md) |
 | `docs/rebuild/plan/completion-audit.md` | 5066 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
 | `docs/rebuild/plan/roadmap.md` | 4540 | [원문](files/docs/rebuild/plan/roadmap.md.md) |
 | `docs/rebuild/plan/verification.md` | 4104 | [원문](files/docs/rebuild/plan/verification.md.md) |
@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 44562 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 65932 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 66834 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -168,6 +168,7 @@
 | `docs/rebuild/validation/2026-09-09-real-comparison/grade-claude-code.json` | 2097 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/grade-claude-code.json.md) |
 | `docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json` | 5588 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json.md) |
 | `docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py` | 159 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py.md) |
+| `docs/rebuild/validation/2026-09-09-reboot-recovery/README.md` | 5418 | [원문](files/docs/rebuild/validation/2026-09-09-reboot-recovery/README.md.md) |
 | `docs/styles.css` | 12916 | [원문](files/docs/styles.css.md) |
 | `evals/README.md` | 18033 | [원문](files/evals/README.md.md) |
 | `evals/__init__.py` | 74 | [원문](files/evals/__init__.py.md) |
@@ -231,10 +232,10 @@
 | `gtg/legacy.py` | 2362 | [원문](files/gtg/legacy.py.md) |
 | `gtg/package.py` | 13292 | [원문](files/gtg/package.py.md) |
 | `gtg/platforms.py` | 1801 | [원문](files/gtg/platforms.py.md) |
-| `gtg/runner.py` | 5779 | [원문](files/gtg/runner.py.md) |
+| `gtg/runner.py` | 6257 | [원문](files/gtg/runner.py.md) |
 | `gtg/sessions.py` | 8952 | [원문](files/gtg/sessions.py.md) |
 | `gtg/spec.py` | 9183 | [원문](files/gtg/spec.py.md) |
-| `gtg/store.py` | 6536 | [원문](files/gtg/store.py.md) |
+| `gtg/store.py` | 9855 | [원문](files/gtg/store.py.md) |
 | `profile/rules/gtg.md` | 1714 | [원문](files/profile/rules/gtg.md.md) |
 | `profile/skills/gtg-build/SKILL.md` | 3636 | [원문](files/profile/skills/gtg-build/SKILL.md.md) |
 | `profile/skills/gtg-build/references/code-intake.md` | 2983 | [원문](files/profile/skills/gtg-build/references/code-intake.md.md) |
@@ -274,7 +275,7 @@
 | `tests/test_refactor_case.py` | 3994 | [원문](files/tests/test_refactor_case.py.md) |
 | `tests/test_repository_noise.py` | 3033 | [원문](files/tests/test_repository_noise.py.md) |
 | `tests/test_resume_budget.py` | 6141 | [원문](files/tests/test_resume_budget.py.md) |
-| `tests/test_runtime.py` | 11787 | [원문](files/tests/test_runtime.py.md) |
+| `tests/test_runtime.py` | 14255 | [원문](files/tests/test_runtime.py.md) |
 | `tests/test_scenario.py` | 3646 | [원문](files/tests/test_scenario.py.md) |
 | `tests/test_session_start.py` | 4328 | [원문](files/tests/test_session_start.py.md) |
 | `tests/test_task_handoff.py` | 12227 | [원문](files/tests/test_task_handoff.py.md) |

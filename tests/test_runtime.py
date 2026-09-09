@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
 from unittest.mock import patch
 
@@ -96,18 +97,57 @@ class RuntimeTests(unittest.TestCase):
         self.assertFalse(status(self.store, task)["verified"])
         self.assertEqual(execute(self.store, task, "value")["status"], "passed")
 
+    def owner_leaving_a_child(self, task: str) -> int:
+        """검사를 시작한 프로세스는 끝났지만 검사 프로세스는 남아 있는 상태를 만듭니다."""
+        script = ("import subprocess, sys; from pathlib import Path; from gtg.store import Store\n"
+                  "s = Store(Path(sys.argv[1])); r = s.begin(sys.argv[2], 'value')\n"
+                  "child = subprocess.Popen([sys.executable, '-c', 'import time; time.sleep(30)'],\n"
+                  "                         pass_fds=s.inherited(r), start_new_session=True,\n"
+                  "                         stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,\n"
+                  "                         stderr=subprocess.DEVNULL)\n"
+                  "print(child.pid)\n")
+        done = subprocess.run([sys.executable, "-c", script, str(self.path), task],
+                              cwd=ROOT, check=True, capture_output=True, text=True)
+        return int(done.stdout.strip())
+
     def test_recovery_rejects_a_still_running_child(self):
         task = self.start()
-        child = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(10)"])
+        child_pid = self.owner_leaving_a_child(task)
         try:
-            script = ("from pathlib import Path; from gtg.store import Store; import sys; "
-                      "s=Store(Path(sys.argv[1])); r=s.begin(sys.argv[2], 'value'); s.attach_process(r, int(sys.argv[3]))")
-            subprocess.run([sys.executable, "-c", script, str(self.path), task, str(child.pid)], cwd=ROOT, check=True)
-            with self.assertRaisesRegex(ValueError, "하위 프로세스"):
+            with self.assertRaisesRegex(ValueError, "살아 있어"):
                 self.store.recover(task)
         finally:
-            child.kill()
-            child.wait()
+            os.kill(child_pid, 9)
+        for _ in range(100):
+            try:
+                os.kill(child_pid, 0)
+            except OSError:
+                break
+            time.sleep(0.02)
+        self.assertEqual(self.store.recover(task), 1)
+
+    def test_recovery_works_after_the_owner_pid_is_reused(self):
+        """재부팅 뒤 PID가 다른 프로세스에 재사용된 상태에서도 복구할 수 있어야 합니다."""
+        task = self.start()
+        script = ("from pathlib import Path; from gtg.store import Store; import sys; "
+                  "Store(Path(sys.argv[1])).begin(sys.argv[2], 'value')")
+        subprocess.run([sys.executable, "-c", script, str(self.path), task], cwd=ROOT, check=True)
+        # PID 1은 항상 살아 있고 다른 사용자 소유입니다. 재사용된 PID가 가리킬 수 있는 값입니다.
+        with self.store.connection:
+            self.store.connection.execute("UPDATE runs SET owner_pid = 1 WHERE finished IS NULL")
+        self.assertEqual(self.store.recover(task), 1, "PID 판단이 아니라 잠금으로 복구해야 합니다.")
+        self.assertEqual(execute(self.store, task, "value")["status"], "passed")
+
+    def test_reused_pid_without_a_lock_record_does_not_crash(self):
+        """잠금 기록이 없는 예전 실행에서도 다른 사용자의 PID를 오류로 흘리지 않습니다."""
+        task = self.start()
+        script = ("from pathlib import Path; from gtg.store import Store; import sys; "
+                  "Store(Path(sys.argv[1])).begin(sys.argv[2], 'value')")
+        subprocess.run([sys.executable, "-c", script, str(self.path), task], cwd=ROOT, check=True)
+        for stale in (self.path.parent / "runs").glob("*.lock"):
+            stale.unlink()
+        with self.store.connection:
+            self.store.connection.execute("UPDATE runs SET owner_pid = 1 WHERE finished IS NULL")
         self.assertEqual(self.store.recover(task), 1)
 
     def test_fixed_check_spec_cannot_be_replaced_by_caller(self):
