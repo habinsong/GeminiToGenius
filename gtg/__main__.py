@@ -30,7 +30,8 @@ def write_document(path: Path, document: dict):
     path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def main() -> int:
+def build_parser() -> argparse.ArgumentParser:
+    """CLI 계약을 한 곳에서 정의합니다. 문서 검사도 이 파서를 그대로 읽습니다."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", type=Path)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -86,7 +87,11 @@ def main() -> int:
         command.add_argument("--workspace", type=Path)
         if name == "pause":
             command.add_argument("--reason", required=True)
-    args = parser.parse_args()
+    return parser
+
+
+def main() -> int:
+    args = build_parser().parse_args()
     store = None
     try:
         # --workspace를 생략하면 현재 폴더를 씁니다. --state를 함께 주면 그 경로가 우선합니다.

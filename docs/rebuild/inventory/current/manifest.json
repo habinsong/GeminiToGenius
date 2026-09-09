@@ -301,10 +301,10 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 11993,
-      "sha256": "2999f391c8eb32b9383238952d989b069fea4f10ff3d64b82239fcf7b9c23b46",
+      "bytes": 12263,
+      "sha256": "800d8e49ce7a880ddbaa503cb620a70af3942e25bd86686b3c149faf7ebca2fc",
       "encoding": "utf-8",
-      "lines": 98,
+      "lines": 102,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/current-work.md.md"
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 44672,
-      "sha256": "f5f8bb93d6595ae5ef9d5b7ff367fbef7596c701af48a9261e37040439f0a319",
+      "bytes": 45773,
+      "sha256": "e2566717c49ff1ea40f2c307bc69b616ef5b1c3da0c3fddd4004067445ff9a55",
       "encoding": "utf-8",
-      "lines": 304,
+      "lines": 313,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -2814,10 +2814,10 @@
     {
       "path": "gtg/__main__.py",
       "mode": "100644",
-      "bytes": 10866,
-      "sha256": "f57951bfe23bfa630223b01919d9d76702a9945d5c8e9c67c2fe5bdf2f436a87",
+      "bytes": 11051,
+      "sha256": "d812c54f9d80a6c09653ffa66fde9e0984a16ec26e0490fd9e5de7a9939904ec",
       "encoding": "utf-8",
-      "lines": 186,
+      "lines": 191,
       "symbols": [
         {
           "name": "read_document",
@@ -2832,10 +2832,16 @@
           "end_line": 30
         },
         {
-          "name": "main",
+          "name": "build_parser",
           "kind": "FunctionDef",
           "line": 33,
-          "end_line": 182
+          "end_line": 90
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 93,
+          "end_line": 187
         }
       ],
       "trailing_newline": true,
@@ -3735,10 +3741,10 @@
     {
       "path": "profile/skills/gtg-build/references/task-contract.md",
       "mode": "100644",
-      "bytes": 12404,
-      "sha256": "a066f1fd0f7252b070a0d541c4f59dc1634006b44df2cb14f3a729bf0518a3bc",
+      "bytes": 12704,
+      "sha256": "6719c5f7735642bba3a3b8a23e0212f6c10a1458a10138db03a9ad2a87d1cac4",
       "encoding": "utf-8",
-      "lines": 110,
+      "lines": 118,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/profile/skills/gtg-build/references/task-contract.md.md"
@@ -4493,6 +4499,66 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_coverage.py.md"
+    },
+    {
+      "path": "tests/test_doc_contract.py",
+      "mode": "100644",
+      "bytes": 4245,
+      "sha256": "4a581926847879ff2c10dec83a0822302836856f04b9e6a9c69ef3324263b1bb",
+      "encoding": "utf-8",
+      "lines": 98,
+      "symbols": [
+        {
+          "name": "parser_contract",
+          "kind": "FunctionDef",
+          "line": 20,
+          "end_line": 26
+        },
+        {
+          "name": "documented_calls",
+          "kind": "FunctionDef",
+          "line": 29,
+          "end_line": 43
+        },
+        {
+          "name": "DocumentedCommandTests",
+          "kind": "ClassDef",
+          "line": 46,
+          "end_line": 94
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 47,
+          "end_line": 48
+        },
+        {
+          "name": "test_documentation_actually_contains_runner_examples",
+          "kind": "FunctionDef",
+          "line": 50,
+          "end_line": 52
+        },
+        {
+          "name": "test_every_documented_command_and_flag_exists",
+          "kind": "FunctionDef",
+          "line": 54,
+          "end_line": 73
+        },
+        {
+          "name": "test_a_stale_flag_is_detected",
+          "kind": "FunctionDef",
+          "line": 75,
+          "end_line": 80
+        },
+        {
+          "name": "test_every_command_is_documented_somewhere",
+          "kind": "FunctionDef",
+          "line": 82,
+          "end_line": 94
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_doc_contract.py.md"
     },
     {
       "path": "tests/test_eval_export.py",

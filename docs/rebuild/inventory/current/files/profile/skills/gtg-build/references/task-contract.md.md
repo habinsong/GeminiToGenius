@@ -1,8 +1,8 @@
 # `profile/skills/gtg-build/references/task-contract.md`
 
 - 형식: `100644`
-- 바이트: 12404
-- SHA-256: `a066f1fd0f7252b070a0d541c4f59dc1634006b44df2cb14f3a729bf0518a3bc`
+- 바이트: 12704
+- SHA-256: `6719c5f7735642bba3a3b8a23e0212f6c10a1458a10138db03a9ad2a87d1cac4`
 - 인코딩: `utf-8`
 
 ````
@@ -76,7 +76,15 @@ python3 "$GTG_RUNNER" attach TASK_ID --workspace . --platform antigravity --sess
 
 호스트에 연결하는 `start`·`attach`는 해당 작업공간의 `.gtg/state.sqlite3`를 사용합니다. 다른 위치의 상태 DB는 수동 조회·검증용이며 호스트 훅이 자동 발견한다고 가정하지 않습니다.
 
-필수 질문·사용자 중단·외부 한도에는 `pause --platform ... --session ... --reason ...`을 사용합니다. 사용자가 재개를 지시하면 `resume --platform ... --session ...`으로 연결을 재개합니다. 검사 소유 프로세스가 사라진 경우에만 `recover TASK_ID`로 중단 상태를 복구합니다.
+필수 질문·사용자 중단·외부 한도에는 `pause`를 사용합니다. 사용자가 재개를 지시하면 `resume`으로 연결을 재개합니다. 검사 소유 프로세스가 사라진 경우에만 `recover`로 중단 상태를 복구합니다.
+
+```bash
+python3 "$GTG_RUNNER" pause --platform antigravity --session ACTUAL_SESSION_ID --reason "사용자 확인을 기다립니다."
+python3 "$GTG_RUNNER" resume --platform antigravity --session ACTUAL_SESSION_ID
+python3 "$GTG_RUNNER" recover TASK_ID
+```
+
+실제 확인한 호스트 값과 세션 ID로 바꿔 실행합니다. 이 세 명령도 `--workspace`를 받습니다.
 
 상한에 도달하면 미완료 상태와 이유가 저장되며 이유에는 실제 예산 값이 들어갑니다. 여러 작업공간이 연결됐다면 가장 작은 예산을 따릅니다. 실행 중인 작업에 `resume`을 반복해도 재개 횟수는 초기화되지 않습니다. `status`의 `continuation`에서 중단 상태와 이유를 확인합니다. 검증 명령은 종료를 기다릴 수 있는 전경 명령으로 등록합니다. 남은 하위 프로세스가 있으면 성공으로 인정하지 않습니다.
 
