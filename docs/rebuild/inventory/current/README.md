@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 44562 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 61390 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 62163 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -258,7 +258,7 @@
 | `tests/test_eval_resume.py` | 3602 | [원문](files/tests/test_eval_resume.py.md) |
 | `tests/test_evals.py` | 7991 | [원문](files/tests/test_evals.py.md) |
 | `tests/test_execution_graded_case.py` | 2741 | [원문](files/tests/test_execution_graded_case.py.md) |
-| `tests/test_hook_concurrency.py` | 5349 | [원문](files/tests/test_hook_concurrency.py.md) |
+| `tests/test_hook_concurrency.py` | 8487 | [원문](files/tests/test_hook_concurrency.py.md) |
 | `tests/test_hook_resilience.py` | 3191 | [원문](files/tests/test_hook_resilience.py.md) |
 | `tests/test_hooks.py` | 11636 | [원문](files/tests/test_hooks.py.md) |
 | `tests/test_inspection.py` | 7715 | [원문](files/tests/test_inspection.py.md) |

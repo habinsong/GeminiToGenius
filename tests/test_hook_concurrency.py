@@ -112,3 +112,56 @@ class HookConcurrencyTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ConcurrentCommandTests(unittest.TestCase):
+    """사용자가 설치기를 두 번 누르거나 에이전트가 검증을 재시도할 수 있습니다."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.workspace = Path(self.temp.name).resolve() / "프로젝트 폴더"
+        self.workspace.mkdir()
+        (self.workspace / "src.py").write_text("VALUE = 1\n")
+
+    def test_simultaneous_installs_leave_one_valid_package(self):
+        from gtg.install import doctor
+
+        processes = [subprocess.Popen(["bash", str(ROOT / "scripts/install.sh"),
+                                       "--workspace", str(self.workspace)],
+                                      stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
+                     for _ in range(4)]
+        outcomes = []
+        for process in processes:
+            out, _ = process.communicate()
+            outcomes.append(json.loads(out))
+        succeeded = [item for item in outcomes if item.get("ok")]
+        refused = [item for item in outcomes
+                   if not item.get("ok") and "진행 중" in json.dumps(item, ensure_ascii=False)]
+        self.assertEqual(len(succeeded), 1, "동시 설치 중 하나만 성공해야 합니다.")
+        self.assertEqual(len(refused), 3, "나머지는 잠금 이유와 함께 거부되어야 합니다.")
+        self.assertTrue(doctor(self.workspace, "antigravity", "workspace")["ok"],
+                        "경쟁 뒤에도 설치물은 검증을 통과해야 합니다.")
+
+    def test_second_verify_is_refused_with_an_actionable_reason(self):
+        package = install(ROOT, self.workspace, "antigravity", "workspace")
+        runner = str(Path(package["target"]) / "run.py")
+        spec = {"schema_version": 1, "goal": "동시 검증을 확인합니다.", "checks": [
+            {"id": "slow", "criterion": "오래 걸리는 검사입니다.",
+             "argv": [sys.executable, "-c", "import time; time.sleep(3)"],
+             "watch": ["src.py"], "timeout_seconds": 30}]}
+        (self.workspace / "task.json").write_text(json.dumps(spec))
+        started = subprocess.run([sys.executable, runner, "start", "--spec", "task.json", "--workspace", "."],
+                                 cwd=self.workspace, capture_output=True, text=True)
+        task = json.loads(started.stdout)["task_id"]
+        first = subprocess.Popen([sys.executable, runner, "verify", task], cwd=self.workspace,
+                                 stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
+        try:
+            time.sleep(0.6)
+            second = subprocess.run([sys.executable, runner, "verify", task], cwd=self.workspace,
+                                    capture_output=True, text=True)
+            self.assertEqual(second.returncode, 1)
+            self.assertIn("이미 실행 중인 검사", json.loads(second.stdout)["error"])
+        finally:
+            out, _ = first.communicate()
+        self.assertTrue(json.loads(out)["verified"], "먼저 시작한 검증은 정상적으로 끝나야 합니다.")

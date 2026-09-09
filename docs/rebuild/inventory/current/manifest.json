@@ -302,7 +302,7 @@
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
       "bytes": 4570,
-      "sha256": "2ee88ec866935678a7395cd4f90a580c990b4635249e670a7a5e3ee518c4acba",
+      "sha256": "0f5ec897f6ceff426aaf03ecad06fd33fddd0f4a8cd3a30f6dc4403f25f68a60",
       "encoding": "utf-8",
       "lines": 45,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 61390,
-      "sha256": "786315d21ce6cc320d8148926347f150b8ec2b6bc84cf445be6f49d8f9d41f4c",
+      "bytes": 62163,
+      "sha256": "c675f89fef74ed3c1acbdc995feee7b44007017844bd8bde0de1c9bdd4d16e50",
       "encoding": "utf-8",
-      "lines": 449,
+      "lines": 458,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -5517,16 +5517,22 @@
     {
       "path": "tests/test_hook_concurrency.py",
       "mode": "100644",
-      "bytes": 5349,
-      "sha256": "02fa36854b41f8d1f9334f5bb8e5cbfafb93bcc9449633c2d5ef2c4fa78bc11c",
+      "bytes": 8487,
+      "sha256": "501ccc6f16d90ba48453c9e28eb6931512fda9c35da76ccb60b80d76de9039c0",
       "encoding": "utf-8",
-      "lines": 114,
+      "lines": 167,
       "symbols": [
         {
           "name": "HookConcurrencyTests",
           "kind": "ClassDef",
           "line": 17,
           "end_line": 110
+        },
+        {
+          "name": "ConcurrentCommandTests",
+          "kind": "ClassDef",
+          "line": 117,
+          "end_line": 167
         },
         {
           "name": "setUp",
@@ -5575,6 +5581,24 @@
           "kind": "FunctionDef",
           "line": 97,
           "end_line": 110
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 120,
+          "end_line": 125
+        },
+        {
+          "name": "test_simultaneous_installs_leave_one_valid_package",
+          "kind": "FunctionDef",
+          "line": 127,
+          "end_line": 144
+        },
+        {
+          "name": "test_second_verify_is_refused_with_an_actionable_reason",
+          "kind": "FunctionDef",
+          "line": 146,
+          "end_line": 167
         }
       ],
       "trailing_newline": true,
