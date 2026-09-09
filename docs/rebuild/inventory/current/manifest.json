@@ -301,10 +301,10 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 12263,
-      "sha256": "800d8e49ce7a880ddbaa503cb620a70af3942e25bd86686b3c149faf7ebca2fc",
+      "bytes": 4372,
+      "sha256": "a44190f7bb5422760951543c6c8f3a4d22593e509d621abd6d4acb6a838649c6",
       "encoding": "utf-8",
-      "lines": 102,
+      "lines": 45,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/current-work.md.md"

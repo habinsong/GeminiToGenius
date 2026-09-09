@@ -33,7 +33,7 @@
 | `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
 | `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
-| `docs/rebuild/current-work.md` | 12263 | [원문](files/docs/rebuild/current-work.md.md) |
+| `docs/rebuild/current-work.md` | 4372 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
 | `docs/rebuild/plan/architecture.md` | 7669 | [원문](files/docs/rebuild/plan/architecture.md.md) |
 | `docs/rebuild/plan/completion-audit.md` | 5066 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
