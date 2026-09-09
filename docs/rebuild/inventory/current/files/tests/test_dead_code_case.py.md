@@ -1,8 +1,8 @@
 # `tests/test_dead_code_case.py`
 
 - 형식: `100644`
-- 바이트: 3156
-- SHA-256: `8e5e7c6d764046351a3bec00aaffd15657082f3f7b4103feb3e8d392df71f8bf`
+- 바이트: 4735
+- SHA-256: `e3c9315e1fe29586b253094e5f2e171d67e5e7e830e21587d02cc67fc1dfadbf`
 - 인코딩: `utf-8`
 
 ```
@@ -82,4 +82,32 @@ class DeadCodeCaseTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class CriteriaBoundaryTests(unittest.TestCase):
+    """범위 판정은 후보 코드를 실행하지 않고 준비 기준과 현재 파일만 봅니다."""
+
+    def test_scope_findings_reports_every_axis(self):
+        from evals.criteria import scope_findings
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            prepare("dead-code", root / "trial", "baseline", arm="reference", model="none")
+            workspace = root / "trial/workspace"
+            import json as _json
+            manifest = _json.loads((root / "trial/manifest.json").read_text())
+            case = case_by_id("dead-code")
+            found = scope_findings(case, manifest, workspace, manifest["baseline"],
+                                   manifest["baseline"])
+            self.assertEqual(found["changed"], [])
+            self.assertEqual(found["violations"], [])
+            self.assertEqual(found["untouched"], ["reporting.py"])
+            self.assertEqual(found["still_present"], ["reporting.py:legacy_csv_header"])
+            self.assertIsNone(found["executed"], "이 사례는 실행 관측을 요구하지 않습니다.")
+
+    def test_criteria_module_does_not_execute_candidate_code(self):
+        source = (Path(__file__).resolve().parents[1] / "evals/criteria.py").read_text(encoding="utf-8")
+        for forbidden in ("subprocess", "exec(", "eval(", "import_module"):
+            self.assertNotIn(forbidden, source,
+                             f"범위 판정은 후보를 실행하지 않아야 합니다: {forbidden}")
 ```

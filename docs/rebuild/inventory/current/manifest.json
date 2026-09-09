@@ -302,7 +302,7 @@
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
       "bytes": 4570,
-      "sha256": "1086f2a5524845ab3c22c0a5f612b4fabf39a40c6ddc96a170d2d09e94d69e3d",
+      "sha256": "2fbfdd01cdd319075b0de6f8d9ffb5e283434b08ecf2793d6d15fea83863c3fa",
       "encoding": "utf-8",
       "lines": 45,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 58252,
-      "sha256": "1ac8168e9323faf1a8b4f4252396a7f2f46dd0625ebf0929aa9afa8df5652825",
+      "bytes": 59331,
+      "sha256": "80b52b294ad2674ed5275e2ffa0c31d5f76e1b8fb2bcee5a40a36f319a156f3d",
       "encoding": "utf-8",
-      "lines": 418,
+      "lines": 429,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -2119,10 +2119,10 @@
     {
       "path": "evals/README.md",
       "mode": "100644",
-      "bytes": 17169,
-      "sha256": "7f80a6f05e9a5472bfb6fe4c397ba250ce73f067a46be875d6a62021e2f94b40",
+      "bytes": 17466,
+      "sha256": "51c2562c611a1e26bac64a42dcba3cda96d35f6fa5282a08572045b6ba00ac7f",
       "encoding": "utf-8",
-      "lines": 159,
+      "lines": 162,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/evals/README.md.md"
@@ -2184,6 +2184,60 @@
       ],
       "trailing_newline": true,
       "document": "files/evals/comparison.py.md"
+    },
+    {
+      "path": "evals/criteria.py",
+      "mode": "100644",
+      "bytes": 4138,
+      "sha256": "8180267a54d9d4e79036345c5f6221d67b55dc3e0ee36a53161a3ce8358f184d",
+      "encoding": "utf-8",
+      "lines": 92,
+      "symbols": [
+        {
+          "name": "defined_symbols",
+          "kind": "FunctionDef",
+          "line": 15,
+          "end_line": 27
+        },
+        {
+          "name": "protected_violations",
+          "kind": "FunctionDef",
+          "line": 30,
+          "end_line": 38
+        },
+        {
+          "name": "untouched_required",
+          "kind": "FunctionDef",
+          "line": 41,
+          "end_line": 44
+        },
+        {
+          "name": "symbols_still_present",
+          "kind": "FunctionDef",
+          "line": 47,
+          "end_line": 58
+        },
+        {
+          "name": "execution_observed",
+          "kind": "FunctionDef",
+          "line": 61,
+          "end_line": 68
+        },
+        {
+          "name": "git_findings",
+          "kind": "FunctionDef",
+          "line": 71,
+          "end_line": 76
+        },
+        {
+          "name": "scope_findings",
+          "kind": "FunctionDef",
+          "line": 79,
+          "end_line": 92
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/evals/criteria.py.md"
     },
     {
       "path": "evals/definitions.py",
@@ -2935,52 +2989,46 @@
     {
       "path": "evals/grading.py",
       "mode": "100644",
-      "bytes": 11136,
-      "sha256": "d9a97080d3c800526106b5d68036eb875a90128dac32170ba3fea83e457e8db2",
+      "bytes": 8845,
+      "sha256": "e3302a4585275306dfa805f5bbda503e521267586dc09d1b178d781ab19c0450",
       "encoding": "utf-8",
-      "lines": 217,
+      "lines": 170,
       "symbols": [
-        {
-          "name": "defined_symbols",
-          "kind": "FunctionDef",
-          "line": 22,
-          "end_line": 34
-        },
         {
           "name": "terminate",
           "kind": "FunctionDef",
-          "line": 37,
-          "end_line": 45
+          "line": 22,
+          "end_line": 30
         },
         {
           "name": "same_value",
           "kind": "FunctionDef",
-          "line": 48,
-          "end_line": 57
+          "line": 33,
+          "end_line": 42
         },
         {
           "name": "csv_rows",
           "kind": "FunctionDef",
-          "line": 60,
-          "end_line": 73
+          "line": 45,
+          "end_line": 58
         },
         {
           "name": "same_output",
           "kind": "FunctionDef",
-          "line": 76,
-          "end_line": 87
+          "line": 61,
+          "end_line": 72
         },
         {
           "name": "evaluate_function",
           "kind": "FunctionDef",
-          "line": 90,
-          "end_line": 126
+          "line": 75,
+          "end_line": 111
         },
         {
           "name": "grade",
           "kind": "FunctionDef",
-          "line": 129,
-          "end_line": 217
+          "line": 114,
+          "end_line": 170
         }
       ],
       "trailing_newline": true,
@@ -5001,10 +5049,10 @@
     {
       "path": "tests/test_dead_code_case.py",
       "mode": "100644",
-      "bytes": 3156,
-      "sha256": "8e5e7c6d764046351a3bec00aaffd15657082f3f7b4103feb3e8d392df71f8bf",
+      "bytes": 4735,
+      "sha256": "e3c9315e1fe29586b253094e5f2e171d67e5e7e830e21587d02cc67fc1dfadbf",
       "encoding": "utf-8",
-      "lines": 76,
+      "lines": 104,
       "symbols": [
         {
           "name": "drop",
@@ -5017,6 +5065,12 @@
           "kind": "ClassDef",
           "line": 20,
           "end_line": 72
+        },
+        {
+          "name": "CriteriaBoundaryTests",
+          "kind": "ClassDef",
+          "line": 79,
+          "end_line": 104
         },
         {
           "name": "setUp",
@@ -5071,6 +5125,18 @@
           "kind": "FunctionDef",
           "line": 69,
           "end_line": 72
+        },
+        {
+          "name": "test_scope_findings_reports_every_axis",
+          "kind": "FunctionDef",
+          "line": 82,
+          "end_line": 98
+        },
+        {
+          "name": "test_criteria_module_does_not_execute_candidate_code",
+          "kind": "FunctionDef",
+          "line": 100,
+          "end_line": 104
         }
       ],
       "trailing_newline": true,

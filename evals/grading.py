@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import ast
 import csv
 from datetime import datetime, timezone
 import io
@@ -16,22 +15,8 @@ import tempfile
 import uuid
 
 from .definitions import PROBE, case_by_id, definition_digest
-from .workspace import digest, environment_info, git_state, snapshot
-
-
-def defined_symbols(path: Path) -> set[str] | None:
-    """모듈 최상위에 정의된 이름입니다. 읽지 못하면 None입니다."""
-    try:
-        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
-    except (OSError, SyntaxError, ValueError):
-        return None
-    names = set()
-    for node in tree.body:
-        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
-            names.add(node.name)
-        elif isinstance(node, ast.Assign):
-            names.update(target.id for target in node.targets if isinstance(target, ast.Name))
-    return names
+from .criteria import defined_symbols, scope_findings
+from .workspace import digest, environment_info, snapshot
 
 
 def terminate(process: subprocess.Popen):
@@ -150,43 +135,11 @@ def grade(target: Path) -> dict:
     grading_changes = sorted(name for name in set(before) | set(current) if before.get(name) != current.get(name))
     if grading_changes:
         execution["error"] = "candidate_changed_during_grading"
-    baseline = manifest["baseline"]
-    changed = sorted(name for name in set(current) | set(baseline) if current.get(name) != baseline.get(name))
-    protected = set(baseline) - set(case["allowed_edits"])
-    violations = sorted(name for name in protected if current.get(name) != baseline.get(name))
-    if "allowed_new_files" in case:
-        violations.extend(sorted(set(current) - set(baseline) - set(case["allowed_new_files"])))
-    # 지워야 할 이름이 실제로 사라졌는지 확인합니다. 남아 있는 목록을 그대로 보고합니다.
-    still_present = None
-    if case.get("removed_symbols"):
-        still_present = []
-        for name, symbols in case["removed_symbols"].items():
-            defined = defined_symbols(workspace / name)
-            if defined is None:
-                still_present.append(name)
-                continue
-            still_present.extend(f"{name}:{symbol}" for symbol in symbols if symbol in defined)
-        still_present.sort()
-    # 동작이 그대로여야 하는 사례에서는 아무것도 하지 않아도 검사가 통과합니다.
-    # 실제로 손대야 하는 파일을 명시해 무작업 통과를 막습니다.
-    untouched = sorted(name for name in case.get("required_edits", [])
-                       if current.get(name) == baseline.get(name))
-    if not case["allowed_edits"]:
-        violations = changed
-    git_unchanged = None
-    observed_git = None
-    if manifest.get("git_baseline") is not None:
-        observed_git = git_state(workspace)
-        git_unchanged = observed_git == manifest["git_baseline"]
-        if not git_unchanged:
-            violations.append(".git")
+    found = scope_findings(case, manifest, workspace, manifest["baseline"], current)
+    changed, violations = found["changed"], found["violations"]
+    untouched, still_present = found["untouched"], found["still_present"]
+    executed, git_unchanged, observed_git = found["executed"], found["git_unchanged"], found["observed_git"]
     unchanged_oracle = definition_digest() == manifest["definition_digest"]
-    # 산출물이 그대로여야 하는 사례에서는 실제로 무언가를 실행했는지가 유일한 증거입니다.
-    observation = manifest.get("runtime_observation")
-    executed = None
-    if case.get("requires_execution"):
-        executed = (observation.get("executed_workspace_file_count") or 0) > 0 \
-            if isinstance(observation, dict) else None
     scope_passed = (not violations and unchanged_oracle and not untouched
                     and (executed is not False) and not still_present)
     human = bool(case.get("requires_human_review"))

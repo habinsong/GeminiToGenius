@@ -106,7 +106,10 @@ python3 -m evals.harness grade /absolute/new/trial
 | `workspace.py` | 파일·Git 상태와 실행 환경 |
 | `preparation.py` | 새 입력 폴더 준비와 단계 조합 |
 | `progress.py` | 실제 검사로 부분 완료 상태 생성 |
-| `grading.py` | 독립 프로세스 결과·산출물·변경 범위 채점 |
+| `grading.py` | 독립 프로세스 결과와 최종 판정 조립 |
+| `criteria.py` | 실행 없이 판정하는 범위 조건: 보호 파일·필수 수정·제거 심볼·실행 관측·Git 상태 |
+| `execution.py` | 준비된 요청을 그대로 전달해 하네스를 실행하고 관측 기록 |
+| `comparison.py` | 같은 조건의 시행만 하네스별로 집계 |
 | `probe.py` | 후보 함수 호출을 별도 프로세스에서 수행 |
 
 준비 과정에서만 제품 코드를 사용할 수 있습니다. 채점 경로는 제품을 import하지 않습니다. 분리된 모든 평가 모듈과 fixture를 정의 해시에 포함해 구현이 바뀐 결과를 섞지 않습니다.
