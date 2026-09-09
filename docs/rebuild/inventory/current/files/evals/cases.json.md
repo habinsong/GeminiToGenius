@@ -1,8 +1,8 @@
 # `evals/cases.json`
 
 - 형식: `100644`
-- 바이트: 13473
-- SHA-256: `c8abacba952b53fba8a65d8534348af3887190daf2750bc4cb5cec874296fa6d`
+- 바이트: 15923
+- SHA-256: `33f04729bc4853f042184c6654ba5d8e2967cb5121beba2c6b3502cca8f756df`
 - 인코딩: `utf-8`
 
 ```
@@ -605,6 +605,119 @@
             5
           ],
           "expected": []
+        }
+      ]
+    },
+    "dead-code": {
+      "prompt": "안 쓰는 거 좀 지워줘. 쓰는 건 남기고.",
+      "fixture": "dead-code",
+      "module": "reporting.py",
+      "function": "build_label",
+      "allowed_edits": [
+        "reporting.py",
+        "test_reporting.py"
+      ],
+      "required_edits": [
+        "reporting.py"
+      ],
+      "removed_symbols": {
+        "reporting.py": [
+          "legacy_csv_header"
+        ]
+      },
+      "checks": [
+        {
+          "args": [
+            "월간"
+          ],
+          "expected": "[월간]"
+        },
+        {
+          "args": [
+            ""
+          ],
+          "expected": "[]"
+        }
+      ],
+      "integrations": [
+        {
+          "module": "reporting.py",
+          "function": "summarize",
+          "checks": [
+            {
+              "args": [
+                [
+                  {
+                    "amount": 1000
+                  },
+                  {
+                    "amount": 2500
+                  }
+                ]
+              ],
+              "expected": {
+                "count": 2,
+                "total": 3500
+              }
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": {
+                "count": 0,
+                "total": 0
+              }
+            }
+          ]
+        },
+        {
+          "module": "reporting.py",
+          "function": "format_currency",
+          "checks": [
+            {
+              "args": [
+                3500
+              ],
+              "expected": "3,500.00원"
+            }
+          ]
+        },
+        {
+          "module": "reporting.py",
+          "function": "to_json",
+          "checks": [
+            {
+              "args": [
+                [
+                  {
+                    "amount": 5
+                  }
+                ]
+              ],
+              "expected": "{\"count\": 1, \"total\": 5}"
+            }
+          ]
+        },
+        {
+          "module": "dashboard.py",
+          "function": "render",
+          "checks": [
+            {
+              "args": [
+                [
+                  {
+                    "amount": 1000
+                  },
+                  {
+                    "amount": 2500
+                  }
+                ],
+                "월간"
+              ],
+              "expected": "[월간] 2건 3,500.00원"
+            }
+          ]
         }
       ]
     }

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import csv
 from datetime import datetime, timezone
 import io
@@ -16,6 +17,21 @@ import uuid
 
 from .definitions import PROBE, case_by_id, definition_digest
 from .workspace import digest, environment_info, git_state, snapshot
+
+
+def defined_symbols(path: Path) -> set[str] | None:
+    """모듈 최상위에 정의된 이름입니다. 읽지 못하면 None입니다."""
+    try:
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+    except (OSError, SyntaxError, ValueError):
+        return None
+    names = set()
+    for node in tree.body:
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            names.add(node.name)
+        elif isinstance(node, ast.Assign):
+            names.update(target.id for target in node.targets if isinstance(target, ast.Name))
+    return names
 
 
 def terminate(process: subprocess.Popen):
@@ -140,6 +156,17 @@ def grade(target: Path) -> dict:
     violations = sorted(name for name in protected if current.get(name) != baseline.get(name))
     if "allowed_new_files" in case:
         violations.extend(sorted(set(current) - set(baseline) - set(case["allowed_new_files"])))
+    # 지워야 할 이름이 실제로 사라졌는지 확인합니다. 남아 있는 목록을 그대로 보고합니다.
+    still_present = None
+    if case.get("removed_symbols"):
+        still_present = []
+        for name, symbols in case["removed_symbols"].items():
+            defined = defined_symbols(workspace / name)
+            if defined is None:
+                still_present.append(name)
+                continue
+            still_present.extend(f"{name}:{symbol}" for symbol in symbols if symbol in defined)
+        still_present.sort()
     # 동작이 그대로여야 하는 사례에서는 아무것도 하지 않아도 검사가 통과합니다.
     # 실제로 손대야 하는 파일을 명시해 무작업 통과를 막습니다.
     untouched = sorted(name for name in case.get("required_edits", [])
@@ -161,7 +188,7 @@ def grade(target: Path) -> dict:
         executed = (observation.get("executed_workspace_file_count") or 0) > 0 \
             if isinstance(observation, dict) else None
     scope_passed = (not violations and unchanged_oracle and not untouched
-                    and (executed is not False))
+                    and (executed is not False) and not still_present)
     human = bool(case.get("requires_human_review"))
     functional_passed = None if human else bool(checks) and not execution.get("error") and all(c["passed"] for c in checks)
     if case.get("requires_execution") and executed is None:
@@ -176,6 +203,7 @@ def grade(target: Path) -> dict:
               "scope_passed": scope_passed, "functional_passed": functional_passed,
               "requires_human_review": human, "changed_paths": changed, "scope_violations": violations,
               "untouched_required_edits": untouched, "required_execution_observed": executed,
+              "symbols_not_removed": still_present,
               "grading_changed_paths": grading_changes, "git_state_unchanged": git_unchanged,
               "observed_git_state": observed_git, "grading_environment": environment_info(),
               "oracle_unchanged": unchanged_oracle, "checks": checks, "execution": execution,

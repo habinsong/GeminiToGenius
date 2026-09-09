@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 267개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 273개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 44562 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 57305 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 58252 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -169,9 +169,9 @@
 | `docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json` | 5588 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json.md) |
 | `docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py` | 159 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py.md) |
 | `docs/styles.css` | 12916 | [원문](files/docs/styles.css.md) |
-| `evals/README.md` | 16141 | [원문](files/evals/README.md.md) |
+| `evals/README.md` | 17169 | [원문](files/evals/README.md.md) |
 | `evals/__init__.py` | 74 | [원문](files/evals/__init__.py.md) |
-| `evals/cases.json` | 13473 | [원문](files/evals/cases.json.md) |
+| `evals/cases.json` | 15923 | [원문](files/evals/cases.json.md) |
 | `evals/comparison.py` | 6211 | [원문](files/evals/comparison.py.md) |
 | `evals/definitions.py` | 1473 | [원문](files/evals/definitions.py.md) |
 | `evals/execution.py` | 5155 | [원문](files/evals/execution.py.md) |
@@ -179,6 +179,11 @@
 | `evals/fixtures/bounds/mathlib.py` | 61 | [원문](files/evals/fixtures/bounds/mathlib.py.md) |
 | `evals/fixtures/bounds/notes.txt` | 105 | [원문](files/evals/fixtures/bounds/notes.txt.md) |
 | `evals/fixtures/bounds/test_mathlib.py` | 213 | [원문](files/evals/fixtures/bounds/test_mathlib.py.md) |
+| `evals/fixtures/dead-code/README.md` | 196 | [원문](files/evals/fixtures/dead-code/README.md.md) |
+| `evals/fixtures/dead-code/dashboard.py` | 370 | [원문](files/evals/fixtures/dead-code/dashboard.py.md) |
+| `evals/fixtures/dead-code/notes.txt` | 48 | [원문](files/evals/fixtures/dead-code/notes.txt.md) |
+| `evals/fixtures/dead-code/reporting.py` | 602 | [원문](files/evals/fixtures/dead-code/reporting.py.md) |
+| `evals/fixtures/dead-code/test_reporting.py` | 430 | [원문](files/evals/fixtures/dead-code/test_reporting.py.md) |
 | `evals/fixtures/merge-records/README.md` | 539 | [원문](files/evals/fixtures/merge-records/README.md.md) |
 | `evals/fixtures/merge-records/app.py` | 105 | [원문](files/evals/fixtures/merge-records/app.py.md) |
 | `evals/fixtures/merge-records/notes.txt` | 99 | [원문](files/evals/fixtures/merge-records/notes.txt.md) |
@@ -205,7 +210,7 @@
 | `evals/fixtures/run-tests-only/inventory.py` | 280 | [원문](files/evals/fixtures/run-tests-only/inventory.py.md) |
 | `evals/fixtures/run-tests-only/notes.txt` | 48 | [원문](files/evals/fixtures/run-tests-only/notes.txt.md) |
 | `evals/fixtures/run-tests-only/test_inventory.py` | 580 | [원문](files/evals/fixtures/run-tests-only/test_inventory.py.md) |
-| `evals/grading.py` | 9881 | [원문](files/evals/grading.py.md) |
+| `evals/grading.py` | 11136 | [원문](files/evals/grading.py.md) |
 | `evals/harness.py` | 2901 | [원문](files/evals/harness.py.md) |
 | `evals/preparation.py` | 2930 | [원문](files/evals/preparation.py.md) |
 | `evals/probe.py` | 1282 | [원문](files/evals/probe.py.md) |
@@ -246,6 +251,7 @@
 | `tests/test_comparison.py` | 6954 | [원문](files/tests/test_comparison.py.md) |
 | `tests/test_context_message.py` | 8706 | [원문](files/tests/test_context_message.py.md) |
 | `tests/test_coverage.py` | 22906 | [원문](files/tests/test_coverage.py.md) |
+| `tests/test_dead_code_case.py` | 3156 | [원문](files/tests/test_dead_code_case.py.md) |
 | `tests/test_doc_contract.py` | 4245 | [원문](files/tests/test_doc_contract.py.md) |
 | `tests/test_eval_export.py` | 5780 | [원문](files/tests/test_eval_export.py.md) |
 | `tests/test_eval_resume.py` | 3602 | [원문](files/tests/test_eval_resume.py.md) |

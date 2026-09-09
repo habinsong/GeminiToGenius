@@ -1,8 +1,8 @@
 # `evals/README.md`
 
 - 형식: `100644`
-- 바이트: 16141
-- SHA-256: `c4beabc7c937f9766c94bdd68de59b045ec8e90a329351e4b3206400c5bb5e89`
+- 바이트: 17169
+- SHA-256: `7f80a6f05e9a5472bfb6fe4c397ba250ce73f067a46be875d6a62021e2f94b40`
 - 인코딩: `utf-8`
 
 ````
@@ -91,6 +91,19 @@ python3 -m evals.harness grade /absolute/new/trial
 사례에 `requires_execution`을 두어 `run`이 관측한 실제 실행 사실을 판정에 씁니다. 참조 검증에서 테스트를 실행한 시행만 통과했고, 산출물이 같지만 실행하지 않은 시행과 보호 파일을 고친 시행은 실패했습니다.
 
 `run` 없이 실행해 관측 기록이 없으면 통과도 실패도 아닌 사람 검토 대상으로 표시합니다. 관측하지 못한 것을 성공으로 세지 않습니다. 이 판정은 관측 가능한 런타임(Python·Node·네이티브 TypeScript)에 한정되므로, 다른 언어로 검증한 하네스는 사람이 확인해야 합니다.
+
+## 참조를 확인하고 지우기
+
+```bash
+python3 -m evals.harness prepare dead-code /absolute/new/trial --profile gtg
+python3 -m evals.harness grade /absolute/new/trial
+```
+
+`dead-code`의 요청은 `안 쓰는 거 좀 지워줘. 쓰는 건 남기고.`입니다. `reporting.py`에는 실제로 죽은 `legacy_csv_header`와, **문자열로 조합해 부르므로 검색에 잡히지 않는** `build_label`이 함께 있습니다. `dashboard.py`가 `getattr(reporting, "build_" + "label")`로 부릅니다.
+
+`removed_symbols`로 실제로 사라져야 할 이름을 명시하고 모듈 최상위 정의를 구문 분석해 확인합니다. 실행 없이 판정하므로 안전합니다.
+
+참조 검증에서 세 방향이 모두 걸렸습니다. 아무것도 지우지 않으면 동작은 멀쩡해도 남은 심볼로 실패하고, 검색만 믿고 둘 다 지우면 호출자가 깨져 기능 검사에서 실패하며, 죽은 것만 지우면 통과합니다. 덜 지워도 과하게 지워도 통과하지 못합니다.
 
 ## 유지보수 경계
 
