@@ -1,8 +1,8 @@
 # `gtg/package.py`
 
 - 형식: `100644`
-- 바이트: 12520
-- SHA-256: `bbddbee803f2c99b9d79121ea0ad39b1e4f67e69005fa3d9d0f53e7a1606551f`
+- 바이트: 12733
+- SHA-256: `192277fa042c301dcc88e30d27ab7a175da8da542e5395e073315f6b1eb75404`
 - 인코딩: `utf-8`
 
 ```
@@ -98,7 +98,9 @@ def build(source: Path, target: Path, installed: Path, platform: str) -> dict:
     if antigravity(platform):
         (target / "rules").mkdir()
         (target / "rules/AGENTS.md").write_bytes(rules)
-        (target / "plugin.json").write_text(json.dumps({"name": NAME}) + "\n")
+        (target / "plugin.json").write_text(json.dumps(
+            {"$schema": "https://antigravity.google/schemas/v1/plugin.json", "name": NAME,
+             "description": "자연어 요청을 등록된 완료 조건과 실제 실행 증거로 잇는 로컬 하네스입니다."}) + "\n")
         hooks = {"gtg-context": {"PreInvocation": [{"type": "command", "command": command + "PreInvocation", "timeout": 5}]},
                  "gtg-completion": {"Stop": [{"type": "command", "command": command + "Stop", "timeout": 5}]}}
         hook_file = target / "hooks.json"

@@ -90,7 +90,9 @@ def build(source: Path, target: Path, installed: Path, platform: str) -> dict:
     if antigravity(platform):
         (target / "rules").mkdir()
         (target / "rules/AGENTS.md").write_bytes(rules)
-        (target / "plugin.json").write_text(json.dumps({"name": NAME}) + "\n")
+        (target / "plugin.json").write_text(json.dumps(
+            {"$schema": "https://antigravity.google/schemas/v1/plugin.json", "name": NAME,
+             "description": "자연어 요청을 등록된 완료 조건과 실제 실행 증거로 잇는 로컬 하네스입니다."}) + "\n")
         hooks = {"gtg-context": {"PreInvocation": [{"type": "command", "command": command + "PreInvocation", "timeout": 5}]},
                  "gtg-completion": {"Stop": [{"type": "command", "command": command + "Stop", "timeout": 5}]}}
         hook_file = target / "hooks.json"

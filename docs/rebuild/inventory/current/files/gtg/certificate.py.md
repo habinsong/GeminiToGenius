@@ -1,14 +1,16 @@
 # `gtg/certificate.py`
 
 - 형식: `100644`
-- 바이트: 6914
-- SHA-256: `9dfb43ed91a2b0c2667d15710f3d480ae091b61bd340f3f52a2793c48fa38d35`
+- 바이트: 7606
+- SHA-256: `b64c7d5e1a9e8a738245da66c9e0acd193b46ea2c1f7897f18f022ffd3239a2d`
 - 인코딩: `utf-8`
 
 ```
 """완료 주장을 실행 증거에 묶고, 상태 DB 없이 다시 실행해 같은 결과가 나오는지 확인합니다.
 
 증명서는 주장을 대신하지 않습니다. `replay`가 현재 파일에서 명령을 다시 실행한 결과만 근거입니다.
+판정은 세 값입니다. 재현했고 확인 범위도 완전하면 `pass`, 재현이 깨지면 `invalid`,
+재현했지만 확인하지 못한 범위가 남으면 `inconclusive`입니다. 미확정을 통과로 바꾸지 않습니다.
 """
 
 from __future__ import annotations
@@ -24,7 +26,8 @@ from .runner import status
 from .spec import relative, sensitive
 from .store import Store
 
-SCHEMA = 1
+# 본문 필드가 늘어난 판입니다. 이전 판은 digest 계산이 달라 그대로 읽지 않습니다.
+SCHEMA = 2
 BODY = ("schema_version", "task_id", "goal", "workspace", "verified", "checks",
         "unverified_scope", "coverage_complete", "created")
 
@@ -80,7 +83,7 @@ def build(store: Store, task_id: str) -> dict:
 
 def validated(document: dict) -> list[dict]:
     if not isinstance(document, dict) or document.get("schema_version") != SCHEMA:
-        raise ValueError("schema_version 1 증명서가 필요합니다.")
+        raise ValueError(f"schema_version {SCHEMA} 증명서가 필요합니다. 이전 판은 certify로 다시 만드세요.")
     if digest(document) != document.get("digest"):
         raise ValueError("증명서 본문과 digest가 일치하지 않습니다.")
     checks = document["checks"]
@@ -138,11 +141,16 @@ def replay(document: dict, workspace: Path, *, trust_commands: bool = False) -> 
     if not matches and not trust_commands:
         raise ValueError("증명서에 기록된 작업공간과 다릅니다. 명령을 신뢰할 때만 --trust-commands로 실행하세요.")
     outcomes = [run(check, workspace) for check in checks]
+    claimed = bool(document["verified"])
+    reconstructed = claimed and all(item["reconstructed"] for item in outcomes)
+    complete = bool(document.get("coverage_complete"))
     return {"task_id": document["task_id"], "goal": document["goal"], "workspace": str(workspace),
-            "workspace_matches": matches, "claimed_verified": bool(document["verified"]),
-            "reconstructed": bool(document["verified"]) and all(item["reconstructed"] for item in outcomes),
+            "workspace_matches": matches, "claimed_verified": claimed,
+            "reconstructed": reconstructed,
+            # 재현했더라도 확인하지 못한 범위가 남으면 통과라고 말하지 않습니다.
+            "verdict": "pass" if reconstructed and complete else "invalid" if not reconstructed else "inconclusive",
             # 재현에 성공해도 이 목록의 파일은 어떤 검사도 실행하지 않았습니다.
             "unverified_scope": list(document.get("unverified_scope") or []),
-            "coverage_complete": bool(document.get("coverage_complete")),
+            "coverage_complete": complete,
             "checks": outcomes}
 ```

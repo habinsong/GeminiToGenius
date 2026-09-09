@@ -1,8 +1,8 @@
 # `tests/test_certificate.py`
 
 - 형식: `100644`
-- 바이트: 7760
-- SHA-256: `87f73e6dd1ec5daa7277c80449311630804e044fed63b15f151c84f0de757f6d`
+- 바이트: 10070
+- SHA-256: `8c563e6b9e49015eee2b684a4b4520e10de26c0f20946af12553658757d4b254`
 - 인코딩: `utf-8`
 
 ```
@@ -153,9 +153,50 @@ class InstalledCertificateTests(unittest.TestCase):
             self.assertTrue(report["reconstructed"])
             self.assertTrue(report["workspace_matches"])
 
+
             (workspace / "total.py").write_text("def total(values):\n    return 0\n")
             broken = command("replay", "--certificate", "proof.json", "--workspace", ".", expect=1)
             self.assertFalse(broken["reconstructed"])
+            self.assertEqual(broken["verdict"], "invalid")
+
+    def test_inconclusive_replay_uses_its_own_exit_code(self):
+        from gtg.install import install
+
+        root = Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as directory:
+            workspace = Path(directory).resolve()
+            package = install(root, workspace, "antigravity", "workspace")
+            runner = str(Path(package["target"]) / "run.py")
+            (workspace / "total.py").write_text("VALUE = 1\n")
+            document = {"schema_version": 1, "goal": "셸 명령은 관찰되지 않습니다.", "checks": [
+                {"id": "shell", "criterion": "셸 명령이 성공합니다.",
+                 "argv": ["/bin/sh", "-c", "exit 0"], "watch": ["total.py"]}]}
+            (workspace / "task.json").write_text(json.dumps(document))
+
+            def command(*args, expect=0):
+                done = subprocess.run([sys.executable, runner, *args], cwd=workspace, capture_output=True, text=True)
+                self.assertEqual(done.returncode, expect, done.stdout + done.stderr)
+                return json.loads(done.stdout)
+
+            task = command("start", "--spec", "task.json", "--workspace", ".")["task_id"]
+            command("verify", task)
+            command("certify", task, "--output", "proof.json")
+            report = command("replay", "--certificate", "proof.json", "--workspace", ".", expect=2)
+            self.assertEqual(report["verdict"], "inconclusive")
+            self.assertTrue(report["reconstructed"])
+            self.assertFalse(report["coverage_complete"])
+
+    def test_plugin_manifest_matches_the_documented_cli_schema(self):
+        from gtg.package import build
+
+        with tempfile.TemporaryDirectory() as directory:
+            stage = Path(directory).resolve() / "stage"
+            build(Path(__file__).resolve().parents[1], stage, stage, "antigravity")
+            manifest = json.loads((stage / "plugin.json").read_text())
+            self.assertEqual(set(manifest), {"$schema", "name", "description"})
+            self.assertEqual(manifest["$schema"], "https://antigravity.google/schemas/v1/plugin.json")
+            self.assertRegex(manifest["name"], r"\A[a-zA-Z0-9_-]+\Z")
+            self.assertTrue(manifest["description"].strip())
 
 
 def pending_evidence(document, check_id):

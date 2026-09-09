@@ -1,8 +1,8 @@
 # `gtg/__main__.py`
 
 - 형식: `100644`
-- 바이트: 11051
-- SHA-256: `d812c54f9d80a6c09653ffa66fde9e0984a16ec26e0490fd9e5de7a9939904ec`
+- 바이트: 11179
+- SHA-256: `d9ab8e962c83c808ebf0b6d727ee8efc65686f3fdb45ab9ebaa5f9e1082e9ee1`
 - 인코딩: `utf-8`
 
 ```
@@ -112,7 +112,8 @@ def main() -> int:
             # 상태 DB를 읽지 않습니다. 증명서와 현재 파일만으로 다시 실행합니다.
             report = replay(read_document(args.certificate), args.workspace, trust_commands=args.trust_commands)
             print(json.dumps(report, ensure_ascii=False, indent=2))
-            return int(not report["reconstructed"])
+            # pass는 0, 재현 실패는 1, 확인하지 못한 범위가 남으면 2입니다.
+            return {"pass": 0, "invalid": 1, "inconclusive": 2}[report["verdict"]]
         state_root = args.workspace.resolve(strict=True)
         if not state_root.is_dir() or sensitive(state_root):
             raise ValueError("비민감 작업공간 폴더가 필요합니다.")

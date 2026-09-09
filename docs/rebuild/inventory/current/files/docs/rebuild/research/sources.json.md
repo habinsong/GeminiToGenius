@@ -1,8 +1,8 @@
 # `docs/rebuild/research/sources.json`
 
 - 형식: `100644`
-- 바이트: 39753
-- SHA-256: `e210479a0df768599ae44665ea9e13e071fe873e05b3a90c50f46c7ed6c68d04`
+- 바이트: 44562
+- SHA-256: `6f72d66c48d18de7004055346026c0639297a91c62892bf1840c39cfa115294f`
 - 인코딩: `utf-8`
 
 ```
@@ -742,6 +742,69 @@
       "access": "검색 도구가 인용한 변경 기록 확인",
       "finding": "SKILL.md frontmatter에 `disable-slash-command: true`가 추가돼 슬래시 메뉴에서 숨기면서도 모델이 발견·호출할 수 있게 합니다.",
       "application": "슬래시를 요구하지 않는 GTG 설계와 맞지만 이번 구간에서는 실호스트로 확인하지 못해 적용하지 않았습니다. 공식 스킬 규격의 허용 키 목록에도 없어 다음 실호스트 확인의 후보로 남깁니다."
+    },
+    {
+      "id": "CLAIM-RECEIPT",
+      "url": "https://arxiv.org/abs/2609.01992",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-09",
+      "access": "서브에이전트 조사가 인용한 초록 확인",
+      "finding": "증거 충분성과 커버리지를 나누고 주장마다 PASS·INVALID·INCONCLUSIVE 세 값으로 판정합니다. 증거 공백에서는 통과가 아니라 미확정을 돌려줍니다.",
+      "application": "`replay`의 판정을 세 값으로 바꾸고 종료 코드를 0·1·2로 나눴습니다. 논문의 수치나 서명 방식은 도입하지 않았습니다."
+    },
+    {
+      "id": "EA-GRAPH",
+      "url": "https://arxiv.org/abs/2608.04278",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-09",
+      "access": "서브에이전트 조사가 인용한 초록 확인",
+      "finding": "검증 주장을 코드 산출물에 고정하고 증거의 강도와 신선도를 나눕니다. 상류 변경 뒤 이전 주장을 unaffected·affected·unprovable로 재분류합니다.",
+      "application": "파일 지문으로 성공을 무효화하는 기존 `stale` 처리와 방향이 같습니다. 추가 구현은 하지 않았습니다."
+    },
+    {
+      "id": "HARNESS-SOURCE-STUDY",
+      "url": "https://arxiv.org/abs/2609.00006",
+      "kind": "paper-abstract",
+      "checked_on": "2026-09-09",
+      "access": "서브에이전트 조사가 인용한 초록 확인",
+      "finding": "Claude Code·Codex CLI·Gemini CLI 등 11개 하네스의 소스를 관찰·컨텍스트·제어·행동·상태·검증 하위 시스템으로 분해합니다. 성능 벤치마크가 아닙니다.",
+      "application": "GTG의 책임 분리를 대조하는 참고입니다. 제출일과 ID 월 표기가 어긋나 날짜는 확정하지 않습니다."
+    },
+    {
+      "id": "SKILLS-SPEC-KEYS",
+      "url": "https://agentskills.io/specification",
+      "kind": "specification",
+      "checked_on": "2026-09-09",
+      "access": "서브에이전트 조사가 인용한 규격 확인",
+      "finding": "허용 frontmatter 키는 name·description·license·compatibility·metadata·allowed-tools 여섯 개입니다. `disable-slash-command`는 규격에 없습니다. 알 수 없는 키 처리에 대한 규범 문장은 없고, 클라이언트 구현 안내는 관대한 검증을 권합니다. VS Code는 허용 목록 밖 키에 경고를 표시합니다.",
+      "application": "`disable-slash-command`를 적용하지 않은 판단을 유지합니다. 확장이 필요하면 규격이 정한 `metadata` 아래에 둡니다."
+    },
+    {
+      "id": "AGY-SLASH-FLAG-CHANGELOG",
+      "url": "https://antigravity.google/changelog?tab=cli",
+      "kind": "official",
+      "checked_on": "2026-09-09",
+      "access": "서브에이전트 조사가 인용한 변경 기록 확인",
+      "finding": "`disable-slash-command: true`는 CLI 변경 기록에만 있고 스킬 문서 페이지에는 없습니다. 같은 항목의 버전·날짜 표기가 페이지와 저장소에서 엇갈립니다.",
+      "application": "문서화되지 않은 기능이므로 적용하지 않습니다. 실호스트 확인 후보로 남깁니다."
+    },
+    {
+      "id": "AGY-DESKTOP-HOOK-REPORTS",
+      "url": "https://discuss.ai.google.dev/t/do-antigravity-ide-2-0-actually-execute-plugin-hooks-pretooluse-posttooluse-or-is-that-cli-only-right-now/176814",
+      "kind": "community",
+      "checked_on": "2026-09-09",
+      "access": "서브에이전트 조사가 인용한 포럼 글 확인",
+      "finding": "Antigravity IDE 2.1.1과 데스크톱 2.5.0에서 훅이 전혀 실행되지 않는다는 사용자 보고가 있고 공식 답변은 없습니다.",
+      "application": "이 보고와 달리 우리는 데스크톱 2.12.2에서 `PreInvocation`과 `Stop`이 실제로 실행되는 것을 직접 확인했습니다. 첫 도구 호출이 스킬 읽기였고 상태 DB에 `NO_TOOL_CALL` 종료 메타데이터가 기록됐습니다. 보고된 버전과 우리가 확인한 버전이 다르므로 구버전 문제로 보되 단정하지 않습니다. [직접 관찰](../validation/2026-09-09-native-certificate/README.md)."
+    },
+    {
+      "id": "AGY-PLUGIN-SCHEMA",
+      "url": "https://antigravity.google/docs/cli/plugins/",
+      "kind": "official",
+      "checked_on": "2026-09-09",
+      "access": "서브에이전트 조사가 인용한 공식 문서 확인",
+      "finding": "CLI 문서의 `plugin.json`은 `name`(필수)·`description`(선택)·`$schema`(선택)이며, 데스크톱 플러그인 문서는 `name`만 선택 항목으로 설명해 두 페이지가 어긋납니다.",
+      "application": "더 엄격한 CLI 쪽에 맞춰 세 필드를 모두 생성합니다. 두 호스트 모두에서 검증을 통과합니다."
     }
   ]
 }

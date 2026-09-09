@@ -148,8 +148,8 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "bytes": 9733,
-      "sha256": "fc506e811bb211a33aa9b1ba76c6cc251b9c5099cf13069cd6df1dac8c4d88b8",
+      "bytes": 9950,
+      "sha256": "729276ebe1329ee750a2b1924e85fd4408673194a51e17f5f68ed02377a6fdf4",
       "encoding": "utf-8",
       "lines": 112,
       "symbols": [],
@@ -400,10 +400,10 @@
     {
       "path": "docs/rebuild/research/sources.json",
       "mode": "100644",
-      "bytes": 39753,
-      "sha256": "e210479a0df768599ae44665ea9e13e071fe873e05b3a90c50f46c7ed6c68d04",
+      "bytes": 44562,
+      "sha256": "6f72d66c48d18de7004055346026c0639297a91c62892bf1840c39cfa115294f",
       "encoding": "utf-8",
-      "lines": 739,
+      "lines": 802,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/research/sources.json.md"
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 45773,
-      "sha256": "e2566717c49ff1ea40f2c307bc69b616ef5b1c3da0c3fddd4004067445ff9a55",
+      "bytes": 47304,
+      "sha256": "174a8ea518f4a808f48ade32e6944f730c781dc1e25cc7affaafbc5dfe5abacb",
       "encoding": "utf-8",
-      "lines": 313,
+      "lines": 324,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -2814,10 +2814,10 @@
     {
       "path": "gtg/__main__.py",
       "mode": "100644",
-      "bytes": 11051,
-      "sha256": "d812c54f9d80a6c09653ffa66fde9e0984a16ec26e0490fd9e5de7a9939904ec",
+      "bytes": 11179,
+      "sha256": "d9ab8e962c83c808ebf0b6d727ee8efc65686f3fdb45ab9ebaa5f9e1082e9ee1",
       "encoding": "utf-8",
-      "lines": 191,
+      "lines": 192,
       "symbols": [
         {
           "name": "read_document",
@@ -2841,7 +2841,7 @@
           "name": "main",
           "kind": "FunctionDef",
           "line": 93,
-          "end_line": 187
+          "end_line": 188
         }
       ],
       "trailing_newline": true,
@@ -2850,46 +2850,46 @@
     {
       "path": "gtg/certificate.py",
       "mode": "100644",
-      "bytes": 6914,
-      "sha256": "9dfb43ed91a2b0c2667d15710f3d480ae091b61bd340f3f52a2793c48fa38d35",
+      "bytes": 7606,
+      "sha256": "b64c7d5e1a9e8a738245da66c9e0acd193b46ea2c1f7897f18f022ffd3239a2d",
       "encoding": "utf-8",
-      "lines": 139,
+      "lines": 147,
       "symbols": [
         {
           "name": "canonical",
           "kind": "FunctionDef",
-          "line": 24,
-          "end_line": 26
+          "line": 27,
+          "end_line": 29
         },
         {
           "name": "digest",
           "kind": "FunctionDef",
-          "line": 29,
-          "end_line": 33
+          "line": 32,
+          "end_line": 36
         },
         {
           "name": "build",
           "kind": "FunctionDef",
-          "line": 36,
-          "end_line": 70
+          "line": 39,
+          "end_line": 73
         },
         {
           "name": "validated",
           "kind": "FunctionDef",
-          "line": 73,
-          "end_line": 89
+          "line": 76,
+          "end_line": 92
         },
         {
           "name": "run",
           "kind": "FunctionDef",
-          "line": 92,
-          "end_line": 120
+          "line": 95,
+          "end_line": 123
         },
         {
           "name": "replay",
           "kind": "FunctionDef",
-          "line": 123,
-          "end_line": 139
+          "line": 126,
+          "end_line": 147
         }
       ],
       "trailing_newline": true,
@@ -3354,10 +3354,10 @@
     {
       "path": "gtg/package.py",
       "mode": "100644",
-      "bytes": 12520,
-      "sha256": "bbddbee803f2c99b9d79121ea0ad39b1e4f67e69005fa3d9d0f53e7a1606551f",
+      "bytes": 12733,
+      "sha256": "192277fa042c301dcc88e30d27ab7a175da8da542e5395e073315f6b1eb75404",
       "encoding": "utf-8",
-      "lines": 224,
+      "lines": 226,
       "symbols": [
         {
           "name": "validate_source",
@@ -3393,19 +3393,19 @@
           "name": "build",
           "kind": "FunctionDef",
           "line": 73,
-          "end_line": 111
+          "end_line": 113
         },
         {
           "name": "validated_hooks",
           "kind": "FunctionDef",
-          "line": 114,
-          "end_line": 160
+          "line": 116,
+          "end_line": 162
         },
         {
           "name": "verify",
           "kind": "FunctionDef",
-          "line": 163,
-          "end_line": 224
+          "line": 165,
+          "end_line": 226
         }
       ],
       "trailing_newline": true,
@@ -3741,10 +3741,10 @@
     {
       "path": "profile/skills/gtg-build/references/task-contract.md",
       "mode": "100644",
-      "bytes": 12704,
-      "sha256": "6719c5f7735642bba3a3b8a23e0212f6c10a1458a10138db03a9ad2a87d1cac4",
+      "bytes": 13044,
+      "sha256": "8f62dc0556b9e3093f3c7edbc2d7c958fb35b330840235c63626d7129ca019ef",
       "encoding": "utf-8",
-      "lines": 118,
+      "lines": 120,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/profile/skills/gtg-build/references/task-contract.md.md"
@@ -4017,10 +4017,10 @@
     {
       "path": "tests/test_certificate.py",
       "mode": "100644",
-      "bytes": 7760,
-      "sha256": "87f73e6dd1ec5daa7277c80449311630804e044fed63b15f151c84f0de757f6d",
+      "bytes": 10070,
+      "sha256": "8c563e6b9e49015eee2b684a4b4520e10de26c0f20946af12553658757d4b254",
       "encoding": "utf-8",
-      "lines": 158,
+      "lines": 199,
       "symbols": [
         {
           "name": "spec",
@@ -4038,13 +4038,13 @@
           "name": "InstalledCertificateTests",
           "kind": "ClassDef",
           "line": 116,
-          "end_line": 150
+          "end_line": 191
         },
         {
           "name": "pending_evidence",
           "kind": "FunctionDef",
-          "line": 153,
-          "end_line": 154
+          "line": 194,
+          "end_line": 195
         },
         {
           "name": "setUp",
@@ -4104,13 +4104,31 @@
           "name": "test_installed_cli_writes_a_certificate_and_replays_it_after_the_state_is_gone",
           "kind": "FunctionDef",
           "line": 117,
-          "end_line": 150
+          "end_line": 152
+        },
+        {
+          "name": "test_inconclusive_replay_uses_its_own_exit_code",
+          "kind": "FunctionDef",
+          "line": 154,
+          "end_line": 179
+        },
+        {
+          "name": "test_plugin_manifest_matches_the_documented_cli_schema",
+          "kind": "FunctionDef",
+          "line": 181,
+          "end_line": 191
         },
         {
           "name": "command",
           "kind": "FunctionDef",
           "line": 129,
           "end_line": 132
+        },
+        {
+          "name": "command",
+          "kind": "FunctionDef",
+          "line": 168,
+          "end_line": 171
         }
       ],
       "trailing_newline": true,
@@ -4371,10 +4389,10 @@
     {
       "path": "tests/test_coverage.py",
       "mode": "100644",
-      "bytes": 9640,
-      "sha256": "c0d7c4bb7f5948f4f473cf0f6746f3d5302cf0ecee446226d211d689b08e1ce5",
+      "bytes": 11109,
+      "sha256": "9e49ec89987a909c505de4c47b4871c477a5b8e2425e74355db9dc98005991c3",
       "encoding": "utf-8",
-      "lines": 195,
+      "lines": 227,
       "symbols": [
         {
           "name": "CollectorTests",
@@ -4392,7 +4410,7 @@
           "name": "RunnerCoverageTests",
           "kind": "ClassDef",
           "line": 116,
-          "end_line": 191
+          "end_line": 223
         },
         {
           "name": "setUp",
@@ -4491,10 +4509,28 @@
           "end_line": 176
         },
         {
-          "name": "test_a_file_executed_by_any_check_is_not_listed_as_unverified",
+          "name": "test_replay_verdict_is_three_valued",
           "kind": "FunctionDef",
           "line": 178,
-          "end_line": 191
+          "end_line": 189
+        },
+        {
+          "name": "test_incomplete_coverage_is_inconclusive_not_pass",
+          "kind": "FunctionDef",
+          "line": 191,
+          "end_line": 200
+        },
+        {
+          "name": "test_unverified_task_replays_as_invalid",
+          "kind": "FunctionDef",
+          "line": 202,
+          "end_line": 208
+        },
+        {
+          "name": "test_a_file_executed_by_any_check_is_not_listed_as_unverified",
+          "kind": "FunctionDef",
+          "line": 210,
+          "end_line": 223
         }
       ],
       "trailing_newline": true,

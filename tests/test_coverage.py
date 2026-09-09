@@ -175,6 +175,38 @@ class RunnerCoverageTests(unittest.TestCase):
         self.assertEqual(report["unverified_scope"], ["untouched.py"])
         self.assertTrue(report["coverage_complete"])
 
+    def test_replay_verdict_is_three_valued(self):
+        from gtg.certificate import replay
+
+        task = self.store.create(self.workspace, spec([sys.executable, "check.py"]))
+        execute(self.store, task, "only")
+        document = build(self.store, task)
+        self.assertEqual(replay(document, self.workspace)["verdict"], "pass")
+
+        (self.workspace / "touched.py").write_text("def value():\n    return 99\n")
+        broken = replay(document, self.workspace)
+        self.assertEqual(broken["verdict"], "invalid")
+        self.assertFalse(broken["reconstructed"])
+
+    def test_incomplete_coverage_is_inconclusive_not_pass(self):
+        from gtg.certificate import replay
+
+        task = self.store.create(self.workspace, spec(["/bin/sh", "-c", "exit 0"]))
+        execute(self.store, task, "only")
+        document = build(self.store, task)
+        report = replay(document, self.workspace)
+        self.assertTrue(report["reconstructed"], "명령 자체는 재현됩니다.")
+        self.assertFalse(report["coverage_complete"])
+        self.assertEqual(report["verdict"], "inconclusive")
+
+    def test_unverified_task_replays_as_invalid(self):
+        from gtg.certificate import replay
+
+        task = self.store.create(self.workspace, spec([sys.executable, "check.py"]))
+        document = build(self.store, task)
+        self.assertFalse(document["verified"])
+        self.assertEqual(replay(document, self.workspace)["verdict"], "invalid")
+
     def test_a_file_executed_by_any_check_is_not_listed_as_unverified(self):
         document = {"schema_version": 1, "goal": "두 검사", "checks": []}
         document = {"schema_version": 1, "goal": "두 검사가 범위를 나눠 덮습니다.", "checks": [
