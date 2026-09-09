@@ -1888,8 +1888,8 @@
     {
       "path": "docs/rebuild/validation/2026-09-09-agy-cli/README.md",
       "mode": "100644",
-      "bytes": 7585,
-      "sha256": "4aa26fc892a43954ab8b9e84f0cdea1c3e7bc8061f0a03807734d7629df8b646",
+      "bytes": 7966,
+      "sha256": "7a25c7b4ff9409668d123ea628cbe71cb5876bb5ec97254adf34852580620367",
       "encoding": "utf-8",
       "lines": 125,
       "symbols": [],
@@ -2130,10 +2130,10 @@
     {
       "path": "docs/rebuild/validation/2026-09-09-repeated-comparison/README.md",
       "mode": "100644",
-      "bytes": 6635,
-      "sha256": "42f4c0ef6033a3abfe39180a0ee825818d75e397303e82da2a5cb92ea1d43475",
+      "bytes": 8412,
+      "sha256": "d12c683563ef5a7a60e7451cbefab765a90a272311ed2d37ee5295333ef69d24",
       "encoding": "utf-8",
-      "lines": 86,
+      "lines": 106,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/validation/2026-09-09-repeated-comparison/README.md.md"

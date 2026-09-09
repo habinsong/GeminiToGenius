@@ -151,7 +151,7 @@
 | `docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json` | 270 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/legacy-state-check.json.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/tests.log` | 21385 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/tests.log.md) |
 | `docs/rebuild/validation/2026-09-08-task-handoff/verification.json` | 5995 | [원문](files/docs/rebuild/validation/2026-09-08-task-handoff/verification.json.md) |
-| `docs/rebuild/validation/2026-09-09-agy-cli/README.md` | 7585 | [원문](files/docs/rebuild/validation/2026-09-09-agy-cli/README.md.md) |
+| `docs/rebuild/validation/2026-09-09-agy-cli/README.md` | 7966 | [원문](files/docs/rebuild/validation/2026-09-09-agy-cli/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/README.md` | 9686 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json` | 844 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/certificate-with-unverified-scope.json.md) |
 | `docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json` | 2525 | [원문](files/docs/rebuild/validation/2026-09-09-evidence-coverage/pipeline-comparison.json.md) |
@@ -170,7 +170,7 @@
 | `docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json` | 5588 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/grade-gtg.json.md) |
 | `docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py` | 159 | [원문](files/docs/rebuild/validation/2026-09-09-real-comparison/gtg-mathlib.py.md) |
 | `docs/rebuild/validation/2026-09-09-reboot-recovery/README.md` | 5465 | [원문](files/docs/rebuild/validation/2026-09-09-reboot-recovery/README.md.md) |
-| `docs/rebuild/validation/2026-09-09-repeated-comparison/README.md` | 6635 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/README.md.md) |
+| `docs/rebuild/validation/2026-09-09-repeated-comparison/README.md` | 8412 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/README.md.md) |
 | `docs/rebuild/validation/2026-09-09-repeated-comparison/comparison.json` | 59998 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/comparison.json.md) |
 | `docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-gtg.json` | 3107 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-gtg.json.md) |
 | `docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-plain.json` | 3090 | [원문](files/docs/rebuild/validation/2026-09-09-repeated-comparison/summary-agy-plain.json.md) |
