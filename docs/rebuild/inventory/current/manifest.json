@@ -302,7 +302,7 @@
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
       "bytes": 4570,
-      "sha256": "0f5ec897f6ceff426aaf03ecad06fd33fddd0f4a8cd3a30f6dc4403f25f68a60",
+      "sha256": "4a078e0f1d1a34e32cefa886b93e75d8ae07e1914697ad93bd3de35aba2f0ae8",
       "encoding": "utf-8",
       "lines": 45,
       "symbols": [],
@@ -323,10 +323,10 @@
     {
       "path": "docs/rebuild/plan/architecture.md",
       "mode": "100644",
-      "bytes": 7669,
-      "sha256": "fa3325385ce21a32ac0a494c627044436398fd87b4f7ee72b29d0fe2d2e3fc25",
+      "bytes": 9487,
+      "sha256": "ea586ab96d1b1e67e7b0e16da21e003bdcd47e365de5992815fd5f61b94f2590",
       "encoding": "utf-8",
-      "lines": 58,
+      "lines": 84,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/plan/architecture.md.md"
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 62163,
-      "sha256": "c675f89fef74ed3c1acbdc995feee7b44007017844bd8bde0de1c9bdd4d16e50",
+      "bytes": 63180,
+      "sha256": "9859cca59dbf6d86831082f69190e2730a9a6443f3c4e68c3f15a25dc61ac369",
       "encoding": "utf-8",
-      "lines": 458,
+      "lines": 467,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -4373,6 +4373,54 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_antigravity_cli.py.md"
+    },
+    {
+      "path": "tests/test_architecture_map.py",
+      "mode": "100644",
+      "bytes": 1770,
+      "sha256": "59ef056bd1058f4cd3b408dac34b609b7d1a521c692edaa0cb75c861c3863c54",
+      "encoding": "utf-8",
+      "lines": 41,
+      "symbols": [
+        {
+          "name": "documented",
+          "kind": "FunctionDef",
+          "line": 12,
+          "end_line": 14
+        },
+        {
+          "name": "ArchitectureMapTests",
+          "kind": "ClassDef",
+          "line": 17,
+          "end_line": 37
+        },
+        {
+          "name": "test_every_module_has_a_documented_responsibility",
+          "kind": "FunctionDef",
+          "line": 18,
+          "end_line": 21
+        },
+        {
+          "name": "test_the_table_names_no_module_that_was_removed",
+          "kind": "FunctionDef",
+          "line": 23,
+          "end_line": 26
+        },
+        {
+          "name": "test_each_responsibility_is_a_single_sentence",
+          "kind": "FunctionDef",
+          "line": 28,
+          "end_line": 32
+        },
+        {
+          "name": "test_evals_boundary_is_linked_rather_than_duplicated",
+          "kind": "FunctionDef",
+          "line": 34,
+          "end_line": 37
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_architecture_map.py.md"
     },
     {
       "path": "tests/test_catalog.py",

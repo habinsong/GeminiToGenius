@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 275개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 276개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -35,7 +35,7 @@
 | `docs/rebuild/README.md` | 3053 | [원문](files/docs/rebuild/README.md.md) |
 | `docs/rebuild/current-work.md` | 4570 | [원문](files/docs/rebuild/current-work.md.md) |
 | `docs/rebuild/inventory/architecture.md` | 3144 | [원문](files/docs/rebuild/inventory/architecture.md.md) |
-| `docs/rebuild/plan/architecture.md` | 7669 | [원문](files/docs/rebuild/plan/architecture.md.md) |
+| `docs/rebuild/plan/architecture.md` | 9487 | [원문](files/docs/rebuild/plan/architecture.md.md) |
 | `docs/rebuild/plan/completion-audit.md` | 5066 | [원문](files/docs/rebuild/plan/completion-audit.md.md) |
 | `docs/rebuild/plan/roadmap.md` | 4540 | [원문](files/docs/rebuild/plan/roadmap.md.md) |
 | `docs/rebuild/plan/verification.md` | 4104 | [원문](files/docs/rebuild/plan/verification.md.md) |
@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 44562 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 62163 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 63180 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -246,6 +246,7 @@
 | `scripts/install.py` | 257 | [원문](files/scripts/install.py.md) |
 | `scripts/install.sh` | 142 | [원문](files/scripts/install.sh.md) |
 | `tests/test_antigravity_cli.py` | 6820 | [원문](files/tests/test_antigravity_cli.py.md) |
+| `tests/test_architecture_map.py` | 1770 | [원문](files/tests/test_architecture_map.py.md) |
 | `tests/test_catalog.py` | 3512 | [원문](files/tests/test_catalog.py.md) |
 | `tests/test_certificate.py` | 10070 | [원문](files/tests/test_certificate.py.md) |
 | `tests/test_checkpoints.py` | 4243 | [원문](files/tests/test_checkpoints.py.md) |
