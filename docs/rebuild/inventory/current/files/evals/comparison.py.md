@@ -1,8 +1,8 @@
 # `evals/comparison.py`
 
 - 형식: `100644`
-- 바이트: 5928
-- SHA-256: `e485620b97c3c2122f89ebc7a954ffaa97eb8433a83891d446775246086e8096`
+- 바이트: 6211
+- SHA-256: `bbaf77b6fdddabde31a35c4b2c340fbac479adc0f92f212f1ff2c764c2b64273`
 - 인코딩: `utf-8`
 
 ```
@@ -29,7 +29,8 @@ def load(trial: Path) -> dict:
              "state": "ungraded", "passed": False, "scope_violations": []}
     observation = manifest.get("runtime_observation")
     entry["observation"] = ({"status": observation.get("status"), "returncode": observation.get("returncode"),
-                             "duration_seconds": observation.get("duration_seconds")}
+                             "duration_seconds": observation.get("duration_seconds"),
+                             "executed_workspace_file_count": observation.get("executed_workspace_file_count")}
                             if isinstance(observation, dict) else None)
     folder = trial / "grades"
     reports = sorted(folder.glob("*.json")) if folder.is_dir() else []
@@ -64,7 +65,7 @@ def summarize(entries: list[dict]) -> list[dict]:
                               {"arm": entry["arm"], "model": entry["model"], "trials": 0, "passed": 0,
                                "ungraded": 0, "unstable": 0, "human_review": 0, "scope_violation_trials": 0,
                                "cases": [], "profiles": [], "total_duration_seconds": 0.0,
-                               "unobserved_runs": 0})
+                               "unobserved_runs": 0, "runs_that_executed_code": 0})
         arm["trials"] += 1
         arm["cases"].append(entry["case_id"])
         seconds = (entry.get("observation") or {}).get("duration_seconds")
@@ -73,6 +74,8 @@ def summarize(entries: list[dict]) -> list[dict]:
         else:
             # 실행 시간을 관측하지 않은 시행은 0초로 세지 않습니다.
             arm["unobserved_runs"] += 1
+        if ((entry.get("observation") or {}).get("executed_workspace_file_count") or 0) > 0:
+            arm["runs_that_executed_code"] += 1
         if entry["profile"] not in arm["profiles"]:
             arm["profiles"].append(entry["profile"])
         if entry["state"] == "ungraded":

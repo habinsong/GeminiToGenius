@@ -1,8 +1,8 @@
 # `evals/README.md`
 
 - 형식: `100644`
-- 바이트: 13026
-- SHA-256: `65bad46c1ba49c68a277761bc253caeb6657cf5506b36e2ee1b73dcd18fea456`
+- 바이트: 13683
+- SHA-256: `2fc19686d70e2019e53c141c7bc5f2842d424dbfe402c5de5d3609706bb91812`
 - 인코딩: `utf-8`
 
 ````
@@ -117,6 +117,10 @@ python3 -m evals.harness compare /absolute/new/a /absolute/new/b
 `run`은 준비된 요청 문자열을 `{prompt}` 자리에 그대로 넣어 실행합니다. 모든 팔이 같은 문자열을 받았다는 것을 사람이 아니라 코드가 보장합니다. 자리 표시가 없는 명령은 거부하고, 실행 시간·종료 상태·출력 크기를 시행 기록에 남기며 한 시행은 한 번만 실행합니다. 표준 출력과 오류는 `arm-stdout.log`·`arm-stderr.log`에 최대 256KiB까지 보존합니다.
 
 `run`을 쓰지 않고 직접 실행해도 되지만 그 경우 실행 시간이 기록되지 않아 비교 보고서에 `unobserved_runs`로 표시됩니다. 각 폴더를 실행한 뒤 한 번씩 `grade`합니다. `compare`는 `(arm, model)`별로 통과 수를 세고, 조건이 다르면 `comparable: false`와 막힌 이유를 보고합니다. `single_arm`, `definition_digest`, `prompt_sha256`, `case_coverage`, `ungraded`, `unstable_grades`가 이유가 됩니다. 채점하지 않은 시행을 패배로 세지 않고, 한 시행의 엇갈린 채점 중 하나를 고르지 않습니다.
+
+`run`은 모든 팔에 같은 계측을 붙여 **그 하네스가 실제로 프로젝트 코드를 실행했는지**를 관측합니다. 자기 보고가 아니라 실행 사실입니다. 비교 보고서의 `runs_that_executed_code`가 코드를 실제로 실행한 시행 수입니다. 산출물이 통과해도 검증을 한 번도 돌리지 않은 팔이 그대로 드러납니다.
+
+관측 대상은 Python·Node·네이티브 실행 TypeScript입니다. Go·Rust·셸만으로 검증한 하네스는 실행했더라도 0으로 보이므로, 이 값을 낮은 품질의 증거로 바로 쓰지 말고 어떤 언어를 썼는지 함께 확인합니다.
 
 라벨은 사용자가 선언한 값이며 실제 실행 하네스를 확인하지 않습니다. `run`으로 실행하면 벽시계 시간은 수집되지만 토큰 사용량과 비용은 이 도구가 알 수 없습니다. [실행 기록과 한계](../docs/rebuild/validation/2026-09-08-harness-comparison/README.md).
 

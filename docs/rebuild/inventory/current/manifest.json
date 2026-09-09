@@ -301,8 +301,8 @@
     {
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
-      "bytes": 4428,
-      "sha256": "6d47ed69807e6c7494d40bb0ef4da686f072daa4df93ff2dd169899914409694",
+      "bytes": 4530,
+      "sha256": "7811469e3f4bdf04eefbc05b2ad65fe68dc31cd359de213b8e038c3b5225897f",
       "encoding": "utf-8",
       "lines": 45,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 49219,
-      "sha256": "549d86a7fb96844c7452ed7855a5e3c2b48bcba8dc2dbda26845614a7db2b444",
+      "bytes": 50475,
+      "sha256": "0fb7bfa9e9fd59c2376179a059c11d81473869908c5b0d646a6553cbf8c8d2e8",
       "encoding": "utf-8",
-      "lines": 339,
+      "lines": 350,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -2119,10 +2119,10 @@
     {
       "path": "evals/README.md",
       "mode": "100644",
-      "bytes": 13026,
-      "sha256": "65bad46c1ba49c68a277761bc253caeb6657cf5506b36e2ee1b73dcd18fea456",
+      "bytes": 13683,
+      "sha256": "2fc19686d70e2019e53c141c7bc5f2842d424dbfe402c5de5d3609706bb91812",
       "encoding": "utf-8",
-      "lines": 115,
+      "lines": 119,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/evals/README.md.md"
@@ -2152,34 +2152,34 @@
     {
       "path": "evals/comparison.py",
       "mode": "100644",
-      "bytes": 5928,
-      "sha256": "e485620b97c3c2122f89ebc7a954ffaa97eb8433a83891d446775246086e8096",
+      "bytes": 6211,
+      "sha256": "bbaf77b6fdddabde31a35c4b2c340fbac479adc0f92f212f1ff2c764c2b64273",
       "encoding": "utf-8",
-      "lines": 116,
+      "lines": 119,
       "symbols": [
         {
           "name": "load",
           "kind": "FunctionDef",
           "line": 15,
-          "end_line": 49
+          "end_line": 50
         },
         {
           "name": "summarize",
           "kind": "FunctionDef",
-          "line": 52,
-          "end_line": 80
+          "line": 53,
+          "end_line": 83
         },
         {
           "name": "blocking",
           "kind": "FunctionDef",
-          "line": 83,
-          "end_line": 101
+          "line": 86,
+          "end_line": 104
         },
         {
           "name": "compare",
           "kind": "FunctionDef",
-          "line": 104,
-          "end_line": 116
+          "line": 107,
+          "end_line": 119
         }
       ],
       "trailing_newline": true,
@@ -2212,28 +2212,34 @@
     {
       "path": "evals/execution.py",
       "mode": "100644",
-      "bytes": 3804,
-      "sha256": "4a0886648fdcf557ae88851cec952a4ee94cb2037d2eb7e845db2177d284b041",
+      "bytes": 5155,
+      "sha256": "f279f408aab1dcbebacc8c161dbe55c3a59d953d0d065b3f3544c2a4f6d7ff9b",
       "encoding": "utf-8",
-      "lines": 83,
+      "lines": 109,
       "symbols": [
+        {
+          "name": "workspace_files",
+          "kind": "FunctionDef",
+          "line": 26,
+          "end_line": 34
+        },
         {
           "name": "terminate",
           "kind": "FunctionDef",
-          "line": 22,
-          "end_line": 30
+          "line": 37,
+          "end_line": 45
         },
         {
           "name": "resolved",
           "kind": "FunctionDef",
-          "line": 33,
-          "end_line": 38
+          "line": 48,
+          "end_line": 53
         },
         {
           "name": "run_arm",
           "kind": "FunctionDef",
-          "line": 41,
-          "end_line": 83
+          "line": 56,
+          "end_line": 109
         }
       ],
       "trailing_newline": true,
@@ -4389,10 +4395,10 @@
     {
       "path": "tests/test_coverage.py",
       "mode": "100644",
-      "bytes": 19792,
-      "sha256": "94a0220767b630a888b3fd7100e27a7d2e906e0411e272286c847d6dce3519c0",
+      "bytes": 22906,
+      "sha256": "cb38c14c9e27aa6dde2ea77ed0dc55141ac86a925dd42e253b07917db70830c2",
       "encoding": "utf-8",
-      "lines": 378,
+      "lines": 445,
       "symbols": [
         {
           "name": "CollectorTests",
@@ -4423,6 +4429,12 @@
           "kind": "ClassDef",
           "line": 333,
           "end_line": 378
+        },
+        {
+          "name": "RewritingLoaderTests",
+          "kind": "ClassDef",
+          "line": 381,
+          "end_line": 445
         },
         {
           "name": "setUp",
@@ -4621,6 +4633,24 @@
           "kind": "FunctionDef",
           "line": 366,
           "end_line": 378
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 388,
+          "end_line": 422
+        },
+        {
+          "name": "test_rewritten_modules_are_still_observed",
+          "kind": "FunctionDef",
+          "line": 424,
+          "end_line": 433
+        },
+        {
+          "name": "test_runner_style_check_reports_the_untouched_file",
+          "kind": "FunctionDef",
+          "line": 435,
+          "end_line": 445
         }
       ],
       "trailing_newline": true,
@@ -6291,88 +6321,124 @@
     {
       "path": "tests/test_trial_run.py",
       "mode": "100644",
-      "bytes": 5932,
-      "sha256": "d1acb81e5c27d8e8501048d5a51f21245151eec68721393b5e8d4d41b05290bb",
+      "bytes": 9194,
+      "sha256": "8a48861102233f3c8002ca4451e199d2ed5fa96890321ba9ba8ed0fc76e90ad8",
       "encoding": "utf-8",
-      "lines": 134,
+      "lines": 202,
       "symbols": [
         {
           "name": "fake_harness",
           "kind": "FunctionDef",
           "line": 17,
-          "end_line": 20
+          "end_line": 21
         },
         {
           "name": "RunArmTests",
           "kind": "ClassDef",
-          "line": 23,
-          "end_line": 86
+          "line": 24,
+          "end_line": 87
         },
         {
           "name": "ComparisonDurationTests",
           "kind": "ClassDef",
-          "line": 89,
-          "end_line": 115
+          "line": 90,
+          "end_line": 116
         },
         {
           "name": "CliRunTests",
           "kind": "ClassDef",
-          "line": 118,
-          "end_line": 130
+          "line": 119,
+          "end_line": 131
+        },
+        {
+          "name": "ExecutionObservationTests",
+          "kind": "ClassDef",
+          "line": 134,
+          "end_line": 198
         },
         {
           "name": "setUp",
           "kind": "FunctionDef",
-          "line": 24,
-          "end_line": 30
+          "line": 25,
+          "end_line": 31
         },
         {
           "name": "test_prepared_prompt_is_passed_verbatim_and_observed",
           "kind": "FunctionDef",
-          "line": 32,
-          "end_line": 43
+          "line": 33,
+          "end_line": 44
         },
         {
           "name": "test_missing_placeholder_is_refused",
           "kind": "FunctionDef",
-          "line": 45,
-          "end_line": 47
+          "line": 46,
+          "end_line": 48
         },
         {
           "name": "test_failing_arm_is_recorded_rather_than_hidden",
           "kind": "FunctionDef",
-          "line": 49,
-          "end_line": 55
+          "line": 50,
+          "end_line": 56
         },
         {
           "name": "test_second_run_is_refused_so_one_trial_is_one_attempt",
           "kind": "FunctionDef",
-          "line": 57,
-          "end_line": 61
+          "line": 58,
+          "end_line": 62
         },
         {
           "name": "test_timeout_is_recorded_and_does_not_leave_the_child_running",
           "kind": "FunctionDef",
-          "line": 63,
-          "end_line": 69
+          "line": 64,
+          "end_line": 70
         },
         {
           "name": "test_grade_report_carries_the_observation",
           "kind": "FunctionDef",
-          "line": 71,
-          "end_line": 86
+          "line": 72,
+          "end_line": 87
         },
         {
           "name": "test_compare_reports_observed_duration_per_arm",
           "kind": "FunctionDef",
-          "line": 90,
-          "end_line": 115
+          "line": 91,
+          "end_line": 116
         },
         {
           "name": "test_cli_exposes_run_after_a_separator",
           "kind": "FunctionDef",
-          "line": 119,
-          "end_line": 130
+          "line": 120,
+          "end_line": 131
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 137,
+          "end_line": 142
+        },
+        {
+          "name": "observation",
+          "kind": "FunctionDef",
+          "line": 144,
+          "end_line": 145
+        },
+        {
+          "name": "test_arm_that_runs_the_project_tests_is_observed",
+          "kind": "FunctionDef",
+          "line": 147,
+          "end_line": 155
+        },
+        {
+          "name": "test_arm_that_only_edits_without_running_is_observed_as_such",
+          "kind": "FunctionDef",
+          "line": 157,
+          "end_line": 166
+        },
+        {
+          "name": "test_comparison_counts_runs_that_executed_project_code",
+          "kind": "FunctionDef",
+          "line": 168,
+          "end_line": 198
         }
       ],
       "trailing_newline": true,

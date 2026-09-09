@@ -1,8 +1,8 @@
 # `tests/test_trial_run.py`
 
 - 형식: `100644`
-- 바이트: 5932
-- SHA-256: `d1acb81e5c27d8e8501048d5a51f21245151eec68721393b5e8d4d41b05290bb`
+- 바이트: 9194
+- SHA-256: `8a48861102233f3c8002ca4451e199d2ed5fa96890321ba9ba8ed0fc76e90ad8`
 - 인코딩: `utf-8`
 
 ```
@@ -22,8 +22,9 @@ from evals.preparation import prepare
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def fake_harness(target: Path, body: str) -> Path:
-    path = target / "fake_harness.py"
+def fake_harness(target: Path, body: str, name: str = "fake_harness") -> Path:
+    """시험용 가짜 하네스입니다. 이름을 달리하면 서로 다른 동작을 비교할 수 있습니다."""
+    path = target / (name + ".py")
     path.write_text("import sys, pathlib\n" + body, encoding="utf-8")
     return path
 
@@ -136,6 +137,73 @@ class CliRunTests(unittest.TestCase):
             self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
             self.assertTrue(json.loads(done.stdout)["ok"])
             self.assertTrue((trial / "workspace/seen.txt").exists())
+
+
+class ExecutionObservationTests(unittest.TestCase):
+    """하네스가 실제로 프로젝트 코드를 실행했는지 자기 보고 없이 관측합니다."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name).resolve()
+        self.trial = self.root / "trial"
+        prepare("bounds", self.trial, "baseline", arm="probe", model="none")
+
+    def observation(self):
+        return json.loads((self.trial / "manifest.json").read_text())["runtime_observation"]
+
+    def test_arm_that_runs_the_project_tests_is_observed(self):
+        script = fake_harness(self.root, """
+import subprocess, sys
+subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', '.'], check=False)
+""")
+        run_arm(self.trial, [sys.executable, str(script), "{prompt}"])
+        observed = self.observation()
+        self.assertGreater(observed["executed_workspace_file_count"], 0)
+        self.assertIn("mathlib.py", observed["executed_workspace_files"])
+
+    def test_arm_that_only_edits_without_running_is_observed_as_such(self):
+        script = fake_harness(self.root, """
+source = pathlib.Path('mathlib.py')
+source.write_text('def clamp(value, lower, upper):\\n    return value\\n')
+""")
+        run_arm(self.trial, [sys.executable, str(script), "{prompt}"])
+        observed = self.observation()
+        self.assertEqual(observed["executed_workspace_files"], [],
+                         "편집만 하고 실행하지 않은 것이 그대로 드러나야 합니다.")
+        self.assertEqual(observed["executed_workspace_file_count"], 0)
+
+    def test_comparison_counts_runs_that_executed_project_code(self):
+        from evals.comparison import compare
+        from evals.grading import grade
+
+        fixed = """
+source = pathlib.Path('mathlib.py')
+source.write_text('''def clamp(value, lower, upper):
+    if lower > upper:
+        raise ValueError("lower must not exceed upper")
+    return max(lower, min(value, upper))
+''')
+"""
+        running = fake_harness(self.root, fixed + """
+import subprocess, sys
+subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', '.'], check=False)
+""", name="runs_tests")
+        quiet = fake_harness(self.root, fixed, name="edits_only")
+        trials = []
+        for arm, script in (("runs-tests", running), ("edits-only", quiet)):
+            trial = self.root / arm
+            prepare("bounds", trial, "baseline", arm=arm, model="none")
+            run_arm(trial, [sys.executable, str(script), "{prompt}"])
+            grade(trial)
+            trials.append(trial)
+        report = compare(trials)
+        self.assertTrue(report["comparable"], report["blocking_reasons"])
+        counts = {arm["arm"]: arm["runs_that_executed_code"] for arm in report["arms"]}
+        self.assertEqual(counts, {"runs-tests": 1, "edits-only": 0})
+        passed = {arm["arm"]: arm["passed"] for arm in report["arms"]}
+        self.assertEqual(passed, {"runs-tests": 1, "edits-only": 1},
+                         "산출물 점수는 같아도 실행 관측은 다릅니다.")
 
 
 if __name__ == "__main__":

@@ -1,8 +1,8 @@
 # `tests/test_coverage.py`
 
 - 형식: `100644`
-- 바이트: 19792
-- SHA-256: `94a0220767b630a888b3fd7100e27a7d2e906e0411e272286c847d6dce3519c0`
+- 바이트: 22906
+- SHA-256: `cb38c14c9e27aa6dde2ea77ed0dc55141ac86a925dd42e253b07917db70830c2`
 - 인코딩: `utf-8`
 
 ```
@@ -384,4 +384,71 @@ class TypeScriptScopeTests(unittest.TestCase):
         self.assertIsNone(result["unexecuted_watch"],
                           "TypeScript 실행이 관측되지 않으면 미실행을 주장하지 않습니다.")
         self.assertFalse(build(self.store, task)["coverage_complete"])
+
+
+class RewritingLoaderTests(unittest.TestCase):
+    """pytest처럼 소스를 재작성해 불러오는 러너에서도 관찰이 유지되는지 확인합니다.
+
+    pytest를 설치하지 않고, 같은 위험 요소인 커스텀 MetaPathFinder와 어설션 재작성을
+    직접 재현합니다. 관건은 재작성된 코드 객체의 `co_filename`이 실제 파일을 가리키는지입니다.
+    """
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name).resolve()
+        (self.root / "target.py").write_text("def add(a, b):\n    return a + b\n")
+        (self.root / "spare.py").write_text("def unused():\n    return 0\n")
+        (self.root / "runner.py").write_text('''
+import ast, importlib.abc, importlib.util, sys
+from pathlib import Path
+
+
+class Rewriter(importlib.abc.MetaPathFinder, importlib.abc.Loader):
+    """소스를 AST로 다시 컴파일해 실행합니다. pytest의 어설션 재작성과 같은 구조입니다."""
+
+    def find_spec(self, name, path, target=None):
+        source = Path(name + ".py")
+        if not source.is_file():
+            return None
+        return importlib.util.spec_from_file_location(name, str(source.resolve()), loader=self)
+
+    def create_module(self, spec):
+        return None
+
+    def exec_module(self, module):
+        path = module.__spec__.origin
+        tree = ast.parse(Path(path).read_text(encoding="utf-8"), filename=path)
+        ast.fix_missing_locations(tree)
+        exec(compile(tree, path, "exec"), module.__dict__)
+
+
+sys.meta_path.insert(0, Rewriter())
+import target
+assert target.add(1, 2) == 3
+print("rewritten ok")
+''')
+
+    def test_rewritten_modules_are_still_observed(self):
+        with collector() as session:
+            done = subprocess.run([sys.executable, "runner.py"], cwd=self.root,
+                                  env=session.environment(), capture_output=True, text=True)
+            self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+            self.assertIn("rewritten ok", done.stdout)
+            files = session.files()
+        self.assertIn((self.root / "target.py").resolve(), files,
+                      "재작성된 모듈도 실제 파일 경로로 관찰되어야 합니다.")
+        self.assertNotIn((self.root / "spare.py").resolve(), files)
+
+    def test_runner_style_check_reports_the_untouched_file(self):
+        spec = {"schema_version": 1, "goal": "재작성 러너로 검사합니다.", "checks": [
+            {"id": "rewritten", "criterion": "재작성 러너가 통과합니다.",
+             "argv": [sys.executable, "runner.py"], "watch": ["target.py", "spare.py", "runner.py"]}]}
+        store = Store(self.root / ".gtg/state.sqlite3")
+        self.addCleanup(store.close)
+        task = store.create(self.root, spec)
+        result = execute(store, task, "rewritten")
+        self.assertEqual(result["status"], "passed")
+        self.assertEqual(result["executed_watch"], ["runner.py", "target.py"])
+        self.assertEqual(result["unexecuted_watch"], ["spare.py"])
 ```

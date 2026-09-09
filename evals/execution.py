@@ -15,8 +15,23 @@ import signal
 import subprocess
 import time
 
+from .workspace import private
+
 PLACEHOLDER = "{prompt}"
 OUTPUT_LIMIT = 256 * 1024
+# 실행 관측 목록이 보고서를 덮지 않도록 상한을 둡니다.
+FILE_LIMIT = 50
+
+
+def workspace_files(files, workspace: Path) -> list[str]:
+    """관측된 실행 파일 중 작업공간 안의 것만 상대 경로로 모읍니다."""
+    found = set()
+    for path in files:
+        try:
+            found.add(path.relative_to(workspace).as_posix())
+        except ValueError:
+            continue
+    return sorted(name for name in found if not private(Path(name)))
 
 
 def terminate(process: subprocess.Popen):
@@ -53,22 +68,30 @@ def run_arm(trial: Path, command: list[str], *, timeout: float = 1800) -> dict:
         raise ValueError("시행 작업공간이 없습니다.")
     started = time.monotonic()
     status, returncode, output = "completed", None, {"stdout_bytes": 0, "stderr_bytes": 0}
+    executed: list[str] = []
     process = None
     try:
-        process = subprocess.Popen(argv, cwd=workspace, stdin=subprocess.DEVNULL,
-                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                                   start_new_session=os.name == "posix")
-        try:
-            out, err = process.communicate(timeout=timeout)
-        except subprocess.TimeoutExpired:
-            terminate(process)
-            out, err = process.communicate()
-            status = "timeout"
-        returncode = process.returncode
-        output = {"stdout_bytes": len(out or b""), "stderr_bytes": len(err or b"")}
-        (trial / "arm-stdout.log").write_bytes((out or b"")[:OUTPUT_LIMIT])
-        (trial / "arm-stderr.log").write_bytes((err or b"")[:OUTPUT_LIMIT])
-    except (OSError, ValueError) as error:
+        # 계측은 실행 단계에서만 필요합니다. 채점 경로가 제품을 import하지 않도록 늦게 불러옵니다.
+        from gtg.coverage import collector
+
+        # 모든 팔에 같은 계측을 붙입니다. 하네스의 자기 보고 대신 실제 실행을 관측합니다.
+        with collector() as session:
+            process = subprocess.Popen(argv, cwd=workspace, stdin=subprocess.DEVNULL,
+                                       stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                       env=session.environment(),
+                                       start_new_session=os.name == "posix")
+            try:
+                out, err = process.communicate(timeout=timeout)
+            except subprocess.TimeoutExpired:
+                terminate(process)
+                out, err = process.communicate()
+                status = "timeout"
+            returncode = process.returncode
+            output = {"stdout_bytes": len(out or b""), "stderr_bytes": len(err or b"")}
+            (trial / "arm-stdout.log").write_bytes((out or b"")[:OUTPUT_LIMIT])
+            (trial / "arm-stderr.log").write_bytes((err or b"")[:OUTPUT_LIMIT])
+            executed = workspace_files(session.files(), workspace)
+    except (ImportError, OSError, ValueError) as error:
         status = "error"
         output["error_type"] = type(error).__name__
     finally:
@@ -77,6 +100,9 @@ def run_arm(trial: Path, command: list[str], *, timeout: float = 1800) -> dict:
     observation = {"schema_version": 1, "command": list(command), "argv_length": len(argv),
                    "prompt_sha256": manifest["prompt_sha256"], "status": status, "returncode": returncode,
                    "duration_seconds": round(time.monotonic() - started, 3),
+                   # 관측 가능한 런타임에서 실제로 실행된 작업공간 파일입니다. 자기 보고가 아닙니다.
+                   "executed_workspace_files": executed[:FILE_LIMIT],
+                   "executed_workspace_file_count": len(executed),
                    "observed_at": datetime.now(timezone.utc).isoformat(), **output}
     manifest["runtime_observation"] = observation
     (trial / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
