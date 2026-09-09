@@ -302,7 +302,7 @@
       "path": "docs/rebuild/current-work.md",
       "mode": "100644",
       "bytes": 4570,
-      "sha256": "2fbfdd01cdd319075b0de6f8d9ffb5e283434b08ecf2793d6d15fea83863c3fa",
+      "sha256": "2ee88ec866935678a7395cd4f90a580c990b4635249e670a7a5e3ee518c4acba",
       "encoding": "utf-8",
       "lines": 45,
       "symbols": [],
@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 60494,
-      "sha256": "675aebfca7e990efa5875958a12de0a2fd5102da7c0ad555b1b45bf460c51563",
+      "bytes": 61390,
+      "sha256": "786315d21ce6cc320d8148926347f150b8ec2b6bc84cf445be6f49d8f9d41f4c",
       "encoding": "utf-8",
-      "lines": 439,
+      "lines": 449,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -5513,6 +5513,72 @@
       ],
       "trailing_newline": true,
       "document": "files/tests/test_execution_graded_case.py.md"
+    },
+    {
+      "path": "tests/test_hook_concurrency.py",
+      "mode": "100644",
+      "bytes": 5349,
+      "sha256": "02fa36854b41f8d1f9334f5bb8e5cbfafb93bcc9449633c2d5ef2c4fa78bc11c",
+      "encoding": "utf-8",
+      "lines": 114,
+      "symbols": [
+        {
+          "name": "HookConcurrencyTests",
+          "kind": "ClassDef",
+          "line": 17,
+          "end_line": 110
+        },
+        {
+          "name": "setUp",
+          "kind": "FunctionDef",
+          "line": 18,
+          "end_line": 24
+        },
+        {
+          "name": "register",
+          "kind": "FunctionDef",
+          "line": 26,
+          "end_line": 35
+        },
+        {
+          "name": "stop_payload",
+          "kind": "FunctionDef",
+          "line": 37,
+          "end_line": 39
+        },
+        {
+          "name": "fire",
+          "kind": "FunctionDef",
+          "line": 41,
+          "end_line": 44
+        },
+        {
+          "name": "session_row",
+          "kind": "FunctionDef",
+          "line": 46,
+          "end_line": 54
+        },
+        {
+          "name": "test_simultaneous_identical_stops_resume_exactly_once",
+          "kind": "FunctionDef",
+          "line": 56,
+          "end_line": 67
+        },
+        {
+          "name": "test_stop_during_a_running_check_does_not_resume",
+          "kind": "FunctionDef",
+          "line": 69,
+          "end_line": 95
+        },
+        {
+          "name": "test_context_hook_reports_the_running_check",
+          "kind": "FunctionDef",
+          "line": 97,
+          "end_line": 110
+        }
+      ],
+      "trailing_newline": true,
+      "document": "files/tests/test_hook_concurrency.py.md"
     },
     {
       "path": "tests/test_hook_resilience.py",
