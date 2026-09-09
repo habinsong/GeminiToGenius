@@ -43,7 +43,7 @@
 | `docs/rebuild/research/native-antigravity.md` | 2525 | [원문](files/docs/rebuild/research/native-antigravity.md.md) |
 | `docs/rebuild/research/platform-contracts.md` | 7681 | [원문](files/docs/rebuild/research/platform-contracts.md.md) |
 | `docs/rebuild/research/sources.json` | 44562 | [원문](files/docs/rebuild/research/sources.json.md) |
-| `docs/rebuild/status.md` | 63180 | [원문](files/docs/rebuild/status.md.md) |
+| `docs/rebuild/status.md` | 64306 | [원문](files/docs/rebuild/status.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/rebuild/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -218,7 +218,7 @@
 | `evals/progress.py` | 2165 | [원문](files/evals/progress.py.md) |
 | `evals/workspace.py` | 4030 | [원문](files/evals/workspace.py.md) |
 | `gtg/__init__.py` | 79 | [원문](files/gtg/__init__.py.md) |
-| `gtg/__main__.py` | 11179 | [원문](files/gtg/__main__.py.md) |
+| `gtg/__main__.py` | 12266 | [원문](files/gtg/__main__.py.md) |
 | `gtg/certificate.py` | 7606 | [원문](files/gtg/certificate.py.md) |
 | `gtg/checkpoints.py` | 2771 | [원문](files/gtg/checkpoints.py.md) |
 | `gtg/context_message.py` | 3071 | [원문](files/gtg/context_message.py.md) |

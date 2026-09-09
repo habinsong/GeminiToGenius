@@ -411,10 +411,10 @@
     {
       "path": "docs/rebuild/status.md",
       "mode": "100644",
-      "bytes": 63180,
-      "sha256": "9859cca59dbf6d86831082f69190e2730a9a6443f3c4e68c3f15a25dc61ac369",
+      "bytes": 64306,
+      "sha256": "1d676ab8b9a2b09a36fc3b9d2374b87b7847413d05c36068e4621d711010a56c",
       "encoding": "utf-8",
-      "lines": 467,
+      "lines": 477,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/rebuild/status.md.md"
@@ -3180,10 +3180,10 @@
     {
       "path": "gtg/__main__.py",
       "mode": "100644",
-      "bytes": 11179,
-      "sha256": "d9ab8e962c83c808ebf0b6d727ee8efc65686f3fdb45ab9ebaa5f9e1082e9ee1",
+      "bytes": 12266,
+      "sha256": "d69882025936cd7feaf8f117f2c765729390c7cd4acc969e57a2fa88a6183856",
       "encoding": "utf-8",
-      "lines": 192,
+      "lines": 233,
       "symbols": [
         {
           "name": "read_document",
@@ -3204,10 +3204,52 @@
           "end_line": 90
         },
         {
-          "name": "main",
+          "name": "stateless",
           "kind": "FunctionDef",
           "line": 93,
-          "end_line": 188
+          "end_line": 105
+        },
+        {
+          "name": "state_location",
+          "kind": "FunctionDef",
+          "line": 108,
+          "end_line": 116
+        },
+        {
+          "name": "guard_state",
+          "kind": "FunctionDef",
+          "line": 119,
+          "end_line": 127
+        },
+        {
+          "name": "begin_task",
+          "kind": "FunctionDef",
+          "line": 130,
+          "end_line": 138
+        },
+        {
+          "name": "run_checks",
+          "kind": "FunctionDef",
+          "line": 141,
+          "end_line": 153
+        },
+        {
+          "name": "change_pause",
+          "kind": "FunctionDef",
+          "line": 156,
+          "end_line": 163
+        },
+        {
+          "name": "stateful",
+          "kind": "FunctionDef",
+          "line": 166,
+          "end_line": 191
+        },
+        {
+          "name": "main",
+          "kind": "FunctionDef",
+          "line": 194,
+          "end_line": 229
         }
       ],
       "trailing_newline": true,

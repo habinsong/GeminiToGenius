@@ -1,8 +1,8 @@
 # `gtg/__main__.py`
 
 - 형식: `100644`
-- 바이트: 11179
-- SHA-256: `d9ab8e962c83c808ebf0b6d727ee8efc65686f3fdb45ab9ebaa5f9e1082e9ee1`
+- 바이트: 12266
+- SHA-256: `d69882025936cd7feaf8f117f2c765729390c7cd4acc969e57a2fa88a6183856`
 - 인코딩: `utf-8`
 
 ```
@@ -98,90 +98,131 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def stateless(args) -> int | None:
+    """상태 DB를 열지 않는 명령입니다. 처리했으면 종료 코드를, 아니면 None을 돌려줍니다."""
+    if args.command == "inspect":
+        result = inspect(args.workspace, args.paths, args.max_bytes, args.start_line, args.end_line)
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+    if args.command == "replay":
+        # 상태 DB를 읽지 않습니다. 증명서와 현재 파일만으로 다시 실행합니다.
+        report = replay(read_document(args.certificate), args.workspace, trust_commands=args.trust_commands)
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        # pass는 0, 재현 실패는 1, 확인하지 못한 범위가 남으면 2입니다.
+        return {"pass": 0, "invalid": 1, "inconclusive": 2}[report["verdict"]]
+    return None
+
+
+def state_location(args) -> tuple[Path, Path]:
+    """작업공간과 상태 DB 경로를 정합니다. 민감 경로는 여기서 막습니다."""
+    state_root = args.workspace.resolve(strict=True)
+    if not state_root.is_dir() or sensitive(state_root):
+        raise ValueError("비민감 작업공간 폴더가 필요합니다.")
+    state_path = (args.state or state_root / ".gtg/state.sqlite3").absolute()
+    if sensitive(state_path):
+        raise ValueError("민감 경로를 작업 상태로 읽지 않습니다.")
+    return state_root, state_path
+
+
+def guard_state(args, state_root: Path, state_path: Path):
+    """상태를 여는 명령에만 적용합니다. `tasks`는 상태가 없어도 빈 목록을 돌려줍니다."""
+    if (args.command == "attach" or (args.command == "start" and args.session)) and state_path != state_root / ".gtg/state.sqlite3":
+        raise ValueError("호스트 연결에는 해당 작업공간의 .gtg/state.sqlite3 경로를 사용하세요.")
+    if args.command == "attach" and not state_path.exists():
+        raise ValueError("연결할 작업 상태가 없습니다.")
+    if args.command != "start" and not state_path.exists():
+        # 조회·검증 명령은 새 상태 DB를 만들지 않습니다.
+        raise ValueError("이 경로에 GTG 작업 상태가 없습니다. 해당 작업공간에서 실행하거나 --workspace로 지정하세요.")
+
+
+def begin_task(store: Store, args) -> dict:
+    spec = read_document(args.spec)
+    if bool(args.platform) != bool(args.session):
+        raise ValueError("호스트와 세션은 함께 지정해야 합니다.")
+    if args.session:
+        task_id = Sessions(store).start(key(args.platform, args.session), args.workspace, spec)
+    else:
+        task_id = store.create(args.workspace, spec)
+    return status(store, task_id)
+
+
+def run_checks(store: Store, args) -> dict:
+    """등록된 검사를 실행합니다. `--all`이 없으면 첫 실패에서 멈춥니다."""
+    checks = store.task(args.task_id)["spec"]["checks"]
+    ids = [args.check] if args.check else [check["id"] for check in checks]
+    with cancellation_signals():
+        for check_id in ids:
+            outcome = execute(store, args.task_id, check_id)
+            if outcome["status"] != "passed" and not args.all:
+                break
+    result = status(store, args.task_id)
+    result["requested_checks"] = ids
+    result["requested_verified"] = all(check["status"] == "passed" for check in result["checks"] if check["id"] in ids)
+    return result
+
+
+def change_pause(store: Store, args) -> dict:
+    sessions = Sessions(store)
+    session = key(args.platform, args.session)
+    if args.command == "pause":
+        sessions.pause(session, args.reason)
+    else:
+        sessions.resume(session)
+    return {"ok": True, "paused": args.command == "pause"}
+
+
+def stateful(store: Store, args, state_root: Path, state_path: Path) -> tuple[dict, int] | int:
+    """상태를 여는 명령입니다. 자체 출력을 마친 명령은 종료 코드만 돌려줍니다."""
+    if args.command == "start":
+        return begin_task(store, args), 0
+    if args.command == "attach":
+        Sessions(store).attach(key(args.platform, args.session), args.task_id, state_root, args.previous_host_stopped)
+        return {"attached": True, **status(store, args.task_id)}, 0
+    if args.command == "verify":
+        result = run_checks(store, args)
+        return result, int(not result["requested_verified"])
+    if args.command == "recover":
+        return {"recovered": store.recover(args.task_id), **status(store, args.task_id)}, 0
+    if args.command == "certify":
+        document = certificate(store, args.task_id)
+        if args.output:
+            write_document(args.output, document)
+        print(json.dumps({**document, "state_path": str(state_path),
+                          "output": str(args.output) if args.output else None}, ensure_ascii=False, indent=2))
+        # 표준 출력의 편의 필드는 digest 본문이 아닙니다. 저장 파일은 본문만 담습니다.
+        return int(not document["verified"])
+    if args.command == "checkpoint":
+        checkpoint_id = record_checkpoint(store, args.task_id, read_document(args.note))
+        return {"checkpoint_id": checkpoint_id, **status(store, args.task_id)}, 0
+    if args.command in {"pause", "resume"}:
+        return change_pause(store, args), 0
+    return status(store, args.task_id), 0
+
+
 def main() -> int:
     args = build_parser().parse_args()
     store = None
     try:
         # --workspace를 생략하면 현재 폴더를 씁니다. --state를 함께 주면 그 경로가 우선합니다.
         args.workspace = args.workspace or Path.cwd()
-        if args.command == "inspect":
-            result = inspect(args.workspace, args.paths, args.max_bytes, args.start_line, args.end_line)
-            print(json.dumps(result, ensure_ascii=False, indent=2))
-            return 0
-        if args.command == "replay":
-            # 상태 DB를 읽지 않습니다. 증명서와 현재 파일만으로 다시 실행합니다.
-            report = replay(read_document(args.certificate), args.workspace, trust_commands=args.trust_commands)
-            print(json.dumps(report, ensure_ascii=False, indent=2))
-            # pass는 0, 재현 실패는 1, 확인하지 못한 범위가 남으면 2입니다.
-            return {"pass": 0, "invalid": 1, "inconclusive": 2}[report["verdict"]]
-        state_root = args.workspace.resolve(strict=True)
-        if not state_root.is_dir() or sensitive(state_root):
-            raise ValueError("비민감 작업공간 폴더가 필요합니다.")
-        state_path = (args.state or state_root / ".gtg/state.sqlite3").absolute()
-        if sensitive(state_path):
-            raise ValueError("민감 경로를 작업 상태로 읽지 않습니다.")
+        handled = stateless(args)
+        if handled is not None:
+            return handled
+        state_root, state_path = state_location(args)
         if args.command == "tasks":
             print(json.dumps(discover(state_root, state_path, args.limit, args.offset), ensure_ascii=False, indent=2))
             return 0
-        if (args.command == "attach" or (args.command == "start" and args.session)) and state_path != state_root / ".gtg/state.sqlite3":
-            raise ValueError("호스트 연결에는 해당 작업공간의 .gtg/state.sqlite3 경로를 사용하세요.")
-        if args.command == "attach" and not state_path.exists():
-            raise ValueError("연결할 작업 상태가 없습니다.")
-        if args.command != "start" and not state_path.exists():
-            # 조회·검증 명령은 새 상태 DB를 만들지 않습니다.
-            raise ValueError("이 경로에 GTG 작업 상태가 없습니다. 해당 작업공간에서 실행하거나 --workspace로 지정하세요.")
+        guard_state(args, state_root, state_path)
         store = Store(state_path)
-        if args.command == "start":
-            spec = read_document(args.spec)
-            if bool(args.platform) != bool(args.session):
-                raise ValueError("호스트와 세션은 함께 지정해야 합니다.")
-            if args.session:
-                task_id = Sessions(store).start(key(args.platform, args.session), args.workspace, spec)
-            else:
-                task_id = store.create(args.workspace, spec)
-            result = status(store, task_id)
-        elif args.command == "attach":
-            Sessions(store).attach(key(args.platform, args.session), args.task_id, state_root, args.previous_host_stopped)
-            result = {"attached": True, **status(store, args.task_id)}
-        elif args.command == "verify":
-            checks = store.task(args.task_id)["spec"]["checks"]
-            ids = [args.check] if args.check else [check["id"] for check in checks]
-            with cancellation_signals():
-                for check_id in ids:
-                    outcome = execute(store, args.task_id, check_id)
-                    if outcome["status"] != "passed" and not args.all:
-                        break
-            result = status(store, args.task_id)
-            result["requested_checks"] = ids
-            result["requested_verified"] = all(check["status"] == "passed" for check in result["checks"] if check["id"] in ids)
-        elif args.command == "recover":
-            result = {"recovered": store.recover(args.task_id), **status(store, args.task_id)}
-        elif args.command == "certify":
-            document = certificate(store, args.task_id)
-            if args.output:
-                write_document(args.output, document)
-            print(json.dumps({**document, "state_path": str(state_path),
-                              "output": str(args.output) if args.output else None}, ensure_ascii=False, indent=2))
-            # 표준 출력의 편의 필드는 digest 본문이 아닙니다. 저장 파일은 본문만 담습니다.
-            return int(not document["verified"])
-        elif args.command == "checkpoint":
-            checkpoint_id = record_checkpoint(store, args.task_id, read_document(args.note))
-            result = {"checkpoint_id": checkpoint_id, **status(store, args.task_id)}
-        elif args.command in {"pause", "resume"}:
-            sessions = Sessions(store)
-            session = key(args.platform, args.session)
-            if args.command == "pause":
-                sessions.pause(session, args.reason)
-            else:
-                sessions.resume(session)
-            result = {"ok": True, "paused": args.command == "pause"}
-        else:
-            result = status(store, args.task_id)
+        outcome = stateful(store, args, state_root, state_path)
+        if isinstance(outcome, int):
+            return outcome
+        result, code = outcome
         if "task_id" in result:
             result["continuation"] = Sessions(store).for_task(result["task_id"])
         result["state_path"] = str(state_path)
         print(json.dumps(result, ensure_ascii=False, indent=2))
-        return int(args.command == "verify" and not result["requested_verified"])
+        return code
     except (OSError, ValueError, sqlite3.Error) as error:
         print(json.dumps({"ok": False, "error": str(error)}, ensure_ascii=False))
         return 1
