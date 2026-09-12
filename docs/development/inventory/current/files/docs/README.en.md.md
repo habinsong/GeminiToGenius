@@ -1,8 +1,8 @@
 # `docs/README.en.md`
 
 - 형식: `100644`
-- 바이트: 5705
-- SHA-256: `f780e73a6a4cdab90a54f7f0b45e8ef2eec0a87bdd66722b181fcab93616b6ea`
+- 바이트: 6333
+- SHA-256: `043f013c28d5204efffdf9b00ffad68ed581c1d6e287e51d1b3d93d6a2fc2cab`
 - 인코딩: `utf-8`
 
 ````
@@ -14,83 +14,83 @@
 
 <p><a href="../README.md">한국어</a> · English</p>
 
-<p><a href="README.md">Documentation</a> · <a href="verification/README.md">What is checked and what is not</a> · <a href="../CHANGELOG.md">Changelog</a></p>
+<p><a href="README.md">Documentation</a> · <a href="verification/README.md">Verification & Limits</a> · <a href="../CHANGELOG.md">Changelog</a></p>
 
-<p>GTG is a plugin for Antigravity and Gemini CLI. When a request looks like it will take more than one turn, the model first pins down what counts as finished, runs those conditions as real commands, and only then reports completion. The report comes with a certificate that ties the claim to the commands it ran, their exit codes, and fingerprints of the files under test. Anyone holding that file can check it again.</p>
+<p>GTG is a reliability plugin for Antigravity and Gemini CLI. When a task spans multiple turns, the model registers explicit completion criteria first, executes them as actual shell commands, and only claims success once they pass. Each completed task produces a tamper-evident certificate containing the executed commands, exit codes, and cryptographic fingerprints of all inspected files. Anyone with access to the workspace can independently replay and verify the certificate without an external database.</p>
 
-<p>No slash commands. No spec files to fill in. Ask the way you normally would.</p>
+<p>No custom slash commands or rigid spec files are required. Simply prompt naturally.</p>
 
 </div>
 
 ## What it does
 
-| | |
+| Feature | Description |
 |---|---|
-| Fixed finish conditions | Once registered, the verification commands cannot change. Commands like `echo` or `true` are rejected at registration. |
-| Real execution | The registered command runs as written. Exit code, duration, and file hashes are recorded. If a watched file changes, the earlier success is void. |
-| Completion certificate | Claim and evidence in one file. `replay` reproduces it without the state database. The verdict is `pass`, `invalid`, or `inconclusive`, and inconclusive is never reported as a pass. |
-| Unverified scope | Files a passing check never executed are reported as they are. When a language it cannot observe is in scope, it does not claim anything about execution and says what blocked the judgment instead. |
-| Work across sessions | Goals, check results, and notes survive a disconnect. A new session attaches to the same task. |
-| Interrupted runs | Whether a check is still running is decided by a file lock, not a PID. A reboot or a hard kill does not leave the task stuck. |
+| Immutable finish conditions | Once registered, verification commands are locked. No-op commands like `echo` or `true` are rejected upfront. |
+| Real execution | Registered commands run directly in your environment. Exit codes, wall-clock duration, and file hashes are logged. If a watched file changes later, prior passes are invalidated. |
+| Completion certificate | Binds claims and concrete execution proof into a single document. `replay` verifies outcomes without requiring a state database, evaluating strictly to `pass`, `invalid`, or `inconclusive`. Inconclusive runs never pass. |
+| Transparent unverified scope | Files not executed during verification are explicitly reported. When an unobservable language runtime is in scope, GTG discloses the gap rather than claiming full verification. |
+| Cross-session continuity | Goals, verification records, and scratchpad notes persist across restarts. New sessions seamlessly attach to ongoing tasks. |
+| Crash-resilient recovery | Task execution status relies on file locks rather than ephemeral PIDs. Sudden reboots or process terminations will not leave tasks hung. |
 
-Hooks never call a model or run tests on their own. Automatic resume spends your quota, so the default is two.
+Platform hooks never invoke background models or trigger unauthorized test suites on their own. Auto-resume operates under a strict default budget of two retries to protect your token quota.
 
-## Install
+## Installation
 
-macOS or Linux, Python 3.10 or later, and Git. No third-party Python packages.
+Requires macOS or Linux, Python 3.10+, and Git. Zero third-party Python dependencies.
 
 ```bash
 git clone https://github.com/habinsong/GeminiToGenius.git
 bash GeminiToGenius/scripts/install.sh
 ```
 
-The installer looks for configuration files the hosts wrote themselves and installs into every host it finds. Restart the host afterwards.
+The installer detects existing host configurations on your machine and installs into every discovered environment. Restart your host application after installation.
 
-| Host | Install path |
+| Host | Installation path |
 |---|---|
-| Antigravity desktop and IDE | `~/.gemini/config/plugins/geminitogenius/` |
+| Antigravity Desktop & IDE | `~/.gemini/config/plugins/geminitogenius/` |
 | Antigravity CLI (`agy`) | `~/.gemini/antigravity-cli/plugins/geminitogenius/` |
 | Gemini CLI | `~/.gemini/extensions/geminitogenius/` |
 
-Antigravity CLI does not read a plugin just because the files sit at that path. The installer runs `agy plugin install` as well. If `agy` is missing, the install is not treated as a failure and the command you need is printed instead.
+For Antigravity CLI, copying files alone does not activate the plugin; the installer automatically invokes `agy plugin install`. If `agy` is not found on `$PATH`, the installer skips this step gracefully and prints the command to run manually.
 
-Gemini CLI stopped serving individual accounts on 2026-06-18, so it is not auto-detected. It installs only when you pass `--platform gemini-cli`.
+Gemini CLI discontinued individual account endpoints on 2026-06-18, so auto-detection is disabled for it. Pass `--platform gemini-cli` to install explicitly.
 
-More in [Getting started](product/getting-started.md).
+See [Getting started](product/getting-started.md) for full setup instructions.
 
-## What has been checked
+## Verification & Real-World Results
 
-Only results from real hosts.
+All findings reflect tests run on real host environments.
 
-On Antigravity 2.12.2 the model registered a task, verified it, produced a certificate, and replayed it on its own. Changing one line in a file under test broke the reproduction; restoring it made the reproduction work again. On Antigravity CLI 1.1.28 the official validator accepted the package and both hooks fired.
+On Antigravity 2.12.2, the model autonomously registered tasks, verified them, generated certificates, and replayed them. Modifying a single line in a verified file broke certificate replay as expected; reverting the change restored verification. On Antigravity CLI 1.1.28, the package passed official validation and emitted both lifecycle hooks.
 
-Four harnesses ran 64 trials on the same cases, the same prompts, and the same grader.
+We evaluated four harnesses across 64 benchmark trials with identical test cases, prompts, and grading logic:
 
-| Arm | Auto-graded | Passed | Passed every time |
+| Arm | Auto-graded | Passed | Consistent pass rate |
 |---|---|---|---|
 | `agy` with GTG (Gemini 3.8 Flash High) | 14 | 14 | 7/7 |
 | `agy` without GTG (same model) | 14 | 14 | 7/7 |
 | Claude Code (Sonnet 5) | 14 | 12 | 6/7 |
 | Codex CLI (gpt-5.6-terra) | 14 | 13 | 6/7 |
 
-**With GTG on and off against the same model the results are identical. On short tasks GTG showed no advantage in the finished artifact.** The model registered a task in 5 of 16 trials, and for those tasks not registering was the right call. Attaching finish conditions and a certificate to a two-file fix only adds cost.
+**With GTG enabled vs. disabled on the same model, pass rates were identical. On quick, single-turn tasks, GTG provides no noticeable delta in finished artifacts.** In 11 of 16 runs, the model chose not to register tasks—which was the intended behavior. Attaching full verification conditions to trivial two-file edits adds unnecessary overhead.
 
-All five registrations ran their checks and produced certificates. On the case that resumes a previous session's work it registered every time, linked two tasks, and left a note. Work that does not finish in one turn is where GTG earns its place.
+Where GTG proves its value is multi-turn tasks: across all five multi-step registrations, it executed checks and minted verifiable certificates. In session resumption tests, it consistently linked parent tasks and tracked progress notes.
 
-Claude Code and Codex ran different models, so this table cannot rank the products. What was not measured is listed in [what is not checked](verification/README.md).
+Because Claude Code and Codex ran different foundation models, these benchmarks reflect harness characteristics rather than model superiority. Unmeasured dimensions are documented in [what is not checked](verification/README.md).
 
 ## Documentation
 
-| Document | Read it when |
+| Guide | Description |
 |---|---|
-| [Getting started](product/getting-started.md) | You want to install it and try it |
-| [How it works](product/how-it-works.md) | You want the path from one request to registration, verification, and certificate |
-| [Commands](reference/cli.md) | You need what `run.py` accepts and its exit codes |
-| [Completion certificate](reference/certificate.md) | You need the certificate format and the `replay` verdicts |
-| [Architecture](architecture/overview.md) | You want the boundary between the hooks and the execution core |
-| [All documentation](README.md) | Anything not above |
+| [Getting started](product/getting-started.md) | Setup, host configuration, and uninstallation |
+| [How it works](product/how-it-works.md) | Execution lifecycle from prompt to registration and certification |
+| [CLI Reference](reference/cli.md) | Supported `run.py` subcommands and exit codes |
+| [Completion Certificate](reference/certificate.md) | Certificate specification and `replay` validation states |
+| [Architecture](architecture/overview.md) | Boundary design between host hooks and core execution |
+| [All Documentation](README.md) | Complete documentation index |
 
-Documentation below the top level is written in Korean.
+Detailed architectural and developer docs are maintained in Korean.
 
 ## Development
 
@@ -99,9 +99,9 @@ PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests
 python3 scripts/catalog.py --check
 ```
 
-317 tests. The research ledger holds 94 sources, and the full text of every implemented file is kept under the inventory. Working rules are in [CONTRIBUTING.md](../CONTRIBUTING.md).
+The test suite covers 317 unit and integration tests. Historical research includes 94 primary sources, with repository snapshot integrity tracked in the inventory. Review [CONTRIBUTING.md](../CONTRIBUTING.md) for contribution guidelines.
 
 ## License
 
-MIT. See [LICENSE](../LICENSE). Not affiliated with or sponsored by Google, Antigravity, or Gemini. Product names are used only to point at what this works with.
+MIT License. See [LICENSE](../LICENSE). Not affiliated with or endorsed by Google, Antigravity, or Gemini. Product names are referenced strictly for compatibility context.
 ````

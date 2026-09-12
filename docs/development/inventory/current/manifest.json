@@ -93,10 +93,10 @@
     {
       "path": "CHANGELOG.md",
       "mode": "100644",
-      "bytes": 21466,
-      "sha256": "7de6bace02c215a66fe1fbf6a36c60eb5a5d8d17b1c537fb3b2edfb381557fde",
+      "bytes": 22234,
+      "sha256": "8108652c67c637b3d06030ae5da315956419e766b12121358f9f81f4be594c06",
       "encoding": "utf-8",
-      "lines": 271,
+      "lines": 272,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/CHANGELOG.md.md"
@@ -115,10 +115,10 @@
     {
       "path": "CODE_OF_CONDUCT.md",
       "mode": "100644",
-      "bytes": 352,
-      "sha256": "1c791743bb23b644f87abd9b2eb80cc6f1ca078b2f13e90086a6923e2722211f",
+      "bytes": 419,
+      "sha256": "4a29b1eeef18981162440010d842143d81fb5d846f2873a63d3fb32ed4c84a35",
       "encoding": "utf-8",
-      "lines": 5,
+      "lines": 6,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/CODE_OF_CONDUCT.md.md"
@@ -126,10 +126,10 @@
     {
       "path": "CONTRIBUTING.md",
       "mode": "100644",
-      "bytes": 1131,
-      "sha256": "b64c3b71177784da5c7872f98cd25fe02642990ffd35bb4024b4033313121732",
+      "bytes": 1340,
+      "sha256": "368b866151353e059b2452c7f4eb8c352e54a7942545857746e8fc243e4d5e38",
       "encoding": "utf-8",
-      "lines": 16,
+      "lines": 17,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/CONTRIBUTING.md.md"
@@ -148,8 +148,8 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "bytes": 5132,
-      "sha256": "e847e63140aab84585eabe42c0edafda5f627cbbe8904f8d342bf20608ea8c97",
+      "bytes": 5552,
+      "sha256": "5a5f461746f65aa57417eeb6f3b8271a93a7520744ae45f7938d9268b89d5f1c",
       "encoding": "utf-8",
       "lines": 104,
       "symbols": [],
@@ -159,10 +159,10 @@
     {
       "path": "SECURITY.md",
       "mode": "100644",
-      "bytes": 524,
-      "sha256": "fa6c5a8d71bc88377c5a02dff958d4c04e9b8e6ac9df4bba9c1012e93c204343",
+      "bytes": 655,
+      "sha256": "07c9c43a75f83fe99ce07f925f43d0b837d416724834d0b3b11fcacbf459aa3c",
       "encoding": "utf-8",
-      "lines": 7,
+      "lines": 8,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/SECURITY.md.md"
@@ -170,10 +170,10 @@
     {
       "path": "SUPPORT.md",
       "mode": "100644",
-      "bytes": 510,
-      "sha256": "c8b350451733d2380cfd78d854cdec96385df4271824521928b3f9b402f667cb",
+      "bytes": 639,
+      "sha256": "9b7e15b0bf9450a33635af3f23128be1afc11c993c5576aea0df96d942b5d2b5",
       "encoding": "utf-8",
-      "lines": 9,
+      "lines": 10,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/SUPPORT.md.md"
@@ -213,8 +213,8 @@
     {
       "path": "docs/README.en.md",
       "mode": "100644",
-      "bytes": 5705,
-      "sha256": "f780e73a6a4cdab90a54f7f0b45e8ef2eec0a87bdd66722b181fcab93616b6ea",
+      "bytes": 6333,
+      "sha256": "043f013c28d5204efffdf9b00ffad68ed581c1d6e287e51d1b3d93d6a2fc2cab",
       "encoding": "utf-8",
       "lines": 98,
       "symbols": [],
@@ -224,10 +224,10 @@
     {
       "path": "docs/README.md",
       "mode": "100644",
-      "bytes": 2228,
-      "sha256": "4cdecb024d0526d512a413e4f4ad45573729e769a286df00a464be79b98248b8",
+      "bytes": 2584,
+      "sha256": "b383634ebeccaeec9829319da876ebd9029b6099b9ad7988d1e52bc10ca2058e",
       "encoding": "utf-8",
-      "lines": 49,
+      "lines": 50,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/README.md.md"
@@ -235,10 +235,10 @@
     {
       "path": "docs/architecture/coverage.md",
       "mode": "100644",
-      "bytes": 2934,
-      "sha256": "b7b5a6434da4f4fd84927818fc84753e4a803e47f6b1a88fd6c5e4b3bba087c4",
+      "bytes": 4387,
+      "sha256": "b2058ad1a69d73fa0251040a32870fbfd33c8aad20d9dd8d1b8601c476fb5a20",
       "encoding": "utf-8",
-      "lines": 39,
+      "lines": 40,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/architecture/coverage.md.md"
@@ -246,10 +246,10 @@
     {
       "path": "docs/architecture/overview.md",
       "mode": "100644",
-      "bytes": 3456,
-      "sha256": "a3634a14e83b3dc11c3394446ab7de182d489542610e6dc06b2e4064f1e618d9",
+      "bytes": 4592,
+      "sha256": "8cd93e0fec65423e845afc0c31aeb303f4e437c117006f02544d85de017b1b2b",
       "encoding": "utf-8",
-      "lines": 43,
+      "lines": 44,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/architecture/overview.md.md"
@@ -268,10 +268,10 @@
     {
       "path": "docs/development/README.md",
       "mode": "100644",
-      "bytes": 3053,
-      "sha256": "ca99ff6b9bf61d394112469ba858dafd8dd05b63630be1a1245c0fa12e868de6",
+      "bytes": 3438,
+      "sha256": "3e49dbb7794a00dad297d28c76746505f3c2790c70be1bb8d21050031146dd1e",
       "encoding": "utf-8",
-      "lines": 34,
+      "lines": 35,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/README.md.md"
@@ -279,10 +279,10 @@
     {
       "path": "docs/development/current-work.md",
       "mode": "100644",
-      "bytes": 5813,
-      "sha256": "e9633d4a4df7a0e6dae17c0294390603b0d2279b6261e3b209dcbce0f2e01533",
+      "bytes": 6150,
+      "sha256": "508ed916dc2f4ef0303c5c41c6c77c188785454a5c62d4473af07cfdcfc4a2e0",
       "encoding": "utf-8",
-      "lines": 48,
+      "lines": 49,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/current-work.md.md"
@@ -301,10 +301,10 @@
     {
       "path": "docs/development/plan/architecture.md",
       "mode": "100644",
-      "bytes": 9535,
-      "sha256": "9f4b0aaec0036bfa563c1b583502571133733b62f1ffd152e2f8b4c62e44064c",
+      "bytes": 9787,
+      "sha256": "90a1bf92e020a1b1b2d235c36755720091050ba81bed24b0394d7323369bbe34",
       "encoding": "utf-8",
-      "lines": 84,
+      "lines": 81,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/plan/architecture.md.md"
@@ -312,10 +312,10 @@
     {
       "path": "docs/development/plan/completion-audit.md",
       "mode": "100644",
-      "bytes": 5066,
-      "sha256": "a37cfbb576fde4ccbecbf34510890a35afcb065b92f0537a224854dcfaf413f2",
+      "bytes": 5718,
+      "sha256": "b96cc3840d2563bc90bef9ceccea520abde35168d1be93149ed499c6d0bed980",
       "encoding": "utf-8",
-      "lines": 28,
+      "lines": 29,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/plan/completion-audit.md.md"
@@ -323,10 +323,10 @@
     {
       "path": "docs/development/plan/roadmap.md",
       "mode": "100644",
-      "bytes": 4540,
-      "sha256": "30f23e4e1524e0eabeac104ea6c893a0954a676efe14e19422512fc2a23d785f",
+      "bytes": 5437,
+      "sha256": "b0f828815c7844f369da55e90503f96bffa03d86acef184ae54e66cd64c50ff0",
       "encoding": "utf-8",
-      "lines": 33,
+      "lines": 34,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/plan/roadmap.md.md"
@@ -334,10 +334,10 @@
     {
       "path": "docs/development/plan/verification.md",
       "mode": "100644",
-      "bytes": 4104,
-      "sha256": "18fbfd06e2d98d1bf9e9103f271c9c6a575d0258a35fea8fce8159c5d1a5484f",
+      "bytes": 5065,
+      "sha256": "8cbc871195d6d2150750f21b41d526cd2ac0ef27754682249e3b4c62301e2045",
       "encoding": "utf-8",
-      "lines": 38,
+      "lines": 39,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/plan/verification.md.md"
@@ -345,10 +345,10 @@
     {
       "path": "docs/development/research/decisions.md",
       "mode": "100644",
-      "bytes": 5113,
-      "sha256": "07aa81267d03f84f62aabde3e7b772aa1526ec7bc69ad4fad73ef83a14744753",
+      "bytes": 6021,
+      "sha256": "48bcdca5503ebc4cfa62288197be31d2d07271c9d91a1a10af119b1564ce2a7f",
       "encoding": "utf-8",
-      "lines": 32,
+      "lines": 33,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/research/decisions.md.md"
@@ -356,10 +356,10 @@
     {
       "path": "docs/development/research/native-antigravity.md",
       "mode": "100644",
-      "bytes": 2525,
-      "sha256": "7c09367d8606c1e8cbca2f6d67cecb3eee31ba076df0d618f58a0c06fbab420b",
+      "bytes": 3205,
+      "sha256": "90f7191a8995ccbbceccb465ee7e436a47e858975a698805334804d286ef4eec",
       "encoding": "utf-8",
-      "lines": 26,
+      "lines": 27,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/research/native-antigravity.md.md"
@@ -367,10 +367,10 @@
     {
       "path": "docs/development/research/platform-contracts.md",
       "mode": "100644",
-      "bytes": 10353,
-      "sha256": "d2357e2ece989cd0c5cf21fbab67768e90df3e4bec909c78de4691dec9216122",
+      "bytes": 8520,
+      "sha256": "65042e2ac128bd57816a21f3c96392a93eb896f14b82401c1957caa4542e53b1",
       "encoding": "utf-8",
-      "lines": 68,
+      "lines": 57,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/research/platform-contracts.md.md"
@@ -389,10 +389,10 @@
     {
       "path": "docs/development/status.md",
       "mode": "100644",
-      "bytes": 72082,
-      "sha256": "b48e35803c8bbca478fc83e6ad324da3823e8dc78445f2d9eb752074e9392cef",
+      "bytes": 73168,
+      "sha256": "4bcd41e522a58328022edcbaedfd2e0829dc851b654c1977a6c8357543d9cd8f",
       "encoding": "utf-8",
-      "lines": 523,
+      "lines": 532,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/status.md.md"
@@ -2240,10 +2240,10 @@
     {
       "path": "docs/product/getting-started.md",
       "mode": "100644",
-      "bytes": 2059,
-      "sha256": "a898610e4e45fe59df5b7b20dc9e505dd920fbb4b3536fa05ea988d9aa0193e6",
+      "bytes": 2498,
+      "sha256": "3b0445ded146ef3c60cf636734ab64dff8a1ff6bfd225166091bf7036f69d52f",
       "encoding": "utf-8",
-      "lines": 56,
+      "lines": 57,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/product/getting-started.md.md"
@@ -2251,10 +2251,10 @@
     {
       "path": "docs/product/hosts.md",
       "mode": "100644",
-      "bytes": 2487,
-      "sha256": "da4a1ac71ee0af354ef7d3c2c0a75527d5eec9f2621cda4cab657bbcd4923568",
+      "bytes": 2813,
+      "sha256": "cd46a88001214bda910c9a8867e970ed0c7c88559eea1580355d045f7f87b016",
       "encoding": "utf-8",
-      "lines": 29,
+      "lines": 30,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/product/hosts.md.md"
@@ -2262,10 +2262,10 @@
     {
       "path": "docs/product/how-it-works.md",
       "mode": "100644",
-      "bytes": 3411,
-      "sha256": "85f6325223bbe8851dbb089eee307bd0ea5dc0869c617b090d6385776860d4ee",
+      "bytes": 4380,
+      "sha256": "89baa2e0cfe450ba637cc060736ad1e029c9084d632da81005d6a1ea613a0638",
       "encoding": "utf-8",
-      "lines": 53,
+      "lines": 54,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/product/how-it-works.md.md"
@@ -2273,10 +2273,10 @@
     {
       "path": "docs/reference/certificate.md",
       "mode": "100644",
-      "bytes": 2479,
-      "sha256": "1cba56fa6a6ad10d34fe982aac25d2fd3147113bbb9d31012e8b5fea364f381a",
+      "bytes": 3274,
+      "sha256": "9653c7bcd5e5f24bf59d955af404eb0241938474fe2104b3cc53f4ee5ce39996",
       "encoding": "utf-8",
-      "lines": 42,
+      "lines": 43,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/reference/certificate.md.md"
@@ -2284,10 +2284,10 @@
     {
       "path": "docs/reference/cli.md",
       "mode": "100644",
-      "bytes": 2887,
-      "sha256": "7eff30a1a55c4322c68f0202555b572bb2253fa895a4dd62799ab3630f98879c",
+      "bytes": 3718,
+      "sha256": "6b65168d09c258deb7bbc7036d63a1a0671e23bcf730b908e631dbbe9d041711",
       "encoding": "utf-8",
-      "lines": 49,
+      "lines": 50,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/reference/cli.md.md"
@@ -2295,10 +2295,10 @@
     {
       "path": "docs/reference/hooks.md",
       "mode": "100644",
-      "bytes": 3457,
-      "sha256": "e185d7562d8f3ffcccfc63d607dcea1aee86af719b1ae6401b39380c4c933a68",
+      "bytes": 4642,
+      "sha256": "ebe0474051b42a71d66f193e610933be53b6e9e3885a79d67531e3ade4aeea73",
       "encoding": "utf-8",
-      "lines": 43,
+      "lines": 44,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/reference/hooks.md.md"
@@ -2306,8 +2306,8 @@
     {
       "path": "docs/reference/task-spec.md",
       "mode": "100644",
-      "bytes": 2649,
-      "sha256": "c9727f3bc3f645e59017b05dcc6f971a80432907f219925213c388520c7901cc",
+      "bytes": 3566,
+      "sha256": "a1cb09d80dac47ba973b49ef53c17e3ba442d83259f008ba07bc33672f3a49f9",
       "encoding": "utf-8",
       "lines": 50,
       "symbols": [],
@@ -2328,10 +2328,10 @@
     {
       "path": "docs/verification/README.md",
       "mode": "100644",
-      "bytes": 3967,
-      "sha256": "f94edf027d3e9c478bbfef97a39d7e3e5f25d01d9707e80dd15c603af18e54de",
+      "bytes": 5360,
+      "sha256": "90a3b88d1e37aea518917a5d9b477dc41c95e585c92d31b00b60f0bd4494696e",
       "encoding": "utf-8",
-      "lines": 57,
+      "lines": 58,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/verification/README.md.md"
