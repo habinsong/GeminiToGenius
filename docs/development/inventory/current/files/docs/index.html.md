@@ -1,158 +1,340 @@
 # `docs/index.html`
 
 - 형식: `100644`
-- 바이트: 6680
-- SHA-256: `bebca7619d7a771fd007d2f66b84ddb5ec1da014f00ffbc4e1b71aeb515b53e2`
+- 바이트: 14818
+- SHA-256: `c70bc5ad9a1a8bcd25ba0d3377517a374c10a41fad7084e1bf3e74498095e30e`
 - 인코딩: `utf-8`
 
 ```
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GeminiToGenius — AI 코딩 보조 도구 안내</title>
-  <meta name="description" content="AI가 코드를 꼼꼼하고 안전하게 작성하도록 돕는 안티그래비티 실행 환경 안내 페이지입니다.">
+  <title>GeminiToGenius - 직접 확인하는 든든한 AI 파트너</title>
+  <meta name="description" content="AI가 말로만 끝내지 않고 실제로 잘 돌아가는지 꼼꼼하게 확인해 주는 스마트 도구">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- 01. Apple.com Global Frosted Navigation Bar -->
-  <header class="apple-global-nav">
-    <div class="apple-nav-inner">
-      <a href="index.html" class="apple-nav-brand">
-        <span>GeminiToGenius</span>
+  <!-- 01. Floating Island Navigation Bar -->
+  <nav class="gtg-island-nav" aria-label="메인 메뉴">
+    <div class="gtg-nav-pill">
+      <a href="#" class="gtg-brand-group">
+        <span class="gtg-brand-badge">G</span>
+        <span class="gtg-brand-name">GeminiToGenius</span>
       </a>
-      <nav aria-label="메인 메뉴">
-        <ul class="apple-nav-links">
-          <li><a href="index.html" class="apple-nav-link active">개요</a></li>
-          <li><a href="#principles" class="apple-nav-link">핵심 약속</a></li>
-          <li><a href="#process" class="apple-nav-link">일하는 과정</a></li>
-          <li><a href="docs.html" class="apple-nav-link">설명서</a></li>
-          <li><a href="changelog.html" class="apple-nav-link">기록</a></li>
-          <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer" class="apple-nav-link">GitHub</a></li>
-        </ul>
-      </nav>
+
+      <div class="gtg-nav-menu">
+        <a href="#problem" class="gtg-nav-item">소개</a>
+        <a href="#how" class="gtg-nav-item">작동 방식</a>
+        <a href="#features" class="gtg-nav-item">특징</a>
+      </div>
+
+      <div class="gtg-nav-right">
+        <button class="gtg-theme-switch" id="themeToggle" aria-label="화면 모드 전환">
+          <svg class="theme-icon sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer" class="gtg-button-nested">
+          <span>GitHub</span>
+          <span class="btn-icon-circle">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- 02. Main Content Canvas -->
-  <main class="apple-main">
-
-    <!-- Hero Section -->
-    <section class="apple-hero">
-      <span class="apple-tag">v3.0.0-alpha.1 사전 릴리스</span>
-      <h1 class="apple-hero-headline">작업과 검증 결과를 연결하는 Gemini 하네스.</h1>
-      <p class="apple-hero-subhead">
-        자연어 요청을 현재 코드와 오류 맥락에서 구체화하도록 구성합니다.
-        검사 명령을 직접 실행하고, 코드가 바뀌면 이전 성공을 무효화합니다. 실제 모델 품질은 별도 검증이 필요합니다.
-      </p>
-
-      <!-- Apple Terminal Installation Bar -->
-      <div class="apple-terminal-box">
-        <div class="apple-terminal-bar">
-          <span>터미널 (macOS zsh)</span>
-          <span>macOS · Linux</span>
-        </div>
-        <div class="apple-terminal-content">
-          <div class="apple-terminal-code" id="terminalCode">
-            <span class="apple-terminal-prompt">%</span>git clone https://github.com/habinsong/GeminiToGenius.git &amp;&amp; bash GeminiToGenius/scripts/install.sh
+  <main>
+    <!-- 02. Hero Section -->
+    <section class="gtg-hero-wrap">
+      <div class="gtg-ambient-glow" aria-hidden="true"></div>
+      <div class="gtg-container gtg-hero-grid">
+        <div class="gtg-hero-intro reveal-on-scroll">
+          <div class="gtg-pill-eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>똑똑한 안전장치</span>
           </div>
-          <button class="apple-btn-copy" id="copyBtn" aria-label="설치 명령어 복사">
-            <span>복사하기</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Key Principles Section -->
-    <section id="principles">
-      <div class="apple-section-header">
-        <h2 class="apple-section-title">요청부터 검증까지 연결합니다.</h2>
-        <p class="apple-section-desc">특정 Gemini 버전이나 슬래시 명령을 요구하지 않습니다.</p>
-      </div>
-
-      <div class="apple-feature-grid">
-        <div class="apple-feature-item">
-          <span class="apple-feature-badge">약속 01</span>
-          <h3>현재 맥락에서 요청을 구체화합니다.</h3>
-          <p>
-            짧거나 불완전한 요청도 현재 파일·오류·화면을 먼저 확인합니다.
-            결과나 데이터 안전이 달라지는 정보만 질문합니다.
+          <h1 class="gtg-display-title">
+            말만 앞서는 AI 대신,<br>
+            직접 확인하는 AI.
+          </h1>
+          <p class="gtg-display-sub">
+            AI가 "다 고쳤다"고 거짓말하지 않도록 돕습니다. 진짜 잘 돌아가는지 하나하나 꼼꼼하게 실행해 보고 결과를 알려드립니다.
           </p>
+
+          <!-- Double-Bezel Command Capsule -->
+          <div class="gtg-capsule-shell">
+            <div class="gtg-capsule-core">
+              <div class="gtg-capsule-code">
+                <span class="capsule-prompt">%</span>
+                <code id="installCommand">git clone https://github.com/habinsong/GeminiToGenius.git &amp;&amp; bash GeminiToGenius/scripts/install.sh</code>
+              </div>
+              <button class="gtg-capsule-btn" id="copyInstallBtn" aria-label="설치 명령어 복사">
+                <span class="capsule-btn-label">복사하기</span>
+                <span class="capsule-btn-icon">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div class="apple-feature-item">
-          <span class="apple-feature-badge">약속 02</span>
-          <h3>목표와 완료 조건을 보존합니다.</h3>
-          <p>
-            복잡한 작업은 목표와 검사 명령을 로컬 상태에 기록합니다.
-            중단 뒤에도 미완료 조건을 확인하고 작업을 이어갈 수 있습니다.
-          </p>
-        </div>
+        <!-- Double-Bezel Live Chat Preview -->
+        <div class="gtg-hero-visual reveal-on-scroll">
+          <div class="gtg-bezel-shell">
+            <div class="gtg-bezel-core">
+              <div class="gtg-card-topbar">
+                <div class="topbar-status">
+                  <span class="status-indicator"></span>
+                  <span class="topbar-title">실시간 작업 화면</span>
+                </div>
+                <span class="topbar-tag">실시간 검사</span>
+              </div>
 
-        <div class="apple-feature-item">
-          <span class="apple-feature-badge">약속 03</span>
-          <h3>실제 실행 결과를 기록합니다.</h3>
-          <p>
-            종료 코드·검사 시간·검증 대상의 파일 해시를 기록합니다.
-            검증 이후 코드가 바뀌면 성공 기록을 그대로 사용하지 않습니다.
-          </p>
-        </div>
-      </div>
-    </section>
+              <div class="gtg-dialog-flow">
+                <div class="dialog-item user">
+                  <span class="dialog-author">나</span>
+                  <div class="dialog-box">
+                    <p>"로그인 버튼 안 눌리는 거 고쳐줘."</p>
+                  </div>
+                </div>
 
-    <!-- Interactive Process Simulator Section -->
-    <section id="process">
-      <div class="apple-section-header">
-        <h2 class="apple-section-title">상황별로 일하는 과정을 직접 살펴보세요.</h2>
-        <p class="apple-section-desc">요청하신 작업 유형에 따라 AI가 어떤 순서로 문제를 해결하는지 보여드립니다.</p>
-      </div>
+                <div class="dialog-item ai">
+                  <span class="dialog-author">AI</span>
+                  <div class="dialog-box">
+                    <p>"코드 수정 완료했습니다!"</p>
+                  </div>
+                </div>
 
-      <div class="apple-process-container">
-        <div class="apple-tabs" role="tablist" aria-label="작업 유형 선택">
-          <button class="apple-tab-btn active" data-preset="feature" role="tab" aria-selected="true">새로운 기능 만들기</button>
-          <button class="apple-tab-btn" data-preset="bugfix" role="tab" aria-selected="false">오류 고치기</button>
-          <button class="apple-tab-btn" data-preset="ui" role="tab" aria-selected="false">화면 디자인 다듬기</button>
-          <button class="apple-tab-btn" data-preset="research" role="tab" aria-selected="false">공식 문서 찾아보기</button>
-        </div>
+                <div class="dialog-item guard">
+                  <span class="dialog-author">GeminiToGenius</span>
+                  <div class="dialog-box">
+                    <p>"잠깐만요, 직접 눌러보니 아직 안 돼요. 다시 확인해 보세요."</p>
+                  </div>
+                </div>
 
-        <div class="apple-step-list" id="stepContainer">
-          <!-- Populated by JavaScript -->
-          <div class="apple-step-item">
-            <span class="apple-step-num">01</span>
-            <div class="apple-step-body">
-              <strong>사용자의 지시를 요약하고 목표를 정합니다.</strong>
-              <p>무엇을 만들어야 하는지 명확히 확인하고 현재 폴더 상태를 점검합니다.</p>
+                <div class="dialog-item ai">
+                  <span class="dialog-author">AI</span>
+                  <div class="dialog-box">
+                    <p>"원인을 찾았습니다. 다시 고쳐서 제대로 작동하는 것 확인했습니다."</p>
+                  </div>
+                </div>
+
+                <div class="dialog-item success">
+                  <div class="success-banner">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>실제 정상 작동 확인 완료</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- 03. Problem Section -->
+    <section class="gtg-section-space" id="problem">
+      <div class="gtg-container">
+        <div class="gtg-section-header reveal-on-scroll">
+          <h2 class="gtg-headline">이런 경험 있으신가요?</h2>
+          <p class="gtg-lead">
+            AI를 쓸 때 가장 답답했던 순간들을 말끔하게 해결합니다.
+          </p>
+        </div>
+
+        <div class="gtg-asymmetric-cards">
+          <div class="gtg-bezel-shell reveal-on-scroll">
+            <div class="gtg-bezel-core p-generous">
+              <div class="card-glyph">🤔</div>
+              <h3 class="card-heading">"다 됐다더니 왜 안 되지?"</h3>
+              <p class="card-detail">
+                AI는 종종 자기가 고친 코드가 잘 돌아가는지 확인도 안 해보고 다 됐다고 합니다. 이제는 직접 실행해 보고 성공했을 때만 완료를 알려줍니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="gtg-bezel-shell reveal-on-scroll">
+            <div class="gtg-bezel-core p-generous">
+              <div class="card-glyph">⚡</div>
+              <h3 class="card-heading">하나 고치다 다른 곳을 와르르</h3>
+              <p class="card-detail">
+                방금 전까지 잘 되던 기능이 다음 요청에서 갑자기 고장 난 적 있으신가요? 코드가 조금이라도 바뀌면 처음부터 다시 꼼꼼하게 검사합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="gtg-bezel-shell reveal-on-scroll">
+            <div class="gtg-bezel-core p-generous">
+              <div class="card-glyph">💬</div>
+              <h3 class="card-heading">어려운 명령어는 이제 그만</h3>
+              <p class="card-detail">
+                특정 명령어 형식을 달달 외울 필요가 전혀 없습니다. 친구에게 부탁하듯 편하게 평소 말투로 말하면 알아서 알아듣고 일합니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. How It Works Section -->
+    <section class="gtg-section-space" id="how">
+      <div class="gtg-container">
+        <div class="gtg-section-header reveal-on-scroll">
+          <h2 class="gtg-headline">일하는 과정은 단순합니다</h2>
+          <p class="gtg-lead">
+            세 단계로 안전하고 확실하게 일합니다.
+          </p>
+        </div>
+
+        <div class="gtg-steps-trio">
+          <div class="gtg-bezel-shell reveal-on-scroll">
+            <div class="gtg-bezel-core p-step">
+              <div class="step-counter">01</div>
+              <h3 class="step-label">편하게 말하기</h3>
+              <p class="step-summary">
+                "이 버튼 디자인 좀 다듬어줘", "오류 나는 부분 찾아줘"처럼 자연스럽게 요청하세요.
+              </p>
+            </div>
+          </div>
+
+          <div class="gtg-bezel-shell reveal-on-scroll">
+            <div class="gtg-bezel-core p-step">
+              <div class="step-counter">02</div>
+              <h3 class="step-label">직접 실행해서 검사</h3>
+              <p class="step-summary">
+                AI 혼자만의 상상이 아니라, 컴퓨터에서 실제로 작동시켜 보고 이상이 없는지 확인합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="gtg-bezel-shell reveal-on-scroll">
+            <div class="gtg-bezel-core p-step">
+              <div class="step-counter">03</div>
+              <h3 class="step-label">확인증 남기기</h3>
+              <p class="step-summary">
+                테스트가 모두 끝난 시점의 상태를 꼼꼼하게 기록해 두어, 나중에도 안전하게 다시 확인할 수 있습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. Key Features Bento -->
+    <section class="gtg-section-space" id="features">
+      <div class="gtg-container">
+        <div class="gtg-section-header reveal-on-scroll">
+          <h2 class="gtg-headline">믿고 쓸 수 있는 이유</h2>
+          <p class="gtg-lead">
+            화려한 말 대신 확실한 결과로 보여드립니다.
+          </p>
+        </div>
+
+        <div class="gtg-features-quad">
+          <div class="gtg-bezel-shell reveal-on-scroll">
+            <div class="gtg-bezel-core p-feature">
+              <h3 class="feature-headline">내 컴퓨터 안에서 안전하게</h3>
+              <p class="feature-body">
+                외부 서버로 소스코드를 보내거나 불필요한 인터넷 연결을 하지 않습니다. 오직 내 컴퓨터 안에서 조용하고 빠르게 움직입니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="gtg-bezel-shell reveal-on-scroll">
+            <div class="gtg-bezel-core p-feature">
+              <h3 class="feature-headline">컴퓨터가 꺼져도 걱정 없이</h3>
+              <p class="feature-body">
+                작업 도중에 컴퓨터가 꺼지거나 창이 닫혀도 괜찮습니다. 안전 장치가 마련되어 있어 다시 켰을 때 문제없이 작업을 이어갑니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="gtg-bezel-shell reveal-on-scroll">
+            <div class="gtg-bezel-core p-feature">
+              <h3 class="feature-headline">솔직한 보고서</h3>
+              <p class="feature-body">
+                확인된 부분과 확인하지 못한 부분을 솔직하게 알려드립니다. 거짓으로 결과를 부풀리지 않기에 더 믿을 수 있습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="gtg-bezel-shell reveal-on-scroll">
+            <div class="gtg-bezel-core p-feature">
+              <h3 class="feature-headline">어디서나 같은 방식으로</h3>
+              <p class="feature-body">
+                Gemini나 Antigravity 등 어떤 화면에서 사용하든 똑같이 편안하게 일할 수 있습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- 03. Notification Toast -->
-  <div class="apple-toast" id="toast" role="status" aria-live="polite">
-    <span id="toastText">설치 명령어가 복사되었습니다.</span>
-  </div>
+  <!-- 06. Minimalist Master Footer -->
+  <footer class="gtg-master-footer">
+    <div class="gtg-container">
+      <div class="gtg-footer-row">
+        <div class="footer-identity">
+          <span class="footer-logo">GeminiToGenius</span>
+          <p class="footer-desc">
+            AI와 함께 더 믿음직하게 일하는 방법.
+          </p>
+        </div>
 
-  <!-- 04. Minimal Apple Footer -->
-  <footer class="apple-footer">
-    <div class="apple-footer-inner">
-      <div>
-        <strong>GeminiToGenius</strong> — MIT 라이선스로 누구나 자유롭게 사용하실 수 있습니다. (2026 habinsong)
+        <div class="footer-nav-groups">
+          <div class="nav-group">
+            <h4 class="group-title">자세히 보기</h4>
+            <ul>
+              <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/docs/product/getting-started.md" target="_blank" rel="noopener noreferrer">시작하기 안내서</a></li>
+              <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/docs/product/how-it-works.md" target="_blank" rel="noopener noreferrer">어떻게 동작하나요?</a></li>
+              <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer">GitHub 저장소</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <h4 class="group-title">만든 사람</h4>
+            <ul>
+              <li><a href="https://github.com/habinsong" target="_blank" rel="noopener noreferrer">habinsong GitHub</a></li>
+              <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">오픈소스 라이선스</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <ul class="apple-footer-links">
-        <li><a href="index.html">홈</a></li>
-        <li><a href="docs.html">상세 설명서</a></li>
-        <li><a href="changelog.html">업데이트 기록</a></li>
-        <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-      </ul>
+
+      <div class="gtg-footer-baseline">
+        <span>누구나 믿고 쓰는 AI 코딩 파트너, GeminiToGenius.</span>
+      </div>
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
 ```

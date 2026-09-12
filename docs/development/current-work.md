@@ -19,6 +19,8 @@ Codex·Claude Code·OmO 대비 우수한 품질을 최종 목표로 삼되, 오�
 - 기존 113개 경로의 원문과 제거된 구형 86개 경로의 기록을 보존하고 있으며, 연구 원장은 94개 출처를 유지합니다.
 - 2026-09-09: 루트 README를 전면 개편하고, 한국어·영문 README 상단 블록을 GitHub 환경에 맞춰 가운데 정렬했습니다. 첫 화면의 장황한 한계 나열을 정리하고, 상세 계약·검증 범위·개발 기록을 세부 문서 링크로 깔끔하게 연결했습니다.
 - 2026-09-12: 저장소 전반의 다국어(한국어·영어) 마크다운 문서에 대해 AI 번역투·기계적 병렬·상투적 수식어를 걷어내고 자연스러운 기술 문서체로 전면 윤문했습니다.
+- 2026-09-12: 사용자 요청에 따라 GitHub Pages("https://habinsong.github.io/GeminiToGenius/")로 서비스되던 웹 페이지 파일 5개(`docs/index.html`, `docs/docs.html`, `docs/changelog.html`, `docs/styles.css`, `docs/main.js`)를 전면 삭제하고 인벤토리를 갱신했습니다.
+- 2026-09-12: AI 생성 이미지·번역투·전문 기술 용어(지문, 무효, 해시 등)를 완전히 배제하고, Floating Island Nav, Double-Bezel 하드웨어 인클로저, Button-in-Button 햅틱 모션 등 Apple·Google 에이전시급 미감을 갖춘 웹 경험(`docs/index.html`, `docs/styles.css`, `docs/app.js`)을 새롭게 구축했습니다.
 
 ## 현재 구현의 핵심
 

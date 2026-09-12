@@ -1,6 +1,6 @@
 # 전체 파일 목록
 
-총 306개 경로. 원문 생략 없이 파일별로 기록합니다.
+총 304개 경로. 원문 생략 없이 파일별로 기록합니다.
 
 바이너리는 Base64, 심볼릭 링크는 링크 문자열로 보존합니다. 민감 경로는 읽지 않고 제외 사유를 기록합니다.
 
@@ -27,11 +27,11 @@
 | `assets/social-preview.svg` | 2110 | [원문](files/assets/social-preview.svg.md) |
 | `docs/README.en.md` | 6333 | [원문](files/docs/README.en.md.md) |
 | `docs/README.md` | 2584 | [원문](files/docs/README.md.md) |
+| `docs/app.js` | 2764 | [원문](files/docs/app.js.md) |
 | `docs/architecture/coverage.md` | 4387 | [원문](files/docs/architecture/coverage.md.md) |
 | `docs/architecture/overview.md` | 4592 | [원문](files/docs/architecture/overview.md.md) |
-| `docs/changelog.html` | 8501 | [원문](files/docs/changelog.html.md) |
 | `docs/development/README.md` | 3438 | [원문](files/docs/development/README.md.md) |
-| `docs/development/current-work.md` | 6150 | [원문](files/docs/development/current-work.md.md) |
+| `docs/development/current-work.md` | 6812 | [원문](files/docs/development/current-work.md.md) |
 | `docs/development/inventory/architecture.md` | 3144 | [원문](files/docs/development/inventory/architecture.md.md) |
 | `docs/development/plan/architecture.md` | 9787 | [원문](files/docs/development/plan/architecture.md.md) |
 | `docs/development/plan/completion-audit.md` | 5718 | [원문](files/docs/development/plan/completion-audit.md.md) |
@@ -41,7 +41,7 @@
 | `docs/development/research/native-antigravity.md` | 3205 | [원문](files/docs/development/research/native-antigravity.md.md) |
 | `docs/development/research/platform-contracts.md` | 8520 | [원문](files/docs/development/research/platform-contracts.md.md) |
 | `docs/development/research/sources.json` | 49370 | [원문](files/docs/development/research/sources.json.md) |
-| `docs/development/status.md` | 73168 | [원문](files/docs/development/status.md.md) |
+| `docs/development/status.md` | 75425 | [원문](files/docs/development/status.md.md) |
 | `docs/development/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/development/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/development/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/development/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/development/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/development/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -177,9 +177,7 @@
 | `docs/development/validation/2026-09-09-repeated-comparison/summary.txt` | 1325 | [원문](files/docs/development/validation/2026-09-09-repeated-comparison/summary.txt.md) |
 | `docs/development/validation/2026-09-09-running-check-stop/README.md` | 6246 | [원문](files/docs/development/validation/2026-09-09-running-check-stop/README.md.md) |
 | `docs/development/validation/2026-09-09-unobservable-scope/README.md` | 3336 | [원문](files/docs/development/validation/2026-09-09-unobservable-scope/README.md.md) |
-| `docs/docs.html` | 5061 | [원문](files/docs/docs.html.md) |
-| `docs/index.html` | 6680 | [원문](files/docs/index.html.md) |
-| `docs/main.js` | 5865 | [원문](files/docs/main.js.md) |
+| `docs/index.html` | 14818 | [원문](files/docs/index.html.md) |
 | `docs/product/getting-started.md` | 2498 | [원문](files/docs/product/getting-started.md.md) |
 | `docs/product/hosts.md` | 2813 | [원문](files/docs/product/hosts.md.md) |
 | `docs/product/how-it-works.md` | 4380 | [원문](files/docs/product/how-it-works.md.md) |
@@ -187,7 +185,7 @@
 | `docs/reference/cli.md` | 3718 | [원문](files/docs/reference/cli.md.md) |
 | `docs/reference/hooks.md` | 4642 | [원문](files/docs/reference/hooks.md.md) |
 | `docs/reference/task-spec.md` | 3566 | [원문](files/docs/reference/task-spec.md.md) |
-| `docs/styles.css` | 12916 | [원문](files/docs/styles.css.md) |
+| `docs/styles.css` | 18208 | [원문](files/docs/styles.css.md) |
 | `docs/verification/README.md` | 5360 | [원문](files/docs/verification/README.md.md) |
 | `evals/README.md` | 18045 | [원문](files/evals/README.md.md) |
 | `evals/__init__.py` | 74 | [원문](files/evals/__init__.py.md) |

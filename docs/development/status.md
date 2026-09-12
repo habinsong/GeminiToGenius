@@ -530,3 +530,30 @@ GTG를 이 저장소에 걸어 검증하다가, 두 검사 모두 미실행 목�
 - **다국어 정비**: 한국어 문서(`README.md`, `docs/product/*`, `docs/reference/*`, `docs/architecture/*`, `docs/development/*` 등)는 자연스러운 개발자 문체로 다듬고, 영문 문서(`docs/README.en.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md` 등)는 AI 상투구(buzzword, fluff, 기계적 접속사)를 걷어내고 간결한 기술 영어로 정비했습니다.
 - **문서 계약 및 무결성 보존**: `tests/test_doc_contract.py`의 CLI 명령어 계약 검사를 100% 통과하도록 명령어 예시를 보존했으며, `scripts/catalog.py`를 통해 문서 변경에 따른 스냅샷 및 해시 무결성을 일괄 갱신했습니다.
 
+## GitHub Pages 웹 페이지 파일 정리 (2026-09-12)
+
+사용자 요청에 따라 GitHub Pages 서비스 경로(`https://habinsong.github.io/GeminiToGenius/`)로 배포되던 정적 웹 페이지 파일들을 저장소에서 일괄 삭제했습니다.
+
+- **삭제 대상 파일**:
+  - `docs/index.html` (웹 랜딩 페이지)
+  - `docs/docs.html` (웹 설명서 페이지)
+  - `docs/changelog.html` (웹 릴리즈 기록 페이지)
+  - `docs/styles.css` (웹 스타일시트)
+  - `docs/main.js` (웹 클라이언트 스크립트)
+  - `docs/.DS_Store` (디렉토리 메타데이터)
+- **보존 대상**: `docs/` 내의 모든 기술 문서 마크다운 파일(`README.md`, `architecture/`, `product/`, `reference/`, `verification/`, `development/`)은 원래대로 보존했습니다.
+- **카탈로그 및 무결성 갱신**: 파일 삭제 후 `python3 scripts/catalog.py`를 실행하여 `docs/development/inventory/current` 목록을 동기화하고, `catalog.py --check` 통과를 확인했습니다.
+
+## 신규 웹 경험 전면 재구축 및 에이전시급 미감 고도화 (2026-09-12)
+
+이전 웹 페이지를 전혀 참조하지 않고, AI 생성 이미지·번역투·전문 기술 용어(지문, 무효, 해시 등)를 완전히 배제한 신규 웹 경험을 구축했습니다.
+
+- **디자인 고도화 (`high-end-visual-design`)**:
+  - **Floating Island Nav**: 상단에서 분리되어 공중에 떠 있는 플루이드 글래스 캡슐형 내비게이션 바 구현.
+  - **Double-Bezel Architecture**: 카드를 단순 박스로 처리하지 않고 Outer Shell과 Inner Core의 concentric radii 이중 하드웨어 인클로저 구조로 설계.
+  - **Button-in-Button Haptic CTA**: 내부 원형 아이콘 슬롯이 중첩된 알약형 버튼 및 키네틱 대각선 호버 텐션 적용.
+  - **Macro-Whitespace & Motion**: 섹션 간 120px 이상의 여백과 `IntersectionObserver` 기반 뷰포트 진입 인터폴레이션(`reveal-on-scroll`) 적용.
+- **카피 및 문체 정비**: 비전문가도 3초 만에 직관적으로 이해할 수 있는 일상적 언어 유지 (대화형 실시간 예시 카드).
+- **무결성 동기화**: `python3 scripts/catalog.py`를 통해 인벤토리를 갱신하고 `--check` 통과를 확인.
+
+

@@ -233,6 +233,17 @@
       "document": "files/docs/README.md.md"
     },
     {
+      "path": "docs/app.js",
+      "mode": "100644",
+      "bytes": 2764,
+      "sha256": "459084ce09f808952e6ed8498305b64bab215fc19c45afbb23d11bbc3b55c0cc",
+      "encoding": "utf-8",
+      "lines": 87,
+      "symbols": [],
+      "trailing_newline": true,
+      "document": "files/docs/app.js.md"
+    },
+    {
       "path": "docs/architecture/coverage.md",
       "mode": "100644",
       "bytes": 4387,
@@ -255,17 +266,6 @@
       "document": "files/docs/architecture/overview.md.md"
     },
     {
-      "path": "docs/changelog.html",
-      "mode": "100644",
-      "bytes": 8501,
-      "sha256": "660fd44d50c5dfcd76c1a42bb14ba772c9a8bad60a281a77e18cfc5aa0b1a2d7",
-      "encoding": "utf-8",
-      "lines": 155,
-      "symbols": [],
-      "trailing_newline": true,
-      "document": "files/docs/changelog.html.md"
-    },
-    {
       "path": "docs/development/README.md",
       "mode": "100644",
       "bytes": 3438,
@@ -279,10 +279,10 @@
     {
       "path": "docs/development/current-work.md",
       "mode": "100644",
-      "bytes": 6150,
-      "sha256": "508ed916dc2f4ef0303c5c41c6c77c188785454a5c62d4473af07cfdcfc4a2e0",
+      "bytes": 6812,
+      "sha256": "3061dbcb407c24e0ff61d1ab26d8a710687d580b5360ad9f79b836971993e744",
       "encoding": "utf-8",
-      "lines": 49,
+      "lines": 51,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/current-work.md.md"
@@ -389,10 +389,10 @@
     {
       "path": "docs/development/status.md",
       "mode": "100644",
-      "bytes": 73168,
-      "sha256": "4bcd41e522a58328022edcbaedfd2e0829dc851b654c1977a6c8357543d9cd8f",
+      "bytes": 75425,
+      "sha256": "3aa9d1e75aaf35740cfad62e6469ae755585dc9bdb84cdbfe5ab316c984167e6",
       "encoding": "utf-8",
-      "lines": 532,
+      "lines": 559,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/status.md.md"
@@ -2205,37 +2205,15 @@
       "document": "files/docs/development/validation/2026-09-09-unobservable-scope/README.md.md"
     },
     {
-      "path": "docs/docs.html",
-      "mode": "100644",
-      "bytes": 5061,
-      "sha256": "c0d0021786d0a62dc506229ef0d906d6200be8c31cd20856c00a3d56f39e1b61",
-      "encoding": "utf-8",
-      "lines": 74,
-      "symbols": [],
-      "trailing_newline": true,
-      "document": "files/docs/docs.html.md"
-    },
-    {
       "path": "docs/index.html",
       "mode": "100644",
-      "bytes": 6680,
-      "sha256": "bebca7619d7a771fd007d2f66b84ddb5ec1da014f00ffbc4e1b71aeb515b53e2",
+      "bytes": 14818,
+      "sha256": "c70bc5ad9a1a8bcd25ba0d3377517a374c10a41fad7084e1bf3e74498095e30e",
       "encoding": "utf-8",
-      "lines": 149,
+      "lines": 331,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/index.html.md"
-    },
-    {
-      "path": "docs/main.js",
-      "mode": "100644",
-      "bytes": 5865,
-      "sha256": "bbe0cfc9e6fc1da63aa0fbd2316b3ee8458cf49bb1c51e621f16eebe640c4e95",
-      "encoding": "utf-8",
-      "lines": 114,
-      "symbols": [],
-      "trailing_newline": true,
-      "document": "files/docs/main.js.md"
     },
     {
       "path": "docs/product/getting-started.md",
@@ -2317,10 +2295,10 @@
     {
       "path": "docs/styles.css",
       "mode": "100644",
-      "bytes": 12916,
-      "sha256": "ffcc4eb0d9fca2d8324e1d3fc04c6b69cc80e10c1accefdc089ebcfde4dc0dca",
+      "bytes": 18208,
+      "sha256": "37ca610961d63d59ae5230e1a8c6d06c9070d812d97c9c3553b2875f5320800f",
       "encoding": "utf-8",
-      "lines": 595,
+      "lines": 817,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/styles.css.md"
