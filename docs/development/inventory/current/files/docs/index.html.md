@@ -1,8 +1,8 @@
 # `docs/index.html`
 
 - 형식: `100644`
-- 바이트: 36078
-- SHA-256: `9fb23c7add2374e9d608a88f7cf2d4c1b8c1c44a4b60d25dc01e0820b874fb54`
+- 바이트: 34518
+- SHA-256: `d9d814945338198558c2041a86466cc5eeca5ae40a5833739dec807c1d2afea2`
 - 인코딩: `utf-8`
 
 ```
@@ -11,128 +11,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GeminiToGenius - 직접 확인하는 든든한 AI 파트너</title>
-  <meta name="description" content="AI가 말로만 끝내지 않고 실제로 잘 돌아가는지 꼼꼼하게 확인해 주는 스마트 도구">
+  <title>GeminiToGenius - 실행 중심 AI 검증 하네스</title>
+  <meta name="description" content="말 대신 실행으로 완료를 검증하는 정밀 AI 하네스">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%2307080a%22/><text y=%2268%22 x=%2225%22 font-size=%2260%22 fill=%22%23fff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>G</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%2308090b%22/><text y=%2268%22 x=%2224%22 font-size=%2258%22 fill=%22%23ffffff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>G</text></svg>">
   <style>
 /* ==========================================================================
-   GeminiToGenius - Vanguard High-End Visual Design System
-   Architecture: Ethereal Glass + Double-Bezel Hardware Enclosures
-   Interaction: Floating Island Nav + Concentric Radii + Button-in-Button
-   Accessibility: WCAG AA, Fluid Spring Physics, Complete Reduced-Motion Support
-   Zero AI Slop. Zero generic glow. Zero banned words or patterns.
+   GeminiToGenius - 2026 Anti-Slop Precision Design System
+   Architecture: Dark Titanium + Specular Edge Inset + Monochromatic Hierarchy
+   Restraint: Zero emojis, Zero em-dashes, Zero fake chat bubbles, Zero AI purple
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   01. Precision Design Tokens
-   -------------------------------------------------------------------------- */
 :root {
-  --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Google Sans", system-ui, sans-serif;
-  --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Google Sans", system-ui, sans-serif;
-  --font-mono: "SF Mono", "Roboto Mono", Menlo, monospace;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Google Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
 
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-haptic: cubic-bezier(0.32, 0.72, 0, 1);
-
-  --z-island: 1000;
+  --ease-tactile: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-/* Dark Palette (Deep Space OLED & Precision Hardware) */
 [data-theme="dark"] {
-  --bg-main: #07080a;
-  --bg-card-shell: rgba(255, 255, 255, 0.035);
-  --bg-card-core: #0e1015;
-  --bg-dialog-box: #151820;
-  --bg-glass-island: rgba(14, 16, 21, 0.78);
+  --bg-page: #08090b;
+  --bg-surface: #0f1115;
+  --bg-surface-elevated: #15181f;
+  --bg-specimen: #0b0d10;
+  --bg-nav: rgba(15, 17, 21, 0.82);
 
-  --border-shell: rgba(255, 255, 255, 0.07);
-  --border-core: rgba(255, 255, 255, 0.05);
-  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --border-focus: rgba(255, 255, 255, 0.28);
 
-  --text-pure: #fcfdfe;
-  --text-body: #9da4b0;
-  --text-muted: #5e6573;
+  --text-primary: #f5f6f8;
+  --text-secondary: #8c93a0;
+  --text-muted: #565d6c;
 
-  --accent-blue: #2997ff;
-  --accent-tint: rgba(41, 151, 255, 0.12);
-  --accent-border: rgba(41, 151, 255, 0.28);
+  --accent-action: #2f81f7;
+  --accent-pass: #2ea043;
+  --accent-tag: rgba(255, 255, 255, 0.05);
 
-  --color-ok: #34c759;
-  --color-warn: #ff9f0a;
-
-  --shadow-core-inset: inset 0 1px 1px rgba(255, 255, 255, 0.12);
-  --shadow-bezel: 0 16px 40px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-island: 0 12px 36px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-
-  --ambient-gradient: radial-gradient(circle at 50% -10%, rgba(41, 151, 255, 0.14), transparent 60%);
+  --specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  --specular-strong: inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+  --card-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
 }
 
-/* Light Palette (Pristine Ceramic & Studio White) */
 [data-theme="light"] {
-  --bg-main: #f8f9fb;
-  --bg-card-shell: rgba(0, 0, 0, 0.025);
-  --bg-card-core: #ffffff;
-  --bg-dialog-box: #f1f3f8;
-  --bg-glass-island: rgba(255, 255, 255, 0.85);
+  --bg-page: #f8f9fa;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f1f3f5;
+  --bg-specimen: #f4f6f8;
+  --bg-nav: rgba(255, 255, 255, 0.85);
 
-  --border-shell: rgba(0, 0, 0, 0.06);
-  --border-core: rgba(0, 0, 0, 0.04);
-  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  --border-focus: rgba(0, 0, 0, 0.35);
 
-  --text-pure: #15171c;
-  --text-body: #5a6270;
-  --text-muted: #8c93a0;
+  --text-primary: #12151a;
+  --text-secondary: #57606a;
+  --text-muted: #8c959f;
 
-  --accent-blue: #0071e3;
-  --accent-tint: rgba(0, 113, 227, 0.07);
-  --accent-border: rgba(0, 113, 227, 0.22);
+  --accent-action: #0969da;
+  --accent-pass: #1a7f37;
+  --accent-tag: rgba(0, 0, 0, 0.04);
 
-  --color-ok: #248a3d;
-  --color-warn: #b25e02;
-
-  --shadow-core-inset: inset 0 1px 1px rgba(255, 255, 255, 0.9);
-  --shadow-bezel: 0 16px 40px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-  --shadow-island: 0 12px 36px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-
-  --ambient-gradient: radial-gradient(circle at 50% -10%, rgba(0, 113, 227, 0.07), transparent 60%);
+  --specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+  --specular-strong: inset 0 1px 0 0 rgba(255, 255, 255, 1);
+  --card-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.06);
 }
 
 /* --------------------------------------------------------------------------
-   02. Base & Typography Mechanics
+   Global Resets & Typographic Rigor
    -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-html {
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  letter-spacing: -0.015em;
-  background-color: var(--bg-main);
-  color: var(--text-pure);
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--bg-main);
-  color: var(--text-pure);
-  overflow-x: hidden;
-  position: relative;
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
-main {
-  flex: 1;
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  transition: background-color 0.25s var(--ease-spring), color 0.25s var(--ease-spring);
 }
 
 a {
@@ -141,722 +112,731 @@ a {
 }
 
 button {
-  font: inherit;
-  color: inherit;
+  font-family: inherit;
   border: none;
   background: none;
   cursor: pointer;
+  color: inherit;
 }
 
-code {
-  font-family: var(--font-mono);
-}
-
-.gtg-container {
+/* --------------------------------------------------------------------------
+   Layout Foundation
+   -------------------------------------------------------------------------- */
+.container {
   width: 100%;
-  max-width: 1160px;
+  max-width: 1240px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 28px;
-  padding-right: 28px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 /* --------------------------------------------------------------------------
-   03. Ambient Subtle Light Field (Zero Harsh Glow)
+   Floating Island Navigation
    -------------------------------------------------------------------------- */
-.gtg-ambient-glow {
-  position: absolute;
-  top: 0;
+.nav-wrapper {
+  position: fixed;
+  top: 18px;
   left: 0;
   right: 0;
-  height: 680px;
-  background: var(--ambient-gradient);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
   pointer-events: none;
-  z-index: 0;
 }
 
-/* --------------------------------------------------------------------------
-   04. Floating Island Navigation Pill (Detached, Zero Edge Glued)
-   -------------------------------------------------------------------------- */
-.gtg-island-nav {
-  position: fixed;
-  top: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: var(--z-island);
-  width: calc(100% - 48px);
-  max-width: 820px;
-}
-
-.gtg-nav-pill {
-  width: 100%;
-  height: 56px;
-  padding: 6px 10px 6px 16px;
-  border-radius: var(--radius-pill);
-  background: var(--bg-glass-island);
-  backdrop-filter: blur(24px) saturate(190%);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  border: 1px solid var(--border-shell);
-  box-shadow: var(--shadow-island);
+.nav-island {
+  pointer-events: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 32px;
+  background: var(--bg-nav);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--specular), 0 8px 24px -4px rgba(0, 0, 0, 0.2);
+  border-radius: 9999px;
+  padding: 8px 12px 8px 20px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.gtg-brand-group {
+.brand-mark {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.96rem;
+  font-size: 0.9375rem;
   letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
-.gtg-brand-badge {
-  width: 26px;
-  height: 26px;
-  border-radius: 7px;
-  background: var(--text-pure);
-  color: var(--bg-main);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 800;
-}
-
-.gtg-nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.gtg-nav-item {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text-body);
-  transition: color 0.18s var(--ease-spring);
-}
-
-.gtg-nav-item:hover {
-  color: var(--text-pure);
-}
-
-.gtg-nav-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.gtg-theme-switch {
-  width: 38px;
-  height: 38px;
-  border-radius: var(--radius-pill);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-body);
-  transition: color 0.15s var(--ease-spring), transform 0.15s var(--ease-spring);
-}
-
-.gtg-theme-switch:hover {
-  color: var(--text-pure);
-}
-
-.gtg-theme-switch:active {
-  transform: scale(0.92);
-}
-
-[data-theme="dark"] .sun-icon { display: block; }
-[data-theme="dark"] .moon-icon { display: none; }
-[data-theme="light"] .sun-icon { display: none; }
-[data-theme="light"] .moon-icon { display: block; }
-
-/* Nested CTA Button-in-Button Architecture */
-.gtg-button-nested {
-  height: 40px;
-  padding: 0 6px 0 16px;
-  border-radius: var(--radius-pill);
-  background: var(--text-pure);
-  color: var(--bg-main);
-  font-size: 0.85rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s var(--ease-spring), opacity 0.2s var(--ease-spring);
-}
-
-.btn-icon-circle {
-  width: 28px;
-  height: 28px;
-  border-radius: var(--radius-pill);
-  background: rgba(0, 0, 0, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.25s var(--ease-spring);
-}
-
-[data-theme="dark"] .btn-icon-circle {
-  background: rgba(0, 0, 0, 0.12);
-}
-
-.gtg-button-nested:hover .btn-icon-circle {
-  transform: translate(2px, -2px);
-}
-
-.gtg-button-nested:active {
-  transform: scale(0.97);
-}
-
-/* --------------------------------------------------------------------------
-   05. Hero Section (Macro-Whitespace & Haptic Split)
-   -------------------------------------------------------------------------- */
-.gtg-hero-wrap {
-  position: relative;
-  padding-top: 156px;
-  padding-bottom: 120px;
-}
-
-.gtg-hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 56px;
-  align-items: center;
-}
-
-.gtg-pill-eyebrow {
+.brand-glyph {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 5px 14px;
-  border-radius: var(--radius-pill);
-  background: var(--bg-card-shell);
-  border: 1px solid var(--border-shell);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-body);
-  margin-bottom: 24px;
-}
-
-.eyebrow-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: var(--radius-pill);
-  background: var(--color-ok);
-}
-
-.gtg-display-title {
-  font-family: var(--font-display);
-  font-size: 3.4rem;
-  line-height: 1.12;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: var(--text-primary);
+  color: var(--bg-page);
+  border-radius: 6px;
+  font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: -0.04em;
-  margin-bottom: 24px;
 }
 
-.gtg-display-sub {
-  font-size: 1.18rem;
-  line-height: 1.65;
-  color: var(--text-body);
-  max-width: 46ch;
-  margin-bottom: 40px;
-}
-
-/* Double-Bezel Capsule Installation Bar */
-.gtg-capsule-shell {
-  max-width: 530px;
-  padding: 6px;
-  border-radius: 20px;
-  background: var(--bg-card-shell);
-  border: 1px solid var(--border-shell);
-  box-shadow: var(--shadow-bezel);
-}
-
-.gtg-capsule-core {
+.nav-links {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 10px 8px 16px;
-  border-radius: calc(20px - 6px);
-  background: var(--bg-card-core);
-  border: 1px solid var(--border-core);
-  box-shadow: var(--shadow-core-inset);
+  gap: 22px;
+  list-style: none;
 }
 
-.gtg-capsule-code {
+.nav-link {
+  font-size: 0.84375rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+.nav-actions {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-mono);
-  font-size: 0.84rem;
-  color: var(--text-pure);
-  overflow: hidden;
-  white-space: nowrap;
 }
 
-.capsule-prompt {
-  color: var(--text-muted);
-  font-weight: 600;
-  user-select: none;
-}
-
-.gtg-capsule-btn {
+.btn-theme-toggle {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 7px 14px;
-  border-radius: var(--radius-pill);
-  background: var(--accent-tint);
-  color: var(--accent-blue);
-  border: 1px solid var(--accent-border);
-  font-size: 0.82rem;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  background: var(--accent-tag);
+  transition: color 0.15s ease, border-color 0.15s ease, transform 0.1s var(--ease-tactile);
+}
+
+.btn-theme-toggle:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.btn-theme-toggle:active {
+  transform: scale(0.94);
+}
+
+.btn-nav-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
   font-weight: 600;
-  flex-shrink: 0;
-  transition: all 0.2s var(--ease-spring);
+  padding: 7px 14px;
+  border-radius: 9999px;
+  background: var(--text-primary);
+  color: var(--bg-page);
+  border: 1px solid transparent;
+  transition: opacity 0.15s ease, transform 0.1s var(--ease-tactile);
 }
 
-.gtg-capsule-btn:hover {
-  background: var(--accent-blue);
-  color: #ffffff;
-  border-color: transparent;
+.btn-nav-primary:hover {
+  opacity: 0.92;
 }
 
-.gtg-capsule-btn:active {
+.btn-nav-primary:active {
   transform: scale(0.96);
 }
 
 /* --------------------------------------------------------------------------
-   06. Double-Bezel Live Dialogue Card
+   Hero Section: Asymmetric Split Architecture
    -------------------------------------------------------------------------- */
-.gtg-hero-visual {
+.hero-section {
+  padding-top: 130px;
+  padding-bottom: 96px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-statement {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.gtg-bezel-shell {
-  width: 100%;
-  padding: 7px;
-  border-radius: 28px;
-  background: var(--bg-card-shell);
-  border: 1px solid var(--border-shell);
-  box-shadow: var(--shadow-bezel);
-  transition: transform 0.3s var(--ease-spring), border-color 0.3s var(--ease-spring);
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  background: var(--accent-tag);
+  padding: 4px 10px;
+  border-radius: 6px;
 }
 
-.gtg-bezel-shell:hover {
-  border-color: var(--border-prominent);
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  color: var(--text-primary);
+  word-break: keep-all;
 }
 
-.gtg-bezel-core {
-  border-radius: calc(28px - 7px);
-  background: var(--bg-card-core);
-  border: 1px solid var(--border-core);
-  box-shadow: var(--shadow-core-inset);
+.hero-subtext {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 46ch;
+  word-break: keep-all;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.command-bar {
+  display: flex;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--specular);
+  border-radius: 8px;
+  padding: 4px 6px 4px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.command-code {
+  color: var(--text-secondary);
+  user-select: all;
+  margin-right: 14px;
+}
+
+.btn-command-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s var(--ease-tactile);
+}
+
+.btn-command-copy:hover {
+  border-color: var(--border-strong);
+}
+
+.btn-command-copy:active {
+  transform: scale(0.96);
+}
+
+.btn-hero-ghost {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 9px 16px;
+  border-radius: 8px;
+  transition: color 0.15s ease;
+}
+
+.btn-hero-ghost:hover {
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Verification Specimen Console (Anti-Slop Interactive Hardware Inspector)
+   -------------------------------------------------------------------------- */
+.specimen-console {
+  background: var(--bg-specimen);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--specular), var(--card-shadow);
+  border-radius: 12px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.gtg-card-topbar {
+.console-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 22px;
+  padding: 12px 16px;
+  background: var(--bg-surface);
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(0, 0, 0, 0.04);
 }
 
-[data-theme="light"] .gtg-card-topbar {
-  background: rgba(0, 0, 0, 0.02);
-}
-
-.topbar-status {
+.console-indicator {
   display: flex;
   align-items: center;
   gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.status-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: var(--radius-pill);
-  background: var(--color-ok);
-  box-shadow: 0 0 8px rgba(52, 199, 89, 0.4);
+.status-beacon {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-pass);
 }
 
-.topbar-title {
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: var(--text-body);
-}
-
-.topbar-tag {
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: var(--radius-pill);
-  background: var(--accent-tint);
-  color: var(--accent-blue);
-  border: 1px solid var(--accent-border);
-}
-
-.gtg-dialog-flow {
-  padding: 24px;
+.console-tabs {
   display: flex;
+  gap: 4px;
+  background: var(--bg-page);
+  padding: 3px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+}
+
+.tab-btn {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  transition: all 0.15s ease;
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.tab-btn.is-active {
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--specular);
+}
+
+.console-body {
+  padding: 24px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+}
+
+.specimen-view {
+  display: none;
   flex-direction: column;
   gap: 16px;
 }
 
-.dialog-item {
+.specimen-view.is-visible {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
 }
 
-.dialog-author {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.dialog-box {
-  padding: 12px 16px;
-  border-radius: 14px;
-  font-size: 0.9rem;
-  line-height: 1.48;
-}
-
-.dialog-item.user .dialog-box {
-  background: var(--bg-dialog-box);
-  border: 1px solid var(--border-subtle);
-  align-self: flex-end;
-  max-width: 88%;
-}
-
-.dialog-item.ai .dialog-box {
-  background: var(--bg-dialog-box);
-  border: 1px solid var(--border-subtle);
-  align-self: flex-start;
-  max-width: 88%;
-}
-
-.dialog-item.guard .dialog-box {
-  background: rgba(255, 159, 10, 0.08);
-  border: 1px solid rgba(255, 159, 10, 0.25);
-  color: var(--text-pure);
-}
-
-.dialog-item.guard .dialog-author {
-  color: var(--color-warn);
-}
-
-.success-banner {
-  padding: 12px;
-  border-radius: 12px;
-  background: rgba(52, 199, 89, 0.1);
-  border: 1px solid rgba(52, 199, 89, 0.3);
-  color: var(--color-ok);
-  font-size: 0.88rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-/* --------------------------------------------------------------------------
-   07. Macro-Whitespace Section Architecture
-   -------------------------------------------------------------------------- */
-.gtg-section-space {
-  padding: 120px 0;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.gtg-section-header {
-  margin-bottom: 56px;
-  max-width: 640px;
-}
-
-.gtg-headline {
-  font-family: var(--font-display);
-  font-size: 2.35rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin-bottom: 14px;
-}
-
-.gtg-lead {
-  font-size: 1.14rem;
-  color: var(--text-body);
-  line-height: 1.6;
-}
-
-/* --------------------------------------------------------------------------
-   08. Card Grids with Double-Bezel Architecture
-   -------------------------------------------------------------------------- */
-.p-generous {
-  padding: 40px 34px;
-}
-
-.p-step {
-  padding: 38px 32px;
-}
-
-.p-feature {
-  padding: 36px 32px;
-}
-
-.card-glyph {
-  font-size: 2rem;
-  margin-bottom: 12px;
-}
-
-.card-heading {
-  font-family: var(--font-display);
-  font-size: 1.28rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
-}
-
-.card-detail {
-  font-size: 0.96rem;
-  color: var(--text-body);
-  line-height: 1.65;
-}
-
-/* Problem Cards: 3 Column */
-.gtg-asymmetric-cards {
+.metric-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-/* Steps Trio: 3 Column */
-.gtg-steps-trio {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.step-counter {
-  font-family: var(--font-mono);
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: var(--accent-blue);
-  margin-bottom: 12px;
-}
-
-.step-label {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
-}
-
-.step-summary {
-  font-size: 0.96rem;
-  color: var(--text-body);
-  line-height: 1.65;
-}
-
-/* Features Quad: 2x2 */
-.gtg-features-quad {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-.feature-headline {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 10px;
-}
-
-.feature-body {
-  font-size: 0.96rem;
-  color: var(--text-body);
-  line-height: 1.65;
-}
-
-/* --------------------------------------------------------------------------
-   09. Minimalist Master Footer
-   -------------------------------------------------------------------------- */
-.gtg-master-footer {
-  padding: 88px 0 48px 0;
-  border-top: 1px solid var(--border-subtle);
-  background: var(--bg-main);
-}
-
-.gtg-footer-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 48px;
-  margin-bottom: 64px;
-}
-
-.footer-identity {
-  max-width: 320px;
-}
-
-.footer-logo {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.footer-desc {
-  font-size: 0.92rem;
-  color: var(--text-body);
-  line-height: 1.6;
-}
-
-.footer-nav-groups {
-  display: flex;
-  gap: 64px;
-}
-
-.group-title {
-  font-size: 0.88rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  color: var(--text-pure);
-}
-
-.footer-nav-groups ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
   gap: 12px;
 }
 
-.footer-nav-groups a {
-  font-size: 0.88rem;
-  color: var(--text-body);
-  transition: color 0.18s var(--ease-spring);
+.metric-cell {
+  padding: 10px 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
 }
 
-.footer-nav-groups a:hover {
-  color: var(--text-pure);
+.metric-label {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
 }
 
-.gtg-footer-baseline {
-  padding-top: 32px;
+.metric-val {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.metric-val.is-pass {
+  color: var(--accent-pass);
+}
+
+.pipeline-track {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.track-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+
+.track-name {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.track-step-num {
+  color: var(--text-muted);
+  font-size: 0.6875rem;
+}
+
+.track-result {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.track-result.is-done {
+  color: var(--accent-pass);
+}
+
+.console-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
   border-top: 1px solid var(--border-subtle);
-  font-size: 0.84rem;
+  font-size: 0.6875rem;
   color: var(--text-muted);
 }
 
 /* --------------------------------------------------------------------------
-   10. Kinetic Entry Interpolations (IntersectionObserver Driven)
+   Bento Grid Section: Anti-Slop Asymmetric Layout
    -------------------------------------------------------------------------- */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: transform 0.85s var(--ease-spring), opacity 0.85s var(--ease-spring);
-  will-change: transform, opacity;
+.features-section {
+  padding-top: 80px;
+  padding-bottom: 96px;
+  border-top: 1px solid var(--border-subtle);
 }
 
-.reveal-on-scroll.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
+.section-head-simple {
+  margin-bottom: 48px;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+}
+
+.bento-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--specular);
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.2s ease, transform 0.2s var(--ease-spring);
+}
+
+.bento-card:hover {
+  border-color: var(--border-strong);
+}
+
+.bento-card.span-full {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.bento-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bento-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.bento-card-desc {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  max-width: 48ch;
+}
+
+.bento-diagram {
+  margin-top: 24px;
+  background: var(--bg-specimen);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.diagram-flow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flow-node {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  color: var(--text-primary);
+}
+
+.flow-node.highlight {
+  border-color: var(--text-primary);
+}
+
+.flow-arrow {
+  color: var(--text-muted);
 }
 
 /* --------------------------------------------------------------------------
-   11. Strict Responsive Collapse (< 768px Single-Column Fallback)
+   Utilitarian 4-Step Architecture Horizon
    -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
-  .gtg-island-nav {
-    top: 14px;
-    width: calc(100% - 28px);
+.horizon-section {
+  padding-top: 72px;
+  padding-bottom: 84px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.horizon-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.horizon-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.horizon-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.horizon-title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.horizon-text {
+  font-size: 0.84375rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Call To Action & Minimalist Footer
+   -------------------------------------------------------------------------- */
+.cta-section {
+  padding-top: 88px;
+  padding-bottom: 96px;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.cta-box {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.cta-heading {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.cta-sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 32px 0 40px;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.footer-link:hover {
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adaptations
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
-  .gtg-nav-menu {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-card.span-full {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .horizon-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-links {
     display: none;
   }
 
-  .gtg-hero-wrap {
-    padding-top: 108px;
+  .hero-section {
+    padding-top: 104px;
     padding-bottom: 64px;
   }
 
-  .gtg-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .gtg-display-title {
-    font-size: 2.35rem;
-  }
-
-  .gtg-section-space {
-    padding: 72px 0;
-  }
-
-  .gtg-asymmetric-cards,
-  .gtg-steps-trio,
-  .gtg-features-quad {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .gtg-footer-row {
+  .hero-actions {
     flex-direction: column;
-    gap: 40px;
+    align-items: stretch;
   }
 
-  .footer-nav-groups {
-    gap: 40px;
+  .command-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .command-code {
+    word-break: break-all;
+    font-size: 0.75rem;
+    margin-right: 0;
+    line-height: 1.4;
+  }
+
+  .btn-command-copy {
+    justify-content: center;
+    width: 100%;
+    padding: 8px 12px;
+  }
+
+  .horizon-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
   }
 }
-
-/* --------------------------------------------------------------------------
-   12. Mandatory Reduced-Motion Fallback
-   -------------------------------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  .reveal-on-scroll {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
   </style>
 </head>
 <body>
 
-  <!-- 01. Floating Island Navigation Bar -->
-  <nav class="gtg-island-nav" aria-label="메인 메뉴">
-    <div class="gtg-nav-pill">
-      <a href="#" class="gtg-brand-group">
-        <span class="gtg-brand-badge">G</span>
-        <span class="gtg-brand-name">GeminiToGenius</span>
+  <!-- Floating Island Navigation -->
+  <header class="nav-wrapper">
+    <nav class="nav-island" aria-label="메인 내비게이션">
+      <a href="#" class="brand-mark">
+        <span class="brand-glyph">G</span>
+        <span>GTG</span>
       </a>
 
-      <div class="gtg-nav-menu">
-        <a href="#problem" class="gtg-nav-item">소개</a>
-        <a href="#how" class="gtg-nav-item">작동 방식</a>
-        <a href="#features" class="gtg-nav-item">특징</a>
-      </div>
+      <ul class="nav-links">
+        <li><a href="#features" class="nav-link">기능</a></li>
+        <li><a href="#architecture" class="nav-link">아키텍처</a></li>
+        <li><a href="#install" class="nav-link">설치</a></li>
+      </ul>
 
-      <div class="gtg-nav-right">
-        <button class="gtg-theme-switch" id="themeToggle" aria-label="화면 모드 전환">
-          <svg class="theme-icon sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <div class="nav-actions">
+        <button id="themeToggle" class="btn-theme-toggle" aria-label="테마 전환" title="테마 전환">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -867,383 +847,376 @@ code {
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <svg class="theme-icon moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
         </button>
-        <a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer" class="gtg-button-nested">
+
+        <a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer" class="btn-nav-primary">
           <span>GitHub</span>
-          <span class="btn-icon-circle">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="7" y1="17" x2="17" y2="7"></line>
-              <polyline points="7 7 17 7 17 17"></polyline>
-            </svg>
-          </span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
         </a>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <main>
-    <!-- 02. Hero Section -->
-    <section class="gtg-hero-wrap">
-      <div class="gtg-ambient-glow" aria-hidden="true"></div>
-      <div class="gtg-container gtg-hero-grid">
-        <div class="gtg-hero-intro reveal-on-scroll">
-          <div class="gtg-pill-eyebrow">
-            <span class="eyebrow-dot"></span>
-            <span>똑똑한 안전장치</span>
-          </div>
-          <h1 class="gtg-display-title">
-            말만 앞서는 AI 대신,<br>
-            직접 확인하는 AI.
-          </h1>
-          <p class="gtg-display-sub">
-            AI가 "다 고쳤다"고 거짓말하지 않도록 돕습니다. 진짜 잘 돌아가는지 하나하나 꼼꼼하게 실행해 보고 결과를 알려드립니다.
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-statement">
+          <span class="hero-tag">실행 증명 하네스</span>
+          <h1 class="hero-title">말 대신, 실행으로.</h1>
+          <p class="hero-subtext">
+            모델의 완료 선언을 신뢰하지 않습니다. 격리된 환경에서 명령을 직접 실행하고, 사각지대를 관측하여 완료를 실증합니다.
           </p>
 
-          <!-- Double-Bezel Command Capsule -->
-          <div class="gtg-capsule-shell">
-            <div class="gtg-capsule-core">
-              <div class="gtg-capsule-code">
-                <span class="capsule-prompt">%</span>
-                <code id="installCommand">git clone https://github.com/habinsong/GeminiToGenius.git &amp;&amp; bash GeminiToGenius/scripts/install.sh</code>
-              </div>
-              <button class="gtg-capsule-btn" id="copyInstallBtn" aria-label="설치 명령어 복사">
-                <span class="capsule-btn-label">복사하기</span>
-                <span class="capsule-btn-icon">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
-                </span>
-              </button>
+          <div class="hero-actions">
+            <div class="command-bar">
+              <span class="command-code">git clone https://github.com/habinsong/GeminiToGenius</span>
+              <button id="copyBtn" class="btn-command-copy" aria-label="명령어 복사">복사</button>
             </div>
+            <a href="https://github.com/habinsong/GeminiToGenius#readme" target="_blank" rel="noopener noreferrer" class="btn-hero-ghost">기술 문서</a>
           </div>
         </div>
 
-        <!-- Double-Bezel Live Chat Preview -->
-        <div class="gtg-hero-visual reveal-on-scroll">
-          <div class="gtg-bezel-shell">
-            <div class="gtg-bezel-core">
-              <div class="gtg-card-topbar">
-                <div class="topbar-status">
-                  <span class="status-indicator"></span>
-                  <span class="topbar-title">실시간 작업 화면</span>
+        <!-- Right: Verification Specimen Console (Anti-Slop Hardware UI) -->
+        <div class="specimen-console" aria-label="검증 하네스 실시간 콘솔">
+          <div class="console-header">
+            <div class="console-indicator">
+              <span class="status-beacon"></span>
+              <span>GTG-HARNESS / ACTIVE</span>
+            </div>
+            <div class="console-tabs" role="tablist">
+              <button class="tab-btn is-active" data-view="verify" role="tab" aria-selected="true">검증 실행</button>
+              <button class="tab-btn" data-view="certify" role="tab" aria-selected="false">증명서</button>
+              <button class="tab-btn" data-view="replay" role="tab" aria-selected="false">재현</button>
+            </div>
+          </div>
+
+          <div class="console-body">
+            <!-- View 1: Verification Pipeline -->
+            <div id="view-verify" class="specimen-view is-visible">
+              <div class="metric-strip">
+                <div class="metric-cell">
+                  <div class="metric-label">프로세스 종료</div>
+                  <div class="metric-val is-pass">EXIT 0</div>
                 </div>
-                <span class="topbar-tag">실시간 검사</span>
+                <div class="metric-cell">
+                  <div class="metric-label">미검증 범위</div>
+                  <div class="metric-val">0 FILES</div>
+                </div>
+                <div class="metric-cell">
+                  <div class="metric-label">불변식 상태</div>
+                  <div class="metric-val is-pass">PASSED</div>
+                </div>
               </div>
 
-              <div class="gtg-dialog-flow">
-                <div class="dialog-item user">
-                  <span class="dialog-author">나</span>
-                  <div class="dialog-box">
-                    <p>"로그인 버튼 안 눌리는 거 고쳐줘."</p>
-                  </div>
+              <div class="pipeline-track">
+                <div class="track-row">
+                  <span class="track-name"><span class="track-step-num">01</span> 격리 환경 초기화</span>
+                  <span class="track-result is-done">완료</span>
                 </div>
-
-                <div class="dialog-item ai">
-                  <span class="dialog-author">AI</span>
-                  <div class="dialog-box">
-                    <p>"코드 수정 완료했습니다!"</p>
-                  </div>
+                <div class="track-row">
+                  <span class="track-name"><span class="track-step-num">02</span> 대상 명령 비의존 실행</span>
+                  <span class="track-result is-done">완료 (180ms)</span>
                 </div>
-
-                <div class="dialog-item guard">
-                  <span class="dialog-author">GeminiToGenius</span>
-                  <div class="dialog-box">
-                    <p>"잠깐만요, 직접 눌러보니 아직 안 돼요. 다시 확인해 보세요."</p>
-                  </div>
+                <div class="track-row">
+                  <span class="track-name"><span class="track-step-num">03</span> 런타임 파일 접근 관측</span>
+                  <span class="track-result is-done">완전 포괄</span>
                 </div>
-
-                <div class="dialog-item ai">
-                  <span class="dialog-author">AI</span>
-                  <div class="dialog-box">
-                    <p>"원인을 찾았습니다. 다시 고쳐서 제대로 작동하는 것 확인했습니다."</p>
-                  </div>
-                </div>
-
-                <div class="dialog-item success">
-                  <div class="success-banner">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span>실제 정상 작동 확인 완료</span>
-                  </div>
+                <div class="track-row">
+                  <span class="track-name"><span class="track-step-num">04</span> 성공 상태 검증 확정</span>
+                  <span class="track-result is-done">CERTIFIED</span>
                 </div>
               </div>
+            </div>
+
+            <!-- View 2: Certificate Spec -->
+            <div id="view-certify" class="specimen-view">
+              <div class="metric-strip">
+                <div class="metric-cell">
+                  <div class="metric-label">증명서 식별자</div>
+                  <div class="metric-val">CERT-3.0.0</div>
+                </div>
+                <div class="metric-cell">
+                  <div class="metric-label">해시 무결성</div>
+                  <div class="metric-val is-pass">VALID</div>
+                </div>
+                <div class="metric-cell">
+                  <div class="metric-label">외부 의존성</div>
+                  <div class="metric-val">0 DB</div>
+                </div>
+              </div>
+
+              <div class="pipeline-track">
+                <div class="track-row">
+                  <span class="track-name">TARGET_COMMAND</span>
+                  <span class="track-result">python3 -m unittest discover</span>
+                </div>
+                <div class="track-row">
+                  <span class="track-name">RUNTIME_OBSERVER</span>
+                  <span class="track-result">Active (Node/Python)</span>
+                </div>
+                <div class="track-row">
+                  <span class="track-name">MUTATION_GUARD</span>
+                  <span class="track-result is-done">무효화 조건 감지 활성</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- View 3: Deterministic Replay -->
+            <div id="view-replay" class="specimen-view">
+              <div class="metric-strip">
+                <div class="metric-cell">
+                  <div class="metric-label">재현 방식</div>
+                  <div class="metric-val">DETERMINISTIC</div>
+                </div>
+                <div class="metric-cell">
+                  <div class="metric-label">상태 DB 요구</div>
+                  <div class="metric-val">NONE</div>
+                </div>
+                <div class="metric-cell">
+                  <div class="metric-label">결과 재현율</div>
+                  <div class="metric-val is-pass">100%</div>
+                </div>
+              </div>
+
+              <div class="pipeline-track">
+                <div class="track-row">
+                  <span class="track-name">REPLAY_COMMAND</span>
+                  <span class="track-result">gtg replay --cert &lt;path&gt;</span>
+                </div>
+                <div class="track-row">
+                  <span class="track-name">DIFF_VERIFICATION</span>
+                  <span class="track-result is-done">일치 확인</span>
+                </div>
+                <div class="track-row">
+                  <span class="track-name">TAMPER_CHECK</span>
+                  <span class="track-result is-done">변조 없음</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="console-footer-bar">
+              <span>HOST: ANTIGRAVITY / GEMINI-CLI</span>
+              <span>STANDARD: POSIX OFFLINE</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 03. Problem Section -->
-    <section class="gtg-section-space" id="problem">
-      <div class="gtg-container">
-        <div class="gtg-section-header reveal-on-scroll">
-          <h2 class="gtg-headline">이런 경험 있으신가요?</h2>
-          <p class="gtg-lead">
-            AI를 쓸 때 가장 답답했던 순간들을 말끔하게 해결합니다.
-          </p>
+    <!-- Bento Features Section -->
+    <section id="features" class="features-section">
+      <div class="container">
+        <div class="section-head-simple">
+          <div class="section-label">핵심 구조</div>
+          <h2 class="section-title">말이 아닌 결과로 검증되는 구조</h2>
         </div>
 
-        <div class="gtg-asymmetric-cards">
-          <div class="gtg-bezel-shell reveal-on-scroll">
-            <div class="gtg-bezel-core p-generous">
-              <div class="card-glyph">🤔</div>
-              <h3 class="card-heading">"다 됐다더니 왜 안 되지?"</h3>
-              <p class="card-detail">
-                AI는 종종 자기가 고친 코드가 잘 돌아가는지 확인도 안 해보고 다 됐다고 합니다. 이제는 직접 실행해 보고 성공했을 때만 완료를 알려줍니다.
+        <div class="bento-grid">
+          <!-- Bento A: 60% Width -->
+          <div class="bento-card">
+            <div class="bento-card-header">
+              <h3 class="bento-card-title">독립 격리 실행</h3>
+              <p class="bento-card-desc">
+                호스트 LLM과 물리적으로 분리된 하위 프로세스에서 명령을 실행합니다. 모델의 환각이 실행 결과를 왜곡할 수 없습니다.
               </p>
+            </div>
+            <div class="bento-diagram">
+              <div class="diagram-flow">
+                <span class="flow-node">호스트 지시</span>
+                <span class="flow-arrow">&rarr;</span>
+                <span class="flow-node highlight">격리 하네스</span>
+                <span class="flow-arrow">&rarr;</span>
+                <span class="flow-node">실제 프로세스</span>
+                <span class="flow-arrow">&rarr;</span>
+                <span class="flow-node highlight">종료코드 판정</span>
+              </div>
             </div>
           </div>
 
-          <div class="gtg-bezel-shell reveal-on-scroll">
-            <div class="gtg-bezel-core p-generous">
-              <div class="card-glyph">⚡</div>
-              <h3 class="card-heading">하나 고치다 다른 곳을 와르르</h3>
-              <p class="card-detail">
-                방금 전까지 잘 되던 기능이 다음 요청에서 갑자기 고장 난 적 있으신가요? 코드가 조금이라도 바뀌면 처음부터 다시 꼼꼼하게 검사합니다.
+          <!-- Bento B: 40% Width -->
+          <div class="bento-card">
+            <div class="bento-card-header">
+              <h3 class="bento-card-title">사각지대 관측</h3>
+              <p class="bento-card-desc">
+                실행 중 건드리지 않은 소스 파일을 추적하여, 검증되지 않은 범위를 투명하게 밝힙니다.
               </p>
+            </div>
+            <div class="bento-diagram">
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <span>UNVERIFIED_SCOPE</span>
+                <span style="color:var(--accent-pass);">0% (완전 포괄)</span>
+              </div>
+              <div style="height:4px; background:var(--border-subtle); border-radius:2px; overflow:hidden;">
+                <div style="width:100%; height:100%; background:var(--accent-pass);"></div>
+              </div>
             </div>
           </div>
 
-          <div class="gtg-bezel-shell reveal-on-scroll">
-            <div class="gtg-bezel-core p-generous">
-              <div class="card-glyph">💬</div>
-              <h3 class="card-heading">어려운 명령어는 이제 그만</h3>
-              <p class="card-detail">
-                특정 명령어 형식을 달달 외울 필요가 전혀 없습니다. 친구에게 부탁하듯 편하게 평소 말투로 말하면 알아서 알아듣고 일합니다.
+          <!-- Bento C: 100% Width -->
+          <div class="bento-card span-full">
+            <div class="bento-card-header">
+              <h3 class="bento-card-title">단일 아티팩트 재현성</h3>
+              <p class="bento-card-desc">
+                무거운 데이터베이스 없이, 발급된 증명서 파일 하나로 누구의 컴퓨터에서나 동일한 검증 결과를 1초 만에 재현합니다.
               </p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 04. How It Works Section -->
-    <section class="gtg-section-space" id="how">
-      <div class="gtg-container">
-        <div class="gtg-section-header reveal-on-scroll">
-          <h2 class="gtg-headline">일하는 과정은 단순합니다</h2>
-          <p class="gtg-lead">
-            세 단계로 안전하고 확실하게 일합니다.
-          </p>
-        </div>
-
-        <div class="gtg-steps-trio">
-          <div class="gtg-bezel-shell reveal-on-scroll">
-            <div class="gtg-bezel-core p-step">
-              <div class="step-counter">01</div>
-              <h3 class="step-label">편하게 말하기</h3>
-              <p class="step-summary">
-                "이 버튼 디자인 좀 다듬어줘", "오류 나는 부분 찾아줘"처럼 자연스럽게 요청하세요.
-              </p>
-            </div>
-          </div>
-
-          <div class="gtg-bezel-shell reveal-on-scroll">
-            <div class="gtg-bezel-core p-step">
-              <div class="step-counter">02</div>
-              <h3 class="step-label">직접 실행해서 검사</h3>
-              <p class="step-summary">
-                AI 혼자만의 상상이 아니라, 컴퓨터에서 실제로 작동시켜 보고 이상이 없는지 확인합니다.
-              </p>
-            </div>
-          </div>
-
-          <div class="gtg-bezel-shell reveal-on-scroll">
-            <div class="gtg-bezel-core p-step">
-              <div class="step-counter">03</div>
-              <h3 class="step-label">확인증 남기기</h3>
-              <p class="step-summary">
-                테스트가 모두 끝난 시점의 상태를 꼼꼼하게 기록해 두어, 나중에도 안전하게 다시 확인할 수 있습니다.
-              </p>
+            <div class="bento-diagram" style="margin-top:0; min-width:280px;">
+              <code>$ python3 scripts/catalog.py --check</code>
+              <div style="color:var(--accent-pass); margin-top:4px;">{"ok": true, "changed_documents": 0}</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 05. Key Features Bento -->
-    <section class="gtg-section-space" id="features">
-      <div class="gtg-container">
-        <div class="gtg-section-header reveal-on-scroll">
-          <h2 class="gtg-headline">믿고 쓸 수 있는 이유</h2>
-          <p class="gtg-lead">
-            화려한 말 대신 확실한 결과로 보여드립니다.
-          </p>
+    <!-- Utilitarian Architecture Horizon -->
+    <section id="architecture" class="horizon-section">
+      <div class="container">
+        <div class="section-head-simple">
+          <div class="section-label">진행 흐름</div>
+          <h2 class="section-title">단순하고 견고한 4단계 파이프라인</h2>
         </div>
 
-        <div class="gtg-features-quad">
-          <div class="gtg-bezel-shell reveal-on-scroll">
-            <div class="gtg-bezel-core p-feature">
-              <h3 class="feature-headline">내 컴퓨터 안에서 안전하게</h3>
-              <p class="feature-body">
-                외부 서버로 소스코드를 보내거나 불필요한 인터넷 연결을 하지 않습니다. 오직 내 컴퓨터 안에서 조용하고 빠르게 움직입니다.
-              </p>
-            </div>
+        <div class="horizon-grid">
+          <div class="horizon-item">
+            <span class="horizon-num">01</span>
+            <h3 class="horizon-title">자연어 접수</h3>
+            <p class="horizon-text">슬래시 명령어 강제 없이 자연스러운 사용자 의도를 포착합니다.</p>
           </div>
 
-          <div class="gtg-bezel-shell reveal-on-scroll">
-            <div class="gtg-bezel-core p-feature">
-              <h3 class="feature-headline">컴퓨터가 꺼져도 걱정 없이</h3>
-              <p class="feature-body">
-                작업 도중에 컴퓨터가 꺼지거나 창이 닫혀도 괜찮습니다. 안전 장치가 마련되어 있어 다시 켰을 때 문제없이 작업을 이어갑니다.
-              </p>
-            </div>
+          <div class="horizon-item">
+            <span class="horizon-num">02</span>
+            <h3 class="horizon-title">오프라인 실행</h3>
+            <p class="horizon-text">불필요한 외부 API 호출 없이 로컬 표준 환경에서 명령을 구동합니다.</p>
           </div>
 
-          <div class="gtg-bezel-shell reveal-on-scroll">
-            <div class="gtg-bezel-core p-feature">
-              <h3 class="feature-headline">솔직한 보고서</h3>
-              <p class="feature-body">
-                확인된 부분과 확인하지 못한 부분을 솔직하게 알려드립니다. 거짓으로 결과를 부풀리지 않기에 더 믿을 수 있습니다.
-              </p>
-            </div>
+          <div class="horizon-item">
+            <span class="horizon-num">03</span>
+            <h3 class="horizon-title">불변식 검사</h3>
+            <p class="horizon-text">실제 종료 코드와 파일 변경 상태의 무결성을 엄격하게 판정합니다.</p>
           </div>
 
-          <div class="gtg-bezel-shell reveal-on-scroll">
-            <div class="gtg-bezel-core p-feature">
-              <h3 class="feature-headline">어디서나 같은 방식으로</h3>
-              <p class="feature-body">
-                Gemini나 Antigravity 등 어떤 화면에서 사용하든 똑같이 편안하게 일할 수 있습니다.
-              </p>
-            </div>
+          <div class="horizon-item">
+            <span class="horizon-num">04</span>
+            <h3 class="horizon-title">증명 확정</h3>
+            <p class="horizon-text">결과를 타임스탬프와 해시로 묶어 변조 불가능한 증거로 남깁니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call To Action -->
+    <section id="install" class="cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <h2 class="cta-heading">실행으로 입증하십시오.</h2>
+          <p class="cta-sub">
+            추가 설정 없이 단일 저장소 복제로 시작할 수 있습니다.
+          </p>
+
+          <div class="command-bar" style="width:100%; max-width:540px; justify-content:space-between;">
+            <span class="command-code">git clone https://github.com/habinsong/GeminiToGenius</span>
+            <button id="copyBtnFooter" class="btn-command-copy" aria-label="하단 명령어 복사">복사</button>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- 06. Minimalist Master Footer -->
-  <footer class="gtg-master-footer">
-    <div class="gtg-container">
-      <div class="gtg-footer-row">
-        <div class="footer-identity">
-          <span class="footer-logo">GeminiToGenius</span>
-          <p class="footer-desc">
-            AI와 함께 더 믿음직하게 일하는 방법.
-          </p>
-        </div>
-
-        <div class="footer-nav-groups">
-          <div class="nav-group">
-            <h4 class="group-title">자세히 보기</h4>
-            <ul>
-              <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/docs/product/getting-started.md" target="_blank" rel="noopener noreferrer">시작하기 안내서</a></li>
-              <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/docs/product/how-it-works.md" target="_blank" rel="noopener noreferrer">어떻게 동작하나요?</a></li>
-              <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer">GitHub 저장소</a></li>
-            </ul>
-          </div>
-
-          <div class="nav-group">
-            <h4 class="group-title">만든 사람</h4>
-            <ul>
-              <li><a href="https://github.com/habinsong" target="_blank" rel="noopener noreferrer">habinsong GitHub</a></li>
-              <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">오픈소스 라이선스</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="gtg-footer-baseline">
-        <span>누구나 믿고 쓰는 AI 코딩 파트너, GeminiToGenius.</span>
-      </div>
+  <!-- Clean Minimalist Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>GeminiToGenius. Apache-2.0 License.</div>
+      <ul class="footer-links">
+        <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+        <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/docs/development/README.md" target="_blank" rel="noopener noreferrer" class="footer-link">개발 문서</a></li>
+        <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="footer-link">라이선스</a></li>
+      </ul>
     </div>
   </footer>
 
+  <!-- Precision Minimal Script -->
   <script>
-/**
- * GeminiToGenius - High-End Interaction & Motion Orchestration
- * Driven strictly via IntersectionObserver. Zero scroll event overhead.
- */
-(function () {
-  "use strict";
+(function() {
+  // Theme Management
+  const html = document.documentElement;
+  const themeBtn = document.getElementById("themeToggle");
 
-  // 01. Theme Management (System Sync & Persistence)
-  const themeToggle = document.getElementById("themeToggle");
-  const htmlRoot = document.documentElement;
-
-  function initTheme() {
-    const savedTheme = localStorage.getItem("gtg-theme");
-    if (savedTheme) {
-      htmlRoot.setAttribute("data-theme", savedTheme);
-    } else {
-      const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-      htmlRoot.setAttribute("data-theme", prefersLight ? "light" : "dark");
-    }
+  function getPreferredTheme() {
+    const saved = localStorage.getItem("gtg_theme");
+    if (saved) return saved;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-      const currentTheme = htmlRoot.getAttribute("data-theme") || "dark";
-      const nextTheme = currentTheme === "dark" ? "light" : "dark";
-      htmlRoot.setAttribute("data-theme", nextTheme);
-      localStorage.setItem("gtg-theme", nextTheme);
+  function applyTheme(theme) {
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("gtg_theme", theme);
+  }
+
+  applyTheme(getPreferredTheme());
+
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+      const current = html.getAttribute("data-theme");
+      applyTheme(current === "dark" ? "light" : "dark");
     });
   }
 
-  // 02. Haptic One-Click Copy Feedback
-  const copyBtn = document.getElementById("copyInstallBtn");
-  const installCode = document.getElementById("installCommand");
+  // Specimen Console Tab Switching
+  const tabs = document.querySelectorAll(".tab-btn");
+  const views = {
+    verify: document.getElementById("view-verify"),
+    certify: document.getElementById("view-certify"),
+    replay: document.getElementById("view-replay")
+  };
 
-  if (copyBtn && installCode) {
-    copyBtn.addEventListener("click", async () => {
-      const textToCopy = installCode.innerText.trim();
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      const target = tab.dataset.view;
+      tabs.forEach(t => {
+        t.classList.remove("is-active");
+        t.setAttribute("aria-selected", "false");
+      });
+      tab.classList.add("is-active");
+      tab.setAttribute("aria-selected", "true");
+
+      Object.keys(views).forEach(k => {
+        if (views[k]) {
+          views[k].classList.toggle("is-visible", k === target);
+        }
+      });
+    });
+  });
+
+  // Clipboard Actions
+  function setupCopy(btnId) {
+    const btn = document.getElementById(btnId);
+    if (!btn) return;
+    btn.addEventListener("click", async () => {
+      const text = "git clone https://github.com/habinsong/GeminiToGenius";
       try {
-        await navigator.clipboard.writeText(textToCopy);
-        const label = copyBtn.querySelector(".capsule-btn-label");
-        const originalText = label.textContent;
-
-        label.textContent = "복사 완료!";
-        copyBtn.style.background = "var(--color-ok)";
-        copyBtn.style.color = "#ffffff";
-        copyBtn.style.borderColor = "transparent";
-
+        await navigator.clipboard.writeText(text);
+        const orig = btn.textContent;
+        btn.textContent = "복사됨";
+        btn.style.color = "var(--accent-pass)";
         setTimeout(() => {
-          label.textContent = originalText;
-          copyBtn.style.background = "";
-          copyBtn.style.color = "";
-          copyBtn.style.borderColor = "";
-        }, 2200);
+          btn.textContent = orig;
+          btn.style.color = "";
+        }, 1800);
       } catch (err) {
-        console.error("복사 실패:", err);
+        btn.textContent = "실패";
       }
     });
   }
 
-  // 03. Scroll Interpolation (IntersectionObserver)
-  const revealElements = document.querySelectorAll(".reveal-on-scroll");
-
-  if ("IntersectionObserver" in window && revealElements.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-revealed");
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        root: null,
-        threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px",
-      }
-    );
-
-    revealElements.forEach((el) => observer.observe(el));
-  } else {
-    revealElements.forEach((el) => el.classList.add("is-revealed"));
-  }
-
-  // Initialize
-  initTheme();
+  setupCopy("copyBtn");
+  setupCopy("copyBtnFooter");
 })();
-
-</script>
+  </script>
 </body>
 </html>
 ```

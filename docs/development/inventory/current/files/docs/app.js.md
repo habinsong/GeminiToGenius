@@ -1,96 +1,84 @@
 # `docs/app.js`
 
 - 형식: `100644`
-- 바이트: 2764
-- SHA-256: `459084ce09f808952e6ed8498305b64bab215fc19c45afbb23d11bbc3b55c0cc`
+- 바이트: 2138
+- SHA-256: `99a2a7772b8b0194c73d9f1b810766041e2e7ddcb46f9efac85d3b77ae26f253`
 - 인코딩: `utf-8`
 
 ```
-/**
- * GeminiToGenius - High-End Interaction & Motion Orchestration
- * Driven strictly via IntersectionObserver. Zero scroll event overhead.
- */
-(function () {
-  "use strict";
+(function() {
+  // Theme Management
+  const html = document.documentElement;
+  const themeBtn = document.getElementById("themeToggle");
 
-  // 01. Theme Management (System Sync & Persistence)
-  const themeToggle = document.getElementById("themeToggle");
-  const htmlRoot = document.documentElement;
-
-  function initTheme() {
-    const savedTheme = localStorage.getItem("gtg-theme");
-    if (savedTheme) {
-      htmlRoot.setAttribute("data-theme", savedTheme);
-    } else {
-      const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-      htmlRoot.setAttribute("data-theme", prefersLight ? "light" : "dark");
-    }
+  function getPreferredTheme() {
+    const saved = localStorage.getItem("gtg_theme");
+    if (saved) return saved;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-      const currentTheme = htmlRoot.getAttribute("data-theme") || "dark";
-      const nextTheme = currentTheme === "dark" ? "light" : "dark";
-      htmlRoot.setAttribute("data-theme", nextTheme);
-      localStorage.setItem("gtg-theme", nextTheme);
+  function applyTheme(theme) {
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("gtg_theme", theme);
+  }
+
+  applyTheme(getPreferredTheme());
+
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+      const current = html.getAttribute("data-theme");
+      applyTheme(current === "dark" ? "light" : "dark");
     });
   }
 
-  // 02. Haptic One-Click Copy Feedback
-  const copyBtn = document.getElementById("copyInstallBtn");
-  const installCode = document.getElementById("installCommand");
+  // Specimen Console Tab Switching
+  const tabs = document.querySelectorAll(".tab-btn");
+  const views = {
+    verify: document.getElementById("view-verify"),
+    certify: document.getElementById("view-certify"),
+    replay: document.getElementById("view-replay")
+  };
 
-  if (copyBtn && installCode) {
-    copyBtn.addEventListener("click", async () => {
-      const textToCopy = installCode.innerText.trim();
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      const target = tab.dataset.view;
+      tabs.forEach(t => {
+        t.classList.remove("is-active");
+        t.setAttribute("aria-selected", "false");
+      });
+      tab.classList.add("is-active");
+      tab.setAttribute("aria-selected", "true");
+
+      Object.keys(views).forEach(k => {
+        if (views[k]) {
+          views[k].classList.toggle("is-visible", k === target);
+        }
+      });
+    });
+  });
+
+  // Clipboard Actions
+  function setupCopy(btnId) {
+    const btn = document.getElementById(btnId);
+    if (!btn) return;
+    btn.addEventListener("click", async () => {
+      const text = "git clone https://github.com/habinsong/GeminiToGenius";
       try {
-        await navigator.clipboard.writeText(textToCopy);
-        const label = copyBtn.querySelector(".capsule-btn-label");
-        const originalText = label.textContent;
-
-        label.textContent = "복사 완료!";
-        copyBtn.style.background = "var(--color-ok)";
-        copyBtn.style.color = "#ffffff";
-        copyBtn.style.borderColor = "transparent";
-
+        await navigator.clipboard.writeText(text);
+        const orig = btn.textContent;
+        btn.textContent = "복사됨";
+        btn.style.color = "var(--accent-pass)";
         setTimeout(() => {
-          label.textContent = originalText;
-          copyBtn.style.background = "";
-          copyBtn.style.color = "";
-          copyBtn.style.borderColor = "";
-        }, 2200);
+          btn.textContent = orig;
+          btn.style.color = "";
+        }, 1800);
       } catch (err) {
-        console.error("복사 실패:", err);
+        btn.textContent = "실패";
       }
     });
   }
 
-  // 03. Scroll Interpolation (IntersectionObserver)
-  const revealElements = document.querySelectorAll(".reveal-on-scroll");
-
-  if ("IntersectionObserver" in window && revealElements.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-revealed");
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        root: null,
-        threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px",
-      }
-    );
-
-    revealElements.forEach((el) => observer.observe(el));
-  } else {
-    revealElements.forEach((el) => el.classList.add("is-revealed"));
-  }
-
-  // Initialize
-  initTheme();
+  setupCopy("copyBtn");
+  setupCopy("copyBtnFooter");
 })();
 ```

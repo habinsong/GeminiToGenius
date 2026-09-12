@@ -1,8 +1,8 @@
 # `docs/development/current-work.md`
 
 - 형식: `100644`
-- 바이트: 7062
-- SHA-256: `dfbb191fdfe05aae5833e622898ca11153e2a04833c072e4d3bbf42237b7ee62`
+- 바이트: 7091
+- SHA-256: `b9b859b1e27dce071450fd7f95bda97dd7112ae3a385a4d1b50a5803a135e448`
 - 인코딩: `utf-8`
 
 ```
@@ -28,7 +28,7 @@ Codex·Claude Code·OmO 대비 우수한 품질을 최종 목표로 삼되, 오�
 - 2026-09-09: 루트 README를 전면 개편하고, 한국어·영문 README 상단 블록을 GitHub 환경에 맞춰 가운데 정렬했습니다. 첫 화면의 장황한 한계 나열을 정리하고, 상세 계약·검증 범위·개발 기록을 세부 문서 링크로 깔끔하게 연결했습니다.
 - 2026-09-12: 저장소 전반의 다국어(한국어·영어) 마크다운 문서에 대해 AI 번역투·기계적 병렬·상투적 수식어를 걷어내고 자연스러운 기술 문서체로 전면 윤문했습니다.
 - 2026-09-12: 사용자 요청에 따라 GitHub Pages("https://habinsong.github.io/GeminiToGenius/")로 서비스되던 웹 페이지 파일 5개(`docs/index.html`, `docs/docs.html`, `docs/changelog.html`, `docs/styles.css`, `docs/main.js`)를 전면 삭제하고 인벤토리를 갱신했습니다.
-- 2026-09-12: AI 생성 이미지·번역투·전문 기술 용어(지문, 무효, 해시 등)를 완전히 배제하고, Floating Island Nav, Double-Bezel 하드웨어 인클로저, Button-in-Button 햅틱 모션 등 Apple·Google 에이전시급 미감을 갖춘 웹 경험(`docs/index.html`, `docs/styles.css`, `docs/app.js`)을 새롭게 구축했습니다. GitHub Pages 서브경로 라우팅 및 CDN 캐시로 인한 외부 스타일시트 로드 실패 현상을 방지하기 위해 전체 CSS/JS를 단일 `docs/index.html`에 완전 인라인 임베딩하여 0ms 원자적 로딩을 보장했습니다.
+- 2026-09-12: AI Slop 패턴(가짜 채팅창 목업, 설명충 문체, 이모지, 보라색 그라데이션)을 전면 박멸하고, Apple Pro 및 Linear 수준의 극단적 절제미를 적용한 2026년형 웹 경험(`docs/index.html`, `docs/styles.css`, `docs/app.js`)으로 전면 재구축했습니다. 가짜 대화창 대신 실제 파이프라인과 불변식을 전환하는 Verification Specimen Console과 2+1 비대칭 벤토 그리드를 배치하고, 이모지 0개·em-dash 0개·단문 직진형 카피 원칙을 적용했습니다. 0ms 단일 왕복 인라인 임베딩을 유지해 배포 무결성을 보장했습니다.
 
 ## 현재 구현의 핵심
 
