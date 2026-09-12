@@ -5,3 +5,4 @@ __pycache__/
 .playwright-mcp/
 output/
 .agents/plugins/geminitogenius/
+docs/development/

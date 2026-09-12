@@ -1,7 +1,7 @@
 /* ==========================================================================
-   GeminiToGenius - 2026 Anti-Slop Precision Design System
-   Architecture: Dark Titanium + Specular Edge Inset + Monochromatic Hierarchy
-   Restraint: Zero emojis, Zero em-dashes, Zero fake chat bubbles, Zero AI purple
+   GeminiToGenius - Human-First Precision Design System
+   Visual: Dark Titanium, Specular Inset Highlight, High-Contrast Typography
+   Rules: Zero emojis, Zero em-dashes, Zero technical jargon, Zero cheesy hooks
    ========================================================================== */
 
 :root {
@@ -60,9 +60,6 @@
   --card-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.06);
 }
 
-/* --------------------------------------------------------------------------
-   Global Resets & Typographic Rigor
-   -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -99,9 +96,6 @@ button {
   color: inherit;
 }
 
-/* --------------------------------------------------------------------------
-   Layout Foundation
-   -------------------------------------------------------------------------- */
 .container {
   width: 100%;
   max-width: 1240px;
@@ -111,9 +105,7 @@ button {
   padding-right: 24px;
 }
 
-/* --------------------------------------------------------------------------
-   Floating Island Navigation
-   -------------------------------------------------------------------------- */
+/* Floating Island Navigation */
 .nav-wrapper {
   position: fixed;
   top: 18px;
@@ -232,9 +224,7 @@ button {
   transform: scale(0.96);
 }
 
-/* --------------------------------------------------------------------------
-   Hero Section: Asymmetric Split Architecture
-   -------------------------------------------------------------------------- */
+/* Hero Section */
 .hero-section {
   padding-top: 130px;
   padding-bottom: 96px;
@@ -257,32 +247,29 @@ button {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
   border: 1px solid var(--border-subtle);
   background: var(--accent-tag);
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
   font-weight: 800;
   letter-spacing: -0.04em;
-  line-height: 1.08;
+  line-height: 1.12;
   color: var(--text-primary);
   word-break: keep-all;
 }
 
 .hero-subtext {
   font-size: 1.125rem;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--text-secondary);
-  max-width: 46ch;
+  max-width: 44ch;
   word-break: keep-all;
 }
 
@@ -294,28 +281,41 @@ button {
 }
 
 .command-bar {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: space-between;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   box-shadow: var(--specular);
   border-radius: 8px;
-  padding: 4px 6px 4px 14px;
+  padding: 6px 6px 6px 16px;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
+  max-width: 100%;
+  white-space: nowrap;
 }
 
 .command-code {
   color: var(--text-secondary);
   user-select: all;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
   margin-right: 14px;
+  line-height: 1;
+}
+
+.command-code::-webkit-scrollbar {
+  display: none;
 }
 
 .btn-command-copy {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
+  justify-content: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 6px 14px;
   border-radius: 6px;
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-subtle);
@@ -343,15 +343,15 @@ button {
   padding: 9px 16px;
   border-radius: 8px;
   transition: color 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .btn-hero-ghost:hover {
   color: var(--text-primary);
 }
 
-/* --------------------------------------------------------------------------
-   Verification Specimen Console (Anti-Slop Interactive Hardware Inspector)
-   -------------------------------------------------------------------------- */
+/* Verification Specimen Console */
 .specimen-console {
   background: var(--bg-specimen);
   border: 1px solid var(--border-subtle);
@@ -375,16 +375,14 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
 .status-beacon {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--accent-pass);
 }
@@ -399,8 +397,7 @@ button {
 }
 
 .tab-btn {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 500;
   padding: 4px 10px;
   border-radius: 4px;
@@ -425,7 +422,6 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: var(--font-mono);
 }
 
 .specimen-view {
@@ -452,16 +448,14 @@ button {
 }
 
 .metric-label {
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   margin-bottom: 4px;
 }
 
 .metric-val {
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
@@ -483,7 +477,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
 }
 
 .track-name {
@@ -495,12 +489,12 @@ button {
 
 .track-step-num {
   color: var(--text-muted);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
 }
 
 .track-result {
   color: var(--text-primary);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .track-result.is-done {
@@ -513,13 +507,11 @@ button {
   justify-content: space-between;
   padding-top: 14px;
   border-top: 1px solid var(--border-subtle);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
-/* --------------------------------------------------------------------------
-   Bento Grid Section: Anti-Slop Asymmetric Layout
-   -------------------------------------------------------------------------- */
+/* Bento Grid Section */
 .features-section {
   padding-top: 80px;
   padding-bottom: 96px;
@@ -531,11 +523,11 @@ button {
 }
 
 .section-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   margin-bottom: 10px;
 }
 
@@ -544,6 +536,7 @@ button {
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text-primary);
+  word-break: keep-all;
 }
 
 .bento-grid {
@@ -578,7 +571,7 @@ button {
 .bento-card-header {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .bento-card-title {
@@ -590,9 +583,10 @@ button {
 
 .bento-card-desc {
   font-size: 0.9375rem;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--text-secondary);
   max-width: 48ch;
+  word-break: keep-all;
 }
 
 .bento-diagram {
@@ -601,8 +595,7 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: 8px;
   padding: 16px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   color: var(--text-secondary);
 }
 
@@ -617,7 +610,8 @@ button {
   border: 1px solid var(--border-subtle);
   padding: 8px 12px;
   border-radius: 6px;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--text-primary);
 }
 
@@ -629,9 +623,7 @@ button {
   color: var(--text-muted);
 }
 
-/* --------------------------------------------------------------------------
-   Utilitarian 4-Step Architecture Horizon
-   -------------------------------------------------------------------------- */
+/* 4-Step Horizon */
 .horizon-section {
   padding-top: 72px;
   padding-bottom: 84px;
@@ -652,27 +644,26 @@ button {
 }
 
 .horizon-num {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
   color: var(--text-muted);
 }
 
 .horizon-title {
   font-size: 1.0625rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--text-primary);
 }
 
 .horizon-text {
-  font-size: 0.84375rem;
-  line-height: 1.5;
+  font-size: 0.875rem;
+  line-height: 1.55;
   color: var(--text-secondary);
+  word-break: keep-all;
 }
 
-/* --------------------------------------------------------------------------
-   Call To Action & Minimalist Footer
-   -------------------------------------------------------------------------- */
+/* Call To Action & Footer */
 .cta-section {
   padding-top: 88px;
   padding-bottom: 96px;
@@ -687,7 +678,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 
 .cta-heading {
@@ -701,6 +692,7 @@ button {
   font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.5;
+  word-break: keep-all;
 }
 
 .site-footer {
@@ -712,7 +704,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   color: var(--text-muted);
 }
 
@@ -726,9 +718,7 @@ button {
   color: var(--text-primary);
 }
 
-/* --------------------------------------------------------------------------
-   Responsive Adaptations
-   -------------------------------------------------------------------------- */
+/* Responsive */
 @media (max-width: 960px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -751,48 +741,140 @@ button {
 }
 
 @media (max-width: 640px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   .nav-links {
     display: none;
   }
 
+  .nav-island {
+    padding: 6px 10px 6px 16px;
+    gap: 16px;
+  }
+
   .hero-section {
-    padding-top: 104px;
-    padding-bottom: 64px;
+    padding-top: 96px;
+    padding-bottom: 56px;
+  }
+
+  .hero-statement {
+    min-width: 0;
+    max-width: 100%;
+    gap: 18px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 7.5vw, 2.25rem);
+    line-height: 1.18;
+  }
+
+  .hero-subtext {
+    font-size: 1rem;
+    line-height: 1.55;
   }
 
   .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
+    width: 100%;
+    min-width: 0;
   }
 
   .command-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    padding: 10px 12px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 6px 6px 12px;
+    box-sizing: border-box;
   }
 
   .command-code {
-    word-break: break-all;
+    flex: 1 1 auto;
+    min-width: 0;
     font-size: 0.75rem;
-    margin-right: 0;
-    line-height: 1.4;
+    margin-right: 8px;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    line-height: 1;
   }
 
   .btn-command-copy {
-    justify-content: center;
-    width: 100%;
-    padding: 8px 12px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    width: auto;
+    padding: 6px 12px;
   }
 
-  .horizon-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
+  .specimen-console {
+    min-width: 0;
+    max-width: 100%;
   }
 
-  .footer-inner {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
+  .console-header {
+    padding: 10px 12px;
   }
-}
+
+  .console-tabs {
+    gap: 2px;
+    padding: 2px;
+  }
+
+  .tab-btn {
+    font-size: 0.6875rem;
+    padding: 4px 6px;
+    white-space: nowrap;
+  }
+
+  .console-body {
+    padding: 14px;
+    min-height: auto;
+  }
+
+  .metric-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .metric-cell {
+    padding: 8px 8px;
+    min-width: 0;
+  }
+
+  .metric-label {
+    font-size: 0.625rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .metric-val {
+    font-size: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .pipeline-track {
+    padding: 12px;
+  }
+
+  .track-row {
+    font-size: 0.75rem;
+  }
+
+  .bento-card {
+    padding: 20px;
+    min-width: 0;
+  }
+
+  .bento-card.span-full {
+    gap: 20px;
+  }
+
+  .diagram-flow {
+    flex-wrap: wrap;
