@@ -31,7 +31,7 @@
 | `docs/architecture/coverage.md` | 4387 | [원문](files/docs/architecture/coverage.md.md) |
 | `docs/architecture/overview.md` | 4592 | [원문](files/docs/architecture/overview.md.md) |
 | `docs/development/README.md` | 3438 | [원문](files/docs/development/README.md.md) |
-| `docs/development/current-work.md` | 6812 | [원문](files/docs/development/current-work.md.md) |
+| `docs/development/current-work.md` | 7062 | [원문](files/docs/development/current-work.md.md) |
 | `docs/development/inventory/architecture.md` | 3144 | [원문](files/docs/development/inventory/architecture.md.md) |
 | `docs/development/plan/architecture.md` | 9787 | [원문](files/docs/development/plan/architecture.md.md) |
 | `docs/development/plan/completion-audit.md` | 5718 | [원문](files/docs/development/plan/completion-audit.md.md) |
@@ -41,7 +41,7 @@
 | `docs/development/research/native-antigravity.md` | 3205 | [원문](files/docs/development/research/native-antigravity.md.md) |
 | `docs/development/research/platform-contracts.md` | 8520 | [원문](files/docs/development/research/platform-contracts.md.md) |
 | `docs/development/research/sources.json` | 49370 | [원문](files/docs/development/research/sources.json.md) |
-| `docs/development/status.md` | 75425 | [원문](files/docs/development/status.md.md) |
+| `docs/development/status.md` | 75736 | [원문](files/docs/development/status.md.md) |
 | `docs/development/validation/2026-09-08-context-budget/README.md` | 1574 | [원문](files/docs/development/validation/2026-09-08-context-budget/README.md.md) |
 | `docs/development/validation/2026-09-08-context-budget/before-hooks.py` | 10931 | [원문](files/docs/development/validation/2026-09-08-context-budget/before-hooks.py.md) |
 | `docs/development/validation/2026-09-08-context-budget/message-comparison.json` | 3816 | [원문](files/docs/development/validation/2026-09-08-context-budget/message-comparison.json.md) |
@@ -177,7 +177,7 @@
 | `docs/development/validation/2026-09-09-repeated-comparison/summary.txt` | 1325 | [원문](files/docs/development/validation/2026-09-09-repeated-comparison/summary.txt.md) |
 | `docs/development/validation/2026-09-09-running-check-stop/README.md` | 6246 | [원문](files/docs/development/validation/2026-09-09-running-check-stop/README.md.md) |
 | `docs/development/validation/2026-09-09-unobservable-scope/README.md` | 3336 | [원문](files/docs/development/validation/2026-09-09-unobservable-scope/README.md.md) |
-| `docs/index.html` | 14818 | [원문](files/docs/index.html.md) |
+| `docs/index.html` | 36078 | [원문](files/docs/index.html.md) |
 | `docs/product/getting-started.md` | 2498 | [원문](files/docs/product/getting-started.md.md) |
 | `docs/product/hosts.md` | 2813 | [원문](files/docs/product/hosts.md.md) |
 | `docs/product/how-it-works.md` | 4380 | [원문](files/docs/product/how-it-works.md.md) |

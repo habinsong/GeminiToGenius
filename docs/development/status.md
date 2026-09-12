@@ -554,6 +554,7 @@ GTG를 이 저장소에 걸어 검증하다가, 두 검사 모두 미실행 목�
   - **Button-in-Button Haptic CTA**: 내부 원형 아이콘 슬롯이 중첩된 알약형 버튼 및 키네틱 대각선 호버 텐션 적용.
   - **Macro-Whitespace & Motion**: 섹션 간 120px 이상의 여백과 `IntersectionObserver` 기반 뷰포트 진입 인터폴레이션(`reveal-on-scroll`) 적용.
 - **카피 및 문체 정비**: 비전문가도 3초 만에 직관적으로 이해할 수 있는 일상적 언어 유지 (대화형 실시간 예시 카드).
+- **배포 안정성 확보 (인라인 번들링)**: GitHub Pages의 서브경로 라우팅 및 CDN 캐시 문제로 인한 외부 스타일시트 404/로드 누락을 방지하기 위해, 모든 CSS 및 JS 코드를 `docs/index.html` 내에 완전 인라인 임베딩하여 0ms 단일 왕복 로딩을 보장.
 - **무결성 동기화**: `python3 scripts/catalog.py`를 통해 인벤토리를 갱신하고 `--check` 통과를 확인.
 
 

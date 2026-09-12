@@ -279,8 +279,8 @@
     {
       "path": "docs/development/current-work.md",
       "mode": "100644",
-      "bytes": 6812,
-      "sha256": "3061dbcb407c24e0ff61d1ab26d8a710687d580b5360ad9f79b836971993e744",
+      "bytes": 7062,
+      "sha256": "dfbb191fdfe05aae5833e622898ca11153e2a04833c072e4d3bbf42237b7ee62",
       "encoding": "utf-8",
       "lines": 51,
       "symbols": [],
@@ -389,10 +389,10 @@
     {
       "path": "docs/development/status.md",
       "mode": "100644",
-      "bytes": 75425,
-      "sha256": "3aa9d1e75aaf35740cfad62e6469ae755585dc9bdb84cdbfe5ab316c984167e6",
+      "bytes": 75736,
+      "sha256": "f2ba57142581c5c829e01fac1d0c67493a81c73532bc42fca0c7f0488fb639da",
       "encoding": "utf-8",
-      "lines": 559,
+      "lines": 560,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/development/status.md.md"
@@ -2207,10 +2207,10 @@
     {
       "path": "docs/index.html",
       "mode": "100644",
-      "bytes": 14818,
-      "sha256": "c70bc5ad9a1a8bcd25ba0d3377517a374c10a41fad7084e1bf3e74498095e30e",
+      "bytes": 36078,
+      "sha256": "9fb23c7add2374e9d608a88f7cf2d4c1b8c1c44a4b60d25dc01e0820b874fb54",
       "encoding": "utf-8",
-      "lines": 331,
+      "lines": 1240,
       "symbols": [],
       "trailing_newline": true,
       "document": "files/docs/index.html.md"
