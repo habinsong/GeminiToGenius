@@ -23,9 +23,9 @@
     });
   }
 
-  // Specimen Console Tab Switching
-  const tabs = document.querySelectorAll(".tab-btn");
-  const views = {
+  // Specimen Console Segment Tab Switching
+  const tabs = document.querySelectorAll(".segment-tab");
+  const panels = {
     verify: document.getElementById("view-verify"),
     certify: document.getElementById("view-certify"),
     replay: document.getElementById("view-replay")
@@ -41,15 +41,15 @@
       tab.classList.add("is-active");
       tab.setAttribute("aria-selected", "true");
 
-      Object.keys(views).forEach(k => {
-        if (views[k]) {
-          views[k].classList.toggle("is-visible", k === target);
+      Object.keys(panels).forEach(k => {
+        if (panels[k]) {
+          panels[k].classList.toggle("is-visible", k === target);
         }
       });
     });
   });
 
-  // Clipboard Actions
+  // Zero-Wrap Clipboard Actions
   function setupCopy(btnId) {
     const btn = document.getElementById(btnId);
     if (!btn) return;
@@ -59,7 +59,7 @@
         await navigator.clipboard.writeText(text);
         const orig = btn.textContent;
         btn.textContent = "복사됨";
-        btn.style.color = "var(--accent-pass)";
+        btn.style.color = "var(--apple-pass)";
         setTimeout(() => {
           btn.textContent = orig;
           btn.style.color = "";
@@ -72,4 +72,5 @@
 
   setupCopy("copyBtn");
   setupCopy("copyBtnFooter");
+  setupCopy("heroCopyOutlineBtn");
 })();

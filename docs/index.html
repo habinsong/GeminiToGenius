@@ -3,947 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GeminiToGenius - AI 결과물 검증 도구</title>
-  <meta name="description" content="AI가 작성한 코드를 실제로 실행해 검증하는 도구">
+  <title>GeminiToGenius - 코드 실행 검증 엔진</title>
+  <meta name="description" content="AI가 작성한 코드를 실제로 구동하여 검증하는 정밀 도구">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%2308090b%22/><text y=%2268%22 x=%2224%22 font-size=%2258%22 fill=%22%23ffffff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>G</text></svg>">
-  <style>
-/* ==========================================================================
-   GeminiToGenius - Human-First Precision Design System
-   Visual: Dark Titanium, Specular Inset Highlight, High-Contrast Typography
-   Rules: Zero emojis, Zero em-dashes, Zero technical jargon, Zero cheesy hooks
-   ========================================================================== */
-
-:root {
-  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Google Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
-
-  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-tactile: cubic-bezier(0.32, 0.72, 0, 1);
-}
-
-[data-theme="dark"] {
-  --bg-page: #08090b;
-  --bg-surface: #0f1115;
-  --bg-surface-elevated: #15181f;
-  --bg-specimen: #0b0d10;
-  --bg-nav: rgba(15, 17, 21, 0.82);
-
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --border-focus: rgba(255, 255, 255, 0.28);
-
-  --text-primary: #f5f6f8;
-  --text-secondary: #8c93a0;
-  --text-muted: #565d6c;
-
-  --accent-action: #2f81f7;
-  --accent-pass: #2ea043;
-  --accent-tag: rgba(255, 255, 255, 0.05);
-
-  --specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-  --specular-strong: inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
-  --card-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
-}
-
-[data-theme="light"] {
-  --bg-page: #f8f9fa;
-  --bg-surface: #ffffff;
-  --bg-surface-elevated: #f1f3f5;
-  --bg-specimen: #f4f6f8;
-  --bg-nav: rgba(255, 255, 255, 0.85);
-
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.15);
-  --border-focus: rgba(0, 0, 0, 0.35);
-
-  --text-primary: #12151a;
-  --text-secondary: #57606a;
-  --text-muted: #8c959f;
-
-  --accent-action: #0969da;
-  --accent-pass: #1a7f37;
-  --accent-tag: rgba(0, 0, 0, 0.04);
-
-  --specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
-  --specular-strong: inset 0 1px 0 0 rgba(255, 255, 255, 1);
-  --card-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.06);
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-sans);
-  background-color: var(--bg-page);
-  color: var(--text-primary);
-  line-height: 1.5;
-  min-height: 100dvh;
-  overflow-x: hidden;
-  transition: background-color 0.25s var(--ease-spring), color 0.25s var(--ease-spring);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font-family: inherit;
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: inherit;
-}
-
-.container {
-  width: 100%;
-  max-width: 1240px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
-}
-
-/* Floating Island Navigation */
-.nav-wrapper {
-  position: fixed;
-  top: 18px;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  padding: 0 20px;
-  pointer-events: none;
-}
-
-.nav-island {
-  pointer-events: auto;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  background: var(--bg-nav);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--specular), 0 8px 24px -4px rgba(0, 0, 0, 0.2);
-  border-radius: 9999px;
-  padding: 8px 12px 8px 20px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.brand-mark {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 0.9375rem;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-}
-
-.brand-glyph {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  background: var(--text-primary);
-  color: var(--bg-page);
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 800;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  list-style: none;
-}
-
-.nav-link {
-  font-size: 0.84375rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: color 0.15s ease;
-}
-
-.nav-link:hover {
-  color: var(--text-primary);
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.btn-theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 9999px;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-subtle);
-  background: var(--accent-tag);
-  transition: color 0.15s ease, border-color 0.15s ease, transform 0.1s var(--ease-tactile);
-}
-
-.btn-theme-toggle:hover {
-  color: var(--text-primary);
-  border-color: var(--border-strong);
-}
-
-.btn-theme-toggle:active {
-  transform: scale(0.94);
-}
-
-.btn-nav-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  padding: 7px 14px;
-  border-radius: 9999px;
-  background: var(--text-primary);
-  color: var(--bg-page);
-  border: 1px solid transparent;
-  transition: opacity 0.15s ease, transform 0.1s var(--ease-tactile);
-}
-
-.btn-nav-primary:hover {
-  opacity: 0.92;
-}
-
-.btn-nav-primary:active {
-  transform: scale(0.96);
-}
-
-/* Hero Section */
-.hero-section {
-  padding-top: 130px;
-  padding-bottom: 96px;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 56px;
-  align-items: center;
-}
-
-.hero-statement {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  align-self: flex-start;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-subtle);
-  background: var(--accent-tag);
-  padding: 4px 12px;
-  border-radius: 9999px;
-}
-
-.hero-title {
-  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1.12;
-  color: var(--text-primary);
-  word-break: keep-all;
-}
-
-.hero-subtext {
-  font-size: 1.125rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  max-width: 44ch;
-  word-break: keep-all;
-}
-
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 8px;
-}
-
-.command-bar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--specular);
-  border-radius: 8px;
-  padding: 6px 6px 6px 16px;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  max-width: 100%;
-  white-space: nowrap;
-}
-
-.command-code {
-  color: var(--text-secondary);
-  user-select: all;
-  white-space: nowrap;
-  overflow-x: auto;
-  scrollbar-width: none;
-  margin-right: 14px;
-  line-height: 1;
-}
-
-.command-code::-webkit-scrollbar {
-  display: none;
-}
-
-.btn-command-copy {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  white-space: nowrap;
-  padding: 6px 14px;
-  border-radius: 6px;
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s var(--ease-tactile);
-}
-
-.btn-command-copy:hover {
-  border-color: var(--border-strong);
-}
-
-.btn-command-copy:active {
-  transform: scale(0.96);
-}
-
-.btn-hero-ghost {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  padding: 9px 16px;
-  border-radius: 8px;
-  transition: color 0.15s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.btn-hero-ghost:hover {
-  color: var(--text-primary);
-}
-
-/* Verification Specimen Console */
-.specimen-console {
-  background: var(--bg-specimen);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--specular), var(--card-shadow);
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.console-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  background: var(--bg-surface);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.console-indicator {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-}
-
-.status-beacon {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent-pass);
-}
-
-.console-tabs {
-  display: flex;
-  gap: 4px;
-  background: var(--bg-page);
-  padding: 3px;
-  border-radius: 6px;
-  border: 1px solid var(--border-subtle);
-}
-
-.tab-btn {
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 4px;
-  color: var(--text-secondary);
-  transition: all 0.15s ease;
-}
-
-.tab-btn:hover {
-  color: var(--text-primary);
-}
-
-.tab-btn.is-active {
-  background: var(--bg-surface-elevated);
-  color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--specular);
-}
-
-.console-body {
-  padding: 24px;
-  min-height: 280px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.specimen-view {
-  display: none;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.specimen-view.is-visible {
-  display: flex;
-}
-
-.metric-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.metric-cell {
-  padding: 10px 12px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-}
-
-.metric-label {
-  font-size: 0.6875rem;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-}
-
-.metric-val {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.metric-val.is-pass {
-  color: var(--accent-pass);
-}
-
-.pipeline-track {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 14px 16px;
-}
-
-.track-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.8125rem;
-}
-
-.track-name {
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.track-step-num {
-  color: var(--text-muted);
-  font-size: 0.75rem;
-}
-
-.track-result {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-.track-result.is-done {
-  color: var(--accent-pass);
-}
-
-.console-footer-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 14px;
-  border-top: 1px solid var(--border-subtle);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-/* Bento Grid Section */
-.features-section {
-  padding-top: 80px;
-  padding-bottom: 96px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.section-head-simple {
-  margin-bottom: 48px;
-}
-
-.section-label {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 10px;
-}
-
-.section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-  word-break: keep-all;
-}
-
-.bento-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 20px;
-}
-
-.bento-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--specular);
-  border-radius: 12px;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: border-color 0.2s ease, transform 0.2s var(--ease-spring);
-}
-
-.bento-card:hover {
-  border-color: var(--border-strong);
-}
-
-.bento-card.span-full {
-  grid-column: 1 / -1;
-  flex-direction: row;
-  align-items: center;
-  gap: 40px;
-}
-
-.bento-card-header {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.bento-card-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-}
-
-.bento-card-desc {
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  max-width: 48ch;
-  word-break: keep-all;
-}
-
-.bento-diagram {
-  margin-top: 24px;
-  background: var(--bg-specimen);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 16px;
-  font-size: 0.8125rem;
-  color: var(--text-secondary);
-}
-
-.diagram-flow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.flow-node {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.flow-node.highlight {
-  border-color: var(--text-primary);
-}
-
-.flow-arrow {
-  color: var(--text-muted);
-}
-
-/* 4-Step Horizon */
-.horizon-section {
-  padding-top: 72px;
-  padding-bottom: 84px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.horizon-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-  margin-top: 36px;
-}
-
-.horizon-item {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.horizon-num {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-
-.horizon-title {
-  font-size: 1.0625rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
-}
-
-.horizon-text {
-  font-size: 0.875rem;
-  line-height: 1.55;
-  color: var(--text-secondary);
-  word-break: keep-all;
-}
-
-/* Call To Action & Footer */
-.cta-section {
-  padding-top: 88px;
-  padding-bottom: 96px;
-  border-top: 1px solid var(--border-subtle);
-  text-align: center;
-}
-
-.cta-box {
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.cta-heading {
-  font-size: 2.25rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-}
-
-.cta-sub {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  word-break: keep-all;
-}
-
-.site-footer {
-  border-top: 1px solid var(--border-subtle);
-  padding: 32px 0 40px;
-}
-
-.footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.8125rem;
-  color: var(--text-muted);
-}
-
-.footer-links {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-}
-
-.footer-link:hover {
-  color: var(--text-primary);
-}
-
-/* Responsive */
-@media (max-width: 960px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .bento-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .bento-card.span-full {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .horizon-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-  }
-}
-
-@media (max-width: 640px) {
-  .container {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .nav-island {
-    padding: 6px 10px 6px 16px;
-    gap: 16px;
-  }
-
-  .hero-section {
-    padding-top: 96px;
-    padding-bottom: 56px;
-  }
-
-  .hero-statement {
-    min-width: 0;
-    max-width: 100%;
-    gap: 18px;
-  }
-
-  .hero-title {
-    font-size: clamp(1.75rem, 7.5vw, 2.25rem);
-    line-height: 1.18;
-  }
-
-  .hero-subtext {
-    font-size: 1rem;
-    line-height: 1.55;
-  }
-
-  .hero-actions {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .command-bar {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 6px 6px 6px 12px;
-    box-sizing: border-box;
-  }
-
-  .command-code {
-    flex: 1 1 auto;
-    min-width: 0;
-    font-size: 0.75rem;
-    margin-right: 8px;
-    white-space: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    line-height: 1;
-  }
-
-  .btn-command-copy {
-    flex-shrink: 0;
-    white-space: nowrap;
-    width: auto;
-    padding: 6px 12px;
-  }
-
-  .specimen-console {
-    min-width: 0;
-    max-width: 100%;
-  }
-
-  .console-header {
-    padding: 10px 12px;
-  }
-
-  .console-tabs {
-    gap: 2px;
-    padding: 2px;
-  }
-
-  .tab-btn {
-    font-size: 0.6875rem;
-    padding: 4px 6px;
-    white-space: nowrap;
-  }
-
-  .console-body {
-    padding: 14px;
-    min-height: auto;
-  }
-
-  .metric-strip {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6px;
-  }
-
-  .metric-cell {
-    padding: 8px 8px;
-    min-width: 0;
-  }
-
-  .metric-label {
-    font-size: 0.625rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .metric-val {
-    font-size: 0.75rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .pipeline-track {
-    padding: 12px;
-  }
-
-  .track-row {
-    font-size: 0.75rem;
-  }
-
-  .bento-card {
-    padding: 20px;
-    min-width: 0;
-  }
-
-  .bento-card.span-full {
-    gap: 20px;
-  }
-
-  .diagram-flow {
-    flex-wrap: wrap;
-    gap: 6px;
-    justify-content: flex-start;
-  }
-
-  .flow-node {
-    padding: 6px 8px;
-    font-size: 0.6875rem;
-  }
-
-  .flow-arrow {
-    font-size: 0.6875rem;
-  }
-
-  .horizon-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .cta-section {
-    padding-top: 64px;
-    padding-bottom: 72px;
-  }
-
-  .cta-heading {
-    font-size: 1.75rem;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-  }
-}
-  </style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23000000%22/><text y=%2268%22 x=%2224%22 font-size=%2258%22 fill=%22%23ffffff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>G</text></svg>">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Floating Island Navigation -->
-  <header class="nav-wrapper">
-    <nav class="nav-island" aria-label="메인 내비게이션">
-      <a href="#" class="brand-mark">
-        <span class="brand-glyph">G</span>
-        <span>GTG</span>
+  <!-- 0. Apple Top Ribbon Banner -->
+  <div class="top-ribbon">
+    <div class="ribbon-inner">
+      <span>GeminiToGenius 2026 정식 릴리스. 로컬 격리 환경에서 외부 통신 없이 코드 동작을 직접 검증합니다.</span>
+      <a href="#install" class="ribbon-link">설치 안내 &gt;</a>
+    </div>
+  </div>
+
+  <!-- 1. Apple Global Navigation Bar -->
+  <nav class="apple-nav" aria-label="글로벌 내비게이션">
+    <div class="apple-nav-inner">
+      <a href="#" class="nav-logo" aria-label="GeminiToGenius 홈">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
       </a>
 
-      <ul class="nav-links">
-        <li><a href="#features" class="nav-link">특징</a></li>
-        <li><a href="#how-it-works" class="nav-link">진행 순서</a></li>
-        <li><a href="#install" class="nav-link">시작하기</a></li>
+      <ul class="nav-menu">
+        <li><a href="#unit-hero">개요</a></li>
+        <li><a href="#unit-reproduce">재현성</a></li>
+        <li><a href="#unit-sandbox">격리 샌드박스</a></li>
+        <li><a href="#promo-grid">핵심 기능</a></li>
+        <li><a href="#workflow">검증 절차</a></li>
+        <li><a href="#install">시작하기</a></li>
       </ul>
 
       <div class="nav-actions">
-        <button id="themeToggle" class="btn-theme-toggle" aria-label="화면 모드 전환" title="화면 모드 전환">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button id="themeToggle" class="nav-icon-btn" aria-label="테마 전환">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -955,373 +53,457 @@ button {
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
         </button>
-
-        <a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer" class="btn-nav-primary">
-          <span>GitHub</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
+        <a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener" class="nav-icon-btn" aria-label="GitHub 저장소">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
           </svg>
         </a>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="container hero-grid">
-        <div class="hero-statement">
-          <span class="hero-tag">코드 검증 도구</span>
-          <h1 class="hero-title">AI가 작성한 코드, 실행해서 검증합니다.</h1>
-          <p class="hero-subtext">
-            코드를 직접 실행해 오류를 확인하고 검증 결과를 보여줍니다.
-          </p>
+  <!-- 2. Apple Full-Width Unit 1 (Deep Black Hero) -->
+  <section id="unit-hero" class="unit-wrapper unit-dark hero-unit">
+    <div class="unit-container">
+      <div class="unit-header-group">
+        <h1 class="unit-headline">GeminiToGenius Pro</h1>
+        <p class="unit-subhead">코드, 실행해서 검증합니다.</p>
+        <p class="unit-caption">오프라인 격리 검증 엔진 2026</p>
+        <div class="unit-cta-group">
+          <a href="#install" class="btn-apple-solid">더 알아보기</a>
+          <button id="heroCopyOutlineBtn" class="btn-apple-outline">명령어 복사</button>
+        </div>
+        <div class="hero-command-bar">
+          <span class="command-code">git clone https://github.com/habinsong/GeminiToGenius</span>
+          <button id="copyBtn" class="btn-command-copy" aria-label="명령어 복사">복사</button>
+        </div>
+      </div>
 
-          <div class="hero-actions">
-            <div class="command-bar">
-              <span class="command-code">git clone https://github.com/habinsong/GeminiToGenius</span>
-              <button id="copyBtn" class="btn-command-copy" aria-label="명령어 복사">복사</button>
+      <!-- Pro Hardware Specimen Monolith -->
+      <div class="specimen-monolith" aria-label="실시간 검증 상태 모놀리스">
+        <div class="monolith-header">
+          <div class="monolith-header-top">
+            <div class="mac-traffic-lights" aria-hidden="true">
+              <span class="traffic-light close"></span>
+              <span class="traffic-light min"></span>
+              <span class="traffic-light max"></span>
+            </div>
+            <div class="monolith-title">
+              <span class="monolith-beacon"></span>
+              <span>검증 엔진 동작 중</span>
+            </div>
+          </div>
+
+          <div class="segment-control" role="tablist">
+            <button class="segment-tab is-active" data-view="verify" role="tab" aria-selected="true">실행 테스트</button>
+            <button class="segment-tab" data-view="certify" role="tab" aria-selected="false">검증 증명</button>
+            <button class="segment-tab" data-view="replay" role="tab" aria-selected="false">결과 재현</button>
+          </div>
+        </div>
+
+        <div class="monolith-content">
+          <!-- Tab 1: 실행 테스트 -->
+          <div id="view-verify" class="specimen-panel is-visible">
+            <div class="metrics-row">
+              <div class="metric-tile">
+                <div class="metric-tile-name">실행 상태</div>
+                <div class="metric-tile-value pass">정상 (Exit 0)</div>
+              </div>
+              <div class="metric-tile">
+                <div class="metric-tile-name">미검증 항목</div>
+                <div class="metric-tile-value">0건</div>
+              </div>
+              <div class="metric-tile">
+                <div class="metric-tile-name">테스트 판정</div>
+                <div class="metric-tile-value pass">전체 통과</div>
+              </div>
+            </div>
+
+            <div class="execution-trace">
+              <div class="trace-line">
+                <span class="trace-num">01</span>
+                <span class="trace-label">테스트 환경 격리</span>
+                <span class="trace-badge">완료</span>
+              </div>
+              <div class="trace-line">
+                <span class="trace-num">02</span>
+                <span class="trace-label">대상 코드 구동</span>
+                <span class="trace-badge pass">정상 작동</span>
+              </div>
+              <div class="trace-line">
+                <span class="trace-num">03</span>
+                <span class="trace-label">상태 변화 점검</span>
+                <span class="trace-badge">완료</span>
+              </div>
+              <div class="trace-line">
+                <span class="trace-num">04</span>
+                <span class="trace-label">검증 결과 확정</span>
+                <span class="trace-badge pass">통과</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: 검증 증명 -->
+          <div id="view-certify" class="specimen-panel">
+            <div class="proof-card">
+              <div class="proof-header">
+                <span class="proof-tag">검증 증명서</span>
+                <span class="proof-id">CERT-2026-GTG-01</span>
+              </div>
+              <p class="proof-summary">로컬 격리 샌드박스에서 구동하여 무결성을 확인했습니다.</p>
+              <div class="proof-grid">
+                <div class="proof-col">
+                  <span class="proof-k">실행 모드</span>
+                  <span class="proof-v">오프라인 격리</span>
+                </div>
+                <div class="proof-col">
+                  <span class="proof-k">외부 통신</span>
+                  <span class="proof-v">차단됨 (0 패킷)</span>
+                </div>
+                <div class="proof-col">
+                  <span class="proof-k">검증 결과</span>
+                  <span class="proof-v pass">통과 확인</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: 결과 재현 -->
+          <div id="view-replay" class="specimen-panel">
+            <div class="proof-card">
+              <div class="proof-header">
+                <span class="proof-tag">재현 사양</span>
+                <span class="proof-id">SPEC-REPLAY-v2</span>
+              </div>
+              <p class="proof-summary">기록 파일 하나로 다른 컴퓨터에서도 동일한 실행 결과를 확인합니다.</p>
+              <div class="proof-grid">
+                <div class="proof-col">
+                  <span class="proof-k">결과 일치도</span>
+                  <span class="proof-v pass">100% (변동 없음)</span>
+                </div>
+                <div class="proof-col">
+                  <span class="proof-k">런타임 요구</span>
+                  <span class="proof-v">Python 3.10+</span>
+                </div>
+                <div class="proof-col">
+                  <span class="proof-k">재현 속도</span>
+                  <span class="proof-v">0.02초 즉시 완료</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Right: Verification Specimen Console -->
-        <div class="specimen-console" aria-label="실시간 검증 상태">
-          <div class="console-header">
-            <div class="console-indicator">
-              <span class="status-beacon"></span>
-              <span>검증 도구 동작 중</span>
-            </div>
-            <div class="console-tabs" role="tablist">
-              <button class="tab-btn is-active" data-view="verify" role="tab" aria-selected="true">실행 테스트</button>
-              <button class="tab-btn" data-view="certify" role="tab" aria-selected="false">검증 증명</button>
-              <button class="tab-btn" data-view="replay" role="tab" aria-selected="false">결과 재현</button>
-            </div>
+        <div class="monolith-footer">
+          <span>로컬 환경에서 안전하게 실행</span>
+          <span>외부 통신 없이 검증</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Apple Full-Width Unit 2 (Light / Silver Contrast Hero) -->
+  <section id="unit-reproduce" class="unit-wrapper unit-light">
+    <div class="unit-container">
+      <div class="unit-header-group">
+        <h2 class="unit-headline">결과 재현성</h2>
+        <p class="unit-subhead">어디서든 동일한 실행 결과.</p>
+        <p class="unit-caption">단 하나의 검증 기록 파일로 다른 환경에서도 완벽히 증명합니다.</p>
+        <div class="unit-cta-group">
+          <a href="#promo-grid" class="btn-apple-solid">더 알아보기</a>
+          <a href="#workflow" class="btn-apple-outline">검증 절차 보기</a>
+        </div>
+      </div>
+
+      <div class="light-specimen-card">
+        <div class="light-card-top">
+          <span class="light-card-chip">재현 인증 완료</span>
+          <span class="light-card-hash">SHA-256: 8f9a2c...10d</span>
+        </div>
+        <div class="light-card-body">
+          <div class="light-stat">
+            <div class="light-stat-num">100%</div>
+            <div class="light-stat-label">실행 일치율</div>
           </div>
+          <div class="light-stat">
+            <div class="light-stat-num">0건</div>
+            <div class="light-stat-label">환경별 결과 편차</div>
+          </div>
+          <div class="light-stat">
+            <div class="light-stat-num">0.02s</div>
+            <div class="light-stat-label">재현 검증 시간</div>
+          </div>
+        </div>
+        <div class="light-card-bottom">
+          <span>기록 파일 포맷: JSON 표준 사양</span>
+          <span>플랫폼 독립적 재현 보장</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="console-body">
-            <!-- View 1: 실행 테스트 -->
-            <div id="view-verify" class="specimen-view is-visible">
-              <div class="metric-strip">
-                <div class="metric-cell">
-                  <div class="metric-label">실행 상태</div>
-                  <div class="metric-val is-pass">정상 (Exit 0)</div>
-                </div>
-                <div class="metric-cell">
-                  <div class="metric-label">미검증 항목</div>
-                  <div class="metric-val">0건</div>
-                </div>
-                <div class="metric-cell">
-                  <div class="metric-label">테스트 판정</div>
-                  <div class="metric-val is-pass">통과</div>
-                </div>
-              </div>
+  <!-- 4. Apple Full-Width Unit 3 (Deep Black Security Sandbox) -->
+  <section id="unit-sandbox" class="unit-wrapper unit-dark">
+    <div class="unit-container">
+      <div class="unit-header-group">
+        <h2 class="unit-headline">로컬 격리 샌드박스</h2>
+        <p class="unit-subhead">외부 통신 없이 안전하게.</p>
+        <p class="unit-caption">시스템 파일과 네트워크 접근을 원천 차단하여 안전하게 보호합니다.</p>
+        <div class="unit-cta-group">
+          <a href="#promo-grid" class="btn-apple-solid">더 알아보기</a>
+          <a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener" class="btn-apple-outline">저장소 방문</a>
+        </div>
+      </div>
 
-              <div class="pipeline-track">
-                <div class="track-row">
-                  <span class="track-name"><span class="track-step-num">01</span> 테스트 환경 격리</span>
-                  <span class="track-result is-done">완료</span>
-                </div>
-                <div class="track-row">
-                  <span class="track-name"><span class="track-step-num">02</span> 대상 코드 실행</span>
-                  <span class="track-result is-done">정상 동작</span>
-                </div>
-                <div class="track-row">
-                  <span class="track-name"><span class="track-step-num">03</span> 변경 사항 점검</span>
-                  <span class="track-result is-done">완료</span>
-                </div>
-                <div class="track-row">
-                  <span class="track-name"><span class="track-step-num">04</span> 검증 완료</span>
-                  <span class="track-result is-done">통과</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- View 2: 검증 증명 -->
-            <div id="view-certify" class="specimen-view">
-              <div class="metric-strip">
-                <div class="metric-cell">
-                  <div class="metric-label">증명서 발급</div>
-                  <div class="metric-val is-pass">완료</div>
-                </div>
-                <div class="metric-cell">
-                  <div class="metric-label">변조 검사</div>
-                  <div class="metric-val">이상 없음</div>
-                </div>
-                <div class="metric-cell">
-                  <div class="metric-label">추가 요구사항</div>
-                  <div class="metric-val">없음</div>
-                </div>
-              </div>
-
-              <div class="pipeline-track">
-                <div class="track-row">
-                  <span class="track-name">테스트 항목</span>
-                  <span class="track-result">전체 기능 동작 확인</span>
-                </div>
-                <div class="track-row">
-                  <span class="track-name">실시간 안전장치</span>
-                  <span class="track-result">동작 중</span>
-                </div>
-                <div class="track-row">
-                  <span class="track-name">결과 일치 여부</span>
-                  <span class="track-result is-done">일치 확인</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- View 3: 결과 재현 -->
-            <div id="view-replay" class="specimen-view">
-              <div class="metric-strip">
-                <div class="metric-cell">
-                  <div class="metric-label">결과 재현율</div>
-                  <div class="metric-val is-pass">100% 일치</div>
-                </div>
-                <div class="metric-cell">
-                  <div class="metric-label">외부 의존성</div>
-                  <div class="metric-val">없음</div>
-                </div>
-                <div class="metric-cell">
-                  <div class="metric-label">재현 소요 시간</div>
-                  <div class="metric-val">1초 이내</div>
-                </div>
-              </div>
-
-              <div class="pipeline-track">
-                <div class="track-row">
-                  <span class="track-name">재실행 명령</span>
-                  <span class="track-result">즉시 확인 가능</span>
-                </div>
-                <div class="track-row">
-                  <span class="track-name">코드 비교 검증</span>
-                  <span class="track-result is-done">동일함 확인</span>
-                </div>
-                <div class="track-row">
-                  <span class="track-name">기록 저장 상태</span>
-                  <span class="track-result is-done">보관 완료</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="console-footer-bar">
-              <span>로컬 환경에서 안전하게 실행</span>
-              <span>외부 통신 없이 검증</span>
-            </div>
+      <div class="sandbox-specimen-box">
+        <div class="sandbox-shield-ring">
+          <div class="shield-circle">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#30d158" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="shield-status">격리 샌드박스 보호 중</div>
+        </div>
+        <div class="sandbox-grid">
+          <div class="sandbox-item">
+            <div class="sandbox-item-title">외부 네트워크</div>
+            <div class="sandbox-item-state off">100% 차단됨</div>
+          </div>
+          <div class="sandbox-item">
+            <div class="sandbox-item-title">파일시스템 접근</div>
+            <div class="sandbox-item-state pass">작업 디렉토리 한정</div>
+          </div>
+          <div class="sandbox-item">
+            <div class="sandbox-item-title">시스템 비밀키</div>
+            <div class="sandbox-item-state pass">외부 유출 차단</div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Bento Features Section -->
-    <section id="features" class="features-section">
-      <div class="container">
-        <div class="section-head-simple">
-          <div class="section-label">핵심 기능</div>
-          <h2 class="section-title">작동하는 코드만 남깁니다.</h2>
-        </div>
+  <!-- 5. Apple 2x2 Promo Bento Grid (4 Cards) -->
+  <section id="promo-grid" class="promo-grid-section">
+    <div class="container">
+      <div class="promo-grid-title-group">
+        <span class="promo-kicker">핵심 기능</span>
+        <h2 class="promo-main-title">작동하는 코드만 남깁니다.</h2>
+      </div>
 
-        <div class="bento-grid">
-          <!-- Bento A: 60% Width -->
-          <div class="bento-card">
-            <div class="bento-card-header">
-              <h3 class="bento-card-title">실행 기반 테스트</h3>
-              <p class="bento-card-desc">
-                AI가 작성한 코드를 실제로 실행해 예기치 못한 에러를 찾아냅니다.
-              </p>
-            </div>
-            <div class="bento-diagram">
-              <div class="diagram-flow">
-                <span class="flow-node">사용자 요청</span>
-                <span class="flow-arrow">&rarr;</span>
-                <span class="flow-node">코드 작성</span>
-                <span class="flow-arrow">&rarr;</span>
-                <span class="flow-node highlight">실행 테스트</span>
-                <span class="flow-arrow">&rarr;</span>
-                <span class="flow-node highlight">검증 완료</span>
-              </div>
+      <div class="promo-grid-2x2">
+        <!-- Card 1: 실행 기반 테스트 (Dark) -->
+        <div class="promo-card promo-card-dark">
+          <div class="promo-card-content">
+            <span class="card-eyebrow">기능 01</span>
+            <h3 class="card-headline">실행 기반 테스트</h3>
+            <p class="card-subhead">실제 프로세스 구동.</p>
+            <p class="card-desc">AI가 작성한 코드를 실제로 구동하여 예기치 못한 에러를 찾아냅니다.</p>
+            <a href="#workflow" class="card-link">더 알아보기 &gt;</a>
+          </div>
+          <div class="promo-card-visual">
+            <div class="visual-badge-row">
+              <span class="v-badge">사용자 요청</span>
+              <span class="v-arrow">&rarr;</span>
+              <span class="v-badge">코드 작성</span>
+              <span class="v-arrow">&rarr;</span>
+              <span class="v-badge active">실행 테스트</span>
+              <span class="v-arrow">&rarr;</span>
+              <span class="v-badge pass">검증 완료</span>
             </div>
           </div>
+        </div>
 
-          <!-- Bento B: 40% Width -->
-          <div class="bento-card">
-            <div class="bento-card-header">
-              <h3 class="bento-card-title">테스트 범위 확인</h3>
-              <p class="bento-card-desc">
-                검증을 거치지 않은 파일과 코드를 추적해 누락을 방지합니다.
-              </p>
-            </div>
-            <div class="bento-diagram">
-              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+        <!-- Card 2: 테스트 범위 확인 (Dark) -->
+        <div class="promo-card promo-card-dark">
+          <div class="promo-card-content">
+            <span class="card-eyebrow">기능 02</span>
+            <h3 class="card-headline">테스트 범위 확인</h3>
+            <p class="card-subhead">미검증 코드 0건.</p>
+            <p class="card-desc">검증을 거치지 않은 파일과 코드를 추적하여 누락을 방지합니다.</p>
+            <a href="#workflow" class="card-link">더 알아보기 &gt;</a>
+          </div>
+          <div class="promo-card-visual">
+            <div class="visual-meter-box">
+              <div class="meter-head">
                 <span>검증 커버리지</span>
-                <span style="color:var(--accent-pass); font-weight:600;">100% (전체 확인)</span>
+                <span class="meter-val">100% (전체 확인)</span>
               </div>
-              <div style="height:4px; background:var(--border-subtle); border-radius:2px; overflow:hidden;">
-                <div style="width:100%; height:100%; background:var(--accent-pass);"></div>
+              <div class="meter-track">
+                <div class="meter-fill" style="width: 100%;"></div>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Bento C: 100% Width -->
-          <div class="bento-card span-full">
-            <div class="bento-card-header">
-              <h3 class="bento-card-title">결과 재현성</h3>
-              <p class="bento-card-desc">
-                검증 파일 하나로 다른 컴퓨터에서도 동일한 실행 결과를 바로 확인합니다.
-              </p>
+        <!-- Card 3: 단일 명령 구동 (Light - Ice Blue) -->
+        <div class="promo-card promo-card-light promo-ice">
+          <div class="promo-card-content">
+            <span class="card-eyebrow">기능 03</span>
+            <h3 class="card-headline">단일 명령 구동</h3>
+            <p class="card-subhead">한 줄로 즉시 시작.</p>
+            <p class="card-desc">추가 도구 설치 없이 복제 직후 단 한 줄의 명령어로 시작합니다.</p>
+            <a href="#install" class="card-link">더 알아보기 &gt;</a>
+          </div>
+          <div class="promo-card-visual">
+            <div class="visual-cmd-pill">
+              <code>git clone ...</code>
+              <span class="v-pill-badge">즉시 준비</span>
             </div>
-            <div class="bento-diagram" style="margin-top:0; min-width:280px;">
-              <div>검증 기록 일치 상태</div>
-              <div style="color:var(--accent-pass); font-weight:600; margin-top:4px;">정상 재현 완료 (변동 없음)</div>
+          </div>
+        </div>
+
+        <!-- Card 4: 자연어 지시 (Light - Silver Warm) -->
+        <div class="promo-card promo-card-light promo-silver">
+          <div class="promo-card-content">
+            <span class="card-eyebrow">기능 04</span>
+            <h3 class="card-headline">자연어 지시</h3>
+            <p class="card-subhead">자연어로 작업하고 결과만 확인.</p>
+            <p class="card-desc">복잡한 설정이나 특수 명령 없이 평소 쓰던 말로 개발을 지시합니다.</p>
+            <a href="#workflow" class="card-link">더 알아보기 &gt;</a>
+          </div>
+          <div class="promo-card-visual">
+            <div class="visual-chat-row">
+              <span class="chat-tag-user">&quot;결과 파일 만들어줘&quot;</span>
+              <span class="chat-tag-res">실행 검증 완료 (Exit 0)</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- How it works Horizon -->
-    <section id="how-it-works" class="horizon-section">
-      <div class="container">
-        <div class="section-head-simple">
-          <div class="section-label">작업 흐름</div>
-          <h2 class="section-title">간결한 4단계 검증</h2>
+  <!-- 6. Apple Workflow Section (4 Steps) -->
+  <section id="workflow" class="workflow-section">
+    <div class="container">
+      <div class="workflow-header-group">
+        <span class="workflow-kicker">검증 절차</span>
+        <h2 class="workflow-title">간결한 4단계 흐름.</h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3 class="step-headline">작업 입력</h3>
+          <p class="step-desc">원하는 수정이나 개발 내용을 자연어로 입력합니다.</p>
         </div>
 
-        <div class="horizon-grid">
-          <div class="horizon-item">
-            <span class="horizon-num">01</span>
-            <h3 class="horizon-title">작업 입력</h3>
-            <p class="horizon-text">원하는 수정이나 개발 내용을 입력합니다.</p>
-          </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3 class="step-headline">코드 실행</h3>
+          <p class="step-desc">로컬 환경에서 코드를 직접 구동합니다.</p>
+        </div>
 
-          <div class="horizon-item">
-            <span class="horizon-num">02</span>
-            <h3 class="horizon-title">코드 실행</h3>
-            <p class="horizon-text">로컬 환경에서 코드를 직접 구동합니다.</p>
-          </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3 class="step-headline">오류 점검</h3>
+          <p class="step-desc">실행 중 발생하는 충돌과 예외를 점검합니다.</p>
+        </div>
 
-          <div class="horizon-item">
-            <span class="horizon-num">03</span>
-            <h3 class="horizon-title">오류 점검</h3>
-            <p class="horizon-text">실행 중 발생하는 충돌과 예외를 점검합니다.</p>
-          </div>
-
-          <div class="horizon-item">
-            <span class="horizon-num">04</span>
-            <h3 class="horizon-title">결과 확인</h3>
-            <p class="horizon-text">정상 작동이 확인된 결과만 전달합니다.</p>
-          </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <h3 class="step-headline">결과 확인</h3>
+          <p class="step-desc">정상 작동이 확인된 결과만 정리해 전달합니다.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Call To Action -->
-    <section id="install" class="cta-section">
-      <div class="container">
-        <div class="cta-box">
-          <h2 class="cta-heading">직접 사용해 보세요.</h2>
-          <p class="cta-sub">
-            단 한 줄의 명령어로 시작할 수 있습니다.
-          </p>
-
-          <div class="command-bar" style="width:100%; max-width:540px; justify-content:space-between;">
-            <span class="command-code">git clone https://github.com/habinsong/GeminiToGenius</span>
-            <button id="copyBtnFooter" class="btn-command-copy" aria-label="하단 명령어 복사">복사</button>
-          </div>
+  <!-- 7. Apple Closing Call to Action (Hero Unit Style) -->
+  <section id="install" class="unit-wrapper unit-dark cta-section">
+    <div class="unit-container">
+      <div class="unit-header-group">
+        <h2 class="unit-headline">직접 사용해 보세요.</h2>
+        <p class="unit-subhead">단 한 줄의 명령어로 즉시 시작할 수 있습니다.</p>
+        <div class="hero-command-bar cta-bar">
+          <span class="command-code">git clone https://github.com/habinsong/GeminiToGenius</span>
+          <button id="copyBtnFooter" class="btn-command-copy" aria-label="명령어 복사">복사</button>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- Clean Minimalist Footer -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>GeminiToGenius. 오픈소스 프로젝트.</div>
-      <ul class="footer-links">
-        <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
-        <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="footer-link">소개 문서</a></li>
-        <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="footer-link">라이선스</a></li>
-      </ul>
+  <!-- 8. Apple Global Footer (Sosumi Footnotes + 5-Col Directory + Legal) -->
+  <footer class="ac-gf-footer" aria-label="사이트 푸터">
+    <div class="container">
+      <!-- Apple Sosumi Footnotes -->
+      <section class="ac-gf-sosumi" aria-label="각주">
+        <ol>
+          <li>모든 검증 테스트는 로컬 컴퓨터의 격리된 프로세스 환경에서 구동됩니다.</li>
+          <li>네트워크 및 파일시스템 권한은 지정된 작업 디렉토리 범위로 엄격히 제한됩니다.</li>
+          <li>결과 재현성은 동일한 파이썬 런타임 버전을 기준으로 일치함을 확인합니다.</li>
+        </ol>
+      </section>
+
+      <!-- Apple 5-Column Directory -->
+      <nav class="ac-gf-directory" aria-label="디렉토리">
+        <div class="ac-gf-directory-col">
+          <h3 class="ac-gf-directory-title">제품 및 사양</h3>
+          <ul class="ac-gf-directory-list">
+            <li><a href="#unit-hero">GeminiToGenius Pro</a></li>
+            <li><a href="#unit-reproduce">검증 엔진</a></li>
+            <li><a href="#unit-sandbox">격리 샌드박스</a></li>
+            <li><a href="#workflow">실행 리포터</a></li>
+          </ul>
+        </div>
+
+        <div class="ac-gf-directory-col">
+          <h3 class="ac-gf-directory-title">기능</h3>
+          <ul class="ac-gf-directory-list">
+            <li><a href="#promo-grid">실행 기반 테스트</a></li>
+            <li><a href="#promo-grid">테스트 범위 확인</a></li>
+            <li><a href="#promo-grid">단일 명령 구동</a></li>
+            <li><a href="#promo-grid">자연어 지시</a></li>
+          </ul>
+        </div>
+
+        <div class="ac-gf-directory-col">
+          <h3 class="ac-gf-directory-title">문서 및 가이드</h3>
+          <ul class="ac-gf-directory-list">
+            <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/README.md" target="_blank" rel="noopener">시작 가이드</a></li>
+            <li><a href="#workflow">검증 절차 안내</a></li>
+            <li><a href="#unit-sandbox">보안 정책</a></li>
+            <li><a href="#unit-reproduce">재현 사양서</a></li>
+          </ul>
+        </div>
+
+        <div class="ac-gf-directory-col">
+          <h3 class="ac-gf-directory-title">프로젝트 리소스</h3>
+          <ul class="ac-gf-directory-list">
+            <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener">GitHub 저장소</a></li>
+            <li><a href="https://github.com/habinsong/GeminiToGenius/releases" target="_blank" rel="noopener">릴리스 노트</a></li>
+            <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/LICENSE" target="_blank" rel="noopener">오픈소스 라이선스</a></li>
+            <li><a href="https://github.com/habinsong/GeminiToGenius/issues" target="_blank" rel="noopener">이슈 트래커</a></li>
+          </ul>
+        </div>
+
+        <div class="ac-gf-directory-col">
+          <h3 class="ac-gf-directory-title">GeminiToGenius</h3>
+          <ul class="ac-gf-directory-list">
+            <li><a href="https://github.com/habinsong/GeminiToGenius#readme" target="_blank" rel="noopener">프로젝트 소개</a></li>
+            <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener">기여 안내</a></li>
+            <li><a href="#install">다운로드</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Apple Legal & Country Bar -->
+      <section class="ac-gf-footer-legal">
+        <div class="ac-gf-footer-legal-copyright">
+          Copyright &copy; 2026 GeminiToGenius. 모든 권리 보유.
+        </div>
+        <div class="ac-gf-footer-legal-links">
+          <a href="https://github.com/habinsong/GeminiToGenius/blob/main/LICENSE" target="_blank" rel="noopener">오픈소스 라이선스</a>
+          <a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener">개인정보 처리방침</a>
+          <a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener">이용 약관</a>
+          <a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener">사이트 맵</a>
+        </div>
+        <div class="ac-gf-footer-locale">
+          <span>대한민국</span>
+        </div>
+      </section>
     </div>
   </footer>
 
-  <!-- Precision Minimal Script -->
-  <script>
-(function() {
-  // Theme Management
-  const html = document.documentElement;
-  const themeBtn = document.getElementById("themeToggle");
-
-  function getPreferredTheme() {
-    const saved = localStorage.getItem("gtg_theme");
-    if (saved) return saved;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
-
-  function applyTheme(theme) {
-    html.setAttribute("data-theme", theme);
-    localStorage.setItem("gtg_theme", theme);
-  }
-
-  applyTheme(getPreferredTheme());
-
-  if (themeBtn) {
-    themeBtn.addEventListener("click", () => {
-      const current = html.getAttribute("data-theme");
-      applyTheme(current === "dark" ? "light" : "dark");
-    });
-  }
-
-  // Specimen Console Tab Switching
-  const tabs = document.querySelectorAll(".tab-btn");
-  const views = {
-    verify: document.getElementById("view-verify"),
-    certify: document.getElementById("view-certify"),
-    replay: document.getElementById("view-replay")
-  };
-
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      const target = tab.dataset.view;
-      tabs.forEach(t => {
-        t.classList.remove("is-active");
-        t.setAttribute("aria-selected", "false");
-      });
-      tab.classList.add("is-active");
-      tab.setAttribute("aria-selected", "true");
-
-      Object.keys(views).forEach(k => {
-        if (views[k]) {
-          views[k].classList.toggle("is-visible", k === target);
-        }
-      });
-    });
-  });
-
-  // Clipboard Actions
-  function setupCopy(btnId) {
-    const btn = document.getElementById(btnId);
-    if (!btn) return;
-    btn.addEventListener("click", async () => {
-      const text = "git clone https://github.com/habinsong/GeminiToGenius";
-      try {
-        await navigator.clipboard.writeText(text);
-        const orig = btn.textContent;
-        btn.textContent = "복사됨";
-        btn.style.color = "var(--accent-pass)";
-        setTimeout(() => {
-          btn.textContent = orig;
-          btn.style.color = "";
-        }, 1800);
-      } catch (err) {
-        btn.textContent = "실패";
-      }
-    });
-  }
-
-  setupCopy("copyBtn");
-  setupCopy("copyBtnFooter");
-})();
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
