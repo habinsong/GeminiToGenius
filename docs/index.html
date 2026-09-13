@@ -16,27 +16,27 @@
   <!-- 0. Apple Top Ribbon Banner -->
   <div class="top-ribbon">
     <div class="ribbon-inner">
-      <span>GeminiToGenius 2026 정식 릴리스. 로컬 격리 환경에서 외부 통신 없이 코드 동작을 직접 검증합니다.</span>
-      <a href="#install" class="ribbon-link">설치 안내 &gt;</a>
+      <span>GeminiToGenius 2026 정식 릴리즈. 로컬 격리 환경에서 외부 통신 없이 코드 동작을 직접 검증합니다.</span>
+      <a href="guide.html" class="ribbon-link">설치 안내 &gt;</a>
     </div>
   </div>
 
   <!-- 1. Apple Global Navigation Bar -->
   <nav class="apple-nav" aria-label="글로벌 내비게이션">
     <div class="apple-nav-inner">
-      <a href="#" class="nav-logo" aria-label="GeminiToGenius 홈">
+      <a href="index.html" class="nav-logo" aria-label="GeminiToGenius 홈">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
         </svg>
       </a>
 
       <ul class="nav-menu">
-        <li><a href="#unit-hero">개요</a></li>
-        <li><a href="#unit-reproduce">재현성</a></li>
-        <li><a href="#unit-sandbox">격리 샌드박스</a></li>
-        <li><a href="#promo-grid">핵심 기능</a></li>
-        <li><a href="#workflow">검증 절차</a></li>
-        <li><a href="#install">시작하기</a></li>
+        <li><a href="index.html" class="is-active">개요</a></li>
+        <li><a href="features/execution.html">검증 엔진</a></li>
+        <li><a href="reproduce.html">재현성</a></li>
+        <li><a href="features/sandbox.html">격리 샌드박스</a></li>
+        <li><a href="features/coverage.html">테스트 범위</a></li>
+        <li><a href="guide.html">시작하기</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -66,11 +66,11 @@
   <section id="unit-hero" class="unit-wrapper unit-dark hero-unit">
     <div class="unit-container">
       <div class="unit-header-group">
-        <h1 class="unit-headline">GeminiToGenius Pro</h1>
+        <h1 class="unit-headline">GeminiToGenius</h1>
         <p class="unit-subhead">코드, 실행해서 검증합니다.</p>
         <p class="unit-caption">오프라인 격리 검증 엔진 2026</p>
         <div class="unit-cta-group">
-          <a href="#install" class="btn-apple-solid">더 알아보기</a>
+          <a href="features/execution.html" class="btn-apple-solid">더 알아보기</a>
           <button id="heroCopyOutlineBtn" class="btn-apple-outline">명령어 복사</button>
         </div>
         <div class="hero-command-bar">
@@ -210,8 +210,8 @@
         <p class="unit-subhead">어디서든 동일한 실행 결과.</p>
         <p class="unit-caption">단 하나의 검증 기록 파일로 다른 환경에서도 완벽히 증명합니다.</p>
         <div class="unit-cta-group">
-          <a href="#promo-grid" class="btn-apple-solid">더 알아보기</a>
-          <a href="#workflow" class="btn-apple-outline">검증 절차 보기</a>
+          <a href="reproduce.html" class="btn-apple-solid">더 알아보기</a>
+          <a href="workflow.html" class="btn-apple-outline">검증 절차 보기</a>
         </div>
       </div>
 
@@ -250,7 +250,7 @@
         <p class="unit-subhead">외부 통신 없이 안전하게.</p>
         <p class="unit-caption">시스템 파일과 네트워크 접근을 원천 차단하여 안전하게 보호합니다.</p>
         <div class="unit-cta-group">
-          <a href="#promo-grid" class="btn-apple-solid">더 알아보기</a>
+          <a href="features/sandbox.html" class="btn-apple-solid">더 알아보기</a>
           <a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener" class="btn-apple-outline">저장소 방문</a>
         </div>
       </div>
@@ -298,7 +298,7 @@
             <h3 class="card-headline">실행 기반 테스트</h3>
             <p class="card-subhead">실제 프로세스 구동.</p>
             <p class="card-desc">AI가 작성한 코드를 실제로 구동하여 예기치 못한 에러를 찾아냅니다.</p>
-            <a href="#workflow" class="card-link">더 알아보기 &gt;</a>
+            <a href="features/execution.html" class="card-link">더 알아보기 &gt;</a>
           </div>
           <div class="promo-card-visual">
             <div class="visual-badge-row">
@@ -320,7 +320,7 @@
             <h3 class="card-headline">테스트 범위 확인</h3>
             <p class="card-subhead">미검증 코드 0건.</p>
             <p class="card-desc">검증을 거치지 않은 파일과 코드를 추적하여 누락을 방지합니다.</p>
-            <a href="#workflow" class="card-link">더 알아보기 &gt;</a>
+            <a href="features/coverage.html" class="card-link">더 알아보기 &gt;</a>
           </div>
           <div class="promo-card-visual">
             <div class="visual-meter-box">
@@ -342,7 +342,7 @@
             <h3 class="card-headline">단일 명령 구동</h3>
             <p class="card-subhead">한 줄로 즉시 시작.</p>
             <p class="card-desc">추가 도구 설치 없이 복제 직후 단 한 줄의 명령어로 시작합니다.</p>
-            <a href="#install" class="card-link">더 알아보기 &gt;</a>
+            <a href="guide.html" class="card-link">더 알아보기 &gt;</a>
           </div>
           <div class="promo-card-visual">
             <div class="visual-cmd-pill">
@@ -359,7 +359,7 @@
             <h3 class="card-headline">자연어 지시</h3>
             <p class="card-subhead">자연어로 작업하고 결과만 확인.</p>
             <p class="card-desc">복잡한 설정이나 특수 명령 없이 평소 쓰던 말로 개발을 지시합니다.</p>
-            <a href="#workflow" class="card-link">더 알아보기 &gt;</a>
+            <a href="features/natural-language.html" class="card-link">더 알아보기 &gt;</a>
           </div>
           <div class="promo-card-visual">
             <div class="visual-chat-row">
@@ -378,6 +378,9 @@
       <div class="workflow-header-group">
         <span class="workflow-kicker">검증 절차</span>
         <h2 class="workflow-title">간결한 4단계 흐름.</h2>
+        <div style="margin-top: 14px;">
+          <a href="workflow.html" class="btn-apple-outline" style="font-size: 0.8125rem; padding: 6px 16px;">상세 절차 보기 &gt;</a>
+        </div>
       </div>
 
       <div class="steps-grid">
@@ -439,30 +442,31 @@
         <div class="ac-gf-directory-col">
           <h3 class="ac-gf-directory-title">제품 및 사양</h3>
           <ul class="ac-gf-directory-list">
-            <li><a href="#unit-hero">GeminiToGenius Pro</a></li>
-            <li><a href="#unit-reproduce">검증 엔진</a></li>
-            <li><a href="#unit-sandbox">격리 샌드박스</a></li>
-            <li><a href="#workflow">실행 리포터</a></li>
+            <li><a href="index.html">GeminiToGenius</a></li>
+            <li><a href="features/execution.html">검증 엔진</a></li>
+            <li><a href="features/sandbox.html">격리 샌드박스</a></li>
+            <li><a href="workflow.html">검증 절차</a></li>
+            <li><a href="specs.html">기술 사양</a></li>
           </ul>
         </div>
 
         <div class="ac-gf-directory-col">
           <h3 class="ac-gf-directory-title">기능</h3>
           <ul class="ac-gf-directory-list">
-            <li><a href="#promo-grid">실행 기반 테스트</a></li>
-            <li><a href="#promo-grid">테스트 범위 확인</a></li>
-            <li><a href="#promo-grid">단일 명령 구동</a></li>
-            <li><a href="#promo-grid">자연어 지시</a></li>
+            <li><a href="features/execution.html">실행 기반 테스트</a></li>
+            <li><a href="features/coverage.html">테스트 범위 확인</a></li>
+            <li><a href="features/sandbox.html">오프라인 격리</a></li>
+            <li><a href="features/natural-language.html">자연어 지시</a></li>
           </ul>
         </div>
 
         <div class="ac-gf-directory-col">
           <h3 class="ac-gf-directory-title">문서 및 가이드</h3>
           <ul class="ac-gf-directory-list">
-            <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/README.md" target="_blank" rel="noopener">시작 가이드</a></li>
-            <li><a href="#workflow">검증 절차 안내</a></li>
-            <li><a href="#unit-sandbox">보안 정책</a></li>
-            <li><a href="#unit-reproduce">재현 사양서</a></li>
+            <li><a href="guide.html">시작 가이드</a></li>
+            <li><a href="workflow.html">검증 절차 안내</a></li>
+            <li><a href="features/sandbox.html">보안 정책</a></li>
+            <li><a href="reproduce.html">재현 사양서</a></li>
           </ul>
         </div>
 
@@ -470,18 +474,18 @@
           <h3 class="ac-gf-directory-title">프로젝트 리소스</h3>
           <ul class="ac-gf-directory-list">
             <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener">GitHub 저장소</a></li>
-            <li><a href="https://github.com/habinsong/GeminiToGenius/releases" target="_blank" rel="noopener">릴리스 노트</a></li>
+            <li><a href="https://github.com/habinsong/GeminiToGenius/releases" target="_blank" rel="noopener">릴리즈 노트</a></li>
             <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/LICENSE" target="_blank" rel="noopener">오픈소스 라이선스</a></li>
             <li><a href="https://github.com/habinsong/GeminiToGenius/issues" target="_blank" rel="noopener">이슈 트래커</a></li>
           </ul>
         </div>
 
         <div class="ac-gf-directory-col">
-          <h3 class="ac-gf-directory-title">GeminiToGenius</h3>
+          <h3 class="ac-gf-directory-title">개발팀 소개</h3>
           <ul class="ac-gf-directory-list">
-            <li><a href="https://github.com/habinsong/GeminiToGenius#readme" target="_blank" rel="noopener">프로젝트 소개</a></li>
-            <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener">기여 안내</a></li>
-            <li><a href="#install">다운로드</a></li>
+            <li><a href="https://github.com/habinsong" target="_blank" rel="noopener">프로젝트 제작자</a></li>
+            <li><a href="guide.html">시작 가이드</a></li>
+            <li><a href="guide.html#install">설치 방법</a></li>
           </ul>
         </div>
       </nav>

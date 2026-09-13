@@ -1247,3 +1247,288 @@ button {
     gap: 10px;
   }
 }
+
+/* ==========================================================================
+   9. Apple Authentic Local Navigation (ac-localnav) & Subpage Elements
+   ========================================================================== */
+
+.ac-localnav {
+  position: sticky;
+  top: 44px;
+  z-index: 900;
+  width: 100%;
+  height: 52px;
+  background: var(--bg-nav);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.ac-ln-wrapper {
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ac-ln-title {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ac-ln-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ac-ln-title-badge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background: var(--surface-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.ac-ln-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ac-ln-menu li a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.ac-ln-menu li a:hover,
+.ac-ln-menu li a.is-active {
+  color: var(--text-primary);
+}
+
+.ac-ln-action {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.ac-ln-action .btn-apple-solid {
+  padding: 5px 14px;
+  font-size: 0.75rem;
+  min-height: 28px;
+}
+
+/* Breadcrumb Bar */
+.ac-breadcrumb {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 16px 22px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.ac-breadcrumb a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.ac-breadcrumb a:hover {
+  color: var(--accent-blue);
+}
+
+.ac-breadcrumb-sep {
+  color: var(--text-tertiary);
+}
+
+.ac-breadcrumb-current {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Apple Tech Specs Table */
+.spec-section {
+  padding: 80px 0 100px;
+  border-top: 1px solid var(--border-color);
+}
+
+.spec-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+.spec-header {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.spec-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.spec-desc {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.spec-group {
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 32px;
+}
+
+.spec-group-title {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.spec-table tr {
+  border-top: 1px solid var(--border-color);
+}
+
+.spec-table tr:first-child {
+  border-top: none;
+}
+
+.spec-table th,
+.spec-table td {
+  padding: 16px 12px;
+  text-align: left;
+  font-size: 0.875rem;
+  vertical-align: top;
+}
+
+.spec-table th {
+  width: 32%;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.spec-table td {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.spec-table td code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--surface-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+/* Feature Deep Dive Bento */
+.feature-deep-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.feature-deep-card {
+  border-radius: 24px;
+  padding: 36px 32px;
+  background: var(--surface-primary);
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-deep-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.feature-deep-num {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.feature-deep-headline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.feature-deep-body {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 767px) {
+  .ac-localnav {
+    height: 48px;
+  }
+  .ac-ln-wrapper {
+    padding: 0 16px;
+  }
+  .ac-ln-title {
+    font-size: 1rem;
+  }
+  .ac-ln-menu {
+    gap: 12px;
+  }
+  .ac-ln-menu li:not(:first-child) {
+    display: none;
+  }
+  .feature-deep-grid {
+    grid-template-columns: 1fr;
+  }
+  .spec-table th,
+  .spec-table td {
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+  }
+  .spec-table th {
+    padding-top: 14px;
+    font-size: 0.9375rem;
+  }
+}

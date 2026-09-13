@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실행 기반 테스트 - GeminiToGenius</title>
+  <meta name="description" content="작성된 코드를 실제로 구동하여 동작 상태를 검증하는 실행 기반 테스트 엔진">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23000000%22/><text y=%2268%22 x=%2224%22 font-size=%2258%22 fill=%22%23ffffff%22 font-family=%22sans-serif%22 font-weight=%22bold%22>G</text></svg>">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <!-- 0. Apple Top Ribbon Banner -->
+  <div class="top-ribbon">
+    <div class="ribbon-inner">
+      <span>GeminiToGenius 2026 정식 릴리즈. 로컬 격리 환경에서 외부 통신 없이 코드 동작을 직접 검증합니다.</span>
+      <a href="../guide.html" class="ribbon-link">설치 안내 &gt;</a>
+    </div>
+  </div>
+
+  <!-- 1. Apple Global Navigation Bar -->
+  <nav class="apple-nav" aria-label="글로벌 내비게이션">
+    <div class="apple-nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="GeminiToGenius 홈">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="../index.html">개요</a></li>
+        <li><a href="execution.html" class="is-active">검증 엔진</a></li>
+        <li><a href="../reproduce.html">재현성</a></li>
+        <li><a href="sandbox.html">격리 샌드박스</a></li>
+        <li><a href="coverage.html">테스트 범위</a></li>
+        <li><a href="../guide.html">시작하기</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="nav-icon-btn" aria-label="테마 전환">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener" class="nav-icon-btn" aria-label="GitHub 저장소">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Apple Local Navigation (ac-localnav) -->
+  <nav class="ac-localnav" aria-label="제품 서브 내비게이션">
+    <div class="ac-ln-wrapper">
+      <div class="ac-ln-title">
+        <a href="execution.html">실행 기반 테스트</a>
+        <span class="ac-ln-title-badge">엔진 01</span>
+      </div>
+      <ul class="ac-ln-menu">
+        <li><a href="#overview" class="is-active">개요</a></li>
+        <li><a href="#how-it-works">동작 원리</a></li>
+        <li><a href="#deep-dive">상세 기능</a></li>
+        <li><a href="#tech-specs">기술 사양</a></li>
+      </ul>
+      <div class="ac-ln-action">
+        <a href="../guide.html" class="btn-apple-solid">시작하기</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="ac-breadcrumb">
+    <a href="../index.html">홈</a>
+    <span class="ac-breadcrumb-sep">&gt;</span>
+    <a href="../index.html#promo-grid">핵심 기능</a>
+    <span class="ac-breadcrumb-sep">&gt;</span>
+    <span class="ac-breadcrumb-current">실행 기반 테스트</span>
+  </div>
+
+  <!-- Hero Section (Dark) -->
+  <section id="overview" class="unit-wrapper unit-dark" style="padding-top: 50px;">
+    <div class="unit-container">
+      <div class="unit-header-group">
+        <h1 class="unit-headline">실행 기반 테스트</h1>
+        <p class="unit-subhead">코드, 실행해서 검증합니다.</p>
+        <p class="unit-caption">눈으로 훑는 리뷰를 넘어, 실제 프로세스를 띄워 정상 구동 여부를 판정합니다.</p>
+        <div class="unit-cta-group">
+          <a href="../guide.html" class="btn-apple-solid">설치 및 사용 가이드</a>
+          <a href="#tech-specs" class="btn-apple-outline">기술 사양 보기</a>
+        </div>
+      </div>
+
+      <!-- Live Specimen Monolith -->
+      <div class="specimen-monolith" aria-label="실행 테스트 상태">
+        <div class="monolith-header">
+          <div class="monolith-header-top">
+            <div class="mac-traffic-lights" aria-hidden="true">
+              <span class="traffic-light close"></span>
+              <span class="traffic-light min"></span>
+              <span class="traffic-light max"></span>
+            </div>
+            <div class="monolith-title">
+              <span class="monolith-beacon"></span>
+              <span>테스트 프로세스 실행 중</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="monolith-content">
+          <div class="metrics-row">
+            <div class="metric-tile">
+              <div class="metric-tile-name">프로세스 상태</div>
+              <div class="metric-tile-value pass">정상 완료 (Exit 0)</div>
+            </div>
+            <div class="metric-tile">
+              <div class="metric-tile-name">실행 소요 시간</div>
+              <div class="metric-tile-value">0.03초</div>
+            </div>
+            <div class="metric-tile">
+              <div class="metric-tile-name">예외 발생</div>
+              <div class="metric-tile-value pass">0건</div>
+            </div>
+          </div>
+
+          <div class="execution-trace">
+            <div class="trace-line">
+              <span class="trace-num">01</span>
+              <span class="trace-label">대상 소스 코드 구문 확인</span>
+              <span class="trace-badge">완료</span>
+            </div>
+            <div class="trace-line">
+              <span class="trace-num">02</span>
+              <span class="trace-label">독립 격리 서브프로세스 생성</span>
+              <span class="trace-badge pass">생성 성공</span>
+            </div>
+            <div class="trace-line">
+              <span class="trace-num">03</span>
+              <span class="trace-label">표준 출력 및 반환 코드 감지</span>
+              <span class="trace-badge">캡처 완료</span>
+            </div>
+            <div class="trace-line">
+              <span class="trace-num">04</span>
+              <span class="trace-label">무결성 검증 통과 기록</span>
+              <span class="trace-badge pass">최종 통과</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="monolith-footer">
+          <span>순수 로컬 파이썬 런타임 구동</span>
+          <span>외부 네트워크 호출 원천 차단</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section (Light) -->
+  <section id="how-it-works" class="unit-wrapper unit-light">
+    <div class="unit-container">
+      <div class="unit-header-group">
+        <h2 class="unit-headline">작동 방식</h2>
+        <p class="unit-subhead">엄격한 3단계 파이프라인.</p>
+        <p class="unit-caption">모든 실행은 시작부터 종료까지 독립된 하위 프로세스에서 통제됩니다.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3 class="step-title">환경 격리</h3>
+          <p class="step-desc">외부 통신과 시스템 주요 영역을 차단한 임시 작업 공간을 할당합니다.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3 class="step-title">실제 구동</h3>
+          <p class="step-desc">격리된 프로세스 내에서 대상 명령과 테스트 코드를 직접 실행합니다.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3 class="step-title">결과 판정</h3>
+          <p class="step-desc">종료 코드 0 여부와 입출력 무결성을 대조하여 최종 합격을 확정합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deep Dive Bento (Dark) -->
+  <section id="deep-dive" class="unit-wrapper unit-dark">
+    <div class="unit-container">
+      <div class="unit-header-group">
+        <h2 class="unit-headline">정밀 검증 항목</h2>
+        <p class="unit-subhead">동작의 사소한 부분까지 기록합니다.</p>
+      </div>
+
+      <div class="feature-deep-grid">
+        <div class="feature-deep-card">
+          <div class="feature-deep-num">항목 01</div>
+          <h3 class="feature-deep-headline">프로세스 종료 코드</h3>
+          <p class="feature-deep-body">비정상 종료나 시스템 시그널 인터럽트 발생 시 즉시 감지하여 원인 로그를 남깁니다.</p>
+        </div>
+        <div class="feature-deep-card">
+          <div class="feature-deep-num">항목 02</div>
+          <h3 class="feature-deep-headline">표준 입출력 무결성</h3>
+          <p class="feature-deep-body">표준 출력(stdout)과 에러 출력(stderr)을 실시간으로 분리 기록하여 예상 출력과 대조합니다.</p>
+        </div>
+        <div class="feature-deep-card">
+          <div class="feature-deep-num">항목 03</div>
+          <h3 class="feature-deep-headline">타임아웃 감시</h3>
+          <p class="feature-deep-body">무한 루프나 블로킹 호출이 발생할 경우 지정된 한도 시간 내에 프로세스를 안전하게 정리합니다.</p>
+        </div>
+        <div class="feature-deep-card">
+          <div class="feature-deep-num">항목 04</div>
+          <h3 class="feature-deep-headline">파일 변경 추적</h3>
+          <p class="feature-deep-body">실행 전후의 파일 해시를 비교하여 의도하지 않은 파일 변조를 사전에 차단합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Specs Table -->
+  <section id="tech-specs" class="spec-section unit-dark">
+    <div class="spec-container">
+      <div class="spec-header">
+        <h2 class="spec-title">실행 엔진 사양</h2>
+        <p class="spec-desc">GeminiToGenius 로컬 검증 엔진의 상세 기술 규격입니다.</p>
+      </div>
+
+      <div class="spec-group">
+        <h3 class="spec-group-title">런타임 요구사항</h3>
+        <table class="spec-table">
+          <tr>
+            <th>운영체제</th>
+            <td>macOS 12 이상, Linux (Ubuntu 20.04+, Debian 11+), Windows 11 WSL2</td>
+          </tr>
+          <tr>
+            <th>파이썬 버전</th>
+            <td><code>Python 3.10</code> 이상 (표준 라이브러리 기반 구동)</td>
+          </tr>
+          <tr>
+            <th>외부 종속성</th>
+            <td>없음 (추가 패키지 설치 없이 즉시 실행 가능)</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="spec-group">
+        <h3 class="spec-group-title">프로세스 격리 규격</h3>
+        <table class="spec-table">
+          <tr>
+            <th>격리 방식</th>
+            <td>독립 서브프로세스 파이프라인 및 파일시스템 마운트 격리</td>
+          </tr>
+          <tr>
+            <th>네트워크 정책</th>
+            <td>소켓 연결 원천 차단 (오프라인 모드 기본 활성화)</td>
+          </tr>
+          <tr>
+            <th>타임아웃 기본값</th>
+            <td>단일 명령 검증 시 기본 30초 (설정 파일로 조정 가능)</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="unit-wrapper unit-dark" style="padding: 90px 0; border-top: 1px solid var(--border-color);">
+    <div class="unit-container">
+      <div class="unit-header-group">
+        <h2 class="unit-headline">지금 시작하세요.</h2>
+        <p class="unit-subhead">한 줄의 명령어로 시작할 수 있습니다.</p>
+        <div class="hero-command-bar" style="margin: 24px auto 0;">
+          <span class="command-code">git clone https://github.com/habinsong/GeminiToGenius</span>
+          <button id="copyBtn" class="btn-command-copy" aria-label="명령어 복사">복사</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Apple Global Footer -->
+  <footer class="ac-gf-footer" aria-label="GeminiToGenius 사이트 바닥글">
+    <div class="ac-gf-content">
+      <section class="ac-gf-sosumi" aria-label="각주">
+        <ol>
+          <li>GeminiToGenius는 로컬 격리 환경에서 코드를 구동하여 무결성을 점검하는 도구입니다.</li>
+          <li>기본 검증 작업은 오프라인 환경에서 동작하며 외부 네트워크로 소스 코드를 전송하지 않습니다.</li>
+          <li>명시된 실행 수치와 속도는 테스트 기준 환경에서 측정한 결과이며 시스템 사양에 따라 차이가 있을 수 있습니다.</li>
+        </ol>
+      </section>
+
+      <nav class="ac-gf-directory" aria-label="사이트 디렉토리">
+        <div class="ac-gf-directory-col">
+          <h3 class="ac-gf-directory-title">제품 및 사양</h3>
+          <ul class="ac-gf-directory-list">
+            <li><a href="../index.html">GeminiToGenius</a></li>
+            <li><a href="execution.html">검증 엔진</a></li>
+            <li><a href="sandbox.html">격리 샌드박스</a></li>
+            <li><a href="../workflow.html">검증 절차</a></li>
+            <li><a href="../specs.html">기술 사양</a></li>
+          </ul>
+        </div>
+
+        <div class="ac-gf-directory-col">
+          <h3 class="ac-gf-directory-title">주요 기능</h3>
+          <ul class="ac-gf-directory-list">
+            <li><a href="execution.html">실행 기반 테스트</a></li>
+            <li><a href="coverage.html">테스트 범위 확인</a></li>
+            <li><a href="sandbox.html">오프라인 격리</a></li>
+            <li><a href="natural-language.html">자연어 지시 수용</a></li>
+          </ul>
+        </div>
+
+        <div class="ac-gf-directory-col">
+          <h3 class="ac-gf-directory-title">검증 및 문서</h3>
+          <ul class="ac-gf-directory-list">
+            <li><a href="../reproduce.html">결과 재현성</a></li>
+            <li><a href="../workflow.html">검증 절차</a></li>
+            <li><a href="../guide.html">설치 안내</a></li>
+            <li><a href="../specs.html">기술 스펙</a></li>
+          </ul>
+        </div>
+
+        <div class="ac-gf-directory-col">
+          <h3 class="ac-gf-directory-title">프로젝트 리소스</h3>
+          <ul class="ac-gf-directory-list">
+            <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener">GitHub 저장소</a></li>
+            <li><a href="https://github.com/habinsong/GeminiToGenius/releases" target="_blank" rel="noopener">릴리즈 노트</a></li>
+            <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/LICENSE" target="_blank" rel="noopener">오픈소스 라이선스</a></li>
+            <li><a href="https://github.com/habinsong/GeminiToGenius/issues" target="_blank" rel="noopener">이슈 트래커</a></li>
+          </ul>
+        </div>
+
+        <div class="ac-gf-directory-col">
+          <h3 class="ac-gf-directory-title">개발팀 소개</h3>
+          <ul class="ac-gf-directory-list">
+            <li><a href="https://github.com/habinsong" target="_blank" rel="noopener">프로젝트 제작자</a></li>
+            <li><a href="../guide.html">시작 가이드</a></li>
+            <li><a href="../index.html#install">설치 방법</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="ac-gf-footer-legal">
+        <div class="ac-gf-footer-legal-copyright">
+          Copyright © 2026 habinsong. 모든 권리 보유.
+        </div>
+        <ul class="ac-gf-footer-legal-links">
+          <li><a href="https://github.com/habinsong/GeminiToGenius/blob/main/LICENSE" target="_blank" rel="noopener">라이선스</a></li>
+          <li><a href="https://github.com/habinsong/GeminiToGenius" target="_blank" rel="noopener">저장소</a></li>
+          <li><a href="../guide.html">사용 안내</a></li>
+          <li><a href="../index.html">사이트맵</a></li>
+        </ul>
+      </section>
+    </div>
+  </footer>
+
+  <script src="../app.js"></script>
+</body>
+</html>
