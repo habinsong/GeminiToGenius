@@ -28,7 +28,29 @@ gtg/hooks.py ──▶ gtg/sessions.py ──▶ gtg/store.py  (SQLite + 파일 
 
 ## 모듈별 책임 정의
 
-단일 모듈이 다중 책임을 갖지 않도록 설계 경계를 문서로 고정해 두었으며, 실제 소스 구조와 어긋나면 아키텍처 검증 테스트가 실패합니다. 전체 책임 분류표는 [모듈 책임](../development/plan/architecture.md#모듈-책임) 문서를 참고하세요.
+단일 모듈이 다중 책임을 갖지 않도록 모듈별 역할을 아래 표로 엄격히 규정합니다. 실제 소스 파일과 이 표가 어긋나면 아키텍처 검증 테스트가 실패합니다.
+
+| 모듈 | 책임 |
+| --- | --- |
+| `gtg/platforms.py` | 호스트별 훅 이벤트·설치 경로·감지 표식의 단일 정의 |
+| `gtg/spec.py` | 작업 계약 검증, 검증 대상의 지문과 범위 예산 |
+| `gtg/store.py` | 작업·실행·메모의 SQLite 상태와 실행 중 여부를 알리는 파일 잠금 |
+| `gtg/runner.py` | 검증 명령 실행과 현재 상태 조회 |
+| `gtg/coverage.py` | 검사가 실제로 실행한 코드 파일 관찰 |
+| `gtg/certificate.py` | 완료 증명서 생성과 상태 DB 없는 재실행 |
+| `gtg/checkpoints.py` | 검증과 분리된 재개용 메모 |
+| `gtg/sessions.py` | 호스트 세션 연결·재개 예산·중단 |
+| `gtg/hooks.py` | 호스트 이벤트를 로컬 증거와 연결 |
+| `gtg/context_message.py` | 훅 안내의 표현. IO 없음 |
+| `gtg/discovery.py` | 읽기 전용 작업 후보 조회 |
+| `gtg/inspection.py` | 여러 텍스트 파일의 범위 조회 |
+| `gtg/package.py` | 호스트별 패키지 생성과 원문·훅 검증 |
+| `gtg/install.py` | 호스트 감지·설치·검사·제거·복구 |
+| `gtg/install_journal.py` | 파일 이동의 사전 기록과 되돌리기 |
+| `gtg/legacy.py` | 구형 프로필 링크의 보존과 복구 |
+| `gtg/__main__.py` | 에이전트가 쓰는 CLI 진입점 |
+
+평가 프레임워크의 구조는 [평가 문서](../../evals/README.md)에 기술되어 있으며, 채점 로직은 제품 코드를 임포트하지 않습니다.
 
 ## 상태 저장소 및 격리 원칙
 

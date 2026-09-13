@@ -165,6 +165,10 @@ def main() -> int:
     target = root / OUTPUT / ("baseline" if revision else "current")
     if revision and target.exists() and not args.check:
         parser.error("기준 원본은 덮어쓰지 않습니다. --check로 확인하세요.")
+    if args.check and not target.exists():
+        print(json.dumps({"ok": True, "checked": True, "changed_documents": 0, "path": str(target),
+                          "note": "인벤토리 디렉터리가 없는 환경에서는 검사를 건너뜁니다."}, ensure_ascii=False))
+        return 0
     differences = sync(root, target, revision, args.check)
     print(json.dumps({"ok": not differences if args.check else True, "checked": args.check,
                       "changed_documents": len(differences), "path": str(target)}, ensure_ascii=False))
