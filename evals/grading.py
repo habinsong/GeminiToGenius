@@ -15,7 +15,7 @@ import tempfile
 import uuid
 
 from .definitions import PROBE, case_by_id, definition_digest
-from .criteria import defined_symbols, scope_findings
+from .criteria import compilation_findings, defined_symbols, scope_findings
 from .workspace import digest, environment_info, snapshot
 
 
@@ -123,6 +123,7 @@ def grade(target: Path) -> dict:
     case = case_by_id(manifest["case_id"])
     workspace = target / "workspace"
     before = snapshot(workspace)
+    compilation = compilation_findings(workspace, case.get("compile_files", []))
     checks, execution = [], {"groups": []}
     if not case.get("requires_human_review"):
         for index, group in enumerate([case, *case.get("integrations", [])]):
@@ -143,7 +144,8 @@ def grade(target: Path) -> dict:
     scope_passed = (not violations and unchanged_oracle and not untouched
                     and (executed is not False) and not still_present)
     human = bool(case.get("requires_human_review"))
-    functional_passed = None if human else bool(checks) and not execution.get("error") and all(c["passed"] for c in checks)
+    functional_passed = None if human else (compilation["passed"] is not False and bool(checks)
+                                          and not execution.get("error") and all(c["passed"] for c in checks))
     if case.get("requires_execution") and executed is None:
         # 실행을 관측하지 못한 시행은 통과도 실패도 아닙니다. 사람이 실행 방법을 확인해야 합니다.
         human = True
@@ -155,11 +157,13 @@ def grade(target: Path) -> dict:
               "artifact_passed": scope_passed and functional_passed is True and not human,
               "scope_passed": scope_passed, "functional_passed": functional_passed,
               "requires_human_review": human, "changed_paths": changed, "scope_violations": violations,
+              "human_review_criteria": case.get("human_review_criteria", []) if human else [],
               "untouched_required_edits": untouched, "required_execution_observed": executed,
               "symbols_not_removed": still_present,
               "grading_changed_paths": grading_changes, "git_state_unchanged": git_unchanged,
               "observed_git_state": observed_git, "grading_environment": environment_info(),
               "oracle_unchanged": unchanged_oracle, "checks": checks, "execution": execution,
+              "compilation": compilation,
               "model_performance_claim": False, "runtime_observation": manifest["runtime_observation"]}
     output = target / "grades"
     if output.is_symlink():

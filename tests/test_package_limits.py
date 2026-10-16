@@ -7,7 +7,7 @@ import tempfile
 import unittest
 
 from gtg.package import MANIFEST, build, verify
-from gtg.platforms import MAX_RULE_CHARACTERS
+from gtg.platforms import MAX_RULE_CHARACTERS, PLATFORMS
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,12 +29,36 @@ class RuleLimitTests(unittest.TestCase):
         text = (ROOT / "profile/rules/gtg.md").read_text(encoding="utf-8")
         self.assertLess(len(text), MAX_RULE_CHARACTERS)
 
+    def test_multibyte_rule_below_character_cap_still_exceeds_byte_limit(self):
+        from gtg.package import check_rule_size
+
+        with self.assertRaisesRegex(ValueError, "바이트"):
+            check_rule_size(("가" * 8001).encode("utf-8"))
+
+    def test_exact_byte_boundary_is_accepted(self):
+        from gtg.package import check_rule_size
+
+        check_rule_size(("가" * 8000).encode("utf-8"))
+
     def test_oversized_rule_is_rejected_when_installed(self):
         build(ROOT, self.root, self.root, "antigravity")
         (self.root / "rules/AGENTS.md").write_text("가" * (MAX_RULE_CHARACTERS + 1), encoding="utf-8")
         self.refresh("rules/AGENTS.md")
         with self.assertRaisesRegex(ValueError, "규칙"):
             verify(self.root, execute_hooks=False)
+
+    def test_installed_multibyte_rule_limit_is_checked_for_every_host(self):
+        for host in PLATFORMS:
+            with self.subTest(host=host):
+                target = self.root / host
+                build(ROOT, target, target, host)
+                name = "GEMINI.md" if host == "gemini-cli" else "rules/AGENTS.md"
+                (target / name).write_text("가" * 8001, encoding="utf-8")
+                manifest = json.loads((target / MANIFEST).read_text())
+                manifest["files"][name] = hashlib.sha256((target / name).read_bytes()).hexdigest()
+                (target / MANIFEST).write_text(json.dumps(manifest))
+                with self.assertRaisesRegex(ValueError, "바이트"):
+                    verify(target, execute_hooks=False)
 
     def test_oversized_source_rule_is_rejected_before_packaging(self):
         source = self.root / "source"

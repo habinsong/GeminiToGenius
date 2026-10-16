@@ -1,7 +1,9 @@
 """모든 팔에 같은 요청 문자열을 기계적으로 전달하고 실행 관측을 기록합니다."""
 
 import json
+import math
 from pathlib import Path
+import platform
 import subprocess
 import sys
 import tempfile
@@ -32,7 +34,7 @@ class RunArmTests(unittest.TestCase):
 
     def test_prepared_prompt_is_passed_verbatim_and_observed(self):
         script = fake_harness(self.root, "pathlib.Path('got.txt').write_text(sys.argv[1])\n")
-        result = run_arm(self.trial, [sys.executable, str(script), "{prompt}"])
+        result = run_arm(self.trial, [sys.executable, str(script), "{prompt}"], timeout=30)
         self.assertTrue(result["ok"])
         self.assertEqual(result["returncode"], 0)
         self.assertGreater(result["duration_seconds"], 0)
@@ -42,6 +44,18 @@ class RunArmTests(unittest.TestCase):
         self.assertEqual(observation["returncode"], 0)
         self.assertEqual(observation["prompt_sha256"], manifest["prompt_sha256"])
         self.assertEqual(observation["command"], [sys.executable, str(script), "{prompt}"])
+        conditions = observation["conditions"]
+        self.assertEqual(conditions["driver"]["system"], platform.system())
+        self.assertEqual(conditions["timeout_seconds"], 30)
+
+    def test_invalid_time_budget_is_rejected_before_executing_the_arm(self):
+        script = fake_harness(self.root, "pathlib.Path('executed').touch()\n")
+        for timeout in (True, 0, -1, math.inf, math.nan, "30"):
+            with self.subTest(timeout=timeout), self.assertRaises(ValueError):
+                run_arm(self.trial, [sys.executable, str(script), "{prompt}"], timeout=timeout)
+        self.assertFalse((self.trial / "workspace/executed").exists())
+        manifest = json.loads((self.trial / "manifest.json").read_text())
+        self.assertIsNone(manifest["runtime_observation"])
 
     def test_missing_placeholder_is_refused(self):
         with self.assertRaisesRegex(ValueError, "prompt"):

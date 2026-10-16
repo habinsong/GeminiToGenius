@@ -85,3 +85,10 @@ def environment_info() -> dict:
             "per_group_timeout_seconds": 5, "stdout_read_limit_bytes": 128 * 1024,
             "candidate_bytecode_cache": "fresh_per_group", "bytecode_writes": False,
             "cpu_limit_enforced": False, "memory_limit_enforced": False, "os_sandbox": False}
+
+
+def runtime_conditions(timeout: float) -> dict:
+    """실행기를 구동한 호스트와 실제 적용한 벽시계 제한입니다. 원격 모델 환경은 아닙니다."""
+    observed = environment_info()
+    return {"driver": {name: observed[name] for name in ("system", "machine", "python_version", "host_logical_cpus")},
+            "timeout_seconds": timeout}

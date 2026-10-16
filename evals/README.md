@@ -97,6 +97,32 @@ python3 -m evals.harness grade /absolute/new/trial
 
 참조 검증에서 세 방향이 모두 걸렸습니다. 아무것도 지우지 않으면 동작은 멀쩡해도 남은 심볼로 실패하고, 검색만 믿고 둘 다 지우면 호출자가 깨져 기능 검사에서 실패하며, 죽은 것만 지우면 통과합니다. 덜 지워도 과하게 지워도 통과하지 못합니다.
 
+## 빌드·PRD·API 참조 평가
+
+`prd-build-api`는 컴파일되지 않는 제품 진입점과, 실제 SDK에 없는 함수·필드를 호출하는 내보내기가 함께 있는 사례입니다. PRD에 빌드와 시험 ID 세 개를 명시하고 SDK·시험·PRD·빌드 스크립트는 보호합니다. 두 제품 파일만 수정할 수 있습니다.
+
+```bash
+python3 -m evals.harness prepare prd-build-api /absolute/new/trial --profile gtg
+python3 -m evals.harness grade /absolute/new/trial
+```
+
+채점은 지정한 Python 소스 5개를 실제 컴파일하고, 별도 프로세스에서 내보내기와 진입점을 독립 호출합니다. 문법 성공만으로 API 존재를 판정하지 않으며, 올바른 구현도 SDK를 늘리거나 시험을 수정하면 범위 위반입니다. `compilation`에는 검사한 파일과 오류가 기록됩니다. 이 검사는 Python 사례에 한정되며 네이티브 앱 빌드·다른 언어의 타입/링크·물리 기기 시험을 대신하지 않습니다.
+
+`tests/test_build_scenario.py`는 모델 없이 세 호스트 패키지에서 빌드 실패→선행 시험 차단→문법 수정 뒤 없는 API 호출 실패→참조 수정 뒤 PRD 세 시험과 증명서 재현 성공→필수 시험 skip 뒤 실패를 확인합니다. 참조 수정은 테스트 코드가 수행하며 모델 성공률로 집계하지 않습니다. 후보의 실제 PRD 시험 실행 여부는 산출물 채점만으로 주장하지 않고 실행 기록을 별도로 확인합니다.
+
+## 비판적 검토 평가
+
+`critical-facts`, `critical-evidence`, `critical-optimism`, `critical-feasibility`, `critical-environment`, `critical-scope`, `critical-memory`, `critical-uncertainty`, `critical-supported`는 같은 가상 프로젝트에서 각각 다른 판단을 요청합니다. API 날조·참인 문장 사이의 거짓 주장·수치 부풀리기·무조건적 긍정·현재 제약에서 불가능한 제안·시험/실사용 조건 차이·범위 확대·메모의 추정 승격을 다룹니다. 정보 부족을 불가능으로 단정하거나, 근거 있는 제안까지 일괄 기각하는 경우도 확인합니다. 자료와 수치는 평가 입력이며 실제 측정 결과가 아닙니다.
+
+```bash
+python3 -m evals.harness prepare critical-environment /absolute/new/trial --profile gtg
+python3 -m evals.harness grade /absolute/new/trial
+```
+
+모두 검토만 요청하므로 작업 폴더 변경은 범위 위반입니다. `grade`는 변경 범위와 원본 보존만 기계적으로 검사합니다. 설명은 `requires_human_review: true`, `functional_passed: null`, `artifact_passed: false`로 남기고 사례별 `human_review_criteria`를 보고서에 포함합니다. 파일이 그대로이거나 비판적 어휘가 많다는 이유로 의미 판단을 통과시키지 않습니다. 공개 사례이므로 작업 폴더 밖 기준을 비밀 채점기로 간주하지 않습니다.
+
+실제 모델 평가에서는 `run`이 보존한 응답과 제공된 원본을 기준별로 사람이 대조하고, 충족·위반·판단 불가와 해당 문장·근거를 별도 기록해야 합니다. 응답이 없거나 로그가 잘리면 판단 불가로 남깁니다. 현재 자동 비교기는 사람 검토 사례를 `human_review`로 차단하며 검토 결과의 자동 집계는 지원하지 않습니다. 이 사례를 준비하고 채점한 것만으로 모델의 환각 감소를 주장하지 않습니다.
+
 ## 유지보수 경계
 
 | 파일 | 책임 |
@@ -107,7 +133,7 @@ python3 -m evals.harness grade /absolute/new/trial
 | `preparation.py` | 새 입력 폴더 준비와 단계 조합 |
 | `progress.py` | 실제 검사로 부분 완료 상태 생성 |
 | `grading.py` | 독립 프로세스 결과와 최종 판정 조립 |
-| `criteria.py` | 실행 없이 판정하는 범위 조건: 보호 파일·필수 수정·제거 심볼·실행 관측·Git 상태 |
+| `criteria.py` | 실행 없이 판정하는 범위·보호 조건과 지정 Python 소스의 컴파일 |
 | `execution.py` | 준비된 요청을 그대로 전달해 하네스를 실행하고 관측 기록 |
 | `comparison.py` | 같은 조건의 시행만 하네스별로 집계 |
 | `probe.py` | 후보 함수 호출을 별도 프로세스에서 수행 |
@@ -151,7 +177,11 @@ python3 -m evals.harness compare /absolute/new/a /absolute/new/b
 
 `run`은 준비된 요청 문자열을 `{prompt}` 자리에 그대로 넣어 실행합니다. 모든 팔이 같은 문자열을 받았다는 것을 사람이 아니라 코드가 보장합니다. 자리 표시가 없는 명령은 거부하고, 실행 시간·종료 상태·출력 크기를 시행 기록에 남기며 한 시행은 한 번만 실행합니다. 표준 출력과 오류는 `arm-stdout.log`·`arm-stderr.log`에 최대 256KiB까지 보존합니다.
 
-`run`을 쓰지 않고 직접 실행해도 되지만 그 경우 실행 시간이 기록되지 않아 비교 보고서에 `unobserved_runs`로 표시됩니다. 각 폴더를 실행한 뒤 한 번씩 `grade`합니다. `compare`는 `(arm, model)`별로 통과 수를 세고, 조건이 다르면 `comparable: false`와 막힌 이유를 보고합니다. `single_arm`, `definition_digest`, `prompt_sha256`, `case_coverage`, `ungraded`, `unstable_grades`가 이유가 됩니다. 채점하지 않은 시행을 패배로 세지 않고, 한 시행의 엇갈린 채점 중 하나를 고르지 않습니다.
+`run`을 쓰지 않고 직접 실행해도 되지만 그 경우 실행 조건과 시간이 기록되지 않아 `runtime_conditions_missing`으로 비교를 막습니다. 각 폴더를 실행한 뒤 한 번씩 `grade`합니다. `compare`는 `(arm, model)`별로 통과 수를 세고, 조건이 다르면 `comparable: false`와 막힌 이유를 보고합니다. `single_arm`, `definition_digest`, `prompt_sha256`, `case_coverage`, `ungraded`, `unstable_grades`, `human_review`가 이유가 됩니다. 채점하지 않은 시행을 패배로 세지 않고, 한 시행의 엇갈린 채점 중 하나를 고르지 않습니다.
+
+실행 시점의 실행기 호스트 OS·아키텍처·Python 버전·논리 CPU 수와 실제 벽시계 제한을 기록합니다. 같은 사례는 이 조건과 채점 환경이 같아야 비교합니다. 기록이 없거나 형식이 잘못되면 `runtime_conditions_missing`·`grading_conditions_missing`, 다르면 `runtime_conditions_mismatch`·`grading_conditions_mismatch`로 차단합니다. 과거 기록에 없는 값을 현재 환경에서 추정해 채우지 않습니다.
+
+일치하는 기록은 동일한 물리 기기·원격 모델 설정·CPU/메모리 제한 집행·네트워크 상태·실사용 적합성을 증명하지 않습니다. 비교 보고서의 `target_compatibility_verified`·`resource_limits_verified`는 `false`입니다. 모델·호스트 버전·예산의 별도 관측이 없는 결과로 품질 우위를 주장하지 않습니다.
 
 같은 사례를 여러 번 돌리면 보고서가 사례별로 시도와 통과를 나눠 셉니다. `case_results`에 사례별 `attempts`·`passed`가 들어가고, `cases_always_passed`는 모든 시도에서 통과한 사례 수입니다. 통과 총합이 같아도 매번 통과한 쪽과 들쭉날쭉한 쪽이 구분됩니다. 채점하지 못한 시행도 시도 횟수에는 들어가므로 성공률을 부풀리지 않습니다.
 

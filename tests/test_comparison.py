@@ -9,6 +9,7 @@ import unittest
 
 from evals.comparison import compare
 from evals.preparation import prepare
+from evals.workspace import environment_info, runtime_conditions
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,6 +29,7 @@ class ComparisonTests(unittest.TestCase):
         (target / "grades").mkdir(parents=True)
         manifest = {"schema_version": 1, "trial_id": f"t{self.counter}", "case_id": case_id, "profile": "baseline",
                     "arm": arm, "model": model, "definition_digest": definition, "prompt_sha256": prompt}
+        manifest["runtime_observation"] = {"conditions": runtime_conditions(30)}
         (target / "manifest.json").write_text(json.dumps(manifest))
         for index, outcome in enumerate(reports if reports is not None else [passed]):
             grade = {"kind": "artifact_grade", "trial_id": manifest["trial_id"], "case_id": case_id,
@@ -35,6 +37,7 @@ class ComparisonTests(unittest.TestCase):
                      "checked_at": f"2026-09-08T0{index}:00:00+00:00", "artifact_passed": outcome,
                      "scope_passed": outcome, "functional_passed": outcome, "requires_human_review": False,
                      "scope_violations": [] if outcome else ["app.py"]}
+            grade["grading_environment"] = environment_info()
             (target / "grades" / f"{index}.json").write_text(json.dumps(grade))
         return target
 
@@ -56,6 +59,69 @@ class ComparisonTests(unittest.TestCase):
         report = compare([self.trial("gtg"), self.trial("codex-cli", definition="d2")])
         self.assertFalse(report["comparable"])
         self.assertIn("definition_digest", report["blocking_reasons"])
+
+    def test_different_runtime_host_or_time_budget_blocks_comparison(self):
+        for field in ("system", "timeout_seconds"):
+            with self.subTest(field=field):
+                a, b = self.trial("one"), self.trial("two")
+                path = b / "manifest.json"
+                data = json.loads(path.read_text())
+                conditions = data["runtime_observation"]["conditions"]
+                if field == "system":
+                    conditions["driver"][field] = "other-system"
+                else:
+                    conditions[field] = 300
+                path.write_text(json.dumps(data))
+                report = compare([a, b])
+                self.assertFalse(report["comparable"])
+                self.assertIn("runtime_conditions_mismatch", report["blocking_reasons"])
+
+    def test_missing_or_invalid_runtime_conditions_are_not_assumed_equal(self):
+        for value in (None, {}, {"driver": environment_info(), "timeout_seconds": True}):
+            with self.subTest(value=value):
+                a, b = self.trial("one"), self.trial("two")
+                path = b / "manifest.json"
+                data = json.loads(path.read_text())
+                data["runtime_observation"]["conditions"] = value
+                path.write_text(json.dumps(data))
+                report = compare([a, b])
+                self.assertFalse(report["comparable"])
+                self.assertIn("runtime_conditions_missing", report["blocking_reasons"])
+
+    def test_changed_grading_environment_is_not_a_fair_comparison(self):
+        a, b = self.trial("one"), self.trial("two")
+        path = b / "grades/0.json"
+        data = json.loads(path.read_text())
+        data["grading_environment"]["memory_limit_enforced"] = True
+        path.write_text(json.dumps(data))
+        report = compare([a, b])
+        self.assertFalse(report["comparable"])
+        self.assertIn("grading_conditions_mismatch", report["blocking_reasons"])
+
+    def test_equivalent_numeric_time_budgets_do_not_create_a_false_mismatch(self):
+        a, b = self.trial("one"), self.trial("two")
+        path = b / "manifest.json"
+        data = json.loads(path.read_text())
+        data["runtime_observation"]["conditions"]["timeout_seconds"] = 30.0
+        path.write_text(json.dumps(data))
+        path = b / "grades/0.json"
+        data = json.loads(path.read_text())
+        data["grading_environment"]["per_group_timeout_seconds"] = 5.0
+        path.write_text(json.dumps(data))
+        report = compare([a, b])
+        self.assertTrue(report["comparable"], report["blocking_reasons"])
+
+    def test_human_review_is_not_counted_as_a_model_failure(self):
+        a, b = self.trial("one"), self.trial("two")
+        path = b / "grades/0.json"
+        data = json.loads(path.read_text())
+        data["requires_human_review"] = True
+        data["artifact_passed"] = False
+        data["functional_passed"] = None
+        path.write_text(json.dumps(data))
+        report = compare([a, b])
+        self.assertFalse(report["comparable"])
+        self.assertIn("human_review", report["blocking_reasons"])
 
     def test_different_prompts_for_the_same_case_block_the_comparison(self):
         report = compare([self.trial("gtg"), self.trial("codex-cli", prompt="p2")])
@@ -147,12 +213,14 @@ class ReliabilityTests(unittest.TestCase):
         manifest = {"schema_version": 1, "trial_id": f"t{self.counter}", "case_id": case_id,
                     "profile": "baseline", "arm": arm, "model": "m",
                     "definition_digest": "d", "prompt_sha256": "p-" + case_id}
+        manifest["runtime_observation"] = {"conditions": runtime_conditions(30)}
         (target / "manifest.json").write_text(json.dumps(manifest))
         grade = {"kind": "artifact_grade", "trial_id": manifest["trial_id"], "case_id": case_id,
                  "definition_digest": "d", "prompt_sha256": "p-" + case_id, "profile": "baseline",
                  "checked_at": "2026-09-09T00:00:00+00:00", "artifact_passed": passed,
                  "scope_passed": passed, "functional_passed": passed,
                  "requires_human_review": False, "scope_violations": []}
+        grade["grading_environment"] = environment_info()
         (target / "grades/0.json").write_text(json.dumps(grade))
         return target
 

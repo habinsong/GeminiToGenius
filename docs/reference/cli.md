@@ -41,8 +41,31 @@ GTG=~/.gemini/config/plugins/geminitogenius/run.py
 | 명령 | 역할 |
 |---|---|
 | `inspect <경로...>` | 여러 텍스트 파일을 한 번에 읽고 라인 범위, 잘림 여부, 파일 해시를 함께 반환합니다. |
+| `environment [--expect <파일>]` | 로컬 Python 프로세스의 OS·아키텍처·런타임·실행 파일 존재를 관찰하고 필요조건과 비교합니다. 불일치는 종료 코드 1이며 관찰만 하면 `matches`는 `null`입니다. |
+| `unittest [--start-directory <폴더>] [--pattern <패턴>] [--require <시험ID>]` | Python unittest를 별도 프로세스에서 실행하고 필수 시험 ID의 성공을 확인합니다. `--require`는 반복할 수 있으며 실패·누락·필수 skip은 종료 코드 1입니다. |
 | `pause --platform <호스트> --session <세션> --reason <사유>` | 사용자 명시적 확인 대기나 외부 리소스 한도로 인해 작업을 일시 정지할 때 사용합니다. |
 | `resume --platform <호스트> --session <세션>` | 일시 정지되었던 세션 연결을 다시 활성화합니다. |
+
+## 환경 필요조건 비교
+
+```bash
+python3 "$GTG" environment
+python3 "$GTG" environment --expect verification-environment.json
+```
+
+조건 파일은 확인된 작업 요구에서 에이전트가 작성합니다. `system`, `machine`, `python_version`, `python_implementation`은 문자열을 정확히 비교하며, `executables`에는 PATH에서 찾을 실행 파일 이름 목록을 지정합니다. 알 수 없는 필드·빈 조건·인자나 경로가 있는 실행 파일 이름은 거부합니다. 일치하면 종료 코드 0, 불일치나 잘못된 조건이면 1입니다. 실행 파일을 실행하거나 설치하지 않습니다.
+
+관찰 범위는 현재 Python 프로세스입니다. 컨테이너·원격 서버·물리 기기의 조건을 대신하지 않습니다. `target_compatibility_verified`와 `resource_limits_verified`는 항상 `false`이며, 파일 존재만으로 API 동작이나 제품 호환성을 판정하지 않습니다. 조건 파일을 검증 계약에 사용하면 `watch`에도 넣고, 환경 변경 뒤에는 파일이 같아도 다시 검증합니다. [적용 절차](../../profile/skills/gtg-build/references/critical-review.md).
+
+## Python 필수 시험
+
+```bash
+python3 "$GTG" unittest --workspace . --start-directory tests
+```
+
+`--require`에는 발견된 실제 전체 시험 ID를 지정합니다. 실행 0개·모든 시험 skip·필수 ID 누락·필수 ID skip/expectedFailure·관측 누락은 통과하지 않습니다. 선택적 시험의 skip은 결과에 남기며, 성공한 시험이 하나도 없으면 실패합니다. 종료 코드 0은 관측된 시험의 성공이며 PRD 전체의 의미나 미실행 경로의 API 존재까지 증명하지 않습니다.
+
+프로젝트 인터프리터를 사용하고 시간 제한은 작업 계약의 `timeout_seconds`로 둡니다. 새 임시 바이트코드 캐시 경로에서 시작하며 `.pyc`를 쓰지 않습니다. 원시 하위 프로세스 출력도 stderr로 보내 JSON 결과와 섞이지 않게 합니다. 관측 JSON은 최대 256KiB이며 초과·손상·조기 종료는 실패입니다. 시험 코드는 일반 프로젝트 코드 권한으로 실행하며 OS 샌드박스가 아닙니다.
 
 ## 플랫폼 훅
 

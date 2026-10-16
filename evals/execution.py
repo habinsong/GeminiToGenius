@@ -9,13 +9,14 @@ from __future__ import annotations
 from datetime import datetime, timezone
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import signal
 import subprocess
 import time
 
-from .workspace import private
+from .workspace import private, runtime_conditions
 
 PLACEHOLDER = "{prompt}"
 OUTPUT_LIMIT = 256 * 1024
@@ -64,6 +65,8 @@ def resolved(command: list[str], prompt: str) -> list[str]:
 
 
 def run_arm(trial: Path, command: list[str], *, timeout: float = 1800) -> dict:
+    if type(timeout) not in {int, float} or not math.isfinite(timeout) or timeout <= 0:
+        raise ValueError("실행 시간 제한은 양의 유한 수여야 합니다.")
     trial = Path(trial).absolute()
     manifest = json.loads((trial / "manifest.json").read_text(encoding="utf-8"))
     if manifest.get("runtime_observation") is not None:
@@ -76,6 +79,7 @@ def run_arm(trial: Path, command: list[str], *, timeout: float = 1800) -> dict:
     workspace = trial / "workspace"
     if not workspace.is_dir():
         raise ValueError("시행 작업공간이 없습니다.")
+    conditions = runtime_conditions(timeout)
     started = time.monotonic()
     status, returncode, output = "completed", None, {"stdout_bytes": 0, "stderr_bytes": 0}
     executed: list[str] = []
@@ -108,6 +112,7 @@ def run_arm(trial: Path, command: list[str], *, timeout: float = 1800) -> dict:
         if process is not None and process.poll() is None:
             terminate(process)
     observation = {"schema_version": 1, "command": list(command), "argv_length": len(argv),
+                   "conditions": conditions,
                    "prompt_sha256": manifest["prompt_sha256"], "status": status, "returncode": returncode,
                    "duration_seconds": round(time.monotonic() - started, 3),
                    # 관측 가능한 런타임에서 실제로 실행된 작업공간 파일입니다. 자기 보고가 아닙니다.

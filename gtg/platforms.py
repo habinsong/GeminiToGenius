@@ -12,8 +12,9 @@ EVENTS = {**{name: ("PreInvocation", "Stop") for name in ANTIGRAVITY},
 
 NAME = "geminitogenius"
 
-# 공식 문서가 규칙 파일 하나당 12,000자로 제한합니다. 넘으면 로딩을 가정하지 않습니다.
+# 기존 패키지의 문자 상한을 유지하며, Antigravity의 현재 바이트 한도도 함께 지킵니다.
 MAX_RULE_CHARACTERS = 12000
+MAX_RULE_BYTES = 24000
 
 # 설치기가 관리하는 호스트·범위별 상위 폴더입니다. 이동 기록도 이 목록만 허용합니다.
 INSTALL_ROOTS = {("antigravity", "workspace"): ".agents/plugins",
@@ -22,7 +23,7 @@ INSTALL_ROOTS = {("antigravity", "workspace"): ".agents/plugins",
                  ("gemini-cli", "global"): ".gemini/extensions"}
 
 # 호스트가 스스로 만드는 설정 파일입니다. 자동 감지는 이 근거만 사용합니다.
-# Gemini CLI는 개인 계정 서비스가 종료됐고 고유한 표식을 확인하지 못해 자동 감지 대상이 아닙니다.
+# Gemini CLI는 이 설치기가 구분할 고유한 표식을 확인하지 못해 명시적으로만 설치합니다.
 HOST_MARKERS = {"antigravity": ".gemini/config/config.json",
                 "antigravity-cli": ".gemini/antigravity-cli/settings.json"}
 

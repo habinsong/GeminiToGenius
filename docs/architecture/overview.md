@@ -34,6 +34,7 @@ gtg/hooks.py ──▶ gtg/sessions.py ──▶ gtg/store.py  (SQLite + 파일 
 | --- | --- |
 | `gtg/platforms.py` | 호스트별 훅 이벤트·설치 경로·감지 표식의 단일 정의 |
 | `gtg/spec.py` | 작업 계약 검증, 검증 대상의 지문과 범위 예산 |
+| `gtg/code_contract.py` | 코드 작업의 빌드 선행 조건과 PRD 요구의 검사 연결 |
 | `gtg/store.py` | 작업·실행·메모의 SQLite 상태와 실행 중 여부를 알리는 파일 잠금 |
 | `gtg/runner.py` | 검증 명령 실행과 현재 상태 조회 |
 | `gtg/coverage.py` | 검사가 실제로 실행한 코드 파일 관찰 |
@@ -44,6 +45,9 @@ gtg/hooks.py ──▶ gtg/sessions.py ──▶ gtg/store.py  (SQLite + 파일 
 | `gtg/context_message.py` | 훅 안내의 표현. IO 없음 |
 | `gtg/discovery.py` | 읽기 전용 작업 후보 조회 |
 | `gtg/inspection.py` | 여러 텍스트 파일의 범위 조회 |
+| `gtg/environment.py` | 로컬 실행 환경 관찰과 명시한 필요조건 비교 |
+| `gtg/testing.py` | Python 시험 관측의 유효성과 필수 시험 성공 확인 |
+| `gtg/unittest_probe.py` | 별도 프로세스에서 unittest 실행과 시험별 성공 관측 |
 | `gtg/package.py` | 호스트별 패키지 생성과 원문·훅 검증 |
 | `gtg/install.py` | 호스트 감지·설치·검사·제거·복구 |
 | `gtg/install_journal.py` | 파일 이동의 사전 기록과 되돌리기 |

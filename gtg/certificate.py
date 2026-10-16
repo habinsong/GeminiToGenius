@@ -14,9 +14,10 @@ from pathlib import Path
 import subprocess
 import time
 
-from .runner import status
+from .runner import group_alive, status, terminate
 from .spec import relative, sensitive
 from .store import Store
+from .code_contract import dependencies
 
 # 본문 필드가 늘어난 판입니다. 이전 판은 digest 계산이 달라 그대로 읽지 않습니다.
 SCHEMA = 3
@@ -60,6 +61,9 @@ def build(store: Store, task_id: str) -> dict:
         checks.append({"id": check["id"], "criterion": check["criterion"], "argv": list(check["argv"]),
                        "watch": sorted(set(check["watch"])), "timeout_seconds": check.get("timeout_seconds", 120),
                        "status": state, "returncode": result.get("returncode"),
+                       "depends_on": dependencies(task["spec"], check["id"]),
+                       "requirements": [item for item in task["spec"].get("code_contract", {}).get("requirements", [])
+                                        if check["id"] in item["checks"]],
                        # 통과한 실행의 증거만 남깁니다. 실패·미실행에는 지문을 붙이지 않습니다.
                        "evidence_fingerprint": result.get("after") if passed else None,
                        "coverage_observed": bool(result.get("coverage_observed")) if passed else False,
@@ -84,7 +88,14 @@ def validated(document: dict) -> list[dict]:
     checks = document["checks"]
     if not isinstance(checks, list) or not checks:
         raise ValueError("증명서에 검사가 없습니다.")
+    seen = set()
     for check in checks:
+        name = check.get("id")
+        depends = check.get("depends_on", [])
+        if (not isinstance(name, str) or not name or name in seen or not isinstance(depends, list)
+                or any(not isinstance(item, str) or item not in seen for item in depends)):
+            raise ValueError("증명서 검사와 선행 검사 순서가 올바르지 않습니다.")
+        seen.add(name)
         argv = check.get("argv")
         if not isinstance(argv, list) or not argv or any(not isinstance(arg, str) or "\0" in arg for arg in argv):
             raise ValueError("증명서의 검증 명령이 올바르지 않습니다.")
@@ -100,16 +111,26 @@ def run(check: dict, workspace: Path) -> dict:
 
     outcome = {"id": check["id"], "criterion": check["criterion"], "reconstructed": False, "reason": None,
                "returncode": None, "fingerprint": None}
+    process = None
     try:
-        process = subprocess.run(check["argv"], cwd=workspace, stdin=subprocess.DEVNULL,
-                                 capture_output=True, timeout=check.get("timeout_seconds", 120),
-                                 env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
+        before = fingerprint(workspace, list(check["watch"]))
+        process = subprocess.Popen(check["argv"], cwd=workspace, stdin=subprocess.DEVNULL,
+                                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                                   start_new_session=os.name == "posix",
+                                   env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
+        process.wait(timeout=check.get("timeout_seconds", 120))
+        if process.returncode == 0 and group_alive(process):
+            outcome["reason"] = "background_processes"
+            return outcome
     except subprocess.TimeoutExpired:
         outcome["reason"] = "timeout"
         return outcome
     except (OSError, ValueError):
         outcome["reason"] = "error"
         return outcome
+    finally:
+        if process is not None and group_alive(process):
+            terminate(process)
     outcome["returncode"] = process.returncode
     if process.returncode != 0:
         outcome["reason"] = "returncode"
@@ -118,6 +139,9 @@ def run(check: dict, workspace: Path) -> dict:
         outcome["fingerprint"] = fingerprint(workspace, list(check["watch"]))
     except (OSError, ValueError):
         outcome["reason"] = "error"
+        return outcome
+    if before != outcome["fingerprint"]:
+        outcome["reason"] = "changed_during_check"
         return outcome
     if check.get("evidence_fingerprint") != outcome["fingerprint"]:
         outcome["reason"] = "fingerprint"
@@ -135,7 +159,15 @@ def replay(document: dict, workspace: Path, *, trust_commands: bool = False) -> 
     matches = str(workspace) == document["workspace"]
     if not matches and not trust_commands:
         raise ValueError("증명서에 기록된 작업공간과 다릅니다. 명령을 신뢰할 때만 --trust-commands로 실행하세요.")
-    outcomes = [run(check, workspace) for check in checks]
+    outcomes, completed = [], {}
+    for check in checks:
+        if any(not completed[name] for name in check.get("depends_on", [])):
+            outcome = {"id": check["id"], "criterion": check["criterion"], "reconstructed": False,
+                       "reason": "prerequisite", "returncode": None, "fingerprint": None}
+        else:
+            outcome = run(check, workspace)
+        completed[check["id"]] = outcome["reconstructed"]
+        outcomes.append(outcome)
     claimed = bool(document["verified"])
     reconstructed = claimed and all(item["reconstructed"] for item in outcomes)
     complete = bool(document.get("coverage_complete"))

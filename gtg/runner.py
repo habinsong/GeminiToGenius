@@ -14,6 +14,7 @@ from .coverage import collector, executed_watch
 from .spec import fingerprint
 from .store import Store
 from .checkpoints import latest as latest_checkpoint
+from .code_contract import dependencies, summarize as summarize_code_contract
 
 
 class CommandCancelled(KeyboardInterrupt):
@@ -75,6 +76,15 @@ def execute(store: Store, task_id: str, check_id: str) -> dict:
               "coverage_observed": False, "executed_watch": None, "unexecuted_watch": None,
               "unobservable_watch": None}
     try:
+        prerequisites = dependencies(task["spec"], check_id)
+        if prerequisites:
+            states = {item["id"]: item["status"] for item in status(store, task_id)["checks"]}
+            blocked = [name for name in prerequisites if states[name] != "passed"]
+            if blocked:
+                result.update(status="blocked", blocked_by=blocked)
+                return result
+            prior = store.latest(task_id)
+            result["prerequisite_runs"] = {name: prior[name]["run_id"] for name in prerequisites}
         with collector() as session:
             # 출력은 호스트에 바로 전달하며 상태 DB에 원문을 보관하지 않습니다.
             process = subprocess.Popen(check["argv"], cwd=workspace, stdin=subprocess.DEVNULL,
@@ -140,10 +150,12 @@ def status(store: Store, task_id: str) -> dict:
         outcome = (run or {}).get("result") or {}
         passed = state == "passed"
         checks.append({"id": check["id"], "criterion": check["criterion"], "status": state,
+                       "blocked_by": outcome.get("blocked_by") if not passed else None,
                        "executed_watch": outcome.get("executed_watch") if passed else None,
                        "unexecuted_watch": outcome.get("unexecuted_watch") if passed else None,
                        # 미실행 목록이 없을 때 그 이유를 밝힙니다. 범위를 좁히면 다시 얻을 수 있습니다.
                        "unobservable_watch": outcome.get("unobservable_watch") if passed else None})
-    return {"task_id": task_id, "goal": task["spec"]["goal"], "spec": task["spec"],
+    contract = summarize_code_contract(task["spec"], checks, latest)
+    return {"task_id": task_id, "goal": task["spec"]["goal"], "spec": task["spec"], **contract,
             "verified": all(check["status"] == "passed" for check in checks), "checks": checks,
             "checkpoint": latest_checkpoint(store, task_id)}

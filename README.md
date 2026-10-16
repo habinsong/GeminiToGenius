@@ -8,7 +8,7 @@
 
 <p><a href="https://github.com/habinsong/GeminiToGenius/releases">릴리즈</a> · <a href="docs/product/getting-started.md">설치 안내</a> · <a href="docs/verification/README.md">검증 기록과 한계</a> · <a href="CHANGELOG.md">변경 기록</a></p>
 
-<p>GTG 3.0.0은 Antigravity 데스크톱·IDE, Antigravity CLI, Gemini CLI를 지원합니다.</p>
+<p>GTG 3.0.1은 Antigravity 데스크톱·IDE, Antigravity CLI, Gemini CLI를 지원합니다.</p>
 
 </div>
 
@@ -59,7 +59,9 @@ python3 scripts/install.py uninstall
 로그인하면 500이 납니다. 원인 찾아서 고쳐 주세요.
 ```
 
-여러 단계가 필요한 작업이라고 판단하면 모델이 완료 조건을 먼저 등록하고 검증을 실행합니다. 단순 수정처럼 짧은 작업에는 굳이 증명서를 발급하지 않습니다.
+코드 동작·타입·호출 관계를 바꾸는 작업은 단일 파일이어도 빌드와 필수 시험을 완료 계약에 연결하도록 안내합니다. PRD가 있으면 요구별 검사를 연결하며, 문답·문구·포맷 수정은 관련 검사로 끝냅니다.
+
+3.0.1은 비판적 검토, 환경 필요조건 비교, 필수 시험 ID 관측과 증명서 재실행 보호를 보강했습니다. [검증 범위와 한계](docs/verification/3.0.1.md)를 확인할 수 있습니다.
 
 ## 확인한 것
 

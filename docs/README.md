@@ -3,7 +3,7 @@
 필요한 정보를 빠르게 찾을 수 있도록 주제별로 구성했습니다.
 
 > [!NOTE]
-> GTG 3.0.0은 Antigravity 데스크톱·IDE, Antigravity CLI(`agy`), Gemini CLI를 지원합니다. 세 호스트는 훅 이벤트 명칭과 식별 필드가 서로 다르며, 이 차이는 [`gtg/platforms.py`](../gtg/platforms.py) 단 한 곳에서 일원화하여 관리합니다.
+> GTG 3.0.1은 Antigravity 데스크톱·IDE, Antigravity CLI(`agy`), Gemini CLI를 지원합니다. 세 호스트는 훅 이벤트 명칭과 식별 필드가 서로 다르며, 이 차이는 [`gtg/platforms.py`](../gtg/platforms.py) 단 한 곳에서 일원화하여 관리합니다.
 
 ## 제품 안내
 

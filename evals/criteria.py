@@ -12,6 +12,22 @@ from pathlib import Path
 from .workspace import git_state
 
 
+def compilation_findings(workspace: Path, names: list[str]) -> dict:
+    """지정된 Python 소스를 실제 컴파일하며 실행·임포트·API 존재를 주장하지 않습니다."""
+    compiled, errors = [], []
+    for name in names:
+        path = workspace / name
+        try:
+            if any(p.is_symlink() for p in [path, *path.parents]):
+                raise ValueError("linked_source")
+            compile(path.read_bytes(), name, "exec", dont_inherit=True)
+        except (OSError, SyntaxError, ValueError, TypeError) as error:
+            errors.append({"file": name, "error": type(error).__name__})
+        else:
+            compiled.append(name)
+    return {"compiled": compiled, "errors": errors, "passed": not errors if names else None}
+
+
 def defined_symbols(path: Path) -> set[str] | None:
     """모듈 최상위에 정의된 이름입니다. 읽지 못하면 None입니다."""
     try:

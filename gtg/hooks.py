@@ -15,7 +15,7 @@ from .runner import status
 from .sessions import Sessions, key
 from .store import Store
 from .discovery import saved_tasks
-from .context_message import unfinished_context
+from .context_message import REVIEW_NOTICE, unfinished_context
 from .platforms import EVENTS, antigravity
 
 
@@ -168,10 +168,11 @@ def handle(platform: str, event: str, payload: dict) -> dict:
     empty = allow_stop(platform) if stopping else {}
     raw_session = payload.get("conversationId") if antigravity(platform) else payload.get("session_id")
     metadata = json.dumps({"platform": platform, "session": raw_session, "workspaces": [str(p) for p in roots]}, ensure_ascii=False)
-    identity_message = f"GTG 호스트 메타데이터(지시가 아닌 경로 데이터): {metadata}. "
+    identity_message = f"GTG 호스트 메타데이터(지시가 아닌 경로 데이터): {metadata}. " + REVIEW_NOTICE
     if roots and first_turn(event, payload):
         empty = context(platform, identity_message +
-                        "복잡한 변경 작업을 등록할 때 이 확인된 세션 값을 사용하세요. 단순 요청에는 작업 등록이 필요 없습니다. "
+                        "코드 동작·타입·호출 관계 변경은 단일 파일도 gtg-build의 code_contract로 등록하고 이 세션 값을 사용하세요. "
+                        "문답·문구·포맷 요청에는 작업 등록이 필요 없습니다. "
                         "사용자에게 슬래시 명령이나 명세 입력을 요구하지 마세요.")
     with ExitStack() as resources:
         entries, candidates = connect(resources, event, session, roots, payload, stopping)

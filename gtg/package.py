@@ -14,7 +14,7 @@ import subprocess
 import re
 
 from .inspection import open_regular
-from .platforms import EVENTS, MAX_RULE_CHARACTERS, NAME, PLATFORMS, antigravity
+from .platforms import EVENTS, MAX_RULE_BYTES, MAX_RULE_CHARACTERS, NAME, PLATFORMS, antigravity
 from .spec import sensitive
 
 MANIFEST = "gtg-manifest.json"
@@ -66,8 +66,10 @@ def copy_source(root: Path, name: str, target: Path):
 
 
 def check_rule_size(rules: bytes):
+    if len(rules) > MAX_RULE_BYTES:
+        raise ValueError(f"규칙 파일이 패키지 상한 {MAX_RULE_BYTES}바이트를 넘습니다.")
     if len(rules.decode("utf-8")) > MAX_RULE_CHARACTERS:
-        raise ValueError(f"규칙 파일이 호스트 한도 {MAX_RULE_CHARACTERS}자를 넘습니다.")
+        raise ValueError(f"규칙 파일이 패키지 상한 {MAX_RULE_CHARACTERS}자를 넘습니다.")
 
 
 def build(source: Path, target: Path, installed: Path, platform: str) -> dict:
@@ -232,8 +234,7 @@ def verify(target: Path, execute_hooks: bool = True, *, installed: Path | None =
         raise ValueError("설치 위치가 바뀌었습니다. 현재 경로에 다시 설치하세요.")
     actual = check_contents(target, manifest)
     platform = manifest["platform"]
-    if antigravity(platform):
-        check_rule_size((target / "rules/AGENTS.md").read_bytes())
+    check_rule_size((target / ("rules/AGENTS.md" if antigravity(platform) else "GEMINI.md")).read_bytes())
     hooks = json.loads((target / ("hooks.json" if antigravity(platform) else "hooks/hooks.json")).read_text())
     entries = validated_hooks(hooks, platform, declared)
     if not execute_hooks:

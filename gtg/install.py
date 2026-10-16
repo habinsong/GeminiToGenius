@@ -60,7 +60,7 @@ def lock(root: Path):
             fcntl.flock(stream, fcntl.LOCK_UN)
 
 
-def register(platform: str, target: Path) -> dict | None:
+def register(platform: str, target: Path, *, active_home: bool = True) -> dict | None:
     """Antigravity CLI는 파일을 놓아 두는 것만으로 플러그인을 읽지 않습니다.
 
     `agy plugin install`로 가져오기 목록에 올려야 스킬과 훅이 동작합니다. 실제 확인
@@ -69,6 +69,9 @@ def register(platform: str, target: Path) -> dict | None:
     """
     if platform != "antigravity-cli":
         return None
+    if not active_home:
+        return {"registered": False, "reason": "별도 홈 설치는 실제 호스트 등록을 변경하지 않습니다.",
+                "manual_command": f"agy plugin install {target}"}
     command = shutil.which("agy")
     if command is None:
         return {"registered": False, "reason": "agy 실행 파일을 찾지 못했습니다.",
@@ -77,10 +80,10 @@ def register(platform: str, target: Path) -> dict | None:
         done = subprocess.run([command, "plugin", "install", str(target)],
                               capture_output=True, text=True, timeout=120)
     except (OSError, subprocess.SubprocessError) as error:
-        return {"registered": False, "reason": type(error).__name__,
+        return {"registered": False, "failed": True, "reason": type(error).__name__,
                 "manual_command": f"agy plugin install {target}"}
     if done.returncode != 0:
-        return {"registered": False, "reason": (done.stderr or done.stdout).strip()[:200],
+        return {"registered": False, "failed": True, "reason": (done.stderr or done.stdout).strip()[:200],
                 "manual_command": f"agy plugin install {target}"}
     return {"registered": True}
 
@@ -122,9 +125,29 @@ def install(source: Path, root: Path, platform: str, scope: str) -> dict:
         finally:
             if stage.exists() and not journal.path.exists():
                 shutil.rmtree(stage)
-        return {**report, "target": str(target), "backup": str(backup) if backup else None,
-                "legacy_backup": str(legacy_backup) if legacy_backup else None,
-                "recovered_transaction": recovered, "host_registration": register(platform, target)}
+        active_home = scope == "global" and root.resolve() == Path.home().resolve()
+        shared = destination(root, "antigravity", "global")
+        shared_backup = None
+        if platform == "antigravity-cli" and active_home and shutil.which("agy") and shared.exists():
+            safe_path(shared / MANIFEST)
+            metadata = json.loads((shared / MANIFEST).read_text())
+            verify(shared, execute_hooks=False, installed=Path(metadata["installed_path"]))
+            shared_backup = working / ("backup-" + uuid.uuid4().hex)
+            shutil.copytree(shared, shared_backup, symlinks=True)
+            sync_tree(shared_backup)
+        registration = register(platform, target, active_home=active_home)
+    # agy 1.1.28은 CLI 패키지를 공용 데스크톱 경로에도 복사합니다.
+    shared_repair = None
+    if platform == "antigravity-cli" and registration and (registration.get("registered") or registration.get("failed")):
+        safe_path(shared / MANIFEST)
+        if (shared / MANIFEST).is_file() and (shared / MANIFEST).read_bytes() == (target / MANIFEST).read_bytes():
+            shared_repair = install(source, root, "antigravity", "global")
+    return {**report, "ok": report["ok"] and not bool(registration and registration.get("failed")),
+            "target": str(target), "backup": str(backup) if backup else None,
+            "legacy_backup": str(legacy_backup) if legacy_backup else None,
+            "shared_host_backup": str(shared_backup) if shared_backup else None,
+            "shared_host_repair": shared_repair,
+            "recovered_transaction": recovered, "host_registration": registration}
 
 
 def uninstall(root: Path, platform: str, scope: str) -> dict:
@@ -188,7 +211,12 @@ def doctor(root: Path, platform: str, scope: str) -> dict:
     safe_path(working)
     with lock(working):
         recovered = MoveJournal(root, working).recover()
-        return {**verify(target), "target": str(target), "recovered_transaction": recovered}
+        safe_path(target / MANIFEST)
+        metadata = json.loads((target / MANIFEST).read_text())
+        if metadata.get("platform") != platform:
+            raise ValueError("설치 경로와 패키지 호스트가 다릅니다. 해당 호스트로 다시 설치하세요.")
+        return {**verify(target), "version": metadata.get("version"),
+                "target": str(target), "recovered_transaction": recovered}
 
 
 def detected(root: Path) -> list[str]:

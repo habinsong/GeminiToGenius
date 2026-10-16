@@ -15,6 +15,8 @@ from .certificate import build as certificate, replay
 from .checkpoints import record as record_checkpoint
 from .inspection import inspect
 from .discovery import discover
+from .environment import observe as observe_environment
+from .testing import run_unittest
 from .platforms import PLATFORMS
 
 
@@ -35,6 +37,14 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", type=Path)
     commands = parser.add_subparsers(dest="command", required=True)
+    environment = commands.add_parser("environment", help="로컬 실행 환경을 관찰하고 명시한 필요조건과 비교합니다.")
+    environment.add_argument("--workspace", type=Path)
+    environment.add_argument("--expect", type=Path, help="비교할 환경 조건 JSON입니다. 없으면 관찰만 수행합니다.")
+    unittest = commands.add_parser("unittest", help="Python 시험 실행 수와 필수 시험 ID의 성공을 확인합니다.")
+    unittest.add_argument("--workspace", type=Path)
+    unittest.add_argument("--start-directory", default=".")
+    unittest.add_argument("--pattern", default="test*.py")
+    unittest.add_argument("--require", action="append", default=[], help="성공해야 하는 실제 시험 ID입니다. 반복 지정할 수 있습니다.")
     inspection = commands.add_parser("inspect", help="여러 텍스트 파일을 읽고 범위·잘림·해시를 반환합니다.")
     inspection.add_argument("paths", nargs="+")
     inspection.add_argument("--workspace", type=Path)
@@ -92,6 +102,17 @@ def build_parser() -> argparse.ArgumentParser:
 
 def stateless(args) -> int | None:
     """상태 DB를 열지 않는 명령입니다. 처리했으면 종료 코드를, 아니면 None을 돌려줍니다."""
+    if args.command == "unittest":
+        result = run_unittest(args.workspace, args.start_directory, args.pattern, args.require)
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return int(not result["passed"])
+    if args.command == "environment":
+        requirements = read_document(args.expect) if args.expect else None
+        if args.expect and not isinstance(requirements, dict):
+            raise ValueError("환경 조건 파일은 비어 있지 않은 JSON 객체여야 합니다.")
+        result = observe_environment(requirements)
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return int(result["matches"] is False)
     if args.command == "inspect":
         result = inspect(args.workspace, args.paths, args.max_bytes, args.start_line, args.end_line)
         print(json.dumps(result, ensure_ascii=False, indent=2))

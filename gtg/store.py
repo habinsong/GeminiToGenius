@@ -21,6 +21,7 @@ except ImportError:  # 윈도우에는 없습니다. 이때는 PID 판단으로 
     fcntl = None
 
 from .spec import evidential, task_scope, validate
+from .code_contract import ensure_sources
 
 
 def lock_path(state: Path, run_id: int) -> Path:
@@ -142,6 +143,7 @@ class Store:
         workspace = workspace.resolve(strict=True)
         if not workspace.is_dir():
             raise ValueError("작업공간 폴더가 필요합니다.")
+        ensure_sources(workspace, spec)
         # 훅 예산 안에서 상태를 만들 수 있는지 작업 전체 기준으로 확인합니다.
         task_scope(workspace, spec["checks"])
         task_id = uuid.uuid4().hex

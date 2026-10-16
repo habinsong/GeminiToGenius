@@ -39,14 +39,16 @@ class AntigravityCliPackageTests(unittest.TestCase):
         log = self.root / "agy-calls.log"
         (fake / "agy").write_text(f'#!/bin/sh\necho "$@" >> "{log}"\nexit 0\n', encoding="utf-8")
         (fake / "agy").chmod(0o755)
-        with unittest.mock.patch.dict(os.environ, {"PATH": f"{fake}:{os.environ['PATH']}"}):
+        with unittest.mock.patch.dict(os.environ, {"PATH": f"{fake}:{os.environ['PATH']}"}), \
+                unittest.mock.patch("gtg.install.Path.home", return_value=self.root):
             report = install(ROOT, self.root, "antigravity-cli", "global")
         self.assertEqual(report["host_registration"], {"registered": True})
         target = destination(self.root, "antigravity-cli", "global")
         self.assertEqual(log.read_text(encoding="utf-8").strip(), f"plugin install {target}")
 
     def test_missing_host_binary_reports_the_manual_command_instead_of_failing(self):
-        with unittest.mock.patch("gtg.install.shutil.which", return_value=None):
+        with unittest.mock.patch("gtg.install.shutil.which", return_value=None), \
+                unittest.mock.patch("gtg.install.Path.home", return_value=self.root):
             report = install(ROOT, self.root, "antigravity-cli", "global")
         self.assertTrue(report["ok"], "등록 도구가 없다고 설치가 실패하지 않습니다.")
         self.assertFalse(report["host_registration"]["registered"])

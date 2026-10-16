@@ -9,6 +9,8 @@ from pathlib import Path, PurePosixPath
 import re
 import stat
 
+from .code_contract import normalize as normalize_code_contract
+
 
 ID = re.compile(r"[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}\Z")
 PRIVATE_DIRS = {".git", ".gtg", ".ssh", ".aws", ".kube", "__pycache__"}
@@ -79,7 +81,7 @@ def validate(spec: dict) -> dict:
             raise ValueError("검증 근거에 포함할 파일 또는 폴더가 필요합니다.")
         for name in watch:
             relative(name)
-    return json.loads(json.dumps(spec, allow_nan=False))
+    return json.loads(json.dumps(normalize_code_contract(spec, relative), allow_nan=False))
 
 
 def evidential(spec: dict) -> dict:
@@ -165,7 +167,7 @@ def fingerprint(root: Path, watched: list[str]) -> str:
 
     def add(path: Path):
         name = path.relative_to(root).as_posix()
-        if private(Path(name)):
+        if private(Path(name)) or name in records:
             return
         for parent in [path, *path.parents]:
             if parent == root:

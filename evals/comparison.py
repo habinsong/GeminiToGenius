@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 FIELDS = ("case_id", "prompt_sha256", "definition_digest")
@@ -20,6 +21,7 @@ def load(trial: Path) -> dict:
              "profile": manifest.get("profile"), **{name: manifest.get(name) for name in FIELDS},
              "state": "ungraded", "passed": False, "scope_violations": []}
     observation = manifest.get("runtime_observation")
+    entry["runtime_conditions"] = observation.get("conditions") if isinstance(observation, dict) else None
     entry["observation"] = ({"status": observation.get("status"), "returncode": observation.get("returncode"),
                              "duration_seconds": observation.get("duration_seconds"),
                              "executed_workspace_file_count": observation.get("executed_workspace_file_count")}
@@ -46,8 +48,38 @@ def load(trial: Path) -> dict:
         return entry
     entry.update(state="graded", passed=bool(latest.get("artifact_passed")), grades=len(grades),
                  scope_violations=latest.get("scope_violations") or [],
-                 requires_human_review=bool(latest.get("requires_human_review")))
+                 requires_human_review=bool(latest.get("requires_human_review")),
+                 grading_conditions=latest.get("grading_environment"))
     return entry
+
+
+def condition_key(value, *, grading=False) -> str | None:
+    """관측이 없는 조건을 같다고 보지 않습니다. 기록 일치는 자원·실사용 검증이 아닙니다."""
+    if not isinstance(value, dict):
+        return None
+    environment = value if grading else value.get("driver")
+    if not isinstance(environment, dict):
+        return None
+    if any(not isinstance(environment.get(name), str) or not environment[name]
+           for name in ("system", "machine", "python_version")):
+        return None
+    cpus = environment.get("host_logical_cpus")
+    if type(cpus) is not int or cpus <= 0:
+        return None
+    timeout = value.get("per_group_timeout_seconds" if grading else "timeout_seconds")
+    if type(timeout) not in {int, float} or not math.isfinite(timeout) or timeout <= 0:
+        return None
+    if grading and (any(type(value.get(name)) is not bool for name in
+                        ("bytecode_writes", "cpu_limit_enforced", "memory_limit_enforced", "os_sandbox"))
+                    or type(value.get("stdout_read_limit_bytes")) is not int
+                    or value["stdout_read_limit_bytes"] <= 0
+                    or not isinstance(value.get("candidate_bytecode_cache"), str)):
+        return None
+    try:
+        timeout_field = "per_group_timeout_seconds" if grading else "timeout_seconds"
+        return json.dumps({**value, timeout_field: float(timeout)}, sort_keys=True, allow_nan=False)
+    except (TypeError, ValueError):
+        return None
 
 
 def summarize(entries: list[dict]) -> list[dict]:
@@ -109,6 +141,20 @@ def blocking(entries: list[dict], arms: list[dict]) -> list[str]:
         reasons.append("ungraded")
     if any(arm["unstable"] for arm in arms):
         reasons.append("unstable_grades")
+    if any(arm["human_review"] for arm in arms):
+        reasons.append("human_review")
+    for phase in ("runtime", "grading"):
+        conditions = {}
+        for entry in entries:
+            key = condition_key(entry.get(phase + "_conditions"), grading=phase == "grading")
+            if key is None:
+                reason = phase + "_conditions_missing"
+            elif conditions.setdefault(entry["case_id"], key) != key:
+                reason = phase + "_conditions_mismatch"
+            else:
+                continue
+            if reason not in reasons:
+                reasons.append(reason)
     return reasons
 
 
@@ -123,5 +169,7 @@ def compare(trials: list[Path]) -> dict:
     return {"kind": "harness_comparison", "schema_version": 1, "comparable": not reasons,
             "blocking_reasons": reasons, "arms": arms, "trials": entries,
             "labels_are_self_declared": True, "model_performance_claim": False,
-            "note": ("같은 사례·요청·채점 기준을 공유할 때만 comparable이 참입니다. "
-                     "실행 하네스·모델·사용량은 사용자가 선언한 라벨이며 이 보고서가 확인하지 않습니다.")}
+            "target_compatibility_verified": False, "resource_limits_verified": False,
+            "note": ("같은 사례·요청·채점 기준·관측된 실행기/채점 환경과 시간 제한을 공유할 때만 comparable이 참입니다. "
+                     "기록이 없는 과거 시행은 동등하다고 가정하지 않습니다. "
+                     "실행 하네스·모델은 선언 라벨입니다. 원격 모델 설정·사용량·자원 한도·실사용 적합성은 확인하지 않습니다.")}
