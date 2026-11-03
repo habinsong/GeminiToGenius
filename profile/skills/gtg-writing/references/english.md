@@ -10,12 +10,20 @@ English AI prose has its own habits. Any one of them proves nothing, because peo
 | `It's important to note that`, `It's worth noting` | Delete the lead-in and state the point |
 | `In today's fast-paced world`, `in the ever-evolving landscape` | Delete it and start with the fact |
 | `game-changer`, `paradigm shift`, `unlock the full potential` | Say what changed and by how much |
+| `adds depth to`, `adds a touch of` | Use a direct verb (`deepens`, `brings`) or describe the concrete fact |
+| `sends a clear signal that`, `serves as a signal that` | State what is actually indicated (`indicates that`, `shows that`) |
+| `happiness index`, `trust score` (abstract casual metrics) | Use plain terms (`level`) or describe the condition directly |
+| `high information density`, `dense with` | Say `rich detail` or `rich in ...` |
 | `In conclusion,`, `To sum up,` | Write the conclusion without the signpost |
 | `I hope this helps`, `Feel free to`, `Great question` | Chat filler; it does not belong in a document |
 
 ## Fix them when they pile up
 
 - Stock vocabulary such as `pivotal`, `seamless`, `robust`, `leverage`, `foster`, `underscore`, `showcase`, `multifaceted`, `holistic` and `cutting-edge`. Three in one paragraph is a tell, so use the ordinary word (`use` for `leverage`, `show` for `showcase`).
+- Coupling clichés like `paired with`, `coupled with`, `hand in hand with`, and `two sides of the same coin`. Use `with` or state the concrete connection directly.
+- Abstract measuring and spreading buzzwords: `gauge the impact/value/sentiment` (say `assess`, `measure`), `propagate across` (say `spread across`), `dissemination of` (say `distribution of`).
+- Buzzword adverbs like `seamlessly integrates` (drop `seamlessly` and keep the verb) or `seamless automation`.
+- Crude embedding slang like `hardcoded directly into` or `baked into` (use `written into` or `built into`).
 - `serves as`, `stands as` and `acts as` where `is` would do.
 - `not just X, but Y` and `It's not X. It's Y.` State Y unless you are correcting a misconception the reader actually holds.
 - Lists of exactly three adjectives or benefits, again and again. Use the real count.

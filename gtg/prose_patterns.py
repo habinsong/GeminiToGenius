@@ -107,6 +107,12 @@ PATTERNS = (
             r"|경험|결과|파장|돌파구|활력|도약)[을를]\s?(?:가져(?:온다|옵니다|왔다|왔습니다|올\s?것)|가져다\s?(?:준다|줍니다|줬다|주었다)"
             r"|불러일으(?:킨다|킵니다|켰다|켰습니다)|선사(?:한다|합니다|했다|했습니다))",
             "'변화를 가져온다'처럼 추상 명사에 만능 동사를 붙인 번역투입니다. 누가 무엇을 바꿨는지 쓰세요."),
+    pattern("ko-cliche-add", "review", "match", 1,
+            r"(?:깊이|활력|매력|재미|풍미|특별함|감동|생기|무게|신호|의미|힘|온기)[을를]\s?더(?:하|한|했|합|해)",
+            "'~에 깊이/활력을 더하다' 상투구입니다. 무엇이 어떻게 달라졌는지 구체적으로 쓰세요."),
+    pattern("ko-crude-insert", "review", "match", 1,
+            r"(?<!못을\s)(?<!못이\s)(?<!못은\s)(?<!못\s)(?<!못)(?:박아\s*(?:넣(?:는다|고|었다|은|어|으며)|두(?:고|었다|면|어)|둔다|놓(?:는다|고|은|았다)|놨다)|박(?:는다|았다|았고|아서))",
+            "'박아 넣다', '박는다'처럼 거친 삽입 표현입니다. '직접 넣다', '적어 두다', '지정하다'로 고치세요."),
     pattern("ko-jeok-chain", "review", "paragraph", 3,
             r"[가-힣]{1,4}(?<![목흔실업성기표궤누])적(?:인)?\s(?:함의|기반|한계|변화|차이|의미|영향|관점|측면|역할|가치"
             r"|접근|맥락|구조|요소|과제|토대|성과|시사점)",
@@ -166,6 +172,25 @@ PATTERNS = (
             r"|rapidly\s+evolving)\b|\bever-evolving\s+landscape\b|\bnavigat(?:e|es|ing)\s+the\s+complexit(?:y|ies)\b"
             r"|\bunlock(?:s|ing)?\s+the\s+(?:full\s+)?potential\b|\bgame[- ]chang(?:er|ers|ing)\b|\bparadigm\s+shift\b",
             "Stock phrase. Replace it with the concrete fact.", re.I),
+    pattern("en-cliche-inflation", "block", "match", 1,
+            r"\b(?:add|adds|added|adding)\s+(?:depth\s+to|nuance\s+to|a\s+touch\s+of)\b"
+            r"|\b(?:high(?:er)?\s+information\s+density|dense\s+with\b)"
+            r"|\b(?:happiness|trust|satisfaction)\s+(?:index|score)\b",
+            "Stock inflation cliché. Name the concrete detail directly ('deepens', 'rich detail', 'level').", re.I),
+    pattern("en-coupling", "review", "match", 1,
+            r"\b(?:paired\s+with|coupled\s+with|hand\s+in\s+hand\s+with|two\s+sides\s+of\s+the\s+same\s+coin)\b",
+            "Stock coupling cliché. Use 'with' or describe the concrete relation directly.", re.I),
+    pattern("en-signaling", "block", "match", 1,
+            r"\b(?:send(?:s|ed|ing)?\s+a\s+(?:clear\s+|strong\s+)?signal\s+that|"
+            r"serves?\s+as\s+a\s+(?:clear\s+|strong\s+)?signal\s+that|"
+            r"a\s+clear\s+signal\s+that)\b",
+            "Signalling rhetoric. State what it actually shows or indicates.", re.I),
+    pattern("en-stock-action", "review", "match", 1,
+            r"\bgaug(?:e|es|ed|ing)\s+(?:the\s+|its\s+|their\s+|our\s+)?(?:impact|value|sentiment|reaction|mood)\b"
+            r"|\bpropagat(?:e|es|ed|ing)\s+(?:across|throughout)\b|\bdissemination\s+of\b"
+            r"|\bseamlessly\s+(?:integrat|connect|sync|operat|blend)(?:e|es|ed|ing)\b|\bseamless\s+automation\b"
+            r"|\bhardcod(?:e|es|ed|ing)\s+(?:directly\s+)?into\b|\bbaked\s+into\b",
+            "Action buzzword / embedding slang. Use plain words ('assess', 'spread', 'integrate', 'write into').", re.I),
     pattern("en-note-filler", "block", "match", 1,
             r"\b(?:it'?s|it\s+is)\s+(?:important|worth|crucial|essential)\s+to\s+(?:note|mention|remember|highlight)\b"
             r"|\b(?:it'?s|it\s+is)\s+worth\s+noting\b",

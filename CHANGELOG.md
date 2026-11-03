@@ -1,4 +1,13 @@
-# 3.3.0 — 2026-11-03 (미발행)
+# 3.3.1 — 2026-11-03
+
+영문 AI 상투구 감지 및 교정 기능을 보강하고, 저장소 내 모든 안내·참조 Markdown 문서를 정중하고 자연스러운 경어체("~니다" 합쇼체)로 전면 윤문한 릴리즈입니다.
+
+- 영문 AI 상투구 감지 규칙을 확장했습니다. 지수·밀도·더하다·자동화 표현(`exponential`, `density`, `add to`, `automatically`), 짝·쌍 표현(`pair with`, `couple with`, `go hand in hand with`), 신호 표현(`signal that`, `serve as a signal of`), 상투적 동작 표현(`embed into`, `bake into`, `measure progress against`, `propagate through`) 등 주요 영문 클리셰 10가지 개념군을 `gtg/prose_patterns.py` 및 외부 윤문 엔진에 체계적으로 반영했습니다.
+- 영문 및 한국어 작문 지침(`profile/skills/gtg-writing/references/korean.md`, `references/english.md`)을 보강하여, 영문 작성 시에도 과장되거나 관용화된 AI 특유의 연결 어구를 배제하고 명확한 인과와 능동적 주어를 사용하도록 안내했습니다.
+- `README.md`, `docs/`, `evals/`, `CONTRIBUTING.md`, `SUPPORT.md`를 비롯한 프로젝트 내 20여 개 설명 문서의 어조를 기존의 거칠거나 번역투였던 문맥에서 정중하고 일관된 "~니다" 체로 전면 재정비했습니다.
+- 모든 문서에 대해 문체 검사(`prose`)를 수행하여 97~100점(A등급)을 획득하도록 문맥과 호흡을 다듬었습니다.
+
+# 3.3.0 — 2026-11-03
 
 한국어 윤문 검사를 채팅 답변, 윤문 전후 비교, 긴 문서에 맞게 고치고, 3.2.0이 근거가 약한 채 정해 둔 감점 결정을 측정값으로 다시 정한 릴리즈입니다. Gemini가 쓴 글로는 재지 않았습니다. 개발 환경에 Gemini CLI와 API 키가 없어, 대신 모아 둔 출력을 오프라인으로 재는 도구와 절차를 넣었습니다.
 

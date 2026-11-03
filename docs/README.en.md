@@ -8,7 +8,7 @@
 
 <p><a href="README.md">Documentation</a> · <a href="verification/README.md">Verification & Limits</a> · <a href="../CHANGELOG.md">Changelog</a></p>
 
-<p>GTG 3.3.0 supports Antigravity Desktop and IDE, Antigravity CLI and Gemini CLI. When a task takes more than one turn, the model writes down how it will check the result before it starts, runs those checks as real commands, and reports success only after they pass. The finished task comes with a certificate that lists the commands, their exit codes and fingerprints of the files they checked, so anyone with the workspace can replay it without a separate database.</p>
+<p>GTG 3.3.1 supports Antigravity Desktop and IDE, Antigravity CLI and Gemini CLI. When a task takes more than one turn, the model writes down how it will check the result before it starts, runs those checks as real commands, and reports success only after they pass. The finished task comes with a certificate that lists the commands, their exit codes and fingerprints of the files they checked, so anyone with the workspace can replay it without a separate database.</p>
 
 <p>You do not need slash commands or spec files. Ask the way you normally would.</p>
 
