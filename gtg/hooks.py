@@ -194,7 +194,8 @@ def handle(platform: str, event: str, payload: dict) -> dict:
         identity_message += lessons_notice(roots)
         empty = context(platform, identity_message +
                         "코드 동작·타입·호출 관계 변경은 단일 파일도 gtg-build의 code_contract로 등록하고 이 세션 값을 사용하세요. "
-                        "끝내기 전에 바꾼 코드는 runner의 structure, 쓴 문서는 prose로 검사하고 결과를 그대로 보고하세요. "
+                        "끝내기 전에 바꾼 코드는 runner의 structure, 쓴 문서는 prose로 검사하고(파일로 저장하지 않은 글은 prose에 - 를 주고 "
+                        "표준 입력으로 넘기면 됩니다) 결과를 그대로 보고하세요. "
                         "문답·문구·포맷 요청에는 작업 등록이 필요 없습니다. "
                         "사용자에게 슬래시 명령이나 명세 입력을 요구하지 마세요.")
     with ExitStack() as resources:

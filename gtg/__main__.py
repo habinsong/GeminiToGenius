@@ -6,6 +6,7 @@ import argparse
 import json
 from pathlib import Path
 import sqlite3
+import sys
 
 from .runner import CommandCancelled, cancellation_signals, execute, status
 from .sessions import Sessions, key
@@ -19,6 +20,7 @@ from .environment import observe as observe_environment
 from .testing import run_unittest
 from .structure import review as review_structure
 from .prose import check as check_prose
+from .prose_input import read_stream
 from .prose_registers import REGISTERS
 from .lessons import recent as recent_lessons, record as record_lesson
 from .platforms import PLATFORMS
@@ -34,6 +36,14 @@ def write_document(path: Path, document: dict):
     if sensitive(path) or any(p.is_symlink() for p in [path, *path.parents]):
         raise ValueError("민감 경로나 심볼릭 링크에 문서를 쓰지 않습니다.")
     path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def prose_texts(args) -> list[tuple[str, str]]:
+    """파일이 아닌 입력입니다. 경로 자리의 -는 표준 입력 전체를, --text는 명령줄에 준 글을 한 문서로 봅니다."""
+    texts = [(f"<text {number}>", text) for number, text in enumerate(args.text, 1)]
+    if "-" in args.paths:
+        texts.insert(0, read_stream(sys.stdin.buffer))
+    return texts
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -56,7 +66,11 @@ def build_parser() -> argparse.ArgumentParser:
     structure.add_argument("--max-lines", type=int, default=400)
     structure.add_argument("--max-methods", type=int, default=20)
     prose = commands.add_parser("prose", help="문서의 상투구·과장·번역투·대구·도치·단조로운 리듬을 줄 번호와 함께 찾습니다.")
-    prose.add_argument("paths", nargs="+")
+    prose.add_argument("paths", nargs="*", help="검사할 문서입니다. -를 쓰면 표준 입력을 문서 하나로 읽습니다.")
+    prose.add_argument("--text", action="append", default=[],
+                       help="파일로 저장하지 않은 글(채팅 답변 등)을 바로 검사합니다. 반복 지정할 수 있습니다.")
+    prose.add_argument("--original", help="윤문하기 전 원문 경로입니다. 윤문한 문서 하나와 함께 쓰면 수치·인용·URL·영문 표기가 "
+                                          "남았는지와 바뀐 단어 비율도 확인합니다.")
     prose.add_argument("--workspace", type=Path)
     prose.add_argument("--register", choices=sorted(REGISTERS), default="general",
                        help="글 갈래입니다. academic(논문·보고서), everyday(대화·메시지·블로그), literary(소설·수필·시)에 맞춰 규칙을 바꿉니다.")
@@ -145,7 +159,8 @@ def stateless(args) -> int | None:
         result = (review_structure(args.workspace, args.base, args.paths, max_lines=args.max_lines,
                                    max_methods=args.max_methods)
                   if args.command == "structure"
-                  else check_prose(args.workspace, args.paths, args.register, args.min_score))
+                  else check_prose(args.workspace, [path for path in args.paths if path != "-"], args.register,
+                                   args.min_score, texts=prose_texts(args), original=args.original))
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return int(not result["passed"])
     if args.command == "lesson":

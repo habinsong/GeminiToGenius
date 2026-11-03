@@ -20,10 +20,14 @@ SENTENCE = re.compile(r"(?<=[.!?])\s+|(?<=[.!?][\"'”’」』])\s+")
 HANGUL = re.compile(r"[가-힣]")
 LATIN = re.compile(r"[A-Za-z]")
 TRAIL = re.compile(r"[\s.!?…\"'”’)\]]+$")
+# 줄이 문장 부호로 끝나는지 봅니다. 닫는 따옴표·괄호 뒤의 부호도 인정합니다.
+TERMINAL = re.compile(r"[.!?…。][\"'”’)\]」』]*\s*$")
 EDGE = re.compile(r"^[\"'“‘(\[]+|[,.!?…\"'”’)\]]+$")
 QUOTES = re.compile(r"[\"“”‘’「」『』]")
 # 일상 대화체에서 사람이 섞어 쓰는 해요체 어미입니다. 이것 없이 '~요.'만 이어지면 단조롭습니다.
 SPOKEN = re.compile(r"(?:거든요|더라고요|잖아요|네요|죠|는데요|나요|군요|던데요|라서요|걸요|래요|게요)$")
+# 시의 행은 대개 공백을 뺀 이 글자 수 이하입니다.
+VERSE_LINE = 30
 # 한국어는 공백을 뺀 글자 수, 영어는 단어 수입니다.
 SHORT = {"ko": 20, "en": 7}
 LONG = {"ko": 70, "en": 28}
@@ -59,9 +63,9 @@ def length(sentence: str, lang: str) -> int:
     return len(re.sub(r"\s", "", sentence)) if lang == "ko" else len(sentence.split())
 
 
-def sentences(lines: list[str], groups: list[list[int]]) -> list[list[tuple[int, str]]]:
-    """산문 줄을 이어 문장으로 나눕니다. 연속한 산문 줄 묶음마다 (시작 줄 번호, 문장) 목록을 돌려줍니다."""
-    blocks = []
+def prose_runs(lines: list[str], groups: list[list[int]]) -> list[list[int]]:
+    """문단 안에서 제목·목록·표가 아닌 줄이 이어지는 구간입니다. 각 구간은 줄 번호(0부터) 목록입니다."""
+    found = []
     for group in groups:
         run = []
         for index in group + [None]:
@@ -69,21 +73,49 @@ def sentences(lines: list[str], groups: list[list[int]]) -> list[list[tuple[int,
                 run.append(index)
                 continue
             if run:
-                text, offsets = "", []
-                for line in run:
-                    offsets.append(len(text))
-                    text += lines[line].strip() + " "
-                position, items = 0, []
-                for piece in SENTENCE.split(text):
-                    piece = piece.strip()
-                    if not piece:
-                        continue
-                    at = text.find(piece, position)
-                    position = at + len(piece)
-                    items.append((run[bisect.bisect_right(offsets, at) - 1] + 1, piece))
-                blocks.append(items)
+                found.append(run)
             run = []
+    return found
+
+
+def sentences(lines: list[str], groups: list[list[int]]) -> list[list[tuple[int, str]]]:
+    """산문 줄을 이어 문장으로 나눕니다. 산문 구간마다 (시작 줄 번호, 문장) 목록을 돌려줍니다."""
+    blocks = []
+    for run in prose_runs(lines, groups):
+        text, offsets = "", []
+        for line in run:
+            offsets.append(len(text))
+            text += lines[line].strip() + " "
+        position, items = 0, []
+        for piece in SENTENCE.split(text):
+            piece = piece.strip()
+            if not piece:
+                continue
+            at = text.find(piece, position)
+            position = at + len(piece)
+            items.append((run[bisect.bisect_right(offsets, at) - 1] + 1, piece))
+        blocks.append(items)
     return blocks
+
+
+def verse_like(lines: list[str], run: list[int]) -> bool:
+    """행이 짧아 시로 볼 수 있는 구간입니다. 접어 쓴 산문은 행이 더 깁니다."""
+    widths = sorted(len(re.sub(r"\s", "", lines[index])) for index in run)
+    return widths[len(widths) // 2] <= VERSE_LINE
+
+
+def volume(lines: list[str], groups: list[list[int]], blocks: list[list[tuple[int, str]]], verse: bool = False) -> int:
+    """점수의 분모가 되는 분량입니다. 산문은 문장 수, 제목·목록 줄은 한 줄에 하나로 셉니다.
+
+    한 문장을 여러 줄에 걸쳐 접어 쓴 산문은 줄이 아니라 문장으로 세야 분량이 부풀지 않습니다. 마침표가 하나도 없는
+    구간이나 행이 짧은 시(verse 갈래)는 줄이 곧 호흡 단위이므로 줄 수를 씁니다.
+    """
+    total = sum(1 for line in lines if line.strip() and NOT_PROSE.match(line))
+    for run, items in zip(prose_runs(lines, groups), blocks):
+        ended = any(TERMINAL.search(lines[index]) for index in run)
+        by_line = not ended or (verse and verse_like(lines, run))
+        total += max(len(items), len(run)) if by_line else len(items)
+    return total
 
 
 def runs(items: list[tuple[int, str]], key) -> list[list[tuple[int, str]]]:

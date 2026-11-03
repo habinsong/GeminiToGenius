@@ -1,0 +1,135 @@
+{
+  "_meta": {
+    "source": "https://github.com/Shinwoo-Park/katfishnet (katfish_dataset, 커밋 5e3dc89)",
+    "paper": "https://aclanthology.org/2025.acl-long.1030/",
+    "command": "python3 -I scripts/prose_calibration.py --dataset <katfish_dataset>",
+    "version": "3.3.0",
+    "note": "집계 수치만 담습니다. 원문은 복사하지 않았고 라이선스는 확인하지 못했습니다. 에세이는 초중고 학생 글, LLM은 2024년 모델입니다."
+  },
+  "essay": {
+    "register": "general",
+    "auc": {
+      "calibration": 0.961,
+      "holdout": 0.945
+    },
+    "grades": {
+      "human": {
+        "A": 165,
+        "B": 15,
+        "C": 1
+      },
+      "llm": {
+        "A": 64,
+        "B": 271,
+        "C": 236,
+        "D": 19
+      }
+    },
+    "pass": {
+      "human": {
+        "ge_90": 0.912,
+        "ge_75": 0.994,
+        "ge_60": 1.0
+      },
+      "llm": {
+        "ge_90": 0.108,
+        "ge_75": 0.568,
+        "ge_60": 0.968
+      }
+    },
+    "median_score": {
+      "gpt-4o-2024-05-13": 74,
+      "human": 100,
+      "llama3.1:70b": 85.0,
+      "qwen2:72b-instruct": 80,
+      "solar-1-mini-chat": 72.0
+    },
+    "texts": {
+      "human": 181,
+      "llm": 590
+    }
+  },
+  "abstract": {
+    "register": "academic",
+    "auc": {
+      "calibration": 0.84,
+      "holdout": 0.798
+    },
+    "grades": {
+      "human": {
+        "A": 96,
+        "B": 4
+      },
+      "llm": {
+        "A": 151,
+        "B": 98,
+        "C": 27,
+        "D": 2
+      }
+    },
+    "pass": {
+      "human": {
+        "ge_90": 0.96,
+        "ge_75": 1.0,
+        "ge_60": 1.0
+      },
+      "llm": {
+        "ge_90": 0.543,
+        "ge_75": 0.896,
+        "ge_60": 0.993
+      }
+    },
+    "median_score": {
+      "gpt-4o-2024-05-13": 92.0,
+      "human": 100.0,
+      "llama3.1:70b": 100,
+      "qwen2:72b-instruct": 85,
+      "solar-1-mini-chat": 85.0
+    },
+    "texts": {
+      "human": 100,
+      "llm": 278
+    }
+  },
+  "poetry": {
+    "register": "literary",
+    "auc": {
+      "calibration": 0.719,
+      "holdout": 0.669
+    },
+    "grades": {
+      "human": {
+        "A": 187,
+        "B": 1,
+        "C": 1
+      },
+      "llm": {
+        "A": 735,
+        "B": 21
+      }
+    },
+    "pass": {
+      "human": {
+        "ge_90": 0.989,
+        "ge_75": 0.995,
+        "ge_60": 1.0
+      },
+      "llm": {
+        "ge_90": 0.972,
+        "ge_75": 1.0,
+        "ge_60": 1.0
+      }
+    },
+    "median_score": {
+      "gpt-4o-2024-05-13": 100,
+      "human": 100,
+      "llama3.1:70b": 100,
+      "qwen2:72b-instruct": 94,
+      "solar-1-mini-chat": 100
+    },
+    "texts": {
+      "human": 189,
+      "llm": 756
+    }
+  }
+}

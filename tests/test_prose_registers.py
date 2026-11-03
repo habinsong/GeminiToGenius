@@ -9,6 +9,7 @@ import tempfile
 import unittest
 
 from gtg.prose import check, examine
+from gtg.prose_patterns import PATTERNS
 from gtg.prose_registers import REGISTERS, rules
 
 
@@ -31,10 +32,12 @@ class RegisterRuleTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp, self.assertRaises(ValueError):
             check(Path(temp), ["missing.md"], "poetry")
 
-    def test_academic_hedge_is_a_density_review_but_general_text_blocks_it(self):
+    def test_a_hedge_needs_more_repetition_to_be_flagged_in_academic_text(self):
         once = "이 결과는 표본 편향의 영향이라고 볼 수 있다."
-        self.assertIn("ko-hedged-copula", ids(once, severity="block"))
-        self.assertNotIn("ko-hedged-copula", ids(once, "academic"), "학술문의 완곡 한 번은 관례입니다.")
+        twice = " ".join([once] * 2)
+        self.assertNotIn("ko-hedged-copula", ids(once))
+        self.assertIn("ko-hedged-copula", ids(twice, severity="review"))
+        self.assertNotIn("ko-hedged-copula", ids(twice, "academic"), "학술문의 완곡 두 번은 관례입니다.")
         thrice = " ".join([once] * 3)
         self.assertIn("ko-hedged-copula", ids(thrice, "academic", "review"))
 
@@ -60,7 +63,7 @@ class RegisterRuleTests(unittest.TestCase):
         self.assertNotIn("literary-line-comma", ids(prose, "literary"), "긴 산문 줄은 시행으로 보지 않습니다.")
 
     def test_every_register_keeps_the_shared_rules_it_does_not_disable(self):
-        shared = {rule.id for rule in rules("general")[0]}
+        shared = {rule.id for rule in PATTERNS}
         for name, register in REGISTERS.items():
             with self.subTest(register=name):
                 chosen = {rule.id for rule in rules(name)[0]}
@@ -227,18 +230,18 @@ class CliTests(unittest.TestCase):
     def test_register_option_changes_the_exit_code_and_unknown_values_fail(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
-            (root / "paper.md").write_text("이 차이는 표본 크기 때문이라고 볼 수 있다.\n", encoding="utf-8")
+            (root / "story.md").write_text("형언할 수 없는 슬픔이 방 안을 채웠다.\n", encoding="utf-8")
 
             def run(*extra):
-                return subprocess.run([sys.executable, "-m", "gtg", "prose", "paper.md", "--workspace", str(root), *extra],
+                return subprocess.run([sys.executable, "-m", "gtg", "prose", "story.md", "--workspace", str(root), *extra],
                                       cwd=ROOT, capture_output=True, text=True,
                                       env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
 
             general = run()
-            academic = run("--register", "academic")
-            self.assertEqual(general.returncode, 1)
-            self.assertEqual(academic.returncode, 0)
-            self.assertEqual(json.loads(academic.stdout)["register"], "academic")
+            literary = run("--register", "literary")
+            self.assertEqual(general.returncode, 0, "표현을 포기하는 문장은 문학 갈래에서만 차단합니다.")
+            self.assertEqual(literary.returncode, 1)
+            self.assertEqual(json.loads(literary.stdout)["register"], "literary")
             unknown = run("--register", "poetry")
             self.assertEqual(unknown.returncode, 2)
             self.assertIn("poetry", unknown.stderr)

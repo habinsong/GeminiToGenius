@@ -1,7 +1,7 @@
 """문체 검사를 글 갈래에 맞춥니다. 갈래마다 기본 규칙을 끄거나 완화하고, 그 갈래에서만 문제가 되는 표현을 더합니다.
 
 학술문에서 '~라고 할 수 있다'는 관례적인 완곡이고, 구어에서 '맛있다, 이거.' 같은 도치는 자연스럽습니다.
-같은 표현이라도 갈래에 따라 판단이 달라지므로 규칙을 데이터로 나눠 둡니다. 근거는 docs/verification/3.2.0.md에 둡니다.
+같은 표현이라도 갈래에 따라 판단이 달라지므로 규칙을 데이터로 나눠 둡니다. 근거는 docs/verification/3.3.0.md에 둡니다.
 """
 
 from __future__ import annotations
@@ -18,7 +18,21 @@ class Register(NamedTuple):
     short_run: int | None  # 짧은 문장이 이만큼 이어지면 알립니다. None이면 보지 않습니다.
     monotone: bool
     formality: str | None  # consistent: 높임 등급 혼용, haera: 해라체 기대, conversational: 일상 어미 변주
+    unscored: frozenset = frozenset()  # 이 갈래에서는 알리기만 하고 점수에서 빼는 신호
+    verse: bool = False  # 줄이 호흡 단위인 시를 다루는 갈래입니다. 분량을 줄 수로 잽니다.
 
+
+# KatFish 에세이에서 LLM 글의 13~29%, 사람 글의 0~8%에 나온 표현입니다. 보정용 절반만 보고 골랐고, 확인용 절반에서는
+# 문장 첫머리 '이러한'을 쓴 사람 글이 1.1%에서 7.8%로 늘었습니다(3.3.0 검증 기록). 초록에서는 문장 첫머리 '이러한' 계열을
+# 쓴 글이 사람 12.0%, LLM 11.5%로 같았으므로 일반 갈래에만 둡니다.
+GENERAL = (
+    pattern("ko-this-is-open", "review", "document", 2, START + r"이는\s",
+            "'이는 ~'으로 앞 문장을 받아 여는 문장이 반복됩니다. 앞 문장과 한 문장으로 잇거나 '이 결과는'처럼 대상을 밝히세요."),
+    pattern("ko-demonstrative-open", "review", "document", 2, START + r"(?:이러한|이와\s?같은|이처럼)\s",
+            "'이러한 ~'으로 여는 문장이 반복됩니다. 가리키는 대상을 명사로 다시 쓰거나 앞 문장과 이으세요."),
+    pattern("ko-diverse", "review", "document", 2, r"다양한",
+            "'다양한'이 반복됩니다. 무엇이 몇 가지인지, 어떤 것인지 구체적으로 쓰세요."),
+)
 
 ACADEMIC = (
     pattern("academic-we", "review", "paragraph", 2, START + r"우리는\s",
@@ -28,7 +42,7 @@ ACADEMIC = (
             r"에\s?의해\s?(?:제안|개발|수행|작성|발견|보고|발표|설계|구축|제시|수집|측정|분석|실시|진행|고안|도입)"
             r"(?:되었|됐|된|되어|돼)",
             "사람이 한 일을 영어식 피동으로 썼습니다. '저자들이 제안한 방법'처럼 능동으로 쓰세요."),
-    # KatFish 초록에서 LLM 글의 약 20%에 나오고 사람 글에는 나오지 않았습니다(3.2.0 검증 기록).
+    # KatFish 초록에서 LLM 글의 34~36%, 사람 글의 0~2%에 나왔습니다(3.3.0 검증 기록).
     pattern("academic-this-paper", "review", "match", 1, START + r"이\s(?:논문|연구)(?:은|는|에서는|에서)\s",
             "영어 This paper를 옮긴 꼴입니다. 국문 논문은 '본 논문은'이라고 쓰거나 주어를 생략합니다."),
     pattern("academic-figure-label", "review", "match", 1, r"\b(?:Figure|Fig\.|Table)\s?\d",
@@ -41,13 +55,15 @@ ACADEMIC = (
 
 EVERYDAY = (
     pattern("everyday-empathy", "review", "document", 2,
-            r"(?:정말|많이)\s?힘드셨겠|충분히\s?이해(?:합니다|해요|가\s?돼요|됩니다)|그런\s?마음이\s?(?:드는|드시는)\s?(?:게|것이|것도)\s?당연"
-            r"|마음이\s?(?:아프|무거우)시겠|공감(?:합니다|해요|이\s?돼요)",
+            r"(?:정말|많이|진짜)\s?힘(?:드셨|들었)겠|충분히\s?이해(?:합니다|해요|가\s?돼요|됩니다)"
+            r"|그런\s?마음이\s?(?:드는|드시는)\s?(?:게|것이|것도|건)\s?당연|마음이\s?(?:아프|무거우)시겠|공감(?:합니다|해요|이\s?돼요)"
+            r"|충분히\s?잘\s?하고\s?있|(?:너무|많이)\s?자책하지\s?(?:마|말)",
             "공감 상투구가 반복됩니다. 상대가 실제로 한 말을 받아서 답하세요."),
     pattern("everyday-object-honorific", "review", "match", 1, r"(?:나오|품절이)(?:셨|십니다|세요|실게요)|말씀이\s?계시",
             "사물이나 상황을 높였습니다. '나왔습니다', '품절입니다', '말씀이 있겠습니다'처럼 쓰세요."),
-    pattern("everyday-stiff-notice", "review", "match", 1, r"참고하시기\s?바랍니다|양해\s?부탁드립니다|추천\s?드립니다",
-            "안내문 말투입니다. 일상 글에서는 '~해 보세요', '~하면 돼요'처럼 쓰세요."),
+    pattern("everyday-stiff-notice", "review", "match", 1,
+            r"참고하시기\s?바랍니다|양해\s?부탁드립니다|추천\s?드립니다|(?:안내|전달|말씀)드리도록\s?하겠|안내드립니다",
+            "안내문 말투입니다. 일상 글에서는 '~해 보세요', '~하면 돼요', '보내 드릴게요'처럼 쓰세요."),
     pattern("everyday-exclaim", "review", "paragraph", 4, r"!",
             "느낌표가 몰렸습니다. 정말 놀랄 때만 쓰세요."),
 )
@@ -78,12 +94,15 @@ LITERARY = (
 )
 
 REGISTERS = {
-    "general": Register(frozenset(), {}, (), 4, True, "consistent"),
+    "general": Register(frozenset(), {}, GENERAL, 4, True, "consistent"),
     "academic": Register(frozenset(), {"ko-hedged-copula": ("review", "document", 3)}, ACADEMIC, 4, True, "haera"),
-    # 구어에서는 오른쪽으로 미룬 도치와 짧은 문장이 자연스럽습니다.
-    "everyday": Register(frozenset({"ko-inversion"}), {}, EVERYDAY, None, False, "conversational"),
-    # 문학에서는 의도한 단문과 한두 번의 도치를 허용하고, 서술과 대사의 높임 차이는 따지지 않습니다.
-    "literary": Register(frozenset(), {"ko-inversion": ("review", "document", 2)}, LITERARY, 6, True, None),
+    # 구어에서는 오른쪽으로 미룬 도치와 짧은 문장이 자연스럽고, 같은 말로 이어 시작하는 일도 흔합니다.
+    "everyday": Register(frozenset({"ko-inversion"}), {}, EVERYDAY, None, False, "conversational",
+                         frozenset({"rhythm-repeated-opening"})),
+    # 문학에서는 의도한 단문과 반복 첫머리(수미상관·후렴)를 허용하고 한두 번의 도치도 둡니다. KatFish 시에서는
+    # 짧은 문장 연쇄가 사람 글에 더 많았습니다(12% 대 5%). 서술과 대사의 높임 차이는 따지지 않습니다.
+    "literary": Register(frozenset(), {"ko-inversion": ("review", "document", 2)}, LITERARY, 6, True, None,
+                         frozenset({"rhythm-repeated-opening", "rhythm-choppy"}), True),
 }
 
 

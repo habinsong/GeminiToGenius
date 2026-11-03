@@ -8,7 +8,7 @@ import sys
 import tempfile
 import unittest
 
-from gtg.prose import check, examine
+from gtg.prose import check, examine, paragraphs
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,12 +19,27 @@ def ids(text, severity=None):
     return [f["id"] for f in found if severity in (None, f["severity"])]
 
 
+class ParagraphTests(unittest.TestCase):
+    def test_list_items_and_table_rows_are_separate_paragraphs(self):
+        lines = ["첫 문단 한 줄", "이어지는 줄", "- 항목 하나", "  이어 쓴 줄", "- 항목 둘", "1. 번호 항목", "| a | b |", "| c | d |", "",
+                 "다음 문단"]
+        self.assertEqual(paragraphs(lines), [[0, 1], [2, 3], [4], [5], [6], [7], [9]],
+                         "항목에 이어 쓴 줄은 그 항목에 붙고, 항목마다 문단이 갈립니다.")
+
+    def test_antithesis_in_unrelated_bullets_is_not_a_chain(self):
+        """변경 기록의 서로 다른 불릿에 든 '아니라' 두 개를 한 문단의 대구 연쇄로 차단하면 오탐입니다."""
+        bullets = "- 이것은 통과가 아니라 실패입니다.\n- 그 값은 설정이 아니라 기본값입니다.\n"
+        self.assertNotIn("ko-antithesis-chain", ids(bullets))
+        self.assertIn("ko-antithesis", ids(bullets), "문서 전체로는 반복으로 알립니다.")
+        running = "이것은 통과가 아니라 실패입니다. 그 값은 설정이 아니라 기본값입니다.\n"
+        self.assertIn("ko-antithesis-chain", ids(running, "block"), "한 문단에서 이어지면 여전히 차단합니다.")
+
+
 class PhraseTests(unittest.TestCase):
     def test_korean_stock_phrases_block_and_their_lookalikes_pass(self):
         cases = {
             "결론적으로, 배포가 끝났습니다.": "ko-conclusion-signpost",
             "이 결과는 시사하는 바가 큽니다.": "ko-significance",
-            "효과가 있다고 볼 수 있습니다.": "ko-hedged-copula",
             "이번 글에서는 설치 방법을 알아보겠습니다.": "ko-chatbot",
             "생성되어진 파일을 지웁니다.": "ko-double-passive",
             "개발의 새로운 지평을 엽니다.": "ko-hype-phrase",
@@ -37,6 +52,15 @@ class PhraseTests(unittest.TestCase):
         self.assertEqual(ids(clean, "block"), [])
         self.assertNotIn("ko-overclaim", ids("패키지 무결성을 검사합니다."))
         self.assertIn("ko-overclaim", ids("무결점 코드입니다."))
+
+    def test_a_hedge_is_not_a_stock_phrase_so_it_is_reviewed_only_when_repeated(self):
+        """3.2.0까지 차단이던 '~라고 볼 수 있다'는 사람 글(5.5%)과 LLM 글(7.1%)이 갈리지 않았고, 지우면 단정의 강도가
+        달라지므로 '지워도 뜻이 줄지 않는' 차단 기준에 맞지 않습니다."""
+        once = "효과가 있다고 볼 수 있습니다."
+        self.assertEqual(ids(once), [], "한 번은 사람도 쓰는 완곡입니다.")
+        twice = once + " 비용도 줄었다고 볼 수 있습니다."
+        self.assertIn("ko-hedged-copula", ids(twice, "review"))
+        self.assertNotIn("ko-hedged-copula", ids(twice, "block"))
 
     def test_english_stock_phrases_block_and_ordinary_words_pass(self):
         for text, rule in {

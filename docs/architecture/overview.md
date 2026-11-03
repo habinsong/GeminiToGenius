@@ -18,8 +18,10 @@ gtg/hooks.py ──▶ gtg/sessions.py ──▶ gtg/store.py  (SQLite + 파일 
    │
    ├──▶ gtg/structure.py ──▶ gtg/changes.py (Git 변경 범위), gtg/code_shape.py (AST 측정)
    └──▶ gtg/prose.py ──▶ gtg/prose_registers.py (글 갈래별 규칙) ──▶ gtg/prose_patterns.py (표현 목록)
-                     ├─▶ gtg/prose_rhythm.py (문장 리듬과 높임)
-                     └─▶ gtg/prose_score.py (신호 밀도를 점수로)
+                     ├─▶ gtg/prose_rhythm.py (문장 리듬과 높임, 분량)
+                     ├─▶ gtg/prose_score.py (신호 밀도를 점수로)
+                     ├─▶ gtg/prose_fidelity.py (윤문 전후 비교)
+                     └─▶ gtg/prose_input.py (파일·표준 입력 읽기)
 ```
 
 ## 경계를 나눈 이유
@@ -31,6 +33,8 @@ gtg/hooks.py ──▶ gtg/sessions.py ──▶ gtg/store.py  (SQLite + 파일 
 내부 로직은 모델 ID로 갈라지지 않습니다. 호스트에 설정된 모델을 그대로 쓰고, 확인하지 않은 모델의 사고 수준이나 컨텍스트 한도를 짐작해 넣지 않습니다. 3.1에서 더한 구조·문체 검사도 어떤 모델이 쓴 코드와 글인지와 상관없이 같은 기준을 적용합니다.
 
 3.2에서는 문체 검사를 글 갈래에 따라 나눴습니다. 같은 `~라고 볼 수 있다`도 논문에서는 관례이고 기술 문서에서는 흐린 문장이라, 갈래별 차이를 코드 분기 대신 [`gtg/prose_registers.py`](../../gtg/prose_registers.py)의 데이터로 둡니다. 문장 길이와 높임 등급 측정은 [`gtg/prose_rhythm.py`](../../gtg/prose_rhythm.py)로 옮겼고, `prose.py`에는 문서를 읽고 결과를 모으는 일만 남겼습니다. 점수 계산은 [`gtg/prose_score.py`](../../gtg/prose_score.py)가 따로 맡아서, 감점 가중치를 바꿔도 규칙 목록과 측정 코드는 그대로입니다.
+
+3.3에서는 윤문 전후 비교를 [`gtg/prose_fidelity.py`](../../gtg/prose_fidelity.py)로 따로 뒀습니다. 문체 규칙은 글 하나를 보지만 충실도 검사는 원문과 윤문본 두 글을 견주므로 입력과 판정 기준이 다르고, 결과도 문체 점수에 섞지 않고 차단·검토로만 셉니다. 같은 3.3에서 문서 전체·문단 안 횟수 기준을 글 분량에 비례하게 바꿨는데, 비례 기준은 `prose.py`가 갖고 규칙 목록에는 넣지 않았습니다. 규칙은 기준 분량에서 잰 값 그대로 두고 분량 보정은 한 곳에서만 하려는 것입니다. 글을 읽는 일도 [`gtg/prose_input.py`](../../gtg/prose_input.py)로 떼어, 표준 입력이 생긴 뒤에도 `prose.py`에는 신호를 찾고 결과를 모으는 일만 남깁니다.
 
 ## 모듈별 책임
 
@@ -58,11 +62,13 @@ gtg/hooks.py ──▶ gtg/sessions.py ──▶ gtg/store.py  (SQLite + 파일 
 | `gtg/changes.py` | Git 기준 리비전과 작업 트리의 변경 파일·추가된 줄 조회 |
 | `gtg/code_shape.py` | Python 소스 하나의 정의·복잡도·응집도·빈 본문 측정. IO 없음 |
 | `gtg/structure.py` | 변경 코드에 구조 기준을 적용한 차단·검토 신호 |
-| `gtg/prose.py` | 문서를 읽어 표현과 리듬 신호를 줄 번호와 함께 모으기 |
+| `gtg/prose.py` | 표현과 리듬 신호를 줄 번호와 함께 모아 문서별 결과로 취합하기 |
+| `gtg/prose_input.py` | 검사할 글을 파일이나 표준 입력에서 읽고 읽지 못한 이유를 상태로 적기 |
 | `gtg/prose_patterns.py` | 문체 검사가 찾는 공통 표현 목록. 로직 없음 |
 | `gtg/prose_registers.py` | 학술·일상·문학 갈래별로 규칙을 끄고 완화하고 더하기 |
-| `gtg/prose_rhythm.py` | 문장 길이·어미·첫머리·쉼표·높임 등급 측정 |
+| `gtg/prose_rhythm.py` | 문장 길이·어미·첫머리·쉼표·높임 등급과 글 분량 측정 |
 | `gtg/prose_score.py` | 찾은 신호의 밀도를 0~100점과 A~D 등급으로 환산 |
+| `gtg/prose_fidelity.py` | 윤문 전후를 견줘 수치·인용·URL·코드가 남았는지와 바뀐 분량 재기 |
 | `gtg/package.py` | 호스트별 패키지 생성과 원문·훅 검증 |
 | `gtg/install.py` | 호스트 감지·설치·검사·제거·복구 |
 | `gtg/install_journal.py` | 파일 이동의 사전 기록과 되돌리기 |
