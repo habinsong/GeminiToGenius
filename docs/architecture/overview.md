@@ -17,7 +17,9 @@ gtg/hooks.py ──▶ gtg/sessions.py ──▶ gtg/store.py  (SQLite + 파일 
    │                      └─ gtg/certificate.py 증명서 생성과 재실행
    │
    ├──▶ gtg/structure.py ──▶ gtg/changes.py (Git 변경 범위), gtg/code_shape.py (AST 측정)
-   └──▶ gtg/prose.py ──▶ gtg/prose_patterns.py (표현 목록)
+   └──▶ gtg/prose.py ──▶ gtg/prose_registers.py (글 갈래별 규칙) ──▶ gtg/prose_patterns.py (표현 목록)
+                     ├─▶ gtg/prose_rhythm.py (문장 리듬과 높임)
+                     └─▶ gtg/prose_score.py (신호 밀도를 점수로)
 ```
 
 ## 경계를 나눈 이유
@@ -27,6 +29,8 @@ gtg/hooks.py ──▶ gtg/sessions.py ──▶ gtg/store.py  (SQLite + 파일 
 평가·채점 코드는 제품 코드를 import하지 않고 표준 라이브러리만 씁니다. 제품 코드를 고쳐도 채점 기준이 따라 바뀌지 않게 하려는 것이고, 이 분리는 단위 시험으로 지킵니다.
 
 내부 로직은 모델 ID로 갈라지지 않습니다. 호스트에 설정된 모델을 그대로 쓰고, 확인하지 않은 모델의 사고 수준이나 컨텍스트 한도를 짐작해 넣지 않습니다. 3.1에서 더한 구조·문체 검사도 어떤 모델이 쓴 코드와 글인지와 상관없이 같은 기준을 적용합니다.
+
+3.2에서는 문체 검사를 글 갈래에 따라 나눴습니다. 같은 `~라고 볼 수 있다`도 논문에서는 관례이고 기술 문서에서는 흐린 문장이라, 갈래별 차이를 코드 분기 대신 [`gtg/prose_registers.py`](../../gtg/prose_registers.py)의 데이터로 둡니다. 문장 길이와 높임 등급 측정은 [`gtg/prose_rhythm.py`](../../gtg/prose_rhythm.py)로 옮겼고, `prose.py`에는 문서를 읽고 결과를 모으는 일만 남겼습니다. 점수 계산은 [`gtg/prose_score.py`](../../gtg/prose_score.py)가 따로 맡아서, 감점 가중치를 바꿔도 규칙 목록과 측정 코드는 그대로입니다.
 
 ## 모듈별 책임
 
@@ -54,8 +58,11 @@ gtg/hooks.py ──▶ gtg/sessions.py ──▶ gtg/store.py  (SQLite + 파일 
 | `gtg/changes.py` | Git 기준 리비전과 작업 트리의 변경 파일·추가된 줄 조회 |
 | `gtg/code_shape.py` | Python 소스 하나의 정의·복잡도·응집도·빈 본문 측정. IO 없음 |
 | `gtg/structure.py` | 변경 코드에 구조 기준을 적용한 차단·검토 신호 |
-| `gtg/prose.py` | 문서의 상투구·과장·리듬 신호를 줄 번호와 함께 찾기 |
-| `gtg/prose_patterns.py` | 문체 검사가 찾는 표현 목록. 로직 없음 |
+| `gtg/prose.py` | 문서를 읽어 표현과 리듬 신호를 줄 번호와 함께 모으기 |
+| `gtg/prose_patterns.py` | 문체 검사가 찾는 공통 표현 목록. 로직 없음 |
+| `gtg/prose_registers.py` | 학술·일상·문학 갈래별로 규칙을 끄고 완화하고 더하기 |
+| `gtg/prose_rhythm.py` | 문장 길이·어미·첫머리·쉼표·높임 등급 측정 |
+| `gtg/prose_score.py` | 찾은 신호의 밀도를 0~100점과 A~D 등급으로 환산 |
 | `gtg/package.py` | 호스트별 패키지 생성과 원문·훅 검증 |
 | `gtg/install.py` | 호스트 감지·설치·검사·제거·복구 |
 | `gtg/install_journal.py` | 파일 이동의 사전 기록과 되돌리기 |

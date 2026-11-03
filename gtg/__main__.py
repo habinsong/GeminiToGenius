@@ -19,6 +19,7 @@ from .environment import observe as observe_environment
 from .testing import run_unittest
 from .structure import review as review_structure
 from .prose import check as check_prose
+from .prose_registers import REGISTERS
 from .lessons import recent as recent_lessons, record as record_lesson
 from .platforms import PLATFORMS
 
@@ -54,9 +55,13 @@ def build_parser() -> argparse.ArgumentParser:
     structure.add_argument("--base", help="비교할 Git 리비전입니다. 기본 HEAD, none이면 지정한 파일 전체를 새 코드로 봅니다.")
     structure.add_argument("--max-lines", type=int, default=400)
     structure.add_argument("--max-methods", type=int, default=20)
-    prose = commands.add_parser("prose", help="문서의 상투구·과장·번역투·단조로운 리듬을 줄 번호와 함께 찾습니다.")
+    prose = commands.add_parser("prose", help="문서의 상투구·과장·번역투·대구·도치·단조로운 리듬을 줄 번호와 함께 찾습니다.")
     prose.add_argument("paths", nargs="+")
     prose.add_argument("--workspace", type=Path)
+    prose.add_argument("--register", choices=sorted(REGISTERS), default="general",
+                       help="글 갈래입니다. academic(논문·보고서), everyday(대화·메시지·블로그), literary(소설·수필·시)에 맞춰 규칙을 바꿉니다.")
+    prose.add_argument("--min-score", type=int,
+                       help="문서마다 이 점수(0~100) 이상이어야 통과합니다. 점수는 찾은 신호의 밀도이며 AI 판별 확률이 아닙니다.")
     lesson = commands.add_parser("lesson", help="검증에서 드러난 실수를 근거와 함께 교훈으로 남깁니다.")
     lesson.add_argument("--workspace", type=Path)
     lesson.add_argument("--text", required=True)
@@ -139,7 +144,8 @@ def stateless(args) -> int | None:
     if args.command in {"structure", "prose"}:
         result = (review_structure(args.workspace, args.base, args.paths, max_lines=args.max_lines,
                                    max_methods=args.max_methods)
-                  if args.command == "structure" else check_prose(args.workspace, args.paths))
+                  if args.command == "structure"
+                  else check_prose(args.workspace, args.paths, args.register, args.min_score))
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return int(not result["passed"])
     if args.command == "lesson":
