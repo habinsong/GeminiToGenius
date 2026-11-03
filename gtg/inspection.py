@@ -64,6 +64,28 @@ def signature(info: os.stat_result) -> tuple:
     return info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns, info.st_ctime_ns
 
 
+def workspace_path(root: Path, value: str) -> Path:
+    """절대 경로도 받되, 작업공간 안의 비민감 상대 경로로 바꿉니다."""
+    path = Path(value)
+    if path.is_absolute():
+        if not path.is_relative_to(root):
+            raise ValueError("작업공간 밖의 경로는 읽지 않습니다.")
+        path = path.relative_to(root)
+    return relative(path.as_posix())
+
+
+def read_text(root: Path, path: Path, limit: int) -> str | None:
+    """파일 전체를 UTF-8로 읽습니다. 바이너리·상한 초과·다른 인코딩이면 None입니다."""
+    with open_regular(root, path) as stream:
+        data = stream.read(limit + 1)
+    if len(data) > limit or b"\0" in data:
+        return None
+    try:
+        return data.decode("utf-8")
+    except UnicodeDecodeError:
+        return None
+
+
 def read_range(stream, start: int, end: int | None, budget: int) -> dict:
     before = os.fstat(stream.fileno())
     line, scanned, chunks = 1, 0, []

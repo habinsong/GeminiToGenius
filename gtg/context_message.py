@@ -4,9 +4,10 @@ import json
 from pathlib import Path
 
 
-REVIEW_NOTICE = ("비판적으로 검토하세요. 근거 없는 긍정·추정의 사실화·범위 확대를 피하고, "
-                 "검사 통과와 주장 사실성·실사용 조건 충족을 구분하세요. "
-                 "코드 변경은 실제 빌드·PRD 필수 시험·참조 선언을 확인하세요. ")
+REVIEW_NOTICE = ("주장마다 실제 근거(실행한 명령과 결과, 다시 연 파일, 직접 연 원문 URL)를 붙이고 "
+                 "확인하지 못한 것은 확인하지 못했다고 쓰세요. 버전·API·오류 메시지·외부 사실은 웹에서 찾은 뒤 원문을 열어 확인하세요. "
+                 "요청에 없는 추상화·래퍼·옵션을 만들지 말고 큰 파일과 클래스에 기능을 쌓지 마세요. "
+                 "검사 통과와 사용자 목표 달성은 따로 판단하세요. ")
 
 
 def unfinished_context(platform: str, session: str, roots: tuple[Path, ...], reports: list, candidates: list) -> str:

@@ -17,6 +17,9 @@ from .inspection import inspect
 from .discovery import discover
 from .environment import observe as observe_environment
 from .testing import run_unittest
+from .structure import review as review_structure
+from .prose import check as check_prose
+from .lessons import recent as recent_lessons, record as record_lesson
 from .platforms import PLATFORMS
 
 
@@ -45,6 +48,22 @@ def build_parser() -> argparse.ArgumentParser:
     unittest.add_argument("--start-directory", default=".")
     unittest.add_argument("--pattern", default="test*.py")
     unittest.add_argument("--require", action="append", default=[], help="성공해야 하는 실제 시험 ID입니다. 반복 지정할 수 있습니다.")
+    structure = commands.add_parser("structure", help="변경한 코드의 빈 구현·미완성 표식·대형 파일 누적·거대 클래스·헛 추상화를 찾습니다.")
+    structure.add_argument("paths", nargs="*", help="검사 범위입니다. 생략하면 기준과 다른 모든 코드 파일입니다.")
+    structure.add_argument("--workspace", type=Path)
+    structure.add_argument("--base", help="비교할 Git 리비전입니다. 기본 HEAD, none이면 지정한 파일 전체를 새 코드로 봅니다.")
+    structure.add_argument("--max-lines", type=int, default=400)
+    structure.add_argument("--max-methods", type=int, default=20)
+    prose = commands.add_parser("prose", help="문서의 상투구·과장·번역투·단조로운 리듬을 줄 번호와 함께 찾습니다.")
+    prose.add_argument("paths", nargs="+")
+    prose.add_argument("--workspace", type=Path)
+    lesson = commands.add_parser("lesson", help="검증에서 드러난 실수를 근거와 함께 교훈으로 남깁니다.")
+    lesson.add_argument("--workspace", type=Path)
+    lesson.add_argument("--text", required=True)
+    lesson.add_argument("--evidence", action="append", default=[], help="작업공간 파일(path 또는 path:줄)이나 원문 URL입니다.")
+    lessons = commands.add_parser("lessons", help="이 작업공간에 남은 교훈을 최근 것부터 봅니다.")
+    lessons.add_argument("--workspace", type=Path)
+    lessons.add_argument("--limit", type=int, default=10)
     inspection = commands.add_parser("inspect", help="여러 텍스트 파일을 읽고 범위·잘림·해시를 반환합니다.")
     inspection.add_argument("paths", nargs="+")
     inspection.add_argument("--workspace", type=Path)
@@ -116,6 +135,21 @@ def stateless(args) -> int | None:
     if args.command == "inspect":
         result = inspect(args.workspace, args.paths, args.max_bytes, args.start_line, args.end_line)
         print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+    if args.command in {"structure", "prose"}:
+        result = (review_structure(args.workspace, args.base, args.paths, max_lines=args.max_lines,
+                                   max_methods=args.max_methods)
+                  if args.command == "structure" else check_prose(args.workspace, args.paths))
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return int(not result["passed"])
+    if args.command == "lesson":
+        print(json.dumps(record_lesson(args.workspace, args.text, args.evidence), ensure_ascii=False, indent=2))
+        return 0
+    if args.command == "lessons":
+        if not 1 <= args.limit <= 100:
+            raise ValueError("limit은 1 이상 100 이하여야 합니다.")
+        print(json.dumps({"lessons": recent_lessons(args.workspace.resolve(strict=True), args.limit)},
+                         ensure_ascii=False, indent=2))
         return 0
     if args.command == "replay":
         # 상태 DB를 읽지 않습니다. 증명서와 현재 파일만으로 다시 실행합니다.

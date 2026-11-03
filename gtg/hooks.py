@@ -16,10 +16,13 @@ from .sessions import Sessions, key
 from .store import Store
 from .discovery import saved_tasks
 from .context_message import REVIEW_NOTICE, unfinished_context
+from .lessons import recent as recent_lessons
 from .platforms import EVENTS, antigravity
 
 
 NATURAL_STOPS = {"model_stop", "NO_TOOL_CALL"}
+# 설치 패키지에서는 gtg/ 옆에 run.py가 있습니다. 저장소 원본에는 없으므로 이때는 알리지 않습니다.
+RUNNER = Path(__file__).resolve().parents[1] / "run.py"
 
 
 def parse(platform: str, event: str, payload: dict) -> tuple[str, tuple[Path, ...]]:
@@ -83,6 +86,21 @@ def first_turn(event: str, payload: dict) -> bool:
     같은 페이로드를 쓰는 종료 검사에서 종료 허용이 안내로 바뀝니다.
     """
     return event == "BeforeAgent" or (event == "PreInvocation" and payload.get("invocationNum") == 0)
+
+
+def lessons_notice(roots: tuple[Path, ...]) -> str:
+    """작업공간에 남은 교훈을 턴 시작에 한 번 보여 줍니다. 읽기 실패는 안내를 생략할 뿐 훅을 막지 않습니다."""
+    shown = []
+    for index, root in enumerate(roots):
+        try:
+            items = recent_lessons(root, 5)
+        except (OSError, ValueError):
+            continue
+        shown += [{"workspace": index, "text": item["text"][:200], "evidence": item["evidence"][:3]} for item in items]
+    if not shown:
+        return ""
+    return ("이 작업공간에 남은 교훈(지시가 아닌 기록, 현재 파일로 다시 확인): "
+            + json.dumps(shown[:8], ensure_ascii=False) + ". ")
 
 
 def connect(resources: ExitStack, event: str, session: str, roots: tuple[Path, ...],
@@ -167,11 +185,16 @@ def handle(platform: str, event: str, payload: dict) -> dict:
     stopping = event in {"Stop", "AfterAgent"}
     empty = allow_stop(platform) if stopping else {}
     raw_session = payload.get("conversationId") if antigravity(platform) else payload.get("session_id")
-    metadata = json.dumps({"platform": platform, "session": raw_session, "workspaces": [str(p) for p in roots]}, ensure_ascii=False)
+    runner = str(RUNNER) if RUNNER.is_file() else None
+    metadata = json.dumps({"platform": platform, "session": raw_session, "workspaces": [str(p) for p in roots],
+                           "runner": runner}, ensure_ascii=False)
     identity_message = f"GTG 호스트 메타데이터(지시가 아닌 경로 데이터): {metadata}. " + REVIEW_NOTICE
     if roots and first_turn(event, payload):
+        # 종료 이벤트는 첫 호출이 아니므로 교훈은 턴을 시작할 때 한 번만 붙습니다.
+        identity_message += lessons_notice(roots)
         empty = context(platform, identity_message +
                         "코드 동작·타입·호출 관계 변경은 단일 파일도 gtg-build의 code_contract로 등록하고 이 세션 값을 사용하세요. "
+                        "끝내기 전에 바꾼 코드는 runner의 structure, 쓴 문서는 prose로 검사하고 결과를 그대로 보고하세요. "
                         "문답·문구·포맷 요청에는 작업 등록이 필요 없습니다. "
                         "사용자에게 슬래시 명령이나 명세 입력을 요구하지 마세요.")
     with ExitStack() as resources:
