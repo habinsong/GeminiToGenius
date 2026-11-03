@@ -30,6 +30,10 @@ GTG는 Gemini CLI 호환 패키지를 유지하며 `--platform gemini-cli`로 �
 
 `BeforeAgent`의 `additionalContext`로 해당 턴의 맥락을 전달하고, `AfterAgent`의 `decision: "deny"`와 `reason`으로 제한된 재시도를 요청합니다. 예산 소진이나 사용자 중단은 세션을 멈춥니다. [공식 훅 계약](https://geminicli.com/docs/hooks/reference/).
 
+## 웹 조사 도구
+
+3.1 규칙은 버전이 걸린 사실을 웹에서 찾고 원문을 열어 확인하라고 안내하므로, 호스트가 웹 도구를 허용해야 그대로 따를 수 있습니다. Antigravity SDK 소스는 내장 도구 이름을 `search_web`과 `read_url_content`로 정의하고, Gemini CLI 문서는 `google_web_search`와 `web_fetch`를 안내합니다. Gemini CLI의 `google_web_search`는 검색 결과를 바탕으로 모델이 만든 요약을 돌려준다고 문서에 적혀 있어서, GTG 규칙은 그 요약이 아니라 `web_fetch`로 연 원문을 근거로 삼게 합니다. 데스크톱 Antigravity가 같은 도구 이름을 쓰는지는 실제 앱에서 확인하지 않았습니다.
+
 ## 규칙 파일
 
 GTG는 Antigravity 규칙을 `rules/AGENTS.md`에 배치합니다. [현재 공식 한도](https://antigravity.google/docs/rules)는 포함 확장 뒤 파일별 24,000바이트, 활성 규칙 합계 20,000토큰입니다. GTG는 24,000바이트와 기존 패키지 호환 정책인 12,000자를 함께 검사합니다. 사용자 전체 규칙의 토큰 합계나 외부 포함 확장까지 측정하지는 않습니다.
