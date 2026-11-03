@@ -148,7 +148,10 @@ class RuntimeTests(unittest.TestCase):
             stale.unlink()
         with self.store.connection:
             self.store.connection.execute("UPDATE runs SET owner_pid = 1 WHERE finished IS NULL")
-        self.assertEqual(self.store.recover(task), 1)
+        # 일반 사용자에게 PID 1은 권한 거부(EPERM)를 돌려주는 다른 사용자의 프로세스입니다. root로 시험하면
+        # 신호가 성공해 전제가 사라지므로, 의도한 권한 거부를 직접 재현합니다.
+        with patch("gtg.store.os.kill", side_effect=PermissionError):
+            self.assertEqual(self.store.recover(task), 1)
 
     def test_fixed_check_spec_cannot_be_replaced_by_caller(self):
         task = self.start()
