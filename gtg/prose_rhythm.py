@@ -194,6 +194,28 @@ def formality(path: str, blocks: list[list[tuple[int, str]]], mode: str | None) 
     return found
 
 
+def uniform_paragraphs(path: str, blocks: list[list[tuple[int, str]]], register: Register) -> list[dict]:
+    """문단별 문장 수가 지나치게 균일한 기계적 패턴을 찾습니다."""
+    valid_blocks = [items for items in blocks if items]
+    if not (register.monotone and not register.verse and len(valid_blocks) >= 4 and sum(len(b) for b in valid_blocks) >= 10):
+        return []
+    p_counts = [len(b) for b in valid_blocks]
+    if not (min(p_counts) >= 2 and max(p_counts) <= 6):
+        return []
+    p_mean = statistics.mean(p_counts)
+    p_var = statistics.pstdev(p_counts) / p_mean if p_mean > 0 else 0
+    if p_var >= 0.50:
+        return []
+    first_line = valid_blocks[0][0][0]
+    return [finding(
+        "rhythm-uniform-paragraphs", "review", path, first_line, "",
+        "모든 문단이 2~6문장 안팎으로 기계적인 균형을 이루고 있습니다. 강조할 문장은 1문장 단문으로 독립시키고, 핵심 설명은 더 길게 호흡을 늘려 문단 길이의 강약을 만드세요. "
+        "/ Paragraph lengths are mechanically uniform (2-6 sentences each). Introduce dynamic pacing with single-sentence turns or deeper narrative paragraphs.",
+        paragraphs=len(valid_blocks), sentences=sum(p_counts), variation=round(p_var, 3),
+        min_sentences=min(p_counts), max_sentences=max(p_counts)
+    )]
+
+
 def rhythm(path: str, blocks: list[list[tuple[int, str]]], register: Register) -> list[dict]:
     found, measured, commas = [], {"ko": [], "en": []}, []
     for items in blocks:
@@ -229,6 +251,7 @@ def rhythm(path: str, blocks: list[list[tuple[int, str]]], register: Register) -
                                  "문장 길이가 고르고 긴 문장이 없습니다. 짧은 문장과 이어진 긴 문장을 섞으세요. "
                                  "/ Sentence lengths are uniform; vary them.",
                                  sentences=len(values), variation=round(variation, 3), longest=max(values)))
+    found += uniform_paragraphs(path, blocks, register)
     if len(commas) >= COMMA_SENTENCES and sum(commas) / len(commas) >= COMMA_SHARE:
         found.append(finding("rhythm-comma-heavy", "review", path, first, "",
                              "쉼표가 든 문장이 절반을 넘습니다. 연결어미 뒤나 짧은 절 사이의 쉼표는 빼도 읽힙니다.",

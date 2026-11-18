@@ -74,6 +74,25 @@ class PhraseTests(unittest.TestCase):
                 self.assertIn(rule, ids(text, "block"))
         self.assertEqual(ids("We deliver the conclusion of the test. The note is important.", "block"), [])
 
+    def test_list_of_three_is_flagged_when_repeated_in_document(self):
+        two = ("We need film stock, light source and scanner for setup. "
+               "Also keep installers, screenshots and docs ready.")
+        self.assertNotIn("en-list-of-three", ids(two))
+        three = two + " Then you can organize rolls, develop and print."
+        self.assertIn("en-list-of-three", ids(three, "review"))
+
+    def test_korean_list_of_three_is_flagged_when_repeated_in_document(self):
+        two = "설정 파일, 스크린샷, 문서를 정리합니다. 필름 스톡, 광원, 스캐너를 준비합니다."
+        self.assertNotIn("ko-list-of-three", ids(two))
+        three = two + " 롤 정리, 현상, 인화를 한곳에서 마칩니다."
+        self.assertIn("ko-list-of-three", ids(three, "review"))
+
+    def test_korean_list_of_three_does_not_flag_two_items(self):
+        two_items = ("명령이나 스킬 이름, 정리된 명세를 요구하지 말고 본문부터 봅니다. "
+                     "코드와 소요 시간, 검사 대상 파일의 해시를 기록합니다. "
+                     "작업을 먼저 보고, 사용자가 어디서 막히는지 구체적으로 짚습니다.")
+        self.assertNotIn("ko-list-of-three", ids(two_items), "쉼표 하나짜리 2항 나열은 3항 나열로 오탐하지 않아야 합니다.")
+
     def test_common_korean_connectors_are_flagged_only_when_they_pile_up(self):
         two = "데이터를 통해 확인합니다. 로그에 대해 설명합니다."
         three = two + " 설정을 통해 바꿉니다."
@@ -91,10 +110,14 @@ class PhraseTests(unittest.TestCase):
         self.assertIn("format-bold", ids("**하나** **둘** **셋** **넷** 굵게 씁니다."))
         self.assertNotIn("format-bold", ids("**하나** **둘** 굵게 씁니다."))
         self.assertIn("format-emoji-heading", ids("## 🚀 시작하기\n\n본문입니다."))
-        body = "\n\n".join(f"문단 {i} — 덧붙인 말입니다." for i in range(4))
-        self.assertIn("format-dash", ids(body))
+        one_dash = "문단 하나 — 덧붙인 말입니다."
+        self.assertNotIn("format-dash", ids(one_dash), "본문 줄표 한 번은 허용합니다.")
+        two_dashes = "문단 하나 — 덧붙인 말입니다.\n\n문단 둘 — 또 다른 말입니다."
+        self.assertIn("format-dash", ids(two_dashes), "본문 줄표가 2회 이상이면 알립니다.")
         headings = "\n\n".join(f"# 3.{i} — 2026-10-0{i}" for i in range(4))
         self.assertNotIn("format-dash", ids(headings), "제목의 버전·날짜 줄표는 세지 않습니다.")
+        parenthetical = "We handle the whole loop—from scan to print—in a single window."
+        self.assertIn("format-em-dash-pair", ids(parenthetical), "문장 중간의 em dash 삽입구 쌍을 알립니다.")
 
 
 class RhythmTests(unittest.TestCase):
@@ -119,6 +142,47 @@ class RhythmTests(unittest.TestCase):
         varied = uniform + (" 마지막으로 이 값들은 다음 배포 때 서버가 다시 읽으므로, 지금 바꾼 내용이 운영 환경에 언제"
                             " 반영되는지 배포 일정과 함께 확인해 두어야 나중에 원인을 찾느라 헤매지 않습니다.")
         self.assertNotIn("rhythm-monotone", ids(varied))
+
+    def test_mechanically_uniform_paragraphs_are_flagged(self):
+        # 5 paragraphs with 2-3 sentences each (very uniform)
+        uniform_p = "\n\n".join([f"문단 {i} 첫 문장입니다. 문단 {i} 둘째 문장입니다." for i in range(5)])
+        self.assertIn("rhythm-uniform-paragraphs", ids(uniform_p))
+        # With a punchy single-sentence paragraph and a longer paragraph, it passes
+        varied_p = ("문단 1 첫 문장입니다. 문단 1 둘째 문장입니다.\n\n"
+                    "핵심은 이것입니다.\n\n"
+                    "문단 3 첫 문장입니다. 둘째 문장입니다. 셋째 문장입니다. 넷째 문장입니다. 다섯째 문장입니다. 여섯째 문장입니다. 일곱째 문장입니다.\n\n"
+                    "문단 4 첫 문장입니다. 문단 4 둘째 문장입니다.\n\n"
+                    "문단 5 첫 문장입니다. 문단 5 둘째 문장입니다.")
+        self.assertNotIn("rhythm-uniform-paragraphs", ids(varied_p))
+
+    def test_gpt6_advanced_ai_habits_are_detected(self):
+        gpt6_sample = (
+            "I built negaflow after working through my own 35mm and medium format rolls. "
+            "I wanted a simple UI/UX where you can organize rolls, develop and print in one place.\n\n"
+            "You can import scans from a film scanner or photos of film shot with a digital camera: "
+            "color and B&W negatives, and slides. Regular digital photos work too, with a film look that "
+            "models halation, density curves and RA-4 paper roll-off instead of a plain color filter.\n\n"
+            "Inversion and color are handled by Chroma Engine, which measures the film base first. "
+            "The manual default is MAIN. There are also scan targets for minilab and lab looks (HS, SP, F135, HR), "
+            "printer ICC output (PRINT) and old film (EXPIRED), plus profiles for film stock, light source and scanner. "
+            "PRINT targets include Soft proofing (with an out-of-gamut warning) and a clipping overlay that are built in. "
+            "Auto tone and color only run when you click them.\n\n"
+            "GrainMend is the part I spent the most time on. It repairs dust, pinholes, scratches and emulsion damage, "
+            "which most film inversion apps don't have built in. It can detect defects across the whole frame, "
+            "work on areas you mark, or you can use the brush and clone stamp. There's an IR path for scanners with "
+            "an infrared channel. It checks the grain around a defect before filling it, so wires and window frames "
+            "don't get erased as scratches. Repairs sit on their own layers, so you can dial them back or switch them off.\n\n"
+            "Edits are stored separately from your original files. You can copy adjustments across frames, save presets, "
+            "export JPEG or 16-bit TIFF, print single photos or make a contact sheet. You don't need a scanner for "
+            "existing files. Scanning directly into the app uses a separate plugin.\n\n"
+            "It's native on both Mac and Windows, with no account or subscription. The source is Apache 2.0 on GitHub, "
+            "along with installers, screenshots and docs. The website has sample photos processed with the app.\n\n"
+            "Autumn is a great season for shooting film, so if you try it on your scans, I'd like to hear how it "
+            "fits into your workflow. (Posted with mod permission.)"
+        )
+        found_ids = ids(gpt6_sample)
+        self.assertIn("en-list-of-three", found_ids, "반복되는 3항 나열(Tricolon) 습관을 탐지해야 합니다.")
+        self.assertIn("rhythm-uniform-paragraphs", found_ids, "기계적으로 균등 분할된 문단 구조를 탐지해야 합니다.")
 
 
 class FileTests(unittest.TestCase):

@@ -1,8 +1,7 @@
-# Security Policy
+# 보안 정책
 
-This repository provides agent rules, lifecycle hooks, skills, and an installer. It does not store credentials or secrets.
+본 저장소는 에이전트 규칙과 설치 스크립트를 제공합니다. 자격 증명이나 비밀 정보는 저장소에 보관하지 않습니다.
 
-Never post API keys, session tokens, cookies, account credentials, private prompts, screenshots containing personal data, or confidential workspace paths. The installer archives existing Gemini profiles to a dated local backup directory; never attach that backup archive to a public issue.
+API 키, 세션 토큰, 개인 프롬프트, 개인정보가 담긴 스크린샷은 이슈나 PR에 등록하지 마십시오. 설치기는 기존 프로필을 로컬 백업 디렉터리에 보관하므로 해당 백업 파일을 공개 저장소에 첨부해서는 안 됩니다.
 
-To report a vulnerability, navigate to GitHub **Security** → **Report a vulnerability**. Please do not open a public issue. Include the affected file path and commit hash, and ensure all sensitive values are redacted.
-
+보안 취약점을 발견하셨을 때는 공개 이슈 대신 GitHub **Security** → **Report a vulnerability**를 통해 비공개로 제보해 주십시오. 대상 파일 경로와 커밋 해시를 첨부하시고 민감 정보는 가려 주시기 바랍니다.

@@ -25,6 +25,17 @@ START = r"(?:^\s*(?:(?:[-*+]|\d+[.)]|#{1,6}|>)\s+)?|(?<=[.!?]\s))"
 # 부정-긍정 대구입니다. 덧셈의 '뿐만 아니라'와 조건의 '아니라면'은 빼고 셉니다.
 ANTITHESIS = (r"(?<!뿐만 )(?<!뿐만)(?<!뿐 )(?<!뿐)아니라(?=[\s,])|것이\s?아니(?:라|다)|것은\s?아니(?:다|에요|야)"
               r"|라기보다(?:는)?\s")
+# 3항 병렬 나열입니다. 단순 쉼표 복문 오탐을 막기 위해 접속사/종속절을 제외합니다.
+# 한국어 3항 나열은 반드시 쉼표 2개(A, B, C)이거나 쉼표 1개 뒤 명시적 접속사(A, B 그리고 C / A, B 및 C)여야 합니다.
+KO_ITEM = r"[가-힣0-9A-Za-z]{1,10}(?:\s+[가-힣0-9A-Za-z]{1,10}){0,2}"
+TRICOLON_KO = (rf"(?<![가-힣])(?=[^,\n]*[가-힣]){KO_ITEM},\s*(?=[^,\n]*[가-힣]){KO_ITEM}"
+               rf"(?:,\s*|,\s*(?:그리고|및)\s+|\s+(?:그리고|및)\s+)(?=[^,\n]*[가-힣]){KO_ITEM}"
+               rf"(?=[을를이가은는에서으로와과,.!~]|\s|$)")
+DISALLOWED_EN = (r"(?:so|but|yet|for|nor|although|because|since|while|if|when|where|with|without|as|that"
+                 r"|which|who|whom|whose|after|before|until|unless)")
+WORD_EN = r"[A-Za-z0-9&/-]+(?:\s*\([A-Za-z0-9&/-]+\))?"
+ITEM_EN = rf"(?!(?:{DISALLOWED_EN}|i\.e|e\.g)\b){WORD_EN}(?:\s+{WORD_EN}){{0,2}}"
+TRICOLON_EN = rf"\b({ITEM_EN}),\s+({ITEM_EN}),?\s+(?:and|or)\s+({ITEM_EN})\b"
 
 
 def batchim(final: int) -> str:
@@ -136,6 +147,8 @@ PATTERNS = (
             "'A가 아니라 B' 대구가 반복됩니다. 가장 필요한 한 곳만 남기고 나머지는 바로 단언하세요."),
     pattern("ko-antithesis-chain", "block", "paragraph", 2, ANTITHESIS,
             "한 문단에서 대구가 이어집니다. 같은 틀을 연달아 쓰지 말고 비대칭 평서문으로 푸세요."),
+    pattern("ko-list-of-three", "review", "document", 3, TRICOLON_KO,
+            "세 항목을 나열하는 병렬 구조('A, B, 그리고 C')가 반복됩니다. 가장 중요한 항목 하나만 강조하거나, 둘의 대조로 압축하거나, 구체적인 사례로 풀어쓰세요."),
     pattern("ko-either-or", "review", "match", 1,
             r"(?:인가|일까|는가|을까|할까|될까),\s?[^.?!\n]{1,40}(?:인가|일까|는가|을까|할까|될까)[?.!]",
             "'A인가, B인가' 대구 질문입니다. 질문을 거두고 판단을 바로 쓰세요."),
@@ -208,6 +221,8 @@ PATTERNS = (
             "Several stock words in one paragraph. Use plain, specific words.", re.I),
     pattern("en-negative-parallel", "review", "document", 2, r"\bnot\s+(?:just|only|merely)\b[^.\n]{0,80}?\bbut\b",
             "Repeated 'not just X but Y'. State Y directly unless you are correcting a real misconception.", re.I),
+    pattern("en-list-of-three", "review", "document", 3, TRICOLON_EN,
+            "Three-part lists ('A, B, and C') repeat frequently. Vary the structure by focusing on the key item, contrasting two, or expanding into concrete examples.", re.I),
     pattern("en-copula-avoidance", "review", "paragraph", 2, r"\b(?:serves|stands|acts|functions)\s+as\s+(?:a|an|the)\b",
             "Prefer 'is' over 'serves as' unless the role matters.", re.I),
     pattern("en-overclaim", "review", "match", 1,
@@ -220,7 +235,11 @@ PATTERNS = (
     # 서식 신호입니다.
     pattern("format-bold", "review", "paragraph", 4, r"\*\*[^*\n]+\*\*",
             "굵은 글씨가 몰렸습니다. 정말 놓치면 안 되는 한 곳만 남기세요. / Too much bold."),
-    pattern("format-dash", "review", "document", 4, r"^(?!\s{0,3}#{1,6}\s).*?—",
+    pattern("format-em-dash-pair", "review", "match", 1,
+            r"[A-Za-z0-9가-힣][\s]*—[^\n—]{1,80}—[\s]*[A-Za-z0-9가-힣]",
+            "문장 중간에 줄표 쌍(—...—)을 끼워 넣은 삽입구입니다. 쉼표나 괄호를 쓰거나 두 문장으로 나누세요. "
+            "/ Parenthetical em-dash pair. Use commas, parentheses, or break into two sentences."),
+    pattern("format-dash", "review", "document", 2, r"^(?!\s{0,3}#{1,6}\s).*?—",
             "본문에 긴 줄표가 많습니다. 쉼표·괄호·새 문장으로 나누세요. / Many em dashes in body text."),
     pattern("format-emoji-heading", "review", "match", 1,
             r"^\s{0,3}#{1,6}\s.*[\U0001F300-\U0001FAFF☀-➿]",

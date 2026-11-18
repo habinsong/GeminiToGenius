@@ -26,14 +26,14 @@ English AI prose has its own habits. Any one of them proves nothing, because peo
 - Crude embedding slang like `hardcoded directly into` or `baked into` (use `written into` or `built into`).
 - `serves as`, `stands as` and `acts as` where `is` would do.
 - `not just X, but Y` and `It's not X. It's Y.` State Y unless you are correcting a misconception the reader actually holds.
-- Lists of exactly three adjectives or benefits, again and again. Use the real count.
+- Lists of exactly three items, adjectives or benefits, repeated throughout the document (flagged by `en-list-of-three`). Use the real count, focus on one key item, or contrast two.
 - `Additionally,`, `Moreover,` and `Furthermore,` opening sentence after sentence.
 - `perfectly`, `flawless`, `production-ready`, `fully tested`, `guaranteed` and `all edge cases`. Attach the evidence and its scope, or drop the claim.
-- Em dashes. A few are fine, but when every other sentence carries a dash-inserted aside the text reads as generated, so use commas, parentheses or a new sentence.
+- Em dashes (`—`). Excessive em dashes and parenthetical dash-pairs (`—aside—`) are a hallmark AI slop pattern. Never use them as casual sentence glue; use commas, parentheses, or separate sentences instead.
 
 ## Rhythm
 
-Vary sentence length. Join sentences that belong together with `and`, `but`, `because`, `so` or `which`, and keep short sentences for emphasis or a turn in the argument. A paragraph in which every sentence has the same length and shape reads as generated even when no single word is a problem.
+Vary sentence length. Join sentences that belong together with `and`, `but`, `because`, `so` or `which`, and keep short sentences for emphasis or a turn in the argument. A paragraph in which every sentence has the same length and shape reads as generated even when no single word is a problem. Likewise, texts where every paragraph is mechanically balanced (2 to 5 sentences per paragraph throughout) lack organic dynamics; break the monotony with single-sentence turns or deeper narrative blocks.
 
 ## Structure
 

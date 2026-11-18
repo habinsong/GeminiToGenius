@@ -1,6 +1,5 @@
-# Code of Conduct
+# 행동 강령
 
-Keep discussions focused on technical proposals, rules, and code. Always provide reproducible evidence when reporting an issue. Do not post credentials, private prompts, confidential paths, personal data, harassment, threats, discriminatory remarks, spam, or disruptive content.
+기술 제안과 코드 논의에 집중해 주십시오. 문제를 보고하실 때는 재현 절차를 함께 첨부하셔야 합니다. 자격 증명, 개인정보, 위협 언행, 스팸 행위는 금지합니다.
 
-For sensitive conduct reports, please reach out to `@habinsong` on GitHub privately instead of opening a public issue.
-
+민감한 행동 강령 위반 사항은 공개 이슈 대신 GitHub `@habinsong` 계정으로 비공개 제보해 주십시오.
