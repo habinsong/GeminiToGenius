@@ -41,13 +41,15 @@ Lead with the answer or the result. Skip the closing paragraph that restates the
 
 ## Checking
 
-Run `prose` on English text the way you run it on Korean text. The phrases in the first table are blocked in English and Korean documents alike, and the pile-up rules above are reported as review signals. The 0 to 100 score is a rough density of the signals found. It was not calibrated on English, because the only labelled data (KatFish) is Korean, so read it as a trend inside one document and do not compare it with a Korean score or use it as a pass mark.
+Measure English text with `ai-smell` from the `ai-smell-polish` skill (`S` below is its `scripts/ai-smell`). The phrases in the first table are the ones it looks for, and the pile-up rules above are reported as review signals. The 0 to 100 score is a rough density of the signals found, so read it as a trend inside one document and do not use it as a pass mark.
 
 ```bash
-python3 "$GTG_RUNNER" prose --workspace /absolute/project/path README.md
+python3 "$S" analyze README.md
+python3 "$S" polish README.md > README.polished.md
+python3 "$S" verify README.md README.polished.md
 ```
 
-When you polish a draft, add `--original draft.md`. It checks that numbers, quotes, URLs and code survived and reports the share of words that changed. It does not judge whether the English got better.
+`verify` checks that numbers, quotes, URLs and code survived and reports the share of words that changed. It does not judge whether the English got better.
 
 ## Sources
 

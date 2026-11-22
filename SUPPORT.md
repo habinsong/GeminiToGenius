@@ -2,7 +2,7 @@
 
 설치 및 환경 진단은 `bash scripts/install.sh`와 `bash scripts/install.sh doctor` 명령을 사용합니다. 세부 옵션은 `--help`로 확인하실 수 있습니다.
 
-문제를 보고하실 때는 버전, 대상 호스트, 실제 사용한 모델, 실행 명령, 최소 재현 절차를 함께 첨부해 주십시오. 비밀 키나 개인 프롬프트 등 민감한 정보는 포함하지 마십시오.
+문제를 보고하실 때는 버전, 대상 호스트, 실제 사용한 모델, 실행 명령, 문제를 다시 일으키는 최소 절차를 함께 첨부해 주십시오. 비밀 키나 개인 프롬프트 등 민감한 정보는 포함하지 마십시오.
 
 - [버그 신고](https://github.com/habinsong/GeminiToGenius/issues/new?template=bug_report.yml)
 - [토론 및 질문](https://github.com/habinsong/GeminiToGenius/discussions)

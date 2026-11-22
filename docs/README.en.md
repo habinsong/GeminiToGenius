@@ -24,10 +24,8 @@
 | Honest gaps | Files that no check executed are listed, and when a runtime cannot be observed GTG says so instead of claiming full coverage. |
 | Resumable work | Goals, check results and notes survive restarts, and a new session can attach to an unfinished task. |
 | Structure check (3.1) | `structure` blocks empty function bodies, new TODO and FIXME comments, features piled into files over 400 lines and classes growing past 20 methods. It reports single-implementation abstractions, pass-through wrappers and new definitions nobody calls as review signals. |
-| Prose check (3.1) | `prose` blocks stock phrases in Korean and English documents and reports overclaims, clustered translationese, parallel "not A but B" sentences and choppy or monotone rhythm with line numbers. |
 | Korean writing skills (3.2) | Three skills cover Korean text by register: `gtg-korean-academic` for papers and reports, `gtg-korean-everyday` for messages, mail and reviews, and `gtg-korean-literary` for fiction, essays and poems. `gtg-writing` covers everything else. The skill descriptions list rough requests such as "make it natural" or "remove the translation tone", so nobody has to type a skill name. Whether a host opens the right skill for a vague request has not been tested. |
-| Style score (3.2) | `prose` turns the signals it finds into a 0 to 100 score and an A to D grade. The score is the number of signals per ten sentences, not the probability that an AI wrote the text. `--register` picks general, academic, everyday or literary rules, and `--min-score` makes a low score fail the check. |
-| Chat text and polish check (3.3) | `prose -` and `--text` check text that was never saved as a file. `--original` compares a polished text with its draft, blocks changed numbers, quotes, URLs and code, and reports the share of words that changed. |
+| Polish engine (3.3.3) | The `ai-smell-polish` skill measures Korean and English text with 485 rules and 22 analyzers, fixes only the items that do not change meaning, and checks that numbers, quotes, URLs and code survived. The score is a density of style patterns, not the probability that an AI wrote the text. |
 | Lessons (3.1) | When a check exposes a repository-specific mistake, such as a function name the model made up, the model can record a one-line lesson with a file or URL as evidence. The next session sees the latest five at the start of its first turn. |
 
 Hooks never call a model or start test suites on their own. Automatic resumption is capped at two retries by default so it does not burn your quota.
@@ -78,9 +76,7 @@ We ran four harnesses on the same cases, prompts and graders, 64 runs in total:
 
 **With and without GTG on the same model, the pass rates were identical, so these short tasks show no quality difference.** The model registered a task in only 5 of 16 runs, and in a harder follow-up that required running the code it registered none. Six of the seven auto-graded cases were passed by every arm, which means the suite does not discriminate much. The other two harnesses ran different base models, so the table does not rank the harnesses either.
 
-For 3.3.0, all 513 unit and integration tests pass offline. The style checks were also tested by breaking the implementation on purpose in 56 ways (`scripts/mutation_check.py`) and confirming that the tests catch every one. No Gemini model was called.
-
-The style score was calibrated on KatFish, a public set of Korean texts written by humans and by LLMs. The LLMs are 2024 models and the human essays are by elementary to high school students. On the held-out half the score separates the two with an AUC of 0.945 for essays, 0.798 for abstracts and 0.669 for poems, so it barely separates poems. 100 long papers written by humans scored A in 98 cases and B in 2. **Korean text written by Gemini was not measured**, and there was no labelled data for chat messages, fiction, essays or English. [evals/prose](../evals/prose/README.md) describes how to score model output yourself with 26 fixed prompts.
+For 3.3.3, all 519 GTG unit and integration tests, the 230 tests of the polish engine and the 19 tests of the Korean style probe pass offline. No Gemini model was called. The engine's false-positive and detection rates on public corpora are in [its evaluation notes](../vendor/ai-smell-meter/docs/evaluation.md); this repository did not re-run that evaluation, and Korean text written by Gemini was not measured.
 
 Details and sources are in the [3.1.0](verification/3.1.0.md), [3.2.0](verification/3.2.0.md) and [3.3.0](verification/3.3.0.md) verification notes, and what remains unchecked is in [Verification & Limits](verification/README.md).
 
@@ -93,7 +89,6 @@ Details and sources are in the [3.1.0](verification/3.1.0.md), [3.2.0](verificat
 | [CLI reference](reference/cli.md) | `run.py` subcommands and exit codes |
 | [Completion certificate](reference/certificate.md) | Certificate format and `replay` verdicts |
 | [Architecture](architecture/overview.md) | The boundary between host hooks and the core |
-| [Prose evaluation](../evals/prose/README.md) | Fixed prompts and steps for scoring model output |
 | [All documentation](README.md) | Full index |
 
 Detailed design and developer documents are written in Korean.
