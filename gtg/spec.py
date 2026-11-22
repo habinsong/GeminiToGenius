@@ -1,4 +1,4 @@
-"""작업 계약과 검증 대상의 내용을 다룹니다."""
+"""작업 명세과 검증 대상의 내용을 다룹니다."""
 
 from __future__ import annotations
 
@@ -50,7 +50,7 @@ def relative(value: str) -> Path:
 
 def validate(spec: dict) -> dict:
     if not isinstance(spec, dict) or type(spec.get("schema_version")) is not int or spec["schema_version"] != 1:
-        raise ValueError("schema_version 1 작업 계약이 필요합니다.")
+        raise ValueError("schema_version 1 작업 명세이 필요합니다.")
     if not isinstance(spec.get("goal"), str) or not spec["goal"].strip():
         raise ValueError("구체적인 목표가 필요합니다.")
     resumes = spec.get("max_resumes", DEFAULT_RESUMES)

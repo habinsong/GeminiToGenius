@@ -12,7 +12,7 @@ gtg/hooks.py ──▶ gtg/sessions.py ──▶ gtg/store.py  (SQLite + 파일 
    └── 교훈 기록 gtg/lessons.py            │
                                           │
 모델이 부르는 명령 ──▶ gtg/runner.py ──────┘
-   │                      ├─ gtg/spec.py       계약 검증, 파일 지문, 감시 범위 예산
+   │                      ├─ gtg/spec.py       명세 검증, 파일 지문, 감시 범위 예산
    │                      ├─ gtg/coverage.py   실제 실행 파일 관측
    │                      └─ gtg/certificate.py 증명서 생성과 재실행
    │

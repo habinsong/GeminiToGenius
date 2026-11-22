@@ -32,9 +32,9 @@ python3 "$S" polish README.md > README.polished.md   # 뜻이 바뀌지 않는 �
 python3 "$S" verify README.md README.polished.md     # 수치, 주소, 코드, 인용이 남았는지와 변경률 대조
 ```
 
-`polish`가 고치지 못하는 구조 문제는 `prompt`가 만든 지시대로 직접 고친 뒤 `verify`와 `analyze`를 다시 돌립니다. 한국어 논문, 일상 글, 문학 글이면 `--genre academic`, `everyday`, `literary`를 붙이고 같은 이름의 `gtg-korean-*` 스킬을 함께 엽니다. 채팅 답변처럼 파일로 저장하지 않은 글은 `analyze --text '글'`이나 표준 입력(`-`)으로 넘깁니다.
+`polish`가 고치지 못하는 구조 문제는 `prompt`가 만든 지시대로 직접 고친 뒤 `verify`와 `analyze`를 다시 실행합니다. 한국어 논문, 일상 글, 문학 글이면 `--genre academic`, `everyday`, `literary`를 붙이고 같은 이름의 `gtg-korean-*` 스킬을 함께 엽니다. 채팅 답변처럼 파일로 저장하지 않은 글은 `analyze --text '글'`이나 표준 입력(`-`)으로 넘깁니다.
 
-점수는 AI가 썼을 확률이 아니라 문체 패턴이 걸린 빈도입니다. `verify`가 FAIL이면 수치, 주소, 코드, 인용이 바뀐 것이니 되돌리고, CONFIRM(변경률 50% 초과)이면 지운 문장과 이유를 보고합니다. 코드 블록, 인라인 코드, URL, 인용 블록은 검사하지 않으니 나쁜 예를 인용할 때는 인라인 코드로 감쌉니다. 점수만 낮추려고 단어를 바꾸거나 문장을 쪼개지 않습니다. 문서 작업을 작업 계약에 등록할 때는 `analyze --fail-above 점수`를 검사로 넣고 고친 문서를 watch에 둡니다.
+점수는 문체 패턴이 걸린 빈도를 나타내며 AI가 썼을 확률과는 다릅니다. `verify`가 FAIL이면 수치, 주소, 코드, 인용이 바뀐 것이니 되돌리고, CONFIRM(변경률 50% 초과)이면 지운 문장과 이유를 보고합니다. 코드 블록, 인라인 코드, URL, 인용 블록은 검사하지 않으니 나쁜 예를 인용할 때는 인라인 코드로 감쌉니다. 점수만 낮추려고 단어를 바꾸거나 문장을 쪼개지 않습니다. 문서 작업을 작업 명세에 등록할 때는 `analyze --fail-above 점수`를 검사로 넣고 고친 문서를 watch에 둡니다.
 
 ## 답변과 보고
 
