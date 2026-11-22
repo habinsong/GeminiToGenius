@@ -53,6 +53,16 @@ class PhraseTests(unittest.TestCase):
         self.assertNotIn("ko-overclaim", ids("패키지 무결성을 검사합니다."))
         self.assertIn("ko-overclaim", ids("무결점 코드입니다."))
 
+    def test_section_word_jeol_is_reviewed_but_other_senses_pass(self):
+        """문서 부분을 '절'로 가리키는 말은 검토 신호이고, 절차·절반·사찰의 절은 걸리지 않습니다."""
+        for text in ("한 언어에 있는 절은 여섯 언어 모두에 들어갑니다.", "이 절에서는 규칙을 설명합니다.", "다음 절을 보세요."):
+            with self.subTest(text=text):
+                self.assertIn("ko-section-word", ids(text, "review"))
+                self.assertNotIn("ko-section-word", ids(text, "block"))
+        for text in ("절차와 절반을 확인합니다.", "산 위의 절에 갔습니다.", "큰절을 올렸습니다.", "절대 지우지 않습니다."):
+            with self.subTest(text=text):
+                self.assertNotIn("ko-section-word", ids(text))
+
     def test_a_hedge_is_not_a_stock_phrase_so_it_is_reviewed_only_when_repeated(self):
         """3.2.0까지 차단이던 '~라고 볼 수 있다'는 사람 글(5.5%)과 LLM 글(7.1%)이 갈리지 않았고, 지우면 단정의 강도가
         달라지므로 '지워도 뜻이 줄지 않는' 차단 기준에 맞지 않습니다."""
@@ -227,7 +237,9 @@ class FileTests(unittest.TestCase):
 class ShippedTextTests(unittest.TestCase):
     def test_shipped_instructions_contain_none_of_the_phrases_they_forbid(self):
         """모델이 읽는 규칙·스킬과 대표 안내문이 스스로 금지한 상투구를 쓰지 않게 합니다."""
-        paths = sorted(str(p.relative_to(ROOT)) for p in (ROOT / "profile").rglob("*.md"))
+        # ai-smell-polish의 참조 문서는 금지 표현을 예로 들어 보이는 목록이라 이 검사에서 뺍니다. 본문(SKILL.md)은 검사합니다.
+        quoted = ROOT / "profile" / "skills" / "ai-smell-polish" / "references"
+        paths = sorted(str(p.relative_to(ROOT)) for p in (ROOT / "profile").rglob("*.md") if quoted not in p.parents)
         paths += ["README.md", "docs/README.en.md", "docs/product/how-it-works.md", "docs/architecture/overview.md"]
         result = check(ROOT, paths)
         self.assertTrue(result["all_files_read"], result["files"])

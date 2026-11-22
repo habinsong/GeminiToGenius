@@ -4,7 +4,7 @@ GTG는 호스트가 매 턴마다 호출하는 두 개의 플랫폼 훅을 기�
 
 | 호스트 | 턴 시작 이벤트 | 턴 종료 이벤트 |
 |---|---|---|
-| `antigravity` (데스크톱·IDE) | `PreInvocation` | `Stop` |
+| `antigravity` (데스크톱과 IDE) | `PreInvocation` | `Stop` |
 | `antigravity-cli` (`agy`) | `PreInvocation` | `Stop` |
 | `gemini-cli` | `BeforeAgent` | `AfterAgent` |
 

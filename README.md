@@ -8,7 +8,7 @@
 
 <p><a href="https://github.com/habinsong/GeminiToGenius/releases">릴리즈</a> · <a href="docs/product/getting-started.md">설치 안내</a> · <a href="docs/verification/README.md">검증 기록과 한계</a> · <a href="CHANGELOG.md">변경 기록</a></p>
 
-<p>GTG 3.3.2는 Antigravity 데스크톱·IDE, Antigravity CLI, Gemini CLI를 지원합니다.</p>
+<p>GTG 3.3.3은 Antigravity 데스크톱과 IDE, Antigravity CLI, Gemini CLI를 지원합니다.</p>
 
 </div>
 
@@ -18,7 +18,7 @@
 - **실제 명령 검증 (`verify`)**: 등록된 검증 명령을 실제로 실행하고 종료 코드, 실행 시간, 파일 지문을 투명하게 기록합니다.
 - **독립 재현 증명서 (`certify`, `replay`)**: 완료 주장과 실행 근거를 단일 파일로 묶어, 외부 데이터베이스 없이 작업 공간만으로 검증을 재현합니다.
 - **코드 구조 검사 (`structure`)**: 빈 함수, 신규 TODO, 대형 파일 누적, 거대 클래스, 쓰이지 않는 정의를 차단합니다.
-- **문체 및 AI 슬롭 검사 (`prose`)**: 한국어·영문 상투구, 번역투, 3항 나열(Tricolon) 강박, 기계적 문단 균일성, em dash(`—`) 삽입구를 찾아 0~100점 점수로 환산합니다. 원문과 대조하여 수치와 인용구 누락 여부도 함께 검증합니다.
+- **문체 및 AI 슬롭 검사 (`prose`)**: 한국어와 영문 상투구, 번역투, 3항 나열(Tricolon) 강박, 기계적 문단 균일성, em dash(`—`) 삽입구를 찾아 0~100점 점수로 환산합니다. 원문과 대조하여 수치와 인용구 누락 여부도 함께 검증합니다.
 - **저장소별 교훈 축적 (`lesson`)**: 작업 도중 드러난 실패와 오류를 근거와 함께 남겨, 다음 세션에서 같은 실수를 되풀이하지 않도록 전달합니다.
 
 ## 설치
@@ -66,18 +66,18 @@ EOF
 
 ## 대상 모델과 주의사항
 
-### Gemini 4 Argon
+### Gemini 4 Argon · Neon · Carbon
 소프트웨어 작업과 다단계 추론에 적합합니다. 기본 사고 수준은 medium이며, 여러 파일에 걸친 복잡한 작업에는 high 설정을 권장합니다.
 
-### Gemini 3.8 Flash 사용 금지 (비권장)
-**Gemini 3.8 Flash 모델은 추론 강도(low, medium, high)와 무관하게 실사용을 권장하지 않으며, 특히 윤문 작업에는 절대 사용하지 마십시오.**
+### Gemini 3.8 Flash · Gemini 4 Hydrogen 사용 금지 (비권장)
+**Gemini 3.8 Flash와 Gemini 4 Hydrogen 모델은 추론 강도(low, medium, high)와 무관하게 실사용을 권장하지 않으며, 특히 윤문 작업에는 절대 사용하지 마십시오.**
 
 실측 결과, 다음과 같은 치명적 결함이 반복 확인되었습니다:
 1. **전역 규칙 무시**: 시스템 지시와 제약 조건이 명시되어 있어도 이를 무시하고 학습된 페르소나 가중치에 따라 제멋대로 행동합니다.
 2. **없는 사실과 배경 날조 (Fabrication)**: '인간다운 글'을 흉내 낸답시고 원문에 전혀 없는 사물, 타사 도구 경험담, 개인적 고통과 사연을 지어내서 끼워 넣습니다.
 3. **싸구려 구어체 감정 과장**: 객관적 사실 서술을 왜곡하여 저급한 구어체 불평이나 인위적인 감정 표현을 주입합니다.
 
-따라서 신뢰할 수 있는 코드 작업이나 윤문이 필요할 때는 Gemini 3.8 Flash를 쓰지 마시고, Gemini 4 Argon이나 상위 추론 모델을 사용하십시오.
+따라서 신뢰할 수 있는 코드 작업이나 윤문이 필요할 때는 Gemini 3.8 Flash와 Gemini 4 Hydrogen을 쓰지 마시고, Gemini 4 Argon, Neon, Carbon이나 상위 추론 모델을 사용하십시오.
 
 ## 문서
 

@@ -254,6 +254,6 @@ def rhythm(path: str, blocks: list[list[tuple[int, str]]], register: Register) -
     found += uniform_paragraphs(path, blocks, register)
     if len(commas) >= COMMA_SENTENCES and sum(commas) / len(commas) >= COMMA_SHARE:
         found.append(finding("rhythm-comma-heavy", "review", path, first, "",
-                             "쉼표가 든 문장이 절반을 넘습니다. 연결어미 뒤나 짧은 절 사이의 쉼표는 빼도 읽힙니다.",
+                             "쉼표가 든 문장이 절반을 넘습니다. 연결어미 뒤나 짧은 문장 토막 사이의 쉼표는 빼도 읽힙니다.",
                              share=round(sum(commas) / len(commas), 2)))
     return found + formality(path, blocks, register.formality)

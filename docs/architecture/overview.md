@@ -40,35 +40,35 @@ gtg/hooks.py ──▶ gtg/sessions.py ──▶ gtg/store.py  (SQLite + 파일 
 
 | 모듈 | 책임 |
 | --- | --- |
-| `gtg/platforms.py` | 호스트별 훅 이벤트·설치 경로·감지 표식의 단일 정의 |
+| `gtg/platforms.py` | 호스트별 훅 이벤트와 설치 경로와 감지 표식의 단일 정의 |
 | `gtg/spec.py` | 작업 계약 검증, 검증 대상의 지문과 범위 예산 |
 | `gtg/code_contract.py` | 코드 작업의 빌드 선행 조건과 PRD 요구의 검사 연결 |
-| `gtg/store.py` | 작업·실행·메모의 SQLite 상태와 실행 중 여부를 알리는 파일 잠금 |
+| `gtg/store.py` | 작업, 실행과 메모의 SQLite 상태와 실행 중 여부를 알리는 파일 잠금 |
 | `gtg/runner.py` | 검증 명령 실행과 현재 상태 조회 |
 | `gtg/coverage.py` | 검사가 실제로 실행한 코드 파일 관찰 |
 | `gtg/certificate.py` | 완료 증명서 생성과 상태 DB 없는 재실행 |
 | `gtg/checkpoints.py` | 검증과 분리된 재개용 메모 |
-| `gtg/sessions.py` | 호스트 세션 연결·재개 예산·중단 |
+| `gtg/sessions.py` | 호스트 세션 연결과 재개 예산과 중단 |
 | `gtg/hooks.py` | 호스트 이벤트를 로컬 증거와 연결 |
 | `gtg/context_message.py` | 훅 안내의 표현. IO 없음 |
-| `gtg/lessons.py` | 검증에서 드러난 교훈의 근거 확인·저장·최근 목록 조회 |
+| `gtg/lessons.py` | 검증에서 드러난 교훈의 근거 확인, 저장과 최근 목록 조회 |
 | `gtg/discovery.py` | 읽기 전용 작업 후보 조회 |
 | `gtg/inspection.py` | 작업공간 텍스트 파일의 안전한 읽기와 범위 조회 |
 | `gtg/environment.py` | 로컬 실행 환경 관찰과 명시한 필요조건 비교 |
 | `gtg/testing.py` | Python 시험 관측의 유효성과 필수 시험 성공 확인 |
 | `gtg/unittest_probe.py` | 별도 프로세스에서 unittest 실행과 시험별 성공 관측 |
-| `gtg/changes.py` | Git 기준 리비전과 작업 트리의 변경 파일·추가된 줄 조회 |
-| `gtg/code_shape.py` | Python 소스 하나의 정의·복잡도·응집도·빈 본문 측정. IO 없음 |
-| `gtg/structure.py` | 변경 코드에 구조 기준을 적용한 차단·검토 신호 |
+| `gtg/changes.py` | Git 기준 리비전과 작업 트리의 변경 파일과 추가된 줄 조회 |
+| `gtg/code_shape.py` | Python 소스 하나의 정의, 복잡도, 응집도와 빈 본문 측정. IO 없음 |
+| `gtg/structure.py` | 변경 코드에 구조 기준을 적용한 차단과 검토 신호 |
 | `gtg/prose.py` | 표현과 리듬 신호를 줄 번호와 함께 모아 문서별 결과로 취합하기 |
 | `gtg/prose_input.py` | 검사할 글을 파일이나 표준 입력에서 읽고 읽지 못한 이유를 상태로 적기 |
 | `gtg/prose_patterns.py` | 문체 검사가 찾는 공통 표현 목록. 로직 없음 |
-| `gtg/prose_registers.py` | 학술·일상·문학 갈래별로 규칙을 끄고 완화하고 더하기 |
-| `gtg/prose_rhythm.py` | 문장 길이·어미·첫머리·쉼표·높임 등급과 글 분량 측정 |
+| `gtg/prose_registers.py` | 학술, 일상과 문학 갈래별로 규칙을 끄고 완화하고 더하기 |
+| `gtg/prose_rhythm.py` | 문장 길이, 어미, 첫머리, 쉼표와 높임 등급과 글 분량 측정 |
 | `gtg/prose_score.py` | 찾은 신호의 밀도를 0~100점과 A~D 등급으로 환산 |
-| `gtg/prose_fidelity.py` | 윤문 전후를 견줘 수치·인용·URL·코드가 남았는지와 바뀐 분량 재기 |
-| `gtg/package.py` | 호스트별 패키지 생성과 원문·훅 검증 |
-| `gtg/install.py` | 호스트 감지·설치·검사·제거·복구 |
+| `gtg/prose_fidelity.py` | 윤문 전후를 견줘 수치, 인용, URL, 코드가 남았는지와 바뀐 분량 재기 |
+| `gtg/package.py` | 호스트별 패키지 생성과 원문과 훅 검증 |
+| `gtg/install.py` | 호스트 감지, 설치, 검사, 제거와 복구 |
 | `gtg/install_journal.py` | 파일 이동의 사전 기록과 되돌리기 |
 | `gtg/legacy.py` | 구형 프로필 링크의 보존과 복구 |
 | `gtg/__main__.py` | 에이전트가 쓰는 CLI 진입점 |

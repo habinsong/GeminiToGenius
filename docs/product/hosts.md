@@ -4,7 +4,7 @@
 
 | 호스트 | 설치 경로 | 훅 이벤트 |
 |---|---|---|
-| `antigravity` (데스크톱·IDE) | `~/.gemini/config/plugins/geminitogenius/` | `PreInvocation`, `Stop` |
+| `antigravity` (데스크톱과 IDE) | `~/.gemini/config/plugins/geminitogenius/` | `PreInvocation`, `Stop` |
 | `antigravity-cli` (`agy`) | `~/.gemini/antigravity-cli/plugins/geminitogenius/` | `PreInvocation`, `Stop` |
 | `gemini-cli` | `~/.gemini/extensions/geminitogenius/` | `BeforeAgent`, `AfterAgent` |
 
